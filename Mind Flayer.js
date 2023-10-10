@@ -10,8 +10,7 @@ SourceList.MFPR = {
 RaceList["mind flayer"] = {
 	regExpSearch : /^((?=.*illithid)|((?=.*mind)(?=.*flayer))).*$/i,
 	name : "Mind Flayer",
-	sortname : "Mind Flayer",
-  source : ["MFPR"],
+	source : ["MFPR"],
 	plural : "Mind Flayers",
 	size : 3,
 	speed : {
@@ -19,7 +18,7 @@ RaceList["mind flayer"] = {
 	},
 	languageProfs : ["Common", "Deep Speech", "Undercommon"],
 	vision : [["Darkvision", 60]],
-	weaponOptions : {
+	weaponOptions : [{
 		regExpSearch : /^(?=.*mind)(?=.*blast).*$/i,
 		name : "Mind Blast",
 		source : [['MFPR']],
@@ -31,7 +30,18 @@ RaceList["mind flayer"] = {
 		abilitytodamage : false,
 		dc : true,
 		dbMindBlast : true
-	},	
+	},	{
+		regExpSearch : /^(?=.*Tentacles).*$/i,
+		name : "Tentacles",
+		source : [['MFPR']],
+		ability : 4,
+		type : "Natural",
+		damage : [1, 4, "psychic"],
+		range : "Melee",
+		description : "If crea. grappled by tentacles is reduced to 0 hp, its brain is devoured, you learn some of its memories",
+		abilitytodamage : true,
+		dc : false,
+	}],
 	weaponsAdd : [["Mind Blast"], ["Tentacles"]],
 	age : "Illithids fully complete ceremorphosis by the age of 9, and have become fully mature by age 15. Illithids live longer than humans, but rarely past 150 years.",
 	scores : [0, 0, 0, 2, 0, 1],
@@ -42,22 +52,10 @@ RaceList["mind flayer"] = {
 			limfeaname : "Mind Blast",
 			minlevel : 1,
 			usages : 1,
-			weaponOptions : {
-				regExpSearch : /^(?=.*Tentacles).*$/i,
-				name : "Tentacles",
-				source : [['MFPR']],
-				ability : 4,
-				type : "Natural",
-				damage : [1, 4, "psychic"],
-				range : "Melee",
-				description : "If crea. grappled by tentacles is reduced to 0 hp, its brain is devoured, you learn some of its memories",
-				abilitytodamage : true,
-				dc : false,
-			},
 			additional : levels.map(function (n) {
 					return (n < 6 ? 1 : 2 ) + 'd6' + (n < 11 ? "" : "+ Stun");
 				}),
-			recovery : ["short rest", "long rest"],
+			recovery : "short rest",
 			action : [["action", ""]],
 			calcChanges : {
 				atkAdd : [
