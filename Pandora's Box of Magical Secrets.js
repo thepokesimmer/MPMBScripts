@@ -13,7 +13,7 @@ ClassList.witch = {
 	
 	regExpSearch : /witch/i,
 	name : "Witch",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	primaryAbility : ["Wisdom"],
 	abilitySave : 5,
 	prereqs : "Wisdom 13",
@@ -54,7 +54,7 @@ ClassList.witch = {
 
 		"weird magic" : {
 			name : "Weird Magic",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "The common threads between you and the witch before have given the ability to see the threads and cast spells. This innate connection to the weave has given you the ability to draw power from your surroundings both natural and manufactured in order to cast your spells. You gain the 1st-level Witch Bolt spell, which does not count against the number of spells you can have prepared., using Wisdom as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus" + "\n   " + "I can cast witch spells as rituals if they have the ritual tag",
 			additional : ["2 cantrips known", "2 cantrips known", "2 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known"],
@@ -62,14 +62,14 @@ ClassList.witch = {
 
 		"subclassfeature1" : {
 			name : "Coven",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "Choose a Coven learned your craft from and put it in the \"Class\" field" + "\n   " + "Choose either Coven of Blood, Coven of the Dead, Coven of the Gale, Coven of the Goddess, Coven of the Hedge, or Coven of Hellfire",
 		},
 			
 		"meddle magic" : {
 			name : "Meddle Magic", 
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 2,
 			description : "\n   " + "Use the Choose Feature button above to add a Meddle Magic option to the third page. You have developed the ability to twist the threads within nearby magic as you desire. This magic is measured by meddling points, and you gain one meddling point for each witch level. Each time you use a meddle spell it costs one point, additionally, all spent meddling points are regained when you finish a long rest. When using this ability you can use one meddle spell as a reaction when a spell is cast by another creature within 60 feet of you or as a bonus action on your turn when you cast a spell. You can choose three meddle spells from the following list at 2nd level. When you reach 9th level you can choose an additional three meddle spells from the following list. The chosen meddle spells can be changed during a short or long rest. In addition, all meddling points are restored during a long rest."		,
 			usages : [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
@@ -189,7 +189,7 @@ ClassList.witch = {
 			
 		"copy cast" : {
 			name : "Copy Cast", 
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 5,
 			description : "\n   " + "You have learned how to read the threads from the magic around you and understand their meaning. As an action, you can choose one spell initiated within 30 feet of you that was cast within the last minute. If that spell is of a level you can cast, you can temporarily learn that spell from the thread to cast the spell during this turn using one of your corresponding spell slots. Once you have selected and read the thread you can cast or use that magic three times after your initial cast before the thread is lost. If you use this feature again before the spell thread is lost, the new spell thread replaces the previous one.",
 			action : ["action"],
@@ -199,7 +199,7 @@ ClassList.witch = {
 		
 		"void of threads" : {
 			name : "Void of Threads", 
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 13,
 			description : "\n   " + "You can push away threads of magic creating a space void of the threads. Once a day as an action you can cast Antimagic field with this feature without expending a spell slot. While active you are unable to use your witchcraft or spells, however, you can still use your meddle magic as long as the casted spell is outside of the antimagic field.",
 			action : ["action"],
@@ -209,14 +209,14 @@ ClassList.witch = {
 
 		"mystical mount" : {
 			name : "Mystical Mount", 
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 17,
 			description : "\n   " + "You have successfully crafted a mystical mount that can carry you along your journey. This mount can be made from any object that is capable of being mounted by you. This mount is attuned to you and does not count against the number of attunements you can have. This mount cannot be used or commanded by another creature without your permission. When selecting your mount you can choose whether it’s movement is walk or fly. This mount has 150 hit points, AC 18, movement speed of 60 feet. This mount is also immune to all condition effects, poison, necrotic, and psychic damage, as well as it is resistant to all other damage types. Regardless of distance or plane of existence you can always call to you the craft you have made. When calling forth your craft is requires an action. The mount teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft and send it back to where it previously resided.",
 		},
 
 		"witch's word" : {
 			name : "Witch's Word", 
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 20,
 			description : "\n   " + "You can push away threads of magic creating a space void of the threads. Once a day as an action you can cast Antimagic field with this feature without expending a spell slot. While active you are unable to use your witchcraft or spells, however, you can still use your meddle magic as long as the casted spell is outside of the antimagic field.",
 			action : ["action", "reaction"],
@@ -280,12 +280,12 @@ ClassList.witch = {
 AddSubClass("witch", "arcane", {
 	regExpSearch : /^(?=.*(witch))(?=.*arcane).*$/i,
 	subname : "Coven of the Arcane",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "magic missile", "detect magic", "blur", "disruption", "counterspell", "dispel magic", "arcane eye", "arcane retaliation", "animate objects", "wall of force", "arcane gate", "disintigration"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel :1,
 			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals force damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -304,7 +304,7 @@ AddSubClass("witch", "arcane", {
 
 		"subclassfeature1.1" : {
 			name : "Spell Bottle",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical object used by this coven known as a Spell Bottle. This bottle can contain powerful magical threads. As an action, during a short or long rest you can perform an hour long ritual to preserve a spell that you have prepared within this bottle. Once the spell is preserved you can cast the spell within the bottle as an action without using a spell slot. This bottle has three charges of the spell before the thread needs to be preserved again. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -356,12 +356,12 @@ AddSubClass("witch", "arcane", {
 AddSubClass("witch", "blood", {
 	regExpSearch : /^(?=.*(witch))(?=.*blood).*$/i,
 	subname : "Coven of Blood",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "vampiric touch", "life transference", "blight", "confusion", "contagion", "greater restoration", "harm", "flesh to stone"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -380,7 +380,7 @@ AddSubClass("witch", "blood", {
 
 		"subclassfeature1.1" : {
 			name : "Athame",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical blade used by this coven known as an Athame. This ceremonial blade is used to draw blood for your magic. This magical blade is equivalent to a +3 magical dagger except it follows the rulings of mage weapons and has been forged from blood and iron. As a bonus action, you can choose to concentrate on this weapon and have this athame levitate and move up to 60 feet of you to an unoccupied space for 1 min. As a bonus action on your turn, you can move the athame up to 60 feet and attack one target within 5 ft of it. You can choose to affect additional targets of any spell you cast if that target has been damaged by this blade within the last hour. The target does not need to be within range of the spell when it is cast and the target is automatically affected. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -432,7 +432,7 @@ AddSubClass("witch", "blood", {
 AddSubClass("witch", "dead", {
 	regExpSearch : /^(?=.*(witch))(?=.*dead).*$/i,
 	subname : "Coven of the Dead",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "cause fear", "unseen servant", "gentle repose", "misty step", "spirit shroud", "speak with dead", "banishment", "shadow of moil", "danse macabre", "enervation", "circle of death", "eyebite"],
 	spellcastingList : { 
 
@@ -442,7 +442,7 @@ AddSubClass("witch", "dead", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -461,7 +461,7 @@ AddSubClass("witch", "dead", {
 
 		"subclassfeature1.1" : {
 			name : "Poppet",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical object used by this coven known as a Poppet. This objected is crafted into an effigy that resembles a humanoid figure and is made from cloth that is filled with briars and bones. As a bonus action on your turn you can choose one of the poppets effects to inflict or curse upon one humanoid shaped creature be it living or dead that you can see within 60 feet. That target must make a DC wisdom saving throw or be linked to this poppet and subjected to its effects while within 60 feet of it. These effects last until the poppet is dismissed as a bonus action, linked to a new target, or the target is dropped to 0 hit points. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided. While cursed by the poppet the target is under the effects of the Hex Spell. At 5th level the effects of hex increase with the warlock's eldritch invocation Maddening Hex, and at 7th level the effects of the warlock's eldritch invocation Relentless Hex.",
 		},
@@ -513,7 +513,7 @@ AddSubClass("witch", "dead", {
 AddSubClass("witch", "gale", {
 	regExpSearch : /^(?=.*(witch))(?=.*gale).*$/i,
 	subname : "Coven of the Gale",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "fog cloud", "thunderwave", "gust of wind", "misty step", "lightning bolt", "tidal wave", "ice storm", "storm sphere", "control winds", "maelstrom", "chain lightning", "wind walk"],
 	spellcastingList : { 
 
@@ -523,7 +523,7 @@ AddSubClass("witch", "gale", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals wave or lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -542,7 +542,7 @@ AddSubClass("witch", "gale", {
 
 		"subclassfeature1.1" : {
 			name : "Wand Vane",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You create a magical object used by this coven known as a wand vane. This object is used to connect you with the threads of the storm. This object has been magically charged through constant use within weather rituals. When you cast an evocation spell that deals cold, lightning, thunder, or wave damage that has a duration of instantaneous you can change that duration to concentration up to 10 minutes causing the vane upon the wand to spin. If that spell deals direct damage, the spell deals half the dice of damage on consecutive turns after the initial cast. The spell also can be moved as a bonus action on each of your turns up to 30 feet in any direction. This effect ends early if you lose concentration, or choose to end it early no action required. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -594,7 +594,7 @@ AddSubClass("witch", "gale", {
 AddSubClass("witch", "goddess", {
 	regExpSearch : /^(?=.*(witch))(?=.*goddess).*$/i,
 	subname : "Coven of the Goddess",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "ceremony", "detect good and evil", "spiritual weapon", "prayer of healing", "beacon of hope", "spirit guardians", "aura of purity", "guardian of faith", "commune", "hallow", "forbiddance", "heal"],
 	spellcastingList : { 
 
@@ -604,7 +604,7 @@ AddSubClass("witch", "goddess", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals radiant damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -623,7 +623,7 @@ AddSubClass("witch", "goddess", {
 
 		"subclassfeature1.1" : {
 			name : "Amulet",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical object used by this coven known as an Amulet. This object is crafted from pure threads of magic and forged into a holy symbol of Mystra the Goddess of Magic. During a long rest you can imbue one abjuration spell that you have prepared with a duration longer than instantaneous upon this amulet. When you do so the effects of that spell remain upon you until you are not wearing the amulet, change the imbued spell, or dismiss it as a bonus action. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -674,7 +674,7 @@ AddSubClass("witch", "goddess", {
 AddSubClass("witch", "hedge", {
 	regExpSearch : /^(?=.*(witch))(?=.*hedge).*$/i,
 	subname : "Coven of the Hedge",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt"],
 	spellcastingList : { 
 
@@ -684,7 +684,7 @@ AddSubClass("witch", "hedge", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals your choice damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -712,7 +712,7 @@ AddSubClass("witch", "hedge", {
 		},
 		"subclassfeature1.1" : {
 			name : "Hedge Trinket",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical object that is unique to you known as a hedge trinket. This item contains powerful magical threads. This personal magical object must be no larger than a 1ft cube and possesses two features; the first feature grants you one first level spell of choice from any spell list that can be cast without consuming a spell slot. This spell can be cast in this way three times before a long rest as long as you have this trinket in hand. The other being one feat of choice. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -778,7 +778,7 @@ AddSubClass("witch", "hedge", {
 AddSubClass("witch", "wood", {
 	regExpSearch : /^(?=.*(witch))(?=.*wood).*$/i,
 	subname : "Coven of the Wood",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "entange", "goodberry", "barkskin", "locate plants", "plant growth", "speak with plants", "grasping vine", "guardian of nature", "tree stride", "wrath of nature", "transport via plants", "wall of thorns"],
 	spellcastingList : { 
 
@@ -788,7 +788,7 @@ AddSubClass("witch", "wood", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals poison damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -807,7 +807,7 @@ AddSubClass("witch", "wood", {
 
 		"subclassfeature1.1" : {
 			name : "Poultice",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft a magical object used by this coven known as a Poultice. This objected is crafted from seven sacred healing herbs that is capable of offering a magical remedies along your journey. As an action you can lay this poultice on the body of you or one willing creature to remove one disease, toxin, or condition effect. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -861,7 +861,7 @@ AddSubClass("witch", "wood", {
 AddSubClass("witch", "hellfire", {
 	regExpSearch : /^(?=.*(witch))(?=.*hellfire).*$/i,
 	subname : "Coven of Hellfire",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "burning hands", "hellish rebuke", "crown of madness", "scorching ray", "fireball", "summon lesser demon", "summon greater demon", "wall of fire", "immolation", "infernal calling", "investiture of flame", "summon fiend"],
 	spellcastingList : { 
 
@@ -871,7 +871,7 @@ AddSubClass("witch", "hellfire", {
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
 			prereqeval : function(v) { return v.hasWitchBolt; },
@@ -890,7 +890,7 @@ AddSubClass("witch", "hellfire", {
 
 		"subclassfeature1.1" : {
 			name : "Book of Shadows",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "You craft or receive a magical object used by this coven known as a Book of Shadows. This book possesses information, lore, true names, stats, weaknesses, and the languages of fiends. (Abyssal and Infernal) This book grants you advantage on any skill check, saving throw, or attack roll made about or against a fiend. Additionally, the power of this book grants you a fiendish companion as if you had casted the find familiar spell, however, this creature can attack if you so choose. You can choose between a Imp or a Quasit when you gain this book. Additionally, as you level this book grows in power and allows you to have a more powerful fiends as a companion. At 3rd level you can summon a fiendish companion with a challenge rating of 2 or lower, at 7th level a challenge rating of 3 or lower, at 11th level a challenge rating of 4 or lower, and at 14th level a challenge rating of 5 or lower. You can only have one companion at a time and requires a long rest in order to summon a new one if dropped to 0 hit points or to change fiend type. Your book of shadows is the focus for this magic and therefore does not require a spell slot. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
@@ -945,7 +945,7 @@ spellSchoolList["Revoc"] = "revocation";
 
 SpellsList["mind fog"] = {
 	name : "Mind Fog",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["fool", "witch"],
 	level : 5,
 	school : "Ench",
@@ -960,7 +960,7 @@ SpellsList["mind fog"] = {
 	
 SpellsList["shout"] = {
 	name : "Shout",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["fool", "witch", "bard"],
 	level : 4,
 	school : "Trans",
@@ -976,7 +976,7 @@ SpellsList["shout"] = {
 
 SpellsList["taunt"] = {
 	name : "Taunt",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["fool", "witch", "bard"],
 	level : 1,
 	school : "Ench",
@@ -992,7 +992,7 @@ SpellsList["taunt"] = {
 	
 SpellsList["erase"] = {
 	name : "Erase",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["fool", "wizard"],
 	level : 1,
 	school : "Trans",
@@ -1006,7 +1006,7 @@ SpellsList["erase"] = {
 
 SpellsList["disruption"] = {
 	name : "Disruption",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["witch"],
 	level : 2,
 	school : "Revoc",
@@ -1024,7 +1024,7 @@ SpellsList["disruption"] = {
 
 SpellsList["arcane retaliation"] = {
 	name : "Arcane Retaliation",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["witch"],
 	level : 4,
 	school : "Revoc",
@@ -1039,7 +1039,7 @@ SpellsList["arcane retaliation"] = {
 
 SpellsList["alchemist fire"] = {
 	name : "Alchemist Fire",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["artificer", "witch", "fool"],
 	level : 0,
 	school : "Trans",
@@ -1056,7 +1056,7 @@ SpellsList["alchemist fire"] = {
 
 SpellsList["usurp"] = {
 	name : "Usurp",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["witch"],
 	level : 0,
 	school : "Revoc",
@@ -1071,7 +1071,7 @@ SpellsList["usurp"] = {
 
 SpellsList["merlin"] = {
 	name : "Merlin",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["wizard"],
 	level : 1,
 	school : "Trans",
@@ -1086,7 +1086,7 @@ SpellsList["merlin"] = {
 
 SpellsList["pattern weave"] = {
 	name : "Pattern Weave",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["witch"],
 	level : 1,
 	school : "Div",
@@ -1101,7 +1101,7 @@ SpellsList["pattern weave"] = {
 
 SpellsList["revoke"] = {
 	name : "Revoke",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["witch"],
 	level : 1,
 	school : "Revoc",
@@ -1117,7 +1117,7 @@ SpellsList["revoke"] = {
 
 SpellsList["chaos shield"] = {
 	name : "Chaos Shield",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["sorcerer"],
 	level : 2,
 	school : "Abjur",
@@ -1131,7 +1131,7 @@ SpellsList["chaos shield"] = {
 
 SpellsList["moon rune"] = {
 	name : "Moon Rune",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["druid"],
 	level : 2,
 	school : "Trans",
@@ -1146,7 +1146,7 @@ SpellsList["moon rune"] = {
 
 SpellsList["protection from cantrips"] = {
 	name : "Protection from Cantrips",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["wizard", "cleric"],
 	level : 2,
 	school : "Abjur",
@@ -1161,7 +1161,7 @@ SpellsList["protection from cantrips"] = {
 	
 SpellsList["swiftness"] = {
 	name : "Swiftness",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	classes : ["wizard"],
 	level : 2,
 	school : "Trans",
@@ -1177,7 +1177,7 @@ SpellsList["swiftness"] = {
 MagicItemsList["flax linen robe"] = {
 	name : "Flax Linen Robe",
 	sortname : "Flax, Linen, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
@@ -1187,7 +1187,7 @@ MagicItemsList["flax linen robe"] = {
 	armorOptions: {
 		regExpSearch: /flax, linen, robe/i,
 		name : "Flax Linen Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "light",
 		ac : 11,
 		weight : 5
@@ -1197,7 +1197,7 @@ MagicItemsList["flax linen robe"] = {
 MagicItemsList["suede robe"] = {
 	name : "Suede Robe",
 	sortname : "Suede, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1207,7 +1207,7 @@ MagicItemsList["suede robe"] = {
 	armorOptions: {
 		regExpSearch: /suede, robe/i,
 		name : "Suede Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "light",
 		ac : 11,
 		weight : 10
@@ -1217,7 +1217,7 @@ MagicItemsList["suede robe"] = {
 MagicItemsList["embroidered robe"] = {
 	name : "Embroidered Robe",
 	sortname : "Embroidered, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 45 gp",
@@ -1227,7 +1227,7 @@ MagicItemsList["embroidered robe"] = {
 	armorOptions: {
 		regExpSearch: /embroidered, robe/i,
 		name : "Embroidered Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "light",
 		ac : 12,
 		weight : 5
@@ -1237,7 +1237,7 @@ MagicItemsList["embroidered robe"] = {
 MagicItemsList["cambric robe"] = {
 	name : "Cambric Robe",
 	sortname : "Cambric, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "uncommon",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1247,7 +1247,7 @@ MagicItemsList["cambric robe"] = {
 	armorOptions: {
 		regExpSearch: /cambric, robe/i,
 		name : "Cambric Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "medium",
 		ac : 12,
 		weight : 5
@@ -1257,7 +1257,7 @@ MagicItemsList["cambric robe"] = {
 MagicItemsList["bovine robe"] = {
 	name : "Bovine Robe",
 	sortname : "Bovine, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "uncommon",
 	extraTooltip : "can be purchased for 50 gp",
@@ -1267,7 +1267,7 @@ MagicItemsList["bovine robe"] = {
 	armorOptions: {
 		regExpSearch: /bovine, robe/i,
 		name : "Bovine Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "medium",
 		ac : 13,
 		weight : 15
@@ -1277,7 +1277,7 @@ MagicItemsList["bovine robe"] = {
 MagicItemsList["velvet robe"] = {
 	name : "Velvet Robe",
 	sortname : "Velvet, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "uncommon",
 	extraTooltip : "can be purchased for 75 gp",
@@ -1287,7 +1287,7 @@ MagicItemsList["velvet robe"] = {
 	armorOptions: {
 		regExpSearch: /velvet, robe/i,
 		name : "Velvet Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "medium",
 		ac : 14,
 		weight : 10
@@ -1297,7 +1297,7 @@ MagicItemsList["velvet robe"] = {
 MagicItemsList["brocade robe"] = {
 	name : "Brocade Robe",
 	sortname : "Brocade, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "uncommon",
 	extraTooltip : "can be purchased for 100 gp",
@@ -1307,7 +1307,7 @@ MagicItemsList["brocade robe"] = {
 	armorOptions: {
 		regExpSearch: /brocade, robe/i,
 		name : "Brocade Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "medium",
 		ac : 15,
 		weight : 10
@@ -1317,7 +1317,7 @@ MagicItemsList["brocade robe"] = {
 MagicItemsList["wool robe"] = {
 	name : "Wool Robe",
 	sortname : "Wool, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "rare",
 	extraTooltip : "can be purchased for 450 gp",
@@ -1327,7 +1327,7 @@ MagicItemsList["wool robe"] = {
 	armorOptions: {
 		regExpSearch: /wool, robe/i,
 		name : "Wool Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "heavy",
 		ac : 16,
 		weight : 15
@@ -1337,7 +1337,7 @@ MagicItemsList["wool robe"] = {
 MagicItemsList["armored robe"] = {
 	name : "Armored Robe",
 	sortname : "Armored, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "rare",
 	extraTooltip : "can be purchased for 750 gp",
@@ -1347,7 +1347,7 @@ MagicItemsList["armored robe"] = {
 	armorOptions: {
 		regExpSearch: /armored, robe/i,
 		name : "Armored Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "heavy",
 		ac : 20,
 		weight : 25
@@ -1357,7 +1357,7 @@ MagicItemsList["armored robe"] = {
 MagicItemsList["silk robe"] = {
 	name : "Silk Robe",
 	sortname : "Silk, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "rare",
 	extraTooltip : "can be purchased for 950 gp",
@@ -1367,7 +1367,7 @@ MagicItemsList["silk robe"] = {
 	armorOptions: {
 		regExpSearch: /silk, robe/i,
 		name : "Silk Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "heavy",
 		ac : 17,
 		weight : 20
@@ -1377,7 +1377,7 @@ MagicItemsList["silk robe"] = {
 MagicItemsList["prismatic robe"] = {
 	name : "Prismatic Robe",
 	sortname : "Prismatic, Robe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "armor (robe)",
 	rarity : "very rare",
 	extraTooltip : "can be purchased for 1500 gp",
@@ -1387,7 +1387,7 @@ MagicItemsList["prismatic robe"] = {
 	armorOptions: {
 		regExpSearch: /prismatic, robe/i,
 		name : "Prismatic Robe",
-		source : "PBMS",
+		source : [["PBMS", 0]],
 		type : "heavy",
 		ac : 18,
 		weight : 20
@@ -1397,7 +1397,7 @@ MagicItemsList["prismatic robe"] = {
 MagicItemsList["talisman"] = {
 	name : "Talisman",
 	sortname : "Talisman",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "shield",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1408,7 +1408,7 @@ MagicItemsList["talisman"] = {
 MagicItemsList["crystal"] = {
 	name : "Crystal",
 	sortname : "Crystal",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (arcane)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1419,7 +1419,7 @@ MagicItemsList["crystal"] = {
 MagicItemsList["orb"] = {
 	name : "Orb",
 	sortname : "Orb",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (arcane)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 20 gp",
@@ -1430,7 +1430,7 @@ MagicItemsList["orb"] = {
 MagicItemsList["rod"] = {
 	name : "Rod",
 	sortname : "Rod",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (arcane)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1450,7 +1450,7 @@ MagicItemsList["rod"] = {
 MagicItemsList["gnarled staff"] = {
 	name : "Gnarled Staff",
 	sortname : "Gnarled Staff",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (arcane)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 25 gp",
@@ -1470,7 +1470,7 @@ MagicItemsList["gnarled staff"] = {
 MagicItemsList["wand"] = {
 	name : "Wand",
 	sortname : "Wand",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (arcane)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1481,7 +1481,7 @@ MagicItemsList["wand"] = {
 MagicItemsList["amulet"] = {
 	name : "Amulet",
 	sortname : "Amulet",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (divine)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
@@ -1492,7 +1492,7 @@ MagicItemsList["amulet"] = {
 MagicItemsList["crystal sword"] = {
 	name : "Crystal Sword",
 	sortname : "Crystal, Sword",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (divine)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 50 gp",
@@ -1512,7 +1512,7 @@ MagicItemsList["crystal sword"] = {
 MagicItemsList["scepter"] = {
 	name : "Scepter",
 	sortname : "Scepter",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (divine)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 15 gp",
@@ -1532,7 +1532,7 @@ MagicItemsList["scepter"] = {
 MagicItemsList["reliquiary"] = {
 	name : "Reliquiary",
 	sortname : "Reliquiary",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (divine)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
@@ -1543,7 +1543,7 @@ MagicItemsList["reliquiary"] = {
 MagicItemsList["boline"] = {
 	name : "Boline",
 	sortname : "Boline",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
@@ -1563,7 +1563,7 @@ MagicItemsList["boline"] = {
 MagicItemsList["wooden staff"] = {
 	name : "Wooden Staff",
 	sortname : "Wooden Staff",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 25 gp",
@@ -1583,7 +1583,7 @@ MagicItemsList["wooden staff"] = {
 MagicItemsList["druid's egg"] = {
 	name : "Druid's Egg",
 	sortname : "Druid, Egg",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
@@ -1594,7 +1594,7 @@ MagicItemsList["druid's egg"] = {
 MagicItemsList["totem"] = {
 	name : "Totem",
 	sortname : "Totem",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 1 gp",
@@ -1605,7 +1605,7 @@ MagicItemsList["totem"] = {
 MagicItemsList["mistletoe"] = {
 	name : "Mistletoe",
 	sortname : "Mistletoe",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 1 gp",
@@ -1614,7 +1614,7 @@ MagicItemsList["mistletoe"] = {
 
 FeatsList["meddle magic adept"] = {
 	name : "Meddle Magic Adept",
-	source : "PBMS", 
+	source : [["PBMS", 0]], 
 	descriptionFull : "You've learned how to exert your will on your spells to alter how they function:\n \u2022 You learn two Meddle Magic options of your choice from the witch class. You can use only one Meddle Magic option on a spell when you cast it, unless the option says otherwise. Whenever you reach a level that grants the Ability Score Improvement feature, you can replace one of these Meddle Magic options with another one from the witch class.\n \u2022 You gain 2 meddle points to spend on Meddle Magic (these points are added to any meddle points you have from another source but can be used only on Meddle Magic). You regain all spent meddle points when you finish a long rest.",
 	description: 'I learn two Meddle Magic options from the witch class (2nd page "Choose Feature" button). I can use only one option on a spell unless it says otherwise. I gain 2 meddle points, which I can only use for Meddle Magic. I regain all expended meddle points when I finish a long rest. I can change one ' + (typePF ? '' : 'Meddle Magic option ') + 'whenever I gain an ' + (typePF ? 'ASI' : 'Ability Score Improvement') + '.',
 	bonusClassExtrachoices : [{
@@ -1634,7 +1634,7 @@ FeatsList["meddle magic adept"] = {
 
 CreatureList["puppet"] = {
 	name : "Puppet",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	size : 4,
 	type : "Construct",
 	alignment : "Unaligned",
@@ -1681,7 +1681,7 @@ ClassList.fool = {
 	
 	regExpSearch : /(fool)/i,
 	name : "Fool",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	primaryAbility : "Charisma",
 	abilitySave : 6,
 	prereqs : "Charisma 13",
@@ -1723,7 +1723,7 @@ ClassList.fool = {
 	features : {
 		"origin of trickery" : {
 			name : "Origin of Trickery",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : "\n   " + "When you gain this feature you choose whether your magic is derived from the Feywild or Shadowfell, use the Choose feature button on page 2 to choose your origin.",
 			extraname : "Origin of Trickery",
@@ -1741,7 +1741,7 @@ ClassList.fool = {
 		},
 		"tricks" : {
 			name : "Tricks",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc(["You have a knack for physical and visual entertainment known as tricks. These tricks are a blend of cunning and magic that allow you to beguile and bewilder the onlookers. You also choose one style of tricks, when you do so it cannot be changed. These magical tricks offer you a set of spells that do not count against the ones you can know, and do not require concentration, which last until the spell ends or if your dismiss it early. As you level in this class you will gain additional spells from the chosen set of tricks."]),	
 			extraname : "Tricks",
@@ -1773,13 +1773,13 @@ ClassList.fool = {
 		},
 		"fools facade" : {
 				name : "Fools Facade",
-				source : "PBMS",
+				source : [["PBMS", 0]],
 				minlevel : 1,
 				description : desc(["Without armor and no shield, my AC is 10 + Dexterity modifier + Charisma modifier"]),
 				armorOptions : [{
 					regExpSearch : /justToAddToDropDown/,
 					name : "Unarmored Defense (Cha)",
-					source : "PBMS",
+					source : [["PBMS", 0]],
 					ac : "10+Cha",
 					affectsWildShape : true
 				}],
@@ -1787,7 +1787,7 @@ ClassList.fool = {
 		},
 		"comedy and tragedy" : {
 			name : "Comedy and Tragedy",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 2,
 			description : desc(["You actions are quite theatrical and anything you do is rarely ordinary or simple, regardless of your proficiency. Whenever you attempt a saving throw, attack roll, or ability check you find benefits in both your critical success and your critical fails."]),
 			toNotesPage : [{
@@ -1813,7 +1813,7 @@ ClassList.fool = {
 		},
 		"foolish acts" : {
 			name : "Foolish Acts",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 2,
 			description : desc(["It is in the nature of a fool to be foolish, but to act foolish is risky business as the consequences could be severe. Although this risk is never a concern for the fool as it is often intended in order to create chaos. To do so, you use a bonus action on your turn to magically interact with a object or creature within 5ft of you or a range otherwise stated. Each foolish act has a consequence that is immediately applied after the foolish act has been made regardless if it succeeds."]),
 			extraname : "Foolish Acts",
@@ -1894,7 +1894,7 @@ ClassList.fool = {
 		},	
 		"subclassfeature3" : {
 				name : "Playhouse",
-				source : "PBMS",
+				source : [["PBMS", 0]],
 				minlevel : 3,
 				description : desc([
 					'Choose a playhouse and put it in the "Class" field on the first page',
@@ -1903,7 +1903,7 @@ ClassList.fool = {
 			},
 		"jack in the box" : {
 			name : "Jack in the Box",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			description : desc(["You possess a mysterious object connected to either the feywild or the shadowfell that is a box with a crank, a colorful satchel, or magical hat. With this item you are able to pull out a tiny non magical objects in a moments need. As an action you can make a charisma ability check using your spellcasting ability to name an item that is tiny in size and retrieve it from your jack in box. The DC is determined by the DM in repsonse to the desired object. If the object is held, worn or carried by a creature, the creature must make a wisdom saving throw against your spell DC. You can use this ability a number of times a day equal to your proficiency bonus. As you level you can pull out objects of a larger size. You can pull out small non-magical objects at 6th level, medium non-magical objects at 10th level, and large nonmagical objects at 14th level."]),
 			usages : "Proficiency bonus per ",
@@ -1912,7 +1912,7 @@ ClassList.fool = {
 		},
 		"masquerade" : {
 			name : "Masquerade",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 5,
 			description : desc(["At 5th level, you gain the magical ability to craft a mask out of fey or shadow magic. As a bonus action on your turn you can don a mask that magically appears on your face and gain the following benefits. While wearing the mask you gain a +1 to your AC concealing your identity. In addition, as an action while wearing the mask you can cast the disguise self spell without consuming a spell slot. This mask can only be donned and removed by you. When you gain this feature you can choose one type of mask that you can conjure. When you reach 10th level you gain an additional mask option, and again at 15th level. You can only wear one type of mask at a time."]),
 			extraname : "Masquerade Mask",
@@ -2003,19 +2003,19 @@ ClassList.fool = {
 		},
 		"unproficiency" : {
 			name : "Unproficiency",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 7,
 			description : desc(["At 7th level, Your ability to create successes in the most unexpected way through enchanting humor, mental manipulation, and by unconventional magical means has granted you unproficiency. When you make a roll with a tool, weapon, or skill in which you do not have proficiency you can add your charisma modifier to that roll."]),
 		},
 		"reckless abandon" : {
 			name : "Reckless Abandon",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 11,
 			description : desc(["At 11th level, you can throw all caution to the wind to act with complete impulse. When you cast a spell on your turn, you can do so recklessly. Doing so gives you advantage on the spell attack roll and targets roll with disadvantage on the saving throws. However, any attack rolls against you have advantage and saving throws you make are made with disadvantage until your next turn."]),
 		},
 		"spoil of toil" : {
 			name : "Spoil of Toil",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 15,
 			description : desc(["At 15th level, you can use a reaction to enact spoil of toil. When you do so you choose one creature within 60ft that rolls a natural 20 or a natural 1 on an ability check, attack roll, or saving throw and turn it into a natural 1 or natural 20 respectively. Once you use this ability you can not do so again until you finish a long rest."]),
 			action : ["reaction"],
@@ -2024,7 +2024,7 @@ ClassList.fool = {
 		},
 		"holy fool" : {
 			name : "Holy Fool",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 20,
 			description : desc(["At 20th level, you can choose two options when you gain benefits from a comedy or tragedy."]),
 		},
@@ -2034,11 +2034,11 @@ ClassList.fool = {
 AddSubClass("fool", "clown", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*clown).*$/i,
 	subname : "Playhouse of the Clown",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {	
 		"subclassfeature3" : {
 			name : "Juggler",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			weaponProfs : {
 				primary : ["scimitar", "shortsword"],
@@ -2054,13 +2054,13 @@ AddSubClass("fool", "clown", {
 		},
 		"subclassfeature6" : {
 			name : "Trump Strike",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc(["At 6th level, you can use your otherwordly magic to exploit a foe’s distraction. Once per turn, you can deal an extra 3d6 force to one creature you hit by your juggling weapons when you surpass their AC by 5 or more. If you were to score a natural 20 the damage is increased to 6d6 force."]),
 		},	
 		"subclassfeature10" : {
 			name : "Tumbling and Bumbling",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			action : "action",
 			description : desc([
@@ -2072,7 +2072,7 @@ AddSubClass("fool", "clown", {
 		},
 		"subclassfeature14" : {
 			name : "Unicycle",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			description : desc(["At 14th level, you acquire a magical unicycle that can be pulled from your jack in box without fail. As an action you can mount this unicycle and gain 30ft to your base movement speed. In addition, while mounted you have advanatge on all dexterity saving throws, and can take the dodge, dash, and disengage action as a bonus action."]),
 			action : "bonus action"
@@ -2083,11 +2083,11 @@ AddSubClass("fool", "clown", {
 AddSubClass("fool", "mime", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*mime).*$/i,
 	subname : "Playhouse of the Mime",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {	
 		"subclassfeature3" : {
 			name : "Miming",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			spellcastingExtra : ["silence"],
 			usages : 1,
@@ -2101,7 +2101,7 @@ AddSubClass("fool", "mime", {
 		},
 		"subclassfeature6" : {
 			name : "Mummer",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			usages : "Charisma modifier per ",
 			usagescalc : "event.value = Math.max(1, What('Cha Mod'));",
@@ -2110,13 +2110,13 @@ AddSubClass("fool", "mime", {
 		},
 		"subclassfeature6.1" : {
 			name : "Mimic",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc(["At 6th level, you can expend two uses of your Jack in Box feature to summon a Mimic that takes the initial form of an object that you choose, and appears in an unoccupied space that you can see within 60 feet. This creature is friendly to you and your companions. The mimic disappears when it drops to 0 hit points or after one hour has passed. This creature has its own turn and rolls its own initiative. This creature obeys any verbal comman that you issue no action required. If you don’t issue any commands it defends itself from hostile creatures, but otherwise takes no actions."]),
 		},
 		"subclassfeature10" : {
 			name : "Pantomime Spell",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			spellcastingExtra : ["wall of force"],
 			usages : 1,
@@ -2125,7 +2125,7 @@ AddSubClass("fool", "mime", {
 		},	
 		"subclassfeature14" : {
 			name : "Art of Imitation",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			action : "action",
 			usages : 1,
@@ -2138,11 +2138,11 @@ AddSubClass("fool", "mime", {
 AddSubClass("fool", "puppeteer", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*puppeteer).*$/i,
 	subname : "Playhouse of the Puppeteer",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {	
 		"subclassfeature3" : {
 			name : "Puppet Maker",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			action : [
 				["bonus action", "Puppet (Command)"],
@@ -2153,7 +2153,7 @@ AddSubClass("fool", "puppeteer", {
 		},
 		"subclassfeature3a" : {
 			name : "Puppets",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			usages : levels.map(function (n) {
 					return n < 3 ? 0 : n < 6 ? 1 : n < 10 ? 2 : n < 14 ? 3 : 4;
@@ -2162,14 +2162,14 @@ AddSubClass("fool", "puppeteer", {
 		},	
 		"subclassfeature3.1" : {
 			name : "Captivate",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			description : desc(["At 3rd level when a creature attacks one of your puppets that attacker must make a wisdom saving throw against your spell DC. On a failure the attacker is charmed or frightened (your choice) by the puppet as long as it is within 30ft of it. If the attack succeeds they are immune to this effect for 24 hours from any of the puppets you have control over. The attacker can repeat the save throw if it takes damage from the puppet.",
 			]),
 		},	
 		"subclassfeature6" : {
 			name : "Puppet Strings",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel  : 6,
 			action : [
 				["bonus action", "Transfer HP"],
@@ -2181,7 +2181,7 @@ AddSubClass("fool", "puppeteer", {
 		},
 		"subclassfeature10" : {
 			name : "Decoy",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			action : ["bonus action", "reaction"],
 			usages : "Charisma modifyer per ",
@@ -2193,7 +2193,7 @@ AddSubClass("fool", "puppeteer", {
 		},	
 		"subclassfeature14" : {
 			name : "Magic of Puppets",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			usages : 3,
 			recovery : "long rest",
@@ -2206,7 +2206,7 @@ AddSubClass("fool", "puppeteer", {
 
 CreatureList["elemental mote"] = {
 	name : "Elemental Mote",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	size : 5,
 	type : "Elemental",
 	alignment : "Unaligned",
@@ -2248,7 +2248,7 @@ CreatureList["elemental mote"] = {
 
 CreatureList["mount mote"] = {
 	name : "Mount Mote",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	size : [2,3,4],
 	type : "Elemental",
 	alignment : "Unaligned",
@@ -2290,7 +2290,7 @@ CreatureList["mount mote"] = {
 
 CreatureList["guardian mote"] = {
 	name : "Guardian Mote",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	size : 5,
 	type : "Elemental",
 	alignment : "Unaligned",
@@ -2338,7 +2338,7 @@ ClassList.elementalist = {
 	
 	regExpSearch : /elementalist/i,
 	name : "Elementalist",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	primaryAbility : ["Constitution"],
 	abilitySave : 3,
 	prereqs : "Constitution 13",
@@ -2378,7 +2378,7 @@ ClassList.elementalist = {
 	features : {
 		"subclassfeature1" : {
 			name : "Elemental Affinity",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc([
 				"The affinity you possess with one of the four natural elements cannot be changed once chosen and represents the commanding power you possess. This affinity is tethered to your soul and existed since your birth. There are four elemental affinities; Affinity of Earth, Affinity of Air, Affinity of Fire, & Affinity of Water. Each of which it detailed at the end of the class description. Your choice grants you features at 1st level, and again at 6th, 10th, and 14th level.",
@@ -2387,7 +2387,7 @@ ClassList.elementalist = {
 		
 		"elemental powers" : {
 			name : "Elemental Powers",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 2,
 			description : desc([
 				"Your connection and command over a natural element has gifted you elemental powers. Your power to command the elements comes from the close primal relationship that is built between you and the elementals. When you speak they listen and awaken to carry out your will on your behalf. You gain two elemental powers of your choice. These powers require a presence of elemental energy be it natural or magical within 30 feet of you in order to enact. Once you have awakened the elemental energy using this power regardless of source the resulting effect is no longer considered magical. Your elemental powers are not affected by antimagic fields, counter spells, dispel magic, or meddle magic. Your power options are detailed at the end of the class description.", 
@@ -2627,7 +2627,7 @@ ClassList.elementalist = {
 		},
 		"elemental privilage" : {
 			name : "Elemental Privilage",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 3,
 			description : desc([
 				"Your growing affinity has granted you a gift from the elemental plane for your commitment and reverence for the elements. You gain one of the following features of your choice.",
@@ -2679,7 +2679,7 @@ ClassList.elementalist = {
 		},
 		"elemental inversion" : {
 			name : "Elemental Inversion",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 5,
 			description : desc([
 				"You can transform your elemental presence into a different representation when enacting an elemental power. Those of the Affinity of Earth can shape the stone into a different physical forms to inflict physical or force damage. Those of the Affinity of Air can change wind into different tempestuous forms to inflict lightning or thunder damage. Those of the Affinity of Fire can change light into fire to inflict fire or radiant damage. Those of the Affinity of Water can change water into ice to inflict wave or radiant damage.",
@@ -2687,7 +2687,7 @@ ClassList.elementalist = {
 		},
 		"enigmatic power" : {
 			name : "Enigmatic Power",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 11,
 			description : desc([
 				"Your elemental affinity has become incredibly strong that you have discovered ancient primordial words to manifest powerful elemental magic. You gain one 6th level spell of your affinity as this enigmatic power. You can command this power without consuming a spell slot or needing components. You can use this feature once before a long rest, otherwise you require elemental presence and can use this spell as an elemental power for additional uses. At higher levels, you gain more enigmatic powers of your choice that can be used in this way; One 7th level spell at 13th level, one 8th level spell at 15th level, and one 9th level spell at 17th level. You regain all uses of this power when you finish a long rest.",
@@ -2695,7 +2695,7 @@ ClassList.elementalist = {
 		},
 		"elemental monarch" : {
 			name : "Elemental Monarch",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 20,
 			description : desc([
 				"You can call out to elder elementals to grace you with their elemental energy to regain all expended spell slots, and enigmatic power. Once regained an aura of elemental power surrounds you for the next hour. During this time you can use you elemental powers freely without concern of its nearby presence. You must finish a long rest before you can use this feature again. In addition your range for elemental presence increases to 60 feet instead of 30ft for using your elemental powers when you reach this level.",
@@ -2707,11 +2707,11 @@ ClassList.elementalist = {
 AddSubClass("elementalist", "air", {
 	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*air).*$/i,
 	subname : "Elemental Affinity of Air",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {
 		"subclassfeature1" : {
 			name : "Air Affinity",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			languageProfs : ["Auran"],
 			scores : [0,2,0,0,0,0],
@@ -2736,7 +2736,7 @@ AddSubClass("elementalist", "air", {
 		},
 		"subclassfeature1.1" : {
 			name : "Updraft",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc([
 				"You gain the ability to cast the levitate spell as a bonus action on your turn without expending a spell slots or components with this feature.",
@@ -2744,7 +2744,7 @@ AddSubClass("elementalist", "air", {
 		},
 		"subclassfeature6" : {
 			name : "Wind Travel",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			speed : { fly : { spd : "walk", enc : "walk" } },
 			description : desc([
@@ -2753,7 +2753,7 @@ AddSubClass("elementalist", "air", {
 		},
 		"subclassfeature10" : {
 			name : "Master of the Breath and Ear",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			dmgres : [["Lightning"], ["Thunder"]],
 			savetxt : { immune : ["deafened"] },
@@ -2764,7 +2764,7 @@ AddSubClass("elementalist", "air", {
 		},
 		"subclassfeature14" : {
 			name : "Tailwind",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			speed : { walk : "+20" },
 			description : desc([
@@ -2773,14 +2773,14 @@ AddSubClass("elementalist", "air", {
 		},
 		"subclassfeature14.1" : {
 			name : "Dash/Dodge",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			action : "bonus action",
 			description : "",
 		},
 		"subclassfeature14.2" : {
 			name : "Attack (3 Times)",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			action : "action",
 			description : "",
@@ -2791,11 +2791,11 @@ AddSubClass("elementalist", "air", {
 AddSubClass("elementalist", "earth", {
 	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*earth).*$/i,
 	subname : "Elemental Affinity of Earth",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {
 		"subclassfeature1" : {
 			name : "Earth Affinity",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			languageProfs : ["Terran"],
 			scores : [2,0,0,0,0,0],
@@ -2820,7 +2820,7 @@ AddSubClass("elementalist", "earth", {
 		},
 		"subclassfeature1.1" : {
 			name : "Land Stride",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc([
 				"You can move across difficult terrain created by earth, sand, and stone without expending extra movement. You can also cast the spell pass without a trace once before a long rest. ",
@@ -2828,7 +2828,7 @@ AddSubClass("elementalist", "earth", {
 		},
 		"subclassfeature6" : {
 			name : "Earthen Travel",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			speed : { burrow : { spd : "walk", enc : "walk" } },
 			description : desc([
@@ -2837,7 +2837,7 @@ AddSubClass("elementalist", "earth", {
 		},
 		"subclassfeature10" : {
 			name : "Stone Resilience",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			dmgres : [["Bludgeoning"], ["Piercing"], ["Slashing"]],
 			description : desc([
@@ -2846,7 +2846,7 @@ AddSubClass("elementalist", "earth", {
 		},
 		"subclassfeature14" : {
 			name : "Autonomous Form",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			savetxt : { immune : ["Petrified"] },
 			description : desc([
@@ -2855,7 +2855,7 @@ AddSubClass("elementalist", "earth", {
 		},
 		"subclassfeature14.1" : {
 			name : "Metal Skin",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			action : "reaction",
 			usages : "Constitution modifyer per ",
@@ -2869,11 +2869,11 @@ AddSubClass("elementalist", "earth", {
 AddSubClass("elementalist", "fire", {
 	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*fire).*$/i,
 	subname : "Elemental Affinity of Fire",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {
 		"subclassfeature1" : {
 			name : "Fire Affinity",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			languageProfs : ["Ignan"],
 			scores : [0,0,0,2,0,0],
@@ -2886,7 +2886,7 @@ AddSubClass("elementalist", "fire", {
 		},
 		"subclassfeature1.1" : {
 			name : "Blazing Aura",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc([
 				"Your body temperature increases giving you a heated body. Any creature that touches you or makes a melee attack while within 5 feet of you takes 2d6 fire damage. In addition, any metal melee weapons you wield deal an extra 1d6 fire damage when your attack with it hits.",
@@ -2894,7 +2894,7 @@ AddSubClass("elementalist", "fire", {
 		},
 		"subclassfeature6" : {
 			name : "Smouldering Shroud",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc([
 				"You can choose to emit smoke until the start of your next turn after you use one of your elemental spells or powers. During this time all attack rolls against you have disadvantage.",
@@ -2902,7 +2902,7 @@ AddSubClass("elementalist", "fire", {
 		},
 		"subclassfeature10" : {
 			name : "Solar Power",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			dmgres : [["Fire"], ["Radiant"]],
 			description : desc([
@@ -2911,7 +2911,7 @@ AddSubClass("elementalist", "fire", {
 		},
 		"subclassfeature14" : {
 			name : "Phoenix Fire",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			description : desc([
 				"The fire elementals you command become a force of rejuvenation. When you use one of your spells or elemental powers you regain hit points equal to your elementalist level plus your Constitution modifier.",
@@ -2923,11 +2923,11 @@ AddSubClass("elementalist", "fire", {
 AddSubClass("elementalist", "water", {
 	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*water).*$/i,
 	subname : "Elemental Affinity of Water",
-	source : "PBMS",
+	source : [["PBMS", 0]],
 	features : {
 		"subclassfeature1" : {
 			name : "Water Affinity",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			languageProfs : ["Aquan"],
 			scores : [0,0,0,0,2,0],
@@ -2952,7 +2952,7 @@ AddSubClass("elementalist", "water", {
 		},
 		"subclassfeature1.1" : {
 			name : "Aquatics",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			speed : { swim : { spd : 60, enc : 50 } },
 			description : desc([
@@ -2961,7 +2961,7 @@ AddSubClass("elementalist", "water", {
 		},
 		"subclassfeature6" : {
 			name : "Soothing Water",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc([
 				"You can awaken the magical healing properties of water. When you use the shape water cantrip you can use it to cast the cure wounds spell without components or expending a spell slot. You can up-cast this feature using a spell slot of 1st level or higher. The dice of this effect increases by 1d8 for each level above cantrip.",
@@ -2969,7 +2969,7 @@ AddSubClass("elementalist", "water", {
 		},
 		"subclassfeature10" : {
 			name : "Waters of Life",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			dmgres : [["Cold"], ["Wave"]],
 			description : desc([
@@ -2978,7 +2978,7 @@ AddSubClass("elementalist", "water", {
 		},
 		"subclassfeature10.1" : {
 			name : "Plant Growth",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			action : "action",
 			usages : 1,
@@ -2987,7 +2987,7 @@ AddSubClass("elementalist", "water", {
 		},	
 		"subclassfeature14" : {
 			name : "Never-Melting Armor",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			dmgres : [["F2ire"]],
 			extraAC : {
@@ -3001,7 +3001,7 @@ AddSubClass("elementalist", "water", {
 		},
 		"subclassfeature14.1" : {
 			name : "Never-Melting Armor (Use)",
-			source : "PBMS",
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			action : "bonus action",
 			description : "",
