@@ -1174,235 +1174,750 @@ SpellsList["swiftness"] = {
 };	
 
 // Adds Magical Equipment
-MagicItemsList["flax linen robe"] = {
-	name : "Flax Linen Robe",
-	sortname : "Flax, Linen, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "common",
-	extraTooltip : "can be purchased for 5 gp",
-	weight : 5,
-	description : "These Apprentice Robes when equipped grant the wearer an AC of 11 + their Spell Modifyer as well as 1 resistance of choice, these robes require the wearer to be capable of casting 1st level spells or higher",
-	addArmor: "Flax Linen Robe",
-	armorOptions: {
-		regExpSearch: /flax, linen, robe/i,
-		name : "Flax Linen Robe",
+MagicItemsList = {
+	"flax linen robes" : {
+		name : "Flax Linen Robes",
 		source : [["PBMS", 0]],
-		type : "light",
-		ac : 11,
-		weight : 5
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 5 gp",
+		weight : 5,
+		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		addArmor : "Flax Linen Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*(flax))(?=.*linen).*$/i,
+			name : "Flax Linen Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 11,
+			weight : 5,
+		},	
 	},
-},
-
-MagicItemsList["suede robe"] = {
-	name : "Suede Robe",
-	sortname : "Suede, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "common",
-	extraTooltip : "can be purchased for 10 gp",
-	weight : 10,
-	description : "These Apprentice Robes when equipped grant the wearer an AC of 11 + their Spell Modifyer as well as 1 Feature of choice, these robes require the wearer to be capable of casting 1st level spells or higher",
-	addArmor: "Suede Robe",
-	armorOptions: {
-		regExpSearch: /suede, robe/i,
-		name : "Suede Robe",
+	"suede robes" : {
+		name : "Suede Robes",
 		source : [["PBMS", 0]],
-		type : "light",
-		ac : 11,
-		weight : 10
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 10 gp",
+		weight : 10,
+		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		addArmor : "Suede Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*suede).*$/i,
+			name : "Suede Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 11,
+			weight : 10,
+		},	
 	},
-},
-
-MagicItemsList["embroidered robe"] = {
-	name : "Embroidered Robe",
-	sortname : "Embroidered, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "common",
-	extraTooltip : "can be purchased for 45 gp",
-	weight : 5,
-	description : "These Apprentice Robes when equipped grant the wearer an AC of 12 + their Spell Modifyer as well as 1 Spell Charge of choice, these robes require the wearer to be capable of casting 1st level spells or higher",
-	addArmor: "Embroidered Robe",
-	armorOptions: {
-		regExpSearch: /embroidered, robe/i,
-		name : "Embroidered Robe",
+	"embroidered robes" : {
+		name : "Embroidered Robes",
 		source : [["PBMS", 0]],
-		type : "light",
-		ac : 12,
-		weight : 5
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 45 gp",
+		weight : 5,
+		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		addArmor : "Embroidered Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*embroidered).*$/i,
+			name : "Embroidered Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 11,
+			weight : 5,
+		},	
 	},
-},
-
-MagicItemsList["cambric robe"] = {
-	name : "Cambric Robe",
-	sortname : "Cambric, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "uncommon",
-	extraTooltip : "can be purchased for 10 gp",
-	weight : 5,
-	description : "These Adept Robes when equipped grant the wearer an AC of 12 + their Spell Modifyer (Max of 2) as well as Grants 2 Attributes of Choice, these robes require the wearer to be capable of casting 2nd level spells or higher",
-	addArmor: "Cambric Robe",
-	armorOptions: {
-		regExpSearch: /cambric, robe/i,
-		name : "Cambric Robe",
+	"cambric robes" : {
+		name : "Cambric Robes",
 		source : [["PBMS", 0]],
-		type : "medium",
-		ac : 12,
-		weight : 5
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 10 gp",
+		weight : 5,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Cambric Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Cambric Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Cambric Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Cambric Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Cambric Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Cambric Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Cambric Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*cambric).*$/i,
+			name : "Cambric Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 12,
+			weight : 5,
+		},	
 	},
-},
-
-MagicItemsList["bovine robe"] = {
-	name : "Bovine Robe",
-	sortname : "Bovine, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "uncommon",
-	extraTooltip : "can be purchased for 50 gp",
-	weight : 15,
-	description : "These Adept Robes when equipped grant the wearer an AC of 13 + their Spell Modifyer (Max of 2) as well as Grants 2 Attributes of Choice, these robes require the wearer to be capable of casting 3rd level spells or higher",
-	addArmor: "Bovine Robe",
-	armorOptions: {
-		regExpSearch: /bovine, robe/i,
-		name : "Bovine Robe",
+	"leather robes" : {
+		name : "Leather Robes",
 		source : [["PBMS", 0]],
-		type : "medium",
-		ac : 13,
-		weight : 15
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 50 gp",
+		weight : 15,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Leather Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Leather Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Leather Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Leather Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Leather Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Leather Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Leather Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*leather).*$/i,
+			name : "Leather Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 12,
+			weight : 15,
+		},	
 	},
-},
-
-MagicItemsList["velvet robe"] = {
-	name : "Velvet Robe",
-	sortname : "Velvet, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "uncommon",
-	extraTooltip : "can be purchased for 75 gp",
-	weight : 10,
-	description : "These Adept Robes when equipped grant the wearer an AC of 14 + their Spell Modifyer (Max of 2) as well as Grants 2 Attributes of Choice, these robes require the wearer to be capable of casting 4th level spells or higher",
-	addArmor: "Velvet Robe",
-	armorOptions: {
-		regExpSearch: /velvet, robe/i,
-		name : "Velvet Robe",
+	"velvet robes" : {
+		name : "Velvet Robes",
 		source : [["PBMS", 0]],
-		type : "medium",
-		ac : 14,
-		weight : 10
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 75 gp",
+		weight : 10,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Velvet Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Velvet Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Velvet Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Velvet Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Velvet Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Velvet Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Velvet Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*velvet).*$/i,
+			name : "Velvet Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 13,
+			weight : 10,
+		},	
 	},
-},
-
-MagicItemsList["brocade robe"] = {
-	name : "Brocade Robe",
-	sortname : "Brocade, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "uncommon",
-	extraTooltip : "can be purchased for 100 gp",
-	weight : 10,
-	description : "These Adept Robes when equipped grant the wearer an AC of 15 + their Spell Modifyer (Max of 2) as well as Grants 2 Attributes of Choice, these robes require the wearer to be capable of casting 5th level spells or higher",
-	addArmor: "Brocade Robe",
-	armorOptions: {
-		regExpSearch: /brocade, robe/i,
-		name : "Brocade Robe",
+	"brocade robes" : {
+		name : "Brocade Robes",
 		source : [["PBMS", 0]],
-		type : "medium",
-		ac : 15,
-		weight : 10
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 100 gp",
+		weight : 10,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],
+		attunement : true,		
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Brocade Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Brocade Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Brocade Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Brocade Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Brocade Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing2 these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Brocade Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Brocade Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*brocade).*$/i,
+			name : "Brocade Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 13,
+			weight : 10,
+		},	
 	},
-},
-
-MagicItemsList["wool robe"] = {
-	name : "Wool Robe",
-	sortname : "Wool, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "rare",
-	extraTooltip : "can be purchased for 450 gp",
-	weight : 15,
-	description : "These Exalted Robes when equipped grant the wearer an AC of 16 as well as Grants 3 Attributes of Choice, these robes require the wearer to be capable of casting 6th level spells or higher",
-	addArmor: "Wool Robe",
-	armorOptions: {
-		regExpSearch: /wool, robe/i,
-		name : "Wool Robe",
+	"wool robes" : {
+		name : "Wool Robes",
 		source : [["PBMS", 0]],
-		type : "heavy",
-		ac : 16,
-		weight : 15
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 450 gp",
+		weight : 15,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		dmgres : ["Cold", "Fire", "Lightning"],
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Wool Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Wool Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Wool Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Wool Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Wool Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Wool Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Wool Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*wool).*$/i,
+			name : "Wool Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 13,
+			weight : 15,
+		},	
 	},
-},
-
-MagicItemsList["armored robe"] = {
-	name : "Armored Robe",
-	sortname : "Armored, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "rare",
-	extraTooltip : "can be purchased for 750 gp",
-	weight : 25,
-	description : "These Exalted Robes when equipped grant the wearer an AC of 20 as well as Grants 3 Attributes of Choice, these robes require the wearer to be capable of casting 7th level spells or higher",
-	addArmor: "Armored Robe",
-	armorOptions: {
-		regExpSearch: /armored, robe/i,
-		name : "Armored Robe",
+	"silk robes" : {
+		name : "Silk Robes",
 		source : [["PBMS", 0]],
-		type : "heavy",
-		ac : 20,
-		weight : 25
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 750 gp",
+		weight : 25,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects",
+		limfeaname : "Charges",
+		usages : 3,
+		recovery : "dawn",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Silk Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Silk Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Silk Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Silk Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Silk Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Silk Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Silk Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*silk).*$/i,
+			name : "Silk Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 13,
+			weight : 25,
+		},	
 	},
-},
-
-MagicItemsList["silk robe"] = {
-	name : "Silk Robe",
-	sortname : "Silk, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "rare",
-	extraTooltip : "can be purchased for 950 gp",
-	weight : 20,
-	description : "These Exalted Robes when equipped grant the wearer an AC of 17 as well as Grants 3 Attributes of Choice, these robes require the wearer to be capable of casting 8th level spells or higher",
-	addArmor: "Silk Robe",
-	armorOptions: {
-		regExpSearch: /silk, robe/i,
-		name : "Silk Robe",
+	"armored robes" : {
+		name : "Armored Robes",
 		source : [["PBMS", 0]],
-		type : "heavy",
-		ac : 17,
-		weight : 20
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 950 gp",
+		weight : 20,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		savetxt : "Adv. on Saves v.s spells and magical effects, Crits treated as Normal Hit",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Armored Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Armored Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Armored Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Armored Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Armored Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Armored Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Armored Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*armored).*$/i,
+			name : "Armored Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 14,
+			weight : 20,
+		},	
 	},
-},
-
-MagicItemsList["prismatic robe"] = {
-	name : "Prismatic Robe",
-	sortname : "Prismatic, Robe",
-	source : [["PBMS", 0]],
-	type : "armor (robe)",
-	rarity : "very rare",
-	extraTooltip : "can be purchased for 1500 gp",
-	weight : 20,
-	description : "These Exalted Robes when equipped grant the wearer an AC of 18 as well as Grants 5 Attributes of Choice, these robes require the wearer to be capable of casting 9th level spells or higher",
-	addArmor: "Prismatic Robe",
-	armorOptions: {
-		regExpSearch: /prismatic, robe/i,
-		name : "Prismatic Robe",
+	"prismatic robes" : {
+		name : "Prismatic Robes",
 		source : [["PBMS", 0]],
-		type : "heavy",
-		ac : 18,
-		weight : 20
+		type : "armor (robe)",
+		rarity : "common",
+		extraTooltip : "can be purchased for 1500 gp",
+		weight : 20,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
+		attunement : true,
+		calcChanges : {
+			spellCalc : [
+				function (type, spellcasters, ability) {
+					if (type !== "prepare") return 2;
+				},
+				"While wearing these robes I gain a +2 bonus to the spell attack rolls and saving throw DCs of my spells."
+			]
+		},
+		"charmed" : {
+			name : "Prismatic Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Prismatic Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Prismatic Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Prismatic Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Prismatic Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : "Prismatic Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},			
+		addArmor : "Prismatic Robes",
+		armorOptions : {
+			regExpSearch : /^(?=.*prismatic).*$/i,
+			name : "Prismatic Robes",
+			source : [["PBMS", 0]],
+			type : "light",
+			ac : 14,
+			weight : 20,
+		},	
+	},	
+	"talisman" : {
+		name : "Talisman",
+		source : [["PBMS", 0]],
+		type : "wonderous item",
+		rarity : "common",
+		extraTooltip : "can be purchased for 10 gp",
+		weight : 1,
+		description : "",
+		attunement : true,
+		choices : ["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder"],
+		choicesNotInMenu : true,
+		"acid" : {
+			name : "Talisman of Acid Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to acid damage.",
+			dmgres : ["Acid"]
+		},
+		"cold" : {
+			name : "Talisman of Cold Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to cold damage.",
+			dmgres : ["Cold"]
+		},
+		"fire" : {
+			name : "Talisman of Fire Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to fire damage.",
+			dmgres : ["Fire"]
+		},
+		"force" : {
+			name : "Talisman of Force Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to force damage.",
+			dmgres : ["Force"]
+		},
+		"lightning" : {
+			name : "Talisman of Lightning Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to lightning damage.",
+			dmgres : ["Lightning"]
+		},
+		"necrotic" : {
+			name : "Talisman of Necrotic Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to necrotic damage.",
+			dmgres : ["Necrotic"]
+		},
+		"poison" : {
+			name : "Talisman of Poison Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to poison damage.",
+			dmgres : ["Poison"]
+		},
+		"psychic" : {
+			name : "Talisman of Psychic Resistance",
+			description : "While I'm wieldig this talisman and I'm attuned to it, I have resistance to psychic damage.",
+			dmgres : ["Psychic"]
+		},
+		"radiant" : {
+			name : "Talisman of Radiant Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to radiant damage.",
+			dmgres : ["Radiant"]
+		},
+		"thunder" : {
+			name : "Talisman of Thunder Resistance",
+			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to thunder damage.",
+			dmgres : ["Thunder"]
+		}
 	},
-},
-
-MagicItemsList["talisman"] = {
-	name : "Talisman",
-	sortname : "Talisman",
-	source : [["PBMS", 0]],
-	type : "shield",
-	rarity : "common",
-	extraTooltip : "can be purchased for 10 gp",
-	weight : 1,
-	description : "This Magical Talisman grants the wielder a +2 to AC, the wielder must be capable of casting 1st level spells or higher",
 },
 
 MagicItemsList["crystal"] = {
@@ -1413,7 +1928,11 @@ MagicItemsList["crystal"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
 	weight : 1,
-	description : "This Arcane Focus Grants an additional 1d4 to spell damage, as well as grants the Extension (You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Arcane Focus Grants an additional 1d4 to spell damage.",
+		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 },
 
 MagicItemsList["orb"] = {
@@ -1424,7 +1943,11 @@ MagicItemsList["orb"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 20 gp",
 	weight : 3,
-	description : "This Arcane Focus Grants an additional 1d6 to spell damage, as well as grants the Expansion (When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Arcane Focus Grants an additional 1d6 to spell damage.",
+		"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 },
 
 MagicItemsList["rod"] = {
@@ -1435,7 +1958,11 @@ MagicItemsList["rod"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
 	weight : 2,
-	description : "This Arcane Focus Grants an additional 1d6 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Arcane Focus Grants an additional 1d6 to spell damage.",
+		"Weapon. You can use a spell focu6s with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 	weaponsAdd : ["Rod"],
 	weaponOptions : {
 		baseWeapon : "mace",
@@ -1455,7 +1982,85 @@ MagicItemsList["gnarled staff"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 25 gp",
 	weight : 4,
-	description : "This Arcane Focus Grants an additional 1d8 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) properties",
+	description : [
+		"This Arcane Focus Grants an additional 1d8 to spell damage.",
+		"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+	choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Gnarled Staff of the Abjurer",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Gnarled Staff of the Conjurer",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Gnarled Staff of the Diviner",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Gnarled Staff of the Enchanter",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Gnarled Staff of the Evoker",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Gnarled Staff of the Illusionist",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Gnarled Staff of the Necromancer",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Gnarled Staff of the Revoker",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Gnarled Staff of the Transmuter",
+		description : [
+			"This Arcane Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
 	weaponsAdd : ["Gnarled Staff"],
 	weaponOptions : {
 		baseWeapon : "greatclub",
@@ -1475,7 +2080,85 @@ MagicItemsList["wand"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
 	weight : 1,
-	description : "This Arcane Focus Grants an additional 1d4 to spell damage, as well as grants the Extension (You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.) and Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) properties",
+	description : [
+		"This Arcane Focus Grants an additional 1d4 to spell damage.",
+		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+	choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Wand of the Abjurer",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Wand of the Conjurer",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Wand of the Diviner",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Wand of the Enchanter",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Wand of the Evoker",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Wand of the Illusionist",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Wand of the Necromancer",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Wand of the Revoker",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Wand of the Transmuter",
+		description : [
+			"This Arcane Focus Grants an additional 1d4 to spell damage.",
+			"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
 },
 
 MagicItemsList["amulet"] = {
@@ -1486,7 +2169,85 @@ MagicItemsList["amulet"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
 	weight : 1,
-	description : "This Divine Focus Grants an additional 1d4 to spell damage, as well as grants the Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Divine Focus Grants an additional 1d4 to spell damage.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."		,
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+	choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Amulet of the Abjurer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Amulet of the Conjurer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Amulet of the Diviner",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Amulet of the Enchanter",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Amulet of the Evoker",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Amulet of the Illusionist",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Amulet of the Necromancer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Amulet of the Revoker",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Amulet of the Transmuter",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
 },
 
 MagicItemsList["crystal sword"] = {
@@ -1497,7 +2258,11 @@ MagicItemsList["crystal sword"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 50 gp",
 	weight : 3,
-	description : "This Divine Focus Grants an additional 1d6 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Divine Focus Grants an additional 1d6 to spell damage.",
+		"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 	weaponsAdd : ["Crystal Sword"],
 	weaponOptions : {
 		baseWeapon : "scimitar",
@@ -1517,7 +2282,11 @@ MagicItemsList["scepter"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 15 gp",
 	weight : 4,
-	description : "This Divine Focus Grants an additional 1d8 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Extension (You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.) properties",
+	description : [
+		"This Divine Focus Grants an additional 1d8 to spell damage.",
+		"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+	],	
 	weaponsAdd : ["Scepter"],
 	weaponOptions : {
 		baseWeapon : "greatclub",
@@ -1537,7 +2306,85 @@ MagicItemsList["reliquiary"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
 	weight : 2,
-	description : "This Divine Focus Grants an additional 1d4 to spell damage, as well as grants the Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Divine Focus Grants an additional 1d4 to spell damage.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+	choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Reliquiary of the Abjurer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Reliquiary of the Conjurer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Reliquiary of the Diviner",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Reliquiary of the Enchanter",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Reliquiary of the Evoker",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Reliquiary of the Illusionist",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Reliquiary of the Necromancer",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Reliquiary of the Revoker",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Reliquiary of the Transmuter",
+		description : [
+			"This Divine Focus Grants an additional 1d4 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
 },
 
 MagicItemsList["boline"] = {
@@ -1548,7 +2395,11 @@ MagicItemsList["boline"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 5 gp",
 	weight : 4,
-	description : "This Primal Focus Grants an additional 1d4 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Primal Focus Grants an additional 1d4 to spell damage.",
+		"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 	weaponsAdd : ["Boline"],
 	weaponOptions : {
 		baseWeapon : "sickle",
@@ -1568,7 +2419,85 @@ MagicItemsList["wooden staff"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 25 gp",
 	weight : 4,
-	description : "This Primal Focus Grants an additional 1d8 to spell damage, as well as grants the Weapon (You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.) and Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) properties",
+	description : [
+		"This Primal Focus Grants an additional 1d8 to spell damage.",
+		"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+	choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Wooden Staff of the Abjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Wooden Staff of the Conjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Wooden Staff of the Diviner",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Wooden Staff of the Enchanter",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Wooden Staff of the Evoker",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Wooden Staff of the Illusionist",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Wooden Staff of the Necromancer",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Wooden Staff of the Revoker",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Wooden Staff of the Transmuter",
+		description : [
+			"This Primal Focus Grants an additional 1d8 to spell damage.",
+			"Weapon. You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls. The damage dealt by the spell focus is noted in the properties column.",
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
 	weaponsAdd : ["Wooden Staff"],
 	weaponOptions : {
 		baseWeapon : "greatclub",
@@ -1588,7 +2517,85 @@ MagicItemsList["druid's egg"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 10 gp",
 	weight : 2,
-	description : "This Primal Focus Grants an additional 1d6 to spell damage, as well as grants the Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) and Expansion (When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.) properties",
+	description : [
+		"This Primal Focus Grants an additional 1d6 to spell damage.",
+		"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+		choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Druid's Egg of the Abjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Druid's Egg of the Conjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Druid's Egg of the Diviner",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Druid's Egg of the Enchanter",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Druid's Egg of the Evoker",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Druid's Egg of the Illusionist",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Druid's Egg of the Necromancer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Druid's Egg of the Revoker",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Druid's Egg of the Transmuter",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
 },
 
 MagicItemsList["totem"] = {
@@ -1599,7 +2606,85 @@ MagicItemsList["totem"] = {
 	rarity : "common",
 	extraTooltip : "can be purchased for 1 gp",
 	weight : 2,
-	description : "This Primal Focus Grants an additional 1d6 to spell damage, as well as grants the Favored (Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Primal Focus Grants an additional 1d6 to spell damage.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+		"Favored. Spell foci with the favored property indicates that the spell focus favors a particular school of magic. This property is determined randomly upon discovery of the spell focus. Roll a d10 excluding 10 to determine the school of magic that it favors. When casting a spell from the same school of magic that the spell focus favors grants the caster advantage on spell attack rolls and imposes disadvantage on the targets saving throw.",
+	],
+		choices : ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "revocation", "transmutation"],
+	choicesNotInMenu : true,
+	"abjuration" : {
+		name : "Totem of the Abjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Abjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"conjuration" : {
+		name : "Totem of the Conjurer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Conjuration school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},	
+	"divination" : {
+		name : "Totem of the Diviner",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Divination school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"enchantment" : {
+		name : "Totem of the Enchanter",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Enchantment school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"evocation" : {
+		name : "Totem of the Evoker",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Evocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"illusion" : {
+		name : "Totem of the Illusionist",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Illusion school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"necromancy" : {
+		name : "Totem of the Necromancer",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Necromancy school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"revocation" : {
+		name : "Totem of the Revoker",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Revocation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
+	"transmutation" : {
+		name : "Totem of the Transmuter",
+		description : [
+			"This Primal Focus Grants an additional 1d6 to spell damage.",
+			"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage."	,
+			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
+		],
+	},
 },
 
 MagicItemsList["mistletoe"] = {
@@ -1609,7 +2694,11 @@ MagicItemsList["mistletoe"] = {
 	type : "focus (primal)",
 	rarity : "common",
 	extraTooltip : "can be purchased for 1 gp",
-	description : "This Primal Focus Grants an additional 1d4 to spell damage, as well as grants the Extension (You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.) and Power (You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.) properties",
+	description : [
+		"This Primal Focus Grants an additional 1d4 to spell damage.",
+		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
+		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
+	],	
 },
 
 FeatsList["meddle magic adept"] = {
@@ -2996,7 +4085,7 @@ AddSubClass("elementalist", "water", {
 					text : "I gain a +3 bonus to AC due to my Never-Melting Armor",
 			},		
 			description : desc([
-				"You can8 store water around your body from nearby elemental presence to form never-melting armor of ice. This armor adds +3 to your AC and grants you resistance to fire. In addition, as a bonus action on your turn you can use the armor as a source for one of your elemental spells or powers. You can use your armor in this way three times before you have to recreate it near an ample source of water. Each time you use your armor in this way you subtract 1 from the AC bonus.",
+				"You can store water around your body from nearby elemental presence to form never-melting armor of ice. This armor adds +3 to your AC and grants you resistance to fire. In addition, as a bonus action on your turn you can use the armor as a source for one of your elemental spells or powers. You can use your armor in this way three times before you have to recreate it near an ample source of water. Each time you use your armor in this way you subtract 1 from the AC bonus.",
 			])
 		},
 		"subclassfeature14.1" : {
