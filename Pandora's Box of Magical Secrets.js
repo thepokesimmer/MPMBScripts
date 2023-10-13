@@ -7,7 +7,8 @@ SourceList["PBMS"] = {
 	date : "2023/07/18",
 };
 
-// Adds a new class, the Witch, with 7 subclasses
+// Adds a new class, the Witch, with 8 subclasses
+
 ClassList.sorcerer.regExpSearch = /sorcerer/i;
 ClassList.witch = {
 	
@@ -941,7 +942,11 @@ AddSubClass("witch", "hellfire", {
 
 });	
 
+// Adds a new School of Magic
+
 spellSchoolList["Revoc"] = "revocation";
+
+// Adds new spells
 
 SpellsList["mind fog"] = {
 	name : "Mind Fog",
@@ -1171,9 +1176,10 @@ SpellsList["swiftness"] = {
 	duration : "Instantaneous",
 	description : "you gain an extra action to be used within 24 hours",
 	descriptionFull : "You manipulate time just enough to grant you an extra action. This action surge remains until used, and must be used within the next 24 hours. This magic does not stack if cast again but instead resets the poin measured for the next 24 hours.",
-};	
+};
 
-// Adds Magical Equipment
+// Adds Spellcaster Armor, Enhanced Spellcasting Focai (Arcane, Divine, Primal), and Other Magic Items
+
 MagicItemsList = {
 	"flax linen robes" : {
 		name : "Flax Linen Robes",
@@ -2707,6 +2713,8 @@ MagicItemsList["mistletoe"] = {
 	],	
 },
 
+//Adds a new feat
+	
 FeatsList["meddle magic adept"] = {
 	name : "Meddle Magic Adept",
 	source : [["PBMS", 0]], 
@@ -2726,6 +2734,8 @@ FeatsList["meddle magic adept"] = {
 	prerequisite : "Spellcasting or Pact Magic feature",
 	prereqeval : function (v) { return v.isSpellcastingClass; }
 },
+
+// Adds new companion creatures to accompany the Elementalist and Fool classes	
 
 CreatureList["puppet"] = {
 	name : "Puppet",
@@ -2770,7 +2780,139 @@ CreatureList["puppet"] = {
 		description : "(PUPPETEER LEVEL 6) When your puppet hits a target with an attack you can expend a spell slot so the target must make a constitution saving throw against your spell DC. On a failure the target takes an additional 1d8 necrotic damage for each level of slot expended. On a successful save the target takes half the damage. You regain hit points equal to any damage dealt.",
 		joinString : "\n   "
 	}],
-};	
+};
+
+CreatureList["elemental mote"] = {
+	name : "Elemental Mote",
+	source : [["PBMS", 0]],
+	size : 5,
+	type : "Elemental",
+	alignment : "Unaligned",
+	ac : 16,
+	hp : 20,
+	hd : [6, 4],
+	speed : "0 ft, Fly(Hover) 50 ft",
+	scores : [1, 22, 14, 12, 10, 7],
+	saves : ["", 8, 4, "", "", ""],
+	skills : {
+		"stealth" : 8
+	},
+	senses : "Darkvision 60 ft",
+	passivePerception : 10,
+	languages : "Primordial",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	damage_immunities : "poison",
+	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+	attacks : [{
+		name : "",
+		ability : 3,
+		damage : [],
+		range : "",
+		description : "",
+	}],	
+	traits : [{
+		name : "Elemental Demise",
+		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
+	}, {
+		name : "Elemental Immunity",
+		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
+	}, {
+		name : "Elemental Nature",
+		description : "The mote does not require air, food, drink, or sleep."
+	}],	
+};
+
+CreatureList["mount mote"] = {
+	name : "Mount Mote",
+	source : [["PBMS", 0]],
+	size : [2,3,4],
+	type : "Elemental",
+	alignment : "Unaligned",
+	ac : 16,
+	hp : 20,
+	hd : [6, 4],
+	speed : "40 ft, Fly 40 ft (Air/Fire), Climb 40 ft (Earth), Swim 40 ft (Water)",
+	scores : [1, 22, 14, 12, 10, 7],
+	saves : ["", 8, 4, "", "", ""],
+	skills : {
+		"stealth" : 8
+	},
+	senses : "Darkvision 60 ft",
+	passivePerception : 10,
+	languages : "Primordial",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	damage_immunities : "poison",
+	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+	attacks : [{
+		name : "",
+		ability : 3,
+		damage : [],
+		range : "",
+		description : "",
+	}],	
+	traits : [{
+		name : "Elemental Demise",
+		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
+	}, {
+		name : "Elemental Immunity",
+		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
+	}, {
+		name : "Elemental Nature",
+		description : "The mote does not require air, food, drink, or sleep."
+	}],	
+};
+
+CreatureList["guardian mote"] = {
+	name : "Guardian Mote",
+	source : [["PBMS", 0]],
+	size : 5,
+	type : "Elemental",
+	alignment : "Unaligned",
+	ac : 20,
+	hp : 100,
+	hd : [30, 4],
+	speed : "0 ft, Fly(Hover) 50 ft",
+	scores : [1, 22, 14, 12, 10, 7],
+	saves : ["", 8, 4, "", "", ""],
+	skills : {
+		"stealth" : 8
+	},
+	senses : "Darkvision 60 ft",
+	passivePerception : 10,
+	languages : "Primordial",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	damage_immunities : "poison",
+	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+	attacks : [{
+		name : "",
+		ability : 3,
+		damage : [],
+		range : "",
+		description : "",
+	}],	
+	actions : [{
+		name : "Protector",
+		description : "As a reaction, when you are targeted by a spell, attack, or trap; your elemental can use its body to prevent the damage or effect, That damage or effect is instead inflicted upon the mote keeping you safe from any and all effects from the incident."
+	}],	
+	traits : [{
+		name : "Elemental Demise",
+		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
+	}, {
+		name : "Elemental Immunity",
+		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
+	}, {
+		name : "Elemental Nature",
+		description : "The mote does not require air, food, drink, or sleep."
+	}],	
+};
+
+// Adds a new class, the Fool, with 3 subclasses
 
 ClassList.fool = {
 	
@@ -3299,136 +3441,8 @@ AddSubClass("fool", "puppeteer", {
 	},
 });		
 
-CreatureList["elemental mote"] = {
-	name : "Elemental Mote",
-	source : [["PBMS", 0]],
-	size : 5,
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 16,
-	hp : 20,
-	hd : [6, 4],
-	speed : "0 ft, Fly(Hover) 50 ft",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
-};
+// Adds a new class, the Elementalist, with 4 subclasses
 
-CreatureList["mount mote"] = {
-	name : "Mount Mote",
-	source : [["PBMS", 0]],
-	size : [2,3,4],
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 16,
-	hp : 20,
-	hd : [6, 4],
-	speed : "40 ft, Fly 40 ft (Air/Fire), Climb 40 ft (Earth), Swim 40 ft (Water)",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
-};
-
-CreatureList["guardian mote"] = {
-	name : "Guardian Mote",
-	source : [["PBMS", 0]],
-	size : 5,
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 20,
-	hp : 100,
-	hd : [30, 4],
-	speed : "0 ft, Fly(Hover) 50 ft",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	actions : [{
-		name : "Protector",
-		description : "As a reaction, when you are targeted by a spell, attack, or trap; your elemental can use its body to prevent the damage or effect, That damage or effect is instead inflicted upon the mote keeping you safe from any and all effects from the incident."
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
-};
-	
 ClassList.elementalist = {
 	
 	regExpSearch : /elementalist/i,
@@ -4103,6 +4117,8 @@ AddSubClass("elementalist", "water", {
 		},
 	},
 });
+
+// Adds a new subclass for the Warlock, Patron of the Horned God
 
 AddSubClass("warlock", "the horned god", {
 	regExpSearch : /^(?=.*warlock)(?=.*horned).*$/i,
