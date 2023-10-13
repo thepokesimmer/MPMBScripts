@@ -1200,11 +1200,15 @@ MagicItemsList = {
 		source : [["PBMS", 0]],
 		type : "armor (robe)",
 		rarity : "common",
-		extraTooltip : "can be purchased for 10 gp",
-		weight : 10,
-		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		extraTooltip : "can be purchased for 45 gp",
+		weight : 5,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
+			],
 		attunement : true,
 		savetxt : "Adv. on Saves v.s spells and magical effects",
+		dmgres : ["Cold", "Fire", "Lightning"],
 		addArmor : "Suede Robes",
 		armorOptions : {
 			regExpSearch : /^(?=.*suede).*$/i,
@@ -1212,7 +1216,7 @@ MagicItemsList = {
 			source : [["PBMS", 0]],
 			type : "light",
 			ac : 11,
-			weight : 10,
+			weight : 5,
 		},	
 	},
 	"embroidered robes" : {
@@ -1220,11 +1224,64 @@ MagicItemsList = {
 		source : [["PBMS", 0]],
 		type : "armor (robe)",
 		rarity : "common",
-		extraTooltip : "can be purchased for 45 gp",
-		weight : 5,
-		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		extraTooltip : "can be purchased for 10 gp",
+		weight : 10,
+		description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+		],	
 		attunement : true,
 		savetxt : "Adv. on Saves v.s spells and magical effects",
+		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choicesNotInMenu : true,
+		"charmed" : {
+			name : "Embroidered Robes of Charm Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+			],
+			savetxt : "Immune to Charmed condition",
+		},
+		"cursed" : {
+			name : "Embroidered Robes of Curse Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+			],
+			savetxt : "Immune to Cursed condition",
+		},
+		"frightened" : {
+			name : "Embroidered Robes of Fright Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+			],
+			savetxt : "Immune to Frightened condition",
+		},	
+		"paralyzed" : {
+			name : "Embroidered Robes of Paralysis Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+			],
+			savetxt : "Immune to Paralyzed condition",
+		},
+		"magical sleep" : {
+			name : "Embroidered Robes of Slumber Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+			],
+			savetxt : "Immune to Magical Sleep",
+		},
+		"petrified" : {
+			name : " Embroidered Robes of Petrification Immunity",
+			description : [
+			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+			],
+			savetxt : "Immune to Petrified condition",
+		},
 		addArmor : "Embroidered Robes",
 		armorOptions : {
 			regExpSearch : /^(?=.*embroidered).*$/i,
@@ -1232,7 +1289,7 @@ MagicItemsList = {
 			source : [["PBMS", 0]],
 			type : "light",
 			ac : 11,
-			weight : 5,
+			weight : 10,
 		},	
 	},
 	"cambric robes" : {
@@ -1248,7 +1305,7 @@ MagicItemsList = {
 		],	
 		attunement : true,
 		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+		choice2s : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 		choicesNotInMenu : true,
 		"charmed" : {
 			name : "Cambric Robes of Charm Immunity",
@@ -1317,60 +1374,11 @@ MagicItemsList = {
 		weight : 15,
 		description : [
 			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+			"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
 		],	
 		attunement : true,
 		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Leather Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Leather Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Leather Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Leather Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Leather Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Leather Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
+		dmgres : ["Cold", "Fire", "Lightning"],			
 		addArmor : "Leather Robes",
 		armorOptions : {
 			regExpSearch : /^(?=.*leather).*$/i,
@@ -1463,60 +1471,13 @@ MagicItemsList = {
 		weight : 10,
 		description : [
 			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+			"Charges. This property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		],
 		attunement : true,		
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Brocade Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Brocade Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Brocade Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Brocade Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Brocade Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing2 these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Brocade Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
+		savetxt : "Adv. on Saves v.s spells and magical effects",	
+		limfeaname : "Charges",
+		usages : 3,
+		recovery : "dawn",		
 		addArmor : "Brocade Robes",
 		armorOptions : {
 			regExpSearch : /^(?=.*brocade).*$/i,
@@ -1917,6 +1878,51 @@ MagicItemsList = {
 			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to thunder damage.",
 			dmgres : ["Thunder"]
 		}
+	},
+	"potion of magic" : {
+		name : "Potion of Magic",
+		source : [["PBMS", 0]],
+		type : "potion",
+		description : "Once as an action, I can drink this potion or administer it to another to heal a number of spell slots depending on the type of potion. This potion's purple liquid shimmers when agitated.",
+		descriptionFull : "You regain spell slots when you drink this potion. The number of spell slots depends on the potion's rarity, as shown in the Potions of Magic table. Whatever its potency, the potion's purpel liquid shimmers when agitated.",
+		weight : 0.5,
+		allowDuplicates : true,
+		choices : ["Magic (2d4+2, uncommon)", "Greater Magic (4d4+4, rare)", "Superior Magic (8d4+8, very rare)", "Supreme Healing (10d4+20, legendary)"],
+		"magic (2d4+2, uncommon)" : {
+			name : "Potion of Magic",
+			rarity : "uncommon",
+			magicItemTable : "A",
+			description : "Once as an action, I can drink this potion or administer it to another to regain 2d4+2 spell slots. This potion's purpel liquid shimmers when agitated.",
+			descriptionFull : "You regain 2d4+2 spell slots when you drink this potion. The potion's purpel liquid shimmers when agitated.",
+			extraTooltip : "Can be bought for 100 gp (also in AL)"
+		},
+		"greater magic (4d4+4, rare)" : {
+			name : "Potion of Greater Magic",
+			sortname : "Potion of Magic, Greater",
+			rarity : "rare",
+			magicItemTable : ["A", "B"],
+			description : "Once as an action, I can drink this potion or administer it to another to regain 4d4+4 spell slots. This potion's purpel liquid shimmers when agitated.",
+			descriptionFull : "You regain 4d4+4 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+			extraTooltip : "AL: can always be bought for 500 gp"
+		},
+		"superior magic (8d4+8, very rare)" : {
+			name : "Potion of Superior Magic",
+			sortname : "Potion of Magic, Superior",
+			rarity : "very rare",
+			magicItemTable : "C",
+			description : "Once as an action, I can drink this potion or administer it to another to regain 8d4+8 spell slots. This potion's purple liquid shimmers when agitated.",
+			descriptionFull : "You regain 8d4+8 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+			extraTooltip : "AL: can always be bought for 5000 gp"
+		},
+		"supreme magic (10d4+20, legendary)" : {
+			name : "Potion of Supreme Magic",
+			sortname : "Potion of Magic, Supreme",
+			rarity : "legendary",
+			magicItemTable : ["D", "E"],
+			description : "Once as an action, I can drink this potion or administer it to another to regain 10d4+20 spell slots. This potion's purple liquid shimmers when agitated.",
+			descriptionFull : "You regain 10d4+20 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+			extraTooltip : "AL: can always be bought for 50000 gp"
+		},
 	},
 },
 
