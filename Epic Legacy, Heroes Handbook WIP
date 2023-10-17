@@ -1,0 +1,1177 @@
+var iFileName = "EL:HH";
+RequiredSheetVersion("13.1.7");
+SourceList["EL:HH"] = {
+	name : "Epic Legacy: Hero's Handbook",
+	abbreviation : "EL:HH",	
+	group : "2CGaming",
+	date : "2023/07/18",
+};
+
+// Classes, Spells and Features from the Epic Legacy: Hero's Handbook
+
+spellSchoolList["True"] = "truespeech";
+
+SpellsList["anthem of thunderous pain"] = {
+	name : "Anthem of Thunderous Pain",
+	source : ["EL:HH", 34],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "S:60ft radius",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+4ED ea. crea. of choice w/i 60 ft 10d10 thunder and Deafened, +7ED affected crea. CON save or be Stunned, remake save at end of turn to end effect.",
+	descriptionFull : "(+4 Entropy Dice) You speak booming words of truespeech that shatter the ears of those who hear it. Each creature of your choice within a 60-foot radius takes 10d10 thunder damage and becomes permanently deafened. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, an affected creature must succeed on a Constitution saving throw or be permanently stricken by agonizing pain and be stunned. At the end of each of its turns, an affected creature can repeat the saving throw, ending the pain and the stunned condition on a success.",
+};
+SpellsList["aria of arcane power"] = {
+	name : "Aria of Arcane Power",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "spec",
+	range : "spec",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+6ED Cast T1 Epic Spell, +10ED Cast T2 Epic Spell.",
+	descriptionFull : "(+6 Entropy Dice) You warp the arcane energies of the world to your whim, forcing them into the shape of Epic magic with your truespeech. You cast a single tier 1 Epic spell from any Epic spell list, using that spell’s casting time, range, components, and duration. Once you have cast an Epic spell using this masterpiece, you cannot cast that spell again until you finish a long rest. Flourish (+4 Entropy Dice). You cast a single tier 2 Epic spell from any Epic spell list, using that spell’s casting time, range, components, and duration.",
+};
+SpellsList["cacophony of shattering hearts"] = {
+	name : "Cacophony of Shattering Hearts",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "S:30ft radius",
+	components : "V",
+	duration : "1 m",
+	description : "+4ED ea. crea. of choice w/i 30 ft Wis save or fall prone for 1 h. remake save at end of turn to end effect. +6ED when affected crea. fails subsequen Wis saves they also fall prone.",
+	descriptionFull : "(+4 Entropy Dice) You sing a raucous tale of loss, heartbreak, and sadness that sends creatures into a deep melancholy. Each enemy creature of your choice within a 30-foot radius centered on you must succeed on a Wisdom saving throw or immediately fall prone and begin to weep profusely for 1 hour. While weeping in this manner, a creature cannot verbally communicate or take bonus actions or reactions. At the end of each of its turns, a creature can repeat the saving throw, ending the effect on a success. Flourish (+2 Entropy Dice). In addition to the masterpiece’s effect, when a creature fails a subsequent Wisdom saving throw against this masterpiece, it immediately falls prone.",
+};
+SpellsList["counterchant"] = {
+	name : "Counterchant",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 bns",
+	range : "S:120ft radius",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+4ED ea. crea. of choice w/i 120 ft Int save or lose concentration. +7ED when affected crea. fails Int save 10d8 psychic damage",
+	descriptionFull : "(+4 Entropy Dice) You unleash a truespeech chant of chaos and confusion that rattles the minds of your enemies. Each creature of your choice within 120 feet that is concentrating on a spell or magical effect must succeed on an Intelligence saving throw or lose concentration on all spells and magical effects. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, when an affected creature loses concentration on an effect as a result of the masterpiece, it takes 10d8 psychic damage.",
+};
+SpellsList["cry of war unending"] = {
+	name : "Cry of War Unending",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 rea",
+	timeFull : "1 reaction, which you take when a creature within 60 feet of you makes an attack",
+	range : "60 ft",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+3ED before dice are rolled you may determine whether an attack hits or misses. +6ED you gain an additional reaction till start of next turn.",
+	descriptionFull : "(+3 Entropy Dice) Your cry of truespeech twists the arm of fate, empowering the attacks of your allies or foiling those of your enemies. As a reaction to an attack made within 60 feet of you and before dice are rolled, you alter the results of the attack before it lands. You choose whether the attack hits or misses; however, if the attacking creature hits, it may still roll a d20 to determine whether it scores a critical hit. Flourish (+3 Entropy Dice). In addition to the effects of the masterpiece, you gain an additional reaction, which lasts until the start of your next turn.",
+};
+SpellsList["dirge of the doomed legion"] = {
+	name : "Dirge of the Doomed Legion",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 bns",
+	range : "S:30ft cone",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+4ED ea. crea. of choice w/i 30 ft Str save or be pushed to edge of cone. +7ED 60 ft cone, failed save means pushed and falls prone.",
+	descriptionFull : "(+4 Entropy Dice) Using truespeech to utter a terrifying war cry, you unleash the spirits of the lost legion to trample your enemies in a mighty cavalry charge. Creatures of your choice within the area must succeed on a Strength saving throw or be pushed away from you to the end of the affected area. This movement provokes opportunity attacks from creatures within reach. Flourish (+3 Entropy Dice). In addition to the effect, the masterpiece’s area becomes a 60-foot cone and an affected creature falls prone at the end of the movement.",
+};
+SpellsList["doomcaller's madrigal"] = {
+	name : "Doomcaller's Madrigal",
+	source : ["EL:HH", 35],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+6ED until end of your turn, you deal max damage on all damage dice rolled. +12ED until end of next turn crea. can't have res. or immu. to my damage.",
+	descriptionFull : "(+6 Entropy Dice) You proclaim yourself a herald of destruction via truespeech, ensuring your enemies will suffer your wrath. Until the end of your turn, each time you would roll damage dice, you instead deal maximum damage with those damage dice. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, until the end of your next turn, creatures cannot have resistance or immunity to damage dealt by you.",
+};
+SpellsList["grand finale"] = {
+	name : "Grand Finale",
+	source : ["EL:HH", 35, 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "60 ft",
+	components : "V",
+	duration : "1 year",
+	description : "+10ED 1 crea. Cha save or be banished beyond realm for 1 year. +15ED exile becomes permanent, non-epic creatures auto fail.",
+	descriptionFull : "(+10 Entropy Dice) You attempt to exile a creature from the known multiverse to a dark void beyond the folds of reality. The target must succeed on a Charisma saving throw or be banished and be unable to return by any known means other than by the masterpiece ending. Flourish (+5 Entropy Dice). The duration of the masterpiece is increased to permanent. Additionally, non-Epic creatures automatically fail their saving throws against the masterpiece.",
+};
+SpellsList["harmony of living hope"] = {
+	name : "Harmony of Living Hope",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "S:30ft radius",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+6ED ea. crea. of choice w/i range may regain 1/2 of lost hit points rounded up. +9ED masterpiece also gives benefit of lesser restoration.",
+	descriptionFull : "(+6 Entropy Dice) Leading your allies in a mystical chorus of truespeech, you inspire hope even in the darkest of times. Each creature of your choice within the affected area may regain half their lost hit points, rounded up. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, an affected creature is cured of the blinded, deafened, exhaustion, and stunned conditions.",
+};
+SpellsList["iamir's waltz of one thousand cuts"] = {
+	name : "Iamir's Waltz of One Thousand Cuts",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+3ED when atk act. wea. atks = CHA mod must move to unocc. spa. w/i 10ft that you have not already occupied. no opp. atks, does not use move. +5ED teleport instead of move.",
+	descriptionFull : "(+3 Entropy Dice) Made famous by the tiefling truespeaker Iamir when she carved a demon lord into twelve perfectly proportional slices, this masterpiece allows you to unleash a flurry of deadly blows as you dance around the battlefield to the tune of your truespeech. Until the end of your turn, you may make a number of weapon attacks equal to your Charisma modifier so long as you are not incapacitated. After you make an attack in this manner, youmust move 10 feet into spaces you have not occupied this turn. If you cannot move in this manner, you instead do not move and cannot use this feature again until the start of your next turn. This movement does not provoke attacks of opportunity and does not expend your base walking speed. Flourish (+2 Entropy Dice). Instead of moving into squares over the course of this masterpiece’s effect, you magically teleport to those squares instead.",
+};
+SpellsList["lamentation of the lost"] = {
+	name : "Lamentation of the Lost",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "S:120ft radius",
+	components : "V",
+	duration : "Permanent",
+	description : "+4ED all enemies w/i range are recieve an epic curse. 1 crea. recieves Necro. dmg = roll of entropy dice. +7ED Deals Vile dmg.",
+	descriptionFull : "(+4 Entropy Dice) You utter a mournful wail in truespeech that speaks of loneliness and isolation, which can be heard by creatures up to 120 feet away. Enemy creatures of your choice that can hear the lamentation are permanently afflicted with an Epic curse. When you role your entropy dice, you can choose to deal necrotic damage equal to the amount rolled to each creature of your choice cursed by the masterpiece, and the curse ends for that creature. Flourish (+3 Entropy Dice). The masterpiece deals vile damage instead of necrotic damage.",
+};
+SpellsList["martyr's requiem"] = {
+	name : "Martyr's Requiem",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 rea",
+	timefull : "which you take whena creature within 60 feet is reduced to 0 hit points.",
+	range : "60 ft.",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+5ED rea to save ally w/i range instead of being dropped to 0, drop to 1 and gain imm. to all dmg. until start of their next turn. +8ED crea. can not die until start of its next turn.",
+	descriptionFull : "(+5 Entropy Dice) When a creature that can hear you within range is reduced to 0 hit points, you take a reaction and use truespeech to command the universe to hold the creature back from the brink of death. The creature is instead reduced to 1 hit point and becomes immune to all damage types until the start of its next turn. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, an affected creature cannot die until the start of its next turn.",
+};
+SpellsList["melody of the synchronized mind"] = {
+	name : "Melody of the Synchronized Mind",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "S:30ft. radius",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+6ED ea. ally w/i range can move up to movement and make 1 attack or cast 1 cantrip. +9ED you also benefit.",
+	descriptionFull : "(+6 Entropy Dice) Your truespeech aligns your mind with those of allied creatures within the effect’s area in an unspoken bond that allows you to act with perfect synergy. Each friendly creature of your choice within the affected area may immediately move up to their walking speed and then make a single weapon attack or cast a single cantrip. Flourish (+3 Entropy Dice). You also gain the benefits of the masterpiece’s effect.",
+};
+SpellsList["nocturne of infecting fear"] = {
+	name : "Nocturne of Infecting Fear",
+	source : ["EL:HH", 36],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "60 ft",
+	components : "V",
+	duration : "1 m",
+	save : "Wis",
+	description : "+5ED 1 crea w/i range, becomes fright for dur. if immune Wis save w/ epic adv. if fail Wis save at start of ea turn. +8ED 3 failed saves = Permanent.",
+	descriptionFull : "(+5 Entropy Dice) You unleash the true name of terror itself, stirring an all-consuming fear in the heart of a single creature you are aware of within range. The target becomes frightened for the masterpiece’s duration. If the target is immune to the frightened condition, is instead not immune and attempts saving throws with Epic advantage against this masterpiece. At the start of each of its turns, the affected creature must succeed on a Wisdom saving throw against your spell save DC or spend that turn moving away from you by the most direct means available, using every available action and foot of movement to do so. If a creature is unable to move away from you in this manner, it instead cowers in place and takes no actions. The masterpiece ends early if a creature succeeds on three saving throws against this masterpiece. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, if a creature fails three saving throws against the masterpiece, the effect becomes permanent.",
+};
+SpellsList["note of fortitude"] = {
+	name : "Note of Fortitude",
+	source : ["EL:HH", 37],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 bns",
+	range : "S:120 ft rad.",
+	components : "V",
+	duration : "Instantaneous",
+	description : "+5ED End Bli,Dea,Fri,Par,Poi,Stu,Uncon -1 level of Exhaust on yourself/ea cre w/i range. +9ED End 1 harmful non-epic spell effect on ea crea.",
+	descriptionFull : "(+ 5 Entropy Dice) With a single powerful note of truespeech, you order the universe to restore the world to balance. You immediately end the blinded, deafened, frightened, paralyzed, poisoned, stunned, and unconscious conditions on yourself and each creature of your choice within range. If an affected creature suffers from exhaustion, you can remove one level of exhaustion. Flourish (+4 Entropy Dice). In addition to the masterpiece’s effect, you may end a single harmful non-Epic magical effect on each affected creature.",
+};
+SpellsList["om of timelessness"] = {
+	name : "Om of Timelessness",
+	source : ["EL:HH", 37],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "120 ft",
+	components : "V",
+	duration : "1 m",
+	description : "+5ED 1 Crea w/i range is sequestered from time incapaciting and shielding it from all external effects. +8ED Effect lasts until you end it or use this True again.",
+	descriptionFull : "(+5 Entropy Dice) Unleashing a focused hum of truespeech, you bend the flow of time around a single willing creature or object you can see within range, removing it from the time stream. While the effect persists, the target is enveloped in a shimmering golden that makes it immune to all damage and effects. The target cannot regain hit points, be affected by a spell, trait, feature, or ability, and is effectively immune to all outside influence. A creature affected by the masterpiece is incapacitated and cannot take actions, cannot expend movement, and cannot affect creatures (including itself) with any effects. Flourish (+3 Entropy Dice). In addition to the masterpiece’s effect, the duration is increased until you choose to end it or until you use this masterpiece again, whichever comes first.",
+};
+SpellsList["rhythm of the forge"] = {
+	name : "Rhythm of the Forge",
+	source : ["EL:HH", 37],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "60 ft",
+	components : "V",
+	duration : "8 h",
+	description : "+5ED 1 crea. AC 25, immu. to non-epic dmg. +10ED target 1 extra crea.",
+	descriptionFull : "(+5 Entropy Dice) You mantle a willing creature of your choice within range in mystical words of power that shield it from harm. If the target’s AC is 24 or lower, it is instead 25 for the duration. Additionally, the target is immune to damage from non-Epic creatures. Flourish (+5 Entropy Dice). You may target an additional willing creature within range.",
+};
+SpellsList["sonnet of riotous illumination"] = {
+	name : "Sonnet of Riotous Illumination",
+	source : ["EL:HH", 37],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "60 ft",
+	components : "V",
+	duration : "1 m",
+	description : "Hover for full description EL:HH Pg 37-38",
+	descriptionFull : desc([
+		"Your beautiful truespeech commands a 5-foot-diameter sphere",
+		"of multicolored light to appear in an unoccupied space of your",
+		"choice you can see within range. The sphere sheds bright light",
+		"out to a range of 100 feet and dim light for an additional 100",
+		"feet. Additionally, you must roll a d8, which determines what",
+		"color light the sphere produces, as detailed in this masterpiece’s",
+		"description. At the end of each of your turns, creatures of your",
+		"choice that you can see within the area of bright light must",
+		"succeed on a Wisdom saving throw against your spell save DC",
+		"or suffer the effects of the light emitted by the sphere until the",
+		"start of your next turn. You may then choose to roll a d8 and",
+		"change the color of the sphere to the corresponding result.",
+		"1. Red. On a failed saving throw, the creature begins",
+		"dancing uncontrollably and must use all its movement",
+		"to dance in place without leaving its space. While",
+		"dancing, the creature has disadvantage on attack rolls",
+		"and Dexterity saving throws, and other creatures have",
+		"advantage on attacks against it.",
+		"2. Orange. On a failed saving throw, the creature is",
+		"racked with excruciating pain. If the creature attempts",
+		"to speak, take an action that involves vocalizing, or cast",
+		"a spell with verbal components, it must succeed on a",
+		"Constitution saving throw or the attempt fails as the",
+		"creature releases an agonized scream and the associated",
+		"action, spell slot, or other resource is wasted in the",
+		"attempt.",
+		"3. Yellow. On a failed saving throw, the creature",
+		"experiences extreme nausea. If the creature takes",
+		"damage and has a reaction, it must use its reaction to",
+		"fall prone and unleash a disgusting torrent of sickness.",
+		"4. Green. On a failed saving throw, the creature is",
+		"stricken with uncontrollable fury. If the creature has",
+		"any actions or movement at the end of its turn other",
+		"than a reaction, it takes 10d6 psychic damage.",
+		"5. Blue. On a failed saving throw, the creature is",
+		"overwhelmed with feelings of euphoria and pleasure.",
+		"The creature cannot use features, spells, traits, or other",
+		"abilities that affect creatures other than itself.",
+		"6. Indigo. On a failed saving throw, the creature finds",
+		"everything so humorous that it laughs uncontrollably,",
+		"becoming incapacitated. If the creature takes damage,",
+		"the effect ends immediately.",
+		"7. Violet. On a failed saving throw, the creature is filled",
+		"with an insatiable curiosity about the source of the",
+		"light. The creature must spend all its movement to",
+		"move closer to the source of the light by the most",
+		"direct route possible and cannot willingly move away",
+		"from the light.",
+		"8. Mysterious. On a failed saving throw, the creature",
+		"spends its actions and movement to hand you the most",
+		"prized object in its possession. The creature chooses",
+		"the most efficient and effective method available to",
+		"it. If the creature is able to place the object in your",
+		"possession, the effect ends immediately.",
+		"Flourish (+4 Entropy Dice). Instead of rolling a d8 to determine",
+		"the light emitted by the sphere, at the end of each of your turns",
+		"you may choose a light from the listed options.",
+	]),
+};
+SpellsList["symphony of cosmic fire"] = {
+	name : "Symphony of Cosmic Fire",
+	source : ["EL:HH", 38],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "300 ft",
+	components : "V",
+	duration : "1 m",
+	description : "+6ED, 1 crea w/i range 25 fire dmg at start of turn, damage for 8 turns, damage increases by 25 each turn caps a 200. +12ED, crea no res/imm to fire.",
+	descriptionFull : desc([
+		"Your furious truespeech ignites a single creature you are aware",
+		"of within range, burning it with unrelenting fire. A creature so",
+		"ignited takes 25 fire damage at the start of each of its turns. At",
+		"the start of each of the affected creature’s turns after it takes this",
+		"damage, the fire damage increases by 25. This effect is cumulative,",
+		"to a maximum of 200 fire damage. A creature reduced to 0",
+		"hit points by this masterpiece is reduced to ash, and the flames",
+		"cannot be prematurely extinguished by non-Epic means.",
+		"Flourish (+6 Entropy Dice). In addition to the masterpiece’s",
+		"effect, a creature cannot have resistance or immunity to fire",
+		"damage dealt by this masterpiece.",
+	]),
+};
+SpellsList["timeless epic"] = {
+	name : "Timeless Epic",
+	source : ["EL:HH", 38],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 h",
+	range : "60 ft",
+	components : "V",
+	duration : "1 h",
+	description : "+4ED all friend w/i range of choice, gain a bardic inspiration die +8ED Cast Time becomes 1a.",
+	descriptionFull : desc([
+		"You weave a grand tale of glory and tragedy that recounts the",
+		"deeds of truly epic heroes. Friendly creatures of your choice",
+		"within 60 feet of you that hear the masterpiece become inspired",
+		"by the tale, gaining one of your Bardic Inspiration dice.",
+		"A creature that gained a die in this manner does not expend the",
+		"die when it is rolled but cannot roll that Bardic Inspiration die",
+		"again until the start of its next turn.",
+		"Flourish (+4 Entropy Dice). The casting time is reduced to 1",
+		"action.",
+	]),
+};
+SpellsList["un-naming silence"] = {
+	name : "Un-Naming Silence",
+	source : ["EL:HH", 38],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "60 ft",
+	save : "Con",
+	components : "V",
+	duration : "instantaneous",
+	description : "+10ED 1 crea w/i range Con save, or 10d12 force. read description for full details  +18ED Epic disadv. if nat 1 dmg = hp max.",
+	descriptionFull : desc([	
+		"Your utter a verse of truespeech so destructive that the universe",
+		"refuses to let it be heard. A single creature you are aware",
+		"of within range must succeed on a Constitution saving throw",
+		"against your spell save DC or take 10d12 force damage. For",
+		"every interval of 5 the target fails the saving throw by, it takes",
+		"an additional 10d12 force damage. If the target is reduced to",
+		"0 hit points by this masterpiece, it is destroyed utterly, as its",
+		"true name is deleted from the universe. Such a creature can be",
+		"returned to life only by Deific means.",
+		"Flourish (+8 Entropy Dice). In addition to the masterpiece’s",
+		"effect, the target has Epic disadvantage on its Constitution saving",
+		"throw against the masterpiece, and if the target fails a saving",
+		"throw with a natural 1, it takes force damage equal to its",
+		"maximum hit points.",
+	]),
+};			
+SpellsList["whispers of oblivion"] = {
+	name : "Whispers of Oblivion",
+	source : ["EL:HH", 38],
+	classes : ["truespeaker"],
+	level : 9,
+	school : "True",
+	time : "1 a",
+	range : "special",
+	save : "Con",
+	components : "V",
+	duration : "1 round",
+	description : "+6ED 1 melee spell attack, on hit +12d8 Psy dmg. if crea is charmed/fright the atk is a crit.  +12ED Con save or take 2x dmg.",
+	descriptionFull : desc([	
+		"As a part of the action used to perform this masterpiece, you",
+		"must attempt a weapon attack against one creature within that",
+		"weapon’s reach or range. On a successful hit, the target takes an",
+		"additional 12d8 psychic damage. If the creature is frightened of",
+		"you or charmed by you, the attack scores a critical hit.",
+		"Flourish (+6 Entropy Dice). In addition to the masterpiece’s",
+		"effect, a creature hit by the attack must succeed on a Constitution",
+		"saving throw or take double damage from the attack.",
+	]),
+};
+	
+ClassList.reaver = {
+	
+	regExpSearch : /reaver/i,
+	name : "Reaver",
+	source : [["EL:HH", 26]],
+	primaryAbility : ["Strength"],
+	abilitySave : 1,
+	prereqs : "Strength 13",
+	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 12,
+	subclasses : ["Epic Primal Path", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["EL:HH", 26],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Dexterity", "Intelligence", "Wisdom", "Charisma"],
+			"dexterity" : {
+				name : "Dexterity",
+				description : "\n   " + "You gain proficiency in Dexterity Saving Throws",
+				saves : ["Dex"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},
+			"wisdom" : {
+				name : "Wisdom",
+				description : "\n   " + "You gain proficiency in Wisdom Saving Throws",
+				saves : ["Wis"],
+			},	
+			"charisma" : {
+				name : "Charisma",
+				description : "\n   " + "You gain proficiency in Charisma Saving Throws",
+				saves : ["Cha"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["EL:HH", 26],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},	
+		"overpowering strikes" : {
+			name : "Overpowering Strikes",
+			source : ["EL:HH", 27],
+			minlevel : 1,
+			description : "\n   " + "You can throw everything into your attacks without regard for the consequences. When you make a weapon attack that benefits from your Reckless Attack barbarian feature, you instead have Epic advantage on your attack rolls using Strength during that turn, but creatures have Epic advantage on attack rolls against you until the start of your next turn. Additionally, while you are raging via your Barbarian Rage feature, you no longer gain a bonus to the damage roll as detailed on the Rage Damage column of the Barbarian table in the core rules. Instead, when you successfully hit with a melee weapon attack, you deal an additional 2d4 damage. When you gain your Rancor feature at 22nd level, this additional damage increases by 1d4 for each level of rancor you have.",
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if (!v.theWea.isMeleeWeapon && classes.known.reaver && (/\boverpower\b/i).test(v.WeaponTextName)) {
+							fields.Description += (fields.Description ? '; ' : '') + 'while raging, +2d4 damage';
+						}
+					},
+						"If I include the word 'overpower' in a melee weapon's name, the calculation will add my Overpowering Strike's bonus damage to it."
+				],
+			},
+		},
+		"rancor" : {
+			name : "Rancor",
+			source : ["EL:HH", 27],
+			minlevel : 2,
+			description : "\n   " + "You draw deeply from the bottomless well of anger within, drawing forth unstoppable power. When you enter your rage via your Barbarian Rage feature, you may choose to transform that rage into a fearsome Epic rage, which has all the benefits of standard rage in addition to those detailed in this feature. When you enter an Epic rage, and at the start of each of your turns while you are raging, you gain one level of a special condition known as rancor. This condition is measured in six levels and lasts until either your Epic rage ends or you begin a new one. You gain the benefits of your current level of rancor as well as all lower levels. If an Epic creature does not harm or deal damage to you for the duration of the Epic rage, you cannot enter another Epic rage until you finish a short or long rest.",
+			usages : [6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+			recovery : ["short rest", "long rest"],
+			toNotesPage : [{
+				name : "Levels of Rancor",
+				note : [
+						"◆ Level 1. The duration of your rage via your Barbarian Rage feature is increased to 10 minutes.",
+						"◆ Level 2. You are immune to blugeoning, piercing, and slashing damage from non-Epic creatures.",
+						"◆ Level 3. The distance you may vertically or horizontally jump is infinite so long as you have the movement to do so.",
+						"◆ Level 4. If your carrying capacity is less than 1 million pounds, it is instead 1 million pounds.",
+						"◆ Level 5. You are immune to the unconscious and stunned conditions.",
+						"◆ Level 6. On each of your tuns you may take an additional action. This action must be either the Attack or Dash action.",
+				]
+			}],
+		},
+		"feats of strength" : {
+			name : "Feats of Strength",
+			source : ["EL:HH", 27, 29, 30],
+			minlevel : 2,
+			description : "\n   " + "You invoke your titanic strength to perform acts of legendary might called Feats of Strength. You can perform Feats of Strength only while you are raging and if you have the required levels of rancor available to you, as detailed in each feat of strength’s description. You can perform all the Feats of Strength detailed at the end of this class description. Some Feats of Strength force affected targets to attempt saving throws. The DC for these saving throws is calculated using your feat of strength save DC.",
+			toNotesPage : [{
+				name : "Feats of Strength",
+				note : [
+						"◆ Body Block. Levels of Rancor: 5. As a reaction when you and a friendly creature within reach take damage other than psychic from an effect that affects an area (such as a cone, line, cylinder, cube, etc.) you may cause that creature to take no damage and instead you take the damage the target would have taken.",
+						"◆ Crush Magic. Levels of Rancor: 5. When you succeed on a saving throw against a spell or magical effet with a duration greater than instantaneous, you can choose to shatter it with your might. When you do so, you may attempt a Strength saving throw agains tthe spell or effect's save DC, ending it on a success.",
+						"◆ Death Hug. Levels of Rancor: 2. When you successfully grapple another creature, you may choose to crush it with your titanic strength. The target must succeed on a Constitution saving throw or be knocked unconscious for as long as you maintain the grapple. At the start of each of its turns the target can repeat the saving throw, ending its unconsciousness on a success.",
+						"◆ Demolishing Charge. Levels of Rancor: 3. When you take the Dash action, you may surge forward with reckless abandon. When you do so, you gain 120 feet of movement but must move in a single straight line until the end of your turn. If this movement would be prevented by an anattended object or structure in your path, you deal 100 bludgeoning damage to it. If this damage is enough to create a hole large enough for you to pass through, you may continue the movement; otherwise your remaining movement is expended.",
+						"◆ Earthbreaker. Levels of Rancor: 1 or more. When you make a weapon attack, you may choose to strike a space on the ground within reach or range, projecting a shock wave that tears buildings and enemies asunder. The space you target is the origin of the shock wave, which must be directed away from you (when applicable). You choose the form of the shock wave's area from the following options. - A 200-foot long, 5-foot wide line along the ground, - A 90-foot cone along the ground, - A 60-foot radius area on the ground centered on the point of impact. Each creature in the affected area must succeed on a Dexterity saving throw or be knocked prone and take 5d10 bludgeoning damage for each level of rancor you have. On a success, a creature takes half damage and isn't knocked prone. Unattended objects and structures in the affected area take 10d10 bludgeoning damage for each level of rancor you have.",
+						"◆ Limit Breaker. Levels of Rancor: 6. When your turn ends, you can choose to gain an additional turn this round. This second turn occurs at your initiative count minus 10 (minimum of 1, losing intiative ties). At the end of that turn, your Epic rage immediately ends.",
+						"◆ Obliterating Strike. Levels of Rancor: 1 or more. When you score a successful hit with a weapon attack, you may increase the damage of the attack by 15 for each level of rancor you have. This bonus damage is the same type as the weapon attack. Creatures slain by this attack explode into pieces.",
+						"◆ Pulverize. Levels of Rancor: 3. When you make a weapon attack, you may choose to have the attack roll automatically roll a natural 20. If the target is a creature, it must succeed on a Constitution saving throw or be stunned until the start of its next turn.",
+						"◆ Rage Regeneration. Levels of Rancor; 1 or more. When you take a bonus action, you can channel your anger inward, accelerating your metabolism and natural healing ability. You gain 2d10 temporary hit points last until your rage ends. Additionally, you may end one or more of the following condition on yourself :blinded, charmed, deafened, frightened, and poisoned.",
+						"◆ Roar of the Ancients. Levels of Rancor: 2. When you attempt a saving throw other than a Strength saving throw, you may choose to utter a primal scream of fury, even if you are unconscious or incapacitated. When you do so, you instead roll a Strength saving throw (the save DC remains the same).",
+						"◆ Titanic Throw. Levels of Rancor: 2. If you would make a weapon attack and are grappling a creature, holding an object or wielding a weapon with the thrown property, you can instead make a ranged weapon attack witht eh grappled target or held object. Grappled creatures and objects are that are not weapons are considered improvised weapons. The range of the attack is 200-feet/400-feet or the range of the thrown weapon, whichever si greater. If the attack hits, it deasl an additional 14d10 bludgeoning damage to both the target of the attack and the thrown creature or object.",
+				]
+			}],	
+		},
+		"explosive rage" : {
+			name : "Explosive Rage",
+			source : ["EL:HH", 28],
+			minlevel : 4,
+			description : "\n   " + "When you enter an Epic rage as per your Rancor feature, you can choose to do so explosively. When you do so, you immediately gain three or six levels of rancor. If you use this feature to gain three levels of rancor, you must finish a short rest before you can use it again. If you use this feature to gain six levels of rancor, you must finish a long rest before you can use it again.",
+		},
+		"subclassfeature1" : {
+			name : "Epic Primal Path",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "You combine your new epic might with the primal powers of your rage, granting you mighty improvements to your specialization. You gain the following features according to the primal path you selected when you were advancing as a non-Epic barbarian.",
+		},
+		"flash of ferocity" : {
+			name : "Flash of Ferocity",
+			source : ["EL:HH", 29],
+			minlevel : 8,
+			description : "\n   " + "Your rage can be unleashed in an instant. When you roll initiative, you can choose to immediately enter a rage (no action required) via your Barbarian Rage feature.",
+		},
+		"infinite might" : {
+			name : "Infinite Might",
+			source : ["EL:HH", 29],
+			minlevel : 10,
+			description : "\n   " + "Your Epic rage can provide you with endless power, provided you have a foe powerful enough to unleash it. At the start of each of your turns, if you have six or more levels of rancor and took damage from or attempted a saving throw against an enemy mythic creature during your previous turn, you may gain more than six levels of rancor.",
+		},
+	},
+};	
+
+AddSubClass("reaver", "ancestral guardian", {
+	regExpSearch : /^(?=.*(reaver))(?=.*ancestral).*$/i,
+	subname : "Path of the Ancestral Guardian",
+	source : ["EL:HH", 28],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Ancestral Guardian",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "Your ancestors are always with you, using the collective anger of generations to aid you in battle. When you use a reaction via your subclass features to reduce the damage a creature takes while you are in an Epic rage, you increase the damage reduced by 8d6 for each level of rancor you have.",
+		},
+	},
+});	
+AddSubClass("reaver", "battlerager", {
+	regExpSearch : /^(?=.*(reaver))(?=.*battlerager).*$/i,
+	subname : "Path of the Battlerager",
+	source : ["EL:HH", 28],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Battlerager",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "Your anger suffuses your armor, causing it to seethe with power. While you are wearing armor and benefiting from an Epic rage via your Rancor feature, you gain the following benefits for its duration:  You gain a bonus to your AC equal to your levels of rancor.  You increase the damage dealt via your subclass features by 5 for each level of rancor you have.  You gain immunity to a non-Epic damage type of your choice.",
+		},
+	},
+});	
+AddSubClass("reaver", "beast", {
+	regExpSearch : /^(?=.*(reaver))(?=.*beast).*$/i,
+	subname : "Path of the Beast",
+	source : ["EL:HH", 28],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Beast",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "When you enter an Epic rage via your Rancor feature, you can choose to transform into a wild lycanthropic beast, granting you the following benefits for the rage’s duration.  Your size category increases by one, to a maximum of Gargantuan.  You may perform two Feats of Strength each round instead of one.  You can instinctively sense whether a creature you can perceive with your senses is more or less powerful than you (determined by the DM). Once you use this feature, you cannot use it again until you finish a long rest.",
+		},
+	},
+});	
+AddSubClass("reaver", "berserker", {
+	regExpSearch : /^(?=.*(reaver))(?=.*berserker).*$/i,
+	subname : "Path of the Berserker",
+	source : ["EL:HH", 28],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Berserker",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "When you end a frenzy, you no longer gain a level of exhaustion. Additionally, as a reaction when you are reduced to below half your hit point maximum while in an Epic rage, you may enter a bloodlust. The bloodlust grants you the following benefits for the duration of the rage:  When you take the Attack action, you may make three weapon attacks instead of two.  Your base movement speed increases by 20 feet.  Your melee weapon attacks score a critical hit on a roll of 19 or 20. Once you use this feature, you must finish a long rest before you can use it again.",
+			action : "reaction",
+			usages : 1,
+			recovery : "long rest",
+		},
+	},
+});	
+AddSubClass("reaver", "storm herald", {
+	regExpSearch : /^(?=.*(reaver))(?=.*storm).*$/i,
+	subname : "Path of the Storm Herald",
+	source : ["EL:HH", 29],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Storm Herald",
+			source : ["EL:HH", 29],
+			minlevel : 6,
+			description : "\n   " + "The mystical storm created by your rage expands to epic proportions. When you create the magical aura granted by your subclass features while in an Epic rage via your Rancor feature, you may increase the aura’s radius to 300 feet. Additionally, your magical aura gains one of the following benefits according to which option you selected while advancing as a barbarian. Use the choose feature button to select your choice.",
+			extraname : "Storm Aura",
+			extrachoices : ["Desert", "Sea", "Tundra"],
+			"desert" : {
+				name : "Desert",
+				description : "\n   " + "◆Desert. When a creature within your aura takes fire damage from you, you may choose for it to take an additional 5d6 points of fire damage for each level of rancor you have. This effect cannot occur more than once per turn.",
+			},
+			"sea" : {
+				name : "Sea",
+				description : "\n   " + "◆Sea. Creatures and objects of your choice within your aura are considered to be fully immersed in water for as long as they remain within the area, gaining benefits and suffering penalties according to the 5th Edition core rules.",
+			},
+			"tundra" : {
+				name : "Tundra",
+				description : "\n   " + "◆Tundra. At the start of each of your turns, diamond-hard ice forms on the bodies of creatures of your choice within your aura, granting affected creatures a +3 bonus to their AC until the start of your next turn. This effect ends prematurely if an affected creature ends its turn outside of your aura.",
+			},			
+		},
+	},
+});	
+AddSubClass("reaver", "totem warrior", {
+	regExpSearch : /^(?=.*(reaver))(?=.*totem).*$/i,
+	subname : "Path of the Totem Warrior",
+	source : ["EL:HH", 29],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Totem Warrior",
+			source : ["EL:HH", 29],
+			minlevel : 6,
+			description : "\n   " + "You can perfectly imitate the sounds of a beast with which you share a totem spirit. In addition, you gain a totem spirit of a legendary beast of your choice from the following options. Use the choose feature button on the second page to select your choice.",
+			extraname : "Totem Spirit",
+			extrachoices : ["Bear", "Eagle", "Elk", "Tiger", "Wolf"],
+			"bear" : {
+				name : "Bear",
+				description : "\n   " + "◆Bear. While you are touching the ground, as a reaction when you would be pushed, pulled, thrown, or magically teleported, you may be immune to that effect until the start of your next turn.",
+				action : "reaction",
+			},
+			"eagle" : {
+				name : "Eagle",
+				description : "\n   " + "◆Eagle. While you are in an Epic rage via your Rancor feature, you gain a flying speed equal to your base walking speed.",
+				speed : { fly : {spd : "walk", enc : "walk" } },
+			},
+			"elk" : {
+				name : "Elk",
+				description : "\n   " + "◆Elk. Your base walking speed is increased by 30 feet.",
+				speed : { walk : {spd : +30, enc : +30 } },
+			},
+			"tiger" : {
+				name : "Tiger",
+				description : "\n   " + "◆Tiger. When you make a successful weapon attack on your turn, you may expend your movement to increase the damage of the attack by 1d6 for every 10 feet of movement expended.",
+			},
+			"wolf" : {
+				name : "Wolf",
+				description : "\n   " + "◆ Wolf. Your sense of smell becomes incredibly keen, granting you blindsight out to a range of 30 feet. If you lose your sense of smell, you lose this sense until it returns.",
+				vision : ["Blindsight", "fixed 30"],
+			},				
+		},
+	},
+});	
+AddSubClass("reaver", "wild magic", {
+	regExpSearch : /^(?=.*(reaver))(?=.*magic).*$/i,
+	subname : "Path of the Wild Magic",
+	source : ["EL:HH", 29],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Wild Magic",
+			source : ["EL:HH", 29],
+			minlevel : 6,
+			description : "\n   " + "When you enter an Epic rage via your Rancor feature or gain a level of rancor, the chaotic power of magic surges through you, granting you a special d8 known as a mayhem die. Whenever you would roll dice using one of your subclass features, you can choose to replace those dice with any number of mayhem dice you possess, up to a maximum of ten mayhem dice. Additionally, when you roll a mayhem die and roll an 8, you may roll an additional mayhem die and add it to the result. This effect is cumulative, even if it would cause the effect to surpass ten mayhem dice.",
+		},
+	},
+});	
+AddSubClass("reaver", "zelot", {
+	regExpSearch : /^(?=.*(reaver))(?=.*zelot).*$/i,
+	subname : "Path of the Zelot",
+	source : ["EL:HH", 29],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Zelot",
+			source : ["EL:HH", 29],
+			minlevel : 6,
+			description : "\n   " + "Your battles give glory to the gods. While you are raging and deal bludgeoning, piercing, or slashing damage, you can choose to instead deal righteous or vile damage.",
+		},
+	},
+});
+
+ClassList.truespeaker = {
+	
+	regExpSearch : /truespeaker/i,
+	name : "Truespeaker",
+	source : [["EL:HH", 31]],
+	primaryAbility : ["Charisma"],
+	abilitySave : 6,
+	prereqs : "Charisma 13",
+	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 8,
+	subclasses : ["Epic Bard College", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	spellcastingFactor : 1,
+	spellcastingKnown : {
+		cantrips : [],
+		spells : "list",
+		prepared : true,
+	},
+	spellcastingList : { 
+
+		"class" : [], 
+
+		level : [0, 9]
+	},
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["EL:HH", 32],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Strength", "Intelligence", "Wisdom", "Constitution"],
+			"strength" : {
+				name : "Strength",
+				description : "\n   " + "You gain proficiency in Strength Saving Throws",
+				saves : ["Str"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},
+			"wisdom" : {
+				name : "Wisdom",
+				description : "\n   " + "You gain proficiency in Wisdom Saving Throws",
+				saves : ["Wis"],
+			},	
+			"constitution" : {
+				name : "Constitution",
+				description : "\n   " + "You gain proficiency in Constitution Saving Throws",
+				saves : ["Con"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["EL:HH", 32],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},	
+		"truespeaking" : {
+			name : "Truespeaking",
+			source : ["EL:HH", 32],
+			minlevel : 1,
+			description : "\n   " + "You begin your advanced studies of truespeech, allowing you to augment a variety of abilities with its power. You are proficient in a special language known as truespeech. Further details of the language of truespeech are detailed in chapter 3. Many of your bard and truespeaker Epic prestige class features demand you perform an act of truespeech to produce them. While truespeech is extraordinarily powerful, it cannot be used without consequence. Using truespeech conflicts with the natural order of the multiverse, which continually attempts to reassert itself. This manifests as a negative force that builds inside you called entropy, which takes the form of a dice pool of d6s. Your entropy dice pool starts at 0 and resets each time you finish a long rest. When you use a feature that requires truespeech, you add a number of entropy dice detailed in its description to your entropy dice pool and then roll the entire pool. If the total of the entropy dice rolled exceeds your entropy limit, as detailed in the truespeaker class progression table, you cannot use a truespeaker feature that grants you entropy until the end of your next turn. As you advance as a truespeaker, your entropy limit increases and is detailed in the class progression table, allowing you to perform more acts of truespeech.",
+		uses : [20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70],
+		recovery : "long rest",
+		},
+		"inspired truespeech" : {
+			name : "Inspired Truespeech",
+			source : ["EL:HH", 32],
+			minlevel : 1,
+			description : "\n   " + "Your inspiring words can be enhanced with the power of truespeech. When you grant a creature a Bardic Inspiration die, you can gain two entropy dice to turn that die into a d20, instead of a d12.",
+		},
+		"truespell recitation" : {
+			name : "Truespell Recitation",
+			source : ["EL:HH", 32, 33],
+			minlevel : 1,
+			description : desc([
+				"Your magic can be imbued with truespeaking, infusing your",
+				"spells with extraordinary effects. When you cast a spell of 8th",
+				"level or lower with a verbal component and expend a spell slot",
+				"via your Spellcasting feature, you can cast it using the words of",
+				"truespeech. When you do so, the spell is no longer considered",
+				"a spell or magical effect for its duration (its other properties",
+				"remain the same), instead being powered by the mystical force",
+				"of truespeech. Doing so causes you to gain a number of entropy",
+				"dice according to the level of the spell cast, as detailed in the",
+				"Truespell Recitation table.",
+				" Spell Level			Entropy Dice Gained",
+				"	Cantrip						None	   ",
+				"	1st-2nd						 1		   ",
+				"	3rd-4th						 2		   ",
+				"	5th-6th						 3		   ",
+				"	7th-8th						 4		   ",
+			]),
+		},
+		"truesong lexicon" : {
+			name : "Truesong Lexicon",
+			source : ["EL:HH", 33],
+			minlevel : 2,
+			description : "\n   " + "Your mastery over truespeech has progressed to the point that you can sing the words of power. The harmonies, melodies, and themes of these masterpieces unleash incredible magic through truespeech. You may select two masterpieces from the Truespeech Masterpieces list to have memorized, and you learn additional masterpieces as you advance as a truespeaker according to the Truespeaker table. Performing a masterpiece is similar to casting a spell with only verbal components. Each masterpiece is an Epic magical effect with a casting time, range, duration, and listed effects detailed in its description. Each masterpiece generates an amount of entropy dice when performed, as detailed in its description. Masterpieces use your spell attack bonus and spell save DC when applicable. A masterpiece with a duration greater than instantaneous immediately ends if you perform that masterpiece again. However, when performing a masterpiece, you may choose to sing it with vigor, performing a flourish for an improved effect on that masterpiece at the cost of gaining additional entropy dice. The details of the flourish and its effects on the masterpiece are found in its description.",
+			extraname : "Masterpieces",
+			extrachoices : ["anthem of thunderous pain", "aria of arcane power", "cacophony of shattering hearts", "counterchant", "cry of war unending", "dirge of the doomed legion", "doomcaller's madrigal", "grand finale", "harmony of living hope", "iamir's waltz of one thousand cuts", "lamentation of the lost", "martyr's requiem", "melody of the synchronized mind", "nocturne of infecting fear", "note of fortitude", "om of timelessness", "rhythm of the forge", "sonnet of riotous illumination", "symphony of cosmic fire", "timeless epic", 
+			"un-naming silence", "whispers of oblivion"],
+			extraTimes : levels.map(function (n) {
+					return n < 2 ? 0 : n < 4 ? 2 : n < 6 ? 3 : n < 8 ? 4 : n < 10 ? 5 : 6;
+			}),
+			"anthem of thunderous pain" : {
+				name : "Anthem of Thunderous Pain",
+				spellcastingExtra : ["Anthem of Thunderous Pain"],
+			},
+			"aria of arcane power" : {
+				name : "Aria of Arcane Power",
+				spellcastingExtra : ["Aria of Arcane Power"],
+			},
+			"cacophony of shattering hearts" : {
+				name : "Cacophony of Shattering Hearts",
+				spellcastingExtra : ["Cacophony of Shattering Hearts"],
+			},
+			"counterchant" : {
+				name : "Counterchant",
+				spellcastingExtra : ["Counterchant"],
+			},
+			"cry of war unending" : {
+				name : "Cry of War Unending",
+				spellcastingExtra : ["Cry of War Unending"],
+			},
+			"dirge of the doomed legion" : {
+				name : "Dirge of the Doomed Legion",
+				spellcastingExtra : ["Dirge of the Doomed Legion"],
+			},
+			"doomcaller's madrigal" : {
+				name : "Doomcaller's Madrigal",
+				spellcastingExtra : ["Doomcaller's Madrigal"],
+			},
+			"grand finale" : {
+				name : "Grand Finale",
+				spellcastingExtra : ["Grand Finale"],
+			},
+			"harmony of living hope" : {
+				name : "Harmony of Living Hope",
+				spellcastingExtra : ["Harmony of Living Hope"],
+			},
+			"iamir's waltz of one thousand cuts" : {
+				name : "Iamir's Waltz of One Thousand Cuts",
+				spellcastingExtra : ["Iamir's Waltz of One Thousand Cuts"],
+			},
+			"lamentation of the lost" : {
+				name : "Lamentation of the Lost",
+				spellcastingExtra : ["Lamentation of the Lost"],
+			},
+			"martyr's requiem" : {
+				name : "Martyr's Requiem",
+				spellcastingExtra : ["Martyr's Requiem"],
+			},
+			"melody of the synchronized mind" : {
+				name : "Melody of the Synchronized Mind",
+				spellcastingExtra : ["Melody of the Synchronized Mind"],
+			},
+			"nocturne of infecting fear" : {
+				name : "Nocturne of Infecting Fear",
+				spellcastingExtra : ["Nocturne of Infecting Fear"],
+			},
+			"note of fortitude" : {
+				name : "Note of Fortitude",
+				spellcastingExtra : ["Note of Fortitude"],
+			},
+			"om of timelessness" : {
+				name : "Om of Timelessness",
+				spellcastingExtra : ["Om of Timelessness"],
+			},
+			"rhythm of the forge" : {
+				name : "Rhythm of the Forge",
+				spellcastingExtra : ["Rhythm of the Forge"],
+			},
+			"sonnet of riotous illumination" : {
+				name : "Sonnet of Riotous Illumination",
+				spellcastingExtra : ["Sonnet of Riotous Illumination"],
+			},
+			"symphony of cosmic fire" : {
+				name : "Symphony of Cosmic Fire",
+				spellcastingExtra : ["Symphony of Cosmic Fire"],
+			},
+			"timeless epic" : {
+				name : "Timeless Epic",
+				spellcastingExtra : ["Timeless Epic"],
+			},
+			"un-naming silence" : {
+				name : "Un-Naming Silence",
+				spellcastingExtra : ["Un-Naming Silence"],
+			},
+			"whispers of oblivion" : {
+				name : "Whispers of Oblivion",
+				spellcastingExtra : ["Whispers of Oblivion"],
+			},
+		},	
+		"harmonize" : {
+			name : "Harmonize",
+			source : ["EL:HH", 33],
+			minlevel : 4,
+			description : desc([
+				"You can more efficiently recover from the consequences of using",
+				"truespeech. When you finish a short rest, you may reduce",
+				"the number of entropy dice you have by a number of dice equal",
+				"to your proficiency bonus.",
+			]),
+		},
+		"subclassfeature1" : {
+			name : "Epic Bard College",
+			source : ["EL:HH", 33],
+			minlevel : 6,
+			description : desc([
+				"You distinguish yourself as a champion of everything your",
+				"bard college stands for. The pinnacle of your achievement is",
+				"the composition of a masterpiece that only truespeakers from",
+				"that organization can perform, as well as discovering powerful",
+				"new secrets of truespeech that bring credit to your college. You",
+				"gain the following features according to the bard college you",
+				"selected when you were advancing as a bard.",
+			]),	
+		},
+		"unshakable voice" : {
+			name : "Unshakable Voice",
+			source : ["EL:HH", 34],
+			minlevel : 8,
+			description : desc([
+				"Your ability to use truespeech becomes almost effortless, further",
+				"increasing its supernatural power. Your voice cannot be magically",
+				"silenced or suppressed unless you allow it. Additionally,",
+				"while speaking truespeech you can choose for your words to be",
+				"heard by creatures you are aware of that share the same plane",
+				"of existence as you.",
+			]),
+		},
+		"truespeech maestro" : {
+			name : "Truespeech Maestro",
+			source : ["EL:HH", 34],
+			minlevel : 10,
+			usages : 1,
+			recovery : "long rest",
+			description : desc([
+				"You are masterfully fluent in the language of truespeech, allowing",
+				"you to command the universe itself with the spoken word.",
+				"As an action, you may reduce your entropy dice pool to zero.",
+				"Once you use this feature, you cannot use it again until you",
+				"finish a long rest.",
+			]),
+		},
+	},
+};	
+
+
+AddSubClass("truespeaker", "creation", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*creation).*$/i,
+	subname : "College of Creation",
+	source : ["EL:HH", 33],
+	features : {
+		"subclasfeature1" : {
+			name : "College of Creation",
+			source : ["EL:HH", 33],
+			minlevel : 6,
+			spellcastingExtra : ["Rhythm of the Forge"],
+			description : desc([
+				"Having mastered the true name of reality, you can generate",
+				"matter from nothingness. When you create an item via your",
+				"subclass features, you may choose to gain a number of entropy",
+				"dice to instead create a magic item you have touched before of",
+				"legendary quality or lower, the quantity of which is determined",
+				"by the rarity of the item as shown on the College of Creation",
+				"Items by Rarity table. These entropy dice cannot be lost so long",
+				"as magic items created in this manner exist.",
+				" 	Rarity				Entropy Dice Gained",
+				"	Common						 1		   ",
+				"	Uncommon					 2		   ",
+				"	Rare						 4		   ",
+				"	Very Rare					 6		   ",
+				"	Legendary					 8		   ",
+				"Additionally, you learn the masterpiece rhythm of the forge, which",
+				"does not count against the number of masterpieces you can have",
+				"memorized and is detailed in the Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "eloquence", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*eloquence).*$/i,
+	subname : "College of Eloquence",
+	source : ["EL:HH", 33],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Eloquence",
+			source : ["EL:HH", 33],
+			minlevel : 6,
+			spellcastingExtra : ["Timeless Epic"],
+			description : desc([
+				"Your words of truespeech are spoken with such elegance and",
+				"strength that they are imbued with extraordinary power. When",
+				"you would gain entropy dice from your truespeaker features or",
+				"masterpieces, you gain one fewer die than you normally would,",
+				"to a minimum of one entropy die.",
+				"Additionally, you learn the masterpiece timeless epic, which",
+				"does not count against the number of masterpieces you can",
+				"have memorized and is detailed in the Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "entropy", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*entropy).*$/i,
+	subname : "College of Entropy",
+	source : ["EL:HH", 33],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Entropy",
+			source : ["EL:HH", 33],
+			minlevel : 6,
+			spellcastingExtra : ["Grand Finale"],
+			description : desc([
+				"You learn the true name of oblivion, which can be woven into",
+				"your masterpieces and spells so that you may better bring the",
+				"world to ruin. While you are concentrating on your Dirge of",
+				"Entropy subclass feature, you are no longer prevented from communicating",
+				"verbally or producing effects with verbal components.",
+				"Additionally, you learn the masterpiece grand finale, which",
+				"does not count against the number of masterpieces you can",
+				"have memorized and is detailed in the Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "glamour", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*glamour).*$/i,
+	subname : "College of Glamour",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Glamour",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Sonnet of Riotous Illumination"],
+			description : desc([
+				"You become one of the most magnificent beings to ever live,",
+				"having learned the true name of beauty. Creatures within 30",
+				"feet of you that can perceive you with a sense have Epic disadvantage",
+				"on Intelligence, Wisdom, and Charisma saving throws",
+				"against you.",
+				"Additionally, you learn the masterpiece sonnet of riotous illumination,",
+				"which does not count against the number of",
+				"masterpieces you can have memorized and is detailed in the",
+				"Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "lore", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*lore).*$/i,
+	subname : "College of Lore",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Lore",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Aria of Arcane Power"],
+			description : desc([
+				"You are staggeringly adept at learning and pronouncing true",
+				"names. You have Epic advantage on ability checks made using",
+				"truespeaker feature, and your proficiency bonus is doubled for",
+				"any ability check you make using truespeaker feature.",
+				"Additionally, you learn the masterpiece aria of arcane power,",
+				"which does not count against the number of masterpieces you",
+				"can have memorized and is detailed in the Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "spirits", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*spirits).*$/i,
+	subname : "College of Spirits",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Spirits",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Lamentation of the Lost"],
+			description : desc([
+				"Your arts attract all manner of spirits to your aid. When you",
+				"would roll your Bardic Inspiration dice via your subclass features,",
+				"you may also roll your entropy dice and add the total to",
+				"the result.",
+				"Additionally, you learn the masterpiece lamentation of the lost,",
+				"which does not count against the number of masterpieces you",
+				"can have memorized and is detailed in the Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "swords", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*swords).*$/i,
+	subname : "College of Swords",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Swords",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Iamir's Waltz of One Thousand Cuts"],
+			description : desc([
+				"In the hands of simpler beings, a blade is merely an instrument",
+				"of death. Having learned the true name of sharpness, you",
+				"can deliver death as you dance about the battlefield. When you",
+				"make a successful weapon attack against an enemy creature and",
+				"exceed the target’s AC by 5 or more, you immediately gain a",
+				"Bardic Inspiration die, up to your maximum.",
+				"Additionally, you learn the masterpiece Iamir’s waltz of one",
+				"thousand cuts, which does not count against the number of",
+				"masterpieces you can have memorized and is detailed in the",
+				"Masterpieces section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "valor", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*valor).*$/i,
+	subname : "College of Valor",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Valor",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Cry of War Unending"],
+			description : desc([
+				"You are a legendary herald of battle. Having learned the true",
+				"name of valor, your soul-stirring roars of victory can turn the",
+				"tide of any conflict. When a creature that has one of your unexpended",
+				"Bardic Inspiration dice takes the Attack action, it may",
+				"make an additional weapon attack as a part of that action.",
+				"Additionally, you learn the masterpiece cry of war unending,",
+				"which does not count against the number of masterpieces",
+				"you can have memorized and is detailed in the Masterpieces",
+				"section.",
+			]),
+		},
+	},
+});	
+
+AddSubClass("truespeaker", "whispers", {
+	regExpSearch : /^(?=.*(truespeaker))(?=.*whipsers).*$/i,
+	subname : "College of Whispers",
+	source : ["EL:HH", 34],
+	features : {
+		"subclassfeature1" : {
+			name : "College of Whispers",
+			source : ["EL:HH", 34],
+			minlevel : 6,
+			spellcastingExtra : ["Whispers of Oblivion"],
+			description : desc([
+				"You are an unparalleled expert in subterfuge and intrigue.",
+				"Having learned the true name of secrets, you gain the ability to",
+				"obscure your spellcasting through clever deception. When you",
+				"cast a spell, you may attempt a Charisma (Deception) ability",
+				"check as a part of casting the spell. Creatures observing you",
+				"can attempt a Wisdom (Perception) ability check as a reaction",
+				"to see through your deception with a DC equal to the result of",
+				"your Charisma (Deception) ability check. To creatures that do",
+				"not see through your deception, you make it appear as though",
+				"you are taking a different action than casting a spell. Creatures",
+				"witnessing the spell’s effect are unable to determine the source",
+				"of the magic, potentially preventing them from becoming hostile",
+				"in response to being affected by the spell.",
+				"Additionally, you learn the masterpiece whispers of oblivion,",
+				"which does not count against the number of masterpieces",
+				"you can have memorized and is detailed in the Masterpieces",
+				"section.",
+			]),
+		},
+	},
+});
