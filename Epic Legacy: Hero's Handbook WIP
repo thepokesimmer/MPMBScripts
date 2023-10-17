@@ -575,6 +575,9 @@ AddSubClass("reaver", "beast", {
 			source : ["EL:HH", 28],
 			minlevel : 6,
 			description : "\n   " + "When you enter an Epic rage via your Rancor feature, you can choose to transform into a wild lycanthropic beast, granting you the following benefits for the rage’s duration.  Your size category increases by one, to a maximum of Gargantuan.  You may perform two Feats of Strength each round instead of one.  You can instinctively sense whether a creature you can perceive with your senses is more or less powerful than you (determined by the DM). Once you use this feature, you cannot use it again until you finish a long rest.",
+			limfeaname : "Path of the Beast",
+			usages : 1,
+			recovery : "long rest",
 		},
 	},
 });	
@@ -591,6 +594,19 @@ AddSubClass("reaver", "berserker", {
 			action : "reaction",
 			usages : 1,
 			recovery : "long rest",
+		},
+	},
+});
+AddSubClass("reaver", "bonebreaker", {
+	regExpSearch : /^(?=.*(reaver))(?=.*bonebreaker).*$/i,
+	subname : "Path of the Bonebreaker",
+	source : ["EL:HH", 28],
+	features : {
+		"subclasfeature1" : {
+			name : "Path of the Bonebreaker",
+			source : ["EL:HH", 28],
+			minlevel : 6,
+			description : "\n   " + "Enemies you have mutilated can be dispatched with ease. Creatures under the effects of your mutilations are vulnerable to all types of damage dealt by you.",
 		},
 	},
 });	
