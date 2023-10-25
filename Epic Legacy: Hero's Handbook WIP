@@ -2637,7 +2637,7 @@ AddSubClass("primordial", "woad", {
 	source : ["EL:HH", 50],	
 	features : {
 		"subclassfeature1" : {
-			name : "Circle of Wildfire",
+			name : "Circle of Woad",
 			source : ["EL:HH", 49],
 			minlevel : 6,
 			description : desc([
@@ -2731,3 +2731,808 @@ CreatureList = {
 		wildshapeString : "Arborvision 60 ft| Knows Common, Elvish, Sylvan, Druidic| Vulnerable to: fire damage| Immune to: bludgeoning and piercing| Arborsight: Creatures that aren’t plants within 60 feet of the titan cannot be hidden or invisible to it., False Appearance: While the titan remains motionless, it is indistinguishable from a nonmagical plant of its choice of the same size., Magic Protection: The titan takes half damage from spells off 5th level or lower and automatically succeeds on saving throws against such spells., Natural Defender: The titan deals double damage to objects and structures. On each of its turns, it can spend half of its movement to deal 50 points of bludgeoning damage to an object or structure within 5 feet of it.| Subsume (1/Day): see Epic Legacy: Hero's Handbook page 49"
 	},
 };	
+
+ClassList.ascendant = {
+	
+regExpSearch : /dreadnought/i,
+	name : "Dreadnought",
+	source : [["EL:HH", 53]],
+	primaryAbility : ["Strength"],
+	abilitySave : 1,
+	prereqs : "Strength 13",
+	improvements : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 10,
+	subclasses : ["Epic Martial Archetype", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	SpellcastingAbility : 4,
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["EL:HH", 54],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Dexterity", "Intelligence", "Strength", "Constitution"],
+			"dexterity" : {
+				name : "Dexterity",
+				description : "\n   " + "You gain proficiency in Dexterity Saving Throws",
+				saves : ["Dex"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},
+			"wisdom" : {
+				name : "Wisdom",
+				description : "\n   " + "You gain proficiency in Wisdom Saving Throws",
+				saves : ["Wis"],
+			},	
+			"charisma" : {
+				name : "Charisma",
+				description : "\n   " + "You gain proficiency in Charisma Saving Throws",
+				saves : ["Cha"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["EL:HH", 54],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},
+		"epic fighting style" : {
+			name : "Epic Fighting Style",
+			source : ["EL:HH", 54],
+			minlevel : 1,
+			description : desc([
+				"Beginning at 21st level, you improve on the fighting styles you",
+				"have mastered during your career as a warrior. You lose any",
+				"fighting styles you gained while advancing as a fighter, which",
+				"are replaced with their corresponding Epic versions, as detailed",
+				"in the Epic Fighting Styles table.",
+			]),
+			extraname : "Epic Fighting Style",
+			extrachoices : ["epic archery", "epic blind fighting", "epic defense", "epic dueling", "epic great weapon fighting", "epic interception", "epic protection", "epic superior technique", "epic thrown weapon fighting", "epic two-weapon fighting", "epic unarmed fighting"],
+			"epic archery" : {
+				name : "Epic Archery",
+				description : desc([
+					"You gain a +4 bonus to attack rolls you make with ranged weapons.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.isRangedWeapon && !v.isNaturalWeapon && !v.isDC) output.extraHit += 2;
+						},
+						"My ranged weapons get an extra +2 bonus on the To Hit."
+					]
+				}
+			},
+			"epic blind fighting" : {
+				name : "Epic Blind Fighting",
+				description : desc([
+					"You have blindsight with a range of 30 ft. Within that range, you can effectively",
+					"see anything that isn’t behind total cover, even if you’re blinded or in darkness,",
+					"including invisible creatures that are not hidden from you.",
+				]),
+				vision : [["Blindsight", 30]],
+			},
+			"epic defense" : {
+				name : "Epic Defense",
+				description : desc([
+					"While you are wearing armor, you gain a +3 bonus to AC and have resistance to",
+					"bludgeoning, piercing, and slashing damage from non-Epic sources.",
+				]),
+				dmres : ["Bludgeoning", "Piercing", "Slashing"],
+				extraAC : {
+					name : "Epic Defense Fighting Style", // necessary for features referring to fighting style properties directly
+					mod : 2,
+					text : "I gain an additional +2 bonus to AC while wearing armor.",
+					stopeval : function (v) { return !v.wearingArmor; }
+				},
+			},
+			"epic dueling" : {
+				name : "Epic Dueling",
+				descriptiong : desc([
+					"When you are wielding a melee weapon in one hand and no other weapons, you",
+					"gain a +4 bonus to damage rolls with that weapon.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							for (var i = 1; i <= FieldNumbers.actions; i++) {
+								if ((/off.hand.attack/i).test(What('Bonus Action ' + i))) return;
+							}
+							if (v.isMeleeWeapon && !v.isNaturalWeapon && !(/((^|[^+-]\b)2|\btwo).?hand(ed)?s?\b/i).test(fields.Description)) output.extraDmg += 2;
+						},
+						"When I'm wielding a melee weapon in one hand and no weapon in my other hand, I do an additioal +2 damage with that melee weapon. This condition will always be false if the bonus action 'Off-hand Attack' exists."
+					],
+				},
+			},
+			"epic great weapon fighting" : {
+				name : "Epic Great Weapon Fighting",
+				description : desc([
+					"When you roll a 3 or lower on a damage die for an attack you make with a melee",
+					"weapon with the two-handed or versatile property, you instead roll a 4",
+				]),
+				calcChanges : {
+					atkAdd : [
+						function (fields, v) {
+							if (v.isMeleeWeapon && (/(\bversatile|((^|[^+-]\b)2|\btwo).?hand(ed)?s?)\b/i).test(fields.Description)) {
+								fields.Description += (fields.Description ? '; ' : '') + 'Rolls of 3 or lower damage die count as 4' + ((/versatile/i).test(fields.Description) ? ' when two-handed' : '');
+							}
+						},
+						"While wielding a two-handed or versatile melee weapon in two hands, Rolls of 3 or lower damage die count as 4."
+					],
+				},
+			},
+			"epic interception" : {
+				name : "Epic Interception",
+				description : desc([
+					"As a reaction when a creature you can see hits another target within 5 ft. of you",
+					"with an attack, you may reduce the damage the target takes by an amount equal to",
+					"your character level. You must be wielding a shield or weapon to use this reaction.",
+				]),
+				action : ["reaction", ""],
+			},	
+			"epic protection" : {
+				name : "Epic Protection",
+				description : desc([
+					"As a reaction when a creature you can see attacks another target that is within",
+					"5 ft. of you, you can impose Epic disadvantage on the attack roll. You must be",
+					"wielding a shield to use this reaction, and if the attack misses its target, you gain an",
+					"additional reaction, which lasts until the start of your next turn.",
+				]),
+				action : ["reaction", ""],
+			},
+			"epic superior technique" : {
+				name : "Epic Superior Technique",
+				description : desc([
+					"You learn three maneuvers of your choice. If a maneuver you use requires your",
+					"target to make a saving throw to resist the maneuver’s effects, the saving throw",
+					"DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your",
+					"choice).",
+					"Additionally, you have a number of superiority dice to use these maneuvers equal",
+					"to half your dreadnought level (rounded down, minimum of 1), which are d8s.",
+					"You regain your expended superiority dice when finish a short or long rest. If you",
+					"already have a subclass feature that provides dice for these maneuvers, these dice",
+					"are instead added to that feature’s dice.",
+				]),
+				bonusClassExtrachoices : [{
+					"class" : "fighter",
+					"subclass" : "fighter-battle master",
+					"feature" : "subclassfeature3.1",
+					"bonus" : 2	
+				}],
+				extraLimitedFeatures : [{
+					name : "Combat Superiority",
+					usages : [1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+					additional : 'd8',
+					recovery : "short rest",
+					addToExisting : true
+				}],
+			},	
+			"epic thrown weapon fighting" : {
+				name : "Epic Thrown Weapon Fighting",
+				description : desc([
+					"If you would need to draw a weapon with the thrown property to make a ranged",
+					"weapon attack with it on a turn, you may do so as a part of making that attack.",
+					"Additionally, when you hit with a ranged weapon attack with a thrown weapon,",
+					"you gain a +4 bonus to the damage roll.",
+				]),
+				calcChanges : {
+					atkAdd : [
+						function (fields, v) {
+							if (v.isThrownWeapon && v.isMeleeWeapon) {
+								fields.Description += (fields.Description ? '; ' : '') + '+2 damage when thrown';
+							}
+						},
+						"I deal an additional +2 damage when I hit a ranged attack made with a thrown weapon."
+					],
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.isThrownWeapon && !v.isMeleeWeapon) {
+								output.extraDmg += 2;
+							}
+						},
+						""
+					]
+				}
+			},	
+			"epic two-weapon fighting" : {
+				name : "Epic Two-Weapon Fighting",
+				description : desc([
+					"When you engage in two-weapon fighting, you can add your attack’s ability",
+					"modifier to the damage of any attack you make. Additionally, when you use your",
+					"bonus action to make an attack with your off-hand weapon, you may attack twice",
+					"instead of once.",
+				]),
+				action : ["bonus action", "Off-hand attacks (2)"],
+			},	
+			"epic unarmed fighting" : {
+				name : "Epic Unarmed Fighting",
+				description : desc([
+					"Your unarmed strikes deal bludgeoning damage equal to 1d12 + your Strength",
+					"modifier on a hit.",
+					"Additionally, at the start of each of your turns, you can deal 1d12 bludgeoning",
+					"damage to creatures grappled by you.",
+				]),
+				calcChanges : {
+					atkAdd : [
+						function (fields, v) {
+							if (v.baseWeaponName == "unarmed strike") {
+								if (fields.Damage_Die == 1 || fields.Damage_Die == "1d4" || fields.Damage_Die == "1d6") fields.Damage_Die = '1d12';
+								fields.Description += (fields.Description ? '; ' : '') + 'at start of turn if grappling deal 1d12';
+							}
+						},
+						"My unarmed strikes deal 1d12 damage instead of 1, at the start of each of your turns, you can deal 1d12 bludgeoning damage to creatures grappled by you.",
+						1
+					],
+				},
+			},
+		},	
+		"combat stances" : {
+			name : "Combat Stances",
+			source : ["EL:HH", 54],
+			minlevel : 2,
+			description : desc([
+				"You master extraordinary techniques that afford tremendous advantages",
+				"in battle called combat stances. You learn two combat",
+				"stances of your choice, as detailed in the “Combat Stances” section.",
+				"You learn additional combat stances as you advance as a dreadnought",
+				"according to the dreadnought class progression table.",
+				"Once per round when you are in combat, as a bonus action",
+				"you may enter a combat stance that you know, gaining the benefits",
+				"detailed in that combat stance’s description. When you do",
+				"so, you leave any existing combat stances you may be in, losing",
+				"their benefits. A combat stance lasts until you are no longer in",
+				"combat or become incapacitated.",
+				"Epic Strikes. Each combat stance has a unique feature called",
+				"an Epic strike, which is an extremely powerful technique only",
+				"a dreadnought possesses the martial skill to perform while in",
+				"that combat stance. A combat stance’s description details how",
+				"and when an Epic strike may be used. When you make an Epic",
+				"strike, you make a single weapon attack against a creature within",
+				"range or cast a spell of 1st level or higher with a casting time",
+				"of 1 action.",
+			]),
+			extraname : "Combat Stances",
+			extrachoices : ["aegis stance", "brawling stance", "defensive stance", "juggernaut stance", "razorwinds stance", "sentinel stance", "skirmishing stance", "sniper stance", "steelbreaker stance", "surging stance", "throwning stance", "warmage stance"],
+			extraTimes : levels.map(function (n) {
+					return n < 2 ? 0 : n < 4 ? 2 : n < 6 ? 3 : n < 8 ? 4 : n < 10 ? 5 : 6;
+			}),
+			"aegis stance" : {
+				name : "Aegis Stance",
+				description : desc([
+					"You masterfully defend yourself against incoming attacks, using",
+					"your armor to its full advantage. While you are in this stance,",
+					"wearing armor, and wielding a shield, you gain a +5 bonus to",
+					"your Armor Class, and creatures cannot have advantage or Epic",
+					"advantage on attacks against you.",
+					"Epic Strike: Shining Lance",
+					"As an action, you lash out with a single blow of unparalleled",
+					"precision, making a single weapon attack or casting a spell that",
+					"requires a spell attack. If this attack would miss, it instead hits",
+					"and deals radiant damage instead of its normal damage type.",
+					"Damage Multiplier: Damage dealt by this Epic strike is doubled.",
+				]),
+				action : ["action", "Shining Lance"],
+			},	
+			"brawling stance" : {
+				name : "Brawling Stance",
+				description : desc([
+					"Your skills in grappling are legendary. While you are in this",
+					"stance, you may attempt a grapple as a bonus action, and you",
+					"have Epic advantage on ability checks to grapple a creature or",
+					"when making contests to maintain a grapple.",
+					"Additionally, if a creature is freed from your grapple by any",
+					"means, it provokes an opportunity attack from you before it escapes",
+					"your grapple.",
+					"Epic Strike: Crushing Grip",
+					"As an action, you tighten your grip on a creature you are grappling,",
+					"crushing it with your strength. Instead of making a",
+					"weapon attack as a part of this Epic strike, you instead attempt",
+					"a Strength (Athletics) ability check contested by the target’s",
+					"Strength (Athletics) or Dexterity (Acrobatics) ability check",
+					"(target’s choice). On a success, you automatically hit the target",
+					"with an unarmed strike attack, and the target is restrained until",
+					"the grapple ends.",
+					"Damage Multiplier: Damage dealt by this Epic strike is quadrupled.",
+				]),
+				action : ["aciton", "Crushing Grip"],
+			},	
+			"defensive stance" : {
+				name : "Defensive Stance",
+				description : desc([
+					"You are the shield that guards your allies from harm, able to",
+					"withstand devastating blows with ease. While you are in this",
+					"stance and wearing armor, you are resistant to all damage except",
+					"psychic damage.",
+					"Epic Strike: Counterstrike",
+					"As an action, you take the Ready action to prepare a blow of",
+					"catastrophic power to intercept your enemy’s attacks with a",
+					"weapon attack or a spell that deals damage. As a reaction to",
+					"when a creature you can see makes a successful attack, you may",
+					"use your readied Epic strike to move up to twice your speed",
+					"toward that creature. If you end this movement and the attacking",
+					"creature is within range of your weapon attack or spell, you",
+					"may make your readied attack or cast your readied spell against",
+					"that creature. The damage of the creature’s attack is reduced by",
+					"the damage it takes from your attack or spell.",
+					"Damage Multiplier: Damage dealt by this Epic strike is tripled.",
+				]),
+				action : ["action", "Counterstrike"],
+			},	
+			"juggernaut stance" : {
+				name : "Juggernaut Stance",
+				description : desc([
+					"You know how to best maximize your own durability in combat.",
+					"While you are in this stance, you may add your Constitution",
+					"modifier to your weapon attack and damage rolls instead of",
+					"your Strength or Dexterity modifier, and you cast spells without",
+					"the need for somatic and/or material components.",
+					"Additionally, at the end of each of your turns, if you have no",
+					"uses of your Second Wind feature, you regain one use.",
+					"Epic Strike: Unstoppable Blow",
+					"As an action, you let loose a mighty war cry and make a single",
+					"weapon attack or cast a spell. If a non-Epic spell or effect would",
+					"prevent you from taking this action, the spell or effect ends, and",
+					"you must immediately make the Epic strike. If an Epic spell or",
+					"effect with a save DC would prevent you from making an Epic",
+					"strike, you may attempt a Constitution saving throw against",
+					"the spell or effect’s DC to become immune to the spell or effect",
+					"until the end of your turn. If the effect is suppressed because",
+					"you succeeded on this saving throw, you may immediately make",
+					"the Epic strike.",
+					"Damage Multiplier: Damage dealt by this Epic strike is doubled.",
+				]),
+				action : ["action", "Unstoppable Blow"],
+			},
+			"razorwind stance" : {
+				name : "Razorwind Stance",
+				description : desc([
+					"You can effortlessly wield two weapons at the same time, striking",
+					"with vicious flurries of attacks. While you are in this stance",
+					"and engage in two-weapon fighting, attacks made with your",
+					"weapons are made with Epic advantage.",
+					"Epic Strike: Hail of Steel",
+					"As an action while you are dual wielding, you unleash a withering",
+					"series of blows that dice your foes to ribbons, making a",
+					"single weapon attack with both of your weapons. If both attacks",
+					"hit the same target and you are not incapacitated, you",
+					"may immediately make this Epic strike again against the same",
+					"target (no action required). You cannot make this Epic strike",
+					"more than five times each time you use this Epic Strike.",
+					"Damage Multiplier: Damage dealt by this Epic strike is not multiplied.",
+				]),
+				action : ["action", "Hail of Steel"],
+			},
+			"sentinel stance" : {
+				name : "Sentinel Stance",
+				description : desc([
+					"With perfect poise and patience, you strike foes when they least",
+					"expect it. While you are in this stance and use your reaction to",
+					"make a successful opportunity attack, at the end of that turn",
+					"you gain an additional reaction that lasts until the start of your",
+					"next turn.",
+					"Epic Strike: Incision of a Thousand Diamonds",
+					"As an action, you strike in a way to open a perfect window for",
+					"your allies, allowing them to join you in the assault. You make",
+					"a single weapon attack or cast a spell that affects one or more",
+					"enemy creatures. Each creature attacked or affected in this manner",
+					"provokes an opportunity attack from allied creatures within reach.",
+					"Damage Multiplier: Damage dealt by this Epic strike is doubled.",
+				]),
+				action : ["action", "Incision of a Thousand Diamonds"],
+			},	
+			"skirmishing stance" : {
+				name : "Skirmishing Stance",
+				description : desc([
+					"You move about the battlefield with extreme ease, avoiding",
+					"your foes to find the perfect position to attack. While you are",
+					"in this stance, your movement speed is doubled, you are unaffected",
+					"by difficult terrain, and non-Epic spells and magical effects",
+					"cannot reduce your speed.",
+					"Epic Strike: One Step Ahead",
+					"As an action, you strike your foe while preparing for its next",
+					"move, preventing its escape. You make a single weapon attack",
+					"or cast a spell that affects a single enemy creature. If the target",
+					"of that attack or spell ends its next turn in a space different than",
+					"the one it occupied when you made this Epic strike, you may",
+					"use your reaction to move up to your speed toward the target",
+					"and make this Epic strike again.",
+					"Damage Multiplier: Damage dealt by this Epic strike is doubled.",
+				]),
+				action : ["action", "One Step Ahead"],
+			},	
+			"sniper stance" : {
+				name : "Sniper Stance",
+				description : desc([
+					"Aiming with godlike precision, you can deliver lethal attacks at",
+					"extreme range. You cannot enter this stance if you have moved",
+					"on your turn or have left the space you started your turn in.",
+					"While in this stance, your speed is 0 and you cannot willingly",
+					"leave your space. However, your successful ranged weapon and",
+					"spell attacks always deal damage as though they had scored a",
+					"critical hit.",
+					"Epic Strike: Find the Center",
+					"As an action, you fire a ranged attack that deals extreme",
+					"damage to those it hits. You make a single ranged weapon",
+					"attack or cast a spell that requires a ranged spell attack.",
+					"The range for attacks or spells made with this Epic strike is",
+					"quadrupled.",
+					"Damage Multiplier: Damage dealt by this Epic strike is quadrupled.",
+				]),
+				action : ["action", "Find the Center"],
+			},	
+			"steelbreaker stance" : {
+				name : "Steelbreaker Stance",
+				description : desc([
+					"Your attacks and spells sunder enemy armor, crushing their",
+					"defenses with relentless power. While you are in this stance,",
+					"if a creature has resistance to damage dealt by you, it instead",
+					"does not have resistance. If a creature would be immune to",
+					"damage dealt by you, it instead has resistance to damage dealt",
+					"by you.",
+					"Epic Strike: Overwhelming Assault",
+					"As an action, you open a hole in your enemy’s defenses, making",
+					"it vulnerable to you and your allies. You make a single",
+					"melee weapon attack or cast a spell that requires a melee spell",
+					"attack.",
+					"Damage Multiplier: Damage dealt by this Epic strike is",
+					"doubled. If the attack exceeds the target’s AC by 5 or more,",
+					"the damage multiplication increases by one for every interval",
+					"of 5 it exceeds the target’s AC (tripled becomes quadrupled,",
+					"quadrupled becomes quintupled, etc.).",
+				]),
+				action : ["action", "Overwhelming Asault"],
+			},	
+			"surging stance" : {
+				name : "Surging Stance",
+				description : desc([
+					"You can transfer the power of your movement into your attacks,",
+					"darting about the battlefield to deliver punishing hits. While",
+					"you are in this stance, if you move at least 10 feet in a straight",
+					"line and immediately make a melee weapon or spell attack at",
+					"the end of that movement, you have a +5 bonus to that attack",
+					"roll.",
+					"Epic Strike: Meteoric Blow",
+					"As an action, you strike a target with such force as to knock",
+					"it flying into obstacles and terrain. You make a single weapon",
+					"attack roll or cast a spell that requires a melee spell attack. On",
+					"a successful hit, the target must attempt a Strength (Athletics)",
+					"ability check contested by your Strength (Athletics) ability",
+					"check. If the target fails, it is pushed up to 100 feet in a straight",
+					"line away from you and knocked prone. On a critical hit, the",
+					"target is pushed an additional 100 feet.",
+					"Damage Multiplier: Damage dealt by this Epic strike is doubled.",
+				]),
+				action : ["action", "Meteoric Blow"],
+			},	
+			"throwning stance" : {
+				name : "Throwing Stance",
+				description : desc([
+					"You can hurl weapons with physics-defying precision, leaving",
+					"your enemies awestruck and severely damaged. When you",
+					"would make a ranged weapon attack with a thrown weapon,",
+					"you may throw a second weapon with the thrown property as",
+					"a part of that attack using the same hand(s). The attack’s damage",
+					"is increased by the second weapon’s damage dice plus the",
+					"attack’s ability modifier.",
+					"Additionally, the short and long range of weapons you wield",
+					"with the thrown property is increased by 60 feet.",
+					"Epic Strike: Deadeye",
+					"As an action, you hurl a weapon in a manner that circumvents",
+					"any cover or defense. Make a single ranged weapon attack with",
+					"a thrown weapon against a target you are aware of within range.",
+					"So long as you target a space the target is occupying, this attack",
+					"automatically hits, regardless of whether your target has total",
+					"cover or other protections against your attacks. When this attack",
+					"hits, you still roll a d20 to determine whether you scored",
+					"a critical hit.",
+					"Damage Multiplier: Damage dealt by this Epic strike is tripled.",
+				]),
+				action : ["action", "Deadeye"],
+			},	
+			"warmage stance" : {
+				name : "Warmage Stance",
+				description : desc([
+					"Your magic charges your weapon with arcane energy that can",
+					"cleave through even the heartiest foes. While you are in this",
+					"stance, you may add either your Strength or Dexterity modifier",
+					"to your spell save DC and spell attack rolls, in addition to your",
+					"normal modifiers.",
+					"Epic Strike: Arcane Evisceration",
+					"As an action, you empower your magic well beyond its normal",
+					"limits by combining it with martial prowess. Make a single",
+					"weapon attack or cast a spell that requires a spell attack. On a",
+					"successful hit, the next spell that is not a cantrip you cast before",
+					"the end of your next turn is treated as though you had expended",
+					"an 8th-level spell slot to cast it, regardless of what level spell",
+					"slot you used to cast the spell.",
+					"Damage Multiplier: Damage dealt by this Epic strike is not multiplied.",
+				]),
+				action : ["action", "Arcane Evisceration"],
+			},	
+		},
+		"supplimental training" : {
+			name : "Supplimental Training", 
+			source : ["EL:HH", 56],
+			minlevel : 4,
+			description : desc([
+				"When you reach 22nd level, and again at 24th, 26th, 28th, and",
+				"30th level, you can continue training other elements of your",
+				"body and mind in the background while you advance your other",
+				"Epic abilities. You can increase one ability score of your choice",
+				"by 2, or two ability scores of your choice by 1. You can’t increase",
+				"an ability score above 20 using this feature. If you are using the",
+				"5th Edition feats variant, you can instead select a non-Epic feat.",
+			]),
+		},
+		"subclassfeature1" : {
+			name : "Epic Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"The powerful new techniques you’ve developed as a dreadnought",
+				"allow you to improve your martial archetype. You gain",
+				"the following features according to the martial archetype you",
+				"selected when you were advancing as a fighter.",
+			]),
+		},	
+		"peerless veteran" : {
+			name : "Peerless Veteran",
+			source : ["EL:HH", 57],
+			minlevel : 8,
+			description : desc([
+				"Your vast combat experience allows you to change your techniques",
+				"with remarkable efficiency. When you enter or change a",
+				"combat stance, you may do so with no action required, instead",
+				"of as a bonus action. You may still only change or enter a stance",
+				"once per round on each of your turns.",
+			]),
+		},	
+		"legendary champion" : {
+			name : "Legendary Champion",
+			source : ["EL:HH", 57],
+			minlevel : 10,
+			description : desc([
+				"You have no equal on the field of battle, unleashing mighty attacks",
+				"of unrelenting power. When you take the Attack action,",
+				"you may make a single Epic strike from those listed in combat",
+				"stances you know as a part of that action. When you use your",
+				"action to make only an Epic strikes from those listed in combat",
+				"stances you know, you may make two Epic strikes instead of",
+				"one as a part of that action.",
+			]),
+		},
+	},
+};	
+AddSubClass("dreadnought", "arcane archer", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(arcane archer)).*$/i,
+	subname : "Arcane Archer Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Arcane Archer Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"Your expertise in the fields of magic and archery allow you to",
+				"perfectly blend your mystic weaponry with martial skill. When",
+				"you hit a creature with an Epic strike using a shortbow or longbow,",
+				"you may apply one of your Arcane Shot options to the attack.",
+				"When you do so, you do not expend a use of your Arcane",
+				"Shot feature. If you do not have any uses of your Arcane Shot",
+				"feature, you cannot benefit from this feature.",
+				"Additionally, when you use your Action Surge fighter feature,",
+				"you also regain all expended uses of your Arcane Shot feature.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "battle master", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(battle master)).*$/i,
+	subname : "Battle Master Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Battle Master Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"You can unleash a dizzying number of maneuvers by pushing",
+				"yourself to your limit. As a bonus action, you can expend a use",
+				"of your Action Surge feature to regain all of your expended",
+				"superiority dice.",
+			]),
+			action : ["bonus action", "Expend Action Surge, Regain All Superiority Dice"],
+		},
+	},
+});
+AddSubClass("dreadnought", "cavalier", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*cavalier).*$/i,
+	subname : "Cavalier Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Cavalier Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"You and your mount fight as one, a perfect synergy that devastates",
+				"your enemies. While you are mounted, your mount cannot",
+				"be charmed or frightened unless you are also charmed or",
+				"frightened, and your mount’s speed cannot be reduced below",
+				"half its base movement speed.",
+				"Additionally, while you are mounted, your critical hits roll all",
+				"your attack’s damage dice three times, instead of twice. If you",
+				"score a critical hit with a lance, you instead roll your attack’s",
+				"damage dice four times.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "champion", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*champion).*$/i,
+	subname : "Champion Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Champion Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"You don’t bother with fancy tricks or overcomplicated techniques—",
+				"instead, you focus on causing death with every blow.",
+				"Your weapon attacks score a critical hit on a roll of 16–20.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "eldritch knight", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(eldritch knight)).*$/i,
+	subname : "Eldritch Knight Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Edritch Knight Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"You can combine your magic with your mightiest attacks, creating",
+				"a frighteningly powerful combination of magic and steel.",
+				"When you cast a spell by expending an Eldritch Knight spell",
+				"slot as a part of making an Epic strike, you may treat that spell",
+				"as if you had cast it using a 4th-level spell slot, regardless of the",
+				"actual spell slot level used to cast the spell.",
+				"Additionally, when you use your Action Surge feature, you",
+				"regain all expended eldritch knight spell slots.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "gladiator", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*gladiator).*$/i,
+	subname : "Gladiator Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Gladiator Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"You can use a creature you are grappling as an improvised weapon.",
+				"When you deal damage to a target using a creature as an",
+				"improvised weapon, the creature being used as the weapon takes",
+				"bludgeoning damage equal to the damage dealt by the attack.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "psi warrior", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(psi warrior)).*$/i,
+	subname : "Psi Warrior Martial Archetype",
+	source : ["EL:HH", 56],	
+	features : {
+		"subclassfeature1" : {
+			name : "Psi Warrior Martial Archetype",
+			source : ["EL:HH", 56],
+			minlevel : 6,
+			description : desc([
+				"Your psionic potential has reached its zenith, seamlessly blending",
+				"your mind and body into a deadly martial weapon. When",
+				"you score a hit with an Epic attack, you may roll a number of",
+				"your Psionic Energy dice granted by your subclass feature, up to",
+				"your Intelligence modifier, to gain one of the following benefits:",
+				"You are surrounded by a shield of psionic energy for 1",
+				"minute, granting you a number of temporary hit points",
+				"equal to the amount rolled on the Psionic Energy dice.",
+				"The target becomes charged with harmful psionic energy",
+				"until the end of its next turn or until it deals damage to",
+				"one if its enemies, whichever comes first. If the target deals",
+				"damage to one of its enemies, it takes psychic damage equal",
+				"to the amount rolled.",
+				"Additionally, when you use your Action Surge, you regain all",
+				"your expended Psionic Energy dice.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "purple dragon knight", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(purple dragon knight)).*$/i,
+	subname : "Purple Dragon Knight Martial Archetype",
+	source : ["EL:HH", 56-57],	
+	features : {
+		"subclassfeature1" : {
+			name : "Purple Dragon Knight Martial Archetype",
+			source : ["EL:HH", 56-57],
+			minlevel : 6,
+			description : desc([
+				"You are a nearly endless source of strength and courage for your",
+				"allies. While you aren’t incapacitated, allies within 60 feet of",
+				"you that can see or hear you are proficient in any saving throws",
+				"in which you are proficient.",
+				"Additionally, when you would use your Indomitable feature",
+				"to reroll a failed saving throw, you instead automatically succeed",
+				"on that saving throw.",
+			]),
+		},
+	},
+});
+AddSubClass("dreadnought", "rune knight", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*(rune knight)).*$/i,
+	subname : "Rune Knight Martial Archetype",
+	source : ["EL:HH", 57],	
+	features : {
+		"subclassfeature1" : {
+			name : "Rune Knight Martial Archetype",
+			source : ["EL:HH", 57],
+			minlevel : 6,
+			description : desc([
+				"When you invoke your magic runes, you become infused with",
+				"potent elemental energies. When you invoke one of the runes",
+				"granted by your subclass features, a weapon you are holding or",
+				"your unarmed strike becomes imbued with elemental energies",
+				"until the start of your next turn or when you next score a hit with",
+				"the weapon or unarmed strike, whichever comes first. When",
+				"you score a hit using that weapon or unarmed strike, you deal an",
+				"additional 5d10 damage, the type of which is determined by the",
+				"rune you invoked, as detailed in the Elemental Infusions table.",
+			]),
+			toNotesPage : [{
+				name : "Elemental Infusions",
+        note : [
+					"Rune		Damage Type",
+					"Cloud Rune		Thunder",
+					"Fire Rune		Fire",
+					"Frost Rune		Cold",
+					"Hill Rune		Necrotic",
+					"Stone Rune		Force",
+					"Storm Rune		Lightning",
+        ],
+			}],	
+		},
+	},
+});
+AddSubClass("dreadnought", "samurai", {
+	regExpSearch : /^(?=.*(dreadnought))(?=.*samurai).*$/i,
+	subname : "Samurai Martial Archetype",
+	source : ["EL:HH", 57],	
+	features : {
+		"subclassfeature1" : {
+			name : "Samurai Martial Archetype",
+			source : ["EL:HH", 57],
+			minlevel : 6,
+			description : desc([
+				"You can draw your weapons and attack in an elegant display of",
+				"deadly skill and speed. Immediately before initiative is rolled,",
+				"you may expend a use of your Action Surge to act with lightning",
+				"speed. This allows you to take a special turn before combat",
+				"begins. During this turn, you may take only a single action and",
+				"spend your movement, and enemies cannot take reactions in",
+				"response to what you do that turn.",
+			]),
+		},
+	},
+});
