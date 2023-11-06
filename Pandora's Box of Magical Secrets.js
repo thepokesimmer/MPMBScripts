@@ -1,15 +1,15 @@
 var iFileName = "PBMS";
 RequiredSheetVersion("13.1.7");
 SourceList["PBMS"] = {
-	name : "Pandoras Box of Magical Secrets",
+	name : "Pandora's Box of Magical Secrets",
 	abbreviation : "PBMS",
-	group : "Pandoras Box of Magical Secrets",
+	group : "Pandora's Box of Magical Secrets",
 	date : "2023/07/18",
 };
 
 // Adds a new class, the Witch, with 8 subclasses
-
 ClassList.sorcerer.regExpSearch = /sorcerer/i;
+ClassList.druid.regExpSearch = /druid/i;
 ClassList.witch = {
 	
 	regExpSearch : /witch/i,
@@ -43,14 +43,9 @@ ClassList.witch = {
 		spells : "list",
 		prepared : true,
 	},
-	
 	spellcastingList : { 
-
-		"class" : ["sorcerer", "warlock", "witch", "wizard"], 
-
-		level : [0, 9]
+		spells : ["acid splash", "blade ward", "chill touch", "control flames", "create bonfire", "dancing lights", "fire bolt", "friends", "frostbite", "light", "lightning lure", "mage hand", "mending", "message", "mind sliver", "minor illusion", "poison spray", "prestidigitation", "ray of frost", "sapping sting", "shocking grasp", "thunderclap", "true strike", "usurp", "absorb elements", "alarm", "animal friendship", "bane", "beast bond", "bless", "burning hands", "catapult", "cause fear", "charm person", "chromatic orb", "color spray", "cure wounds", "detect magic", "disguise self", "distort value", "erase", "expeditious retreat", "false life", "feather fall", "find familiar", "fog cloud", "frost fingers", "gift of alacrity", "grease", "hex", "ice knife", "identify", "illusory script", "inflict wounds", "jump", "longstrider", "mage armor", "magic missile", "magnify gravity", "merlin", "pattern weave", "protection from evil and good", "ray of sickness", "revoke", "shield", "silent image", "silvery barbs", "sleep", "speak with animals", "tasha's caustic brew", "tasha's hideous laughter", "taunt", "thunderwave", "unseen servant", "witch bolt", "air bubble", "alter self", "animal messenger", "arcane lock", "augury", "beast sense", "blindness/deafness", "blur", "borrowed knowledge", "calm emotions", "cloud of daggers", "continual flame", "crown of madness", "darkness", "detect thoughts", "disruption", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "flaming sphere", "flock of familiars", "fortune's favor", "heat metal", "hold person", "immovable object", "invisibility", "kinetic jaunt", "knock", "lesser restoration", "levitate", "locate object", "magic mouth", "magic weapon", "mind spike", "mirror image", "misty step", "moonbeam", "moon rune", "phantasmal force", "protection from cantrips", "pyrotechnics", "ray of enfeeblement", "scorching ray", "see invisibility", "shadow blade", "shatter", "silence", "skywrite", "spider climb", "suggestion", "summon beast", "swiftness", "tasha's mind whip", "vortex warp", "web", "wither and bloom", "wristpocket", "animate dead", "ashardalon's stride", "augmentation", "bestow curse", "blink", "catnap", "clairvoyance", "conjure animals", "counterspell", "daylight", "dispel magic", "elemental weapon", "enemies abound", "fast friends", "fear", "feign death", "fireball", "fly", "gaseous form", "glyph of warding", "haste", "hypnotic pattern", "incite greed", "intellect fortress", "life transference", "lightning bolt", "magic circle", "major image", "nondetection", "protection from energy", "pulse wave", "remove curse", "sending", "slow", "speak with dead", "spell turning", "spirit shroud", "stinking cloud", "summon fey", "summon lesser demons", "summon shadowspawn", "summon undead", "teleport object", "thunder step", "tidal wave", "tiny servant", "tongues", "vampiric touch", "wall of sand", "wall of water", "water breathing", "water walk", "arcane eye", "arcane retaliation", "banishment", "blight", "charm monster", "compulsion", "confusion", "conjure minor elementals", "conjure woodland beings", "detect scrying", "dimension door", "divination", "dominate beast", "elemental bane", "fabricate", "fire shield", "gravity sinkhole", "greater invisibility", "hallucinatory terrain", "ice storm", "locate creature", "phantasmal killer", "polymorph", "raulothim's psychic lance", "shadow of moil", "shout", "sickening radiance", "stone shape", "stoneskin", "storm sphere", "summon aberration", "summon construct", "summon elemental", "summon greater demon", "synchronicity", "vitriolic sphere", "wall of fire", "watery sphere", "animate objects", "awaken", "cloudkill", "cone of cold", "conjure elemental", "contact other plane", "contractual conjuration", "creation", "danse macabre", "dawn", "dispel evil and good", "dominate person", "dream", "duplicate", "enervation", "far step", "geas", "greater restoration", "hold monster", "immolation", "infernal calling", "insect plague", "legend lore", "magic cancel", "mind fog", "mislead", "modify memory", "negative energy flood", "pandora's gallivant", "passwall", "planar binding", "rary's telepathic bond", "scrying", "seeming", "skill empowerment", "summon celestial", "summon draconic spirit", "synaptic static", "telekinesis", "teleportation circle", "temporal shunt", "transmute rock", "wall of force", "wall of stone", "arcane gate", "blade barrier", "chain lightning", "circle of death", "conjure fey", "contingency", "create homunculus", "create undead", "disintegrate", "drawmij's instant summons", "eyebite", "flesh to stone", "forbiddance", "globe of invulnerability", "gravity fissure", "guards and wards", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of water", "investiture of wind", "magic jar", "mass suggestion", "mental prison", "move earth", "otto's irresistible dance", "permanent illusion", "planar ally", "programmed illusion", "scatter", "soul cage", "spell binding", "summon fiend", "sunbeam", "tasha's otherworldly guise", "true seeing", "wall of ice", "wall of thorns", "create magen", "crown of stars", "delayed blast fireball", "delayed spell", "desire", "dream of the blue veil", "etherealness", "finger of death", "fire storm", "forcecage", "magic siphon", "mirage arcane", "pandora's prismatic bridge", "plane shift", "power word pain", "prismatic spray", "project image", "reverse gravity", "sequester", "simulacrum", "symbol", "teleport", "tether essence", "whirlwind", "abi-dalzim's horrid wilting", "animal shapes", "antimagic field", "antipathy/sympathy", "clone", "control weather", "create golem", "dark star", "demiplane", "dominate monster", "feeblemind", "glibness", "incendiary cloud", "maddening darkness", "maze", "mighty fortress", "mind blank", "power word stun", "reality break", "sunburst", "telepathy", "astral projection", "blade of disaster", "foresight", "gate", "imprisonment", "infringement", "invulnerability", "mass polymorph", "meteor swarm", "power word heal", "power word kill", "prismatic wall", "psychic scream", "ravenous void", "shapechange", "time ravage", "true polymorph", "wail of the banshee", "weird", "wish"],
 	},
-	
 	features : {
 
 		"weird magic" : {
@@ -435,11 +430,6 @@ AddSubClass("witch", "dead", {
 	subname : "Coven of the Dead",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "cause fear", "unseen servant", "gentle repose", "misty step", "spirit shroud", "speak with dead", "banishment", "shadow of moil", "danse macabre", "enervation", "circle of death", "eyebite"],
-	spellcastingList : { 
-
-		"class" : ["cleric", "paladin"], 
-
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -516,11 +506,6 @@ AddSubClass("witch", "gale", {
 	subname : "Coven of the Gale",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "fog cloud", "thunderwave", "gust of wind", "misty step", "lightning bolt", "tidal wave", "ice storm", "storm sphere", "control winds", "maelstrom", "chain lightning", "wind walk"],
-	spellcastingList : { 
-
-		"class" : ["druid", "ranger"],
-		
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -597,11 +582,6 @@ AddSubClass("witch", "goddess", {
 	subname : "Coven of the Goddess",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "ceremony", "detect good and evil", "spiritual weapon", "prayer of healing", "beacon of hope", "spirit guardians", "aura of purity", "guardian of faith", "commune", "hallow", "forbiddance", "heal"],
-	spellcastingList : { 
-
-		"class" : ["cleric", "paladin"],
-		
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -677,11 +657,6 @@ AddSubClass("witch", "hedge", {
 	subname : "Coven of the Hedge",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt"],
-	spellcastingList : { 
-
-		"class" : ["sorcerer", "warlock", "wizard"], 
-
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -781,11 +756,6 @@ AddSubClass("witch", "wood", {
 	subname : "Coven of the Wood",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "entange", "goodberry", "barkskin", "locate plants", "plant growth", "speak with plants", "grasping vine", "guardian of nature", "tree stride", "wrath of nature", "transport via plants", "wall of thorns"],
-	spellcastingList : { 
-
-		"class" : ["druid", "ranger"], 
-
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -864,11 +834,6 @@ AddSubClass("witch", "hellfire", {
 	subname : "Coven of Hellfire",
 	source : [["PBMS", 0]],
 	spellcastingExtra : ["witch bolt", "burning hands", "hellish rebuke", "crown of madness", "scorching ray", "fireball", "summon lesser demon", "summon greater demon", "wall of fire", "immolation", "infernal calling", "investiture of flame", "summon fiend"],
-	spellcastingList : { 
-
-		"class" : ["cleric", "paladin"], 
-
-	},
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -944,14 +909,404 @@ AddSubClass("witch", "hellfire", {
 
 // Adds a new School of Magic
 
-spellSchoolList["Revoc"] = "revocation";
+spellSchoolList["Revoc"] = "Revocation";
 
 // Adds new spells
 
+SpellsList["gourd's garden"] = {
+	name : "Gourd's Garden",
+	source : [["PBMS", 0]],
+	classes : ["primordial"],
+	level : 1,
+	school : "Conj",
+	time : "1 a",
+	range : "300 ft",
+	components : "V,S,M",
+	compMaterial : "Intact Mushroom",
+	duration : "24 h",
+	description : "See Full Description",
+	descriptionFull : desc([
+		"You transform your surrounding environment within a 60ft radius of you into a fungal garden that is canopied by fungal netting to protect from the sun. This garden produces the following effects and features under your control for the duration. If this spell is cast again before the it ends the duration is extended another 24 hours. Repeating this process for seven days creates a permanent fungal garden.",
+			"Environmental Effects",
+		"Mycelium: This region imposes disadvantage on saving throws and removes immunity to poison and necrotic damage for all hostile or uninvited creatures within this space.",
+		"Veil: This region grants you and allies immunity to poison and necrotic damage while within the space.",
+		"Gills: As a reaction on any creatures turn, you can negate any spell cast by another creature that deals necrotic or poison damage, or that instills a poisoned condition.",
+		"Spores: Hostile or uninvited creatures that start their turn within this space must make a constitution save throw or the creature is poisoned and takes 3d8 poison damage at the start of each of the creatures turns. If the creature succeeds they are not poisoned and still take 3d8 poison damage.",
+		"Scales: When you cast a spell that deal necrotic or poison damage the damage dice is increased a number of dice equal to your spellcasting modifier.",
+	]),	
+};
+
+SpellsList["detonate spell slots"] = {
+	name : "Detonate Spell Slots",
+	source : [["PBMS", 0]],
+	classes : ["high priestess", "archon", "archmage"],
+	level : 2,
+	school : "Revoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Wis",
+	description : "you target on spellcaster, who has to make a Wis Save or all unused spell slots explode dealing 1d8 force for each SL. detonated.",
+	descriptionFull : "You cause the potential magic within another creature within range to explode with immense force. When you cast this spell choose one target that has the ability to cast spells and possesses spell slots within range that target must make a wisdom save throw. On a failure all unexpended spell slots the caster possesses is magically expended dealing 1d8 force damage for each unexpended 1st level spell slot, 2d8 force damage for each 2nd level spell slots, and so on up to 9th level. This causes the spell slots to be expended. On a success the damage from these spell slots deal half as much damage.",
+};
+
+SpellsList["pandora's gallivant"] = {
+	name : "Pandora's Gallivant",
+	source : [["PBMS", 0]],
+	classes : ["witch"],
+	level : 5,
+	school : "Conj",
+	time : "1 a",
+	range : "300 ft",
+	components : "V,S,M",
+	compMaterial : "Sulfur",
+	duration : "Instantaneous",
+	description : "teleport to an unoccupied space w/i 300 ft, crea. w/i 30 ft of star/end point of teleportation have disadv on attack rolls and concentration checks for 1 min.",
+	descriptionFull : "You are surrounded by colorful sparks and pyrotechnics, you teleport up to 300ft to an unoccupied space you can see. Using this spell does not provoke an opportunity attack, in addition, where ever you start and end in teleportation results in enemy creatures within 30ft of either point having disadvantage on attack rolls and concentration checks for 1 min.",
+};
+
+SpellsList["pandora's prismatic bridge"] = {
+	name : "Pandora's Prismatic Bridge",
+	source : [["PBMS", 0]],
+	classes : ["witch"],
+	level : 7,
+	school : "Conj",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S,M",
+	compMaterial : "Prismatic Crystal",
+	duration : "24 h",
+	description : "creates a 150ft long by 10 ft wide 1 inch thick bridge between 2 points for the duration, if either end of the bridge moves the bridge disappears.",
+	descriptionFull : "This spell creates an arching prismatic bridge of force that spans across a gap between two points of 150ft. length within range. This bridge is 1 inch thick, 10ft wide, and 150ft long, and remains for the duration. This bridge is immobile and can be shaped in any path shape or angle that does not exceed this bridges length and width. If either point the bridge touches crumbles or moves before the duration the bridge is dispelled early, and all things upon it fall.",
+};
+
+SpellsList["spell turning"] = {
+	name : "Spell Turning",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "warlock", "witch", "wizard"],
+	level : 3,
+	school : "Revoc",
+	time : "1 rea",
+	range : "120 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "Target 1 spell w/i range, if 3rd-level or lower it is turned back on caster, if 4th-level or higher DC 10 + Spell Level spellcasting ability check to turn on caster.",
+	descriptionFull : "You can target a spell cast by another creature within 120ft. If the creature is casting a spell of 3rd level or lower the spell is turned back on the caster. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equal 10 + the spells level. On a success the spell is turned back on the caster. ",
+};
+
+SpellsList["synchronicity"] = {
+	name : "Synchronicity",
+	source : [["PBMS", 0]],
+	classes : ["bard", "sorcerer", "warlock", "witch", "wizard"],
+	level : 4,
+	school : "Evoc",
+	time : "1 bns",
+	range : "Touch",
+	components : "V,S",
+	duration : "Concentration, up to 1 hour",
+	description : "See full description",
+	descriptionFull : "The creature you touch feels reality subtly shifted to its favor while this spell is in effect. The target isn't inconvenienced by mundane delays of any sort. Passages are always open, there's always a waiting boat or carriage around the bend. The target can run at full speed through dense crowds, and attacks of opportunity provoked by the target's movement are made with disadvantage. Synchronicity grants advantage to Dexterity (Stealth) checks, since the target always finds a handy piece of cover available. Additionally, the target has advantage on all ability checks made to ride a mount. In the event that two or more creatures under the effect of synchronicity are attempting to avoid being inconvenienced by each other, the creatures engage in a contest of Charisma each time the effects of the spells would oppose each other.",
+};
+
+SpellsList["delayed spell"] = {
+	name : "Delayed Spell",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "witch", "wizard"],
+	level : 7,
+	school : "Revoc",
+	time : "1 rea",
+	range : "150 ft",
+	components : "V,S",
+	duration : "Concentration, up to 1 minute",
+	description : "you can delay the activation of a spell, when the spell does activate, the original caster can be affected by it as well.",
+	descriptionFull : "When a spell is cast within range you can warp the thread around that spell delaying its manifestation. When the spell ends, either because your concentration is broken or because you decide to end it, the spell activates. Once the spell activates in this way, even the original caster can be affected if applicable.",
+};
+
+SpellsList["augmentation"] = {
+	name : "Augmentation",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "witch", "wizard"],
+	level : 3,
+	school : "Trans",
+	time : "1 bns",
+	range : "self",
+	components : "V,S,M",
+	compMaterial : "Bronze Crayfish",
+	duration : "Instantaneous",
+	description : "you can cast damaging spell as an action and add your spell mod to each die rolled.",
+	descriptionFull : "When you cast this augmentation spell you can cast another spell as an action. This spell augments the following spell you cast. For each die rolled for the following spell you can add your spellcasting modifier to the total. For example the spell burning hands which requires you to roll 3d6 you can add your spellcasting modifier three times to the total. This spell only effects spells of 3rd level or lower. At Higher Levels. When you cast this spell using a spell slot of 4th level or higher you can augment spells equal to or less than the spell slot used. ",
+};
+
+SpellsList["teleport object"] = {
+	name : "Teleport Object",
+	source : [["PBMS", 0]],
+	classes : ["artificer", "bard", "witch", "wizard"],
+	level : 3,
+	school : "Conj",
+	time : "1 a",
+	range : "touch",
+	components : "V,S,M",
+	compMaterial : "Rare chalks and inks infused with 50gp Powdered Gems, which the spell consumes",
+	duration : "Instantaneous",
+	description : "teleport object to permanent teleportation circle.",
+	descriptionFull : "This spell teleports an object no larger than a 1ft cube of your choice that you scribe with the seal of a permanent teleportation circle. This object instantly transfers to that location.",
+};
+
+SpellsList["detect scrying"] = {
+	name : "Detect Scrying",
+	source : [["PBMS", 0]],
+	classes : ["bard", "witch", "wizard"],
+	level : 4,
+	school : "Div",
+	time : "1 a",
+	range : "Same Plane",
+	components : "V,S,M",
+	compMaterial : "Preserved Angel's Trumpet Flower",
+	duration : "Concentration, up to 1 hr",
+	description : "see full description",
+	descriptionFull : "When you cast this spell you become aware of any attempt made by another caster using a divination spell that seeks to observe you or acquire any information about you that is on the same plane of existence as you. You immediately know the casters location, the spell used, and if the caster is friendly toward you.",
+};
+
+SpellsList["duplicate"] = {
+	name : "Duplicate",
+	source : [["PBMS", 0]],
+	classes : ["witch", "wizard"],
+	level : 5,
+	school : "Trans",
+	time : "1 a",
+	range : "touch",
+	components : "V,S,M",
+	compMaterial : "an item of equal size and rarity and a pinch of coal dust",
+	duration : "1 h",
+	description : "create an identical duplicate of any non-living object for 1 hour, +1 h/SL above 5th",
+	descriptionFull : "This spell transforms an object into an exact copy of any single item that the caster touches. The item transformed must be of the same size and rarity of the object being duplicated. This spell has no effect on living creatures, including undead, but not constructs. The duplicated items is identical to the original in every way. The duplicated item lasts for 1 hour for each level of slot expended above 5th level. ",
+};
+
+SpellsList["permanent illusion"] = {
+	name : "Permanent Illusion",
+	source : [["PBMS", 0]],
+	classes : ["bard", "witch", "wizard"],
+	level : 6,
+	school : "Illus",
+	time : "1 a",
+	range : "300 ft",
+	components : "V,S,M",
+	compMaterial : "a bit of fleece",
+	duration : "Until Dispelled",
+	description : "you create a perfect and realistic illsion that fits w/i a 20ft cube, it is convincing to just before the point of dealing damage.",
+	descriptionFull : "When this spell is cast, the caster creates an illusion with visual, auditory, olfactory, and thermal elements. This spell can create the illusion of any object or natural element such as a fire or shrub, as long as it fits within a 20ft cube. This illusion conveys realism to an extent just before instilling damage to a creature or object. Any creature to perform an insight check on this illusion must surpass the casters DC. On a failure the creature believes the illusion is real, otherwise on a success the creature can discern that it is an illusion. This illusion remains until dispelled.",
+};
+
+SpellsList["desire"] = {
+	name : "Desire",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "witch", "wizard"],
+	level : 7,
+	school : "Conj",
+	time : "1 a",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	description : "see full description",
+	descriptionFull : "Desire is a lesser wish spell, simply by speaking aloud, you can alter your nearby surroundings as you desire. This spell can duplicate any spell of 5th level or lower without requiring components or the knowledge to cast the spell. In addition, this spell automatically succeeds, meaning, your roll for AC succeeds or the target creatures save throw fails. This effect automatically applies except this spell does not surpass a creatures resistances, immunities, or legendary resistance. All other normal calculated aspects proceed as directed in the spell.",
+};
+
+SpellsList["create golem"] = {
+	name : "Create Golem",
+	source : [["PBMS", 0]],
+	classes : ["witch", "wizard"],
+	level : 8,
+	school : "Trans",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S,M",
+	compMaterial : "10 ft cube of base material required for specified golem",
+	duration : "Concentration, up to 1 hour",
+	description : "you create a golem (Clay, Stone, Iron, Glass, Flesh, so on) that remains for 1 hour or until reduced to 0 hp.",
+	descriptionFull : "When you cast this spell you can target a 10ft cube of nonmagical material be it clay, stone, irom, glass, flesh, and so on. You instantly create a golem from the present material that shares the same stat block of the golem you create in the monster manual. This golem remains under your control until concentration ends, the golem is dropped to 0hp, or after 1 hour has passed. After 1 hour the golem reverts back to the materials of its creation. This golem acts on its own turn sharing your initiative. It obeys every mental command you give it no action required by you.",
+};
+
+SpellsList["wail fo the banshee"] = {
+	name : "Wail of the Banshee",
+	source : [["PBMS", 0]],
+	classes : ["druid", "warlock", "witch"],
+	level : 9,
+	school : "Necro",
+	time : "1 a",
+	range : "120 ft",
+	components : "V",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "you unleash a unearthly wail crea = char lvl w/i range Con Save or take 100 necr dmg. if crea dies you may target one other crea. if it saves its save it is unaffected.",
+	descriptionFull : "When you cast this spell, you unleash a deadly wail of necromatic power. A number of creatures equal to your character level that is within range must make a constitution save throw. On a failed save a creature takes 100 necrotic damage. If the creature dies out right one additional creature within 30ft of it that was unaffected must make a constitution save throw or take 100 necrotic damage. This effect cannot effect you. On a success, the creature is unaffected. If the creature is targeted again due to the death of a nearby creature they must repeat the save throw. If a creature succeeds three times against this effect they are permanently immune to this effect whenever it is created by you.",
+};
+
+SpellsList["magic cancel"] = {
+	name : "Magic Cancel",
+	source : [["PBMS", 0]],
+	classes : ["witch", "wizard"],
+	level : 5,
+	school : "Revoc",
+	time : ["1 a", "1 rea"],
+	range : "60 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "you cancel a spell activation/end spell effect of spell level equal or lower than 5th, or DC 10 + Spell Level Spell Ability check.",
+	descriptionFull : "You can choose one spell and cancel its activation or end an active spell effect of the same level or lower that is cast or used. Any spell of 5th level or lower ends. For each spell of 6th level or higher that you target, make an ability check using your spellcasting ability. The DC equa;s 10 + the spells level. On a successful check, the spell ends. At Higher Levels: When you cast this spell using a spell slot of 6th level or higher, you automatically end effects of a spell if the spell is equal level or lower.",
+};
+
+SpellsList["spell binding"] = {
+	name : "Spell Binding",
+	source : [["PBMS", 0]],
+	classes : ["witch", "wizard"],
+	level : 6,
+	school : "Revoc",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M",
+	compMaterial : "a pinch of powdered iron or iron filings",
+	duration : "Concentration, up to 1 hour",
+	save : "Cha",
+	description : "you bind a target you touch in magical chains of antimagic restraining the target on a failed Cha save and inflicting an Antimagic Field that only effects the restrained target",
+	descriptionFull : "You touch a target causing magical antimagic chains to spring into existence. The target of this spell must make a charisma saving throw or be restrained by the chains. On a failed save the target is restained and also affected by the antimagic field spell, except the effects only apply to the creature. This effect lasts until concentration ends or until ended by you no action required.",
+};
+
+SpellsList["magic siphon"] = {
+	name : "Magic Siphon",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "warlock", "witch", "wizard"],
+	level : 7,
+	school : "Revoc",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S,M",
+	compMaterial : "purple sea sponge",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "1 spellcasting crea w/i range Con Save on failed roll 2d12 spell points siphoned no spell slots can be siphoned over 5th level.",
+	descriptionFull : "You target one creature within range that has the ability to cast spells and possesses spell slots. That target must succeed a constitution saving throw or be siphoned of their spell slots. On a failure, you must roll 2d12 to determine the spell slots recovered from this spell and drained from the target. The number rolled determines the total point value of spell slots regained of 5th level or lower. For example if your were to roll an 8 you could choose to regain one 5th level spell slot and one 3rd level spell slot. Otherwise you could choose four 1st level spell slots and two 2nd level spell slots. This effect only allows you to restore a maximum of spells slots up to targets available spell slots. In other words if the target is unable to cast 5th level spells or does not have 5th level spell slots available you cannot regain spell slots of 5th level. ",
+};
+
+SpellsList["infringement"] = {
+	name : "Infringement",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "warlock", "witch", "wizard"],
+	level : 9,
+	school : "Revoc",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S,M",
+	compMaterial : "Prismatic Shard",
+	duration : "Instantaneous",
+	save : "Int",
+	description : "you steal the knowledge and ability to cast a spell from a target that fails an Int save.",
+	descriptionFull : "You magically steal the knowledge to cast and use a spell from another creature. When you target a creature with this spell that creature must make a intelligence saving throw. On a failed save you select one spell that the target knows of a level in which you can cast. When you do so you steal the knowledge and ability to cast that spell allowing you to learn that spell and add it to your spell list. In addition this spell does not count against your known spells. That creature also loses the knowledge and ability to cast that spell, however the creature can choose to relearn it using the appropriate time and actions.",
+};
+
+SpellsList["contractual conjuration"] = {
+	name : "Contractual Conjuration",
+	source : [["PBMS", 0]],
+	classes : ["warlock", "witch", "wizard"],
+	level : 5,
+	school : "Conj",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S,M",
+	compMaterial : "Creature Trinket",
+	duration : "1 h",
+	description : "you create a magical connection between you and a creature friendly to you. you summon a creature that you have created a bond with",
+	descriptionFull : "You create a magical connection between you and another creature within range. If the targeted creature is willing and able they offer you a trinket of their making as a focus for this spell. This trinket is the source of your contract with the creature and allows you to summon them to a space within 60 feet of you as an action. After the initial cating of this spell, any time you use this spell and the said trinket you can summon this creature from where ever it is to a space within range. While summoned the creature is friendly to you and your companions, and obeys every verbal command you give it. If you don’t issue a command the creature defends itself from hostile creatures. This creature remains until 1 hour has passed, you dismiss the creature as a bonus action on your turn, or the creature drops to 0 hit points causing the creature to return from where they came from unharmed and the trinket breaks. ",
+};
+
+SpellsList["viktor's hoodwink"] = {
+	name : "Viktor's Hoodwink",
+	source : [["PBMS", 0]],
+	classes : ["artificer", "bard"],
+	level : 3,
+	school : "Illus",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "you make a weapon atk as part of this spell's casting 3 illusory copies of yourself appear giving you adv on the atk, the each illusion deals your weapon dmg to the target as psychic dmg",
+	descriptionFull : "You make a weapon attack during the casting of this spell. When you do so three illusions of yourself appear and make a weapon attack toward the same target. You gain advanatge on your attack rolls this turn toward your chosen target. On a hit, the target suffers the weapon attacks normal effects, and is also hit by each illusion dealing the same weapon damage except the damage type is psychic.",
+};
+
+SpellsList["ambrose's nebula"] = {
+	name : "Ambrose's Nebula",
+	source : [["PBMS", 0]],
+	classes : ["warlock"],
+	level : 3,
+	school : "Evoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S,M",
+	compMaterial : "a star shard",
+	duration : "Instantaneous",
+	save : "Dex",
+	description : "a bright streak flashes to a point within range, each crea w/i a 30 ft rad. dex save, on fail 4d8 +1d8/SL choice (Rad, Force, Psy, Nec) dmg or half as much on succ.",
+	descriptionFull : "A bright streak flashes from your pointing finger to a point you choose within range then blossoms with multi-colored force into an spacial explosion. Each creature in a 30-foot radius must make a Dexterity saving throw aside from you. A target takes 4d8 damage on one of the following damage types of choice (radiant, force, psychic, necrotic) on a failed save, or half as much damage on a successful one. This nebula spreads around corners. Each creature does not have to be affected by the same damage type of your choosing. When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot above 3rd.",
+};
+
+SpellsList["investiture of water"] = {
+	name : "Investiture of Water",
+	source : [["PBMS", 0]],
+	classes : ["witch"],
+	level : 6,
+	school : "Trans",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "Concentration, up to 10 mins",
+	save : "Str",
+	description : "Until spell ends, immune to wave, resist fire, breathe underwater, 30 ft swim speed, 15 ft wave Str save or take 2d10 wave and be pushed to edge of wave, or half as much on succ.",
+	descriptionFull : "Until the spell ends,  water condenses on your body, and you gain the following benefits. You are immune to wave damage and have resistance to fire damage. You are able to breathe under water and have a swim speed of 30 feet. You can use your action to create a 15 ft cone wave extending from you in a direction you choose. Each creature in the cone must make a Strenth saving throw. A creature takes 2d10 wave damage and if Large ro smaller is pushed to an unoccupied space at the edge of the wave on a failed save, or half as much damage and is not pushed on a successful one.",
+};
+
+SpellsList["detonate spell slots"] = {
+	name : "Detonate Spell Slots",
+	source : [["PBMS", 0]],
+	classes : ["archon", "high priestess", "archmage"],
+	level : 2,
+	school : "Revoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Wis",
+	description : "1 crea capable of casting spells wis save all unused spell slots are expended and explode dealing 1d8 per spell slot level.",
+	descriptionFull : "You cause the potential magic within another creature within range to explode with immense force. When you cast this spell choose one target that has the ability to cast spells and possesses spell slots within range that target must make a wisdom save throw. On a failure all unexpended spell slots the caster possesses is magically expended dealing 1d8 force damage for each unexpended 1st level spell slot, 2d8 force damage for each 2nd level spell slots, and so on up to 9th level. This causes the spell slots to be expended. On a success the damage from these spell slots deal half as much damage.",
+};
+
+SpellsList["gourd's garden"] = {
+	name : "Gourd's Garden",
+	source : [["PBMS", 0]],
+	classes : ["primordial"],
+	level : 1,
+	school : "Conj",
+	time : "1 a",
+	range : "300 ft",
+	components : "V,S,M",
+	compMaterial : "Intact Mushroom",
+	duration : "24 h",
+	save : "Con",
+	description : "See full description",
+	descriptionFull : desc([
+		"You transform your surrounding environment within a 60ft radius of you into a fungal garden that is canopied by fungal netting to protect from the sun. This garden produces the following effects and features under your control for the duration. If this spell is cast again before the it ends the duration is extended another 24 hours. Repeating this process for seven days creates a permanent fungal garden.",
+		"Environmental Effects",
+		"Mycelium: This region imposes disadvantage on saving throws and removes immunity to poison and necrotic damage for all hostile or uninvited creatures within this space.",
+		"Veil: This region grants you and allies immunity to poison and necrotic damage while within the space.",
+		"Gills: As a reaction on any creatures turn, you can negate any spell cast by another creature that deals necrotic or poison damage, or that instills a poisoned condition.",
+		"Spores: Hostile or uninvited creatures that start their turn within this space must make a constitution save throw or the creature is poisoned and takes 3d8 poison damage at the start of each of the creatures turns. If the creature succeeds they are not poisoned and still take 3d8 poison damage.",
+		"Scales: When you cast a spell that deal necrotic or poison damage the damage dice is increased a number of dice equal to your spellcasting modifier.",
+	]),	
+};
+	
 SpellsList["mind fog"] = {
 	name : "Mind Fog",
 	source : [["PBMS", 0]],
-	classes : ["fool", "witch"],
+	classes : ["bard", "fool", "witch", "wizard"],
 	level : 5,
 	school : "Ench",
 	time : "1 a",
@@ -966,7 +1321,7 @@ SpellsList["mind fog"] = {
 SpellsList["shout"] = {
 	name : "Shout",
 	source : [["PBMS", 0]],
-	classes : ["fool", "witch", "bard"],
+	classes : ["bard", "fool", "paladin", "witch", "wizard"],
 	level : 4,
 	school : "Trans",
 	time : "1 a",
@@ -982,7 +1337,7 @@ SpellsList["shout"] = {
 SpellsList["taunt"] = {
 	name : "Taunt",
 	source : [["PBMS", 0]],
-	classes : ["fool", "witch", "bard"],
+	classes : ["bard", "fool", "paladin", "witch", "wizard"],
 	level : 1,
 	school : "Ench",
 	time : "1 a",
@@ -998,7 +1353,7 @@ SpellsList["taunt"] = {
 SpellsList["erase"] = {
 	name : "Erase",
 	source : [["PBMS", 0]],
-	classes : ["fool", "wizard"],
+	classes : ["artificer", "bard", "fool", "witch", "wizard"],
 	level : 1,
 	school : "Trans",
 	time : "1 a",
@@ -1012,7 +1367,7 @@ SpellsList["erase"] = {
 SpellsList["disruption"] = {
 	name : "Disruption",
 	source : [["PBMS", 0]],
-	classes : ["witch"],
+	classes : ["bard", "sorcerer", "warlock", "witch", "wizard"],
 	level : 2,
 	school : "Revoc",
 	time : "1 a",
@@ -1030,7 +1385,7 @@ SpellsList["disruption"] = {
 SpellsList["arcane retaliation"] = {
 	name : "Arcane Retaliation",
 	source : [["PBMS", 0]],
-	classes : ["witch"],
+	classes : ["sorcerer", "warlock", "witch"],
 	level : 4,
 	school : "Revoc",
 	time : "1 rea",
@@ -1045,7 +1400,7 @@ SpellsList["arcane retaliation"] = {
 SpellsList["alchemist fire"] = {
 	name : "Alchemist Fire",
 	source : [["PBMS", 0]],
-	classes : ["artificer", "witch", "fool"],
+	classes : ["artificer", "wizard"],
 	level : 0,
 	school : "Trans",
 	time : "1 a",
@@ -1062,7 +1417,7 @@ SpellsList["alchemist fire"] = {
 SpellsList["usurp"] = {
 	name : "Usurp",
 	source : [["PBMS", 0]],
-	classes : ["witch"],
+	classes : ["sorcerer", "warlock", "witch", "wizard"],
 	level : 0,
 	school : "Revoc",
 	time : "1 a",
@@ -1077,7 +1432,7 @@ SpellsList["usurp"] = {
 SpellsList["merlin"] = {
 	name : "Merlin",
 	source : [["PBMS", 0]],
-	classes : ["wizard"],
+	classes : ["artificer", "bard", "witch", "wizard"],
 	level : 1,
 	school : "Trans",
 	time : "1 a",
@@ -1092,7 +1447,7 @@ SpellsList["merlin"] = {
 SpellsList["pattern weave"] = {
 	name : "Pattern Weave",
 	source : [["PBMS", 0]],
-	classes : ["witch"],
+	classes : ["bard", "sorcerer", "witch", "wizard"],
 	level : 1,
 	school : "Div",
 	time : "1 a",
@@ -1107,7 +1462,7 @@ SpellsList["pattern weave"] = {
 SpellsList["revoke"] = {
 	name : "Revoke",
 	source : [["PBMS", 0]],
-	classes : ["witch"],
+	classes : ["bard", "witch", "wizard"],
 	level : 1,
 	school : "Revoc",
 	time : "1 a",
@@ -1137,7 +1492,7 @@ SpellsList["chaos shield"] = {
 SpellsList["moon rune"] = {
 	name : "Moon Rune",
 	source : [["PBMS", 0]],
-	classes : ["druid"],
+	classes : ["druid", "wizard"],
 	level : 2,
 	school : "Trans",
 	time : "1 a",
@@ -1152,7 +1507,7 @@ SpellsList["moon rune"] = {
 SpellsList["protection from cantrips"] = {
 	name : "Protection from Cantrips",
 	source : [["PBMS", 0]],
-	classes : ["wizard", "cleric"],
+	classes : ["cleric", "paladin", "wizard"],
 	level : 2,
 	school : "Abjur",
 	time : "1 a",
@@ -1167,7 +1522,7 @@ SpellsList["protection from cantrips"] = {
 SpellsList["swiftness"] = {
 	name : "Swiftness",
 	source : [["PBMS", 0]],
-	classes : ["wizard"],
+	classes : ["bard", "sorcerer", "wizard"],
 	level : 2,
 	school : "Trans",
 	time : "1 a",
@@ -1930,7 +2285,7 @@ MagicItemsList = {
 			extraTooltip : "AL: can always be bought for 50000 gp"
 		},
 	},
-},
+};
 
 MagicItemsList["crystal"] = {
 	name : "Crystal",
@@ -1945,7 +2300,7 @@ MagicItemsList["crystal"] = {
 		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
-},
+};
 
 MagicItemsList["orb"] = {
 	name : "Orb",
@@ -1960,7 +2315,7 @@ MagicItemsList["orb"] = {
 		"Expansion. When casting a spell that creates an area of effect with a spell foci with the expansion property the area range is increased by 15 feet.",
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
-},
+};
 
 MagicItemsList["rod"] = {
 	name : "Rod",
@@ -1980,11 +2335,12 @@ MagicItemsList["rod"] = {
 		baseWeapon : "mace",
 		regExpSearch : /rod/i,
 		name : "Rod",
-		source : [["PBMS"]],
+		
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
 		modifiers : [0, 0]
 	},
-},
+};
 
 MagicItemsList["gnarled staff"] = {
 	name : "Gnarled Staff",
@@ -2078,11 +2434,12 @@ MagicItemsList["gnarled staff"] = {
 		baseWeapon : "greatclub",
 		regExpSearch : /gnarled/i,
 		name : "Gnarled Staff",
-		source : [["PBMS"]],
+		
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
 		modifiers : [0, 0]
 	},
-},
+};
 
 MagicItemsList["wand"] = {
 	name : "Wand",
@@ -2171,7 +2528,7 @@ MagicItemsList["wand"] = {
 			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
 		],
 	},	
-},
+};
 
 MagicItemsList["amulet"] = {
 	name : "Amulet",
@@ -2260,7 +2617,7 @@ MagicItemsList["amulet"] = {
 			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
 		],
 	},
-},
+};
 
 MagicItemsList["crystal sword"] = {
 	name : "Crystal Sword",
@@ -2280,11 +2637,12 @@ MagicItemsList["crystal sword"] = {
 		baseWeapon : "scimitar",
 		regExpSearch : /crystal, sword/i,
 		name : "Crystal Sword",
-		source : [["PBMS"]],
+		
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
 		modifiers : [0, 0]
 	},
-},
+};
 
 MagicItemsList["scepter"] = {
 	name : "Scepter",
@@ -2304,11 +2662,12 @@ MagicItemsList["scepter"] = {
 		baseWeapon : "greatclub",
 		regExpSearch : /scepter/i,
 		name : "Scepter",
-		source : [["PBMS"]],
+		
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
 		modifiers : [0, 0]
 	},
-},
+};
 
 MagicItemsList["reliquiary"] = {
 	name : "Reliquiary",
@@ -2397,7 +2756,7 @@ MagicItemsList["reliquiary"] = {
 			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
 		],
 	},	
-},
+};
 
 MagicItemsList["boline"] = {
 	name : "Boline",
@@ -2417,11 +2776,11 @@ MagicItemsList["boline"] = {
 		baseWeapon : "sickle",
 		regExpSearch : /boline/i,
 		name : "Boline",
-		source : [["PBMS"]],
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
 		modifiers : [0, 0]
 	},
-},
+};
 
 MagicItemsList["wooden staff"] = {
 	name : "Wooden Staff",
@@ -2515,11 +2874,12 @@ MagicItemsList["wooden staff"] = {
 		baseWeapon : "greatclub",
 		regExpSearch : /wooden/i,
 		name : "Wooden Staff",
-		source : [["PBMS"]],
+		source : [["PBMS", 0]],
 		description : "You can use a spell focus with the weapon property as a magical weapon. This weapon uses your spellcasting modifier in place of Strength or Dexterity for attack and damage rolls.",
-		modifiers : [0, 0]
+		modifiers : [0, 0],
+		
 	},
-},
+};
 
 MagicItemsList["druid's egg"] = {
 	name : "Druid's Egg",
@@ -2608,7 +2968,7 @@ MagicItemsList["druid's egg"] = {
 			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
 		],
 	},
-},
+};
 
 MagicItemsList["totem"] = {
 	name : "Totem",
@@ -2697,7 +3057,7 @@ MagicItemsList["totem"] = {
 			"Favored. When you cast a spell from the Transmutation school of magic you have advantage on spell attack rolls and targets have disadvantage on saving throws against those spells.",
 		],
 	},
-},
+};
 
 MagicItemsList["mistletoe"] = {
 	name : "Mistletoe",
@@ -2711,7 +3071,7 @@ MagicItemsList["mistletoe"] = {
 		"Extension. You can use a spell foci that has the extension property to cast ranged spells up to an additional 30 feet. These spells have to have a casting range greater than self or touch.",
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
-},
+};
 
 //Adds a new feat
 	
@@ -2733,7 +3093,7 @@ FeatsList["meddle magic adept"] = {
 	}],
 	prerequisite : "Spellcasting or Pact Magic feature",
 	prereqeval : function (v) { return v.isSpellcastingClass; }
-},
+};
 
 // Adds new companion creatures to accompany the Elementalist and Fool classes	
 
@@ -2790,7 +3150,7 @@ CreatureList["elemental mote"] = {
 	alignment : "Unaligned",
 	ac : 16,
 	hp : 20,
-	hd : [6, 4],
+	hd : [5, 4],
 	speed : "0 ft, Fly(Hover) 50 ft",
 	scores : [1, 22, 14, 12, 10, 7],
 	saves : ["", 8, 4, "", "", ""],
@@ -2912,7 +3272,7 @@ CreatureList["guardian mote"] = {
 	}],	
 };
 
-// Adds a new class, the Fool, with 3 subclasses
+// Adds a new class, the Fool, with 4 subclasses
 
 ClassList.fool = {
 	
@@ -2995,7 +3355,7 @@ ClassList.fool = {
 			
 			"jesting" : {
 				name : "Tricks of Jesting",
-				spellcastingExtra : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+				spellcastingExtra : ["hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
 			},
 			
 			"mischief" : {
@@ -3439,7 +3799,158 @@ AddSubClass("fool", "puppeteer", {
 			]),
 		},
 	},
-});		
+});	
+
+AddSubClass("fool", "trickster", {
+	regExpSearch : /^(?=.*(playhouse|fool))(?=.*trickster).*$/i,
+	subname : "Playhouse of the Trickster",
+	source : [["PBMS", 0]],
+	features : {	
+		"subclassfeature3" : {
+			name : "Master of Disguise",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level, you have superior skills in visual deception. You can cast the disguise self spell without consuming a spell slot or requiring components. When you gain this feature you gain one mask option from the masquerade feature before you reach the appropriate level. Once you reach 5th level you can choose another mask option.",
+			]),	
+			extraname : "Master of Disguise",
+			extrachoices : ["Jester", "Pierrot", "Zanni", "Plague", "Volto", "Bauta", "Colombina", "Harlequin"],
+			extraTimes : 1,
+			"jester" : {
+				name : "Jester",
+				description : desc([
+					'Mask of the Jester: Comedy',
+					"This jester-faced mask displays a joyful expression and conveys the essence of comedy. This mask grants you the following benefits.",
+					"• You can take the dash and disengage action as a bonus ation on your turn.",
+					"• You are immune to the restrained and grappled condition.",
+					"• You gain one additional comedy when you benefit from the comedy of Comedy and Tragedy.",
+				]),	
+			},
+			"pierrot" : {
+				name : "Pierrot",
+				description : desc([
+					'Mask of the Pierrot: Tragedy',
+					"This sad clown-faced mask displays a mournful expression and conveys the essence of tragedy. This mask grants you the following benefits.",
+					"• You can take the hide and disengage action as a bonus action.",
+					"• You are immune to the blinded and deafened condition.",
+					"• You gain one additional tragedy when you benefit from the tragedy of Comedy and Tragedy.",
+				]),	
+			},
+			"zanni" : {
+				name : "Zanni",
+				description : desc([
+					'Mask of Zanni: Foolish',
+					"This long nose upper-faced mask displays a long narrow nose and conveys the expression of a fool. This mask grants you the following benefits.",
+					"• You have advantage on all rolls made for a foolish act.",
+					"• You are immune to the prone condition.",
+					"• You can cast the gift of gab spell once before a short or long rest without consuming a spell slot.",
+				]),	
+			},
+			"plague" : {
+				name : "Plague",
+				description : desc([
+					'Mask of the Plague: Pestilence',
+					"This bird-faced mask displays a solemn expression and conveys the essence of sickness. This mask grants you the following benefits.",
+					"• You can choose to replace any type of damage you deal with a spell with the poison damage type.",
+					"• You are immune to being poisoned and diseased.",
+					"• When you hit with an attack the target must make a Constitution saving throw against your spell DC. On a failed save the creature becomes diseased and is now vulnerable to poison damage.",
+				]),	
+			},
+			"volto" : {
+				name : "Volto",
+				description : desc([
+					'Mask of the Volto: Mystery',
+					"This porcelain full-faced mask displays a emotionless expression and conveys the essence of mystery. This mask grants you the following benefits.",
+					"• You gain the benefits of the nondetection spell.",
+					"• You are immune to the effects of telepathy and detect thoughts spell.",
+					"• You have advantage on deception checks.",
+				]),	
+			},
+			"bauta" : {
+				name : "Bauta",
+				description : desc([
+					'Mask of Bauta: Protection',
+					"This square angular-faced mask displays a muted expression and conveys the essence of durability. This mask grants you the following benefits.",
+					"• Your bonus to AC is a +5 instead of a +1",
+					"• You are resistant to physical damage from non magical weapons.",
+					"• You do not provoke opportunity attacks.",
+				]),	
+			},
+			"colombina" : {
+				name : "Colombina",
+				description : desc([
+					'Mask of Columbina: Charm',
+					"This elegant oval upper-faced mask displays a beautiful expression and conveys the essence of charm. This mask grants you the following benefits.",
+					"• Targets that are immune to the charmed condition can still be targeted by your charming effects. This does not affect legendary resistance, legedary magic items, or boons.",
+					"• You are immune to the charmed condition.",
+					"• You have advanatge on persuassion checks.",
+				]),	
+			},
+			"harlequin" : {
+				name : "Harlequin",
+				description : desc([
+					'Mask of the Harlequin: Anger',
+					"This diamond patterned mask displays a fiendish expression and conveys the essence of anger. This mask grants you the following benefits.",
+					"• When you use your reckless abandon feature you score a critical hit on a 18 or higher.",
+					"• You are immune to the frightened condition.",
+					"• You have resistance to any damage received from attacks that hit with advantage.",
+				]),	
+			},
+		},	
+		"subclassfeature6" : {
+			name : "Superior Desception",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			skills : ["Persuasion", "Deception"],
+			description : desc([
+				"At 6th level, you gain expertise in the deception and persuassion skill if you have proficiency with those skills. If you do not already have proficeincy you gain proficiecny and expertise. In addition, you are immune to the effects of the spell zone of truth, however, you do not supercede a creatures divine awareness if they are a challenge rating of 20 or higher. Lastly, when a creature rolls for a saving throw or an ability check against one of your illusion or enchantment spells your DC is calculated as follows; 8 + charisma modifier + double proficiency bonus. ",
+			]),
+			skillstxt : "Expertise with Persuasion and Deception",
+		},
+		"subclassfeature10" : {
+			name : "Endless Tricks",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"At 10th level, your trickery is never ending and you always seek to surprise even the most familiar foes. When you reach this level you can choose another set of tricks to specialize in.",
+			]),	
+			extraname : "Endless Tricks",
+			extrachoices : ["horror", "deception", "jesting", "mischief", "vanishment"],
+			"horror" : {
+				name : "Tricks of Horror",
+				spellcastingExtra : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+			},
+			
+			"deception" : {
+				name : "Tricks of Deception",
+				spellcastingExtra: ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+			},
+			
+			"jesting" : {
+				name : "Tricks of Jesting",
+				spellcastingExtra : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+			},
+			
+			"mischief" : {
+				name : "Tricks of Mischief",
+				spellcastingExtra : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+			},
+			
+			"vanishment" : {
+				name : "Tricks of Vavnishment",
+				spellcastingExtra : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+			},
+		},
+		"subclassfeature14" : {
+			name : "Distorted Reality",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"At 14th level, you have achieved the greatest form of trickery that is only achieved by twisting the minds of the creatures around you. When you cast an illusion spell, creatures that do not rely on sight such as blind sight are still fooled as the illusion roots within their mind rather than as a visual projection. In addition, creatures with truesight that are not immune to being charmed or frightened also are affected by your illusion spells in the same manner.",
+			]),	
+		},
+	},
+});
 
 // Adds a new class, the Elementalist, with 4 subclasses
 
@@ -3809,7 +4320,7 @@ ClassList.elementalist = {
 			description : desc([
 				"You can call out to elder elementals to grace you with their elemental energy to regain all expended spell slots, and enigmatic power. Once regained an aura of elemental power surrounds you for the next hour. During this time you can use you elemental powers freely without concern of its nearby presence. You must finish a long rest before you can use this feature again. In addition your range for elemental presence increases to 60 feet instead of 30ft for using your elemental powers when you reach this level.",
 			]),
-		},	
+		},
 	},
 };	
 
@@ -4118,17 +4629,1615 @@ AddSubClass("elementalist", "water", {
 	},
 });
 
+//Adds a new class, the Mystic, with 4 subclasses, as well as armor and a weapon for the class
+
+WeaponsList["orbuculum"] = {
+	name : "Orbuculum",
+	source : [["PBMS", 0]],
+	regExpSearch : /^(?=.*orbuculum).*$/i,
+	type : "Simple",
+	ability : 6,
+	abilitytodamage : true,
+	damage : [1, 4, "force"],
+	range : "Melee, 30/60 ft",
+	description : "Counts as magical", 
+	monkweapon : true,
+	list : "ranged",
+	weight : 0,
+};
+
+ArmourList["ward"] = {
+	name : "Ward",
+	source : [["PBMS", 0]],
+	regExpSearch : /^(?=.*ward).*$/i,
+	ac : "10+Wis+Cha",
+	dex : -10,
+	affectsWildShape : true,
+};	
+
+ClassList.mystic = {
+	
+	regExpSearch : /mystic/i,
+	name : "Mystic",
+	source : [["PBMS", 0]],
+	primaryAbility : ["Wisdom"],
+	abilitySave : 5,
+	prereqs : "Wisdom 13",
+	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+	die : 8,
+	saves : ["Cha", "Wis"],
+	skillstxt : {
+		primary : "Choose three from Arcana, Deception, History, Insight, Investigation, Nature, Perception, Performance, Persuasion.",
+	},
+	armorProfs : {
+		primary : [false, false, false, false],
+	},
+	toolsProfs : {
+		primary : [["Navigator's Tools", "Wis"], ["Cartographer's Tools", "Int"]],
+	},	
+	weaponProfs : {
+		primary : [true, false],
+	},
+	equipment : "Mystic's starting equipment:" +
+		"\n \u2022 An orbuculum;" +
+		"\n \u2022 A scholar's pack -or- An explorer's pack." +
+		"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+	subclasses : ["Mystic Order", []],
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+	spellcastingFactor : 1,
+	spellcastingKnown : {
+		cantrips : 0,
+		spells : "list",
+		prepared : false,
+	},
+	spellcastingList : { 
+		spells : ["borrowed knowledge", "locate object", "see invisibility", "clairvoyance", "tongues", "divination", "locate creature", "contact other plane", "scrying"],
+	},
+  features : {
+		"spellslotremoval1" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -2, text : ""},
+			],
+		},
+		"spellslotremoval2" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -3, text : ""},
+			],
+		},
+		"spellslotremoval3" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -2, text : ""},
+			],
+		},
+		"spellslotremoval4" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 4,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+			],
+		},
+		"spellslotremoval5" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -2, text : ""},
+			],
+		},
+		"spellslotremoval6" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+			],
+		},
+		"spellslotremoval7" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval8" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 8,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -2, text : ""},
+			],
+		},
+		"spellslotremoval9" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval10" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+			],
+		},
+		"spellslotremoval11" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval12" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 12,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval13" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval14" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval15" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval16" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 16,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval17" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl9", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval18" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 18,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl9", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval19" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 19,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl9", mod : -1, text : ""},
+			],
+		},
+		"spellslotremoval20" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 20,
+			addMod : [
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl1", mod : -4, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl2", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl3", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl4", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl5", mod : -3, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl6", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl7", mod : -2, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl8", mod : -1, text : ""},
+				{ type : "", field : "SpellSlots.CheckboxesSet.lvl9", mod : -1, text : ""},
+			],
+		},
+		"orbuculum" : {
+			name : "Orbuculum",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc([
+				"At 1st level, your practice of ballistic combat within extra-dimensional spaces gives you mastery of a mystical combat style that uses a magical ballistic known as a Orbuculum.. This mystical fighting style uses a floating orb that bombards an opponent at critical moments in conjunction with synchronized hand motions to manipulate it. This weapon is magically linked to the user and is manipulated by the flow of mana. This weapon is considered magical for the purpose of overcoming resistance and immunity. At 1st level this mystical weapon deals 1d4 force damage. Your Orbuculum disappears to an extra-dimensional space if it is more than 30ft away from you for 1 minute or more. You can summon or dismiss this weapon as a bonus action on your turn shunting it into an extra-dimensional space. This weapon cannot be lost or stolen. You gain the following benefits while you are wielding only the Orbuculum.",
+					"• The Orbuculum has a weapon range of 30ft without disadvantage, and 60ft with disadvantage. This weapon returns to you immediately after a strike.",
+					"• You can use Charisma instead of strength or dexterity for attack and damage rolls with your Orbuculum.",
+					"• When you use the attack action with your Orbuculum, you can make one additional attack as a bonus action. Assuming you have not already taken a bonus action. This attack can be on the same target or another within range.",
+			]),
+			toNotesPage : [{
+				name : "Orbuculum Strikes",
+				note : [
+					"Aphelion Strike",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 60ft without disadvantage.",
+					"Eclipse Ward",
+					"When you are targeted with an attack in which an attack roll was made you can spend 1 mana point as a reaction to possibly block the attack by gaining a +2 to your AC. This AC bonus remains until the start of your next turn",
+					"Orbiting Mind",
+					"When you use mana to cast a spell with concentration you can spend an additional mana point to cast it without requiring concentration. Doing so the spell lasts for the full duration unless dismissed by you no action required. You can only have one spell active in this way at a time.",
+					"Perihelion Crash",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 30ft with advantage.",
+					"Zenith Blast",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to unleash a blast of force that deals 2d8 force damage to all creatures within 15ft radius of the original target. These creatures have to make a DC dexterity save throw. On a success the creatures take only half damage.",
+				],
+			}],	
+			additional : levels.map(function (n) {
+				return "1d" + (n < 5 ? 4 : n < 9 ? 6 : n < 13 ? 8 : n < 17 ? 10 : 12);
+			}),
+			action : [["bonus action", "Summon/Dismiss Orbuculum"],["bonus action", "Orbuculum Strike (with Attack action)"]],
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if (classes.known.mystic && classes.known.mystic.level && (v.theWea.monkweapon || v.baseWeaponName == "orbuculum")) {
+							v.theWea.monkweapon = true;
+							var aMonkDie = function (n) { return n < 5 ? 4 : n < 9 ? 6 : n < 13 ? 8 : n < 17 ? 10 : 12; }(classes.known.mystic.level);
+							try {
+								var curDie = eval_ish(fields.Damage_Die.replace('d', '*'));
+							} catch (e) {
+								var curDie = 'x';
+							}
+							if (isNaN(curDie) || curDie < aMonkDie) {
+								fields.Damage_Die = '1d' + aMonkDie;
+							}
+						}
+					},
+					5
+				],
+			},
+		},
+		"mana" : {
+			name : "Mana",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			limfeaname : "Mana",
+			usages : [4, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
+			recovery : "short rest",
+			description : desc([
+				"Starting at 1st level, your experience with cosmic travel allows you to harness mystic power known as Mana. Your access to this power is represented by a number of mana points, Your Mystic level determines the number of points you have, as shown in the mana points column of the mystic table. You spend mana points to fuel various cosmic abilities. When you spend a point, it is unavailable until you finish a short or long rest, at the end of which you draw back all of your expended mana. Some mana features require your target to make a saving throw to resist its effects. The saving throw DC is calculated as follows.",
+			]),
+		},
+		"ward" : {
+			name : "Ward",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc("Without armor and no shield, my AC is 10 + Wisdom modifier + Charisma modifier"),
+			armorAdd : "Ward",
+		},
+		"secret knowledge" : {
+			name : "Secret Knowledge",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			description : "Your connection to mana helps you uncover secret knowledge during your studies on the cosmos, life in between realms, and acquiring fragments of lost history. This knowledge grants you great advantages during your travels, investigations, and combat. You gain the Guidance and True Strike Cantrip. Your Spells cost 1 Mana Point per level of spell.",
+			spellcastingBonus : [{
+				name : "Secret Knowledge",
+				spells : ["guidance", "true strike", "comprehend languages", "detect evil and good", "detect magic", "identify"],
+				selection : ["guidance", "true strike", "comprehend languages", "detect evil and good", "detect magic", "identify"],
+				times : 6,
+			}],
+		},
+		"subclassfeature3" : {
+			name : "Mystic Order",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"When you reach 3rd level, you dedicate yourself to one of the Mystic Orders that dedicate themselves to a cosmic law of existence; Order of Time, Order of Space, and Order of Gravity. Each Mystic Order is detailed at the end of the class description. Your order grants you features at 3rd, 6th, 10th, and 14th level.",
+			]),
+		},
+		"cosmic traveler" : {
+			name : "Cosmic Traveler",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"You are particularly familiar with the realms and those in between, and are adept as traveling, manipulating, and surviving in such dimensions, therefore you do not require air to breathe or survive. Additionally, your studies of the cosmos has given you great knowledge and understanding of the worlds. When you make a Charisma, Wisdom, or  Intelligence check related to your studies, experiences, or travels, your proficiency bonus is doubled if you are using a skill that you are proficient in. While traveling an hour or more within a plane or dimension, you gain the following benefits.",
+				"• Even when you are engaged in other activity while traveling (such as foraging, navigating, or investigating), you remain alert to danger.",
+				"• Your group cannot become lost, even by magical means.",
+				"• You always know the flow of time and what time it is within the realm.",
+				"• You can always determine where a portal leads.",
+				"• You are immune to the altering effects of residing on a realm, plane, or dimension in which you are traveling. Additionally, allies traveling with you have advantage on rolls against realm altering effects.",
+				"• Difficult terrain or movement reduction imposed by a realm during travel does not slow your groups travel.",
+			]),
+		},
+		"expertise" : function() {
+				var a = {
+					name : "Expertise",
+					source : [["PBMS", 0]],
+					minlevel : 5,
+					description : desc("I gain expertise with two skills I am proficient with; two more at 10th level"),
+					skillstxt : "Expertise with any two skill proficiencies, and two more at 10th level",
+					additional : levels.map(function (n) {
+						return "with " + (n < 10 ? 2 : 4) + " skills";
+					}),
+					extraname : "Expertise",
+					extrachoices : ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival", "Cartographer's Tools", "Navigator's Tools"],
+					extraTimes : levels.map(function (n) { return n < 10 ? 2 : 4; }),
+					"cartographer's tools" : {
+						name : "Cartographer's Tools Expertise", description : "",
+						source : [["PBMS", 0]],
+						prereqeval : function(v) {
+							if ((/cartographer.?s.*tools/i).test(What('Too Text')) && tDoc.getField("Too Prof").isBoxChecked(0)) {
+								return tDoc.getField("Too Exp").isBoxChecked(0) ? "markButDisable" : true;
+							} else {
+								return CurrentProfs.tool["cartographer's tools"] || (/cartographer.?s.{1,3}tools/i).test(v.toolProfs.toString());
+							}
+						},
+						eval : function () {
+							if ((/cartographer.?s.*tools/i).test(What('Too Text'))) {
+								Checkbox('Too Exp', true);
+							}
+						},
+						removeeval : function () {
+							if ((/cartographer.?s.*tools/i).test(What('Too Text'))) {
+								Checkbox('Too Exp', false);
+							}
+						}
+					},
+					"navigator's tools" : {
+						name : "Navigator's Tools Expertise", description : "",
+						source : [["PBMS", 0]],
+						prereqeval : function(v) {
+							if ((/navigator.?s.*tools/i).test(What('Too Text')) && tDoc.getField("Too Prof").isBoxChecked(0)) {
+								return tDoc.getField("Too Exp").isBoxChecked(0) ? "markButDisable" : true;
+							} else {
+								return CurrentProfs.tool["navigator's tools"] || (/navigator.?s.{1,3}tools/i).test(v.toolProfs.toString());
+							}
+						},
+						eval : function () {
+							if ((/navigator.?s.*tools/i).test(What('Too Text'))) {
+								Checkbox('Too Exp', true);
+							}
+						},
+						removeeval : function () {
+							if ((/navigator.?s.*tools/i).test(What('Too Text'))) {
+								Checkbox('Too Exp', false);
+							}
+						}
+					}
+				};
+				for (var i = 0; i < a.extrachoices.length; i++) {
+					var attr = a.extrachoices[i].toLowerCase();
+					if (a[attr]) continue;
+					a[attr] = {
+						name : a.extrachoices[i] + " Expertise",
+						description : "",
+						source : a.source,
+						skills : [[a.extrachoices[i], "only"]],
+						prereqeval : function(v) {
+							return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
+						}
+					};
+				}
+				return a;
+			}(),
+		"phase" : {
+			name : "phase",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : desc("My saves vs. areas of effect negate damage on success and halve it on failure"),
+			savetxt : { text : ["Save vs. area effects: fail \u2015 half dmg, success \u2015 no dmg"] },
+		},
+		"unbreakable will" : {
+			name : "Unbreakable Will",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : desc([
+				"Starting at 11th level, you gain immunity to being charmed, frightened, or possessed.",
+			]),
+			savetxt : { immune : ["Charmed", "Frightened", "Possessed"] },
+		},
+		"mystic action surge" : {
+			name : "Mystic Action Surge",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : desc([
+				"At 13th level, your mind is incredibly quick and the mana flowing through you provides you the power to act beyond normal capabilities. On your turn, you can take one additional action. This action can be used to take another attack action with either a weapon or spell. Once you use this feature, you must finish a short or long rest before you can use it again.",
+			]),
+			usages : 1,
+			recovery : "short rest",
+		},
+		"plane sight" : {
+			name : "Plane Sight",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : desc([
+				"At 15th your knowledge of the truth of existence has provided you with the power to see things as they truly are. You gain 60ft Truesight.",
+			]),
+			vision : [
+				["Truesight", 60],
+			],
+		},
+		"space escape" : {
+			name : "Space Escape",
+			source : [["PBMS", 0]],
+			minlevel : 18,
+			action : [["bonus action", "Vanish (5 MP)"]],
+			description : "At 18th level you can spend 5 mana points as a bonus action at the end of your turn to vanish into an extra dimensional space until the start of your next where you reappear in the nearest unoccupied space.",
+		},
+		"oneness" : {
+			name : "Oneness",
+			source : [["PBMS", 0]],
+			minlevel : 20,
+			usages : 1,
+			recovery : "long rest",
+			action : ["action", "Oneness"],
+			savetxt : {	text : ["You are Immune to Exhausted, Diseased, and Poisoned Conditions and you do not require air, drink, or food and magic can not alter your body or mind."], },
+			description : desc([
+				"At 20th level your knowledge, familiarity, and constant exposure to the realms and those in between have granted you the ability to channel mana with ease becoming one with the cosmos. Your life within alternate dimensions has granted you an altered physiology. As such, you cannot be afflicted with exhausted, disease, and poisoned conditions. You also do not require food, air, or drink; and magic cannot alter your mind or body. Lastly, once as an action before a long rest you can become an open channel for mana restoring all expended mana points.",
+			]),
+		},	
+	},
+};	
+
+AddSubClass("mystic", "time", {
+
+	regExpSearch : /^(?=.*mystic)(?=.*time).*$/i,
+	subname : "Order of Time",
+	source : [["PBMS", 0]],	
+	features : {
+		"subclassfeature3a3" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["gift of alacrity", "swiftness"],
+				selection : ["gift of alacrity", "swiftness"],
+				times : 2,
+			}],	
+		},
+		"subclassfeature3a5" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["haste", "slow"],
+				selection : ["haste", "slow"],
+				times : 2,
+			}],	
+		},
+		"subclassfeature3a7" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["synchronicity"],
+				selection : ["synchronicity"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a9" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["temporal shunt"],
+				selection : ["temporal shunt"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a11" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["contingency"],
+				selection : ["contingency"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a13" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["delayed spell"],
+				selection : ["delayed spell"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a15" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["reality break"],
+				selection : ["reality break"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a17" : {
+			name : "Time Magic",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Time Magic",
+				spells : ["time stop"],
+				selection : ["time stop"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3b" : {
+			name : "Acceleration",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			action : [["action", "Double Dash (1 Mp)"], ["action", "Extra Attack (1 MP)"]],
+			description : "At 3rd level you create a small warp within time granting you accelerated movement. When you take the dash action you can spend 1 mana point to gain additional movement equal to your movement speed. Alternatively you can spend 1 mana point each turn to gain an extra attack.",
+		},
+		"subclassfeature6" : {
+			name : "Deceleration",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Deceleration Aura (1 MP)"]],
+			description : "At 6th level you can expend 1 mana point to create a field that extends from in a 15ft radius that warps the flow of time for 1 min. (concentration) Each creature that enters this field must make a wisdom saving throw, on a failed save the creature takes a -1 to AC and dexterity save throws. The creatures are unable to take reactions and cannot take an opportunity attack while within the field.",
+		},
+		"subclassfeature10" : {
+			name : "Momentary Pause",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["bonus action", "Freeze in time (2 MP)"]],
+			description : "as a bonus action you can spend 2 mana points to temporarily stop time for one creature within 120ft. That creature must make a wisdom saving throw, on a failed save the creature is incapacitated as it is frozen in time for three turns.If the target takes damage or is otherwise interacted with before the the effect ends the effect ends early.",
+		},
+		"subclassfeature14" : {
+			name : "Rewind",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : "At 14th level you can spend 2 mana points to rewind a short portion of time after making an attack roll, saving throw, or ability check. When you do so you can re-roll the dice again.",
+		},
+		"liminal existence" : {
+			name : "Liminal Existence",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "When you reach 17th level you can spend four mana points to cast the Plane Shift spell. ",
+			spellcastingBonus : {
+				name : "Liminal Existence",
+				spells : ["plane shift"],
+				selection : ["plane shift"],
+				firstCol : 4,
+				times : 1,
+			},
+		},
+	},
+});
+
+AddSubClass("mystic", "space", {
+
+	regExpSearch : /^(?=.*mystic)(?=.*space).*$/i,
+	subname : "Order of Space",
+	source : [["PBMS", 0]],	
+	features : {
+		"subclassfeature3a3" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["expeditious retreat", "wristpocket"],
+				selection : ["expeditious retreat", "wristpocket"],
+				times : 2,
+			}],	
+		},
+		"subclassfeature3a5" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["galder's tower"],
+				selection : ["galder's tower"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a7" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["dimension door"],
+				selection : ["dimension door"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a9" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["passwall"],
+				selection : ["passwall"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a11" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["arcane gate"],
+				selection : ["arcane gate"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a13" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["mordenkainen's magnificent mansion"],
+				selection : ["mordenkainen's magnificent mansion"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a15" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["demiplane"],
+				selection : ["demiplane"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a17" : {
+			name : "Space Magic",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "",
+			spellcastingBonus : [{
+				name : "Space Magic",
+				spells : ["gate"],
+				selection : ["gate"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3b" : {
+			name : "Distortion",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			action : [["bonus action", "Distort (1 MP)"]],
+			description : "At 3rd level you can spend 1 mana point to distort your presence shifting between planes. For the next minute you gain a +2 to AC and attack rolls against you have disadvantage.",
+		},
+		"subclassfeature6" : {
+			name : "Absorption",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["reaction", "Absorption (1 MP)"]],
+			description : "At 6th level as a reaction when you are targeted by a ranged attack that would be successful you can spend 1 mana point to open a small portal to consume the ranged attack taking no damage.",
+		},
+		"subclassfeature10" : {
+			name : "Pocket Dimension",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["bonus action", "Summon/Dismiss Item (1 MP)"], ["bonus action", "Summon Door"]],
+			description : "At 10th level you have created a small pocket dimension that is a 20ft cube. As a bonus action you can spend 1 mana point to summon or dismiss one object that is not being worn or carried that can fit within the space, Alternatively, you can spend 5 mana points to create a medium sized door in which you and any creature you allow to pass through",
+		},
+		"subclassfeature14" : {
+			name : "Dimensional Travel",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : [["action", "Teleport/Plane Shift (3 MP)"]],
+			description : "At 14th level You can spend 3 mana points to cast the Teleport or Plane Shift spell.",
+			spellcastingBonus : {
+				name : "Dimensional Travel",
+				spells : ["teleport", "plane shift"],
+				selection : ["teleport", "plane shift"],
+				firstCol : 3,
+				times : 2,
+			},
+		},
+	},
+});
+
+AddSubClass("mystic", "gravity", {
+
+	regExpSearch : /^(?=.*mystic)(?=.*gravity).*$/i,
+	subname : "Order of Gravity",
+	source : [["PBMS", 0]],	
+	features : {
+		"subclassfeature3a3" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["magnify gravity", "immovable object"],
+				selection : ["magnify gravity", "immovable object"],
+				times : 2,
+			}],	
+		},
+		"subclassfeature3a5" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["pulse wave"],
+				selection : ["pulse wave"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a7" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["gravity sinkhole"],
+				selection : ["gravity sinkhole"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a9" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["telekinesis"],
+				selection : ["telekinesis"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a11" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["gravity fissure"],
+				selection : ["gravity fissure"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a13" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["reverse gravity"],
+				selection : ["reverse gravity"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a15" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["darkstar"],
+				selection : ["darkstar"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a17" : {
+			name : "Gravity Magic",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "",
+			spellcastingBonus : [{
+				name : "Gravity Magic",
+				spells : ["ravenous void"],
+				selection : ["ravenous void"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3b" : {
+			name : "Permanency",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			action : [["bonus action", "Permanency (1-3 MP)"]],
+			description : "At 3rd level you can manipulate the gravitational pressure around one person or object of your choice within 60ft. You can spend 1 mana point to grant a +1 bonus to AC for 1 hour.. You can do this to a max of +3 to AC which would cost 3 mana points.",
+		},
+		"subclassfeature6" : {
+			name : "Gravitational Strike",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : "At 6th level you can spend 1 mana point to magnify the power of one of your strikes with increased gravitational pressure. Doing so the strike deals an additional dice of damage. This can only be used once on a single attack. You can however use additional mana points on each separate attack.",
+		},
+		"subclassfeature10" : {
+			name : "Diamagnetic",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["action", "fly (2 MP)"]],
+			description : "At 10th level you can spend 2 mana point to alter the gravitational effects on your body giving yourself your own gravitational field. Doing so grants you the ability to cast the fly spell upon your self.",
+			spellcastingBonus : {
+				name : "Diamagnetic",
+				spells : ["fly"],
+				selection : ["fly"],
+				firstCol : 2,
+				times : 1,
+			},
+		},
+		"subclassfeature14" : {
+			name : "Over Exertion",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : [["action", "Over Exertion (2 MP)"]],
+			description : "At 14th level you can spend 2 mana points to exert gravitational pressure to any creature you choose within 60ft of you. Doing so each targeted creature must make a DC constitution save throw when ever they attempt an attack roll, ability check, or saving throw within range. On a fail three target gains one level of exhaustion. (Max 3)",
+		},
+		"liminal existence" : {
+			name : "Liminal Existence",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "When you reach 17th level you can spend four mana points to cast the Plane Shift spell. ",
+			spellcastingBonus : {
+				name : "Liminal Existence",
+				spells : ["plane shift"],
+				selection : ["plane shift"],
+				firstCol : 4,
+				times : 1,
+			},
+		},
+	},
+});
+
+AddSubClass("mystic", "light", {
+
+	regExpSearch : /^(?=.*mystic)(?=.*light).*$/i,
+	subname : "Order of Light",
+	source : [["PBMS", 0]],	
+	features : {
+		"subclassfeature3a3" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level you gain access to minor spellcasting that is fueled by you mana. These spells are well known by the mystics of this order. When you cast one of these spell you do not require components, and you use your orbuculum as a spellcasting focus. When you cast these spells you must expend mana points to do so. See chart below to determine the points expended. You can not cast a spell level above your class level.",
+			]),
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["guiding bolt", "moonbeam"],
+				selection : ["guiding bolt", "moonbeam"],
+				times : 2,
+			}],	
+		},
+		"subclassfeature3a5" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["daylight"],
+				selection : ["daylight"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a7" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["greater invisibility"],
+				selection : ["greater invisibility"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a9" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["wall of light"],
+				selection : ["wall of light"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a11" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["sunbeam"],
+				selection : ["sunbeam"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a13" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["crown of stars"],
+				selection : ["crown of stars"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a15" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["sunburst"],
+				selection : ["sunburst"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3a17" : {
+			name : "Light Magic",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "",
+			spellcastingBonus : [{
+				name : "Light Magic",
+				spells : ["prismatic wall"],
+				selection : ["prismatic wall"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature3b" : {
+			name : "Starlight",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			action : [["action", "Starlight (1 MP)"]],
+			description : "At 3rd level as an action you can channel pure radiant energy through your orbuculum for 1 hour by spending 1 mana point. When you do so your orbuculum damage changes to radiant and sheds bright daylight in a 20ft radius and dim light for an additional 20ft radius. This effect works in magical darkness. While active when a creature is hit by your orbuculum that target must make a constitution save throw or be blinded until the end of their next turn.",
+		},
+		"subclassfeature6" : {
+			name : "Gleaming Orb",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Color Spray (1+ MP)"]],
+			description : "At 6th level, as an action you can spend 1 mana point to cast the color spray spell without components using only your orbuculum as a spell focus. See spell for details. You can expend additional mana points to upcast this spell.",
+			spellcastingBonus : {
+				name : "Gleaming Orb",
+				spells : ["color spray"],
+				selection : ["color spray"],
+				firstCol : 1,
+				times : 1,
+			},
+		},
+		"subclassfeature10" : {
+			name : "Photonomy",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["reaction", "Photonomy (2 MP)"]],
+			description : "At 10th level you can spend 2 mana point to alter the gravitational effects on your body giving yourself your own gravitational field. Doing so grants you the ability to cast the fly spell upon your self.",
+			savetxt : {	text : ["You are Immune to mmune to radiant damage and being blinded by light from a magical effect or spell."], },
+		},
+		"subclassfeature14" : {
+			name : "Shimmering Prism",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : [["action", "Prismatic Spray (3 MP)"]],
+			description : "At 14th level , as an action you can spend 3 mana points to cast the Prismatic Spray spell without components using your orbuculum as a spell focus",
+			spellcastingBonus : {
+				name : "Shimmering Prism",
+				spells : ["prismatic spray"],
+				selection : ["prismatic spray"],
+				firstCol : 3,
+				times : 1,
+			},
+		},	
+		"liminal existence" : {
+			name : "Liminal Existence",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : "When you reach 17th level you can spend four mana points to cast the Plane Shift spell. ",
+			spellcastingBonus : {
+				name : "Liminal Existence",
+				spells : ["plane shift"],
+				selection : ["plane shift"],
+				firstCol : 4,
+				times : 1,
+			},
+		},
+	},
+});
+
+// Adds a new class, the Shaman, with 4 subclasses
+
+ClassList.shaman = {
+	
+	regExpSearch : /shaman/i,
+	name : "Shaman",
+	source : [["PBMS", 0]],
+	primaryAbility : ["Wisdom"],
+	abilitySave : 5,
+	prereqs : "Wisdom 13",
+	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+	die : 8,
+	saves : ["Con", "Wis"],
+	skillstxt : {
+		primary : "Choose two from Animal Handling, Insight, Intimidation, Medicine, Nature, Perception, Survival.",
+	},
+	armorProfs : {
+		primary : [true, true, false, false],
+	},
+	toolsProfs : {
+		primary : [["Herbalism Kit", "Wis"], ["Musical Instrument", 1]],
+	},	
+	weaponProfs : {
+		primary : [true, false, ["blowgun", "dart", "sling"]],
+	},
+	equipment : "Shaman's starting equipment:" +
+		"\n \u2022 A simple melee weapon -or- A dart, blowgun, or sling." +
+		"\n \u2022 A priest's pack -or- An explorer's pack." +
+		"\n \u2022 leather armor, two daggers, an instrument, and a trinket." +
+		"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+	subclasses : ["Shamanic Guardians", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	features : {
+		"subclassfeature1" : {
+			name : "Shamanic Guardians",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc ([
+				"The way you work with the spirits and the type of guardian spirits you honor, commune, and channel represent the ideals and values you hold along your spiritual journey. When you begin your shamanic journey you must decide which guardians you walk with; Ori Guardians, Totem Guardians, Tiki Guardians, Shikigami Guardians, all detailed at the end of the class description. Your Shamanic Guardians grant you features at 1st level, and again at 3rd, 6th, 10th, and 14th level.",
+			]),
+		},
+		"trance" : {
+			name : "Trance",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			action : ["bonus action", "Enter Trance"],
+			description : desc([
+				"It is customary for the shaman to use a trance state to deepen his connection with the spirits that guide the mortal realms. The trance allows your guardian of choice from your guardian spirits to appear in a space within 30 feet of you. On your turn, you can enter a trance as a bonus action. While in a trance, your speed is reduced to 0 feet, and you gain the following benefits granted from the guiding spirit. You can end a trance any time no action required. Once you entered a trance the number of times shown for you shaman level in the trances column of the shaman table, you must finish a long rest before you can trance again.",
+			]),
+			limfeaname : "Trance",
+			usages : [2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery : "long rest",
+			toNotesPage : [{
+				name : "Trance",
+				note : [
+					"• You enter the border ethereal, while in this space you are visible to others on both the material and ethereal plane, however, you cannot be affected or affect other creatures on either plane.",
+					"• When you enter this state your guardian appears and acts on your behalf, when you do so a spectral spirit of that guardian appears within 30 feet of you.",
+					"• You are blinded and deafened while in this state and your senses become that of the chosen guardian.",
+					"• The guardian acts on your behalf and on each of your turns, and you choose where it moves and the actions it takes. This guardian cannot move more than 60 feet away from you.",
+					"• While in a trance state you are unable to take any other actions, otherwise you end the trance state.",
+					"• The guardian shares the same state block as the Ghost (PHB pg. 147) However, the guardian has the same number of maximum hit points as you and if the guardian is reduced to 0 hit points it vanishes. When the trance ends as a result of the guardian dropping to 0 hit points, any excess damage carries over to you.",
+					"• The guarduian can take two Forceful Touch actions (instead of withering touch), and deals force damage. The damage dealt by the spirit’s attack grows with your ability to channel its divine power. See the shaman table to determine the damage dice from a guardians single attack.",
+				],
+			}],
+		},	
+		"transcendence" : {
+			name : "Transcendence",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			action : ["bonus action", "Transcendance"],
+			description : desc([
+				"You or your spirit guardian can perform a cermonial rite by either dancing, chanting, or using an instrument to raise the spiritual energy of several individuals. To do so, you use a bonus action on your turn to choose up to three creatures of your choice within 60 feet of you who can hear you or see you. The chosen creatures gain one benefit of your choice below that lasts for 1 minute. You can use this feature a number of times equal to you proficiency bonus before a long rest.",
+			]),
+			additional : ["d4", "d4", "d4", "d4", "d6", "d6", "d6", "d6", "d8", "d8", "d8", "d8", "d10", "d10", "d10", "d10", "d10", "d10", "d10", "d10"],
+			limfeaname : "Transcendance",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery : "long rest",
+			toNotesPage : [{
+				name : "Trancendence",
+				note : [
+					"• The creatures can roll a d4 and add the number rolled to a ability check, attack roll or saving throw potentially turning it into a success. This dice increases as you level, increasing to a d6 at 5th level, a d8 at 9th level, and a d10 at 13th level.",
+					"• The creatures instantly regain 1d4 hit points plus your wisdom modifier. This has no effect on undead or constructs. This dice increases as you level, increasing to a d6 at 5th level, a d8 at 9th level, and a d10 at 13th level.",
+					"• The creatures gain temporary hit points at the start of each of their turns equal to your wisdom modifier. When the transcendence ends the target loses any remaining temporary hit points.",
+				],
+			}],	
+		},
+		"tribal weaponry" : {
+			name : "Tribal Weaponry",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			description : desc([
+				"You adopt a particular skill with tribal weapons. You can choose one of the following tribal feat options. You cannot choose more than one tribal weaponry option.",
+			]),
+			extraname : "Tribal Weaponry",
+			extrachoices : ["Poisoner Feat", "Savage Attacker Feat", "Sharpshooter Feat", "Spear Mastery Feat"],
+			"poisoner feat" : {
+				name : "Poisoner Feat",
+				description : "",
+				eval : function() { AddFeat("Poisoner"); },
+				removeeval : function() { RemoveFeat("Poisoner"); }
+			},
+			"savage attacker feat" : {
+				name : "Savage Attacker Feat",
+				description : "",
+				eval : function() { AddFeat("Savage Attacker"); },
+				removeeval : function() { RemoveFeat("Savage Attacker"); }
+			},
+			"sharpshooter feat" : {
+				name : "Sharpshooter Feat",
+				description : "",
+				eval : function() { AddFeat("Sharpshooter"); },
+				removeeval : function() { RemoveFeat("Sharpshooter"); }
+			},
+			"spear mastery feat" : {
+				name : "Spear Mastery Feat",
+				description : "",
+				eval : function() { AddFeat("Spear Mastery"); },
+				removeeval : function() { RemoveFeat("Spear Mastery"); }
+			},
+		},
+		"spiritualism" : {
+			name : "Spiritualism",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			limfeaname : "Spiritualism",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery : "long rest",
+			action : [["action", "Speak with Dead"], ["action", "Spirit Guardians"], ["bonus action", "Spirit Shroud"]],
+			description : desc([
+				"Your constant visits to the ethereal plane infuses you with the energy to call forth the power of the spirit world. You can cast one of the following spells a number of times a day equal to your proficiency bonus without expending a spell slot or requiring material components. Some of these feature may require the target to make a saving throw. The DC for that saving throw equals you 8 + your wisdom modifier + your proficiency bonus.",
+			]),
+		},
+		"spirit walker" : {
+			name : "Spirit Walker",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : desc([
+				"When you gain this feature you can choose to expend one use of your spiritualism feature to become incorporeal until the end of your turn. Doing so, you gain incorporeal movement equal to your walking speed, and can move through creatures and objects as if they were difficult terrain. You take damage if you end your turn inside an object and are shunted to the nearest unoccupied space that you occupy taking force damage equal to twice the number of feet you are moved.",
+			]),
+		},
+		"spirit expulsion" : {
+			name : "Spirit Expulsion",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			action : [["action", "Dispel Posession (Touch)"], ["aciton", "Banishment"]],
+			description : desc([
+				"When you gain this feature you can choose to expend one use of your spiritualism feature to touch one creature that is possessed and end the possessed condition, or choose one target that you can see and cast the banishment spell without consuming a spell slot or requiring material components.",
+			]),
+		},	
+		"etherealness" : {
+			name : "Etherealness",
+			source : [["PBMS", 0]],
+			minlevel : 16,
+			limfeaname : "Etherealness",
+			usages : "Wisdom modifier per ",
+			usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+			recovery : "long rest",
+			action : [["action", "Etherealness"]],
+			description : desc([
+				"Your connection to the spirit world has deepened granting you etherealness. As an action you can become ethereal as if you had casted the etherealness spell. You can do so a number of times before a long rest equal to your wisdom modifier.",
+			]),
+		},
+		"timeless body" : {
+			name : "Timeless Body",
+			source : [["PBMS", 0]],
+			minlevel : 18, 
+			description : desc([
+				"Your connection to the spirit world has granted you a resevior of prolonged life. For every 10 years that passes your body ages only by 1 year.",
+			]),
+		},
+		"transcended one" : {
+			name : "Transcended One",
+			source : [["PBMS", 0]],
+			minlevel : 20,
+			description : desc([
+				"You have come full circle on your spiritual journey reaching an advanced state of consciousness, unbreakable connection to the spirit world, and gained immense favor from your honored spiritual guardians. You receive the following benefits.",
+			]),
+			toNotesPage : [{
+				name : "Trancended One",
+				note : [
+					"• You no longer take any excess damage if your spirit guardian is dropped to 0 hit points.",
+					"• You can use your spirit walker feature an unlimited number of times.",
+					"• Your Transcendence feature lasts for 10 minutes.",
+				],
+			}],	
+		},	
+	},
+};
+
+AddSubClass("shaman", "ori guardians", {
+	regExpSearch : /^(?=.*shaman)(?=.*ori guardians).*$/i,
+	subname : "Ori Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature1" : {
+			name : "Hexing Ritual",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			action : [["action", "Hex (5th-Level)"], ["action", "End Hex (Cast by You, or Others)"]],
+			limfeaname : "Hexing Ritual",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			description : desc([
+				"Choosing this journey you gain and craft a tiny magical doll in the image of the spirits known as a voodoo doll. This doll is used in hexing and counter hexing rituals. As an action you or your spirit guardian can cast the hex spell as if it was cast at 5th level using the doll as a focus. You can cast this spell a number of times before a long rest equal to your proficiency bonus. Alternatively, you can end one active hex spell cast by you or another creature upon a target within 90 feet.",
+			])
+		},
+		"subclassfeature3" : {
+			name : "Tormenting Hex",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level, anytime you target a creature with your hex that creature must make an intelligence saving throw against your spiritualism DC or also be affected by the effects of the phantasmal force spell.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Cursing Ritual",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Bestow Curse (5th-Level)"], ["action", "Remove Curse (Cast by You, or Others)"]],
+			limfeaname : "Cursing Ritual",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			description : desc([
+				"At 6th level, as an action you or your spirit guardian can cast the bestow curse spell as if it was cast at 5th level using the doll as a focus. This spell can be cast upon a single target that you can see within 90 feet. You can cast this spell a number of times before a long rest equal to your proficiency bonus. Alternativily, you can cast the remove curse spell in place of bestow curse  within the same range.",
+			]),
+		},	
+		"subclassfeature10" : {
+			name : "Relentless Curse",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"At 10th level, each turn a creature is affected by your curse that creature must make a wisdom saving throw against your spiritualism DC or be affected by the effects of the phantasmal killer spell",
+			]),
+		},	
+		"subclassfeature14" : {
+			name : "Cursed Ground",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : "action",
+			description : desc([
+				"At 14th level, as an action you or your spirit guardian can perform a hexing ritual or a cursing ritual to target all creatures of choice within 30 feet of you or the spirit guardian.",
+			]),
+		},	
+	},
+});	
+
+AddSubClass("shaman", "totem guardians", {
+	regExpSearch : /^(?=.*shaman)(?=.*totem guardians).*$/i,
+	subname : "Totem Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature1" : {
+			name : "Wild Shape",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			limfeaname : "Wild Shape",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery : "long rest",
+			action : [["action", "Wild Shape (Start)"], ["bonus action", "Wild Shape (End)"]],
+			additional : levels.map(function (n) {
+					if (n < 1) return "";
+					var cr = n < 4 ? "1/4" : n < 8 ? "1/2" : 1;
+					var hr = Math.floor(n/2);
+					var restr = n < 4 ? "" : n < 8 ? "" : "";
+					return "CR " + cr + restr + "; " + hr + (restr.length ? " h" : " hours");
+				}),
+			description : desc([
+				"Choosing this journey you gain and craft a totemic staff topped with the image of your chosen guardian. This staff aids you in your connection to spirits of animals, and allows you to wild shape in to them. As an action you can magically assume the shape of a spirit animal listed below with a challenge rating 1/4 or less. When you reach 4th level you can choose a beast of a challenge rating ½ or less.  Lastly, when you reach  8th level you can choose a beast of a challenge rating 1 or less. You can use this feature a number of times a day equal to your proficiency bonus. You can stay in this form for a number of hours equal to half your shaman level rounded down. You then revert to your normal form, unless you expend another use of this feature. You can revert to your normal form earlier if you use a bonus action on your turn. You automatically revert to your normal form if you fall unconscious, drop to 0 hit points, or die. While in this form you can enter a trance, and all attacks you make in this form are considered magical. See additional Druid wild shape rulings on pg. 67 of the PHB.",
+			]),
+			toNotesPage : [{
+				name : "Spirit Animals",
+				note : [
+					"Swim			Fly			Walk",
+					"Salmon			Eagle		Wolf",
+					"Frog/Toad		Raven		Bear",
+					"Turtle			Owl			Deer/Elk",
+				],
+			}],	
+		},
+		"subclassfeature3" : {
+			name : "Totemic Magic",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			limfeaname : "Totemic Magic",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			action : [["action", "Animal Friendship"], ["action", "Beast Bond"], ["action", "Speak with Animals"], ["action", "Cure Wounds"], ["bonus action", "Healing Word"]],
+			description : desc([
+				"At 3rd level, your journey has deepened your connection to the natural world, giving you kinship with beasts. You gain the following spells that can be cast as a ritual if they have the ritual tag or cast them collectively a number of times a day equal to your proficiency bonus. These spells can be cast by you regardless of form and by your guardian.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Totem Guide",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Summon Beast (3rd-Level)"]],
+			description : desc([
+				"At 6th level, you gain the ability to cast the summon beast spell at 3rd level calling forth your guardian spirit. This guardian takes the spiritual form of a beast choosing one of the spirit animal listed previously.",
+			]),
+		},	
+		"subclassfeature10" : {
+			name : "Sacred Medicine",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"At 10th level, when you enter a trance you gain another action known as healing touch. The guardian can take one or two Healing Touch actions, instead of forceful touch, and restore hit points to a creature equal to your trance damage dice. See the shaman table to determine the dice from a guardians single touch. ",
+			]),
+		},	
+		"subclassfeature14" : {
+			name : "Spirit Wild Shape",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"At 14th level, when you expend a use of your wild shape you can use your spirit walker feature. In addition, you can choose to deal necrotic damage in place of any damage you deal from your natural weapons. When you do so that target must make a Constitution saving throw against your spiritualism DC, on a failed save you regain hit points equal to the damage dealt.",
+			]),
+		},	
+	},
+});	
+
+AddSubClass("shaman", "shikigami guardians", {
+	regExpSearch : /^(?=.*shaman)(?=.*shikigami guardians).*$/i,
+	subname : "Shikigami Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature1" : {
+			name : "Shiki Servants",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			limfeaname : "Shiki",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			description : desc([
+				"Choosing this journey you gain and craft a hitogata a relic in the shape of your guardian spirit. Through this relic you gain the service of a number of lesser spectral spirits known as a Shiki as if you had cast the Find Familiar spell. These spirits share the same stat block and features as the Will-O-Wisp and can use the attack action. The number of Shiki under you command equals your proficiency bonus.",
+			])
+		},
+		"subclassfeature3" : {
+			name : "Spirit Swarm",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			action : [["bonus action", "Cloud of Daggers"]],
+			description : desc([
+				"At 3rd level, you or your guardian can use a bonus action on your turn to command your Shiki to swarm a target within 60 feet of you and attack as if you cast the cloud of daggers spell without concentration, however, the damage becomes force.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Shiki Guardians",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Spirit Guardians"]],
+			description : desc([
+				"At 6th level, you or your guardian can use an action to command your Shiki to flit around you to a distance of 15 feet as if you cast the spirit guardians spell without concentration. This effect of this feature deals force damage instead of radiant or necrotic. This effect does stack if you use your spiritualism feature casting the spell spirit guardians.",
+			]),
+		},	
+		"subclassfeature10" : {
+			name : "Shiki Wind Sickles",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["action", "Steel Wind Strike"]],
+			limfeaname : "Shiki Wind Sickles",
+			usages : 1,
+			recovery : "short rest",
+			description : desc([
+				"At 10th level, you or your guardian can use an action to command your Shiki as to strike swiftly toward multiple targets as if you cast the steel wind strike spell. Once you use this feature you must complete a short or long rest before you can do so again.",
+			]),
+		},	
+		"subclassfeature14" : {
+			name : "Spiritual Barrier",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : [["action", "Wall of Force"]],
+			limfeaname : "Spiritual Barrier",
+			usages : 1,
+			recovery : "short rest",
+			description : desc([
+				"At 14th level, you or your guardian can use an action to command your shiki to merge into a force barrier as if you cast the wall of force spell without concentration. This barrier is not instantly dispelled by the disintegrate spell, however, it is dispelled by the banishment spell if it is cast at 6th level or higher. Once you use this feature you cannot do so again until you finish a short or long rest.",
+			]),
+		},	
+	},
+});
+
+AddSubClass("shaman", "tiki guardians", {
+	regExpSearch : /^(?=.*shaman)(?=.*tiki guardians).*$/i,
+	subname : "Tiki Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature1" : {
+			name : "Dance of the Tiki",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			additional : ["d4", "d4", "d4", "d4", "d6", "d6", "d6", "d6", "d8", "d8", "d8", "d8", "d10", "d10", "d10", "d10", "d10", "d10", "d10", "d10"],
+			description : desc([
+				"Choosing this journey you gain and craft a carved Tiki rod that depicts your guardian spirit, which can be fashioned into a club, torch, or baton. This rod allows you to channel elemental power into your steps and strikes. When you use your transcendence feature you also imbue the chosen targets with the power of your guardian spirit granting all attacks a +1 bonus to attack rolls and deal an addition 1d4 damage of the chosen following types when the attack hits. You can choose one of the following damage types; fire, cold, wave, lightning, thunder, or poison. This dice increases as you level, increasing to a d6 at 5th level, a d8 at 9th level, and a d10 at 13th level.",
+			])
+		},
+		"subclassfeature3" : {
+			name : "Investiture of the Tiki",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"At 3rd level, your weapon attacks are now magical. When you finish a long rest you can choose one of the following damage types; fire, cold, wave, lightning, thunder, or poison. When you do so your weapon attacks deal an additional 1d4 damage of that type until you finish a long rest.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Might of the Tiki",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : [["action", "Extra Attack"]],
+			description : desc([
+				"At 6th level, the fierce power of your guardian flows through you granting you and your guardian an extra attack when you take the attack action. In addition, you can choose one weapon of your choice to gain proficiency with. If you already have proficiency with that weapon you can gain expertise.",
+			]),
+		},
+		"subclassfeature10" : {
+			name : "Vitality of the Tiki",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["bonus action", "Vitality of the Tiki"]],
+			limfeaname : "Vitality of the Tiki",
+			usages : 1,
+			recovery : "short rest",
+			description : desc([
+				"At 10th level, you are granted extra vitality from your guardian spirit. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your shaman level. Once you use this feature, you must finish a short or long rest before you can use it again.",
+			]),
+		},	
+		"subclassfeature14" : {
+			name : "Tiki Warrior",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			action : [["bonus action", "Searing Smite"]],
+			limfeaname : "Tiki Warrior",
+			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery : "long rest",
+			description : desc([
+				"At 14th level, you have mastered the art of martial prowess and elemental power granting you the searing smite spell that can be cast without consuming a spell slot a number of times a day equal to you proficiency bonus. This spell applies to any weapon in which you have proficiency and requires concentration, however, you can choose one of the following damage types for this spell; fire, cold, wave, lightning, thunder, or poison.",
+			]),
+		},	
+	},
+});	
+			
 // Adds a new subclass for the Warlock, Patron of the Horned God
 
 AddSubClass("warlock", "the horned god", {
 	regExpSearch : /^(?=.*warlock)(?=.*horned).*$/i,
 	subname : "the Horned God",
-	source : [["PBMS"]],
+	source : [["PBMS", 0]],
 	spellcastingExtra : ["speak with animals", "hunter's mark", "beast sense", "pass without trace", "conjure animals", "nondetection", "dominate beast", "hallucinatory terrain", "awaken", "geas"],
 	features : {
 		"subclassfeature1" : {
 			name : "Aspect of the Beast",
-			source : [["PBMS"]],
+			source : [["PBMS", 0]],
 			minlevel : 1,
 			description : desc([
 				"Starting at 1st level, you can use your action to magically assume the shape of a beast embodied by your patron. You can use this feature twice. You regain expended uses when you finish a short or long rest. Your warlock level determines the aspects of the beast that you can transform into, as shown in the beast aspect table. You can stay in this shape for a number of hours equal to half your warlock level (rounded down) You then revert to your normal form unless you expend another use of this feature as a bonus action on your turn. You automatically revert if you fall unconscious, drop to 0 hit points, or die.",
@@ -4156,7 +6265,7 @@ AddSubClass("warlock", "the horned god", {
 		},
 		"subclassfeature6" : {
 			name : "Twisted Affliction",
-			source : [["PBMS"]],
+			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc([
 				"At 6th level, you gain the ability to harness your inner beast. As an action, your form painfully twists revealing your beastial corruption granting a partial beastial appearance. This transformation lasts for 1 minute, until you die, or until you revert to your normal appearance as a bonus action. When you twist your form, you gain temporary hit points equal to your level plus your constitution modifier. In addition, you choose which aspect of the beast afflicts you. Once chosen it cannot be changed. You choice grants you an additional bonus.",
@@ -4197,7 +6306,7 @@ AddSubClass("warlock", "the horned god", {
 		},
 		"subclassfeature10" : {
 			name : "Horrifying Aspect",
-			source : [["PBMS"]],
+			source : [["PBMS", 0]],
 			minlevel : 10,
 			description : desc([
 				"Starting at 10th level, your patron lurks over your shoulder as you traverse the world. Each hostile creature within 60 feet of you that can see you must succeed on a wisdom saving throw against your spell DC or be frightened for 1 minute. If the save fails by 5 or more your attack rolls have advantage until this effect ends. A frightened target can repeat the saving throw at the end of each of its turns, ending the effect on a success. If the targets saving throw is successful they are immune to this feature for 24 hours.",
@@ -4205,7 +6314,7 @@ AddSubClass("warlock", "the horned god", {
 		},
 		"subclassfeature14" : {
 			name : "Sacrifical Rite",
-			source : [["PBMS"]],
+			source : [["PBMS", 0]],
 			minlevel : 14,
 			description : desc([
 				"At 14th level, when you drop a creature to 0 hit points you can choose to perform as sacrifical rite to the horned god as an action transferring the creatures soul to your patron. When you do so you regain all expended spell slots as if you finished a short rest. In addition you regain hit points equal to half the creatures hit point maximum. Once you use this feature, you cannot use it again until you finish a long rest."
@@ -4215,4 +6324,621 @@ AddSubClass("warlock", "the horned god", {
 			usages : 1,
 		}
 	}
+});
+
+ClassList.jester = {
+	
+	regExpSearch : /jester/i,
+	name : "Jester",
+	source : [["PBMS", 0]],
+	primaryAbility : ["Charisma"],
+	abilitySave : 6,
+	prereqs : "Charisma 13",
+	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 8,
+	subclasses : ["Epic Playhouse", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Strength", "Intelligence", "Wisdom", "Constitution"],
+			"strength" : {
+				name : "Strength",
+				description : "\n   " + "You gain proficiency in Strength Saving Throws",
+				saves : ["Str"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},
+			"wisdom" : {
+				name : "Wisdom",
+				description : "\n   " + "You gain proficiency in Wisdom Saving Throws",
+				saves : ["Wis"],
+			},	
+			"constitution" : {
+				name : "Constitution",
+				description : "\n   " + "You gain proficiency in Constitution Saving Throws",
+				saves : ["Con"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},	
+		"epic tricks" : {
+			name : "Epic Tricks",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			extraname : "Epic Tricks",
+			extrachoices : ["horror", "deception", "jesting", "mischief", "vanishment"],
+			"horror" : {
+				name : "Tricks of Horror",
+				spellcastingExtra : ["eyebite", "tether essenec"],
+			},
+			
+			"deception" : {
+				name : "Tricks of Deception",
+				spellcastingExtra: ["permanent illusion", "project image"],
+			},
+			
+			"jesting" : {
+				name : "Tricks of Jesting",
+				spellcastingExtra : ["mass suggestion", "power word pain"],
+			},
+			
+			"mischief" : {
+				name : "Tricks of Mischief",
+				spellcastingExtra : ["otto's irresistable dance", "reverse gravity"],
+			},
+			
+			"vanishment" : {
+				name : "Tricks of Vavnishment",
+				spellcastingExtra : ["scatter", "sequester"],
+			},
+		},	
+		"devil in box" : {
+			name : "Devil in Box",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			description : desc([
+				"At 22nd level, you possess a mysterious object connected to either the feywild or the shadowfell that is a box with a crank, a colorful satchel, or magical hat. This item has grown in power and allows you to summon a creature from the box as if you had cast one of the following summon spells at 9th level. Summon Beast, Summon Fey, Summon Lesser Demon, Summon Shadowspawn, Summon Undead, Summon Aberration, Summon Construct, Summon Elemental, Summon Greater Demon, Summon Celestial, Summon Draconic Spirit, Summon Fiend.",
+			]),
+		},	
+		"reprisal" : {
+			name : "Reprisal",
+			source : [["PBMS", 0]],
+			minlevel : 4,
+			usages : 1,
+			recovery : "long rest",
+			description : desc([
+				"At 24th level you gain the ability to draw upon the magic of the inbetween to cheat death. When you would be dropped 0hp and fall unconscious or are killed outright you can resurrect yourself returning you to half of your maximum hit points. You can do this once before a long rest.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Epic Playhouse",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"At 26th level, your own playhouse which reflects the way they play, act, and entertain reaches epic levels. There are three notable playhouses; the Puppeteer, the Mime, and the Clown. Each one embodies a different form of physical comedy. Each epic playhouse is detailed at the end of the class description.",
+			]),
+		},	
+		"legendary finale" : {
+			name : "Legendary Finale",
+			source : [["PBMS", 0]],
+			minlevel : 8,
+			usages : 1,
+			recovery : "long rest",
+			description : desc([
+				"At 28th level your power of creating the ultimate comedy or tragedy grants you legendary power over success and failures. When you or a creature within 60 feet makes an ability check, saving throw, or attack roll you can choose to have it automatically succeed as if it was a natural 20 or fail as if it was a natural 1. (Your Choice) You can do so once before a long rest.",
+			]),
+		},
+		"master of theatre" : {
+			name : "Master of Theatre",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			limfeaname : "Legendary Resistance",
+			usages : 3,
+			recovery : "long rest",
+			description : desc([
+				"At 30th level you have attained the mastery over your acts, performances, and tricks. You gain Legendary Resistance. If you fail a saving throw, you can choose to succeed instead. Once you use this feature three times before a long rest.",
+			]),
+		},	
+	},
+};	
+
+AddSubClass("jester", "puppeteer", {
+	regExpSearch : /^(?=.*jester)(?=.*puppeteer).*$/i,
+	subname : "Puppeteer",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "The Puppeteer",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : ["puppeteer"],
+			description : desc([
+				"You gain the 11th Level/Tier 2 Puppeteer spell as a necromancy spell. This spell never requires concentration, and you can target a number of creature with this spell equal to your maximum number of puppets you possess. When you do so your puppets reduce in size and become inanimate, which serve as the focus of this spell. You manipulate your target through the tether of your puppets. If the spells ends either after 8 hours, if you end it early, or the target is dropped to 0hp your puppet returns to its normal size and reanimates. You can also choose to cast this spell as a riitual which increase the duration of control to 1 week. Creature that are immune to charmed condition are not immune to this effect as this is a necromancy spell for you.",
+			]),	
+		},
+	},
+});	
+
+AddSubClass("jester", "mime", {
+	regExpSearch : /^(?=.*jester)(?=.*mine).*$/i,
+	subname : "Mime",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "The Mime",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			action : "action",
+			description : desc([
+				"You have achieved the perfect imitation by magically attuning with other creatures through magic, observation, and synchronicity. As an action you can align your senses with that of another creature within 60 feet. When you do so you can mimic each action that the target takes for up to 10 minutes. This mimicry allows you take take every action, use any ability, or cast any spell the target knows, however, it is invisible. In combat, you imitate the previous action taken by the chosen creature, but you determine the target. ",
+			]),	
+		},
+	},
+});	
+
+AddSubClass("jester", "clown", {
+	regExpSearch : /^(?=.*jester)(?=.*clown).*$/i,
+	subname : "Clown",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "The Clown",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"Clown Trick: You can channel your fey or shadow power through your juggled items, when you do so those items become enchanted with the power of the blade of disaster. When you hit with an attack with one of your juggled weapons you can choose to deal an extra 4d12 force damage. These weapon attacks deal a critical hit on the d20 of a 18 or higher. On a critical hit the damage dealt is 8d12 instead.",
+			]),	
+		},
+	},
+});	
+
+AddSubClass("jester", "trickster", {
+	regExpSearch : /^(?=.*jester)(?=.*trickster).*$/i,
+	subname : "Trickster",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"The Perfect Trick: When you cast an illusion or enchantment spell it ignores a creatures immunity to being charmed or frightened. If the creature targeted by your spell has immunity as a result of an epic level spell, epic level feature, or deific effect they roll with advantage on the saving throw.",
+			]),	
+		},
+	},
+});	
+
+ClassList.incarnate = {
+	
+	regExpSearch : /incarnate/i,
+	name : "Incarnate",
+	source : [["PBMS", 0]],
+	primaryAbility : ["Wisdom"],
+	abilitySave : 5,
+	prereqs : "Wisdom 13",
+	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 8,
+	subclasses : ["Epic Shamanic Guardians", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Strength", "Charisma", "Dexterity", "Intelligence"],
+			"strength" : {
+				name : "Strength",
+				description : "\n   " + "You gain proficiency in Strength Saving Throws",
+				saves : ["Str"],
+			},	
+			"charisma" : {
+				name : "Charisma",
+				description : "\n   " + "You gain proficiency in Charisma Saving Throws",
+				saves : ["Cha"],
+			},
+			"dexterity" : {
+				name : "Dexterity",
+				description : "\n   " + "You gain proficiency in Dexterity Saving Throws",
+				saves : ["Dex"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},
+		"incarnation" : {
+			name : "Incarnation",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc([
+				"At 21st level, It is customary for the shaman to use a trance state to deepen his connection with the spirits that guide the mortal realms. However, when you enter a trance you can choose to become an incarnation of your guiding spirit gaining the following additional benefits listed below. You can also enter a trance an unlimited number of times before a long rest.",
+				"• When you enter a trance and become an incarnation you and your chosen guardian become one and can move as one. When you do so you can remain this way for a number of hours equal to half your character level. (rounded down)",
+				"• While in this state your guardian can use any of your class features and skills as if it was its own.",
+			]),
+		},
+		"superior spiritualism" : {
+			name : "Superior Spirutalism",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			action : [["action", "Revivify"], ["action", "Death Ward"], ["action", "Antilife Shell"]],
+			description : desc([
+				"At 22nd level, your soul is infused with the essence of ethereal plane itself and allows you to wield greater power from the spirit world. You can cast one of the following spells in addition to the previous spells a number of times a day equal to your proficiency bonus without expending a spell slot or requiring material components. ",
+			]),
+		},
+		"spirit battalion" : {
+			name : "Spirit Battalion",
+			source : [["PBMS", 0]],
+			minlevel : 4, 
+			description : desc([
+				"At 24th level, you can expend one use of your spiritualism feature to call forth a legion of spirits to sweep across a battlefield, tearing apart those that stand against you. These spirits pour from you spreading out to a range of 120 feet. Any hostile creature toward you must make a Dexterity saving throw against your spiritualism DC. On a failed save the creature takes 10d8 force damage and half as much on a successful save.",
+			]),
+		},	
+		"subclassfeatures6" : {
+			name : "Epic Shamanic Guardians",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"At 26th level, your unbreakable connection to your guardian spirits has granted you the ability to channel and immense amount of their power. You gain the following benefits according to your chosen guardian spirits along your journey.",
+			]),
+		},
+		"reincarnation" : {
+			name : "Reincarnation",
+			source : [["PBMS", 0]],
+			minlevel : 8,
+			description : desc([
+				"At 28th level, your soul has become immortal and indomitable. When you die it is not permanent and have the option to reincarnate into a new life within 10 days of your death. When you do so you are  instantly reformed and magically regain your body. You retain your memories, experiences, knowledge, and skills you had in your previous life. However, you do not regain any lost equipment when you are reborn.",
+			]),
+		},	
+		"spiritual guardian" : {
+			name : "Spiritual Guardian",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			action : [["action", "Final Death"]],
+			savestxt : "Immune to Necro. Dmg, Force Dmg and all Conditions",				
+			description : desc([
+				"At 30th level, you have reached the pinnacle of your journey and become a spiritual guardian yourself. When you do so you can choose to immediately end your current existence and take your place among the other spiritual guardians that you honor. Alternatively, you can choose to remain in the world you were born and choose to remain as an incarnate. Should you choose to remain as an incarnate, you gain the following benefits.",
+				"• You are immune to all condition effects unless you choose to be affected. This includes diseases, madness, and possession.",
+				"• You no longer require food, air, or drink. ",
+				"• You are immune to Necrotic and Force Damage.",
+				"• You can cast the epic level spell final death once before a long rest.",
+			]),
+		},
+	},
+};	
+
+AddSubClass("incarnate", "ori guardians", {
+	regExpSearch : /^(?=.*incarnate)(?=.*ori guardians).*$/i,
+	subname : "Ori Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Cursed Fate",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			limfeaname : "Cursed Fate",
+			usages : 1,
+			recovery : "short rest",
+			action : [["action", "Seal Fate"]],
+			description : desc([
+				"You or your guardian can cast the epic level spell Seal Fate without expending a spell slot or requiring components. Once you have cast this spell you cannot do so again until you complete a a short or long rest.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("incarnate", "totem guardians", {
+	regExpSearch : /^(?=.*incarnate)(?=.*totem guardians).*$/i,
+	subname : "Totem Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Medicine Wheel",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			limfeaname : "Medicine Wheel",
+			usages : 1,
+			recovery : "short rest",
+			action : [["action", "Bioclasm"]],
+			description : desc([
+				"You or your guardian can cast the epic level spell bioclasm without expending a spell slot or requiring components. Once you have cast this spell you cannot do so again until you complete a a short or long rest.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("incarnate", "shikigami guardians", {
+	regExpSearch : /^(?=.*incarnate)(?=.*shikigami guardians).*$/i,
+	subname : "Shikigami Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Wrath of the Shiki",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			limfeaname : "Wrath of the Shiki",
+			usages : 1,
+			recovery : "short rest",
+			action : [["action", "Crimson Winds of Havoc"]],
+			description : desc([
+				"You or your guardian can cast the epic level spell Crimson Winds of Havoc without expending a spell slot or requiring components. This spell deals force damage instead of slashing. Once you have cast this spell you cannot do so again until you complete a a short or long rest.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("incarnate", "tiki guardians", {
+	regExpSearch : /^(?=.*incarnate)(?=.*tiki guardians).*$/i,
+	subname : "Tiki Guardians",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "The Tiki's Judgement",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			limfeaname : "Tiki's Judgement",
+			usages : 1,
+			recovery : "short rest",
+			action : [["action", "Prismatic Deuluge"]],
+			description : desc([
+				"You or your guardian can cast the epic level spell prismatic deluge without expending a spell slot or requiring components. Once you have cast this spell you cannot do so again until you complete a a short or long rest.",
+			]),	
+		},
+	},
+});
+
+ClassList.fateweaver = {
+	
+	regExpSearch : /fateweaver/i,
+	name : "Fateweaver",
+	source : [["PBMS", 0]],
+	primaryAbility : ["Wisdom"],
+	abilitySave : 5,
+	prereqs : "Wisdom 13",
+	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+	scoresMaximum : [30, 30, 30, 30, 30, 30],
+	die : 8,
+	subclasses : ["Epic Mystic Order", []],
+	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	features : {
+		"proficiencies" : {
+			name : "Proficiencies", 
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
+			extraname : "Bonus Saving Throw",
+			extrachoices : ["Strength", "Constitution", "Dexterity", "Intelligence"],
+			"strength" : {
+				name : "Strength",
+				description : "\n   " + "You gain proficiency in Strength Saving Throws",
+				saves : ["Str"],
+			},	
+			"constitution" : {
+				name : "Constitution",
+				description : "\n   " + "You gain proficiency in Constitution Saving Throws",
+				saves : ["Con"],
+			},
+			"dexterity" : {
+				name : "Dexterity",
+				description : "\n   " + "You gain proficiency in Dexterity Saving Throws",
+				saves : ["Dex"],
+			},	
+			"intelligence" : {
+				name : "Intelligence",
+				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
+				saves : ["Int"],
+			},	
+		},	
+		"epic feat" : {
+			name : "Epic Feat",
+			source : ["PBMS", 0],
+			minlevel : 1,
+			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
+		},
+		"orbuculum mastery" : {
+			name : "Orbuculum Mastery",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			limfeaname : "Additional Mana",
+			usages : [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+			recovery : "short rest",
+			description : desc([
+				"At 21st level you and your orbuculum exist as one being with movement of incredible precision. You gain improved skills when using this mystical fighting style.",
+			]),
+			toNotesPage : [{
+				name : "Orbuculum Mastery",
+				note : [
+					"Aphelion Rush",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 120ft without disadvantage.",
+					"Eclipse Barrier",
+					"When you are targeted with a ranged or melee attack you can spend 1 mana point as a reaction to block the attack. Doing so you add +5 to your AC after the attack roll was made, if the bonus puts your AC higher than what was rolled the attack misses.",
+					"Orbiting Mage",
+					"When you use mana to cast a spell with concentration you can spend an additional mana point to cast it without requiring concentration. Doing so the spell lasts until dispelled as a bonus action.",
+					"Perihelion Crush",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 30ft with advantage, If the attack surpasses the targets AC by 5 or more the attack is critical.",
+					"Zenith Pulse",
+					"When you make an attack with the Orbuculum you can spend 1 mana point to unleash a blast of force that deals 5d8 force damage to all creatures within 15ft radius of the original target. These creatures have to make a DC dexterity save throw. On a success the creatures take only half damage.",
+				],
+			}],	
+						additional : levels.map(function (n) {
+				return "2d" + (n < 5 ? 8 : n < 8 ? 10 : 12);
+			}),
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if (classes.known.fateweaver && classes.known.fateweaver.level && (v.theWea.monkweapon || v.baseWeaponName == "orbuculum")) {
+							v.theWea.monkweapon = true;
+							var aMonkDie = function (n) { return n < 5 ? 8 : n < 8 ? 10 : 12; }(classes.known.fateweaver.level);
+							try {
+								var curDie = eval_ish(fields.Damage_Die.replace('d', '*'));
+							} catch (e) {
+								var curDie = 'x';
+							}
+							if (isNaN(curDie) || curDie < aMonkDie) {
+								fields.Damage_Die = '2d' + aMonkDie;
+							}
+						}
+					},
+					5
+				],
+			},
+		},
+		"cosmic power" : {
+			name : "Cosmic Power",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			limfeaname : "Cosmic Power",
+			usages : [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+			recovery : "Turn",
+			description : desc([
+				"At 22nd level, your channel mana of mana becomes your breathe and moves through you effortlessly. When you take a bonus action, you may immediately spend 2 mana points to regain the use of your bonus action until the end of that turn. You may use this feature once per turn. As you advance as a fateweaver, you gain additional uses of this feature per turn, as shown in the Cosmic Power column of the fateweaver class progression table. Additionally, when you would spend mana points as a part of taking your action or casting a spell with a casting time of an action, you may do so as a bonus action instead assuming you have a bonus action available. If you would cast a spell as a bonus action using mana points, you are not prevented from casting additional spells that turn, as long as any additional spells cast in this manner are cast using mana points.",
+			]),
+		},	
+		"keeper of knowledge" : {
+			name : "Keeper of Knowledge",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			action : [["bonus action", "Keeper of Knowledge"]],
+			description : desc([
+				"At 22nd level you gain access to the library of infinite cosmic knowledge. As a bonus action on your turn you can spend 1 mana point to acquire the answer to one question of your own or another creature about anything that exists within the cosmic wheel. The DM must provide the answer to the question to the fateweaver. This answer comes to you in a clear concise way.",
+			]),
+		},	
+		"mystic doorway" : {
+			name : "Mystic Doorway",
+			source : [["PBMS", 0]],
+			minlevel : 4,
+			action : [["action", "Summon Doorway"]],
+			description : desc([
+				"At 24th level you acquire your own mystical doorway that only you can call forth as an action. This doorway is large enough to fit a creature of your size through. This doorway can lead you into any realm or plane you of your within the cosmic wheel. You must state which realm you would like to enter before you open the door. This doorway can only be entered by you or creatures you allow to pass through.",
+			]),
+		},	
+		"subclassfeature6" : {
+			name : "Epic Mystic Order",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"At 26th level you have attained the greatest achievement of your order, and you have discovered the answer to the greatest power of your studies. Only few have attained this fabled power. Depending on your subclass you have gained a different mystical power see details below.",
+			]),
+		},
+		"action surge" : {
+			name : "Action Surge",
+			source : [["PBMS", 0]],
+			minlevel : 8,
+			limfeaname : "Additional Action Surge",
+			usages : 1,
+			recovery: "long rest",
+			description : desc([
+				"At 28th level you gain a second action surge. See action surge details from the Mystic class feature description.",
+			]),
+		},	
+		"order of fate" : {
+			name : "Order of Fate",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"At 30th level you have entered the highest order of cosmic travelers known as the Order of Fate. This order grants you the ability to read a creature, place, or objects fate. If you do so you can determine the mostly likely fate the target will have at the point and time the reading was done. See DM for details of the reading. In addition, you can use the power of mana to change the targets fate within the cosmos if they are willing. To do so you use your knowledge and mana to manipulate time, space, and matter to send a creature to a point in their life where they made a decision that change the course of their life forever. You can do this only once for a creature, place or object. Additionally you gain the following ability, phenomnal cosmic power.",
+			]),
+			toNotesPage : [{
+				name : "Phenomenal Cosmic Power",
+				note : [
+					"Your body surges with the endless power of the multiverse, consuming your mana but providing you with extraordinary benefits. With this ability at the start of each of your turns, you may expend a mana point, gaining a number of special dice called cosmic dice (d12s) equal to six plus the number of mana points expended. You cannot have more cosmic dice than twice your maximum Hit Dice. Any excess dice generated beyond this limit are lost, and all unused dice are lost when you take a long rest. You can use cosmic dice in a variety of ways, choosing from the following options.",
+					"• Cosmic Shield: When you take damage, you may use your reaction to roll any number of your cosmic dice and reduce the damage by the total amount rolled. ",
+					"• Cosmic Form: Once per turn (no action required), you may spend four cosmic dice to end a single condition affecting you (you choose which condition). ",
+					"• Cosmic Blast: Once per turn, when you deal damage with a spell you cast, you may roll any number of your cosmic dice. The spell deals additional force damage equal to the amount rolled. ",
+				],
+			}],	
+		},
+	},
+};	
+
+AddSubClass("fateweaver", "time", {
+	regExpSearch : /^(?=.*fateweaver)(?=.*time).*$/i,
+	subname : "Time",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Order of Time",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			spellcastingBonus : ["determinism", "temporal stasis"],
+			description : desc([
+				"Keeper of Time: You exist outside of the flow of time and your mana has tethered you to each version of yourself throughout time. You cannot be surprised, and you have advantage on all attack rolls even if disadvantage is imposed. As an action, you can temporarily project you consciousness into a different version of yourself outside of the universal present. Doing so you gain perfect recall of information from your past experiences, and insight on what will happen in the future. Future: You choose a specific time when selecting a future self and the DM will determine what you will gain or experience. The information you will acquire will be if you are alive, the state of the world, and any major event that has happened; if any. Past: You choose a specific time when selecting the past self, you do not have to make any roll when recalling past information. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("fateweaver", "space", {
+	regExpSearch : /^(?=.*fateweaver)(?=.*space).*$/i,
+	subname : "Space",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Order of Space",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			spellcastingBonus : ["infinity room", "planar eviction"],
+			description : desc([
+				"Universal Travel: You exist outside of space within the Far Realm. The flow of mana has granted you the ability to fully survive in the far realm. As an action you can travel between the cosmic wheel and the far realm. You can bring with you up to eight willing creatures. These creatures are altered by you to exist outside of the cosmic wheel. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("fateweaver", "gravity", {
+	regExpSearch : /^(?=.*fateweaver)(?=.*gravity).*$/i,
+	subname : "Gravity",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Order of Gravity",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			spellcastingBonus : ["implosion", "kinetic control"],
+			description : desc([
+				"Gravity Master: Gravity no longer has an effect on you unless you allow it. As an action you can use you movement to move in any direction within any realm without being hindered or movement reductions. Lastly, you are immune to force and physical damage, as well as petrified, paralyzed, stunned, exhaustion, grappled, restrained, and prone conditions. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
+			]),	
+		},
+	},
+});
+
+AddSubClass("fateweaver", "light", {
+	regExpSearch : /^(?=.*fateweaver)(?=.*light).*$/i,
+	subname : "Light",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature6" : {
+			name : "Order of Light",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			spellcastingBonus : ["", ""],
+			description : desc([
+				"",
+			]),	
+		},
+	},
 });
