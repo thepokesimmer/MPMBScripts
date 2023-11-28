@@ -7,7 +7,7 @@ SourceList["PBMS"] = {
 	date : "2023/07/18",
 };
 
-// Adds a new class, the Witch, with 8 subclasses
+// Adds a new class, the Witch, with 10 subclasses
 ClassList.sorcerer.regExpSearch = /sorcerer/i;
 ClassList.druid.regExpSearch = /druid/i;
 ClassList.witch = {
@@ -44,7 +44,7 @@ ClassList.witch = {
 		prepared : true,
 	},
 	spellcastingList : { 
-		spells : ["acid splash", "blade ward", "chill touch", "control flames", "create bonfire", "dancing lights", "fire bolt", "friends", "frostbite", "light", "lightning lure", "mage hand", "mending", "message", "mind sliver", "minor illusion", "poison spray", "prestidigitation", "ray of frost", "sapping sting", "shocking grasp", "thunderclap", "true strike", "usurp", "absorb elements", "alarm", "animal friendship", "bane", "beast bond", "bless", "burning hands", "catapult", "cause fear", "charm person", "chromatic orb", "color spray", "cure wounds", "detect magic", "disguise self", "distort value", "erase", "expeditious retreat", "false life", "feather fall", "find familiar", "fog cloud", "frost fingers", "gift of alacrity", "grease", "hex", "ice knife", "identify", "illusory script", "inflict wounds", "jump", "longstrider", "mage armor", "magic missile", "magnify gravity", "merlin", "pattern weave", "protection from evil and good", "ray of sickness", "revoke", "shield", "silent image", "silvery barbs", "sleep", "speak with animals", "tasha's caustic brew", "tasha's hideous laughter", "taunt", "thunderwave", "unseen servant", "witch bolt", "air bubble", "alter self", "animal messenger", "arcane lock", "augury", "beast sense", "blindness/deafness", "blur", "borrowed knowledge", "calm emotions", "cloud of daggers", "continual flame", "crown of madness", "darkness", "detect thoughts", "disruption", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "flaming sphere", "flock of familiars", "fortune's favor", "heat metal", "hold person", "immovable object", "invisibility", "kinetic jaunt", "knock", "lesser restoration", "levitate", "locate object", "magic mouth", "magic weapon", "mind spike", "mirror image", "misty step", "moonbeam", "moon rune", "phantasmal force", "protection from cantrips", "pyrotechnics", "ray of enfeeblement", "scorching ray", "see invisibility", "shadow blade", "shatter", "silence", "skywrite", "spider climb", "suggestion", "summon beast", "swiftness", "tasha's mind whip", "vortex warp", "web", "wither and bloom", "wristpocket", "animate dead", "ashardalon's stride", "augmentation", "bestow curse", "blink", "catnap", "clairvoyance", "conjure animals", "counterspell", "daylight", "dispel magic", "elemental weapon", "enemies abound", "fast friends", "fear", "feign death", "fireball", "fly", "gaseous form", "glyph of warding", "haste", "hypnotic pattern", "incite greed", "intellect fortress", "life transference", "lightning bolt", "magic circle", "major image", "nondetection", "protection from energy", "pulse wave", "remove curse", "sending", "slow", "speak with dead", "spell turning", "spirit shroud", "stinking cloud", "summon fey", "summon lesser demons", "summon shadowspawn", "summon undead", "teleport object", "thunder step", "tidal wave", "tiny servant", "tongues", "vampiric touch", "wall of sand", "wall of water", "water breathing", "water walk", "arcane eye", "arcane retaliation", "banishment", "blight", "charm monster", "compulsion", "confusion", "conjure minor elementals", "conjure woodland beings", "detect scrying", "dimension door", "divination", "dominate beast", "elemental bane", "fabricate", "fire shield", "gravity sinkhole", "greater invisibility", "hallucinatory terrain", "ice storm", "locate creature", "phantasmal killer", "polymorph", "raulothim's psychic lance", "shadow of moil", "shout", "sickening radiance", "stone shape", "stoneskin", "storm sphere", "summon aberration", "summon construct", "summon elemental", "summon greater demon", "synchronicity", "vitriolic sphere", "wall of fire", "watery sphere", "animate objects", "awaken", "cloudkill", "cone of cold", "conjure elemental", "contact other plane", "contractual conjuration", "creation", "danse macabre", "dawn", "dispel evil and good", "dominate person", "dream", "duplicate", "enervation", "far step", "geas", "greater restoration", "hold monster", "immolation", "infernal calling", "insect plague", "legend lore", "magic cancel", "mind fog", "mislead", "modify memory", "negative energy flood", "pandora's gallivant", "passwall", "planar binding", "rary's telepathic bond", "scrying", "seeming", "skill empowerment", "summon celestial", "summon draconic spirit", "synaptic static", "telekinesis", "teleportation circle", "temporal shunt", "transmute rock", "wall of force", "wall of stone", "arcane gate", "blade barrier", "chain lightning", "circle of death", "conjure fey", "contingency", "create homunculus", "create undead", "disintegrate", "drawmij's instant summons", "eyebite", "flesh to stone", "forbiddance", "globe of invulnerability", "gravity fissure", "guards and wards", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of water", "investiture of wind", "magic jar", "mass suggestion", "mental prison", "move earth", "otto's irresistible dance", "permanent illusion", "planar ally", "programmed illusion", "scatter", "soul cage", "spell binding", "summon fiend", "sunbeam", "tasha's otherworldly guise", "true seeing", "wall of ice", "wall of thorns", "create magen", "crown of stars", "delayed blast fireball", "delayed spell", "desire", "dream of the blue veil", "etherealness", "finger of death", "fire storm", "forcecage", "magic siphon", "mirage arcane", "pandora's prismatic bridge", "plane shift", "power word pain", "prismatic spray", "project image", "reverse gravity", "sequester", "simulacrum", "symbol", "teleport", "tether essence", "whirlwind", "abi-dalzim's horrid wilting", "animal shapes", "antimagic field", "antipathy/sympathy", "clone", "control weather", "create golem", "dark star", "demiplane", "dominate monster", "feeblemind", "glibness", "incendiary cloud", "maddening darkness", "maze", "mighty fortress", "mind blank", "power word stun", "reality break", "sunburst", "telepathy", "astral projection", "blade of disaster", "foresight", "gate", "imprisonment", "infringement", "invulnerability", "mass polymorph", "meteor swarm", "power word heal", "power word kill", "prismatic wall", "psychic scream", "ravenous void", "shapechange", "time ravage", "true polymorph", "wail of the banshee", "weird", "wish"],
+		spells : ["acid splash", "blade ward", "chill touch", "circle of power", "control flames", "create bonfire", "dancing lights", "fire bolt", "friends", "frostbite", "light", "lightning lure", "mage hand", "mending", "message", "mind sliver", "minor illusion", "poison spray", "prestidigitation", "ray of frost", "sapping sting", "shocking grasp", "thunderclap", "true strike", "usurp", "absorb elements", "alarm", "animal friendship", "bane", "beast bond", "bless", "burning hands", "catapult", "cause fear", "charm person", "chromatic orb", "color spray", "cure wounds", "detect magic", "disguise self", "distort value", "erase", "expeditious retreat", "false life", "feather fall", "find familiar", "fog cloud", "frost fingers", "gift of alacrity", "grease", "hex", "ice knife", "identify", "illusory script", "inflict wounds", "jump", "longstrider", "mage armor", "magic missile", "magnify gravity", "merlin", "pattern weave", "protection from evil and good", "ray of sickness", "revoke", "shield", "silent image", "silvery barbs", "sleep", "speak with animals", "tasha's caustic brew", "tasha's hideous laughter", "taunt", "thunderwave", "unseen servant", "witch bolt", "air bubble", "alter self", "animal messenger", "arcane lock", "augury", "beast sense", "blindness/deafness", "blur", "borrowed knowledge", "calm emotions", "cloud of daggers", "continual flame", "crown of madness", "darkness", "detect thoughts", "disruption", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "flaming sphere", "flock of familiars", "fortune's favor", "heat metal", "hold person", "immovable object", "invisibility", "kinetic jaunt", "knock", "lesser restoration", "levitate", "locate object", "magic mouth", "magic weapon", "mind spike", "mirror image", "misty step", "moonbeam", "moon rune", "phantasmal force", "protection from cantrips", "pyrotechnics", "ray of enfeeblement", "scorching ray", "see invisibility", "shadow blade", "shatter", "silence", "skywrite", "spider climb", "suggestion", "summon beast", "swiftness", "tasha's mind whip", "vortex warp", "web", "wither and bloom", "wristpocket", "animate dead", "ashardalon's stride", "augmentation", "bestow curse", "blink", "catnap", "clairvoyance", "conjure animals", "counterspell", "daylight", "dispel magic", "elemental weapon", "enemies abound", "fast friends", "fear", "feign death", "fireball", "fly", "gaseous form", "glyph of warding", "haste", "hypnotic pattern", "incite greed", "intellect fortress", "life transference", "lightning bolt", "magic circle", "major image", "nondetection", "protection from energy", "pulse wave", "remove curse", "sending", "slow", "speak with dead", "spell turning", "spirit shroud", "stinking cloud", "summon fey", "summon lesser demons", "summon shadowspawn", "summon undead", "teleport object", "thunder step", "tidal wave", "tiny servant", "tongues", "vampiric touch", "wall of sand", "wall of water", "water breathing", "water walk", "arcane eye", "arcane retaliation", "banishment", "blight", "charm monster", "compulsion", "confusion", "conjure minor elementals", "conjure woodland beings", "detect scrying", "dimension door", "divination", "dominate beast", "elemental bane", "fabricate", "fire shield", "gravity sinkhole", "greater invisibility", "hallucinatory terrain", "ice storm", "locate creature", "phantasmal killer", "polymorph", "raulothim's psychic lance", "shadow of moil", "shout", "sickening radiance", "stone shape", "stoneskin", "storm sphere", "summon aberration", "summon construct", "summon elemental", "summon greater demon", "synchronicity", "vitriolic sphere", "wall of fire", "watery sphere", "animate objects", "awaken", "cloudkill", "cone of cold", "conjure elemental", "contact other plane", "contractual conjuration", "creation", "danse macabre", "dawn", "dispel evil and good", "dominate person", "dream", "duplicate", "enervation", "far step", "geas", "greater restoration", "hold monster", "immolation", "infernal calling", "insect plague", "legend lore", "magic cancel", "mind fog", "mislead", "modify memory", "negative energy flood", "pandora's gallivant", "passwall", "planar binding", "rary's telepathic bond", "scrying", "seeming", "skill empowerment", "summon celestial", "summon draconic spirit", "synaptic static", "telekinesis", "teleportation circle", "temporal shunt", "transmute rock", "wall of force", "wall of stone", "arcane gate", "blade barrier", "chain lightning", "circle of death", "conjure fey", "contingency", "create homunculus", "create undead", "disintegrate", "drawmij's instant summons", "eyebite", "flesh to stone", "forbiddance", "globe of invulnerability", "gravity fissure", "guards and wards", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of water", "investiture of wind", "magic jar", "mass suggestion", "mental prison", "move earth", "otto's irresistible dance", "permanent illusion", "planar ally", "programmed illusion", "scatter", "soul cage", "spell binding", "summon fiend", "sunbeam", "tasha's otherworldly guise", "true seeing", "wall of ice", "wall of thorns", "create magen", "crown of stars", "delayed blast fireball", "delayed spell", "desire", "dream of the blue veil", "etherealness", "finger of death", "fire storm", "forcecage", "magic siphon", "mirage arcane", "pandora's prismatic bridge", "plane shift", "power word pain", "prismatic spray", "project image", "reverse gravity", "sequester", "simulacrum", "symbol", "teleport", "tether essence", "whirlwind", "abi-dalzim's horrid wilting", "animal shapes", "antimagic field", "antipathy/sympathy", "clone", "control weather", "create golem", "dark star", "demiplane", "dominate monster", "feeblemind", "glibness", "incendiary cloud", "maddening darkness", "maze", "mighty fortress", "mind blank", "power word stun", "reality break", "sunburst", "telepathy", "astral projection", "blade of disaster", "foresight", "gate", "imprisonment", "infringement", "invulnerability", "mass polymorph", "meteor swarm", "power word heal", "power word kill", "prismatic wall", "psychic scream", "ravenous void", "shapechange", "time ravage", "true polymorph", "wail of the banshee", "weird", "wish"],
 	},
 	features : {
 
@@ -1535,757 +1535,757 @@ SpellsList["swiftness"] = {
 
 // Adds Spellcaster Armor, Enhanced Spellcasting Focai (Arcane, Divine, Primal), and Other Magic Items
 
-MagicItemsList = {
-	"flax linen robes" : {
+
+MagicItemsList["flax linen robes"] = {
+	name : "Flax Linen Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 5 gp",
+	weight : 5,
+	description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	addArmor : "Flax Linen Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*(flax))(?=.*linen).*$/i,
 		name : "Flax Linen Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 5 gp",
+		type : "light",
+		ac : 11,
 		weight : 5,
-		description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		addArmor : "Flax Linen Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*(flax))(?=.*linen).*$/i,
-			name : "Flax Linen Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 11,
-			weight : 5,
-		},	
-	},
-	"suede robes" : {
+	},	
+};
+MagicItemsList["suede robes"] = {
+	name : "Suede Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 45 gp",
+	weight : 5,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
+		],
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	dmgres : ["Cold", "Fire", "Lightning"],
+	addArmor : "Suede Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*suede).*$/i,
 		name : "Suede Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 45 gp",
+		type : "light",
+		ac : 11,
 		weight : 5,
+	},	
+};
+MagicItemsList["embroidered robes"] = {
+	name : "Embroidered Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 10 gp",
+	weight : 10,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Embroidered Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
-			],
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		dmgres : ["Cold", "Fire", "Lightning"],
-		addArmor : "Suede Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*suede).*$/i,
-			name : "Suede Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 11,
-			weight : 5,
-		},	
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
 	},
-	"embroidered robes" : {
+	"cursed" : {
+		name : "Embroidered Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Embroidered Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Embroidered Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Embroidered Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : " Embroidered Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},
+	addArmor : "Embroidered Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*embroidered).*$/i,
 		name : "Embroidered Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 10 gp",
+		type : "light",
+		ac : 11,
 		weight : 10,
+	},	
+};
+MagicItemsList["cambric robes"] = {
+	name : "Cambric Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 10 gp",
+	weight : 5,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	avetxt : "Adv. on Saves v.s spells and magical effects",
+	choice2s : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Cambric Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Embroidered Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Embroidered Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Embroidered Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Embroidered Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Embroidered Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : " Embroidered Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},
-		addArmor : "Embroidered Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*embroidered).*$/i,
-			name : "Embroidered Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 11,
-			weight : 10,
-		},	
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
 	},
-	"cambric robes" : {
+	"cursed" : {
+		name : "Cambric Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Cambric Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Cambric Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Cambric Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Cambric Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Cambric Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*cambric).*$/i,
 		name : "Cambric Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 10 gp",
+		type : "light",
+		ac : 12,
 		weight : 5,
-		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choice2s : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Cambric Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Cambric Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Cambric Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Cambric Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Cambric Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Cambric Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Cambric Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*cambric).*$/i,
-			name : "Cambric Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 12,
-			weight : 5,
-		},	
-	},
-	"leather robes" : {
+	},	
+};
+MagicItemsList["leather robes"] = {
+	name : "Leather Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 50 gp",
+	weight : 15,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	dmgres : ["Cold", "Fire", "Lightning"],			
+	addArmor : "Leather Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*leather).*$/i,
 		name : "Leather Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 50 gp",
+		type : "light",
+		ac : 12,
 		weight : 15,
+	},	
+};
+MagicItemsList["velvet robes"] = {
+	name : "Velvet Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 75 gp",
+	weight : 10,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Velvet Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		dmgres : ["Cold", "Fire", "Lightning"],			
-		addArmor : "Leather Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*leather).*$/i,
-			name : "Leather Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 12,
-			weight : 15,
-		},	
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
 	},
-	"velvet robes" : {
+	"cursed" : {
+		name : "Velvet Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Velvet Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Velvet Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Velvet Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Velvet Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Velvet Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*velvet).*$/i,
 		name : "Velvet Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 75 gp",
+		type : "light",
+		ac : 13,
 		weight : 10,
-		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Velvet Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Velvet Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Velvet Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Velvet Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Velvet Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Velvet Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Velvet Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*velvet).*$/i,
-			name : "Velvet Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 13,
-			weight : 10,
-		},	
-	},
-	"brocade robes" : {
+	},	
+};
+MagicItemsList["brocade robes"] = {
+	name : "Brocade Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 100 gp",
+	weight : 10,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+	],
+	attunement : true,		
+	savetxt : "Adv. on Saves v.s spells and magical effects",	
+	limfeaname : "Charges",
+	usages : 3,
+	recovery : "dawn",		
+	addArmor : "Brocade Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*brocade).*$/i,
 		name : "Brocade Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 100 gp",
+		type : "light",
+		ac : 13,
 		weight : 10,
+	},	
+};
+MagicItemsList["wool robes"] = {
+	name : "Wool Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 450 gp",
+	weight : 15,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	dmgres : ["Cold", "Fire", "Lightning"],
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Wool Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		attunement : true,		
-		savetxt : "Adv. on Saves v.s spells and magical effects",	
-		limfeaname : "Charges",
-		usages : 3,
-		recovery : "dawn",		
-		addArmor : "Brocade Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*brocade).*$/i,
-			name : "Brocade Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 13,
-			weight : 10,
-		},	
+		savetxt : "Immune to Charmed condition",
 	},
-	"wool robes" : {
+	"cursed" : {
+		name : "Wool Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Wool Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Wool Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Wool Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Wool Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Wool Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*wool).*$/i,
 		name : "Wool Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 450 gp",
+		type : "light",
+		ac : 13,
 		weight : 15,
+	},	
+};
+MagicItemsList["silk robes"] = {
+	name : "Silk Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 750 gp",
+	weight : 25,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects",
+	limfeaname : "Charges",
+	usages : 3,
+	recovery : "dawn",
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Silk Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		dmgres : ["Cold", "Fire", "Lightning"],
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Wool Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Wool Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Wool Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Wool Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Wool Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Wool Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Wool Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*wool).*$/i,
-			name : "Wool Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 13,
-			weight : 15,
-		},	
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
 	},
-	"silk robes" : {
+	"cursed" : {
+		name : "Silk Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Silk Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+			savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Silk Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Silk Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Silk Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Silk Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*silk).*$/i,
 		name : "Silk Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 750 gp",
+		type : "light",
+		ac : 13,
 		weight : 25,
+	},	
+};
+MagicItemsList["armored robes"] = {
+	name : "Armored Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 950 gp",
+	weight : 20,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	savetxt : "Adv. on Saves v.s spells and magical effects, Crits treated as Normal Hit",
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
+	"charmed" : {
+		name : "Armored Robes of Charm Immunity",
 		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects",
-		limfeaname : "Charges",
-		usages : 3,
-		recovery : "dawn",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Silk Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Silk Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Silk Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Silk Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Silk Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Silk Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Silk Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*silk).*$/i,
-			name : "Silk Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 13,
-			weight : 25,
-		},	
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
 	},
-	"armored robes" : {
+	"cursed" : {
+		name : "Armored Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Armored Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Armored Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Armored Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Armored Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Armored Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*armored).*$/i,
 		name : "Armored Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 950 gp",
+		type : "light",
+		ac : 14,
 		weight : 20,
-		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		savetxt : "Adv. on Saves v.s spells and magical effects, Crits treated as Normal Hit",
-		choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
-		choicesNotInMenu : true,
-		"charmed" : {
-			name : "Armored Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Armored Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Armored Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Armored Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Armored Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Armored Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Armored Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*armored).*$/i,
-			name : "Armored Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 14,
-			weight : 20,
-		},	
+	},	
+};
+MagicItemsList["prismatic robes"] = {
+	name : "Prismatic Robes",
+	source : [["PBMS", 0]],
+	type : "armor (robe)",
+	rarity : "common",
+	extraTooltip : "can be purchased for 1500 gp",
+	weight : 20,
+	description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
+	],	
+	attunement : true,
+	calcChanges : {
+		spellCalc : [
+			function (type, spellcasters, ability) {
+				if (type !== "prepare") return 2;
+			},
+			"While wearing these robes I gain a +2 bonus to the spell attack rolls and saving throw DCs of my spells."
+		]
 	},
-	"prismatic robes" : {
+	"charmed" : {
+		name : "Prismatic Robes of Charm Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
+		],
+		savetxt : "Immune to Charmed condition",
+	},
+	"cursed" : {
+		name : "Prismatic Robes of Curse Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
+		],
+		savetxt : "Immune to Cursed condition",
+	},
+	"frightened" : {
+		name : "Prismatic Robes of Fright Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
+		],
+		savetxt : "Immune to Frightened condition",
+	},	
+	"paralyzed" : {
+		name : "Prismatic Robes of Paralysis Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
+		],
+		savetxt : "Immune to Paralyzed condition",
+	},
+	"magical sleep" : {
+		name : "Prismatic Robes of Slumber Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
+		],
+		savetxt : "Immune to Magical Sleep",
+	},
+	"petrified" : {
+		name : "Prismatic Robes of Petrification Immunity",
+		description : [
+		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
+		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
+		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
+		],
+		savetxt : "Immune to Petrified condition",
+	},			
+	addArmor : "Prismatic Robes",
+	armorOptions : {
+		regExpSearch : /^(?=.*prismatic).*$/i,
 		name : "Prismatic Robes",
 		source : [["PBMS", 0]],
-		type : "armor (robe)",
-		rarity : "common",
-		extraTooltip : "can be purchased for 1500 gp",
+		type : "light",
+		ac : 14,
 		weight : 20,
-		description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
-		],	
-		attunement : true,
-		calcChanges : {
-			spellCalc : [
-				function (type, spellcasters, ability) {
-					if (type !== "prepare") return 2;
-				},
-				"While wearing these robes I gain a +2 bonus to the spell attack rolls and saving throw DCs of my spells."
-			]
-		},
-		"charmed" : {
-			name : "Prismatic Robes of Charm Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
-			],
-			savetxt : "Immune to Charmed condition",
-		},
-		"cursed" : {
-			name : "Prismatic Robes of Curse Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
-			],
-			savetxt : "Immune to Cursed condition",
-		},
-		"frightened" : {
-			name : "Prismatic Robes of Fright Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
-			],
-			savetxt : "Immune to Frightened condition",
-		},	
-		"paralyzed" : {
-			name : "Prismatic Robes of Paralysis Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
-			],
-			savetxt : "Immune to Paralyzed condition",
-		},
-		"magical sleep" : {
-			name : "Prismatic Robes of Slumber Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
-			],
-			savetxt : "Immune to Magical Sleep",
-		},
-		"petrified" : {
-			name : "Prismatic Robes of Petrification Immunity",
-			description : [
-			"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
-			"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
-			"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
-			],
-			savetxt : "Immune to Petrified condition",
-		},			
-		addArmor : "Prismatic Robes",
-		armorOptions : {
-			regExpSearch : /^(?=.*prismatic).*$/i,
-			name : "Prismatic Robes",
-			source : [["PBMS", 0]],
-			type : "light",
-			ac : 14,
-			weight : 20,
-		},	
 	},	
-	"talisman" : {
-		name : "Talisman",
-		source : [["PBMS", 0]],
-		type : "wonderous item",
-		rarity : "common",
-		extraTooltip : "can be purchased for 10 gp",
-		weight : 1,
-		description : "",
-		attunement : true,
-		choices : ["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder"],
-		choicesNotInMenu : true,
-		"acid" : {
-			name : "Talisman of Acid Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to acid damage.",
-			dmgres : ["Acid"]
-		},
-		"cold" : {
-			name : "Talisman of Cold Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to cold damage.",
-			dmgres : ["Cold"]
-		},
-		"fire" : {
-			name : "Talisman of Fire Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to fire damage.",
-			dmgres : ["Fire"]
-		},
-		"force" : {
-			name : "Talisman of Force Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to force damage.",
-			dmgres : ["Force"]
-		},
-		"lightning" : {
-			name : "Talisman of Lightning Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to lightning damage.",
-			dmgres : ["Lightning"]
-		},
-		"necrotic" : {
-			name : "Talisman of Necrotic Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to necrotic damage.",
-			dmgres : ["Necrotic"]
-		},
-		"poison" : {
-			name : "Talisman of Poison Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to poison damage.",
-			dmgres : ["Poison"]
-		},
-		"psychic" : {
-			name : "Talisman of Psychic Resistance",
-			description : "While I'm wieldig this talisman and I'm attuned to it, I have resistance to psychic damage.",
-			dmgres : ["Psychic"]
-		},
-		"radiant" : {
-			name : "Talisman of Radiant Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to radiant damage.",
-			dmgres : ["Radiant"]
-		},
-		"thunder" : {
-			name : "Talisman of Thunder Resistance",
-			description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to thunder damage.",
-			dmgres : ["Thunder"]
-		}
+};	
+MagicItemsList["talisman"] = {
+	name : "Talisman",
+	source : [["PBMS", 0]],
+	type : "wonderous item",
+	rarity : "common",
+	extraTooltip : "can be purchased for 10 gp",
+	weight : 1,
+	description : "",
+	attunement : true,
+	choices : ["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder"],
+	choicesNotInMenu : true,
+	"acid" : {
+		name : "Talisman of Acid Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to acid damage.",
+		dmgres : ["Acid"]
 	},
-	"potion of magic" : {
+	"cold" : {
+		name : "Talisman of Cold Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to cold damage.",
+		dmgres : ["Cold"]
+	},
+	"fire" : {
+		name : "Talisman of Fire Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to fire damage.",
+		dmgres : ["Fire"]
+	},
+	"force" : {
+		name : "Talisman of Force Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to force damage.",
+		dmgres : ["Force"]
+	},
+	"lightning" : {
+		name : "Talisman of Lightning Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to lightning damage.",
+		dmgres : ["Lightning"]
+	},
+	"necrotic" : {
+		name : "Talisman of Necrotic Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to necrotic damage.",
+		dmgres : ["Necrotic"]
+	},
+	"poison" : {
+		name : "Talisman of Poison Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to poison damage.",
+		dmgres : ["Poison"]
+	},
+	"psychic" : {
+		name : "Talisman of Psychic Resistance",
+		description : "While I'm wieldig this talisman and I'm attuned to it, I have resistance to psychic damage.",
+		dmgres : ["Psychic"]
+	},
+	"radiant" : {
+		name : "Talisman of Radiant Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to radiant damage.",
+		dmgres : ["Radiant"]
+	},
+	"thunder" : {
+		name : "Talisman of Thunder Resistance",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to thunder damage.",
+		dmgres : ["Thunder"]
+	}
+};
+MagicItemsList["potion of magic"] = {
+	name : "Potion of Magic",
+	source : [["PBMS", 0]],
+	type : "potion",
+	description : "Once as an action, I can drink this potion or administer it to another to heal a number of spell slots depending on the type of potion. This potion's purple liquid shimmers when agitated.",
+	descriptionFull : "You regain spell slots when you drink this potion. The number of spell slots depends on the potion's rarity, as shown in the Potions of Magic table. Whatever its potency, the potion's purpel liquid shimmers when agitated.",
+	weight : 0.5,
+	allowDuplicates : true,
+	choices : ["Magic (2d4+2, uncommon)", "Greater Magic (4d4+4, rare)", "Superior Magic (8d4+8, very rare)", "Supreme Magic (10d4+20, legendary)"],
+	"magic (2d4+2, uncommon)" : {
 		name : "Potion of Magic",
-		source : [["PBMS", 0]],
-		type : "potion",
-		description : "Once as an action, I can drink this potion or administer it to another to heal a number of spell slots depending on the type of potion. This potion's purple liquid shimmers when agitated.",
-		descriptionFull : "You regain spell slots when you drink this potion. The number of spell slots depends on the potion's rarity, as shown in the Potions of Magic table. Whatever its potency, the potion's purpel liquid shimmers when agitated.",
-		weight : 0.5,
-		allowDuplicates : true,
-		choices : ["Magic (2d4+2, uncommon)", "Greater Magic (4d4+4, rare)", "Superior Magic (8d4+8, very rare)", "Supreme Healing (10d4+20, legendary)"],
-		"magic (2d4+2, uncommon)" : {
-			name : "Potion of Magic",
-			rarity : "uncommon",
-			magicItemTable : "A",
-			description : "Once as an action, I can drink this potion or administer it to another to regain 2d4+2 spell slots. This potion's purpel liquid shimmers when agitated.",
-			descriptionFull : "You regain 2d4+2 spell slots when you drink this potion. The potion's purpel liquid shimmers when agitated.",
-			extraTooltip : "Can be bought for 100 gp (also in AL)"
-		},
-		"greater magic (4d4+4, rare)" : {
-			name : "Potion of Greater Magic",
-			sortname : "Potion of Magic, Greater",
-			rarity : "rare",
-			magicItemTable : ["A", "B"],
-			description : "Once as an action, I can drink this potion or administer it to another to regain 4d4+4 spell slots. This potion's purpel liquid shimmers when agitated.",
-			descriptionFull : "You regain 4d4+4 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
-			extraTooltip : "AL: can always be bought for 500 gp"
-		},
-		"superior magic (8d4+8, very rare)" : {
-			name : "Potion of Superior Magic",
-			sortname : "Potion of Magic, Superior",
-			rarity : "very rare",
-			magicItemTable : "C",
-			description : "Once as an action, I can drink this potion or administer it to another to regain 8d4+8 spell slots. This potion's purple liquid shimmers when agitated.",
-			descriptionFull : "You regain 8d4+8 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
-			extraTooltip : "AL: can always be bought for 5000 gp"
-		},
-		"supreme magic (10d4+20, legendary)" : {
-			name : "Potion of Supreme Magic",
-			sortname : "Potion of Magic, Supreme",
-			rarity : "legendary",
-			magicItemTable : ["D", "E"],
-			description : "Once as an action, I can drink this potion or administer it to another to regain 10d4+20 spell slots. This potion's purple liquid shimmers when agitated.",
-			descriptionFull : "You regain 10d4+20 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
-			extraTooltip : "AL: can always be bought for 50000 gp"
-		},
+		rarity : "uncommon",
+		magicItemTable : "A",
+		description : "Once as an action, I can drink this potion or administer it to another to regain 2d4+2 spell slots. This potion's purpel liquid shimmers when agitated.",
+		descriptionFull : "You regain 2d4+2 spell slots when you drink this potion. The potion's purpel liquid shimmers when agitated.",
+		extraTooltip : "Can be bought for 100 gp (also in AL)"
+	},
+	"greater magic (4d4+4, rare)" : {
+		name : "Potion of Greater Magic",
+		sortname : "Potion of Magic, Greater",
+		rarity : "rare",
+		magicItemTable : ["A", "B"],
+		description : "Once as an action, I can drink this potion or administer it to another to regain 4d4+4 spell slots. This potion's purpel liquid shimmers when agitated.",
+		descriptionFull : "You regain 4d4+4 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+		extraTooltip : "AL: can always be bought for 500 gp"
+	},
+	"superior magic (8d4+8, very rare)" : {
+		name : "Potion of Superior Magic",
+		sortname : "Potion of Magic, Superior",
+		rarity : "very rare",
+		magicItemTable : "C",
+		description : "Once as an action, I can drink this potion or administer it to another to regain 8d4+8 spell slots. This potion's purple liquid shimmers when agitated.",
+		descriptionFull : "You regain 8d4+8 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+		extraTooltip : "AL: can always be bought for 5000 gp"
+	},
+	"supreme magic (10d4+20, legendary)" : {
+		name : "Potion of Supreme Magic",
+		sortname : "Potion of Magic, Supreme",
+		rarity : "legendary",
+		magicItemTable : ["D", "E"],
+		description : "Once as an action, I can drink this potion or administer it to another to regain 10d4+20 spell slots. This potion's purple liquid shimmers when agitated.",
+		descriptionFull : "You regain 10d4+20 spell slots when you drink this potion. The potion's purple liquid shimmers when agitated.",
+		extraTooltip : "AL: can always be bought for 50000 gp"
 	},
 };
+
 
 MagicItemsList["crystal"] = {
 	name : "Crystal",
@@ -6326,6 +6326,472 @@ AddSubClass("warlock", "the horned god", {
 	}
 });
 
+AddSubClass("fighter", "amazon", {
+	regExpSearch : /^(?=.*fighter)(?=.*amazon).*$/i,
+	subname : "Amazon",
+	source : [["PBMS", 0]],
+	spellcastingAbility : 5,
+	features : {
+		
+		"subclassfeature3a" : {
+			name : "Amazon Weapon Training",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"Choose an Amazon Weapon Training for the amazon using the 'Choose Feature' button above",
+			]),
+			extraname : "Amazon Weapon Training",
+			extrachoices : ["Javelin Amazon Weapon Training", "Spear Amazon Weapon Training", "Pike Amazon Weapon Training", "Glaive Amazon Weapon Training", "Longsword Amazon Weapon Training", "Shortsword Amazon Weapon Training", "Longbow Amazon Weapon Training", "Shortbow Amazon Weapon Training", "Whip Amazon Weapon Training"],
+			extratimes : 1,
+			"javelin amazon weapon training" : {
+				name : "Javelin Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with javelins, + Proficiency bonus to attack rolls I make with javelins.",
+				]),	
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "javelin" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"spear amazon weapon training" : {
+				name : "Spear Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with spears, + Proficiency bonus to attack rolls I make with spears.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "spear" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"pike amazon weapon training" : {
+				name : "Pike Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with pikes, + Proficiency bonus to attack rolls I make with pikes.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "pike" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"glaive amazon weapon training" : {
+				name : "Glaive Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with glaives, + Proficiency bonus to attack rolls I make with glaives.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "glaive" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"longsword amazon weapon training" : {
+				name : "Longsword Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with longswords, + Proficiency bonus to attack rolls I make with longswords.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "longsword" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"shortsword amazon weapon training" : {
+				name : "Shortsword Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with shortswords, + Proficiency bonus to attack rolls I make with shortswords.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "shortsword" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"longbow amazon weapon training" : {
+				name : "Longbow Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with longbows, + Proficiency bonus to attack rolls I make with longbows.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "longbow" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"shortbow amazon weapon training" : {
+				name : "Shortbow Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with shortbows, + Proficiency bonus to attack rolls I make with shortbows.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "shortbow" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},
+			"whip amazon weapon training" : {
+				name : "Whip Amazon Weapon Training",
+				description : desc([
+					"+1 bonus to damage rolls I make with whips, + Proficiency bonus to attack rolls I make with whips.",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "whip" && (/\bamazon\b/i).test(v.WeaponText)) {
+								output.extraDmg += 1;
+								output.extraHit += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Amazon' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit and +1 on its Damage."
+					]
+				}
+			},	
+		},
+		"subclassfeature3b" : {
+			name : "Amazon Tribe",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"Choose an Amazon Tribe for the amazon using the 'Choose Feature' button above",
+			]),
+			extraname : "Amazon Tribe",
+			extrachoices : ["Sisterhood of the Sightless Eye", "Sisterhood of the Stalking Lioness", "Sisterhood of Maiden's Voyage"],
+			extratimes : 1,
+			"sisterhood of the sightless eye" : {
+				name : "Sisterhood of the Sightless Eye",
+				spellcastingBonus : [{
+					name : "Sisterhood of the Sightless Eye",
+					spells : ["true strike", "guiding bolt"],
+					selection : ["true strike", "guiding bolt"],
+					times : 2,
+				}],	
+				limfeaname : "Guiding Bolt",
+				usages : "Proficiency bonus per ",
+				usagescalc : "event.value = How('Proficiency Bonus');",
+				recovery : "long rest",
+				description : "You gain the True Strike cantrip, and can cast the Guiding Bolt spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
+			},
+			"sisterhood of the stalking lioness" : {
+				name : "Sisterhood of the Stalking Lioness",
+				spellcastingBonus : [{
+					name : "Sisterhood of the Stalking Lioness",
+					spells : ["message", "hunter's mark"],
+					selection : ["message", "hunter's mark"],
+					times : 2,
+				}],	
+				limfeaname : "Hunter's Mark",
+				usages : "Proficiency bonus per ",
+				usagescalc : "event.value = How('Proficiency Bonus');",
+				recovery : "long rest",
+				description : "You gain the Message cantrip, and can cast the Hunter's Mark spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
+			},
+			"sisterhood of maiden's voyage" : {
+				name : "Sisterhood of Maiden's Voyage",
+				spellcastingBonus : [{
+					name : "Sisterhood of Maiden's Voyage",
+					spells : ["lightning lure", "fog cloud"],
+					selection : ["lightning lure", "fog cloud"],
+					times : 2,
+				}],	
+				limfeaname : "Fog Cloud",
+				usages : "Proficiency bonus per ",
+				usagescalc : "event.value = How('Proficiency Bonus');",
+				recovery : "long rest",
+				description : "You gain the Lightning Lure cantrip, and can cast the Fog Cloud spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
+			},
+		},
+		"subclassfeature7" : {
+			name : "Hunter Gatherer",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : desc("You gain bonus proficiencies choose two from Investigation, Medicine, Nature, Perception, or Survival"),
+			skillstxt : "Choose two from Investigation, Medicine, Nature, Perception, or Survival",
+		},	
+		"subclassfeature10" : {
+			name : "Amazon Tribe Improvement",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"Using the 'Choose Feature' button above select the Amazon Tribe Improvement for the Amazon Tribe you selected at 3rd level.",
+			]),
+			extraname : "Amazon Tribe Improvement",
+			extrachoices : ["Improved Sisterhood of the Sightless Eye", "Improved Sisterhood of the Stalking Lioness", "Improved Sisterhood of Maiden's Voyage"],
+			extratimes : 1,
+			"improved sisterhood of the sightless eye" : {
+				name : "Improved Sisterhood of the Sightless Eye",
+				spellcastingBonus : [{
+					name : "Improved Sisterhood of the Sightless Eye",
+					spells : ["clairvoyance"],
+					selection : ["clairvoyance"],
+					times : 1,
+				}],	
+				limfeaname : "Clairvoyance",
+				usages : 1,
+				recovery : "short rest",
+				eval : function() { AddFeat("Alert"); },
+				removeeval : function() { RemoveFeat("Alert"); },
+				description : "You gain improved mystical insight from the sightless eye granting you the Alert feat. In addition, you can cast the clairvoyance spell at 3rd level once before a shor t or long rest.",
+			},
+			"improved sisterhood of the stalking lioness" : {
+				name : "Improved Sisterhood of the Stalking Lioness",
+				spellcastingBonus : [{
+					name : "Improved Sisterhood of the Stalking Lioness",
+					spells : ["nondetection"],
+					selection : ["nondetection"],
+					times : 1,
+				}],	
+				limfeaname : "Nondetection",
+				usages : 1,
+				recovery : "short rest",
+				eval : function() { AddFeat("Skulker"); },
+				removeeval : function() { RemoveFeat("Skulker"); },
+				description : "You gain improved hunting skills used by your sisterhood granting you the Skulker feat. In addition, you can cast the Nondetection spell at 3rd level once before a short or long rest.",
+			},
+			"improved sisterhood of maiden's voyage" : {
+				name : "Improved Sisterhood of Maiden's Voyage",
+				spellcastingBonus : [{
+					name : "Improved Sisterhood of Maiden's Voyage",
+					spells : ["lightning bolt"],
+					selection : ["lightning bolt"],
+					times : 1,
+				}],	
+				limfeaname : "Lightning Bolt",
+				usages : 1,
+				recovery : "short rest",
+				eval : function() { AddFeat("Elemental Adept [Lightning]"); },
+				removeeval : function() { RemoveFeat("Elemental Adept [Lightning]"); },
+				description : "You gain improved connection to the open seas in which you were raised granting you the Elemental Adept(Lightning) feat. In addition, you can cast the lightning bolt spell at 3rd level once before a short or long rest.",
+			},
+		},
+		"subclassfeature15" : {
+			name : "Amazonian Ally",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : desc([
+				"You can cast the Planar Ally spell once before a long rest, when you do you summon a Deva ally the Deva's change shape feature is replaced with your sisterhood's cantrip and spells and the Deva wields an Amazonian Weapon.",
+			]),
+			spellcastingBonus : [{
+				name : "Amazonian Ally",
+				spells : ["planar ally"],
+				selection : ["planar ally"],
+				times : 1,
+			}],	
+			limfeaname : "Planar Ally",
+			usages : 1,
+			recovery : "long rest",
+		},
+		"subclassfeature18" : {
+			name : "Amazon Fury",
+			source : [["PBMS", 0]],
+			minlevel : 18,
+			description : desc([
+				"Using the 'Choose Feature' button above select the Amazon Weapon Training Improvement for the Amazon Weapon Training you selected at 3rd level.",
+				"You gain reisistance to Bludgeoning, Piercing, and Slashing damage.",
+				"You have Advantage on Dexterity Checks and Saving Throws",
+			]),
+			savetxt : "adv. on Dex Checks and Saves",
+			dmgres : ["Bludgeoning", "Piercing", "Slashing"],
+			extraname : "Improved Amazon Weapon Training",
+			extrachoices : ["Javelin Amazon Weapon Training Improvement", "Spear Amazon Weapon Training Improvement", "Pike Amazon Weapon Training Improvement", "Glaive Amazon Weapon Training Improvement", "Longsword Amazon Weapon Training Improvement", "Shortsword Amazon Weapon Training Improvement", "Longbow Amazon Weapon Training Improvement", "Shortbow Amazon Weapon Training Improvement", "Whip Amazon Weapon Training Improvement"],
+			extratimes : 1,
+			"javelin amazon weapon training improvement" : {
+				name : "Javelin Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with javelins",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "javelin" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"spear amazon weapon training improvement" : {
+				name : "Spear Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with spears",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "spear" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"pike amazon weapon training improvement" : {
+				name : "Pike Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with pikes",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "pike" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"glaive amazon weapon training improvement" : {
+				name : "Glaive Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with glaives",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "glaive" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"longsword amazon weapon training improvement" : {
+				name : "Longsword Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with longswords",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "longsword" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"shortsword amazon weapon training improvement" : {
+				name : "Shortsword Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with shortswords",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "shortsword" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"longbow amazon weapon training improvement" : {
+				name : "Longbow Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with longbows",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "longbow" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"shortbow amazon weapon training improvement" : {
+				name : "Shortbow Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with shortbows",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "shortbow" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+			"whip amazon weapon training improvement" : {
+				name : "Whip Amazon Weapon Training Improvement",
+				description : desc([
+					"+ Proficiency bonus to damage rolls I make with whips",
+				]),
+				calcChanges : {
+					atkCalc : [
+						function (fields, v, output) {
+							if (v.baseWeaponName == "whip" && (/\bimproved\b/i).test(v.WeaponText)) {
+								output.extraDmg += Number(How('Proficiency Bonus'));
+							}
+						},
+						"If I include the word 'Improved' in my weapon's name or description, the calculation will put + Prof bonus on its Damage."
+					]
+				}
+			},
+		},	
+	},
+});
+
 ClassList.jester = {
 	
 	regExpSearch : /jester/i,
@@ -6942,3 +7408,528 @@ AddSubClass("fateweaver", "light", {
 		},
 	},
 });
+
+RaceList["cecaelia"] = {
+	regExpSearch : /^(?=.*\b(cecaelia)\b).*$/i,
+	name : "Cecaelia",
+	source : [["PBMS", 0]],
+	plural : "Cecaelia",
+	size : [3, 4],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		swim : { spd : 40, enc : 30 },
+	},
+	scoresGeneric : true,
+	languageProfs : ["Common", "Deep Speech"],
+	age : "reach adulthood by late teens and live around 800 years",
+	vision : [["Blindsight", 120]],
+	skills : ["Insight"],
+	dmgres : ["Acid", "Wave"],
+	savetxt : "Adv. on attack rolls, ability checks, and saving throws",
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /\btentacle\b/i,
+		name : "Tentacle",
+		source : [["PBMS", 0]],
+		ability : 4,
+		damage : [1, 6, "psychic"],
+	},
+	weaponsAdd : ["Tentacle"],
+	trait : "Cecaelia (my creature type is Aberation)"+
+		"\n \u2022 Blindsight: 120 ft."+
+		"\n \u2022 Amphibious: You can breathe air and water."+
+		"\n \u2022 Precognition: You have advantage on all attack rolls, ability cheicks, and saving throws."+
+		"\n \u2022 An Ocean Life: You have resistance to acid and wave damage."+
+		"\n \u2022 Intuitive Sense: You have proficiency in the Insight Skill."+
+		"\n \u2022 Tentacles: You have a natural weapon of Tentacles that deal 1d6 + Int Psychic damage."
+};		
+RaceList["weasel mustalid"] = {
+	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(weasel)\b).*$/i,
+	name : "Weasel Mustalid",
+	sortname : "Mustalid, Weasel",
+	source : [["PBMS", 0]],
+	plural : "Weasel Mustalids",
+	size : [3, 4],
+	speed : {
+		walk : { spd : 25, enc : 15 }
+	},
+	scoresGeneric : true,
+	languageProfs : ["Common", "Celestial"],
+	age : "reach adulthood by 5 and live around 60 years",
+	vision : [["Darkvision", 60]],
+	skills : ["Stealth", "Deception", "Intimidation"],
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /\bbite\b/i,
+		name : "Bite",
+		source : [["PBMS", 0]],
+		damage : [2, 6, "piercing"],
+	},
+	weaponsAdd : ["Bite"],
+	trait : "Weasel Mustalid (my creature type is Humanoid)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Confusion Tactics: You gain proficiency with the Deception skill"+
+		"\n \u2022 War Dance: You gain proficiency with the Intiidation skill"+
+		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill"
+};
+RaceList["badger mustalid"] = {
+	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(badger)\b).*$/i,
+	name : "Badger Mustalid",
+	sortname : "Mustalid, Badger",
+	source : [["PBMS", 0]],
+	plural : "Badger Mustalids",
+	languageProfs : ["Common", "Celestial"],
+	age : "reach adulthood by 5 and live around 60 years",
+	scoresGeneric : true,
+	vision : [["Darkvision", 60]],
+	skills : "Stealth",
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		burrow : { spd : 20, enc : 10 },
+	},
+	dmgres : ["Poison"],
+	savetxt : { 
+		adv_vs : ["poison"], 
+	},
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /^(?=.*badger)(?=.*claw).*$/i,
+		name : "Badger Claws",
+		source : [["PBMS", 0]],
+		damage : [2, 6, "slashing"],
+	},
+	weaponsAdd : ["Badger Claws"],
+	features : {
+		"giant slayer" : {
+			name : "Giant Slayer",
+			description : desc([
+				"You have advantage on attack rolls against creatures one or more sizes larger than you.",
+			]),
+		},
+	},
+	trait : "Badger Mustalid (my creature type is Humanoid)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Poison Resilience: You have advantage on saving throws against being poisoned or any effects of poison, and you have resistance against poison damage."+
+		"\n \u2022 Giant Slayer: You have advantage on attack rolls against creatures one or more sizes larger than you."+
+		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
+};
+RaceList["otter mustalid"] = {
+	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(otter)\b).*$/i,
+	name : "Otter Mustalid",
+	sortname : "Mustalid, Otter",
+	source : [["PBMS", 0]],
+	plural : "Otter Mustalids",
+	languageProfs : ["Common", "Celestial"],
+	age : "reach adulthood by 5 and live around 60 years",
+	scoresGeneric : true,
+	vision : [["Darkvision", 60]],
+	skills : ["Stealth", "Survival"],
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		swim : { spd : 20, enc : 10 },
+	},
+	armorOptions : {
+		regExpSearch : /^(?=.*dense)(?=.*fur).*$/i,
+		name : "Dense Fur",
+		source : [["PBMS", 0]],
+		ac : 12,
+	},
+	features : {
+		"hold breath" : {
+			name : "Hold Breath",
+			description : desc([
+				"You can hold your breath for up to an hour.",
+			]),
+		},
+	},
+	trait : "Otter Mustalid (my creature type is Humanoid)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Resourceful: You gain proficiency with the Survival skill."+
+		"\n \u2022 Dense Fur: Due to your thick fur you have a natural armor class of 12 + your Dexterity Modifyer."+
+		"\n \u2022 Hold Breath: You can hold your breath for up to an hour"+
+		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
+};
+RaceList["wolverine mustalid"] = {
+	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(wolverine)\b).*$/i,
+	name : "Wolverine Mustalid",
+	sortname : "Mustalid, Wolverine",
+	source : [["PBMS", 0]],
+	plural : "Wolverine Mustalids",
+	languageProfs : ["Common", "Celestial"],
+	age : "reach adulthood by 5 and live around 60 years",
+	scoresGeneric : true,
+	vision : [["Darkvision", 60]],
+	skills : "Stealth",
+	size : 2,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		climb : { spd : 20, enc : 10 },
+	},
+	dmgres : "Cold",
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /^(?=.*wolverine)(?=.*claw).*$/i,
+		name : "Wolverine Claws",
+		source : [["PBMS", 0]],
+		damage : [2, 6, "slashing"],
+	},
+	weaponsAdd : ["Wolverine Claws"],
+	spellcastingAbility : [4, 5, 6],
+	spellcastingBonus : {
+		name : "Skunk Bear",
+		spells : ["stinking cloud"],
+		times : 1,
+		oncelr : true,
+	},	
+	features : {
+		"skunk bear" : {
+			name : "Skunk Bear",
+			action : "Action",
+			usages : 1,
+			recovery : "long rest",
+			description : desc([
+				"As an action once per long rest the Wolverine folk can cast the stinking cloud spell without needing any components.",
+			]),
+		},
+	},
+	trait : "Wolverine Mustalid (my creature type is Humanoid)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Skunk Bear: As an action once per long rest the Wolverine folk can cast the stinking cloud spell without needing any components."+
+		"\n \u2022 Insulated Coat: Due to your thick fur you have resistance to Cold damage."+
+		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
+};
+RaceList["mouse mustalid"] = {
+	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(mouse)\b).*$/i,
+	name : "Mouse Mustalid",
+	sortname : "Mustalid, Mouse",
+	source : [["PBMS", 0]],
+	plural : "Mouse Mustalids",
+	languageProfs : ["Common", "Celestial"],
+	age : "reach adulthood by 5 and live around 60 years",
+	scoresGeneric : true,
+	vision : [["Darkvision", 60]],
+	skills : ["Stealth", "Acrobatics"],
+	size : 4,
+	speed : {
+		walk : { spd : 35, enc : 25 },
+	},
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /\bbite\b/i,
+		name : "Bite",
+		source : [["PBMS", 0]],
+		damage : [2, 6, "piercing"],
+	},
+	weaponsAdd : ["Bite"],
+	features : {
+		"nimble dodge" : {
+			name : "Nimble Dodge",
+			action : "Reaction",
+			description : desc([
+				"When attacked by an attack of opportunity, you may use your reaction to impose disadvantage on that attack.",
+			]),
+		},
+	},	
+	trait : "Mouse Mustalid (my creature type is Humanoid)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Gymnastics: You gain proficiency with the Acrobatics skill."+
+		"\n \u2022 Nimble Dodge: When attacked by an attack of opportunity, you may use your reaction to impose disadvantage on that attack."+
+		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
+};	
+
+RaceList["caryatid"] = {
+	regExpSearch : /^(?=.*\b(caryatid)\b).*$/i,
+	name : "Caryatid",
+	source : [["PBMS", 0]],
+	plural : "Caryatids",
+	size : [2, 3],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	scoresGeneric : true,
+	languageProfs : ["Common", "Celestial"],
+	age : "You are immortal and do not age.",
+	vision : [["True Sight", 30]],
+	dmgres : ["Poison"],
+	savetxt : "Immune to form altering magic, Charmed, Exhausted, Frightened, Poisoned and Petrified Conditions",
+	trait : "Caryatid (my creature type is Celestial)"+
+		"\n \u2022 True Sight: 30 ft."+
+		"\n \u2022 Marble Nature: You are immune to spells and effects that would alter your form as well as the petrified and poisoned conditions and poison damage."+
+		"\n \u2022 Fixed Existence: You are immune to being Exhauted, and do not require air, food, drink, or sleep."+
+		"\n \u2022 Divine Servitude: You are immune to the Charmed and Frightened Condition."+
+		"\n \u2022 False Appearance: While you remain motionless you are indistinguishable from a fixed marble statue."+
+		"\n \u2022 Languages: You can speak, read, and write Common and Celestial, you can also speak the language of anyone whoo looks at you within 30 ft."
+};
+RaceList["alseid nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(alseid)\b).*$/i,
+	name : "Alseid Nymph",
+	sortname : "Nymph, Alseid",
+	source : [["PBMS", 0]],
+	plural : "Alseid Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Radiant"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Alseid Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Alseid: These are nymphs of the meadows. You have resistance to radiant damage."
+};
+
+RaceList["aura nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(aura)\b).*$/i,
+	name : "Aura Nymph",
+	sortname : "Nymph, Aura",
+	source : [["PBMS", 0]],
+	plural : "Aura Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Lightning"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Aura Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Aura: These are nymphs of the winds. You have resistance to lightning damage."
+};
+
+RaceList["dryad nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(dryad)\b).*$/i,
+	name : "Dryad Nymph",
+	sortname : "Nymph, Dryad",
+	source : [["PBMS", 0]],
+	plural : "Dryad Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Bludgeoning", "Piercing", "Slashing"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Dryad Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Dryad: These are nymphs of the trees. You have resistance to bludgeoning, piercing, and slashing damage from non-magical sources."
+};
+
+RaceList["lampad nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(lampad)\b).*$/i,
+	name : "Lampad Nymph",
+	sortname : "Nymph, Lampad",
+	source : [["PBMS", 0]],
+	plural : "Lampad Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Necrotic"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Lampad Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Lampad: These are nymphs of the shadows. You have resistance to necrotic damage."
+};
+
+RaceList["naiad nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(naiad)\b).*$/i,
+	name : "Naiad Nymph",
+	sortname : "Nymph, Naiad",
+	source : [["PBMS", 0]],
+	plural : "Naiad Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Wave"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Naiad Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Naiad: These are nymphs of the water. You have resistance to wave damage."
+};
+
+RaceList["oread nymph"] = {
+	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(oread)\b).*$/i,
+	name : "Oread Nymph",
+	sortname : "Nymph, Oread",
+	source : [["PBMS", 0]],
+	plural : "Oread Nymphs",
+	languageProfs : ["Common", "Sylvan"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3, 4],
+	dmgres : ["Fire"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	features : {
+		"nymph step" : {
+			name : "Nymph Step",
+			action : "action",
+			description : desc([
+				"As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger.",
+			]),
+		},
+	},	
+	trait : "Oread Nymph (my creature type is Fey)"+
+		"\n \u2022 Magic Resistance: You have advantage on saving throws against spells and other magical effects."+
+		"\n \u2022 Nymph Step: As an action, you can use 10ft of movement to magically step into your natural element and emerge from another source of your element within 60ft the source must be medium in size or larger."+
+		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
+		"\n \u2022 Oread: These are nymphs of the flames of the earth. You have resistance to fire damage."
+};
+
+RaceList["star born"] = {
+	regExpSearch : /^(?=.*\b(star)\b)(?=.*\b(born)\b).*$/i,
+	name : "Star Born",
+	source : [["PBMS", 0]],
+	plural : "Star Born",
+	languageProfs : ["Common", "Deep Speech"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [2, 3],
+	vision : ["Darkvision", 60],
+	dmgres : ["Cold"],
+	speed : {
+		walk : { spd : 40, enc : 30 },
+		fly : { spd : 70, enc : 60 },
+	},
+	savetxt : "You have adv. on Saves against the charmed and frightened conditions. Immune to Fire, Poison, and Radiant damage and the Poisoned Condition.",
+	trait : "Starborn (my creature type is Aberration)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Far Realm Existence: You do not require air to survive. You have advantage on saves against the charmed or frightened conditions."+
+		"\n \u2022 Born from a Star: Your body is forged from a star and is therefore immune to fire and radiant damage, and resistant to cold damage."+
+		"\n \u2022 Shining Form: Your body shines dim light in a 15 foot radius."+
+		"\n \u2022 Immortal Nature: You do not require food, drink or sleep, you are also immune to poison damage and the poisoned condition."
+};
+
+RaceList["veda"] = {
+	regExpSearch : /^(?=.*\b(veda)\b).*$/i,
+	name : "Veda",
+	source : [["PBMS", 0]],
+	plural : "Veda",
+	languageProfs : ["Common", "Abyssal"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [2, 3],
+	vision : ["Darkvision", 60],
+	dmgres : ["Cold", "Fire", "Lightning"],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		climb : { spd : 15, enc : 5 },
+	},
+	savetxt : "Immune to Poison damage and the Poisoned Condition.",
+	carryingCapacity : 2,
+	trait : "Veda (my creature type is Fiend)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Polychiral: (4-6 arms) As a Veda, your additional arms allow you to wield multiple weapons. You can gain the benefit of two handed weapons and a shield. You also gain a multi-attack, and can attack once with each weapon you wield."+
+		"\n \u2022 Many Hands Light Work: You count as one size larger when determining carrying capacity and the weight you can push, drag, or lift."+
+		"\n \u2022 Abyssal Resilience: You are immune to poison damage and the poisoned condition. You are also resistant to cold, fire, and lightning damage."
+};
+
+RaceList["succubus"] = {
+	regExpSearch : /^(?=.*\b(succubus)\b).*$/i,
+	name : "Succubus",
+	source : [["PBMS", 0]],
+	plural : "Succubi",
+	languageProfs : ["Common", "Infernal"],
+	age : "You are Immortal",
+	scoresGeneric : true,
+	size : [3],
+	vision : ["darkvision", 60],
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		fly : { spd : 60, enc : 50 },
+	},
+	savetxt : "Immune to Poison damage and the Poisoned Condition.",
+	features : {
+		"charm" : {
+			name : "Charm",
+			action : "action",
+			description : desc([
+				"As an action, you can choose one humanoid you can see within 30 ft. That creature must make a wisdom saving throw against your spellcasting DC. On a failure the target is magically charmed for 1 day. If the target suffers any harm, it can repeat the savign throw ending the effect on a success. Any creature that succeeds is immune to the effect for 24 hours. you can only have one target charmed at a time.",
+			]),
+		},
+		"draining kiss" : {
+			name : "Draining Kiss",
+			action : "action",
+			description : desc([
+				"As an action, you can perform a magical kiss upon a charmed or willing creature. The target must make a Constitution saving throw agains your spellcasting DC. On a failure the target takes 2d10 psychic damage and half as much on a success. The target's hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. This magical ability increases in damage when you reach 5th level (3d10), 11th level (4d10), and 17th level (5d10).",
+			]),
+		},	
+	},
+	trait : "Succubus (my creature type is Fiend)"+
+		"\n \u2022 Darkvision: 60 ft."+
+		"\n \u2022 Charm: As an action, you can target one humanoid within 30 ft. that target must make a Wis Save or be charmed for 1 day if the target takes damage it can remake the save on a succ. it is immune for 24 hours."+
+		"\n \u2022 Draining Kiss: As an action, you kiss a charmed or willing target, the target must make a Con Save against your Spell DC. on a fail the target takes 2d10 psychic damage or half as much on a success. This also reduces the target's HP Max by the amount they took as damage, if the HP Max is reduced to 0 the target dies. This Damage increases at 5th level (3d10), 11th level (4d10), 17th level (5d10)."+
+		"\n \u2022 Immortal Nature: You do not require food, drink, or sleep. You are also immune to poison damage and the poisoned condition."
+};
