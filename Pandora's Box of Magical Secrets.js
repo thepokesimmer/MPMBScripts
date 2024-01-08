@@ -31,7 +31,7 @@ ClassList.witch = {
 		primary : [true, false],
 	},
 	equipment : "Witch starting equipment:" +
-		"\n \u2022 A wand -or- a relic orb;\n \u2022 A component pouch -or- an arcane focus;" +
+		"\n \u2022 A wand -or- a relic orb;\n \u2022 A component pouch;" +
 		"\n \u2022 A scholar's pack -or- an explorer's pack;" +
 		"\n \u2022 A flax linen robe -and- two daggers." +
 		"\n\nAlternatively, choose 5d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
@@ -277,7 +277,7 @@ AddSubClass("witch", "arcane", {
 	regExpSearch : /^(?=.*(witch))(?=.*arcane).*$/i,
 	subname : "Coven of the Arcane",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "magic missile", "detect magic", "blur", "disruption", "counterspell", "dispel magic", "arcane eye", "arcane retaliation", "animate objects", "wall of force", "arcane gate", "disintigration"],
+	spellcastingExtra : ["witch bolt", "magic missile", "detect magic", "blur", "disruption", "counterspell", "dispel magic", "arcane eye", "arcane retaliation", "animate objects", "wall of force"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -353,7 +353,7 @@ AddSubClass("witch", "blood", {
 	regExpSearch : /^(?=.*(witch))(?=.*blood).*$/i,
 	subname : "Coven of Blood",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "vampiric touch", "life transference", "blight", "confusion", "contagion", "greater restoration", "harm", "flesh to stone"],
+	spellcastingExtra : ["witch bolt", "cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "vampiric touch", "life transference", "blight", "confusion", "contagion", "greater restoration"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -429,7 +429,7 @@ AddSubClass("witch", "dead", {
 	regExpSearch : /^(?=.*(witch))(?=.*dead).*$/i,
 	subname : "Coven of the Dead",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "cause fear", "unseen servant", "gentle repose", "misty step", "spirit shroud", "speak with dead", "banishment", "shadow of moil", "danse macabre", "enervation", "circle of death", "eyebite"],
+	spellcastingExtra : ["witch bolt", "cause fear", "unseen servant", "gentle repose", "misty step", "spirit shroud", "speak with dead", "banishment", "shadow of moil", "danse macabre", "raise dead"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -505,7 +505,7 @@ AddSubClass("witch", "gale", {
 	regExpSearch : /^(?=.*(witch))(?=.*gale).*$/i,
 	subname : "Coven of the Gale",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "fog cloud", "thunderwave", "gust of wind", "misty step", "lightning bolt", "tidal wave", "ice storm", "storm sphere", "control winds", "maelstrom", "chain lightning", "wind walk"],
+	spellcastingExtra : ["witch bolt", "fog cloud", "thunderwave", "gust of wind", "shatter", "lightning bolt", "tidal wave", "ice storm", "storm sphere", "control winds", "maelstrom"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -581,7 +581,7 @@ AddSubClass("witch", "goddess", {
 	regExpSearch : /^(?=.*(witch))(?=.*goddess).*$/i,
 	subname : "Coven of the Goddess",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "ceremony", "detect good and evil", "spiritual weapon", "prayer of healing", "beacon of hope", "spirit guardians", "aura of purity", "guardian of faith", "commune", "hallow", "forbiddance", "heal"],
+	spellcastingExtra : ["witch bolt", "ceremony", "detect good and evil", "spiritual weapon", "prayer of healing", "beacon of hope", "spirit guardians", "aura of purity", "guardian of faith", "dispel evil and good", "hallow"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -676,13 +676,13 @@ AddSubClass("witch", "hedge", {
 						]
 					},
 			additional : levels.map(function (n) {
-				return n < 1 ? "" : (n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : n < 11 ? 10 : 12) + " spells";
+				return n < 1 ? "" : (n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : 10) + " spells";
 			}),
 			spellcastingBonus : {
 				name : "Coven Spells",
 				"class" : "any",
 				times : levels.map(function (n) {
-					return n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : n < 11 ? 10 : 12;
+					return n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : 10;
 				})
 			}
 		},
@@ -755,7 +755,7 @@ AddSubClass("witch", "wood", {
 	regExpSearch : /^(?=.*(witch))(?=.*wood).*$/i,
 	subname : "Coven of the Wood",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "entange", "goodberry", "barkskin", "locate plants", "plant growth", "speak with plants", "grasping vine", "guardian of nature", "tree stride", "wrath of nature", "transport via plants", "wall of thorns"],
+	spellcastingExtra : ["witch bolt", "entange", "goodberry", "barkskin", "locate animals or plants", "plant growth", "speak with plants", "grasping vine", "guardian of nature", "tree stride", "wrath of nature"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -833,7 +833,7 @@ AddSubClass("witch", "hellfire", {
 	regExpSearch : /^(?=.*(witch))(?=.*hellfire).*$/i,
 	subname : "Coven of Hellfire",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "burning hands", "hellish rebuke", "crown of madness", "scorching ray", "fireball", "summon lesser demon", "summon greater demon", "wall of fire", "immolation", "infernal calling", "investiture of flame", "summon fiend"],
+	spellcastingExtra : ["witch bolt", "burning hands", "hellish rebuke", "crown of madness", "scorching ray", "fireball", "summon lesser demon", "summon greater demon", "wall of fire", "immolation", "infernal calling"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -907,11 +907,185 @@ AddSubClass("witch", "hellfire", {
 
 });	
 
+AddSubClass("witch", "moon", {
+	regExpSearch : /^(?=.*(witch))(?=.*moon).*$/i,
+	subname : "Coven of the Moon",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["guidance", "witch bolt", "guiding bolt", "silvery barbs", "augury", "moonbeam", "catnap", "clairvoyance", "divination", "sickening radiance", "dream", "wall of light"],
+	features : {	
+		"subclassfeature1" : {
+			name : "Coven Spells",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			prereqeval : function(v) { return v.hasWitchBolt; },
+					calcChanges : {
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (spellKey == "witch bolt") {
+									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Radiant dmg; 1 a 1d12 Radiant dmg");
+									return true;
+								}
+							},
+							"the witch bolt spell deals radiant damage instead of lightning damage."
+						]
+					}
+		},
+
+		"subclassfeature1.1" : {
+			name : "Enchanted Mirror",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : "\n   " + "You craft a magical object used by this coven known as an enchanted mirror. This object is crafted from pure threads of magic that are woven into the mirror's surface. You gain the Guidance cantrip, and the mirror reflects the truth of whatever stands before it granting true sight within its refection. Regardless of distance or planes of existence you can always call your craft to you as an action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+		},
+
+		"subclassfeature3" : {
+			name : "Witch's Guidance",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "Whenever you spend a meddling point you can choose one creature that you can see within 30 feet. For the next minute, whenever that creature makes an attack roll or saving throw before this effect ends the target can roll a d4 and add the number rolled to the attack roll or saving throw. Only one creature can benefit from this effect at a time, and this effect does not stack.",
+		},
+
+		"subclassfeature3.1" : {
+			name : "Moonglow Spell",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the moonglow spell.",
+			extraname : "Coven Meddle Magic Option",
+			extrachoices : ["Moonglow Spell"],
+			"moonglow spell" : {
+				name : "Moonglow Spell",
+				description : "\n   " + "If a spell meddled with this option is successful the affected creatures shed dim light in a 10 foot radius for the next minute. Any attack roll during this time made against the creature has advantage. Lastly, if the target of the spell was polymorphed or shape-changed they have disadvantage of the saving throw of the spell, or you have advantage on the attack roll with the spell. If this spell succeeds the transfigured creature reverts to their original form.",
+				action : ["bonus action", "reaction"],
+			},
+		},
+
+		"subclassfeature7" : {
+			name : "Witch's Phase",
+			source: "PBMS",
+			minlevel : 7,
+			description : "\n   " + "Whenever you use a meddling point on your own spell you can choose to ake on an aspect of the moon be it the New Moon, Waxing Moon, Full Moon, or Waning Moon. When you do so you gain the following benefit until you chang phases or take a short or long rest. While channeling one of these aspects your spells are affected by one of the following meddle magic options without expending meddling points. New Moon: Protection, Waxing Moon: Extended Spell, Full Moon: Empowered, Waning Moon: Silent Spell.",
+		},
+
+		"subclassfeature11" : {
+			name : "Witch's Illusion",
+			source: "PBMS",
+			minlevel : 11,
+			description : "\n   " + "Whenever you medle another casters spell you can cause them to make a wisdom saving throw, on a failed save the creature see each creature within 60 feet of them as if they have been affected by the Blur spell. This creature is immune if they do not rely on sight. The creature has disadvantage on all attack rolls they make for the next minute.",
+		},
+
+		"subclassfeature15" : {
+			name : "Witch's Push & Pull",
+			source: "PBMS",
+			minlevel : 15,
+			description : "\n   " + "Whenever you spend a meddling point you can channel the magical pull of the moon allowing you to apply the push or the pull of the moon when you do so you can choose wheter the spells range or area of effect is increased or decreased up to 30 feet.",
+		},
+	
+	},
+
+});	
+
+AddSubClass("witch", "night", {
+	regExpSearch : /^(?=.*(witch))(?=.*night).*$/i,
+	subname : "Coven of the Night",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["witch bolt", "dissonant whispers", "bane", "darkness", "shadow blade", "fear", "pulse wave", "greater invisibility", "shadow of moil", "mislead", "wall of darkness"],
+	features : {	
+		"subclassfeature1" : {
+			name : "Coven Spells",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			prereqeval : function(v) { return v.hasWitchBolt; },
+					calcChanges : {
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (spellKey == "witch bolt") {
+									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Psychic dmg; 1 a 1d12 Psychic dmg");
+									return true;
+								}
+							},
+							"the witch bolt spell deals psychic damage instead of lightning damage."
+						]
+					}
+		},
+
+		"subclassfeature1.1" : {
+			name : "Mask",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			vision : ["Devil's Sight", 120],
+			description : "\n   " + "You craft a magical object used by this coven known as a mask. The mask conceals the witch's identity as well as offers magical power to conceal what lies behind the mask. The mask can only be put on or taken off by you. You can don this mask as an action, while you are wearing this mask you are under the effects of the Mind Blank spell. Lastly you gain 120 feet of devil's sight. This grants you the ability to see in magical and non-magical darkness. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+		},
+
+		"subclassfeature3" : {
+			name : "Witch's Secret",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "Whenever you spend a meddling point you can choose to whisper a message to a creature that you can see within 120 feet as if you had targeted them with the Message cantrip.",
+		},
+
+		"subclassfeature3.1" : {
+			name : "Nightstep Spell",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the nightstep spell.",
+			extraname : "Coven Meddle Magic Option",
+			extrachoices : ["Nightstep Spell"],
+			"nightstep spell" : {
+				name : "Nightstep Spell",
+				description : "\n   " + "When you meddle a spell with this effect you briefly surround yourself in shadows and you teleport up to 30 feet to an unoccupied space that you can see after you conclude your spell.",
+				action : ["bonus action", "reaction"],
+			},
+		},
+
+		"subclassfeature7" : {
+			name : "Witch's Obscure",
+			source: "PBMS",
+			minlevel : 7,
+			description : "\n   " + "Whenever you use a meddling point on your own spell you can surround yourself in darkness. When you do so attack rolls have disadvantage against you until the start of your next turn.",
+		},
+
+		"subclassfeature11" : {
+			name : "Witch's Blackout",
+			source: "PBMS",
+			minlevel : 11,
+			description : "\n   " + "Whenever you meddle another casters spell you can cause them to make a wisdom saving throw. On a failed save the caster is blinded by darkness created by ther own spell for 1 minute. At the end of each of their turns the target can repeat the saving throw ending the effect on a success.",
+		},
+
+		"subclassfeature15" : {
+			name : "Witch's Shroud",
+			source: "PBMS",
+			minlevel : 15,
+			description : "\n   " + "Wheneer you spend a meddlilng point you can wrap yourself in shadows granting you 5 temporary hit points. These temporary hit points do stack, but once they are lost they cannot be regained. In addition, all temporary hit points are lost when you complete a long rest.",
+		},
+	
+	},
+
+});	
+
 // Adds a new School of Magic
 
 spellSchoolList["Revoc"] = "Revocation";
 
 // Adds new spells
+
+SpellsList["wall of darkness"] = {
+	name : "Wall of Darkness",
+	source : [["PBMS", 0]],
+	classes : ["sorcerer", "warlock", "witch", "wizard"],
+	level : 5,
+	school : "Evoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S,M",
+	compMaterial : "Obsidian shard",
+	duration : "10 Min",
+	description : "See Full Description",
+	descriptionFull : desc([
+		"An inky black wall of impnetrable darkness appears at apoint you choose within range. The wall appears in any orientation you choose; horizontally, vertically, or diaganoally. It can be free floating, or it can rest on a solid surface. The wall can be up to 60 feet long, 10 feet hight, and 5 feet thick. The wall blocks line of sight, but creatures and objects can pass through it. When the wall appears each creature in it area must make a Constitution saving throw. On a failed save, a creature takes 4d8 force damage, and half as much on a successful save. Any creature within this spaceis blinded by magical darkness, and a creature takes the same damage when it ends its turn within the wall. Until the spell ends, you can use an action to launch a tendril of darkness from the wall at a creature you can see within 60 feet of the wall. Make a ranged spell attack. On a hit the target takes 4d8 force damage. Whether you hit or miss reduce the wall by 10 feet. If the wall's length is reduced to 0 feet the spell ends. At higher levels: When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot above 5th",
+	]),	
+};
 
 SpellsList["gourd's garden"] = {
 	name : "Gourd's Garden",
@@ -7887,7 +8061,7 @@ RaceList["veda"] = {
 		walk : { spd : 30, enc : 20 },
 		climb : { spd : 15, enc : 5 },
 	},
-	savetxt : "Immune to Poison damage and the Poisoned Condition.",
+	savetxt : "Immune to poison.",
 	carryingCapacity : 2,
 	trait : "Veda (my creature type is Fiend)"+
 		"\n \u2022 Darkvision: 60 ft."+
@@ -7910,7 +8084,7 @@ RaceList["succubus"] = {
 		walk : { spd : 30, enc : 20 },
 		fly : { spd : 60, enc : 50 },
 	},
-	savetxt : "Immune to Poison damage and the Poisoned Condition.",
+	savetxt : "Immune to poison.",
 	features : {
 		"charm" : {
 			name : "Charm",
