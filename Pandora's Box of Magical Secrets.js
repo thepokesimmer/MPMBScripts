@@ -44,7 +44,7 @@ ClassList.witch = {
 		prepared : true,
 	},
 	spellcastingList : { 
-		spells : ["acid splash", "blade ward", "chill touch", "circle of power", "control flames", "create bonfire", "dancing lights", "fire bolt", "friends", "frostbite", "light", "lightning lure", "mage hand", "mending", "message", "mind sliver", "minor illusion", "poison spray", "prestidigitation", "ray of frost", "sapping sting", "shocking grasp", "thunderclap", "true strike", "usurp", "absorb elements", "alarm", "animal friendship", "bane", "beast bond", "bless", "burning hands", "catapult", "cause fear", "charm person", "chromatic orb", "color spray", "cure wounds", "detect magic", "disguise self", "distort value", "erase", "expeditious retreat", "false life", "feather fall", "find familiar", "fog cloud", "frost fingers", "gift of alacrity", "grease", "hex", "ice knife", "identify", "illusory script", "inflict wounds", "jump", "longstrider", "mage armor", "magic missile", "magnify gravity", "merlin", "pattern weave", "protection from evil and good", "ray of sickness", "revoke", "shield", "silent image", "silvery barbs", "sleep", "speak with animals", "tasha's caustic brew", "tasha's hideous laughter", "taunt", "thunderwave", "unseen servant", "witch bolt", "air bubble", "alter self", "animal messenger", "arcane lock", "augury", "beast sense", "blindness/deafness", "blur", "borrowed knowledge", "calm emotions", "cloud of daggers", "continual flame", "crown of madness", "darkness", "detect thoughts", "disruption", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "flaming sphere", "flock of familiars", "fortune's favor", "heat metal", "hold person", "immovable object", "invisibility", "kinetic jaunt", "knock", "lesser restoration", "levitate", "locate object", "magic mouth", "magic weapon", "mind spike", "mirror image", "misty step", "moonbeam", "moon rune", "phantasmal force", "protection from cantrips", "pyrotechnics", "ray of enfeeblement", "scorching ray", "see invisibility", "shadow blade", "shatter", "silence", "skywrite", "spider climb", "suggestion", "summon beast", "swiftness", "tasha's mind whip", "vortex warp", "web", "wither and bloom", "wristpocket", "animate dead", "ashardalon's stride", "augmentation", "bestow curse", "blink", "catnap", "clairvoyance", "conjure animals", "counterspell", "daylight", "dispel magic", "elemental weapon", "enemies abound", "fast friends", "fear", "feign death", "fireball", "fly", "gaseous form", "glyph of warding", "haste", "hypnotic pattern", "incite greed", "intellect fortress", "life transference", "lightning bolt", "magic circle", "major image", "nondetection", "protection from energy", "pulse wave", "remove curse", "sending", "slow", "speak with dead", "spell turning", "spirit shroud", "stinking cloud", "summon fey", "summon lesser demons", "summon shadowspawn", "summon undead", "teleport object", "thunder step", "tidal wave", "tiny servant", "tongues", "vampiric touch", "wall of sand", "wall of water", "water breathing", "water walk", "arcane eye", "arcane retaliation", "banishment", "blight", "charm monster", "compulsion", "confusion", "conjure minor elementals", "conjure woodland beings", "detect scrying", "dimension door", "divination", "dominate beast", "elemental bane", "fabricate", "fire shield", "gravity sinkhole", "greater invisibility", "hallucinatory terrain", "ice storm", "locate creature", "phantasmal killer", "polymorph", "raulothim's psychic lance", "shadow of moil", "shout", "sickening radiance", "stone shape", "stoneskin", "storm sphere", "summon aberration", "summon construct", "summon elemental", "summon greater demon", "synchronicity", "vitriolic sphere", "wall of fire", "watery sphere", "animate objects", "awaken", "cloudkill", "cone of cold", "conjure elemental", "contact other plane", "contractual conjuration", "creation", "danse macabre", "dawn", "dispel evil and good", "dominate person", "dream", "duplicate", "enervation", "far step", "geas", "greater restoration", "hold monster", "immolation", "infernal calling", "insect plague", "legend lore", "magic cancel", "mind fog", "mislead", "modify memory", "negative energy flood", "pandora's gallivant", "passwall", "planar binding", "rary's telepathic bond", "scrying", "seeming", "skill empowerment", "summon celestial", "summon draconic spirit", "synaptic static", "telekinesis", "teleportation circle", "temporal shunt", "transmute rock", "wall of force", "wall of stone", "arcane gate", "blade barrier", "chain lightning", "circle of death", "conjure fey", "contingency", "create homunculus", "create undead", "disintegrate", "drawmij's instant summons", "eyebite", "flesh to stone", "forbiddance", "globe of invulnerability", "gravity fissure", "guards and wards", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of water", "investiture of wind", "magic jar", "mass suggestion", "mental prison", "move earth", "otto's irresistible dance", "permanent illusion", "planar ally", "programmed illusion", "scatter", "soul cage", "spell binding", "summon fiend", "sunbeam", "tasha's otherworldly guise", "true seeing", "wall of ice", "wall of thorns", "create magen", "crown of stars", "delayed blast fireball", "delayed spell", "desire", "dream of the blue veil", "etherealness", "finger of death", "fire storm", "forcecage", "magic siphon", "mirage arcane", "pandora's prismatic bridge", "plane shift", "power word pain", "prismatic spray", "project image", "reverse gravity", "sequester", "simulacrum", "symbol", "teleport", "tether essence", "whirlwind", "abi-dalzim's horrid wilting", "animal shapes", "antimagic field", "antipathy/sympathy", "clone", "control weather", "create golem", "dark star", "demiplane", "dominate monster", "feeblemind", "glibness", "incendiary cloud", "maddening darkness", "maze", "mighty fortress", "mind blank", "power word stun", "reality break", "sunburst", "telepathy", "astral projection", "blade of disaster", "foresight", "gate", "imprisonment", "infringement", "invulnerability", "mass polymorph", "meteor swarm", "power word heal", "power word kill", "prismatic wall", "psychic scream", "ravenous void", "shapechange", "time ravage", "true polymorph", "wail of the banshee", "weird", "wish"],
+		spells : ["acid splash", "alchemist fire", "blade ward", "booming blade", "chill touch", "control flames", "create bonfire", "dancing lights", "druidcraft", "eldritch blast", "encode thoughts", "firebolt", "friends", "frostbite", "green-flame blade", "guidance", "gust", "infestation", "light", "lightning lure", "mage hand", "magic stone", "mending", "message", "mind sliver", "minor illusion", "mold earth", "poison spray","prestidigitation", "primal savagery", "produce flame", "ray of frost", "resistance", "sacred flame", "sapping sting", "shape water", "shillelagh", "shocking grasp", "spare the dying", "sword burst", "thaumaturgy", "thorn whip", "thunder clap", "toll the dead", "true strike", "usurp", "vicious mockery", "word of radiance", "alarm", "ceremony", "comprehend languages", "detect poison/disease", "find familiar", "identify", "illusory script", "purify food and drink", "speak with animals", "tenser's floating disk", "unseen servant", "animal messanger", "augury", "beast sense", "gentle repose", "locate animal/plants", "magic mouth", "silence", "skywrite", "wristpocket", "feign death", "leomund's tiny hut", "meld into stone", "phantom steed", "water breathing", "water walk", "divination", "commune", "commune with nature", "contact other plane", "rary's telepathic bond", "drawmij's instant summons", "forbiddance"],
 	},
 	features : {
 
@@ -52,15 +52,21 @@ ClassList.witch = {
 			name : "Weird Magic",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "The common threads between you and the witch before have given the ability to see the threads and cast spells. This innate connection to the weave has given you the ability to draw power from your surroundings both natural and manufactured in order to cast your spells. You gain the 1st-level Witch Bolt spell, which does not count against the number of spells you can have prepared., using Wisdom as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus" + "\n   " + "I can cast witch spells as rituals if they have the ritual tag",
+			description : "\n   " + "The common threads between you and the witch before have given the ability to see the threads and cast spells. This innate connection to the weave has given you the ability to draw power from your surroundings both natural and manufactured in order to cast your spells. You gain the 1st-level Witch Bolt spell and Detect Magic spell, which does not count against the number of spells you can know or have prepared. Your weird connection to magic has allowed you to see the threads of magic itself and as such you always known when and where an arcane spell is cast within 60 feet of you. This also allows you to cast Detect Magic without expending a spell slot.",
 			additional : ["2 cantrips known", "2 cantrips known", "2 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known"],
+			spellcastingBonus : {
+				name : "Weird Magic",
+				spells : ["detect magic"],
+				selection : ["detect magic"],
+				firstCol : "atwill"
+			},		
 		},
-
+				
 		"subclassfeature1" : {
 			name : "Coven",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "Choose a Coven learned your craft from and put it in the \"Class\" field" + "\n   " + "Choose either Coven of Blood, Coven of the Dead, Coven of the Gale, Coven of the Goddess, Coven of the Hedge, or Coven of Hellfire",
+			description : "\n   " + "Choose a Coven learned your craft from and put it in the \"Class\" field" + "\n   " + "Choose either Coven of the Arcane, Coven of Blood, Coven of the Dead, Coven of the Gale, Coven of the Goddess, Coven of the Hedge, Coven of Hellfire, Coven of the Moon, Coven of the Night, or Coven of the Wood",
 		},
 			
 		"meddle magic" : {
@@ -77,7 +83,7 @@ ClassList.witch = {
 			}),		
 			"blessing spell" : {
 				name : "Blessing Spell",
-				description : "\n   " + "You target one spell, if that spell produces a healing effect in which hit points are regained the target gains advantage on death saves and a +2 bonus to their AC for the next hour.",
+				description : "\n   " + "You target one spell, if that spell produces a healing effect in which hit points are regained the target gains advantage on death saves for the next minute, and whenever the target makes an attack roll or saving throw they can roll a d4 and add the number rolled to the attack roll or saving throw.",
 				action : ["bonus action", "reaction"],
 			},				
 			
@@ -124,13 +130,13 @@ ClassList.witch = {
 
 			"resolution spell" : {
 				name : "Resolution Spell",
-				description : "\n   " + "You target one spell that has a duration of 1 minute or longer. The duration of that spell is halved regardless of the creatures concentration.",
+				description : "\n   " + "You target one spell that has a duration of 1 minute or longer. That creature must make a saving throw using their spellcasting ability against your spell save DC. On a failure the spell ends at the end of the casters next turn.",
 				action : ["bonus action", "reaction"],
 			},
 
 			"reversal spell" : {
 				name : "Reversal Spell",
-				description : "\n   " + "You target one spell, if that spell targets a specific creature or creatures, and is not an area of effect, that spell is reversed on to the caster or another creature within range.",
+				description : "\n   " + "You target one spell that targets a single creature and is not an area of effect. That spell is reversed on to the caster using the attack and damage roll made by the original caster. If the attack roll does not meet or exceed the casters AC the spell misses.",
 				action : ["bonus action", "reaction"],
 			},
 
@@ -191,6 +197,23 @@ ClassList.witch = {
 			action : ["action"],
 			usages : 3,
 			recovery : "long rest",
+		},	
+		
+		"weaver's wisdom" : {
+			name : "Weaver's Wisdom",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : desc("I can add two spells/cantrips from any class to my spells known; +2 at level 18"),
+				additional : levels.map(function (n) {
+					return n < 9 ? "" : (n < 18 ? 2 : 4) + " spells/cantrips";
+				}),
+				spellcastingBonus : {
+					name : "Weaver's Wisdom",
+					"class" : "any",
+					times : levels.map(function (n) {
+						return n < 9 ? 0 : n < 18 ? 2 : 4;
+					})
+				}
 		},	
 		
 		"void of threads" : {
@@ -277,7 +300,7 @@ AddSubClass("witch", "arcane", {
 	regExpSearch : /^(?=.*(witch))(?=.*arcane).*$/i,
 	subname : "Coven of the Arcane",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "magic missile", "detect magic", "blur", "disruption", "counterspell", "dispel magic", "arcane eye", "arcane retaliation", "animate objects", "wall of force"],
+	spellcastingExtra : ["witch bolt", "color spray", "magic missile", "revoke", "shield", "blur", "cloud of daggers", "disruption", "invisibility", "counterspell", "dispel magic", "pulse wave", "arcane eruption", "arcane retaliation", "greater invisibility", "magic cancel", "passwall", "wall of force", "disintegrate", "spell binding", "prismatic spray", "mind blank", "prismatic wall"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -353,7 +376,7 @@ AddSubClass("witch", "blood", {
 	regExpSearch : /^(?=.*(witch))(?=.*blood).*$/i,
 	subname : "Coven of Blood",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "vampiric touch", "life transference", "blight", "confusion", "contagion", "greater restoration"],
+	spellcastingExtra : ["witch bolt", "command", "cure wounds", "inflict wounds", "false life", "lesser restoration", "hold person", "ray of enfeeblement", "wither and bloom", "life transference", "magic circle", "vampiric touch", "blight", "confusion", "dominate beast", "dominate person", "greater restoration", "mass cure wounds", "create homunculus", "flesh to stone", "tether essence", "dominate monster", "power word kill"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -378,7 +401,7 @@ AddSubClass("witch", "blood", {
 			name : "Athame",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical blade used by this coven known as an Athame. This ceremonial blade is used to draw blood for your magic. This magical blade is equivalent to a +3 magical dagger except it follows the rulings of mage weapons and has been forged from blood and iron. As a bonus action, you can choose to concentrate on this weapon and have this athame levitate and move up to 60 feet of you to an unoccupied space for 1 min. As a bonus action on your turn, you can move the athame up to 60 feet and attack one target within 5 ft of it. You can choose to affect additional targets of any spell you cast if that target has been damaged by this blade within the last hour. The target does not need to be within range of the spell when it is cast and the target is automatically affected. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : "\n   " + "You craft a magical blade used by this coven known as an Athame. This ceremonial blade is used to draw blood for your magic. This magical blade is equivalent to a +3 magical dagger except it follows the rulings of mage weapons and has been forged from blood and iron. As a bonus action, you can choose to concentrate on this weapon and have this athame levitate and move up to 60 feet of you to an unoccupied space for 1 min. As a bonus action on your turn, you can move the athame up to 60 feet and attack one target within 5 ft of it. You can choose to affect additional targets of any spell you cast if that target has been damaged by this blade within the last hour. The target does not need to be within range of the spell when it is cast and the target is automatically affected. Lastly, if you cast an Enchantment spell on a target that has been damaged by this blade within the last hour, the spells school of magic changes to Necromancy and the saving throw to Constitution. Creatures that are immune to being charmed are no longer immune to this spells effect unless they are undead or constructs. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
 
 		"subclassfeature3" : {
@@ -420,7 +443,7 @@ AddSubClass("witch", "blood", {
 			name : "Witch's Regeneration",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you regain hit points equal to the spells level.",
+			description : "\n   " + "Whenever you spend a meddling point you regain 1d4 hit points for each level of spell that was cast.",
 		},   
 	},
 });
@@ -429,7 +452,7 @@ AddSubClass("witch", "dead", {
 	regExpSearch : /^(?=.*(witch))(?=.*dead).*$/i,
 	subname : "Coven of the Dead",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "cause fear", "unseen servant", "gentle repose", "misty step", "spirit shroud", "speak with dead", "banishment", "shadow of moil", "danse macabre", "raise dead"],
+	spellcastingExtra : ["witch bolt", "cause fear", "hex", "protection from evil and good", "silent image", "misty step", "mirror image", "phantasmal force", "see invisibility", "speak with dead", "spirit guardians", "spirit shroud", "banishment", "hallucinatory terrain", "phantasmal killer", "danse macabre", "mislead", "raise dead", "circle of death", "soul cage", "etherealness", "antipathy/sympathy", "wail of the banshee"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -454,7 +477,7 @@ AddSubClass("witch", "dead", {
 			name : "Poppet",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as a Poppet. This objected is crafted into an effigy that resembles a humanoid figure and is made from cloth that is filled with briars and bones. As a bonus action on your turn you can choose one of the poppets effects to inflict or curse upon one humanoid shaped creature be it living or dead that you can see within 60 feet. That target must make a DC wisdom saving throw or be linked to this poppet and subjected to its effects while within 60 feet of it. These effects last until the poppet is dismissed as a bonus action, linked to a new target, or the target is dropped to 0 hit points. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided. While cursed by the poppet the target is under the effects of the Hex Spell. At 5th level the effects of hex increase with the warlock's eldritch invocation Maddening Hex, and at 7th level the effects of the warlock's eldritch invocation Relentless Hex.",
+			description : "\n   " + "you craft a magical object used by this coven known as a poppet. This object is crafted into an effigy that resembles a humanoid figure an is made from cloth that is filled with briars and bones. As a bonus action on your turn you can choose to inflict a hex upon one creature that you can see within 60 feet. This creature can be undead, and is not immune to the effects or damage inflicted by the poppet. The target must make a DC wisdom saving throw or be linked to this poppet and subjeted to its effects while within 60 feet of it. While hexed by the poppet the target is under the effects of the Hex spell. At 5th level the effects of the hex increases with the warlock's eldritch invocation Maddening Hex, and at 7th level the effects of the warlock's eldritch invocation Relentless Hex. These effects las until the poppet is dismissed as a bonus action, linked to a new target, or the target is dropped to 0 hit points. Regardless of distance or planes of existance you can always call your craft to you as an action. When called forht your craft teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
 		},
 
 		"subclassfeature3" : {
@@ -505,7 +528,7 @@ AddSubClass("witch", "gale", {
 	regExpSearch : /^(?=.*(witch))(?=.*gale).*$/i,
 	subname : "Coven of the Gale",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "fog cloud", "thunderwave", "gust of wind", "shatter", "lightning bolt", "tidal wave", "ice storm", "storm sphere", "control winds", "maelstrom"],
+	spellcastingExtra : ["witch bolt", "fog cloud", "frost fingers", "thunderwave", "zephyr strike", "gust of wind", "rime's binding ice", "shatter", "warding wind", "lightning bolt", "thunder step", "tidal wave", "control water", "ice storm", "storm sphere", "cone of cold", "control winds", "maelstrom", "chain lightning", "wind walk", "whirlwind", "control weather", "storm of vengeance"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -572,7 +595,7 @@ AddSubClass("witch", "gale", {
 			name : "Witch's Cyclone",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "can create a cyclone that is a 30 foot radius sphere centered on you. This sphere moves with you and lasts for up to an hour, unless you dismiss it. (no action required) While this cyclone is active all ranged missile weapon attacks have disadvantage toward you. Creatures that enter this cyclone for the first time or start their turn in it must make a Dexterity saving throw. On a failed save the creature takes 1d4 cold damage, or half as much on a successful save. Lastly any spell you cast while this cyclone is active that deals cold, lightning, thunder, or wave damage becomes apart of the cyclone adding 1d4 damage of that damage type to the cyclones damage.",
+			description : "\n   " + "Whenever you spend a meddling point you can create a cyclone that is a 10 foot radius sphere centered on you. This sphere moves with you and lasts for upto an hour, unless you dismiss it. (no action required) While this cyclone is active all ranged missile weapon attacks have disadvantage toward you. Creatures that enter this cyclone for the first time or start their turn in it must make a Dexterity saving throw. On a failed save the creature takes 1d4 cold damage, or half as much on a successful save. Lastly any spell you cast while this cyclone is active that deals cold, lighting, thunder, or wave damage becomes apart of the cyclone adding 1d4 damage of that damage type to the cyclones damage. This additional damage stacks up to a number of dice equal to your Wisdom modifier.",
 		},
 	},
 });
@@ -581,7 +604,7 @@ AddSubClass("witch", "goddess", {
 	regExpSearch : /^(?=.*(witch))(?=.*goddess).*$/i,
 	subname : "Coven of the Goddess",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "ceremony", "detect good and evil", "spiritual weapon", "prayer of healing", "beacon of hope", "spirit guardians", "aura of purity", "guardian of faith", "dispel evil and good", "hallow"],
+	spellcastingExtra : ["witch bolt", "guiding bolt", "detect evil and good", "sanctuary", "shield of faith", "aid", "prayer of healing", "protection from cantrips", "spiritual weapon", "beacon of hope", "blinding smite", "daylight", "fire shield", "guardian of faith", "sickening radiance", "circle of power", "dispel evil and good", "hallow", "sunbeam", "word of recall", "divine word", "holy aura", "wish"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -641,7 +664,7 @@ AddSubClass("witch", "goddess", {
 			name : "Witch's Excommunicate",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save you disconnect the magical threads of the divinity or benefactor from the caster be it a god, or patron. That caster is disconnected from their deity for 24 hours. ",
+			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save you disconnect the magical threads of the divinity of the caster. That caster is disconnected from their deity for 24 hours. The target experiences a string of bad luck. Whenever the target makes an attack roll, ability check, or saving throw the target must roll a d4 and subtract that number from the number they rolled. If the target is a Cleric they are not subjected to bad luck, but instead are unable to use their channel divinity or domain spells.",
 		},
 
 		"subclassfeature15" : {
@@ -652,6 +675,7 @@ AddSubClass("witch", "goddess", {
 		},
 	},
 });
+
 AddSubClass("witch", "hedge", {
 	regExpSearch : /^(?=.*(witch))(?=.*hedge).*$/i,
 	subname : "Coven of the Hedge",
@@ -676,13 +700,13 @@ AddSubClass("witch", "hedge", {
 						]
 					},
 			additional : levels.map(function (n) {
-				return n < 1 ? "" : (n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : 10) + " spells";
+				return n < 1 ? "" : (n < 3 ? 4 : n < 5 ? 8 : n < 7 ? 11 : n < 9 ? 14 : n < 11 ? 17 : n < 13 ? 19 : n < 15 ? 20 : n < 17 ? 21 : 22) + " spells";
 			}),
 			spellcastingBonus : {
 				name : "Coven Spells",
 				"class" : "any",
 				times : levels.map(function (n) {
-					return n < 3 ? 2 : n < 5 ? 4 : n < 7 ? 6 : n < 9 ? 8 : 10;
+					return n < 3 ? 4 : n < 5 ? 8 : n < 7 ? 11 : n < 9 ? 14 : n < 11 ? 17 : n < 13 ? 19 : n < 15 ? 20 : n < 17 ? 21 : 22;
 				})
 			}
 		},
@@ -751,89 +775,12 @@ AddSubClass("witch", "hedge", {
 		},    
 	},
 });
-AddSubClass("witch", "wood", {
-	regExpSearch : /^(?=.*(witch))(?=.*wood).*$/i,
-	subname : "Coven of the Wood",
-	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "entange", "goodberry", "barkskin", "locate animals or plants", "plant growth", "speak with plants", "grasping vine", "guardian of nature", "tree stride", "wrath of nature"],
-	features : {	
-		"subclassfeature1" : {
-			name : "Coven Spells",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals poison damage instead of lightning damage.",
-			prereqeval : function(v) { return v.hasWitchBolt; },
-					calcChanges : {
-						spellAdd : [
-							function (spellKey, spellObj, spName) {
-								if (spellKey == "witch bolt") {
-									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Poison dmg; 1 a 1d12 Poison dmg");
-									return true;
-								}
-							},
-							"the witch bolt spell deals poison damage instead of lightning damage."
-						]
-					}
-		},
-
-		"subclassfeature1.1" : {
-			name : "Poultice",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as a Poultice. This objected is crafted from seven sacred healing herbs that is capable of offering a magical remedies along your journey. As an action you can lay this poultice on the body of you or one willing creature to remove one disease, toxin, or condition effect. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
-		},
-
-		"subclassfeature3" : {
-			name : "Witch's Wicker",
-			source: "PBMS",
-			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to have wickers grow around you in a 15 foot radius centered on you. These wickers create difficult terrain, and deal 1d4 piercing damage to each creature other than you that starts its turn within this area.",
-		},
-
-		"subclassfeature3.1" : {
-			name : "Rooting Spell",
-			source: "PBMS",
-			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the rooting spell.",
-			extraname : "Coven Meddle Magic Option",
-			extrachoices : ["Rooting Spell"],
-			"rooting spell" : {
-				name : "Rooting Spell",
-				description : "\n   " + "You target one spell, the caster of that spell must make a strength saving throw. On a failed save the caster is restrained and rooted to the ground by vines.",
-				action : ["bonus action", "reaction"],
-			},
-		},
-
-		"subclassfeature7" : {
-			name : "Witch's Flower",
-			source: "PBMS",
-			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can create a magical blossom that sprouts in an unoccupied space within 30 feet. That blossom possesses a magical aura of the meddling spell used. All spells cast by you and allies within 30 feet of that blossom are cast with the meddled effect. This flower disappears when you create another blossom, the blossom is dismissed as a bonus action, or the blossom is destroyed. The blossom has an AC 12 and 25 hit points.",
-		},
-
-		"subclassfeature11" : {
-			name : "Witch's Thorns",
-			source: "PBMS",
-			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster to make a wisdom saving throw, on a failed save the caster takes 1d6 force damage from magical thorns ejected from their own spell.",
-		},
-
-		"subclassfeature15" : {
-			name : "Witch's Pollen",
-			source: "PBMS",
-			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to create a cloud of magical pollen that covers a 15 foot radius from a point you choose within 60 feet that you can see. Any enemy to enter this space must make a Constitution saving throw, on a failed save the target has disadvantage on all saving throws against yours or your allies spells.",
-		},
-	
-	},
-
-});
 
 AddSubClass("witch", "hellfire", {
 	regExpSearch : /^(?=.*(witch))(?=.*hellfire).*$/i,
 	subname : "Coven of Hellfire",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "burning hands", "hellish rebuke", "crown of madness", "scorching ray", "fireball", "summon lesser demon", "summon greater demon", "wall of fire", "immolation", "infernal calling"],
+	spellcastingExtra : ["witch bolt", "burning hands", "charm person", "hellish rebuke", "searing smite", "crown of madness", "flame blade", "suggestion", "scorching ray", "fireball", "fear", "summon lesser demons", "charm monster", "summon greater demon", "wall of fire", "immolation", "infernal calling", "mind fog", "mass suggestion", "summon fiend", "fire storm", "incendiary cloud", "meteor swarm"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -911,7 +858,7 @@ AddSubClass("witch", "moon", {
 	regExpSearch : /^(?=.*(witch))(?=.*moon).*$/i,
 	subname : "Coven of the Moon",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["guidance", "witch bolt", "guiding bolt", "silvery barbs", "augury", "moonbeam", "catnap", "clairvoyance", "divination", "sickening radiance", "dream", "wall of light"],
+	spellcastingExtra : ["witch bolt", "beast bond", "magnify gravity", "silvery barbs", "sleep", "enhance ability", "moonbeam", "moon rune", "summon beast", "catnap", "conjure animals", "clairvoyance", "gravity sinkhole", "polymorph", "synchronicity", "awaken", "dream", "scrying", "gravity fissure", "globe of invulnerability", "crown of stars", "animal shapes", "shapechange"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -989,7 +936,7 @@ AddSubClass("witch", "night", {
 	regExpSearch : /^(?=.*(witch))(?=.*night).*$/i,
 	subname : "Coven of the Night",
 	source : [["PBMS", 0]],
-	spellcastingExtra : ["witch bolt", "dissonant whispers", "bane", "darkness", "shadow blade", "fear", "pulse wave", "greater invisibility", "shadow of moil", "mislead", "wall of darkness"],
+	spellcastingExtra : ["witch bolt", "bane", "erase", "disguise self", "dissonant whispers", "blindness/deafness", "darkness", "mind spike", "shadow blade", "bestow curse", "fear", "summon shadowspawn", "dimension door", "raulothim's psychic lance", "shadow of moil", "enervation", "modify memory", "wall of darkness", "eyebite", "scatter", "power word pain", "maddening darkness", "weird"],
 	features : {	
 		"subclassfeature1" : {
 			name : "Coven Spells",
@@ -1057,12 +1004,90 @@ AddSubClass("witch", "night", {
 			name : "Witch's Shroud",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Wheneer you spend a meddlilng point you can wrap yourself in shadows granting you 5 temporary hit points. These temporary hit points do stack, but once they are lost they cannot be regained. In addition, all temporary hit points are lost when you complete a long rest.",
+			description : "\n   " + "Whenever you spend a meddling point you can wrap yourself in shadows granting you 5 temporary hit points. These temporary hit points do stack, but once they are lost they cannot be regained. In addition, all temporary hit points are lost when you complete a long rest.",
 		},
 	
 	},
 
 });	
+
+AddSubClass("witch", "wood", {
+	regExpSearch : /^(?=.*(witch))(?=.*wood).*$/i,
+	subname : "Coven of the Wood",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["witch bolt", "entangle", "goodberry", "purify food and drink", "tasha's caustic brew", "barkskin", "melf's acid arrow", "protection from poison", "spike growth", "plant growth", "speak with plants", "stinking cloud", "conjure woodland beings", "grasping vine", "vitriolic sphere", "insect plague", "tree stride", "wrath of nature", "transport via plants", "wall of thorns", "regenerate", "earthquake", "imprisonment"],
+	features : {	
+		"subclassfeature1" : {
+			name : "Coven Spells",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals poison damage instead of lightning damage.",
+			prereqeval : function(v) { return v.hasWitchBolt; },
+					calcChanges : {
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (spellKey == "witch bolt") {
+									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Poison dmg; 1 a 1d12 Poison dmg");
+									return true;
+								}
+							},
+							"the witch bolt spell deals poison damage instead of lightning damage."
+						]
+					}
+		},
+
+		"subclassfeature1.1" : {
+			name : "Poultice",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : "\n   " + "You craft a magical object used by this coven known as a Poultice. This objected is crafted from seven sacred healing herbs that is capable of offering a magical remedies along your journey. As an action you can lay this poultice on the body of you or one willing creature to remove one disease, toxin, or condition effect. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+		},
+
+		"subclassfeature3" : {
+			name : "Witch's Wicker",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "Whenever you spend a meddling point you can choose to have wickers grow around you in a 15 foot radius centered on you. These wickers create difficult terrain, and deal 1d4 piercing damage to each creature other than you that starts its turn within this area.",
+		},
+
+		"subclassfeature3.1" : {
+			name : "Rooting Spell",
+			source: "PBMS",
+			minlevel : 3,
+			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the rooting spell.",
+			extraname : "Coven Meddle Magic Option",
+			extrachoices : ["Rooting Spell"],
+			"rooting spell" : {
+				name : "Rooting Spell",
+				description : "\n   " + "You target one spell, the caster of that spell must make a strength saving throw. On a failed save the caster is restrained and rooted to the ground by vines.",
+				action : ["bonus action", "reaction"],
+			},
+		},
+
+		"subclassfeature7" : {
+			name : "Witch's Flower",
+			source: "PBMS",
+			minlevel : 7,
+			description : "\n   " + "Whenever you use a meddling point on your own spell you can create a magical blossom that sprouts in an unoccupied space within 30 feet. That blossom possesses a magical aura of the meddling spell used. All spells cast by you and allies within 30 feet of that blossom are cast with the meddled effect. This flower disappears when you create another blossom, the blossom is dismissed as a bonus action, or the blossom is destroyed. The blossom has an AC 12 and 25 hit points.",
+		},
+
+		"subclassfeature11" : {
+			name : "Witch's Thorns",
+			source: "PBMS",
+			minlevel : 11,
+			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster to make a wisdom saving throw, on a failed save the caster takes 1d6 force damage from magical thorns ejected from their own spell.",
+		},
+
+		"subclassfeature15" : {
+			name : "Witch's Pollen",
+			source: "PBMS",
+			minlevel : 15,
+			description : "\n   " + "Whenever you spend a meddling point you can choose to create a cloud of magical pollen that covers a 15 foot radius from a point you choose within 60 feet that you can see. Any enemy to enter this space must make a Constitution saving throw, on a failed save the target has disadvantage on all saving throws against yours or your allies spells.",
+		},
+	
+	},
+
+});
 
 // Adds a new School of Magic
 
@@ -1242,6 +1267,20 @@ SpellsList["detect scrying"] = {
 	descriptionFull : "When you cast this spell you become aware of any attempt made by another caster using a divination spell that seeks to observe you or acquire any information about you that is on the same plane of existence as you. You immediately know the casters location, the spell used, and if the caster is friendly toward you.",
 };
 
+SpellsList["arcane eruption"] = {
+	name : "Arcane Eruption",
+	source : [["PBMS", 0]],
+	classes : ["witch", "sorcerer"],
+	level : 4,
+	school : "Evoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "you create a 20 ft rad. sphere of churning energy choose 1 dmg type, (Acid, Cold, Fire, Lightn., Pois., Psy., Thund.) Con save or 6d6+1/SL dmg of chosen type, choose one of the d6 results to determine condition effect. (1. Incapacitated, 2. Blind, 3. Fright, 4. Pois., 5. Charm, 6. Deaf)",
+	descriptionFull : "Churning magical energy explodes in a 20 ft radius sphere centered on a point you choose within range. When you cast the spell, you select the type of damge dealt by the explosion: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder. Each creature in the sphere must make a Constitution saving throw. O a failed save, a creature takes 6d6 damage of the chosen type. On a successful save a creature takes half as much damage. Choose one of those d6s the number rolled on that die determines a condition that's applied to each creature that failed the save, as shown below. A creature has the condition until the end of your next turn. d6 Additional Effects. 1. Incapacitated, 2. Blinded, 3. Frightened, 4. Poisoned, 5. Charmed, 6. Deafened. At Higher Levels. When you cast this spell using a spell slot of 5th level or higher,the damge increases by 1d6 for each slot level above 4th.",
+};
+
 SpellsList["duplicate"] = {
 	name : "Duplicate",
 	source : [["PBMS", 0]],
@@ -1301,7 +1340,7 @@ SpellsList["create golem"] = {
 	descriptionFull : "When you cast this spell you can target a 10ft cube of nonmagical material be it clay, stone, irom, glass, flesh, and so on. You instantly create a golem from the present material that shares the same stat block of the golem you create in the monster manual. This golem remains under your control until concentration ends, the golem is dropped to 0hp, or after 1 hour has passed. After 1 hour the golem reverts back to the materials of its creation. This golem acts on its own turn sharing your initiative. It obeys every mental command you give it no action required by you.",
 };
 
-SpellsList["wail fo the banshee"] = {
+SpellsList["wail of the banshee"] = {
 	name : "Wail of the Banshee",
 	source : [["PBMS", 0]],
 	classes : ["druid", "warlock", "witch"],
@@ -1322,12 +1361,12 @@ SpellsList["magic cancel"] = {
 	classes : ["witch", "wizard"],
 	level : 5,
 	school : "Revoc",
-	time : ["1 a", "1 rea"],
-	range : "60 ft",
+	time : ["1 a"],
+	range : "120 ft",
 	components : "V,S",
 	duration : "Instantaneous",
-	description : "you cancel a spell activation/end spell effect of spell level equal or lower than 5th, or DC 10 + Spell Level Spell Ability check.",
-	descriptionFull : "You can choose one spell and cancel its activation or end an active spell effect of the same level or lower that is cast or used. Any spell of 5th level or lower ends. For each spell of 6th level or higher that you target, make an ability check using your spellcasting ability. The DC equa;s 10 + the spells level. On a successful check, the spell ends. At Higher Levels: When you cast this spell using a spell slot of 6th level or higher, you automatically end effects of a spell if the spell is equal level or lower.",
+	description : "one spell being concentrated on w/i range of 5th/SL or lower is ended, and Wis save or cant cast spell again for 1 minute.",
+	descriptionFull : "You can choose one spell of 5th level or lower within range that is being maintained by concentration. That spell and the caster's concentration automatically ends. After the spell ends, the caster must make a Wisdom saving throw, on a failed save the target is unable to cast that spell again for the next minute. At higher levels. When you cast this spell using a spell slot of 6th level or higher you can affect spells of equal level or lower of the spell slot you used.",
 };
 
 SpellsList["spell binding"] = {
@@ -1600,7 +1639,7 @@ SpellsList["usurp"] = {
 	duration : "Instantaneous",
 	save : "Con",
 	description : "1 spellcaster w/i range Con save on fail DC 10 + SL check to cast spellcaster spell using spellcaster spell slot.",
-	descriptionFull : "When you cast this spell you must target one spellcaster other than yourself within range. That spellcaster must succeed a Constitution saving throw or be siphoned of their magical power. On a failed save, you can choose one spell the caster knows of 1st level or higher, you must be capable of casting the level of spell you choose. When you do so you must make an ability check using your spellcasting ability. The DC is 10 + the spells level. On a successful check you cast that spell using the targets spell slot. If the target succeeds the effect does nothing. If you fail the ability check you expend a spell slot equal to the level of the spell usurped and the effect dos noting.",
+	descriptionFull : "When you cast this spell you must target one spellcaster other than yourself within range. That spellcaster must succeed a Constitution saving throw or be siphoned of their magical power. On a failed save, you can choose one spell the caster knows of 1st level or higher, you must be capable of casting the level of spell you choose. When you do so you must make an ability check using your spellcasting ability. The DC is 10 + the spells level. On a successful check you cast that spell using the targets spell slot. If the target succeeds the effect does nothing. If you fail the ability check you expend a spell slot equal to the level of the spell usurped and the effect does nothing.",
 };
 
 SpellsList["merlin"] = {
@@ -2400,7 +2439,7 @@ MagicItemsList["talisman"] = {
 	},
 	"psychic" : {
 		name : "Talisman of Psychic Resistance",
-		description : "While I'm wieldig this talisman and I'm attuned to it, I have resistance to psychic damage.",
+		description : "While I'm wielding this talisman and I'm attuned to it, I have resistance to psychic damage.",
 		dmgres : ["Psychic"]
 	},
 	"radiant" : {
@@ -3501,13 +3540,23 @@ ClassList.fool = {
 			extrachoices : ["feywild", "shadowfell"],
 			"feywild" : {
 				name : "Feywild Origin",
-				description : desc(["Due to your magic hailing from the Feywild, your spells may appear in vibrant colorful shades that reflect your mood, create pleasant floral and honey aromas, or prehaps a light cantrip appears as a floating pixie."]),
-				spellcastingExtra : ["guidance", "faerie fire"],
+				description : desc(["Due to your magic hailing from the Feywild, your spells may appear in vibrant colorful shades that reflect your mood, create pleasant floral and honey aromas, or prehaps a light cantrip appears as a floating pixie. Guidance Cantrip + Faerie Fire 1st-level spell."]),
+				spellcastingBonus : [{
+					name : "Feywild Origin",
+					spells : ["guidance", "faerie fire"],
+					selection : ["guidance", "faerie fire"],
+					times : 2,
+				}]
 			},
 			"shadowfell" : {
 				name : "Shadowfell Origin",
-				description : desc(["Due to your magic hailing from the Shadowfll, your spells appear in muted or shadowy tones that evoke a solemn presence, create cold chills and distorted figures, or a mage hand cantrip appears as a ghostly hand."]),
-				spellcastingExtra : ["vicious mockery", "dissonant whispers"],
+				description : desc(["Due to your magic hailing from the Shadowfell, your spells appear in muted or shadowy tones that evoke a solemn presence, create cold chills and distorted figures, or a mage hand cantrip appears as a ghostly hand. Vicious Mockery Cantrip + Dissonant Whispers 1st-level spell."]),
+				spellcastingBonus : [{
+					name : "Shadowfell Origin",
+					spells : ["vicious mockery", "dissonant whispers"],
+					selection : ["vicious mockery", "dissonant whispers"],
+					times : 2,
+				}],
 			},	
 		},
 		"tricks" : {
@@ -3519,27 +3568,52 @@ ClassList.fool = {
 			extrachoices : ["horror", "deception", "jesting", "mischief", "vanishment"],
 			"horror" : {
 				name : "Tricks of Horror",
-				spellcastingExtra : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+				spellcastingBonus : [{
+					name : "Tricks of Horror",
+					spells : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+					selection : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+					times : 10,
+				}],
 			},
 			
 			"deception" : {
 				name : "Tricks of Deception",
-				spellcastingExtra: ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+				spellcastingBonus : [{
+					name : "Tricks of Deception",
+					spells : ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+					selection : ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+					times : 10,
+				}],
 			},
 			
 			"jesting" : {
 				name : "Tricks of Jesting",
-				spellcastingExtra : ["hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+				spellcastingBonus : [{
+					name : "Tricks of Jesting",
+					spells : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+					selection : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+					times : 10,
+				}],
 			},
 			
 			"mischief" : {
 				name : "Tricks of Mischief",
-				spellcastingExtra : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+				spellcastingBonus : [{
+					name : "Tricks of Mischief",
+					spells : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+					selection : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+					times : 10,
+				}],
 			},
 			
 			"vanishment" : {
-				name : "Tricks of Vavnishment",
-				spellcastingExtra : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+				name : "Tricks of Vanishment",
+				spellcastingBonus : [{
+					name : "Tricks of Vanishment",
+					spells : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+					selection : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+					times : 10,
+				}],
 			},
 		},
 		"fools facade" : {
@@ -3685,7 +3759,7 @@ ClassList.fool = {
 			name : "Masquerade",
 			source : [["PBMS", 0]],
 			minlevel : 5,
-			description : desc(["At 5th level, you gain the magical ability to craft a mask out of fey or shadow magic. As a bonus action on your turn you can don a mask that magically appears on your face and gain the following benefits. While wearing the mask you gain a +1 to your AC concealing your identity. In addition, as an action while wearing the mask you can cast the disguise self spell without consuming a spell slot. This mask can only be donned and removed by you. When you gain this feature you can choose one type of mask that you can conjure. When you reach 10th level you gain an additional mask option, and again at 15th level. You can only wear one type of mask at a time."]),
+			description : desc(["At 5th level, you gain the magical ability to craft a mask out of fey or shadow magic. As a bonus action on your turn you can don a mask that magically appears on your face and gain the following benefits. While wearing the mask you gain a +1 to your AC concealing your identity. In addition, as an action while wearing the mask you can cast the disguise self spell without consuming a spell slot. This mask can only be donned and removed by you. When you gain this feature you can choose one type of mask that you can conjure. When you reach 10th level you gain an additional mask option, and again at 15th level. You can only wear one type of mask at a time. This mask counts as a spellcasting focus while donned."]),
 			extraname : "Masquerade Mask",
 			extrachoices : ["Jester", "Pierrot", "Zanni", "Plague", "Volto", "Bauta", "Colombina", "Harlequin"],
 			extraTimes : levels.map(function (n) {
@@ -3766,9 +3840,9 @@ ClassList.fool = {
 				description : desc([
 					'Mask of the Harlequin: Anger',
 					"This diamond patterned mask displays a fiendish expression and conveys the essence of anger. This mask grants you the following benefits.",
-					"• When you use your reckless abandon feature you score a critical hit on a 18 or higher.",
+					"• When you make a weapon attack roll, on a hit you can add your proficiency bonus to the weapons damage.",
 					"• You are immune to the frightened condition.",
-					"• You have resistance to any damage received from attacks that hit with advantage.",
+					"• You have resistance to bludgeoning, piercing, and slashing damage.",
 				]),	
 			},
 		},
@@ -3842,11 +3916,10 @@ AddSubClass("fool", "clown", {
 			]),	
 		},
 		"subclassfeature14" : {
-			name : "Unicycle",
+			name : "Clown Trick",
 			source : [["PBMS", 0]],
 			minlevel : 14,
-			description : desc(["At 14th level, you acquire a magical unicycle that can be pulled from your jack in box without fail. As an action you can mount this unicycle and gain 30ft to your base movement speed. In addition, while mounted you have advanatge on all dexterity saving throws, and can take the dodge, dash, and disengage action as a bonus action."]),
-			action : "bonus action"
+			description : desc(["At 14th level, when you throw one of your juggled wapons you can preform a clown trick. When you do so on a hit the weapon does not deal damage, but instead pins down the target imposing the restrained condition, the target can make a Strengh saving throw at the start of their turn against your Spell Save DC ending the effect on a success.  While the target is restrained in this way you deal an additional 1d6 damage to the target whenever you make a weapon attack."]),
 		},
 	},
 });
@@ -4092,27 +4165,52 @@ AddSubClass("fool", "trickster", {
 			extrachoices : ["horror", "deception", "jesting", "mischief", "vanishment"],
 			"horror" : {
 				name : "Tricks of Horror",
-				spellcastingExtra : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+				spellcastingBonus : [{
+					name : "Tricks of Horror",
+					spells : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+					selection : ["cause fear", "hex", "phantasmal force", "darkness", "bestow curse", "fear", "phantasmal killer", "shadow of moil", "danse macabre", "enervation"],
+					times : 10,
+				}],
 			},
 			
 			"deception" : {
 				name : "Tricks of Deception",
-				spellcastingExtra: ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+				spellcastingBonus : [{
+					name : "Tricks of Deception",
+					spells : ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+					selection : ["distort value", "silent image", "blur", "mirror image", "hypnotic pattern", "major image", "confusion", "hallucinatory terrain", "mislead", "seeming"],
+					times : 10,
+				}],
 			},
 			
 			"jesting" : {
 				name : "Tricks of Jesting",
-				spellcastingExtra : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+				spellcastingBonus : [{
+					name : "Tricks of Jesting",
+					spells : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+					selection : ["tasha's hideous laughter", "charm person", "enthrall", "suggestion", "fast friends", "incite greed", "compulsion", "charm monster", "dominate person", "mind fog"],
+					times : 10,
+				}],
 			},
 			
 			"mischief" : {
 				name : "Tricks of Mischief",
-				spellcastingExtra : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+				spellcastingBonus : [{
+					name : "Tricks of Mischief",
+					spells : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+					selection : ["grease", "taunt", "nathair's mischief", "pyrotechnics", "stinking cloud", "slow", "shout", "polymorph", "animate objects", "telekinesis"],
+					times : 10,
+				}],
 			},
 			
 			"vanishment" : {
-				name : "Tricks of Vavnishment",
-				spellcastingExtra : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+				name : "Tricks of Vanishment",
+				spellcastingBonus : [{
+					name : "Tricks of Vanishment",
+					spells : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+					selection : ["erase", "unseen servant", "invisibility", "wristpocket", "blink", "nondetection", "banishment", "greater invisibility", "far step", "temporal shunt"],
+					times : 10,
+				}],
 			},
 		},
 		"subclassfeature14" : {
