@@ -1492,16 +1492,15 @@ ClassList.avatar = {
 	
 	regExpSearch : /avatar/i,
 	name : "Avatar",
-	source : [["EL:CC", 107]],
+	source : ["EL:CC", 107],
 	primaryAbility : ["Intelligence"],
 	abilitySave : 4,
 	prereqs : "Intelligence 13",
 	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
 	scoresMaximum : [30, 30, 30, 30, 30, 30],
-	die : 8,
+	die : 6,
 	subclasses : ["Affinity Mastery", []],
 	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	SpellcastingAbility : 5,
 	features : {
 		"proficiencies" : {
 			name : "Proficiencies", 
@@ -1948,6 +1947,12 @@ ClassList.avatar = {
 				"You can spend 17 PP to create the effects of the Gate spell as an Elemental shape, doing so you and creatures of your choice can pass through the gate. Additionally, elementals are friendly towards you unless you are enemies.",
 			]),
 		},
+		"subclassfeature1" : {
+			name : "Epic Elemental Affinity",
+			source : ["EL:CC", 107],
+			minlevel : 6,
+			description : "",
+		},	
 		"supreme influence" : {
 			name : "Supreme Influence",
 			source : ["EL:CC", 109],
