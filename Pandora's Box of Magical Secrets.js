@@ -6,9 +6,7 @@ SourceList["PBMS"] = {
 	group : "Pandora's Box of Magical Secrets",
 	date : "2023/07/18",
 };
-
-//7 New Races
-
+//8 New Races
 RaceList["caryatid"] = {
 	regExpSearch : /^(?=.*\b(caryatid)\b).*$/i,
 	name : "Caryatid",
@@ -22,8 +20,9 @@ RaceList["caryatid"] = {
 	languageProfs : ["Common", "Celestial"],
 	age : "You are immortal and do not age.",
 	vision : [["True Sight", 30]],
-	dmgres : ["Poison"],
-	savetxt : "Immune to form altering magic, Charmed, Exhausted, Frightened, Poisoned and Petrified Conditions",
+	savetxt : {
+		immune : ["charmed", "exhausted", "frightened", "petrified", "poisoned", "poison damage", "form altering magic"],
+	},	
 	trait : "Caryatid (my creature type is Celestial)"+
 		"\n \u2022 True Sight: 30 ft."+
 		"\n \u2022 Marble Nature: You are immune to spells and effects that would alter your form as well as the petrified and poisoned conditions and poison damage."+
@@ -32,7 +31,6 @@ RaceList["caryatid"] = {
 		"\n \u2022 False Appearance: While you remain motionless you are indistinguishable from a fixed marble statue."+
 		"\n \u2022 Languages: You can speak, read, and write Common and Celestial, you can also speak the language of anyone whoo looks at you within 30 ft."
 };
-
 RaceList["cecaelia"] = {
 	regExpSearch : /^(?=.*\b(cecaelia)\b).*$/i,
 	name : "Cecaelia",
@@ -49,7 +47,9 @@ RaceList["cecaelia"] = {
 	vision : [["Blindsight", 120]],
 	skills : ["Insight"],
 	dmgres : ["Acid", "Wave"],
-	savetxt : "Adv. on attack rolls, ability checks, and saving throws",
+	savetxt : {
+		adv_vs : ["attack rolls", "ability checks", "saving throws"],
+	},	
 	weaponOptions : {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /\btentacle\b/i,
@@ -67,9 +67,34 @@ RaceList["cecaelia"] = {
 		"\n \u2022 Intuitive Sense: You have proficiency in the Insight Skill."+
 		"\n \u2022 Tentacles: You have a natural weapon of Tentacles that deal 1d6 + Int Psychic damage."
 };
-
+RaceList["io-spawn"] = {
+	regExpSearch : /^(?=.*\b(io-spawn)\b).*$/i,
+	name : "Io-Spawn",
+	source : [["PBMS", 0]],
+	plural : "Io-Spawn",
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+	},
+	scoresGeneric : true,
+	languageProfs : ["Common"],
+	age : "You age as the same rate as humans but live for a few decades longer.",
+	dmgres : ["Psychic"],
+	limfeaname : "Astral Form",
+	action : "bonus action",
+	usages : 1,
+	recovery : "short rest",
+	savetxt : {
+		immune : ["charmed (astral form)", "frightened (astral form)"],
+		text : ["don't require air to breathe (astral form)"],
+	},	
+	trait : "Io-Spawn (my creature type is Humanoid)"+
+		"\n \u2022 Astral Form: As a bonus action, you transform for 1 minute or until dismissed as a bonus action, while transformed you can replace your damage types with psychic, you are immune to the charm and fright conditions and dont require air to breathe."+
+		"\n \u2022 Astral Resistance: You have resistance to psychic damage."+
+		"\n \u2022 Trance: Io-Spawn don't need to sleep, but meditate semiconsciously, for 4 hours a day. While meditating, I can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, I gain the same benefit that a human does from 8 hours of sleep, thus needing only 4 hours for a long rest."+
+		"\n \u2022 Languages: You can speak, read, and write Common."
+};
 //Mustalid Race with 5 Subraces
-
 RaceList["badger mustalid"] = {
 	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(badger)\b).*$/i,
 	name : "Badger Mustalid",
@@ -112,7 +137,6 @@ RaceList["badger mustalid"] = {
 		"\n \u2022 Giant Slayer: You have advantage on attack rolls against creatures one or more sizes larger than you."+
 		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
 };
-
 RaceList["mouse mustalid"] = {
 	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(mouse)\b).*$/i,
 	name : "Mouse Mustalid",
@@ -151,7 +175,6 @@ RaceList["mouse mustalid"] = {
 		"\n \u2022 Nimble Dodge: When attacked by an attack of opportunity, you may use your reaction to impose disadvantage on that attack."+
 		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
 };
-
 RaceList["otter mustalid"] = {
 	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(otter)\b).*$/i,
 	name : "Otter Mustalid",
@@ -189,7 +212,6 @@ RaceList["otter mustalid"] = {
 		"\n \u2022 Hold Breath: You can hold your breath for up to an hour"+
 		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
 };
-
 RaceList["weasel mustalid"] = {
 	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(weasel)\b).*$/i,
 	name : "Weasel Mustalid",
@@ -219,7 +241,6 @@ RaceList["weasel mustalid"] = {
 		"\n \u2022 War Dance: You gain proficiency with the Intiidation skill"+
 		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill"
 };
-
 RaceList["wolverine mustalid"] = {
 	regExpSearch : /^(?=.*\b(mustalid)\b)(?=.*\b(wolverine)\b).*$/i,
 	name : "Wolverine Mustalid",
@@ -269,9 +290,7 @@ RaceList["wolverine mustalid"] = {
 		"\n \u2022 Insulated Coat: Due to your thick fur you have resistance to Cold damage."+
 		"\n \u2022 Sneaky: You gain proficiency with the Stealth skill."
 };
-
 //Nymph Race with 6 Subraces
-
 RaceList["alseid nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(alseid)\b).*$/i,
 	name : "Alseid Nymph",
@@ -286,7 +305,10 @@ RaceList["alseid nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},	
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -302,7 +324,6 @@ RaceList["alseid nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Alseid: These are nymphs of the meadows. You have resistance to radiant damage."
 };
-
 RaceList["aura nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(aura)\b).*$/i,
 	name : "Aura Nymph",
@@ -317,7 +338,10 @@ RaceList["aura nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -333,7 +357,6 @@ RaceList["aura nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Aura: These are nymphs of the winds. You have resistance to lightning damage."
 };
-
 RaceList["dryad nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(dryad)\b).*$/i,
 	name : "Dryad Nymph",
@@ -348,7 +371,10 @@ RaceList["dryad nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -364,7 +390,6 @@ RaceList["dryad nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Dryad: These are nymphs of the trees. You have resistance to bludgeoning, piercing, and slashing damage from non-magical sources."
 };
-
 RaceList["lampad nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(lampad)\b).*$/i,
 	name : "Lampad Nymph",
@@ -379,7 +404,10 @@ RaceList["lampad nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -395,7 +423,6 @@ RaceList["lampad nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Lampad: These are nymphs of the shadows. You have resistance to necrotic damage."
 };
-
 RaceList["naiad nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(naiad)\b).*$/i,
 	name : "Naiad Nymph",
@@ -410,7 +437,10 @@ RaceList["naiad nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -426,7 +456,6 @@ RaceList["naiad nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Naiad: These are nymphs of the water. You have resistance to wave damage."
 };
-
 RaceList["oread nymph"] = {
 	regExpSearch : /^(?=.*\b(nymph)\b)(?=.*\b(oread)\b).*$/i,
 	name : "Oread Nymph",
@@ -441,7 +470,10 @@ RaceList["oread nymph"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 },
 	},
-	savetxt : "You have adv. on Saves against spells and other magical effects. Immune to Poison damage and Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["spells and magical effects"],
+		immune : ["poison damage", "poisoned"],
+	},
 	features : {
 		"nymph step" : {
 			name : "Nymph Step",
@@ -457,7 +489,6 @@ RaceList["oread nymph"] = {
 		"\n \u2022 Immortal Nature: You do not require air, food, drink, or sleep. You are also immune to poison and the poisoned condition."+
 		"\n \u2022 Oread: These are nymphs of the flames of the earth. You have resistance to fire damage."
 };
-
 RaceList["star born"] = {
 	regExpSearch : /^(?=.*\b(star)\b)(?=.*\b(born)\b).*$/i,
 	name : "Star Born",
@@ -473,7 +504,10 @@ RaceList["star born"] = {
 		walk : { spd : 40, enc : 30 },
 		fly : { spd : 70, enc : 60 },
 	},
-	savetxt : "You have adv. on Saves against the charmed and frightened conditions. Immune to Fire, Poison, and Radiant damage and the Poisoned Condition.",
+	savetxt : {
+		adv_vs : ["charmed", "frightened"],
+		immune : ["fire", "poison", "radiant", "poisoned"],
+	},	
 	trait : "Starborn (my creature type is Aberration)"+
 		"\n \u2022 Darkvision: 60 ft."+
 		"\n \u2022 Far Realm Existence: You do not require air to survive. You have advantage on saves against the charmed or frightened conditions."+
@@ -481,7 +515,6 @@ RaceList["star born"] = {
 		"\n \u2022 Shining Form: Your body shines dim light in a 15 foot radius."+
 		"\n \u2022 Immortal Nature: You do not require food, drink or sleep, you are also immune to poison damage and the poisoned condition."
 };
-
 RaceList["succubus"] = {
 	regExpSearch : /^(?=.*\b(succubus)\b).*$/i,
 	name : "Succubus",
@@ -496,7 +529,9 @@ RaceList["succubus"] = {
 		walk : { spd : 30, enc : 20 },
 		fly : { spd : 60, enc : 50 },
 	},
-	savetxt : "Immune to poison.",
+	savetxt : {
+		immune : ["poison", "poisoned"],
+	},	
 	features : {
 		"charm" : {
 			name : "Charm",
@@ -519,7 +554,6 @@ RaceList["succubus"] = {
 		"\n \u2022 Draining Kiss: As an action, you kiss a charmed or willing target, the target must make a Con Save against your Spell DC. on a fail the target takes 2d10 psychic damage or half as much on a success. This also reduces the target's HP Max by the amount they took as damage, if the HP Max is reduced to 0 the target dies. This Damage increases at 5th level (3d10), 11th level (4d10), 17th level (5d10)."+
 		"\n \u2022 Immortal Nature: You do not require food, drink, or sleep. You are also immune to poison damage and the poisoned condition."
 };
-
 RaceList["veda"] = {
 	regExpSearch : /^(?=.*\b(veda)\b).*$/i,
 	name : "Veda",
@@ -535,828 +569,129 @@ RaceList["veda"] = {
 		walk : { spd : 30, enc : 20 },
 		climb : { spd : 15, enc : 5 },
 	},
-	savetxt : "Immune to poison.",
+	savetxt : {
+		immune : ["poison", "poisoned"],
+	},
 	carryingCapacity : 2,
 	trait : "Veda (my creature type is Fiend)"+
 		"\n \u2022 Darkvision: 60 ft."+
-		"\n \u2022 Polychiral: (4-6 arms) As a Veda, your additional arms allow you to wield multiple weapons. You can gain the benefit of two handed weapons and a shield. You also gain a multi-attack, and can attack once with each weapon you wield."+
+		"\n \u2022 Polychiral:  As a Veda you have 4 arms, your additional arms allow you to wield multiple weapons. You can gain the benefit of two handed weapons and a shield. You also gain a multi-attack, and can attack once with each weapon you wield."+
 		"\n \u2022 Many Hands Light Work: You count as one size larger when determining carrying capacity and the weight you can push, drag, or lift."+
 		"\n \u2022 Abyssal Resilience: You are immune to poison damage and the poisoned condition. You are also resistant to cold, fire, and lightning damage."
 };
-
-//4 New Classes
-
-//Elementalist Class with 4 Subclasses
-
-ClassList.elementalist = {
-	
-	regExpSearch : /elementalist/i,
-	name : "Elementalist",
-	source : [["PBMS", 0]],
-	primaryAbility : ["Constitution"],
-	abilitySave : 3,
-	prereqs : "Constitution 13",
-	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
-	die : 10,
-	saves : ["Con", "Cha"],
-	skillstxt : {
-		primary : "Choose two from Acrobatics, Athletics, Insight, Nature, Perception, Survival.",
+var MM_lycanthrope = {
+	createDefaultTraits : function(sLycanName, sLycanPlural) {
+		// the traits of a human
+		var obj = {
+			name : "Human " + sLycanName,
+			plural : "Human " + sLycanPlural,
+			languageProfs : ["Common", 1],
+			age : " reach adulthood in their late teens and live less than 100 years",
+			height : " range from barely 5 to well over 6 feet tall (4'8\" + 2d10\")",
+			weight : " weigh around 165 lb (110 + 2d10 \xD7 2d4 lb)",
+			heightMetric : " range from barely 1,5 to well over 1,8 metres tall (145 + 5d10 cm)",
+			weightMetric : " weigh around 75 kg (50 + 5d10 \xD7 4d4 / 10 kg)",
+			scorestxt : "+1 to all ability scores",
+			scores : [1, 1, 1, 1, 1, 1, 1]
+		}
+		return obj;
 	},
-	armorProfs : {
-		primary : [true, true, false, false],
+	createMessage : function(sLycanName, aOtherGains) {
+		var aGained = [
+			"Its speed in nonhumanoid form.",
+			"Natural attacks in nonhumanoid form (e.g. bite/claw).",
+			"Damage immunity to bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered.",
+			"Shapechanger trait."
+		].concat(aOtherGains);
+		return "The lycanthrope races are template races. All features and traits of the base race are retained and all the " + sLycanName + "'s features are added to it."+
+		"\nIf you choose not to use a previous race as the base race or you selected a " + sLycanName + " at character creation, a human (non-variant) will be used as the base race."+
+		"\nThe " + sLycanName + "'s features added to the base race are:"+
+		desc(aGained, "\n   \u2022 ")+
+		"\n\nThe possible alignment change and moon-related limitations of lycanthrope are not mentioned in this race. Discuss with your DM how they want to handle lycanthrope."
+	}
+}
+RaceList["lycanthrope-wereraven"] = {
+	regExpSearch : /were.?raven|^(?=.*lycanthrope)(?=.*raven).*$/i,
+	name : "Wereraven",
+	source : [["CoS", ]],
+	plural : "Wereravens",
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		fly : { spd : 50, enc : 40 },
 	},
-	weaponProfs : {
-		primary : [true, false],
-	},
-	equipment : "Elementalist starting equipment:" +
-		"\n \u2022 leather armor;\n \u2022 A dagger;" +
-		"\n \u2022 A simple weapon -or- an apprentice mage weapon;" +
-		"\n \u2022 A dungeoneer's pack -or- An explorer's pack." +
-		"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-	subclasses : ["Affinity", []],
-	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	spellcastingFactor : 1,
-	spellcastingKnown : {
-		cantrips : [],
-		spells : "list",
-		prepared : true,
-	},
-	
-	spellcastingList : { 
-
-		"class" : [], 
-
-		level : [0, 9]
-	},
-	
+	trait : "Human Wereraven (+1 to all ability scores; min 15 Dex)" + desc([
+		"Shapechanger: As an action, I can polymorph into a raven-humanoid hybrid, into a raven, or back. In those forms, I gain 50 ft flying speed, and a beak attack. In my raven form, I also become Tiny My stats don't otherwise change when transformed, but my equipment doesn't transform and I revert back when I die. Humanoids hit by my beak must save or be cursed with wereraven lycanthrope.",
+		"Mimicry: I can mimicsimple sounds i have ehard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
+	], "\n \u2022 "),
 	features : {
-		"subclassfeature1" : {
-			name : "Elemental Affinity",
-			source : [["PBMS", 0]],
+		lycanthrope_features : {
+			name : "Lycanthrope",
+			source : [["M", 211]],
 			minlevel : 1,
-			description : desc([
-				"The affinity you possess with one of the four natural elements cannot be changed once chosen and represents the commanding power you possess. This affinity is tethered to your soul and existed since your birth. There are four elemental affinities; Affinity of Earth, Affinity of Air, Affinity of Fire, & Affinity of Water. Each of which it detailed at the end of the class description. Your choice grants you features at 1st level, and again at 6th, 10th, and 14th level.",
-			]),
-		},
-		
-		"elemental powers" : {
-			name : "Elemental Powers",
-			source : [["PBMS", 0]],
-			minlevel : 2,
-			description : desc([
-				"Your connection and command over a natural element has gifted you elemental powers. Your power to command the elements comes from the close primal relationship that is built between you and the elementals. When you speak they listen and awaken to carry out your will on your behalf. You gain two elemental powers of your choice. These powers require a presence of elemental energy be it natural or magical within 30 feet of you in order to enact. Once you have awakened the elemental energy using this power regardless of source the resulting effect is no longer considered magical. Your elemental powers are not affected by antimagic fields, counter spells, dispel magic, or meddle magic. Your power options are detailed at the end of the class description.", 
-				"When you gain elementalist levels, you gain additional powers of your choice. See elementalist table to see how many elemental powers you know in the known column. Additionally when you gain a level in this class you can choose one of the elemental powers and replace it with another that you could learn at the appropriate level.",
-			]),
-			extraname : "Elemental Powers",
-			extrachoices : ["Elemental Armor", "Elemental Assault", "Elemental Bane", "Elemental Bind", "Elemental Blast", "Elemental Bless", "Elemental Bolt", "Elemental Breath", "Elemental Chain", "Elemental Conjure", "Elemental Curse", "Elemental Enchantment", "Elemental Cone", "Elemental Eye", "Elemental Form", "Elemental Guardian", "Elemental Guise", "Elemental Illusion", "Elemental Mount", "Elemental Prison", "Elemental Portal", "Elemental Ray", "Elemental Sphere", "Elemental Sprites", "Elemental Stride", "Elemental Strike", "Elemental Vigor", "Elemental Wall", "Elemental Wave"],
-			extraTimes : levels.map(function (n) {
-					return n < 2 ? 0 : n < 3 ? 2 : n < 6 ? 3 : n < 9 ? 4 : n < 12 ? 5 : n < 15 ? 6 : n < 18 ? 7 : 8;
-			}),
-			"elemental armor" : {
-				name : "Elemental Armor",
-				description : desc([
-					"As a bonus action, your body is wrapped in elemental power of your affinity created by your token. You bonus to AC is a +3 instead of a +1 for the next hour.",
-				]),
-				action : "bonus action",
-				prereqeval : function(v) { return classes.known.elementalist.level >= 3 && GetFeatureChoice('class', 'elementalist', 'elemental privilage') == 'primeval token'; },
-			},
-			"elemental assault" : {
-				name : "Elemental Assault",
-				description : desc([
-					"You gain a multi-attack with your forged elemental weapon. You can attack twice, instead of once, whenever you take the attack action on your turn. In addition, your weapon damage can manifest as either of your damage types associated with your affinity. You must state the damage type before you make an attack. Your forged elemental weapon now counts as an elemental power for other rulings.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5 && GetFeatureChoice('class', 'elementalist', 'elemental privilage') == 'forged elemental'; },
-				action : "action",
-			},
-			"elemental bane" : {
-				name : "Elemental Bane",
-				description : desc([
-					"As an action, you can choose up to three creatures of your choice that you can see within range of 30 feet. Those creatures must make a Constitution saving throw. On a failed save, the creature has disadvantage on saving throws against your elemental powers and spells for 1 hour. ",
-				]),
-				action : "action",
-			},
-			"elemental bind" : {
-				name : "Elemental Bind",
-				description : desc([
-					"As an action, you can choose one creature you can see within 300ft. Elemental energy of your affinity springs from a source within 30ft of that creature and loops around them. That target must make a Strength saving throw, on a failed save the target’s speed is reduced to 0 feet for 1 minute.",
-				]),
-				action : "action",
-				prereqeval : function(v) { return classes.known.elementalist.level >= 3; },
-			},
-			"elemental blast" : {
-				name : "Elemental Blast",
-				description : desc([
-					"As an action, an elemental mote flashes from your pointing finger to a point you choose within 150ft that then blossoms into an explosion. Each creature in a 20ft radius sphere centered on that point must make a Dexterity save throw. A target takes 8d6 damage on a failed save and half as much on a successful one. ",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5; },
-				action : "action",
-			},
-			"elemental bless" : {
-				name : "Elemental Bless",
-				description : desc([
-					"As an action, you imbue up to three creatures of your choice that you can see within range of 30 feet. Those creature have advantage on saving throws against your elemental powers and spells for 1 hour.",
-				]),
-				action : "action",
-			},
-			"elemental bolt" : {
-				name : "Elemental Bolt",
-				description : desc([
-					"As an action, you hurl a mote of your element at a single within range of 120 feet. Make a ranged spell attack against the target. On a hit, the target takes 3d6 damage.",
-				]),
-				action : "action",
-			},
-			"elemental breath" : {
-				name : "Elemental Breath",
-				description : desc([
-					"As an action, you exhale energy of your affinity in a 15-foot cone. Each creature in that area must make a Dexterity save throw taking 3d6 damage on a failed save, and half as much on a successful one.",
-				]),
-				action : "action",
-			},
-			"elemental conjure" : {
-				name : "Elemental Conjure",
-				description : desc([
-					"As an action, you can cast the Conjure Elemental spell, however, concentration is not needed for this effect and the elemental does not become hostile towards you because of a lack of concentration. The elemental remains under your control for one hour, after which it returns to the elemental plane. You cannot have more than one elemental conjured by this feature. ",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 9; },
-				action : "action",
-			},
-			"elemental chain" : {
-				name : "Elemental Chain",
-				description : desc([
-					"As an action, you create a bolt of elemental power that arcs toward a creature of your choice within 150 feet. Three bolts then leap from that target to as many as three other targets, each of which must be within",
-					"30 feet of the first target. The target can be a creature or an object, and can be targeted only by one of the bolts. A target must make a Dexterity saving throw taking 10d8 damage on a failed save, or half as much on a successful one.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 11; },
-				action : "action",
-			},
-			"elemental curse" : {
-				name : "Elemental Curse",
-				description : desc([
-					"As an action, you can choose up to three creatures of your choice that you can see within range of 30 feet. Those creatures must make a Constitution saving throw. On a failed save, those creatures become vulnerable to the damage of your elemental powers and spells for 1 hour. If the creature is immune to your damage they are dropped to resistant, if the creature is resistant then they are dropped to neutral, and lastly neutral damage becomes vulnerable.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5 && GetFeatureChoice('class', 'elementalist', 'elemental power') == 'elemental bane'; },
-				action : "action",
-			},
-			"elemental enchantment" : {
-				name : "Elemental Enchantment",
-				description : desc([
-					"As an action, you imbue up to three creatures of your choice that you can see within range of 30 feet. Those creature gain resistance to your elemental affinity for 1 hour. If the creature is already resistant they become immune, and if the creature is vulnerable the damage becomes neutral.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5 && GetFeatureChoice('class', 'elementalist', 'elemental power') == 'elemental bless'; },
-				action : "action",
-			},
-			"elemental eye" : {
-				name : "Elemental Eye",
-				description : desc([
-					"As a bonus action, you can sense the presence of your elemental affinity within 60 feet. When you sense elemental presence in this way, you know the exact location of your elemental affinity within range.",
-				]),
-				action : "bonus action",
-			},
-			"elemental cone" : {
-				name : "Elemental Cone",
-				description : desc([
-					"As an action, you can create a blast of elemental energy erupts from your hands. Each creature in a 60-foot cone must make a Dexterity saving throw. A creature takes 8d8 damage on a failed save, and half as much damage on a successful one. ",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 9; },
-				action : "action",
-			},
-			"elemental form" : {
-				name : "Elemental Form",
-				description : desc([
-					"As an action, you can transform into an elemental of your affinity for 1 hour or until you transform back as a bonus action on your turn. You assume the hit points of the elemental you transform into. When you revert back to your true form you return to the hit points you had before you transformed. If you transform back as a result of dropping to 0 hit points any excess damage is carried over to your normal form. In this form you retain your intelligence, wisdom, charisma abilities scores, and languages. Otherwise all other stats, features, actions, and abilities are replaced by the new form, except for your elemental powers.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 8; },
-				action : "action",
-			},
-			"elemental guardian" : {
-				name : "Elemental Guardian",
-				description : desc([
-					"As a bonus action, you can transform your mote companion into a guardian for 1 hour. The mote's AC increases to 20 and it’s hit point maximum increases to 100. Your mote companion gains a new feature while in this form. Protector: As a reaction, when you are targeted by a spell, attack, or trap; your elemental can use its body to prevent the damage or effect, That damage or effect is instead inflicted upon the mote keeping you safe from any and all effects from the incident.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 3 && GetFeatureChoice('class', 'elementalist', 'privilage') == 'mote companion'; },
-				action : "bonus action",
-			},
-			"elemental guise" : {
-				name : "Elemental Guise",
-				description : desc([
-					"As an action, you can cast the disguise self spell. When you do so the new appearance has glints with minors impressions of your affinity. For example your skin may glisten or shimmer with moisture, or you may be surrounded by a light breeze.",
-				]),
-				action : "action",
-			},
-			"elemental illusion" : {
-				name : "Elemental Illusion",
-				description : desc([
-					"As an action, you create a sound or an image of elemental energy within range that lasts for 1 minute. The illusion also ends if you dismiss it as a bonus action or use this feature again. If you create a sound, its volume can range from a whisper to a roar. It can be any sound that is natural to your element; booming thunder, crackling fire, falling rain, crumbling rock. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the effect ends. If you create an image of an elemental object—such as a rock, flame, or a pool of water; it must be no larger than a 5-foot cube. The image cannot create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it. If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature.",
-				]),
-				action : "action",
-			},
-			"elemental mount" : {
-				name : "Elemental Mount",
-				description : desc([
-					"As a bonus action,you can transform your mote into animal mount that you can ride of your choosing for up to 8 hours. This mount gains a movement speed of 40ft associated with your affinity. Earth: Walking & Burrow Movement. Air: Walking & Flying Movement. Fire: Walking & Flying Movement. Water: Walking & Swimming Movement. ",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5 && GetFeatureChoice('class', 'elementalist', 'privilage') == 'mote companion'; },
-				action : "bonus action",
-			},
-			"elemental prison" : {
-				name : "Elemental Prison",
-				description : desc([
-					"As an action, an immobile elemental cube shaped prison springs into existence around an area you choose within 100 feet. This prison can be a cage or a solid box as choose that lasts for 1 hour. A prison in the shape of a cage can be up to 20 feet on a side and is made from 1/2-inch diameter bars spaced 1/2 inch apart. A prison in the shape of a solid box can be up to 10 feet on a side, creating a solid barrier that prevents any creature from physically passing through. When you create this effect, any creature that is completely inside the cage area is trapped. Creatures only partially within the area, or those too large to fit inside the area, are pushed away from the center of the area until they are completely outside the area. A creature inside the cage cannot leave it by non-magical means. If the creature tries to use teleportation or inter-planar travel to leave the cage they succeed. This effect cannot be dispelled by Dispel Magic or like magic.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 7; },
-				action : "action",
-			},
-			"elemental portal" : {
-				name : "Elemental Portal",
-				description : desc([
-					"As an action, you can teleport between the material plane and the elemental plane of your affinity.",
-					]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 12; },
-				action : "action",
-			},
-			"elemental ray" : {
-				name : "Elemental Ray",
-				description : desc([
-					"As an action, you can create three rays of elemental energy and hurl them at targets within 120 feet. You can hurl them at one target or several. Make a ranged spell attack for each ray. On a hit the target takes 2d6 damage.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 4; },
-				action : "action",
-			},
-			"elemental sphere" : {
-				name : "Elemental Sphere",
-				description : desc([
-					"As an action, you point at a location with 150 feet, and an elemental ball of energy flashes there and explodes in a 20-foot radius sphere. Each creature in that area must make a Dexterity saving throw. On a failed save, the creature takes 10d4 damage and another 5d4 at the end of their next turn. On a successful save, a creature takes half the initial damage, and no damage at the end of their next turn",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 7; },
-				action : "action",
-			},
-			"elemental sprites" : {
-				name : "Elemental Sprites",
-				description : desc([
-					"As an action, you can summon eight tiny elemental sprites that leap from an elemental source and land in an unoccupied space within 30 feet. A summoned sprite disappears when it drops to 0 hit points, dismissed as a bonus action on your turn, or the effect ends after 1 hour. The summoned sprites are friendly to you and your companions. Roll initiative for them as a group, which they have their own turn as a group. They obey every verbal command you give them. (No action required by you) If you do not issue a command they defend themselves from hostile creatures, but otherwise take no actions. These sprites have the stat block of a sprite on pg. 283 of the monster manual except all damage they deal is the same as the source in which they were conjured. The damage they deal for any attack is 1d6 elemental damage.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 8; },
-				action : "action",
-			},
-			"elemental stride" : {
-				name : "Elemental Stride",
-				description : desc([
-					"As a bonus action on your turn you can use this power to surf on your elemental affinity up to your movement speed in addition to your standard movement. If you take the dash action you can move twice your movement speed in addition to your dash action. In order to use this power you must begin your turn within 5 feet of your elemental affinity.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 6; },
-				action : "bonus action",
-			},
-			"elemental strike" : {
-				name : "Elemental Strike",
-				description : desc([
-					"As a bonus action, you can empower your forged weapon changing additional damage dice to a d6 instead of a d4. Your forged elemental weapon counts as an elemental power for other rulings.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 3 && GetFeatureChoice('class', 'elementalist', 'elemental privilage') == 'forged elemental'; },
-				action : "bonus action",
-			},
-			"elemental vigor" : {
-				name : "Elemental Vigor",
-				description : desc([
-					"As a bonus action, you can use your token bolstering yourself with your elemental affinity granting you a boost of vitality. In doing so you gain temporary hit points equal to your elementalist level.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 5 && GetFeatureChoice('class', 'elementalist', 'elemental privilage') == 'primeval token'; },
-				action : "bonus action",
-			},
-			"elemental wall" : {
-				name : "Elemental Wall",
-				description : desc([
-					"As an action, you can create a wall of elemental energy within 120 feet. You can form it into a hemispherical dome or sphere up to a 10-foot radius. You can shape a flat surface up to ten 10-foot panels. Each panel must be contiguous with another panel. In any form, the wall is 1-foot thick and lasts for 10 minutes. No concentration required. If the wall cuts through a creatures space when it appears, the creature is pushed to one side of the wall and must make a Dexterity saving throw. On a failed save the creature takes 10d6 damage, or half as much on a successful save. Any creature that makes an attempt to pass through the wall must make a Constitution saving throw. On a failed save the target takes 5d6 damage, or half as much on a successful one.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 11; },
-				action : "action",
-			},
-			"elemental wave" : {
-				name : "Elemental Wave",
-				description : desc([
-					"As an action, you strike the ground, creating a burst of elemental energy that ripples outward from you. Each creature you choose within 30 feet of you must succeed on a Dexterity saving throw. On a failed save the creature takes 5d6 damage, as well as 5d6 damage of your secondary type, and be knocked prone. A creature that succeeds takes half as much damage and is not knocked prone.",
-				]),
-				prereqeval : function(v) { return classes.known.elementalist.level >= 9; },
-				action : "action",
-			},	
-		},
-		"elemental privilage" : {
-			name : "Elemental Privilage",
-			source : [["PBMS", 0]],
-			minlevel : 3,
-			description : desc([
-				"Your growing affinity has granted you a gift from the elemental plane for your commitment and reverence for the elements. You gain one of the following features of your choice.",
-			]),
-			choices : ["Forged Elemental", "Mote Companion", "Primeval Token"],
-			"forged elemental" : {
-				name : "Forged Elemental",
-				description : desc([
-					"You receive a weapon forged from an elemental of your affinity. This elemental takes the form of one weapon of your choice upon selecting this feature. This weapon deals the same dice of damage as the weapon it emulates. This weapon uses Constitution instead of Strength or Dexterity for attack and damage rolls. This weapon is magical and has a +1 to attack rolls. This weapon also deals an additional 1d4 damage of your affinity. This increases to +2 to attack rolls and 2d4 elemental damage at 7th level, +3 to attack rolls and 3d4 elemental damage at 11th level, and +4 to attack rolls and 4d4 elemental damage at 15th level. This weapon cannot be lost, stolen, or disarmed. As a bonus action on your turn you cansummon this weapon to your hand regardless of plane or distance. You cannot use your weapon as a source for your elemental powers.",
-				]),
-			calcChanges : {
-				atkAdd : [
-					function (fields, v) {
-						if (!v.theWea.isMagicWeapon && (/^(?=.*Forged).*$/i).test(v.WeaponTextName)) {
-							v.theWea.isMagicWeapon = true;
-							fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
-							fields.Description += (fields.Description ? '; ' : '') + '+1d4 affinity damage, +1 additional at 7th, 11th, 15th level.';
-						}
-					},
-					'If I include the word "Forged" in a the name of a weapon, it will be treated as my Forged Elemental. It has +1 to hit and damage and does +1d4 affinity damage, which increases by 1 at 7th, 11th, and 15th level.'
+			toNotesPage : [{
+				name : "Lycanthrope",
+				note : [
+					"My Dexterity score increases to 15 unless it was already higher",
+					"As an action, I can polymorph into a raven-humanoid hybrid, into a raven, or back",
+					"In my raven and hybrid forms, I gain 50 ft flying speed, and a beak attack",
+					"In my raven form, I also become Tiny My stats don't otherwise change, my equipment doesn't transform and I revert back if I die",
+					"Humanoids hit by my beak must make a Con save or be cursed with wereraven lycanthrope",
+					"The DC to avoid this curse is 8 + my Proficiency bonus + my Constitution modifier"
 				],
-				atkCalc : [
-					function (fields, v, output) {
-						if ((/^(?=.*Forged).*$/i).test(v.WeaponTextName)) {
-							output.magic = v.thisWeapon[1] + 1;
-						}
-					}, ''
-				]
-			},
-			},
-			"mote companion" : {
-				name : "Mote Companion",
-				description : desc([
-					"You gain the service of an elemental mote of your affinity. This mote is friendly to you and your companions, and it obeys your commands. See this creature's stat block. In combat, the mote shares your initiative and you can mentally command it on your turn. (no action required) A mote cannot attack, but it can take other actions as normal. When the mote drops to 0 hit points, it disappears leaving behind a puff of elemental energy. It returns to the elemental plane of origin until you recall it back during a long rest. While your mote is within 100 feet of you, you can communicate with it telepathically. Additionally, as an action you can see through the motes eyes and hear what it hears until the start of your next turn, gaining the benefit from any special senses that the mote has. During this time you are deaf and blind with regard to your own senses. As a bonus action you can temporarily dismiss your mote. It disappears into the elemental plane where it awaits your summons. As a bonus action while it is temporarily dismissed, you can cause it to reappear in any unoccupied space with 30 feet of you. Finally, when you cast a spell you can choose to have the point of origin and range originate from the mote instead of yourself. Your mote must be within 100 feet of you in order to use this feature. See stat table for additional details. You cannot use your mote as a source for your elemental powers. The mote shares the same proficiency bonus as you.",
-				]),
-			},
-			"primeval token" : {
-				name : "Primeval Token",
-				description : desc([
-					"You receive a token created from an elemental of your affinity. This token is bound to you and cannot be lost, stolen, or disarmed. This token grants you protection with elemental energy giving your a +1 to AC, in addition you gain resistance to the element of your affinity. You are now immune to poison damage. You are also immune to exhaustion, petrified, and poisoned condition effects.",
-				]),
-				extraAC : {
-					name : "Primeval Token",
-					mod : 1,
-					text : "I gain a +1 bonus to AC when I have the Primeval Token Elemental Privilage",
-				},	
-				savetxt : { immune : ["poison", "exhausted", "petrified"] }
-			},
+				page3notes : true
+			}, {
+				name : "Multiattack",
+				note : [
+					"As an action, I can make two attacks, only one of which can be with my wereraven beak"
+				],
+				page3notes : true,
+				additional : "in humanoid or hybrid form only"
+			}],
+			action : [
+				["action", "Shapechange (raven/hybrid/back)"],
+				["action", "Multiattack (2 attacks, max 1 beak)"]
+			],
+			scoresOverride : [0, 15, 0, 0, 0, 0],
+			savetxt : { immune : ["bludgeoning, piercing, and slashing damage unless from magic/silver"] },
+			weaponsAdd : ["Wereraven Beak"],
+			weaponOptions : [{
+				name : "Wereraven Beak",
+				regExpSearch : /^(?=.*(wereraven|lycanthrope))(?=.*beak).*$/i,
+				source : [["M", 211]],
+				ability : 2,
+				type : "Natural",
+				damage : [1, 4, "piercing"],
+				range : "Melee",
+				description : "Raven and Hybrid form only; Humanoids Con save or cursed",
+				abilitytodamage : true
+			}],
 		},
-		"elemental inversion" : {
-			name : "Elemental Inversion",
-			source : [["PBMS", 0]],
-			minlevel : 5,
-			description : desc([
-				"You can transform your elemental presence into a different representation when enacting an elemental power. Those of the Affinity of Earth can shape the stone into a different physical forms to inflict physical or force damage. Those of the Affinity of Air can change wind into different tempestuous forms to inflict lightning or thunder damage. Those of the Affinity of Fire can change light into fire to inflict fire or radiant damage. Those of the Affinity of Water can change water into ice to inflict wave or radiant damage.",
-			]),
-		},
-		"enigmatic power" : {
-			name : "Enigmatic Power",
-			source : [["PBMS", 0]],
-			minlevel : 11,
-			description : desc([
-				"Your elemental affinity has become incredibly strong that you have discovered ancient primordial words to manifest powerful elemental magic. You gain one 6th level spell of your affinity as this enigmatic power. You can command this power without consuming a spell slot or needing components. You can use this feature once before a long rest, otherwise you require elemental presence and can use this spell as an elemental power for additional uses. At higher levels, you gain more enigmatic powers of your choice that can be used in this way; One 7th level spell at 13th level, one 8th level spell at 15th level, and one 9th level spell at 17th level. You regain all uses of this power when you finish a long rest.",
-			]),
-		},
-		"elemental monarch" : {
-			name : "Elemental Monarch",
-			source : [["PBMS", 0]],
-			minlevel : 20,
-			description : desc([
-				"You can call out to elder elementals to grace you with their elemental energy to regain all expended spell slots, and enigmatic power. Once regained an aura of elemental power surrounds you for the next hour. During this time you can use you elemental powers freely without concern of its nearby presence. You must finish a long rest before you can use this feature again. In addition your range for elemental presence increases to 60 feet instead of 30ft for using your elemental powers when you reach this level.",
-			]),
-		},
+		lycanthrope_mimicry : {
+			name : "Mimicry",
+			source : [["M", 211]],
+			minlevel : 1,
+			toNotesPage : [{
+				name : "Mimicry",
+				note : [
+					"Mimicry: I can mimicsimple sounds i have ehard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
+				],
+				page3notes : true
+			}],
+		}
 	},
-};	
-
-AddSubClass("elementalist", "air", {
-	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*air).*$/i,
-	subname : "Elemental Affinity of Air",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature1" : {
-			name : "Air Affinity",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			languageProfs : ["Auran"],
-			scores : [0,2,0,0,0,0],
-			saves : "Dex",
-			skills : ["perception"],
-			spellcastingExtra : ["gust", "shocking grasp", "thunderwave", "zephyr strike", "gust of wind", "levitate", "lightning bolt", "call lightning", "storm sphere", "control winds", "investiture of wind", "whirlwind", "control weather", "meteor swarm"],
-			description : desc([
-				"The affinity of air exists within the power of your breathe, and your connection to the sky allowing you to command the breezes, clouds, and storms. Choosing this affinity allows you to influence the skies above your head. These elementalists produce damaging effects that inflict lightning and thunder damage. Choosing this affinity grants you proficiency in the Dexterity saving throw, and you gain a +2 to that ability score. In addition, you gain proficiency in the perception skill.",
-			]),
-			prereqeval : function(v) { return v.hasMeteorSwarm; },
-					calcChanges : {
-						spellAdd : [
-							function (spellKey, spellObj, spName) {
-								if (spellKey == "meteor swarm") {
-									spellObj.description = spellObj.description.replace("4\xD7 40-ft rad all 20d6 Bludgeoning dmg and 20d6 Fire dmg; save halves; areas do not stack", "4\xD7 40-ft rad all 20d6 Thunder dmg and 20d6 Lightning dmg; save halves; areas do not stack");
-									return true;
-								}
-							},
-							"the meteor swarm spell deals thunder and lightning damage instead of bludgeoning and fire damage.",
-						]
-					}
-		},
-		"subclassfeature1.1" : {
-			name : "Updraft",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			description : desc([
-				"You gain the ability to cast the levitate spell as a bonus action on your turn without expending a spell slots or components with this feature.",
-			]),	
-		},
-		"subclassfeature6" : {
-			name : "Wind Travel",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			speed : { fly : { spd : "walk", enc : "walk" } },
-			description : desc([
-				"You are now one with the winds that guide your foot steps. You gain a flying speed equal to your walking speed.",
-			]),
-		},
-		"subclassfeature10" : {
-			name : "Master of the Breath and Ear",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			dmgres : [["Lightning"], ["Thunder"]],
-			savetxt : { immune : ["deafened"] },
-			vision : [["Keen Hearing, you have advantage on all perception ability checks that rely on hearing."], ["Unending Breath: I can hold my breath indefinitely while I am not incapacitated."]],
-			description : desc([
-				"You now have resistance to thunder and lightning damage. You are also immune to being deafened and can hold your breathe indefinitely. Lastly, you gain the Keen Hearing feature, which grants you advantage on all perception ability checks that rely on hearing.",
-			]),
-		},
-		"subclassfeature14" : {
-			name : "Tailwind",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			speed : { walk : "+20" },
-			description : desc([
-				"Your ability to act becomes as swift as the winds that follow you. Your movement speed increases by 20 feet. When you make a weapon attack you gain two extra attacks enabling you to make three weapon attacks. In addition, you can take the dash or dodge action as a bonus action.",
-			])
-		},
-		"subclassfeature14.1" : {
-			name : "Dash/Dodge",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			action : "bonus action",
-			description : "",
-		},
-		"subclassfeature14.2" : {
-			name : "Attack (3 Times)",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			action : "action",
-			description : "",
-		},	
-	},
-});	
-
-AddSubClass("elementalist", "earth", {
-	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*earth).*$/i,
-	subname : "Elemental Affinity of Earth",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature1" : {
-			name : "Earth Affinity",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			languageProfs : ["Terran"],
-			scores : [2,0,0,0,0,0],
-			saves : "Str",
-			vision : [["Tremor Sense", 60]],
-			spellcastingExtra : ["mold earth", "magic stone", "catapult", "earth tremor", "maximillian's earthen grasp", "erupting earth", "meld into stone", "stone shape", "animate objects", "investiture of stone", "bones of the earth", "earthquake", "pass without trace", "meteor swarm"],
-			description : desc([
-				"The affinity of earth tethers you to the base materials of the earth like stone, soil, sand, clay, metal, and gemstones. Choosing this affinity allows you to influence the very land beneath your feet. These elementalists produce damaging effects that inflict physical environmental damage like bludgeoning, piercing, and slashing. Choosing this affinity you gain proficiency in the Strength saving throw and gain +2 to that ability score. In addition, you also gain tremor sense of 60 feet.",
-			]),
-			prereqeval : function(v) { return v.hasMeteorSwarm; },
-					calcChanges : {
-						spellAdd : [
-							function (spellKey, spellObj, spName) {
-								if (spellKey == "meteor swarm") {
-									spellObj.description = spellObj.description.replace("4\xD7 40-ft rad all 20d6 Bludgeoning dmg and 20d6 Fire dmg; save halves; areas do not stack", "4\xD7 40-ft rad all 20d6 Bludgeoning dmg and 20d6 Piercing dmg; save halves; areas do not stack");
-									return true;
-								}
-							},
-							"the meteor swarm spell deals bludgeoning and piercing damage instead of bludgeoning and fire damage.",
-						]
-					}
-		},
-		"subclassfeature1.1" : {
-			name : "Land Stride",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			description : desc([
-				"You can move across difficult terrain created by earth, sand, and stone without expending extra movement. You can also cast the spell pass without a trace once before a long rest. ",
-			]),	
-		},
-		"subclassfeature6" : {
-			name : "Earthen Travel",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			speed : { burrow : { spd : "walk", enc : "walk" } },
-			description : desc([
-				"You gain a burrow speed equal to your movement speed. You can move through earth, mud, sand, and stone.",
-			]),
-		},
-		"subclassfeature10" : {
-			name : "Stone Resilience",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			dmgres : [["Bludgeoning"], ["Piercing"], ["Slashing"]],
-			description : desc([
-				"Your flesh hardens like stone gaining and you gain resistance to non-magical bludgeoning, piercing, and slashing.",
-			]),
-		},
-		"subclassfeature14" : {
-			name : "Autonomous Form",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			savetxt : { immune : ["Petrified"] },
-			description : desc([
-				"You gain the ability to have complete autonomy over your physical form. When you gain this feature you are immune to any effect that would alter your form unless you allow it, which includes petrification. In addition, as a reaction when you are targeted by an attack you can temporarily transform your stone like skin into metal gaining a +2 to AC and resistance to all damage until the start of your next turn. You can use this feature a number of times equal to your constitution modifier.",
-			])
-		},
-		"subclassfeature14.1" : {
-			name : "Metal Skin",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			action : "reaction",
-			usages : "Constitution modifyer per ",
-			usagescalc : "event.value = Math.max(1, What('Con Mod'));",
-			recovery : "long rest",
-			description : "",
-		},	
-	},
-});	
-
-AddSubClass("elementalist", "fire", {
-	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*fire).*$/i,
-	subname : "Elemental Affinity of Fire",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature1" : {
-			name : "Fire Affinity",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			languageProfs : ["Ignan"],
-			scores : [0,0,0,2,0,0],
-			saves : "Int",
-			vision : [["Darkvision, (magcial darkness does not impede)", 60]],
-			spellcastingExtra : ["control flames", "fire bolt", "burning hands", "faerie fire", "scorching ray", "fireball", "daylight", "fire shield", "immolation", "investiture of flame", "fire storm", "sunburst", "meteor swarm"],
-			description : desc([
-				"The affinity of fire resides within the emanating heat produced by your body, which connects you to the heat produced by fire, light, and energy itself. Choosing this affinity allows you to command any source of heat transforming it from a mote to an immolation. These elementalists produce damaging effects that inflict fire and radiant damage. Choosing this affinity you gain proficiency in the Intelligence saving throw and gain +2 to that ability score. In addition, you gain dark vision of 60 feet, and magical darkness does not impede this vision.",
-			]),
-		},
-		"subclassfeature1.1" : {
-			name : "Blazing Aura",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			description : desc([
-				"Your body temperature increases giving you a heated body. Any creature that touches you or makes a melee attack while within 5 feet of you takes 2d6 fire damage. In addition, any metal melee weapons you wield deal an extra 1d6 fire damage when your attack with it hits.",
-			]),	
-		},
-		"subclassfeature6" : {
-			name : "Smouldering Shroud",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			description : desc([
-				"You can choose to emit smoke until the start of your next turn after you use one of your elemental spells or powers. During this time all attack rolls against you have disadvantage.",
-			]),
-		},
-		"subclassfeature10" : {
-			name : "Solar Power",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			dmgres : [["Fire"], ["Radiant"]],
-			description : desc([
-				"Your body becomes empowered by the sun. When you are in direct sunlight you have advantage on attack and damage rolls made with your spells and elemental powers. In addition, you now have resistance to fire and radiant damage.",
-			]),
-		},
-		"subclassfeature14" : {
-			name : "Phoenix Fire",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			description : desc([
-				"The fire elementals you command become a force of rejuvenation. When you use one of your spells or elemental powers you regain hit points equal to your elementalist level plus your Constitution modifier.",
-			])
-		},	
-	},
-});	
-
-AddSubClass("elementalist", "water", {
-	regExpSearch : /^(?=.*(affinity|elementalist))(?=.*water).*$/i,
-	subname : "Elemental Affinity of Water",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature1" : {
-			name : "Water Affinity",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			languageProfs : ["Aquan"],
-			scores : [0,0,0,0,2,0],
-			saves : "Wis",
-			vision : [["Darkvision", 120]],
-			spellcastingExtra : ["ray of frost", "shape water", "create or destroy water", "ice knife", "rime's binding ice", "plant growth", "sleet storm", "tidal wave", "watery sphere", "cone of cold", "investiture of ice", "wal of ice", "tsunami", "meteor swarm"],
-			description : desc([
-				"The affinity of water flows through you like a river and connects you to all forms of water like; ice, lakes, oceans, mist, rain, and rivers. Choosing this affinity allows you to command the waters throughout the world. These elementalists produce damaging effects that inflict wave and cold damage. Choosing this affinity you gain proficiency in the Wisdom saving throw and gain +2 to that ability score. In addition, you gain dark vision of 120 feet.",
-			]),
-			prereqeval : function(v) { return v.hasMeteorSwarm; },
-					calcChanges : {
-						spellAdd : [
-							function (spellKey, spellObj, spName) {
-								if (spellKey == "meteor swarm") {
-									spellObj.description = spellObj.description.replace("4\xD7 40-ft rad all 20d6 Bludgeoning dmg and 20d6 Fire dmg; save halves; areas do not stack", "4\xD7 40-ft rad all 20d6 Bludgeoning dmg and 20d6 Cold dmg; save halves; areas do not stack");
-									return true;
-								}
-							},
-							"the meteor swarm spell deals bludgeoning and cold damage instead of bludgeoning and fire damage.",
-						]
-					}
-		},
-		"subclassfeature1.1" : {
-			name : "Aquatics",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			speed : { swim : { spd : 60, enc : 50 } },
-			description : desc([
-				"You are now amphibious and can breathe air and water. You also have a swim speed of 60 ft. ",
-			]),	
-		},
-		"subclassfeature6" : {
-			name : "Soothing Water",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			description : desc([
-				"You can awaken the magical healing properties of water. When you use the shape water cantrip you can use it to cast the cure wounds spell without components or expending a spell slot. You can up-cast this feature using a spell slot of 1st level or higher. The dice of this effect increases by 1d8 for each level above cantrip.",
-			]),
-		},
-		"subclassfeature10" : {
-			name : "Waters of Life",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			dmgres : [["Cold"], ["Wave"]],
-			description : desc([
-				"You can pull water from damp caverns, humid jungles, and non-magical plants in order to fuel your elemental powers. Once before a long rest you can cast the Plant Growth spell with this feature. You now have resistance to to wave and cold damage.",
-			]),
-		},
-		"subclassfeature10.1" : {
-			name : "Plant Growth",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			action : "action",
-			usages : 1,
-			recovery : "long rest",
-			description : "",
-		},	
-		"subclassfeature14" : {
-			name : "Never-Melting Armor",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			dmgres : [["F2ire"]],
-			extraAC : {
-					name : "Never-Melting Armor",
-					mod : 3,
-					text : "I gain a +3 bonus to AC due to my Never-Melting Armor",
-			},		
-			description : desc([
-				"You can store water around your body from nearby elemental presence to form never-melting armor of ice. This armor adds +3 to your AC and grants you resistance to fire. In addition, as a bonus action on your turn you can use the armor as a source for one of your elemental spells or powers. You can use your armor in this way three times before you have to recreate it near an ample source of water. Each time you use your armor in this way you subtract 1 from the AC bonus.",
-			])
-		},
-		"subclassfeature14.1" : {
-			name : "Never-Melting Armor (Use)",
-			source : [["PBMS", 0]],
-			minlevel : 14,
-			action : "bonus action",
-			description : "",
-		},
-	},
-});
-
-//Companions for Elementalist Mote Companion Elemental Privilage
-
-CreatureList["elemental mote"] = {
-	name : "Elemental Mote",
-	source : [["PBMS", 0]],
-	size : 5,
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 16,
-	hp : 20,
-	hd : [5, 4],
-	speed : "0 ft, Fly(Hover) 50 ft",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
+	useFromPreviousRace : {
+		updateName : "prefix", // e.g. "Rock Gnome Wereraven"
+		message : MM_lycanthrope.createMessage("wereraven", [
+			"Dexterity increase to 15 unless it was already higher.",
+			"Mimicry trait."
+		]),
+		defaultTraits : MM_lycanthrope.createDefaultTraits("Wereraven", "Wereravens"),
+		gainTraits : ["everything"],
+	}
 };
-
-CreatureList["mount mote"] = {
-	name : "Mount Mote",
-	source : [["PBMS", 0]],
-	size : [2,3,4],
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 16,
-	hp : 20,
-	hd : [6, 4],
-	speed : "40 ft, Fly 40 ft (Air/Fire), Climb 40 ft (Earth), Swim 40 ft (Water)",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
-};
-
-CreatureList["guardian mote"] = {
-	name : "Guardian Mote",
-	source : [["PBMS", 0]],
-	size : 5,
-	type : "Elemental",
-	alignment : "Unaligned",
-	ac : 20,
-	hp : 100,
-	hd : [30, 4],
-	speed : "0 ft, Fly(Hover) 50 ft",
-	scores : [1, 22, 14, 12, 10, 7],
-	saves : ["", 8, 4, "", "", ""],
-	skills : {
-		"stealth" : 8
-	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "Primordial",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 0,
-	damage_immunities : "poison",
-	condition_immunities : "exhausted, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
-	attacks : [{
-		name : "",
-		ability : 3,
-		damage : [],
-		range : "",
-		description : "",
-	}],	
-	actions : [{
-		name : "Protector",
-		description : "As a reaction, when you are targeted by a spell, attack, or trap; your elemental can use its body to prevent the damage or effect, That damage or effect is instead inflicted upon the mote keeping you safe from any and all effects from the incident."
-	}],	
-	traits : [{
-		name : "Elemental Demise",
-		description : "When the mote is dropped to zero hit points its body bursts releasing elemental energy dealing 1d12 + 1 elemental damage in a 10 ft radius. Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"
-	}, {
-		name : "Elemental Immunity",
-		description : "The mote is immune to the damage of its affinity, Earth(Physical), Air(Lightning), Fire(Fire), Water(Wave)"	
-	}, {
-		name : "Elemental Nature",
-		description : "The mote does not require air, food, drink, or sleep."
-	}],	
-};
-
+//3 New Classes
 //Fool Class with 4 Subclasses
-
 ClassList.fool = {
 	
 	regExpSearch : /(fool)/i,
@@ -1405,7 +740,9 @@ ClassList.fool = {
 			name : "Origin of Trickery",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "When you gain this feature you choose whether your magic is derived from the Feywild or Shadowfell, use the Choose feature button on page 2 to choose your origin.",
+			description : desc([
+				"When you gain this feature you choose whether your magic is derived from the Feywild or Shadowfell, use the Choose feature button on page 2 to choose your origin.",
+			]),	
 			extraname : "Origin of Trickery",
 			extrachoices : ["feywild", "shadowfell"],
 			"feywild" : {
@@ -1745,7 +1082,6 @@ ClassList.fool = {
 		},
 	},	
 };
-
 AddSubClass("fool", "clown", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*clown).*$/i,
 	subname : "Playhouse of the Clown",
@@ -1793,7 +1129,6 @@ AddSubClass("fool", "clown", {
 		},
 	},
 });
-
 AddSubClass("fool", "mime", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*mime).*$/i,
 	subname : "Playhouse of the Mime",
@@ -1848,7 +1183,6 @@ AddSubClass("fool", "mime", {
 		},	
 	},
 });	
-
 AddSubClass("fool", "puppeteer", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*puppeteer).*$/i,
 	subname : "Playhouse of the Puppeteer",
@@ -1917,7 +1251,6 @@ AddSubClass("fool", "puppeteer", {
 		},
 	},
 });	
-
 AddSubClass("fool", "trickster", {
 	regExpSearch : /^(?=.*(playhouse|fool))(?=.*trickster).*$/i,
 	subname : "Playhouse of the Trickster",
@@ -2093,9 +1426,51 @@ AddSubClass("fool", "trickster", {
 		},
 	},
 });
-
 //Companion for Fool Puppeteer Subclass
-
+CreatureList["golem"] = {
+	name : "Golem",
+	source : [["PBMS", 0]],
+	size : 5,
+	type : "Construct",
+	alignment : "Unaligned",
+	ac : 16,
+	hp : 20,
+	hd : [3, 6],
+	speed : "25 ft",
+	proficiencyBonusLinked : true,
+	scores : [16, 11, 16, 1, 3, 1],
+	damage_immunities : ["bludgeoning, piercing, and slashing from non-adamantine weapons", "poison"],
+	condition_immunities : "exhausted, paralyzed, petrified, poisoned, stunned, unconscious",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10 + "Wisdom",
+	challengeRating : 0,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [2, 6, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : true,
+	}],
+	traits : [{
+		name : "Absorption",
+		description : "When the golem receives a specific type of damage, it takes no damage and instead regains a number of hit points equal to the damage taken from the absorption type. This is determined by the type of golem.",
+		joinString : "\n   "
+	}, {
+		name : "Immutable Form",
+		description : "The Golem is immune to any spell that would alter it's form unless you will it.",
+		joinString : "\n   "
+	}, {
+		name : "Magic Resistance",
+		description : "The Golem has advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   "
+	}, {	
+		name: "Magic Weapons",
+		description : "The Golem's weapon attacks ae considered magical for the purpose of overcoming resistances.",
+		joinString : "\n   "
+	}],
+};
 CreatureList["puppet"] = {
 	name : "Puppet",
 	source : [["PBMS", 0]],
@@ -2140,9 +1515,7 @@ CreatureList["puppet"] = {
 		joinString : "\n   "
 	}],
 };
-
 //Mystic Class with 4 Subclasses
-
 ClassList.mystic = {
 	
 	regExpSearch : /mystic/i,
@@ -2653,14 +2026,16 @@ ClassList.mystic = {
 			usages : 1,
 			recovery : "long rest",
 			action : ["action", "Oneness"],
-			savetxt : {	text : ["You are Immune to Exhausted, Diseased, and Poisoned Conditions and you do not require air, drink, or food and magic can not alter your body or mind."], },
+			savetxt : {	
+				immune : ["exhausted", "disease", "poisoned", "magic that would alter your body or mind"],
+				text : ["don't require air, drink, or food"],
+			},
 			description : desc([
 				"At 20th level your knowledge, familiarity, and constant exposure to the realms and those in between have granted you the ability to channel mana with ease becoming one with the cosmos. Your life within alternate dimensions has granted you an altered physiology. As such, you cannot be afflicted with exhausted, disease, and poisoned conditions. You also do not require food, air, or drink; and magic cannot alter your mind or body. Lastly, once as an action before a long rest you can become an open channel for mana restoring all expended mana points.",
 			]),
 		},	
 	},
 };
-
 AddSubClass("mystic", "gravity", {
 
 	regExpSearch : /^(?=.*mystic)(?=.*gravity).*$/i,
@@ -2814,7 +2189,6 @@ AddSubClass("mystic", "gravity", {
 		},
 	},
 });
-
 AddSubClass("mystic", "light", {
 
 	regExpSearch : /^(?=.*mystic)(?=.*light).*$/i,
@@ -2946,7 +2320,9 @@ AddSubClass("mystic", "light", {
 			minlevel : 10,
 			action : [["reaction", "Photonomy (2 MP)"]],
 			description : "At 10th level you can spend 2 mana point to alter the gravitational effects on your body giving yourself your own gravitational field. Doing so grants you the ability to cast the fly spell upon your self.",
-			savetxt : {	text : ["You are Immune to mmune to radiant damage and being blinded by light from a magical effect or spell."], },
+			savetxt : {
+				immune : ["radiant", "blinded (from light produced by magic)"],
+			},
 		},
 		"subclassfeature14" : {
 			name : "Shimmering Prism",
@@ -2977,7 +2353,6 @@ AddSubClass("mystic", "light", {
 		},
 	},
 });
-
 AddSubClass("mystic", "space", {
 
 	regExpSearch : /^(?=.*mystic)(?=.*space).*$/i,
@@ -3119,7 +2494,6 @@ AddSubClass("mystic", "space", {
 		},
 	},
 });
-
 AddSubClass("mystic", "time", {
 
 	regExpSearch : /^(?=.*mystic)(?=.*time).*$/i,
@@ -3280,9 +2654,7 @@ AddSubClass("mystic", "time", {
 		},
 	},
 });
-
 //Mystic Class Equipment
-
 WeaponsList["orbuculum"] = {
 	name : "Orbuculum",
 	source : [["PBMS", 0]],
@@ -3297,7 +2669,6 @@ WeaponsList["orbuculum"] = {
 	list : "ranged",
 	weight : 0,
 };
-
 ArmourList["ward"] = {
 	name : "Ward",
 	source : [["PBMS", 0]],
@@ -3306,11 +2677,8 @@ ArmourList["ward"] = {
 	dex : -10,
 	affectsWildShape : true,
 };
-
 //Witch Class with 10 Subclasses
-
 ClassList.sorcerer.regExpSearch = /sorcerer/i;
-
 ClassList.witch = {
 	
 	regExpSearch : /witch/i,
@@ -3353,7 +2721,9 @@ ClassList.witch = {
 			name : "Weird Magic",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "The common threads between you and the witch before have given the ability to see the threads and cast spells. This innate connection to the weave has given you the ability to draw power from your surroundings both natural and manufactured in order to cast your spells. You gain the 1st-level Witch Bolt spell and Detect Magic spell, which does not count against the number of spells you can know or have prepared. Your weird connection to magic has allowed you to see the threads of magic itself and as such you always known when and where an arcane spell is cast within 60 feet of you. This also allows you to cast Detect Magic without expending a spell slot.",
+			description : desc([
+				"The common threads between you and the witch before have given the ability to see the threads and cast spells. This innate connection to the weave has given you the ability to draw power from your surroundings both natural and manufactured in order to cast your spells. You gain the 1st-level Witch Bolt spell and Detect Magic spell, which does not count against the number of spells you can know or have prepared. Your weird connection to magic has allowed you to see the threads of magic itself and as such you always known when and where an arcane spell is cast within 60 feet of you. This also allows you to cast Detect Magic without expending a spell slot.",
+			]),	
 			additional : ["2 cantrips known", "2 cantrips known", "2 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "3 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known", "4 cantrips known"],
 			spellcastingBonus : {
 				name : "Weird Magic",
@@ -3367,16 +2737,22 @@ ClassList.witch = {
 			name : "Coven",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "Choose a Coven learned your craft from and put it in the \"Class\" field" + "\n   " + "Choose either Coven of the Arcane, Coven of Blood, Coven of the Dead, Coven of the Gale, Coven of the Goddess, Coven of the Hedge, Coven of Hellfire, Coven of the Moon, Coven of the Night, or Coven of the Wood",
+			description : desc([
+				"Choose a Coven learned your craft from and put it in the \"Class\" field",
+				"Choose either Coven of the Arcane, Coven of Blood, Coven of the Dead, Coven of the Gale, Coven of the Goddess, Coven of the Hedge, Coven of Hellfire, Coven of the Moon, Coven of the Night, or Coven of the Wood",
+      ]),  
 		},
 			
 		"meddle magic" : {
 			name : "Meddle Magic", 
 			source : [["PBMS", 0]],
 			minlevel : 2,
-			description : "\n   " + "Use the Choose Feature button above to add a Meddle Magic option to the third page. You have developed the ability to twist the threads within nearby magic as you desire. This magic is measured by meddling points, and you gain one meddling point for each witch level. Each time you use a meddle spell it costs one point, additionally, all spent meddling points are regained when you finish a long rest. When using this ability you can use one meddle spell as a reaction when a spell is cast by another creature within 60 feet of you or as a bonus action on your turn when you cast a spell. You can choose three meddle spells from the following list at 2nd level. When you reach 9th level you can choose an additional three meddle spells from the following list. The chosen meddle spells can be changed during a short or long rest. In addition, all meddling points are restored during a long rest."		,
+			description : desc([
+				"Use the Choose Feature button above to add a Meddle Magic option to the third page. You have developed the ability to twist the threads within nearby magic as you desire. This magic is measured by meddling points, and you gain one meddling point for each witch level. Each time you use a meddle spell it costs one point, additionally, all spent meddling points are regained when you finish a long rest. When using this ability you can use one meddle spell as a reaction when a spell is cast by another creature within 60 feet of you or as a bonus action on your turn when you cast a spell. You can choose three meddle spells from the following list at 2nd level. When you reach 9th level you can choose an additional three meddle spells from the following list. The chosen meddle spells can be changed during a short or long rest. In addition, all meddling points are restored during a long rest.",
+			]),	
 			usages : [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
 			recovery : "long rest",
+			action : [["bonus action", "Meddle Magic"],["reaction", "Meddle Magic"]],
 			extraname : "Meddle Magic Options",
 			extrachoices : ["Blessing Spell", "Deosil Spell", "Empowered Spell", "Extended Spell", "Inversion Spell", "Magnifying Spell", "Protection Spell", "Remote Spell", "Resolution Spell", "Reversal Spell", "Silent Spell", "Strengthened Spell", "Swift Spell", "Twinned Spell", "Uncrossing Spell", "Weakened Spell", "Weird Spell", "Widdershin Spell"],
 			extraTimes : levels.map(function (n) {
@@ -3384,109 +2760,116 @@ ClassList.witch = {
 			}),		
 			"blessing spell" : {
 				name : "Blessing Spell",
-				description : "\n   " + "You target one spell, if that spell produces a healing effect in which hit points are regained the target gains advantage on death saves for the next minute, and whenever the target makes an attack roll or saving throw they can roll a d4 and add the number rolled to the attack roll or saving throw.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell produces a healing effect in which hit points are regained the target gains advantage on death saves for the next minute, and whenever the target makes an attack roll or saving throw they can roll a d4 and add the number rolled to the attack roll or saving throw.",
+				]),	
 			},				
 			
 			"deosil spell" : {
 				name : "Deosil Spell",
-				description : "\n   " + "You target one spell to increase the spells accuracy. If the spellcaster must make an attack roll, they do so with advantage. If the spell requires a creature to make a saving throw, they do so with disadvantage.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell to increase the spells accuracy. If the spellcaster must make an attack roll, they do so with advantage. If the spell requires a creature to make a saving throw, they do so with disadvantage.",
+				]),	
 			},							
 			
 			"empowered spell" : {
 				name : "Empowered Spell",
-				description : "\n   " + "You target one spell to re-roll a number of the damage dice up to your wisdom modifier (minimum one). You take the higher rolls.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell to re-roll a number of the damage dice up to your wisdom modifier (minimum one). You take the higher rolls.",
+				]),	
 			},
 			
 			"extended spell" : {
 				name : "Extended Spell",
-				description : "\n   " + "You target one spell that has a duration of 1 minute or longer. The duration of that spell is doubled up to a maximum of 24 hours.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell that has a duration of 1 minute or longer. The duration of that spell is doubled up to a maximum of 24 hours.",
+				]),	
 			},
 			
 			"inversion spell" : {
 				name : "Inversion Spell",
-				description : "\n   " + "You target one spell that deals damage. You can change that spells damage type to a different damage type of choice.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell that deals damage. You can change that spells damage type to a different damage type of choice.",
+				]),	
 			},
 			
 			"magnifying spell" : {
 				name : "Magnifying Spell",
-				description : "\n   " + "You target one spell, if that spell has an area of effect you can increase the size of that area up to 30 feet.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell has an area of effect you can increase the size of that area up to 30 feet.",
+				]),	
 			},
 			"protection spell" : {
 				name : "Protection Spell",
-				description : "\n   " + "You target one spell, if that spell forces creatures to make a saving throw, you can protect some of those creatures from the spells full force. You choose a number of those creatures up to your wisdom modifier. A chosen creature automatically succeeds on its saving throw against the spell.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell forces creatures to make a saving throw, you can protect some of those creatures from the spells full force. You choose a number of those creatures up to your wisdom modifier. A chosen creature automatically succeeds on its saving throw against the spell.",
+				]),	
 			},
-
 			"remote spell" : {
 				name : "Remote Spell",
-				description : "\n   " + "You target one spell, if that spell has a range of 30 feet or greater you can double the range of the spell. If the spell has a range less than 30 feet you can increase the range to 30 feet.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell has a range of 30 feet or greater you can double the range of the spell. If the spell has a range less than 30 feet you can increase the range to 30 feet.",
+				]),	
 			},
-
 			"resolution spell" : {
 				name : "Resolution Spell",
-				description : "\n   " + "You target one spell that has a duration of 1 minute or longer. That creature must make a saving throw using their spellcasting ability against your spell save DC. On a failure the spell ends at the end of the casters next turn.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell that has a duration of 1 minute or longer. That creature must make a saving throw using their spellcasting ability against your spell save DC. On a failure the spell ends at the end of the casters next turn.",
+				]),	
 			},
-
 			"reversal spell" : {
 				name : "Reversal Spell",
-				description : "\n   " + "You target one spell that targets a single creature and is not an area of effect. That spell is reversed on to the caster using the attack and damage roll made by the original caster. If the attack roll does not meet or exceed the casters AC the spell misses.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell that targets a single creature and is not an area of effect. That spell is reversed on to the caster using the attack and damage roll made by the original caster. If the attack roll does not meet or exceed the casters AC the spell misses.",
+				]),	
 			},
-
 			"silent spell" : {
 				name : "Silent Spell",
-				description : "\n   " + "You target one spell, the spellcaster shows no signs of casting the spell and the spell no longer requires verbal components.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, the spellcaster shows no signs of casting the spell and the spell no longer requires verbal components.",
+				]),	
 			},
-
 			"strengthened spell" : {
 				name : "Strengthened Spell",
-				description : "\n   " + "You target one spell, that spell deals one additional dice of damage. If the spell does not deal damage or produces a unique effect it is instead up-cast one level higher without expending a spell slot. The caster must be able to cast the up-cast level of spell.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, that spell deals one additional dice of damage. If the spell does not deal damage or produces a unique effect it is instead up-cast one level higher without expending a spell slot. The caster must be able to cast the up-cast level of spell.",
+				]),	
 			},
-
 			"swift spell" : {
 				name : "Swift Spell",
-				description : "\n   " + "You target one spell, if that spell has a casting time of one action it can be cast as a bonus action instead. If you target your own spell that spell shares that same bonus action as the expended meddling point.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell has a casting time of one action it can be cast as a bonus action instead. If you target your own spell that spell shares that same bonus action as the expended meddling point.",
+				]),	
 			},
-
 			"twinned spell" : {
 				name : "Twinned Spell",
-				description : "\n   " + "You target one spell, if that spell only targets one creature and doesn't have a range of self, you can target one additional creature within the spells casting range.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell only targets one creature and doesn't have a range of self, you can target one additional creature within the spells casting range.",
+				]),	
 			},
-
 			"uncrossing spell" : {
 				name : "Uncrossing Spell",
-				description : "\n   " + "You target one spell that causes a condition effect as a result of the spell or existing spell effect. That magical effect ends immediately and any condition is removed.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell that causes a condition effect as a result of the spell or existing spell effect. That magical effect ends immediately and any condition is removed.",
+				]),	
 			},	
-
 			"weakened spell" : {
 				name : "Weakened Spell",
-				description : "\n   " + "You target one spell, if that spell is up-cast it is cast at one level lower and still consumes the higher level spell slot. If the spell was not up-cast it deal one dice less of damage. If this spell deals one dice of damage the damage die decreases to one die type lower.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell is up-cast it is cast at one level lower and still consumes the higher level spell slot. If the spell was not up-cast it deal one dice less of damage. If this spell deals one dice of damage the damage die decreases to one die type lower.",
+				]),	
 			},
-
 			"weird spell" : {
 				name : "Weird Spell",
-				description : "\n   " + "You target one spell, you can change the manifestation of that spell to a different spell of the same level or lower that the caster knows. That spell still uses that spell slot regardless of replaced spell level. You cannot replace a spell with a cantrip unless a cantrip was cast.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, you can change the manifestation of that spell to a different spell of the same level or lower that the caster knows. That spell still uses that spell slot regardless of replaced spell level. You cannot replace a spell with a cantrip unless a cantrip was cast.",
+				]),
 			},
-
 			"widdershin spell" : {
 				name : "Widdershin Spell",
-				description : "\n   " + "You target one spell to decrease the spells accuracy. If the spellcaster must make an attack roll, they do so with disadvantage. If the spell requires a creature to make a saving throw, they do so with advantage.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell to decrease the spells accuracy. If the spellcaster must make an attack roll, they do so with disadvantage. If the spell requires a creature to make a saving throw, they do so with advantage.",
+				]),
 			},
 		},
 			
@@ -3494,7 +2877,9 @@ ClassList.witch = {
 			name : "Copy Cast", 
 			source : [["PBMS", 0]],
 			minlevel : 5,
-			description : "\n   " + "You have learned how to read the threads from the magic around you and understand their meaning. As an action, you can choose one spell initiated within 30 feet of you that was cast within the last minute. If that spell is of a level you can cast, you can temporarily learn that spell from the thread to cast the spell during this turn using one of your corresponding spell slots. Once you have selected and read the thread you can cast or use that magic three times after your initial cast before the thread is lost. If you use this feature again before the spell thread is lost, the new spell thread replaces the previous one.",
+			description : desc([
+				"You have learned how to read the threads from the magic around you and understand their meaning. As an action, you can choose one spell initiated within 30 feet of you that was cast within the last minute. If that spell is of a level you can cast, you can temporarily learn that spell from the thread to cast the spell during this turn using one of your corresponding spell slots. Once you have selected and read the thread you can cast or use that magic three times after your initial cast before the thread is lost. If you use this feature again before the spell thread is lost, the new spell thread replaces the previous one.",
+			]),
 			action : ["action"],
 			usages : 3,
 			recovery : "long rest",
@@ -3504,7 +2889,9 @@ ClassList.witch = {
 			name : "Weaver's Wisdom",
 			source : [["PBMS", 0]],
 			minlevel : 9,
-			description : desc("I can add two spells/cantrips from any class to my spells known; +2 at level 18"),
+			description : desc([
+				"I can add two spells/cantrips from any class to my spells known; +2 at level 18"
+			]),
 				additional : levels.map(function (n) {
 					return n < 9 ? "" : (n < 18 ? 2 : 4) + " spells/cantrips";
 				}),
@@ -3521,7 +2908,9 @@ ClassList.witch = {
 			name : "Void of Threads", 
 			source : [["PBMS", 0]],
 			minlevel : 13,
-			description : "\n   " + "You can push away threads of magic creating a space void of the threads. Once before a long rest you can use an action to cast the antimagic field spell with this feature without expending a spell slot. This feature follows all rulings of the antimagic spell, however, you can still use your meddle magic as long as the spell being meddled is outside of the antimagic field.",
+			description : desc([
+				"You can push away threads of magic creating a space void of the threads. Once before a long rest you can use an action to cast the antimagic field spell with this feature without expending a spell slot. This feature follows all rulings of the antimagic spell, however, you can still use your meddle magic as long as the spell being meddled is outside of the antimagic field.",
+			]),	
 			action : ["action"],
 			usages : 1,
 			recovery : "long rest",
@@ -3531,72 +2920,24 @@ ClassList.witch = {
 			name : "Mystical Mount", 
 			source : [["PBMS", 0]],
 			minlevel : 17,
-			description : "\n   " + "You have successfully crafted a mystical mount that can carry you along your journey. This mount can be made from any object that is capable of being mounted by you. This mount is attuned to you and does not count against the number of attunements you can have. This mount cannot be used or commanded by another creature without your permission. When selecting your mount you can choose whether it’s movement is walk or fly. This mount has 150 hit points, AC 18, movement speed of 60 feet. This mount is also immune to all condition effects, poison, necrotic, and psychic damage, as well as it is resistant to all other damage types. Regardless of distance or plane of existence you can always call to you the craft you have made. When calling forth your craft is requires an action. The mount teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft and send it back to where it previously resided.",
+			description : desc([
+				"You have successfully crafted a mystical mount that can carry you along your journey. This mount can be made from any object that is capable of being mounted by you. This mount is attuned to you and does not count against the number of attunements you can have. This mount cannot be used or commanded by another creature without your permission. When selecting your mount you can choose whether it’s movement is walk or fly. This mount has 150 hit points, AC 18, movement speed of 60 feet. This mount is also immune to all condition effects, poison, necrotic, and psychic damage, as well as it is resistant to all other damage types. Regardless of distance or plane of existence you can always call to you the craft you have made. When calling forth your craft is requires an action. The mount teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft and send it back to where it previously resided.",
+			]),	
 		},
 
 		"witch's word" : {
 			name : "Witch's Word", 
 			source : [["PBMS", 0]],
 			minlevel : 20,
-			description : "\n   " + "You can push away threads of magic creating a space void of the threads. Once a day as an action you can cast Antimagic field with this feature without expending a spell slot. While active you are unable to use your witchcraft or spells, however, you can still use your meddle magic as long as the casted spell is outside of the antimagic field.",
+			description : desc([
+				"You attain an immense affinity the with the threads of magic granting you the ability to weave magic through words of power. When you speak one of the following words of power your eyes glow with intense color. A creatures does not need to hear you for the effect to take place. However, you must be able to audibly speak out-loud to use this ability. As an action or reaction, you can choose to speak one of the following words of power to one creature within 60 feet, that creature must abide by that command word if they are a level lesser than your witch’s level. The following list is a common set of examples, ask the DM about additional words and rulings. If the creature is a level equal to or higher than you, they must make a wisdom saving throw, on a failed save they are subjected to this effect. You can use this ability three times before a long rest.",
+			]),	
 			action : ["action", "reaction"],
 			usages : 3,
-			recovery : "long rest",	
-			extraname : "Witch's Word"	,		
-			extrachoices : ["Approach", "Dance", "Dispel", "Drop", "Flee", "Grovel", "Halt", "Hide", "Sleep", "Truth"],		
-			"approach" : {
-				name : "Approach Witch's Word",
-				description : "\n   " + "The target moves toward you by the shortest and most direct route ending its turn within 5 feet of you.",
-			},
-			
-			"dance" : {
-				name : "Dance Witch's Word",
-				description : "\n   " + "The target begins to dance for the next minute.",
-			},
-			
-			"dispel" : {
-				name : "Dispel Witch's Word",
-				description : "\n   " + "The target ends concentration on its own cast spell. disengages in conflict and relinquish itself.",
-			},	
-			
-			"drop" : {
-				name : "Drop Witch's Word",
-				description : "\n   " + "The target drops whatever it is holding, and ends its turn.",
-			},	
-			
-			"flee" : {
-				name : "Flee Witch's Word",
-				description : "\n   " + "The target spends its turn moving away from you by the fastest available means.",
-			},
-			
-			"grovel" : {
-				name : "Grovel Witch's Word",
-				description : "\n   " + "The target falls prone and then ends its turn.",
-			},	
-
-			"halt" : {
-				name : "Halt Witch's Word",
-				description : "\n   " + "The target doesn’t move or take actions until the end of its next turn. A flying creature stays aloft, provided that it is able to do so without moving. Otherwise the creature lands on the nearest landing.",
-			},	
-
-			"hide" : {
-				name : "Hide Witch's Word",
-				description : "\n   " + "The target seeks out the nearest place that provides partial or total coverage.",
-			},	
-
-			"sleep" : {
-				name : "Sleep Witch's Word",
-				description : "\n   " + "The target yawns, moves into a position to lay down and fall asleep.",
-			},	
-
-			"truth" : {
-				name : "Truth Witch's Word",
-				description : "\n   " + "The target must speak the truth for the next minute.",
-			},  		
+			recovery : "long rest",  		
 		}, 
 	}, 
 };
-
 AddSubClass("witch", "arcane", {
 	regExpSearch : /^(?=.*(witch))(?=.*arcane).*$/i,
 	subname : "Coven of the Arcane",
@@ -3607,7 +2948,9 @@ AddSubClass("witch", "arcane", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel :1,
-			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals force damage instead of lightning damage.",
+			description : desc([
+				" You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals force damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -3621,58 +2964,64 @@ AddSubClass("witch", "arcane", {
 						]
 					}
 		},
-
 		"subclassfeature1.1" : {
 			name : "Spell Bottle",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as a Spell Bottle. This bottle can contain powerful magical threads. As an action, during a short or long rest you can perform an hour long ritual to preserve a spell that you know within this bottle. Once the spell is preserved you can cast the spell within the bottle as an action without using a spell slot. This bottle has three charges of the spell before the thread needs to be preserved again. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object used by this coven known as a Spell Bottle. This bottle can contain powerful magical threads. As an action, during a short or long rest you can perform an hour long ritual to preserve a spell that you know within this bottle. Once the spell is preserved you can cast the spell within the bottle as an action without using a spell slot. This bottle has three charges of the spell before the thread needs to be preserved again. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
 			name : "Witch's Thread",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can create a magical thread of magic that only you can see and touch. This thread can store residual energy that can be used to cast spells. Every time you spend a meddling point you continually add to this thread's power. Each meddling point is worth one 1st level spell slot, you can cast up to 5th level spells using five thread points. You can only cast spells at a level in which you can cast. The maximum number of points this thread can have at one time is is five.",
+			description : desc([
+				"Whenever you spend a meddling point you can create a magical thread of magic that only you can see and touch. This thread can store residual energy that can be used to cast spells. Every time you spend a meddling point you continually add to this thread's power. Each meddling point is worth one 1st level spell slot, you can cast up to 5th level spells using five thread points. You can only cast spells at a level in which you can cast. The maximum number of points this thread can have at one time is is five.",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
 			name : "Force Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the force spell.",
+			description :desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the force spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Force Spell"],
 			"force spell" : {
 				name : "Force Spell",
-				description : "\n   " + "You target one spell, if that spell deals damage, the spell deals an additional dice of damage, and the damage type becomes force. Lastly the spell creates no visual effect.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell deals damage, the spell deals an additional dice of damage, and the damage type becomes force. Lastly the spell creates no visual effect.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
 			name : "Witch's Weave",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can weave two meddle spells instead of one. When you do so it costs two meddling points.",
-		},
-      
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can weave two meddle spells instead of one. When you do so it costs two meddling points.",
+			]),	
+		}, 
 		"subclassfeature11" : {
 			name : "Witch's Cutting",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can have that caster make a wisdom saving throw, on a failed save the thread between that spell and the caster is cut. The caster is unable to cast that spell for the next 24 hours.",
+			description : desc([
+				"Whenever you meddle another casters spell you can have that caster make a wisdom saving throw, on a failed save the thread between that spell and the caster is cut. The caster is unable to cast that spell for the next 24 hours.",
+			]),	
 		},
-
 		"subclassfeature15" : {
 			name : "Witch's Fabricate",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose from any meddling spell from the meddle spell list.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose from any meddling spell from the meddle spell list.",
+			]),	
 		},  
 	},
 });
-
 AddSubClass("witch", "blood", {
 	regExpSearch : /^(?=.*(witch))(?=.*blood).*$/i,
 	subname : "Coven of Blood",
@@ -3683,7 +3032,9 @@ AddSubClass("witch", "blood", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
+			description : desc([
+				" You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -3697,58 +3048,64 @@ AddSubClass("witch", "blood", {
 						]
 					}
 		},
-
 		"subclassfeature1.1" : {
 			name : "Athame",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical blade used by this coven known as an Athame. This ceremonial blade is used to draw blood for your magic. This magical blade is equivalent to a +3 magical dagger except it follows the rulings of mage weapons and has been forged from blood and iron. As a bonus action, you can choose to concentrate on this weapon and have this athame levitate and move up to 60 feet of you to an unoccupied space for 1 min. As a bonus action on your turn, you can move the athame up to 60 feet and attack one target within 5 ft of it. You can choose to affect additional targets of any spell you cast if that target has been damaged by this blade within the last hour. The target does not need to be within range of the spell when it is cast and the target is automatically affected. Lastly, if you cast an Enchantment spell on a target that has been damaged by this blade within the last hour, the spells school of magic changes to Necromancy and the saving throw to Constitution. Creatures that are immune to being charmed are no longer immune to this spells effect unless they are undead or constructs. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical blade used by this coven known as an Athame. This ceremonial blade is used to draw blood for your magic. This magical blade is equivalent to a +3 magical dagger except it follows the rulings of mage weapons and has been forged from blood and iron. As a bonus action, you can choose to concentrate on this weapon and have this athame levitate and move up to 60 feet of you to an unoccupied space for 1 min. As a bonus action on your turn, you can move the athame up to 60 feet and attack one target within 5 ft of it. You can choose to affect additional targets of any spell you cast if that target has been damaged by this blade within the last hour. The target does not need to be within range of the spell when it is cast and the target is automatically affected. Lastly, if you cast an Enchantment spell on a target that has been damaged by this blade within the last hour, the spells school of magic changes to Necromancy and the saving throw to Constitution. Creatures that are immune to being charmed are no longer immune to this spells effect unless they are undead or constructs. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
 			name : "Witch's Sacrifice",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can weave your own blood into your spells. For every 5 hit points you sacrifice you can deal an extra dice of damage on that spell. ",
+			description : desc([
+				"Whenever you spend a meddling point you can weave your own blood into your spells. For every 5 hit points you sacrifice you can deal an extra dice of damage on that spell. ",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
 			name : "Bleeding Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the bleeding spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the bleeding spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Bleeding Spell"],
 			"bleeding spell" : {
 				name : "Bleeding Spell",
-				description : "\n   " + "You target one spell, if that spell is of 1st-level or higher the caster must make a constitution saving throw, on a failed save the caster loses 5 hit points for each level of spell that was cast.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell is of 1st-level or higher the caster must make a constitution saving throw, on a failed save the caster loses 5 hit points for each level of spell that was cast.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
 			name : "Witch's Bloodletting",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you spend a meddling point on a spell that targets a creature that has already taken damage you can cast your spell at one higher spell slot available without expending that spell slot.",
+			description : desc([
+				"Whenever you spend a meddling point on a spell that targets a creature that has already taken damage you can cast your spell at one higher spell slot available without expending that spell slot.",
+			]),	
 		},
-    
 		"subclassfeature11" : {
 			name : "Witch's Blood Curse",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you spend a meddling point on another casters spell you can cause them to expend extra energy to cast that spell. The caster must make a Constitution saving throw, on a failed save the caster expends one additional spell slot of choice.",
+			description : desc([
+				"Whenever you spend a meddling point on another casters spell you can cause them to expend extra energy to cast that spell. The caster must make a Constitution saving throw, on a failed save the caster expends one additional spell slot of choice.",
+			]),	
 		},
-
 		"subclassfeature15" : {
 			name : "Witch's Regeneration",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you regain 1d4 hit points for each level of spell that was cast.",
+			description : desc([
+				"Whenever you spend a meddling point you regain 1d4 hit points for each level of spell that was cast.",
+			]),	
 		},   
 	},
 });
-
 AddSubClass("witch", "dead", {
 	regExpSearch : /^(?=.*(witch))(?=.*dead).*$/i,
 	subname : "Coven of the Dead",
@@ -3759,7 +3116,9 @@ AddSubClass("witch", "dead", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals necrotic damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -3773,58 +3132,157 @@ AddSubClass("witch", "dead", {
 						]
 					}
 		},
-
 		"subclassfeature1.1" : {
 			name : "Poppet",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "you craft a magical object used by this coven known as a poppet. This object is crafted into an effigy that resembles a humanoid figure an is made from cloth that is filled with briars and bones. As a bonus action on your turn you can choose to inflict a hex upon one creature that you can see within 60 feet. This creature can be undead, and is not immune to the effects or damage inflicted by the poppet. The target must make a DC wisdom saving throw or be linked to this poppet and subjeted to its effects while within 60 feet of it. While hexed by the poppet the target is under the effects of the Hex spell. At 5th level the effects of the hex increases with the warlock's eldritch invocation Maddening Hex, and at 7th level the effects of the warlock's eldritch invocation Relentless Hex. These effects las until the poppet is dismissed as a bonus action, linked to a new target, or the target is dropped to 0 hit points. Regardless of distance or planes of existance you can always call your craft to you as an action. When called forht your craft teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"you craft a magical object used by this coven known as a poppet. This object is crafted into an effigy that resembles a humanoid figure an is made from cloth that is filled with briars and bones. As a bonus action on your turn you can choose to inflict a hex upon one creature that you can see within 60 feet. This creature can be undead, and is not immune to the effects or damage inflicted by the poppet. The target must make a DC wisdom saving throw or be linked to this poppet and subjeted to its effects while within 60 feet of it. While hexed by the poppet the target is under the effects of the Hex spell. At 5th level the effects of the hex increases with the warlock's eldritch invocation Maddening Hex, and at 7th level the effects of the warlock's eldritch invocation Relentless Hex. These effects las until the poppet is dismissed as a bonus action, linked to a new target, or the target is dropped to 0 hit points. Regardless of distance or planes of existance you can always call your craft to you as an action. When called forht your craft teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
 			name : "Witch's Whisper",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to target one creature within 60 feet. That creature must make a wisdom saving throw, on a failed save the target begins to hear a distorted whispers causing the target to have disadvantage on attack rolls with a weapon or spell for the next minute.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to target one creature within 60 feet. That creature must make a wisdom saving throw, on a failed save the target begins to hear a distorted whispers causing the target to have disadvantage on attack rolls with a weapon or spell for the next minute.",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
 			name : "Channeling Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the channeling spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the channeling spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Channeling Spell"],
 			"channeling spell" : {
 				name : "Channeling Spell",
-				description : "\n   " + "You target one spell, the caster of that spell receives a d4, and can add the number rolled to the spells attack roll or increase the DC for that spell.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, the caster of that spell receives a d4, and can add the number rolled to the spells attack roll or increase the DC for that spell.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
 			name : "Witch's Banishment",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell that targets one creature that creature must make a Charisma saving throw, on a failed save the creature is banished to the ethereal plane for 1 hour. Undead creatures with a challenge rating less than your witch level are permanently prevented from returning unless a wish spell is used.",
-		},
-      
+			description : desc([
+				"Whenever you use a meddling point on your own spell that targets one creature that creature must make a Charisma saving throw, on a failed save the creature is banished to the ethereal plane for 1 hour. Undead creatures with a challenge rating less than your witch level are permanently prevented from returning unless a wish spell is used.",
+			]),	
+		},   
 		"subclassfeature11" : {
 			name : "Witch's Haunting",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save the caster is frightened, and haunted by a spirit forged from their fears that only they can see. This spirit is tethered to the caster in some way, be it the most recent creature they killed, a fallen ally, or a tormented loved one. This spirit remains chasing the creature for 1 minute.",
+			description : desc([
+				"Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save the caster is frightened, and haunted by a spirit forged from their fears that only they can see. This spirit is tethered to the caster in some way, be it the most recent creature they killed, a fallen ally, or a tormented loved one. This spirit remains chasing the creature for 1 minute.",
+			]),	
 		},
-
 		"subclassfeature15" : {
 			name : "Witch's Fetch",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to create a ghostly double of your self known as a fetch that is forged out of ethereal energy. This double lasts for 1 hour and does not require concentration. You can only have one fetch at a time. While this apparition is present you can mentally command where it moves. This apparition cannot attack or take damage, however, any creature that is not an ally that can see this fetch within 30 feet must make a wisdom saving throw, on a failed save the target is frightened by this apparition and must spend the next 1 hour moving as far away from it as it can. If the target succeeds they are immune to this effect for 24 hours.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to create a ghostly double of your self known as a fetch that is forged out of ethereal energy. This double lasts for 1 hour and does not require concentration. You can only have one fetch at a time. While this apparition is present you can mentally command where it moves. This apparition cannot attack or take damage, however, any creature that is not an ally that can see this fetch within 30 feet must make a wisdom saving throw, on a failed save the target is frightened by this apparition and must spend the next 1 hour moving as far away from it as it can. If the target succeeds they are immune to this effect for 24 hours.",
+			]),	
 		},    
 	},
 });
-
+AddSubClass("witch", "fury", {
+	regExpSearch : /^(?=.*(witch))(?=.*fury).*$/i,
+	subname : "Coven of Fury",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["witch bolt", "catapult", "command", "earth tremor", "jump", "calm emotions", "dust devil", "enhance ability", "maximilian's earthen grasp", "conjure barrage", "erupting earth", "meld into stone", "freedom of movement", "stone shape", "stoneskin", "conjure volley", "transmute rock", "wall of stone", "bones of the earth", "find the path", "sequester", "earthquake", "invulnerability"],
+	features : {	
+		"subclassfeature1" : {
+			name : "Coven Spells",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals bludgeoning damage instead of lightning damage.",
+			]),	
+			prereqeval : function(v) { return v.hasWitchBolt; },
+					calcChanges : {
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (spellKey == "witch bolt") {
+									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Blud. dmg; 1 a 1d12 Blud. dmg");
+									return true;
+								}
+							},
+							"the witch bolt spell deals bludgeoning damage instead of lightning damage."
+						]
+					}
+		},
+		"subclassfeature1.1" : {
+			name : "Face-Veils",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc([
+				"You craft a magical object used by this coven known as a Face-Veil. This opulent brightly colored mask is crafted from hardened plant fibers and threads of magic. This mask can only be worn by you ad can only be taken off by you. While wearing this mask as a bonus action you can magically enter a rage that grants you the power of primal ferocity while maintaining a magical connection to the weave. When you do so you gain the following benefits. You have advantage on Wisdom checks and Wisdom saving throws. When you make a spell attack roll using wisdom, you gain a bonus to the damage equal to your proficiency bonus. You have resistance to one damae type of your choice produced by spells declared when you first enter this rage. You can cast spells, but you cannot meddle nay spells. You can enter a rage a number of times equal to your proficiency bonus. This effect lasts for 1 minute. It ends early if you are knocked unconcious or if your turn ends and you have not attacked a hostile creature since your last turn or taken damage since then. Regardless of distance or planes of existence you can always call your craft to you as an action. When calling forth your craft it teleports to you and appears in an unoccupied space within 5 feet of your. You can also dismiss the craft as a bonus action and send it back to where it previously resided.",
+			]),	
+			savetxt: "While Raging: Adv on Wis Checks & Saves;",
+			limfeaname : "Rage",
+			action: "bonus action",
+			usages : "Proficiency bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest",
+		},
+		"subclassfeature3" : {
+			name : "Witch's Resilience",
+			source: "PBMS",
+			minlevel : 3,
+			description : desc([
+				"While in your rage you can expend one meddling point as a reaction to taking damage from a spell to change the chosen damage resistance you have against spells. In addition, when you gain this feature you cannot be charmed or frightened while raging.",
+			]),	
+			savetxt : "While Raging: Immune to Charm & Fright;",
+		},
+		"subclassfeature3.1" : {
+			name : "Berserk Spell",
+			source: "PBMS",
+			minlevel : 3,
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the berser spell.",
+			]),	
+			extraname : "Coven Meddle Magic Option",
+			extrachoices : ["Berserk Spell"],
+			"berserk spell" : {
+				name : "Berserk Spell",
+				description : desc([
+					"This meddle spell is the only meddle spell that can be used while raging. You target one spell, this spell goes berserk becoming a temporary living spell. After the spell concludes it transforms into a living spell taking on the form of a beast of your choosing. This spell then attacks 1d4 random nearby creatures a radius equal to the beasts movement speed that is not you on this turn. This living spell makes a spell attack roll using your spellcasting ability dealng half of the spells rolled damage on each strike.",
+				]),
+			},
+		},
+		"subclassfeature7" : {
+			name : "Witch's Ferocity",
+			source: "PBMS",
+			minlevel : 7,
+			description : desc([
+				"While raging you can expend 3 meddling points to gain an extra action. When you do so you can choose to cast another spell even if you have already cast a spell this turn.",
+			]),	
+		},
+		"subclassfeature11" : {
+			name : "Witch's Aggression",
+			source: "PBMS",
+			minlevel : 11,
+			description : desc([
+				"While raging as a bonus action you can expend a number of meddling points to lower the number you need to land a critical hit. Alternatively, as a bonus action you can expend a number of meddle points to increase your spell save DC for the following spell you cast.",
+			]),	
+			action : "bonus action",
+		},
+		"subclassfeature15" : {
+			name : "Witch's Willpower",
+			source: "PBMS",
+			minlevel : 15,
+			description : desc([
+				"Your rage is indomitable and it only ends early if you fall unconcious or if you choose to end it. Additionally, while raging as a bonus action you can expend a meddle point to increase the duration of your rage by 1 minute. Lastly while you are in a rage when ever you make a saving throw against a spell you can expend any number of meddle points needed to succeed the saving throw.",
+			]),	
+			action : "bonus action",
+		},
+	},
+});
 AddSubClass("witch", "gale", {
 	regExpSearch : /^(?=.*(witch))(?=.*gale).*$/i,
 	subname : "Coven of the Gale",
@@ -3835,7 +3293,9 @@ AddSubClass("witch", "gale", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals wave or lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals wave or lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -3849,58 +3309,64 @@ AddSubClass("witch", "gale", {
 						]
 					}
 		},
-
 		"subclassfeature1.1" : {
 			name : "Wand Vane",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You create a magical object used by this coven known as a wand vane. This object is used to connect you with the threads of the storm. This object has been magically charged through constant use within weather rituals. When you cast an evocation spell that deals cold, lightning, thunder, or wave damage that has a duration of instantaneous you can change that duration to concentration up to 10 minutes causing the vane upon the wand to spin. If that spell deals direct damage, the spell deals half the dice of damage on consecutive turns after the initial cast. The spell also can be moved as a bonus action on each of your turns up to 30 feet in any direction. This effect ends early if you lose concentration, or choose to end it early no action required. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You create a magical object used by this coven known as a wand vane. This object is used to connect you with the threads of the storm. This object has been magically charged through constant use within weather rituals. When you cast an evocation spell that deals cold, lightning, thunder, or wave damage that has a duration of instantaneous you can change that duration to concentration up to 10 minutes causing the vane upon the wand to spin. If that spell deals direct damage, the spell deals half the dice of damage on consecutive turns after the initial cast. The spell also can be moved as a bonus action on each of your turns up to 30 feet in any direction. This effect ends early if you lose concentration, or choose to end it early no action required. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
 			name : "Witch's Brew",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to have a swirl of static wind surround you. When you do so, you gain a bonus 10 feet to movement speed until the end of your next turn. While this effect is active any creature to hit you with a melee attack takes 5 lightning damage.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to have a swirl of static wind surround you. When you do so, you gain a bonus 10 feet to movement speed until the end of your next turn. While this effect is active any creature to hit you with a melee attack takes 5 lightning damage.",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
 			name : "Tempest Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the tempest spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the tempest spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Tempest Spell"],
 			"tempest spell" : {
 				name : "Tempest Spell",
-				description : "\n   " + "You target one damaging spell, that spells damage becomes cold, lightning, thunder, or wave (your choice), and any creature targeted by this spell must make a Constitution saving throw against your spell DC. On a failure the creature is paralyzed for 1 minute.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one damaging spell, that spells damage becomes cold, lightning, thunder, or wave (your choice), and any creature targeted by this spell must make a Constitution saving throw against your spell DC. On a failure the creature is paralyzed for 1 minute.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
 			name : "Witch's Call",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you meddle another casters spell that deals cold, lightning, thunder, or wave damage. You can make an arcana (intelligence) check against the casters spell DC. If you succeed you take control of that spell and can choose its target.",
+			description : desc([
+				"Whenever you meddle another casters spell that deals cold, lightning, thunder, or wave damage. You can make an arcana (intelligence) check against the casters spell DC. If you succeed you take control of that spell and can choose its target.",
+			]),	
 		},
-
 		"subclassfeature11" : {
 			name : "Witch's Cloud",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can choose to create a 20 foot radius sphere of fog centered on you. This sphere spreads around corners, and its area is heavily obscured. You are able to see clearly in this space. This effect lasts for 1 minute or until a wind of moderate or greater speed disperses it. (10 mph)",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can choose to create a 20 foot radius sphere of fog centered on you. This sphere spreads around corners, and its area is heavily obscured. You are able to see clearly in this space. This effect lasts for 1 minute or until a wind of moderate or greater speed disperses it. (10 mph)",
+			]),	
 		},
-
 		"subclassfeature15" : {
 			name : "Witch's Cyclone",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can create a cyclone that is a 10 foot radius sphere centered on you. This sphere moves with you and lasts for upto an hour, unless you dismiss it. (no action required) While this cyclone is active all ranged missile weapon attacks have disadvantage toward you. Creatures that enter this cyclone for the first time or start their turn in it must make a Dexterity saving throw. On a failed save the creature takes 1d4 cold damage, or half as much on a successful save. Lastly any spell you cast while this cyclone is active that deals cold, lighting, thunder, or wave damage becomes apart of the cyclone adding 1d4 damage of that damage type to the cyclones damage. This additional damage stacks up to a number of dice equal to your Wisdom modifier.",
+			description : desc([
+				"Whenever you spend a meddling point you can create a cyclone that is a 10 foot radius sphere centered on you. This sphere moves with you and lasts for upto an hour, unless you dismiss it. (no action required) While this cyclone is active all ranged missile weapon attacks have disadvantage toward you. Creatures that enter this cyclone for the first time or start their turn in it must make a Dexterity saving throw. On a failed save the creature takes 1d4 cold damage, or half as much on a successful save. Lastly any spell you cast while this cyclone is active that deals cold, lighting, thunder, or wave damage becomes apart of the cyclone adding 1d4 damage of that damage type to the cyclones damage. This additional damage stacks up to a number of dice equal to your Wisdom modifier.",
+			]),	
 		},
 	},
 });
-
 AddSubClass("witch", "goddess", {
 	regExpSearch : /^(?=.*(witch))(?=.*goddess).*$/i,
 	subname : "Coven of the Goddess",
@@ -3911,7 +3377,9 @@ AddSubClass("witch", "goddess", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals radiant damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals radiant damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -3925,58 +3393,244 @@ AddSubClass("witch", "goddess", {
 						]
 					}
 		},
-
 		"subclassfeature1.1" : {
 			name : "Amulet",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as an Amulet. This object is crafted from pure threads of magic and forged into a holy symbol of Mystra the Goddess of Magic. During a long rest you can imbue one abjuration spell that you have prepared with a duration longer than instantaneous upon this amulet. When you do so the effects of that spell remain upon you until you are not wearing the amulet, change the imbued spell, or dismiss it as a bonus action. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object used by this coven known as an Amulet. This object is crafted from pure threads of magic and forged into a holy symbol of Mystra the Goddess of Magic. During a long rest you can imbue one abjuration spell that you have prepared with a duration longer than instantaneous upon this amulet. When you do so the effects of that spell remain upon you until you are not wearing the amulet, change the imbued spell, or dismiss it as a bonus action. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
 			name : "Witch's Communion",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can you gain a flash of divine insight by reading the divine threads from your surroundings. You receive insight as if you had casted the augury spell. ",
+			description : desc([
+				"Whenever you spend a meddling point you can you gain a flash of divine insight by reading the divine threads from your surroundings. You receive insight as if you had casted the augury spell. ",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
 			name : "Absolution Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the absolution spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the absolution spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Absolution Spell"],
 			"absolution spell" : {
 				name : "Absolution Spell",
-				description : "\n   " + "You target one spell, if that spell is yours or an allies you can grant immunity to all effects from that spell to allies within the spells effect range.",
-				action : ["bonus action", "reaction"],
+				description : desc([
+					"You target one spell, if that spell is yours or an allies you can grant immunity to all effects from that spell to allies within the spells effect range.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
 			name : "Witch's Divine Intervention",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can choose to change the damage dealt to Radiant. When you do so that target must make a DC wisdom saving throw, on a failed save the target is outlined in divine energy. All attack rolls against that creature has advantage and the target cannot benefit from invisibility, or being obscured in darkness or magical darkness.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can choose to change the damage dealt to Radiant. When you do so that target must make a DC wisdom saving throw, on a failed save the target is outlined in divine energy. All attack rolls against that creature has advantage and the target cannot benefit from invisibility, or being obscured in darkness or magical darkness.",
+			]),	
 		},
-
 		"subclassfeature11" : {
 			name : "Witch's Excommunicate",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save you disconnect the magical threads of the divinity of the caster. That caster is disconnected from their deity for 24 hours. The target experiences a string of bad luck. Whenever the target makes an attack roll, ability check, or saving throw the target must roll a d4 and subtract that number from the number they rolled. If the target is a Cleric they are not subjected to bad luck, but instead are unable to use their channel divinity or domain spells.",
+			description : desc([
+				"Whenever you meddle another casters spell you can choose to have the caster make a wisdom saving throw against your spell DC, on a failed save you disconnect the magical threads of the divinity of the caster. That caster is disconnected from their deity for 24 hours. The target experiences a string of bad luck. Whenever the target makes an attack roll, ability check, or saving throw the target must roll a d4 and subtract that number from the number they rolled. If the target is a Cleric they are not subjected to bad luck, but instead are unable to use their channel divinity or domain spells.",
+			]),	
 		},
-
 		"subclassfeature15" : {
 			name : "Witch's Persecution",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to mark a target within 60 feet as accursed. That target must make a DC constitution save throw, on a failed save that target is physically marked in a way that would identify them as accursed to the current religious presence. While the target is marked in this way; magical anomalies take place that is out of their control. This includes the summoning of frogs, the warping of religious idols, and additional harmless effects. The target is viewed as an enemy by all creatures within 30 feet of it. These effects ends after the target is dropped to 0 hit points, the creature can repeat the saving throw to end the effect at the dawn of each day.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to mark a target within 60 feet as accursed. That target must make a DC constitution save throw, on a failed save that target is physically marked in a way that would identify them as accursed to the current religious presence. While the target is marked in this way; magical anomalies take place that is out of their control. This includes the summoning of frogs, the warping of religious idols, and additional harmless effects. The target is viewed as an enemy by all creatures within 30 feet of it. These effects ends after the target is dropped to 0 hit points, the creature can repeat the saving throw to end the effect at the dawn of each day.",
+			]),	
 		},
 	},
 });
-
+AddSubClass("witch", "hag", {
+	regExpSearch : /^(?=.*(witch))(?=.*hag).*$/i,
+	subname : "Coven of the Hags",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["witch bolt"],
+	features : {	
+		"subclassfeature1" : {
+			name : "Coven Spells",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc([
+				"You have become adept with spells of your own design. These spells are trophies from your bargains and connections to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals your choice damage instead of lightning damage.",
+			]),	
+			prereqeval : function(v) { return v.hasWitchBolt; },
+					calcChanges : {
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (spellKey == "witch bolt") {
+									spellObj.description = spellObj.description.replace("1d12+1d12/SL Lightn. dmg; 1 a 1d12 Lightn. dmg", "1d12+1d12/SL Choice dmg; 1 a 1d12 Choice dmg");
+									return true;
+								}
+							},
+							"the witch bolt spell deals your choice damage instead of lightning damage."
+						]
+					},
+			additional : levels.map(function (n) {
+				return n < 1 ? "" : (n < 3 ? 4 : n < 5 ? 8 : n < 7 ? 11 : n < 9 ? 14 : n < 11 ? 17 : n < 13 ? 19 : n < 15 ? 20 : n < 17 ? 21 : 22) + " spells";
+			}),
+			spellcastingBonus : {
+				name : "Coven Spells",
+				"class" : "any",
+				times : levels.map(function (n) {
+					return n < 3 ? 4 : n < 5 ? 8 : n < 7 ? 11 : n < 9 ? 14 : n < 11 ? 17 : n < 13 ? 19 : n < 15 ? 20 : n < 17 ? 21 : 22;
+				})
+			}
+		},
+		"subclassfeature1.1" : {
+			name : "Hag Crafts",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			toolProfs : ["Artisan's tools", 1],
+			description : desc([
+				"You have the cunning to create strange objects of magical potential. To use this ability, you must have a set of artisan tools in hand. You then begin to create a tiny magical object as an action, and give it one of the following magical properties of your choice. These items are a single use and remain magil until used. The use of this object could be to consume, crush, or otherwise operate in a traditional manner like the strum of a harp or swing of a sword. The se items often emulate common spells, but often in strange ways. Once an item is creted by you and is not being worn or carried by another creature you can call it forth to you as an action regardless of distance or planes of existance. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to wheere it previously resided. You gain proficency in one type of artisan tools.",
+			]),	
+			action : [["action"]],
+			toNotesPage : [{
+				name : "Hag Crafts",
+				note : [
+					"* The object replicates the effect of a spell equal to the level in which you can cast. That spell does not require concentration and lasts for the full duration unless the spell otherwise concludes itself. This spell uses the spellcasting ability and DC of the creator.",
+					"* The object bestows one condition effect upon the creatue when used that lasts until a short or long rest.",
+					"* The object grants a 1d4 bonus or penalty of you choice to a creature's particular ability check, saving throw, or all attack rolls for the next hour.",
+					"* The object expodes dealing 1d4 damage per witch level of a damage type of choice.",
+				],
+			}],
+		},
+		"subclassfeature3" : {
+			name : "Witch's Borrow",
+			source: "PBMS",
+			minlevel : 3,
+			description : desc([
+				"When you gain this feature you can choose one 3rd level feature that is not a meddle spell from any witch subclass. That feature becomes your feature.",
+			]),	
+			extraname : "Witch's Borrow",
+			extrachoices : ["Arcane (Witch's Thread)", "Blood (Witch's Sacrifice)", "Dead (Witch's Whisper)", "Fury (Witch's )", "Gale (Witch's Brew)", "Glamour (Witch's )", "Goddess (Witch's Communion)", "Hedge (Witch's Cunning)", "Hellfire (Witch's Guile)", "Moon (Witch's Guidance)", "Night (Witch's Secret)", "Wood (Witch's Wicker)"],
+			extraTimes : 1,
+			"arcane (witch's thread)" : {
+				name : "Arcane (Witch's Thread)",
+				description : desc([
+					"Whenever you spend a meddling point you can create a magical thread of magic that only you can see and touch. This thread can store residual energy that can be used to cast spells. Every time you spend a meddling point you continually add to this thread's power. Each meddling point is worth one 1st level spell slot, you can cast up to 5th level spells using five thread points. You can only cast spells at a level in which you can cast. The maximum number of points this thread can have at one time is is five.",
+				]),
+			},
+			"blood (witch's sacrifice)" : {
+				name : "Blood (Witch's Sacrifice)",
+				description : desc([
+					"Whenever you spend a meddling point you can weave your own blood into your spells. For every 5 hit points you sacrifice you can deal an extra dice of damage on that spell.",
+				]),
+			},	
+			"dead (witch's whisper)" : {
+				name : "Dead (Witch's Whisper)",
+				description : desc([
+					"Whenever you spend a meddling point you can choose to target one creature within 60 feet. That creature must make a wisdom saving throw, on a failed save the target begins to hear a distorted whispers causing the target to have disadvantage on attack rolls with a weapon or spell for the next minute.",
+				]),
+			},	
+			"fury (witch's )" : {
+				name : "Fury (Witch's )",
+				description : desc([
+					"",
+				]),
+			},	
+			"gale (witch's brew)" : {
+				name : "Gale (Witch's Brew)",
+				description : desc([
+					"Whenever you spend a meddling point you can choose to have a swirl of static wind surround you. When you do so, you gain a bonus 10 feet to movement speed until the end of your next turn. While this effect is active any creature to hit you with a melee attack takes 5 lightning damage.",
+				]),
+			},	
+			"glamour (witch's )" : {
+				name : "Glamour (Witch's )",
+				description : desc([
+					"",
+				]),
+			},
+			"goddess (witch's communion)" : {
+				name : "Goddess (Witch's Communion)",
+				description : desc([
+					"Whenever you spend a meddling point you can you gain a flash of divine insight by reading the divine threads from your surroundings. You receive insight as if you had casted the augury spell.",
+				]),
+			},	
+			"hedge (witch's cunning)" : {
+				name : "Hedge (Witch's Cunning)",
+				description : desc([
+					"Whenever you spend a meddling point you can change the spell meddled as if it was transformed by the minor illusion or prestidigitation cantrip. You can choose how the spell appears to others, the sounds it produces, the smells it creates. If you are the one casting the spell you can also choose the verbal components you use to cast it. Creatures attemptint to identify the spell have disadvantage on the ability check and if counterspell is used the target has disadvantage on the ability check if the spell is higher than the counterspell. If the spell is a lower level they still must make an ability check with a normal roll.",
+				]),
+			},	
+			"hellfire (witch's guile)" : {
+				name : "Hellfire (Witch's Guile)",
+				description : desc([
+					"Whenever you spend a meddling point you can weave infernal power into your spell. When you do so any creature affected by the spell must make a wisdom saving throw. On a failed save the creature is either frightened or charmed by you (your choice) for the next minute.",
+				]),
+			},	
+			"moon (witch's guidance)" : {
+				name : "Moon (Witch's Guidance)",
+				description : desc([
+					"Whenever you spend a meddling point you can choose one creature that you can see within 30 feet. For the next minute, whenever that creature makes an attack roll or saving throw before this effect ends the target can roll a d4 and add the number rolled to the attack roll or saving throw. Only one creature can benefit from this effect at a time, and this effect does not stack.",
+				]),
+			},	
+			"night (witch's secret)" : {
+				name : "Night (Witch's Secret)",
+				description : desc([
+					"Whenever you spend a meddling point you can choose to whisper a message to a creature that you can see within 120 feet as if you had targeted them with the Message cantrip.",
+				]),
+			},	
+			"wood (witch's wicker)" : {
+				name : "Wood (Witch's Wicker)",
+				description : desc([
+					"Whenever you spend a meddling point you can choose to have wickers grow around you in a 15 foot radius centered on you. These wickers create difficult terrain, and deal 1d4 piercing damage to each creature other than you that starts its turn within this area.",
+				]),
+			},		
+		},
+		"subclassfeature3.1" : {
+			name : "Bargain Spell",
+			source: "PBMS",
+			minlevel : 3,
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the bargain spell.",
+			]),	
+			extraname : "Coven Meddle Magic Option",
+			extrachoices : ["Bargain Spell"],
+			"bargain spell" : {
+				name : "Bargain Spell",
+				description : desc([
+					"You target one spell that you do not know that is of a level in which you can cast that is cast, written, or otherwise in affect. You must make an ability check using your spellcasting ability against the targeted spells DC. Ona success, you can trade one spell that you know with that of the chosen spell. As a result the chosen spell is negated and no longer takes effect and the caster, if any, expends the used spell slot. On a failure, tyou expend one spell slot equal to the level of the spell targeted, and you do not learn the spell.",
+				]),
+			},
+		},
+		"subclassfeature7" : {
+			name : "Witch's Preservation",
+			source: "PBMS",
+			minlevel : 7,
+			description : desc([
+				"Whenever you spend a meddlig point on your own spell you can expand a number of available hit dice to regain hit points.",
+			]),	
+		},
+		"subclassfeature11" : {
+			name : "Witch's Chaos",
+			source: "PBMS",
+			minlevel : 11,
+			description : desc([
+				"Whenever you spend a meddling point on another caster's spell you can force them to make a Wisdom saving throw against your spell DC. On a failure the target must immedately roll on the wild magic surge table in the Player's Handbook on page 104. On a success, you must immediately roll on the wild magic surge table.",
+			]),	
+		},
+		"subclassfeature15" : {
+			name : "Witch's Three-Fold",
+			source: "PBMS",
+			minlevel : 15,
+			description : desc([
+				"Whenever you spend a meddling point you can enforce the bruja's rule of three upon th caster of the targeted spell. For example if you meddle the Cure Wounds spell the caster is also affected by that spell healing three times the amount that they healed another target. If you meddle the Burning Hands spell the caster is also burned making the same saving throw, but taking three times the amount of fire damage dealt on a failed save and half as much on a success.",
+			]),
+		},    
+	},
+});
 AddSubClass("witch", "hedge", {
 	regExpSearch : /^(?=.*(witch))(?=.*hedge).*$/i,
 	subname : "Coven of the Hedge",
@@ -3987,7 +3641,9 @@ AddSubClass("witch", "hedge", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + " You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals your choice damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals your choice damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -4015,68 +3671,60 @@ AddSubClass("witch", "hedge", {
 			name : "Hedge Trinket",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object that is unique to you known as a hedge trinket. This item contains powerful magical threads. This personal magical object must be no larger than a 1ft cube and possesses two features; the first feature grants you one first level spell of choice from any spell list that can be cast without consuming a spell slot. This spell can be cast in this way three times before a long rest as long as you have this trinket in hand. The other being one feat of choice. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object that is unique to you known as a hedge trinket. This item contains powerful magical threads. This personal magical object must be no larger than a 1ft cube and possesses two features; the first feature grants you one first level spell of choice from any spell list that can be cast without consuming a spell slot. This spell can be cast in this way three times before a long rest as long as you have this trinket in hand. The other being one feat of choice. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
-
 		"subclassfeature3" : {
-			name : "Witch's Trickery",
+			name : "Witch's Cunning",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can change the spell meddled as if it was transformed by the minor illusion or prestidigitation cantrip. You can choose how the spell appears to others, the sounds it produces, the smells it creates. If you are the one casting the spell you can also choose the verbal components you use to cast it. Creatures attempting to identify the spell have disadvantage on the ability check and if counterspell is used the target has disadvantage on the ability check if the spell is higher than the counter spell. If the spell is a lower level they still must make an ability check with a normal roll.",
+			description : desc([
+				"Whenever you spend a meddling point you can change the spell meddled as if it was transformed by the minor illusion or prestidigitation cantrip. You can choose how the spell appears to others, the sounds it produces, the smells it creates. If you are the one casting the spell you can also choose the verbal components you use to cast it. Creatures attemptint to identify the spell have disadvantage on the ability check and if counterspell is used the target has disadvantage on the ability check if the spell is higher than the counterspell. If the spell is a lower level they still must make an ability check with a normal roll.",
+			]),	
 		},
-
 		"subclassfeature3.1" : {
-			name : "Wild Spell",
+			name : "Copy Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the channeling spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the copy spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
-			extrachoices : ["Wild Spell"],
-			"wild spell" : {
-				name : "Wild Spell",
-				description : "\n   " + "You gain an additional meddle spell of an unpredictable nature the wild spell. This meddling spell can replicate any meddle magic option possible used by the witch. However, once this meddle option is used you must roll a d20 immediately. If you roll a one you must roll on the wild magic surge table on pg. 104 of the player’s handbook. ",
-				action : ["bonus action", "reaction"],
+			extrachoices : ["Copy Spell"],
+			"copy spell" : {
+				name : "Copy Spell",
+				description : desc([
+					"You gain an additional meddle spell often used by new witches known as the copy spell. When you use this meddling spell on another caster's spell you can choose to cast this spell on your following turn as long as it is of a level in which you can cast and have the available spell slots.",
+				]),
 			},
 		},
-
 		"subclassfeature7" : {
-			name : "Witch's Belittle",
+			name : "Witch's Alter",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell the target of that spell must make a constitution saving throw or be affected by the enlarge/reduce spell your choice of enlarge or reduce. If this spell is a conjuration the conjuration automatically fails.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can choose to change how that spell manifests to suit your needs. You can choose one of the following modifications for your meddled spell; Point of Origin, Area of Effect, Shape, Saving Throw Type, Condition Effect Type, or Concentration Duration.",
+			]),	
 		},
-      
 		"subclassfeature11" : {
 			name : "Witch's Curse",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can have that caster make a wisdom saving throw, on a failed save the caster is affected by the polymorph spell.",
+			description : desc([
+				"Whenever you meddle another casters spell you can have that caster make a wisdom saving throw, on a failed save the caster is affected by the polymorph spell.",
+			]),	
 		},
-
 		"subclassfeature15" : {
-			name : "Witch's Bargain",
+			name : "Witch's Insight",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to cast the spell without consuming a spell slot as long as a price is paid in favor. When you do so you have a number of hours equal to 8 minus the spells level to pay the price for the spell that is cast. Spells of 8th level or higher must be paid immediately. If the required payment is not met you must roll on the wild magic surge table twice on pg. 104 of the players handbook. The payment for the spell can be in gold, blood, a life, or an item of necessary gold value. See table below for bargain. ",
-			toNotesPage : [{
-				name : "Witch's Bargain",
-				note : [
-					"Spell level	Bargain Cost",
-					"1st-level		50 gp, 10 hit points (Blood), Item (Worth 50 gp)",
-					"2nd-level		100 gp, 20 hit points (Blood), Item (Worth 100 gp)",
-					"3rd-level		150 gp, 40 hit points (Blood), Item (Worth 150 gp)",
-					"4th-level		200 gp, 80 hit points (Blood), Item (Worth 200 gp)",
-					"5th-level		250 gp, 160 hit points (Blood), Item (Worth 250 gp)",
-					"6th-level		300 gp, 300 hit points (Blood), Item (Worth 300 gp)",
-					"7th-level		500 gp, 750 hit points (Blood), Item (Worth 500 gp)",
-					"8th-level		5000 gp, 1500 hit points (Blood), Item (Worth 5000 gp)",
-					"9th-level		50000 gp, 3000 hit points (Blood), Item (Worth 50000 gp)",
-				],
-			}],	
+			description : desc([
+				"Whenever you use the copy cast feature you can spend a meddling point and choose to replace a spell that you know with the spell that you temporarily learned. This spell must be a level in whicy you can cast and have access to the appropriate spell slots.",
+			]),		
 		},    
 	},
 });
-
 AddSubClass("witch", "hellfire", {
 	regExpSearch : /^(?=.*(witch))(?=.*hellfire).*$/i,
 	subname : "Coven of Hellfire",
@@ -4087,7 +3735,9 @@ AddSubClass("witch", "hellfire", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -4106,26 +3756,34 @@ AddSubClass("witch", "hellfire", {
 			name : "Book of Shadows",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft or receive a magical object used by this coven known as a Book of Shadows. This book possesses information, lore, true names, stats, weaknesses, and the languages of fiends. (Abyssal and Infernal) This book grants you advantage on any skill check, saving throw, or attack roll made about or against a fiend. Additionally, the power of this book grants you a fiendish companion as if you had casted the find familiar spell, however, this creature can attack if you so choose. You can choose between a Imp or a Quasit when you gain this book. Additionally, as you level this book grows in power and allows you to have a more powerful fiends as a companion. At 3rd level you can summon a fiendish companion with a challenge rating of 2 or lower, at 7th level a challenge rating of 3 or lower, at 11th level a challenge rating of 4 or lower, and at 14th level a challenge rating of 5 or lower. You can only have one companion at a time and requires a long rest in order to summon a new one if dropped to 0 hit points or to change fiend type. Your book of shadows is the focus for this magic and therefore does not require a spell slot. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft or receive a magical object used by this coven known as a Book of Shadows. This book possesses information, lore, true names, stats, weaknesses, and the languages of fiends. (Abyssal and Infernal) This book grants you advantage on any skill check, saving throw, or attack roll made about or against a fiend. Additionally, the power of this book grants you a fiendish companion as if you had casted the find familiar spell, however, this creature can attack if you so choose. You can choose between a Imp or a Quasit when you gain this book. Additionally, as you level this book grows in power and allows you to have a more powerful fiends as a companion. At 3rd level you can summon a fiendish companion with a challenge rating of 2 or lower, at 7th level a challenge rating of 3 or lower, at 11th level a challenge rating of 4 or lower, and at 14th level a challenge rating of 5 or lower. You can only have one companion at a time and requires a long rest in order to summon a new one if dropped to 0 hit points or to change fiend type. Your book of shadows is the focus for this magic and therefore does not require a spell slot. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
 
 		"subclassfeature3" : {
 			name : "Witch's Guile",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can weave infernal power into your spell. When you do so any creature affected by the spell must make a wisdom saving throw. On a failed save the creature is either frightened or charmed by you (your choice) for the next minute.",
+			description : desc([
+				"Whenever you spend a meddling point you can weave infernal power into your spell. When you do so any creature affected by the spell must make a wisdom saving throw. On a failed save the creature is either frightened or charmed by you (your choice) for the next minute.",
+			]),	
 		},
 
 		"subclassfeature3.1" : {
 			name : "Hellfire Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the hellfire spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the hellfire spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Hellfire Spell"],
 			"hellfire spell" : {
 				name : "Hellfire Spell",
-				description : "\n   " + "You target one spell, the manifestation of that sell appears as blue flames changing the damage of that spell to hellfire. Creatures that are immune to fire damage are resistant to hellfire damage, and creatures with resistance to fire damage are normally effected by hellfire damage.",
+				description : desc([
+					"You target one spell, the manifestation of that sell appears as blue flames changing the damage of that spell to hellfire. Creatures that are immune to fire damage are resistant to hellfire damage, and creatures with resistance to fire damage are normally effected by hellfire damage.",
+				]),	
 				action : ["bonus action", "reaction"],
 			},
 		},
@@ -4134,27 +3792,32 @@ AddSubClass("witch", "hellfire", {
 			name : "Witch's Torture",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can choose to deal an additional 1d6 hellfire damage to the affected target.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can choose to deal an additional 1d6 hellfire damage to the affected target.",
+			]),	
 		},
 
 		"subclassfeature11" : {
 			name : "Witch's Madness",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can cause them to make a wisdom saving throw, on a failed save the creature gains short term madness for 10 min. See the short term madness table for additional effects on pg. 259. of DM guide.",
+			description : desc([
+				"Whenever you meddle another casters spell you can cause them to make a wisdom saving throw, on a failed save the creature gains short term madness for 10 min. See the short term madness table for additional effects on pg. 259. of DM guide.",
+			]),	
 		},
 
 		"subclassfeature15" : {
 			name : "Witch's Imps",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can temporarily conjure a swarm of imps to deal additional damage to the target as if affected by the cloud of daggers spell.",
+			description : desc([
+				"Whenever you spend a meddling point you can temporarily conjure a swarm of imps to deal additional damage to the target as if affected by the cloud of daggers spell.",
+			]),	
 		},
 	
 	},
 
 });	
-
 AddSubClass("witch", "moon", {
 	regExpSearch : /^(?=.*(witch))(?=.*moon).*$/i,
 	subname : "Coven of the Moon",
@@ -4165,7 +3828,9 @@ AddSubClass("witch", "moon", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -4184,26 +3849,34 @@ AddSubClass("witch", "moon", {
 			name : "Enchanted Mirror",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as an enchanted mirror. This object is crafted from pure threads of magic that are woven into the mirror's surface. You gain the Guidance cantrip, and the mirror reflects the truth of whatever stands before it granting true sight within its refection. Regardless of distance or planes of existence you can always call your craft to you as an action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object used by this coven known as an enchanted mirror. This object is crafted from pure threads of magic that are woven into the mirror's surface. You gain the Guidance cantrip, and the mirror reflects the truth of whatever stands before it granting true sight within its refection. Regardless of distance or planes of existence you can always call your craft to you as an action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
 
 		"subclassfeature3" : {
 			name : "Witch's Guidance",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose one creature that you can see within 30 feet. For the next minute, whenever that creature makes an attack roll or saving throw before this effect ends the target can roll a d4 and add the number rolled to the attack roll or saving throw. Only one creature can benefit from this effect at a time, and this effect does not stack.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose one creature that you can see within 30 feet. For the next minute, whenever that creature makes an attack roll or saving throw before this effect ends the target can roll a d4 and add the number rolled to the attack roll or saving throw. Only one creature can benefit from this effect at a time, and this effect does not stack.",
+			]),	
 		},
 
 		"subclassfeature3.1" : {
 			name : "Moonglow Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the moonglow spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the moonglow spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Moonglow Spell"],
 			"moonglow spell" : {
 				name : "Moonglow Spell",
-				description : "\n   " + "If a spell meddled with this option is successful the affected creatures shed dim light in a 10 foot radius for the next minute. Any attack roll during this time made against the creature has advantage. Lastly, if the target of the spell was polymorphed or shape-changed they have disadvantage of the saving throw of the spell, or you have advantage on the attack roll with the spell. If this spell succeeds the transfigured creature reverts to their original form.",
+				description : desc([
+					"If a spell meddled with this option is successful the affected creatures shed dim light in a 10 foot radius for the next minute. Any attack roll during this time made against the creature has advantage. Lastly, if the target of the spell was polymorphed or shape-changed they have disadvantage of the saving throw of the spell, or you have advantage on the attack roll with the spell. If this spell succeeds the transfigured creature reverts to their original form.",
+				]),	
 				action : ["bonus action", "reaction"],
 			},
 		},
@@ -4212,27 +3885,32 @@ AddSubClass("witch", "moon", {
 			name : "Witch's Phase",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can choose to ake on an aspect of the moon be it the New Moon, Waxing Moon, Full Moon, or Waning Moon. When you do so you gain the following benefit until you chang phases or take a short or long rest. While channeling one of these aspects your spells are affected by one of the following meddle magic options without expending meddling points. New Moon: Protection, Waxing Moon: Extended Spell, Full Moon: Empowered, Waning Moon: Silent Spell.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can choose to ake on an aspect of the moon be it the New Moon, Waxing Moon, Full Moon, or Waning Moon. When you do so you gain the following benefit until you chang phases or take a short or long rest. While channeling one of these aspects your spells are affected by one of the following meddle magic options without expending meddling points. New Moon: Protection, Waxing Moon: Extended Spell, Full Moon: Empowered, Waning Moon: Silent Spell.",
+			]),	
 		},
 
 		"subclassfeature11" : {
 			name : "Witch's Illusion",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you medle another casters spell you can cause them to make a wisdom saving throw, on a failed save the creature see each creature within 60 feet of them as if they have been affected by the Blur spell. This creature is immune if they do not rely on sight. The creature has disadvantage on all attack rolls they make for the next minute.",
+			description : desc([
+				"Whenever you medle another casters spell you can cause them to make a wisdom saving throw, on a failed save the creature see each creature within 60 feet of them as if they have been affected by the Blur spell. This creature is immune if they do not rely on sight. The creature has disadvantage on all attack rolls they make for the next minute.",
+			]),
 		},
 
 		"subclassfeature15" : {
 			name : "Witch's Push & Pull",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can channel the magical pull of the moon allowing you to apply the push or the pull of the moon when you do so you can choose wheter the spells range or area of effect is increased or decreased up to 30 feet.",
+			description : desc([
+				"Whenever you spend a meddling point you can channel the magical pull of the moon allowing you to apply the push or the pull of the moon when you do so you can choose wheter the spells range or area of effect is increased or decreased up to 30 feet.",
+			]),	
 		},
 	
 	},
 
 });	
-
 AddSubClass("witch", "night", {
 	regExpSearch : /^(?=.*(witch))(?=.*night).*$/i,
 	subname : "Coven of the Night",
@@ -4243,7 +3921,9 @@ AddSubClass("witch", "night", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals fire damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -4263,26 +3943,34 @@ AddSubClass("witch", "night", {
 			source : [["PBMS", 0]],
 			minlevel : 1,
 			vision : ["Devil's Sight", 120],
-			description : "\n   " + "You craft a magical object used by this coven known as a mask. The mask conceals the witch's identity as well as offers magical power to conceal what lies behind the mask. The mask can only be put on or taken off by you. You can don this mask as an action, while you are wearing this mask you are under the effects of the Mind Blank spell. Lastly you gain 120 feet of devil's sight. This grants you the ability to see in magical and non-magical darkness. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object used by this coven known as a mask. The mask conceals the witch's identity as well as offers magical power to conceal what lies behind the mask. The mask can only be put on or taken off by you. You can don this mask as an action, while you are wearing this mask you are under the effects of the Mind Blank spell. Lastly you gain 120 feet of devil's sight. This grants you the ability to see in magical and non-magical darkness. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
 
 		"subclassfeature3" : {
 			name : "Witch's Secret",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to whisper a message to a creature that you can see within 120 feet as if you had targeted them with the Message cantrip.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to whisper a message to a creature that you can see within 120 feet as if you had targeted them with the Message cantrip.",
+			]),	
 		},
 
 		"subclassfeature3.1" : {
 			name : "Nightstep Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the nightstep spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the nightstep spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Nightstep Spell"],
 			"nightstep spell" : {
 				name : "Nightstep Spell",
-				description : "\n   " + "When you meddle a spell with this effect you briefly surround yourself in shadows and you teleport up to 30 feet to an unoccupied space that you can see after you conclude your spell.",
+				description : desc([
+					"When you meddle a spell with this effect you briefly surround yourself in shadows and you teleport up to 30 feet to an unoccupied space that you can see after you conclude your spell.",
+				]),	
 				action : ["bonus action", "reaction"],
 			},
 		},
@@ -4291,27 +3979,30 @@ AddSubClass("witch", "night", {
 			name : "Witch's Obscure",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can surround yourself in darkness. When you do so attack rolls have disadvantage against you until the start of your next turn.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can surround yourself in darkness. When you do so attack rolls have disadvantage against you until the start of your next turn.",
+			]),	
 		},
 
 		"subclassfeature11" : {
 			name : "Witch's Blackout",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can cause them to make a wisdom saving throw. On a failed save the caster is blinded by darkness created by ther own spell for 1 minute. At the end of each of their turns the target can repeat the saving throw ending the effect on a success.",
+			description : desc([
+				"Whenever you meddle another casters spell you can cause them to make a wisdom saving throw. On a failed save the caster is blinded by darkness created by ther own spell for 1 minute. At the end of each of their turns the target can repeat the saving throw ending the effect on a success.",
+			]),	
 		},
 
 		"subclassfeature15" : {
 			name : "Witch's Shroud",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can wrap yourself in shadows granting you 5 temporary hit points. These temporary hit points do stack, but once they are lost they cannot be regained. In addition, all temporary hit points are lost when you complete a long rest.",
+			description : desc([
+				"Whenever you spend a meddling point you can wrap yourself in shadows granting you 5 temporary hit points. These temporary hit points do stack, but once they are lost they cannot be regained. In addition, all temporary hit points are lost when you complete a long rest.",
+			]),	
 		},
-	
 	},
-
 });	
-
 AddSubClass("witch", "wood", {
 	regExpSearch : /^(?=.*(witch))(?=.*wood).*$/i,
 	subname : "Coven of the Wood",
@@ -4322,7 +4013,9 @@ AddSubClass("witch", "wood", {
 			name : "Coven Spells",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals poison damage instead of lightning damage.",
+			description : desc([
+				"You have become adept with spells that were passed to you by the witch before you. These spells are manifestations of your connection to the threads. Once you have access to a coven spell, you always have it prepared, and it doesn’t count against the spells you can have prepared. In addition, the witch bolt spell deals poison damage instead of lightning damage.",
+			]),	
 			prereqeval : function(v) { return v.hasWitchBolt; },
 					calcChanges : {
 						spellAdd : [
@@ -4341,26 +4034,34 @@ AddSubClass("witch", "wood", {
 			name : "Poultice",
 			source : [["PBMS", 0]],
 			minlevel : 1,
-			description : "\n   " + "You craft a magical object used by this coven known as a Poultice. This objected is crafted from seven sacred healing herbs that is capable of offering a magical remedies along your journey. As an action you can lay this poultice on the body of you or one willing creature to remove one disease, toxin, or condition effect. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			description : desc([
+				"You craft a magical object used by this coven known as a Poultice. This objected is crafted from seven sacred healing herbs that is capable of offering a magical remedies along your journey. As an action you can lay this poultice on the body of you or one willing creature to remove one disease, toxin, or condition effect. Regardless of distance or planes of existence you can always call your craft to you as a action. When calling forth your craft it teleports to you, and appears in an unoccupied space within 5 feet of you. You can also dismiss the craft as a bonus action, and send it back to where it previously resided.",
+			]),	
 		},
 
 		"subclassfeature3" : {
 			name : "Witch's Wicker",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to have wickers grow around you in a 15 foot radius centered on you. These wickers create difficult terrain, and deal 1d4 piercing damage to each creature other than you that starts its turn within this area.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to have wickers grow around you in a 15 foot radius centered on you. These wickers create difficult terrain, and deal 1d4 piercing damage to each creature other than you that starts its turn within this area.",
+			]),	
 		},
 
 		"subclassfeature3.1" : {
 			name : "Rooting Spell",
 			source: "PBMS",
 			minlevel : 3,
-			description : "\n   " + "You gain an additional meddle spell only known by witches of this coven known as the rooting spell.",
+			description : desc([
+				"You gain an additional meddle spell only known by witches of this coven known as the rooting spell.",
+			]),	
 			extraname : "Coven Meddle Magic Option",
 			extrachoices : ["Rooting Spell"],
 			"rooting spell" : {
 				name : "Rooting Spell",
-				description : "\n   " + "You target one spell, the caster of that spell must make a strength saving throw. On a failed save the caster is restrained and rooted to the ground by vines.",
+				description : desc([
+					"You target one spell, the caster of that spell must make a strength saving throw. On a failed save the caster is restrained and rooted to the ground by vines.",
+				]),	
 				action : ["bonus action", "reaction"],
 			},
 		},
@@ -4369,35 +4070,365 @@ AddSubClass("witch", "wood", {
 			name : "Witch's Flower",
 			source: "PBMS",
 			minlevel : 7,
-			description : "\n   " + "Whenever you use a meddling point on your own spell you can create a magical blossom that sprouts in an unoccupied space within 30 feet. That blossom possesses a magical aura of the meddling spell used. All spells cast by you and allies within 30 feet of that blossom are cast with the meddled effect. This flower disappears when you create another blossom, the blossom is dismissed as a bonus action, or the blossom is destroyed. The blossom has an AC 12 and 25 hit points.",
+			description : desc([
+				"Whenever you use a meddling point on your own spell you can create a magical blossom that sprouts in an unoccupied space within 30 feet. That blossom possesses a magical aura of the meddling spell used. All spells cast by you and allies within 30 feet of that blossom are cast with the meddled effect. This flower disappears when you create another blossom, the blossom is dismissed as a bonus action, or the blossom is destroyed. The blossom has an AC 12 and 25 hit points.",
+			]),	
 		},
 
 		"subclassfeature11" : {
 			name : "Witch's Thorns",
 			source: "PBMS",
 			minlevel : 11,
-			description : "\n   " + "Whenever you meddle another casters spell you can choose to have the caster to make a wisdom saving throw, on a failed save the caster takes 1d6 force damage from magical thorns ejected from their own spell.",
+			description : desc([
+				"Whenever you meddle another casters spell you can choose to have the caster to make a wisdom saving throw, on a failed save the caster takes 1d6 force damage from magical thorns ejected from their own spell.",
+			]),	
 		},
 
 		"subclassfeature15" : {
 			name : "Witch's Pollen",
 			source: "PBMS",
 			minlevel : 15,
-			description : "\n   " + "Whenever you spend a meddling point you can choose to create a cloud of magical pollen that covers a 15 foot radius from a point you choose within 60 feet that you can see. Any enemy to enter this space must make a Constitution saving throw, on a failed save the target has disadvantage on all saving throws against yours or your allies spells.",
+			description : desc([
+				"Whenever you spend a meddling point you can choose to create a cloud of magical pollen that covers a 15 foot radius from a point you choose within 60 feet that you can see. Any enemy to enter this space must make a Constitution saving throw, on a failed save the target has disadvantage on all saving throws against yours or your allies spells.",
+			]),	
 		},
-	
 	},
-
 });
-
-//New Subclasses for PHB Classes
-
+//New Subclasses for PHB/ERLW/TCE Classes
+//Artificer
+AddSubClass("artificer", "creator", {
+	regExpSearch : /^(?=.*artificer)(?=.*creator).*$/i,
+	subname : "Creator",
+	fullname : "Creator",
+	source : [["PBMS", 0]],
+	spellcastingBonus : ["expeditious retreat", "tenser's floating disk", "enlarge/reduce", "enhance ability", "haste", "tiny servant", "fabricate", "polymorph", "animate objects", "telekinesis"],
+	features : {
+		"subclassfeature3" : {
+			name : "Tools Proficiency",
+			source : [["E:RLW", 58], ["T", 14]],
+			minlevel : 3,
+			description : " [proficient with two types of artisan tools of your choice.]",
+			toolProfs : ["Artisan's tools", 2],
+			spellcastingExtra : ["healing word", "ray of sickness", "flaming sphere", "melf's acid arrow", "gaseous form", "mass healing word", "blight", "death ward", "cloudkill", "raise dead"]
+		},
+		"subclassfeature3.1" : {
+			name : "Golem",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"You have created a Soul stone which can be implanted into a constuct to give it life. Using one of your Artisan's tools during a long rest and the appropriate material you can craft a golem and with your soul stone give it life. The golem is small in size and obeys your commands to the best of its abilities, it acts on your turn and you can telepathically communicate where to move and what action to take (no action required), if you are incapacitated or absent the golem will act on its own protecting you and itself, if the golem is reduced to 0 hp it returns to inanimate materials which you can reform during a long rest using your soul stone, during a short rest you can use he mending cantrip up to your PB to repair your golem 1d8 + int mod, once you have used these uses you must take a long rest to do so again. the golem uses your PB"
+			]),
+			toNotesPage : [{
+				name : "Golem Types",
+				note : [
+					"Glassblower's Tools: Glass Golem from 5ft cube volume of non-magical sand or glass. Radiant Absorption Feature",
+					"Jeweler's Tools: Ice Golem from 5ft cube volume of non-magical ice. Cold Absorption Feature.",
+					"Leatherworker's Tools: Flesh Golem from 5ft cube volume of non-magical remains. Lightning Absorption Feature.",
+					"Mason's Tools: Stone Golem from 5ft cube volume of non-magical stone. Force Absorption Feature.",
+					"Potter's Tools: Clay Golem from 5ft cube volume of non-magical clay. Acid Absorption Feature.",
+					"Smith's Tools: Iron Golem from 5ft cube volume of non-magical iron. Fire Absorption Feature.",
+					"Tinker's Tools: Brass Golem from 5ft cube volume of non-magical brass. Thunder Absorption Feature.",
+					"Woodcarver's Tools: Wood Golem from 5ft cube volume of non-magical wood. Wave Absorption Feature.",
+				],	
+			}],
+			limfeaname : "Repair Golem",
+			usages : "Proficiency bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest",
+		},
+		"subclassfeature5" : {
+			name : "Spell Golem",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			description : desc([
+				"You have learned to infuse more magic into your golem, its size increases to Medium, its Str and Con scores increase by 2, movement speed becomes 30 ft. Max HP 50 and grants the golem the ability to cast a spell 3/LR. Glass: Guiding Bolt, Ice: Frost Fingers, Flesh: Wrathful Smite, Stone: Magnify Gravity, Clay: Grease, Iron: Burning Hands, Brass: Thunderwave, Wood: Ensnaring Strike.",
+			]),
+			limfeaname : "Golem Spell",
+			usages : 3,
+			recovery : "long rest",
+		},
+		"subclassfeature9" : {
+			name : "Improved Golem",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : desc([
+				"you can now craft golems out of 10ft cube volume materials increasing their size to Large, Increasing Str, Con, and AC by 2, and Max HP is now 100.",
+			]),
+		},
+		"subclassfeature15" : {
+			name : "Golem Synergy",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : desc([
+				"Whenever you gain a bonus to your AC, hit points, attack roll, damage roll, saving throw, speed, or stats that was granted from a magic item, artificer infusion, or spell your golem also receives the bonus for the same duration.",
+			]),
+		},	
+	},
+});
+AddFeatureChoice(ClassList.artificer.features.spellcasting, true, "Artificer Invention", {
+	name : "Artificer Invention",
+	extraname : "Optional Artificer 5",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You have learned to transform prismatic shards into magic items by using the appropriate artisan's tools allowing you to invent items yourself, you can invent your own magic items up to your Intelligence Mod. At 5th level you can create Common items, 10th level Uncommon, 15th level Rare, and 20th level Very Rare. Consult DM for rarity. Each item takes 8 hours/rarity level, the appropriate artisan's tools and materials, which includes one prismatic shard, and 100gp/rarity level.",
+	]),
+	prereqeval : function (v) { return classes.known.artificer.level >= 5 ? true : "skip"; }
+}, "Optional 5th-level artificer features");
 //Barbarian
+AddSubClass("barbarian", "warlord", {
+	regExpSearch : /^(?=.*barbarian)(?=.*warlord).*$/i,
+	subname : "Warlord",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Warcry",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc(
+				"When you enter a rage you let out a Warcry granting allies within 30ft of you that can hear you a +1 on attack rolls and gains adv. on one saving throw ability of their choice for 1 minute."
+			),
+		},
+		"subclassfeature6" : {
+			name : "War Trap",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"When a foe attempts to move out of your melee range and allows you to make an opportunity attack, your strike is critical if you hit.",
+			]),
+		},
+		"subclassfeature10" : {
+			name : "War Band",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"Your when you enter a rage each ally within 30 feet of you also gain your bonus to damage rolls on their melee attacks. In addition, as a reaction when an ally within range rolls a critical hit they roll additional dice of damage equal to your brutal critical when determining the extra damage for a critical hit with a melee attack.",
+			]),
+			action : ["action", "War Band"],
+		},
+		"subclassfeature14" : {
+			name : "Authority",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"You can cast Dominate Monster once per long rest using your strength as the spellcasting ability, The Targer on a failed save is frightened instead of charmed, this spell does not require concentration, but you do need to remain within 30 ft. If the creature moves beyond 30 ft. they can remake the saving throw.",
+			]),
+			limfeaname : "Dominate Monster",
+			usages : 1,
+			recovery : "long rest",
+		},	
+	},
+});
+AddFeatureChoice(ClassList.barbarian.features.rage, true, "Rage Caster", {
+	name : "Rage Caster",
+	extraname : "Optional Barbarian 5",
+	source : [["PBMS", 0]],
+	description : desc([
+		"While raging, you may cast spells that do not require concentration, when you do immediately roll on the Wild Magic table in the Player's Handbook",
+	]),
+	prereqeval : function (v) { return classes.known.barbarian.level >= 5 ? true : "skip"; }
+}, "Optional 5th-level barbarian features");
 //Bard
+AddSubClass("bard", "silence", {
+	regExpSearch : /^(?=.*bard)(?=.*silence).*$/i,
+	subname : "College of Silence",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Mute",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc(
+				"You learn the Message Cantrip and can cast it as a bonus action without Verbal components, when you do so you can target a number of creatures up to your charisma modifier"
+			),
+			spellcastingBonus : [{
+				name : "Mute",
+				spells : "message",
+				selection : "message",
+				times : 1,
+			}],	
+		},
+		"subclassfeature3.1" : {
+			name : "Mysterious Murmers",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc(
+				"You have learned to act out verbal components to spells and do not need to speak them aloud. In order to use bardic inspiration, or song of rest however you do require the ability to move as you use sign language, dance, or gestures to inspire. You gain Expertise in the Stealth skill, and have Adv. on Performance checks to convey messages using sign language, dance, or gestures."
+			),
+		},	
+		"subclassfeature6" : {
+			name : "Code of Silence",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"Once per long rest, you may cast Silence with this feature without expending a spell slot or components, while within the area of silence a creature is also subjected to the effects of Hunter's Mark. When a creature leaves the area for the first time they must make a Con save, on a fail they take 3d8 thunder damage and are deafened for 1 minute, on a success, they take half damage and are not deafened.",
+			]),
+			limfeaname : "Silence",
+			usage : 1,
+			recovery : "long rest",
+		},
+		"subclassfeature14" : {
+			name : "Silence is Golden",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"When you cast silence, you can center it upon yourself and have it move with you, additionally you can maintain concentration on it for up to 1 hour. As a reaction when you see an ally try to cast a spell, that requires verbal components, while within your area of silence you can expend a Bardic Inspiration die to imitate them and magically assist allowing them to cast the spell while silenced.",
+			]),
+			action : ["reaction", "Silent Spell Assist"],
+		},	
+	},
+});
+AddFeatureChoice(ClassList.bard.features.spellcasting, true, "Dancing Defense", {
+	name : "Dancing Defense",
+	extraname : "Optional Bard 7",
+	source : [["PBMS", 0]],
+	description : desc([
+		"As a bonus action while in combat you can roll one of your Bardic Inspiration dice to grant yourself a bonus to AC and Dex saves equal to the number rolled for the next minute. You can only have one bonus active at a time, if you spend another Bardic Inspiration die the first roll is replaced with the new roll.",
+	]),
+	action : "bonus action",
+	prereqeval : function (v) { return classes.known.bard.level >= 7 ? true : "skip"; }
+}, "Optional 7th-level bard features");
 //Cleric
+AddSubClass("cleric", "eldritch domain", {
+	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*\b(eldritch)\b).*$/i,
+	subname : "Eldritch Domain",
+	source : [["PBMS", 0]],
+	spellcastingExtra : ["magnify gravity", "pattern weave", "detect thoughts", "mind spike", "ambrose's nebula", "hypnotic pattern", "gravity sinkhole", "raulothim's psychic lance", "far step", "synaptic static"],
+	features : {
+		"subclassfeature1" : {
+				name : "Bonus Cantrip",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			description : desc("I gain the Eldritch Blast cantrip"),
+			spellcastingBonus : [{
+				name : "Bonus Cantrip",
+				spells : ["eldritch blast"],
+				selection : ["eldritch blast"],
+				times : 1,
+			}],	
+		},
+		"subclassfeature1.1" : {
+			name : "Eldritch Blessing",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			vision : "Telepathy: 30 ft.",
+			action : ["bonus action", "Merge"],
+			description : desc([
+				"You gain the ability to speak Telepathicly to a creature you can see within 30 ft. Additionally, as a bonus action you can Merge with two other willing creatures you can see within 30 ft. gaining the ability to have a telepathic conversation with the creatures.",
+			]),
+		},
+		"subclassfeature2" : {
+			name : "Channel Divinity: Psychic Drain",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			description : desc([
+				"As an action, When I target a creature or creatures with an enchantment, illusion, or conjuration spell",
+				"those creatures must make an INT save or take 2d4 psy. dmg, half as much on a success. For each point of",
+				"dmg dealt you gain a pool of healing you can spend on yourself or creatures you are merged with, no pool on success.",
+			]),
+			action : ["action", ""]
+		},
+		"subclassfeature6" : {
+			name : "Channel Divinity: Aberrant Repulsion",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc("When I use my Channel Divinity: Turn Undead, I can instead target any creature within range of the appropriate challenge rating."),
+		},
+		"subclassfeature8" : {
+			name : "Psionic Conversion",
+			source : [["PBMS", 0]],
+			minlevel : 8,
+			description : desc("You can choose to deal Psy. dmg in place of normal damage for any spell you cast."),
+		},
+		"subclassfeature17" : {
+			name : "Mind Shield",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : desc("Your thoughts are warded by divine power, you gain immunity to Psy. dmg and the charm. condition, your thoughts and emotions can not be read telepathicaly unless you allow it."),
+			savetxt : {
+				immune : ["psychic", "charmed"],
+			},	
+		}
+	}
+});
+AddFeatureChoice(ClassList.cleric.features.spellcasting, true, "Turn Otherworldy Beings", {
+	name : "Turn Otherworldy Beings",
+	extraname : "Optional Cleric 2",
+	source : [["PBMS", 0]],
+	description : desc([
+		"As an action, all undead and one additional type of creature (Aberration, Celestial, Elemental, Fey, Fiend, Giant, Monstrocity, or Ooze) within 30 ft that can see/hear me must make a Wisdom save",
+		"If an undead fails this save, it is turned for 1 minute or until it takes any damage",
+		"Turned: move away, never within 30 ft of me, no reactions or actions other than Dash",
+		"Turned: may Dodge instead of Dash when nowhere to move and unable to escape bonds",
+	]),
+	action : ["action", "Turn Otherworldy Beings"],
+	prereqeval : function (v) { return classes.known.cleric.level >= 2 ? true : "skip"; }
+}, "Optional 2nd-level cleric features");
 //Druid
+AddSubClass("druid", "circle of spirits", {
+	regExpSearch : /^(?=.*druid)(?=.*circle of spirits).*$/i,
+	subname : "Circle of Spirits",
+	source : [["PBMS", 0]],
+	spellcastingBonus : ["toll the dead", "healing spirit", "phantasmal force", "speak with dead", "spirit guardians", "banishment", "phantasmal killer", "commune", "hallow"],
+	features : {
+		
+		"subclassfeature2" : {
+			name : "Trance",
+			source : [["PBMS", 0]],
+			minlevel : 2,
+			description : desc([
+				"At 2nd level, you can expend a use of your wildshape feature to enter a trance. It is customary for these druids to use a trance state to deepen their connection with the nature spirits that guide the mortal realms. The trance allows a spiritual guardian of choice to appear in a space within 30 feet of you taking on the form of a nature spirit you desire. On your turn, you can enter a trance as a bonus action. While in a trance, your speed is reduced to 0 feet, and you gain the following benefits granted from the guardian spirit. You can end a trance any time no action required.",
+			]),
+			toNotesPage : [{
+				name : "Trance",
+				note : [
+					"• You enter the border ethereal, while in this space you are visible to others on both the material and ethereal plane, however, you cannot be affected or affect other creatures on either plane.",
+					"• When you enter this state your guardian appears and acts on your behalf, when you do so a spectral spirit of that guardian appears within 30 feet of you.",
+					"• You are blinded and deafened while in this state and your senses become that of the chosen guardian.",
+					"• The guardian acts on your behalf and on each of your turns, and you choose where it moves and the actions it takes. This guardian cannot move more than 60 feet away from you.",
+					"• While in a trance state you are unable to take any other actions, otherwise you end the trance state.",
+					"• The guardian shares the same state block as the Ghost (MM pg. 147) However, the guardian has the same number of maximum hit points as you and if the guardian is reduced to 0 hit points it vanishes. When the trance ends as a result of the guardian dropping to 0 hit points, any excess damage carries over to you.",
+					"• The guarduian can take two Forceful Touch actions (instead of withering touch), and deals force damage. The damage dealt by the spirit’s attack grows with your ability to channel its divine power. A single forceful touch deals 1d6 + your wisdom modifier.A single attack deals one additional d6 at 5th level (2d6), at 11th level (3d6), and 17th level (4d6).",
+				],	
+			}],
+			spellcastingExtra : ["toll the dead", "healing spirit", "phantasmal force", "speak with dead", "spirit guardians", "banishment", "phantasmal killer", "commune", "hallow"],
+		},
+		"subclassfeature6" : {
+			name : "Guiding Spirits",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"At 6th level, You gain the service of a guiding spirit as if you had cast the Find Familiar spell, as well as the find familiar spell is added to your druid spell list. This spirit follows your turn in initiative, and shares the same stat block and features as the Will-O-Wisp, This spirit can be attacked and use the attack action on its turn. For all other rulings see the find familiar spell.",
+			]),
+			spellcastingExtra : ["find familiar"], 
+		},
+		"subclassfeature10" : {
+			name : "Spirit Walker",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"At 10th level, When you gain this feature you can choose to expend one use of your wildshape feature to gain incorporeal movement equal to your walking speed, and can move through creatures and objects as if they were difficult terrain. You take 1d10 force damage if you end your turn inside an object. Alternatively you can expend one use of your wildshape feature to deepen your connection to the spirit world granting you etherealness. As an action you can become ethereal as if you had casted the Etherealness spell, however, the duration is equal to the time of your wildshape.",
+			]),
+		},	
+		"subclassfeature14" : {
+			name : "Spirit Swarm",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			description : desc([
+				"At 14th level, When you use the find familiar spell you can now call forth three guiding spirits instead of one. These guiding spirits share the same turn and initiative and each share the same stat block as the will O’ wisp. Lastly, whenever you cast the spirit guardians spell you can choose to call forth the guiding spirits to flit around you instead. When you do so the spirit guardian spell no longer requires concentration and lasts until 10 minutes has passed or dissmissed early by you no action required. This effect stays active even if you fall unconscious. While the guiding spirits surround you in this way they move with you and no longer take any actions and are removed from initiatve.",
+			]),
+		},
+	},
+});	
+AddFeatureChoice(ClassList.druid.features.druidic, true, "Tree Companion", {
+	name : "Tree Companion",
+	extraname : "Optional Druid 2",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You gain the ability to harness magic from the ancient teachings of the trees, and call to them for aid. You can expend a use of your Wild Shape feature to summon an awakened shrub as if you had cast the find Familiar spell, without material component.",
+	]),
+	prereqeval : function (v) { return classes.known.druid.level >= 2 ? true : "skip"; }
+}, "Optional 2nd-level druid features");
 //Fighter
-
 AddSubClass("fighter", "amazon", {
 	regExpSearch : /^(?=.*fighter)(?=.*amazon).*$/i,
 	subname : "Amazon",
@@ -4583,29 +4614,29 @@ AddSubClass("fighter", "amazon", {
 				name : "Sisterhood of the Sightless Eye",
 				spellcastingBonus : [{
 					name : "Sisterhood of the Sightless Eye",
-					spells : ["true strike", "guiding bolt"],
-					selection : ["true strike", "guiding bolt"],
-					times : 2,
-				}],	
-				limfeaname : "Guiding Bolt",
-				usages : "Proficiency bonus per ",
-				usagescalc : "event.value = How('Proficiency Bonus');",
-				recovery : "long rest",
-				description : "You gain the True Strike cantrip, and can cast the Guiding Bolt spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
-			},
-			"sisterhood of the stalking lioness" : {
-				name : "Sisterhood of the Stalking Lioness",
-				spellcastingBonus : [{
-					name : "Sisterhood of the Stalking Lioness",
-					spells : ["message", "hunter's mark"],
-					selection : ["message", "hunter's mark"],
+					spells : ["guidance", "hunter's mark"],
+					selection : ["guidance", "hunter's mark"],
 					times : 2,
 				}],	
 				limfeaname : "Hunter's Mark",
 				usages : "Proficiency bonus per ",
 				usagescalc : "event.value = How('Proficiency Bonus');",
 				recovery : "long rest",
-				description : "You gain the Message cantrip, and can cast the Hunter's Mark spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
+				description : "You gain the Guidance cantrip, and can cast the Hunter's Mark spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
+			},
+			"sisterhood of the stalking lioness" : {
+				name : "Sisterhood of the Stalking Lioness",
+				spellcastingBonus : [{
+					name : "Sisterhood of the Stalking Lioness",
+					spells : ["primal savagery", "longstrider"],
+					selection : ["primal savagery", "longstrider"],
+					times : 2,
+				}],	
+				limfeaname : "Longstrider",
+				usages : "Proficiency bonus per ",
+				usagescalc : "event.value = How('Proficiency Bonus');",
+				recovery : "long rest",
+				description : "You gain the Primal Savagery cantrip, and can cast the Longstrider spell at 1st level a number of times before a long rest equal to your Proficiency bonus",
 			},
 			"sisterhood of maiden's voyage" : {
 				name : "Sisterhood of Maiden's Voyage",
@@ -4626,8 +4657,8 @@ AddSubClass("fighter", "amazon", {
 			name : "Hunter Gatherer",
 			source : [["PBMS", 0]],
 			minlevel : 7,
-			description : desc("You gain bonus proficiencies choose two from Investigation, Medicine, Nature, Perception, or Survival"),
-			skillstxt : "Choose two from Investigation, Medicine, Nature, Perception, or Survival",
+			description : desc("You gain expertise in two of the following skills Animal Handling, Insight, Nature, Perception, or Survival"),
+			skillstxt : "gain expertise in two from Animal Handling, Insight, Nature, Perception, or Survival",
 		},	
 		"subclassfeature10" : {
 			name : "Amazon Tribe Improvement",
@@ -4635,7 +4666,7 @@ AddSubClass("fighter", "amazon", {
 			minlevel : 14,
 			description : desc([
 				"Using the 'Choose Feature' button above select the Amazon Tribe Improvement for the Amazon Tribe you selected at 3rd level.",
-2			]),
+			]),
 			extraname : "Amazon Tribe Improvement",
 			extrachoices : ["Improved Sisterhood of the Sightless Eye", "Improved Sisterhood of the Stalking Lioness", "Improved Sisterhood of Maiden's Voyage"],
 			extratimes : 1,
@@ -4711,7 +4742,9 @@ AddSubClass("fighter", "amazon", {
 				"You gain reisistance to Bludgeoning, Piercing, and Slashing damage.",
 				"You have Advantage on Dexterity Checks and Saving Throws",
 			]),
-			savetxt : "adv. on Dex Checks and Saves",
+			savetxt : {
+				adv_vs : ["dex checks and saves"],
+			},	
 			dmgres : ["Bludgeoning", "Piercing", "Slashing"],
 			extraname : "Improved Amazon Weapon Training",
 			extrachoices : ["Javelin Amazon Weapon Training Improvement", "Spear Amazon Weapon Training Improvement", "Pike Amazon Weapon Training Improvement", "Glaive Amazon Weapon Training Improvement", "Longsword Amazon Weapon Training Improvement", "Shortsword Amazon Weapon Training Improvement", "Longbow Amazon Weapon Training Improvement", "Shortbow Amazon Weapon Training Improvement", "Whip Amazon Weapon Training Improvement"],
@@ -4863,14 +4896,430 @@ AddSubClass("fighter", "amazon", {
 		},	
 	},
 });
-
+AddFeatureChoice(ClassList.fighter.features.indomitable, true, "Weapon Expert", {
+	name : "Weapon Expert",
+	extraname : "Optional Fighter 9",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You can select one of your weapons to become expertised in, If you type Expert into your chosen weapons name it will add your Proficiency bonus to the weapons to hit twice.",
+	]),
+	calcChanges : {
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.isWeapon && fields.Proficiency && (/\bexpert\b/i).test(v.WeaponText)) {
+					output.extraHit += Number(How('Proficiency Bonus'));
+				}
+			},
+			"If I include the word 'Expert' in my weapon's name or description, the calculation will put + Prof bonus on the attack's To Hit.",
+		],
+	},
+	prereqeval : function (v) { return classes.known.fighter.level >= 9 ? true : "skip"; }
+}, "Optional 9th-level fighter features");
 //Monk
+AddSubClass("monk", "sixth sense", {
+	regExpSearch : /^(?=.*monk)(?=.*sixth sense).*$/i,
+	subname : "Way of the Sixth Sense",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Fortified Mind",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			dmgres : "Psychic",
+			savetxt : {
+				immune : ["spells that would detect my thoughts"],
+			},
+			description : desc([
+				"You have advantage on Constitution (Concentration) checks to maintain one of your Psychic abilities. When you make Concentration checks you may add your Constitution modifyer twice to the die rolled.",
+			]),
+		},
+		"subclassfeature3.1" : {
+			name : "Levitation",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"You gain the ability to cast Levitate as a bonus action by spending 1 KP, Additionally you can move up to your movement while you are using Levitate. Lastly, your movement speed increases by 5 ft.",
+			]),
+			speed : { walk : "+5" },
+			spellcastingBonus : {
+				name : "Levitation",
+				spells : ["levitate"],
+				selection : ["levitate"],
+				firstCol : 1,
+			},
+			spellFirstColTitle : "Ki",
+			action : [["bonus action", "Psychic Abilities"]],
+		},
+		"subclassfeature6" : {
+			name : "Clairvoyance",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"You gain the ability to cast Clairvoyance as a bonus action by spending 1 KP, Additionally you can both see and hear while you are using Clairvoyance. Lastly, you gain 30ft Blindsight.",
+			]),
+			spellcastingBonus : {
+				name : "Clairvoyance",
+				spells : ["clairvoyance"],
+				selection : ["clairvoyance"],
+				firstCol : 1,
+			},
+			spellFirstColTitle : "Ki",
+			vision : [["Blind Sight", 30]],
+		},
+		"subclassfeature11" : {
+			name : "Telekinesis",
+			source : [["PBMS", 0]],
+			minlevel : 11,
+			description : desc([
+				"You gain the ability to cast Telekinesis as a bonus action by spending 1 KP, Additionally you can use this ability as a bonus action on each of your turns while Telekinesis is active. Lastly, your Unarmed Strikes deal Psychic damage in place of their normal damage type.",
+			]),
+			spellcastingBonus : {
+				name : "Telekinesis",
+				spells : ["telekinesis"],
+				selection : ["telekinesis"],
+				firstCol : 1,
+			},
+			spellFirstColTitle : "Ki",
+		},
+		"subclassfeature17" : {
+			name : "Telepathy",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : desc([
+				"You gain the ability to cast Telepathy as a bonus action by spending 1 KP, Additionally you can use this ability to telepathically communicate with up to 8 creatures. Lastly, you are immune to all spells and effects that would alter or enter your mind and memories, as well as possession.",
+			]),
+			savetxt : {
+				immune : ["spells that would alter or enter my mind and memories", "possession"],
+			},
+			spellcastingBonus : {
+				name : "Telepathy",
+				spells : ["telepathy"],
+				selection : ["telepathy"],
+				firstCol : 1,
+			},
+			spellFirstColTitle : "Ki",
+		},
+	},
+});
+AddFeatureChoice(ClassList.monk.features.ki, true, "Meditation", {
+	name : "Meditation",
+	extraname : "Optional Monk 9",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You don't need to sleep, but meditate semiconsciously, for 4 hours a day. While meditating, I can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, I gain the same benefit that a human does from 8 hours of sleep, thus needing only 4 hours for a long rest.",
+	]),
+	prereqeval : function (v) { return classes.known.monk.level >= 9 ? true : "skip"; }
+}, "Optional 9th-level monk features");
 //Paladin
+AddSubClass("paladin", "legacy", {
+	regExpSearch : /^(?=.*paladin)(?=.*legacy).*$/i,
+	subname : "Oath of Legacy",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Channel Divinity: Weapon of Legacy",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"As an action, you can imbue one weapon that you are holding with the divine power of your ancestors, using your channel divinity. Attack rolls made with this weapon allow you to add your charisma modifier to the attack rolls made with this weapon. Additionally, if this weapon is a ranged or an unarmed strike, this attack can deliver a divine smite or the magical force of a smite spell.",
+			]),
+			spellcastingBonus : [{
+				name : "Oath Spells",
+				"class" : "any",
+				times : [0, 0, 2, 2, 4, 4, 4, 4, 6, 6, 6, 6, 8, 8, 8, 8, 10, 10, 10, 10],
+				level : [1,5],
+			}],	
+			action : [["action", ""]],	
+		},
+		"subclassfeature3.1" : {
+			name : "Channel Divinity: Ancestral Intervention",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"As an action you can expend a use of your channel divinity to call upon you ancestors for aid when you need is great. When you do so you gain the benefits of the Lucky feat until you complete a long rest.",
+			]),
+			action : [["action", ""]],	
+		},
+		"subclassfeature7" : {
+			name : "Aura of the Ancestors",
+			source : [["PBMS", 0]],
+			minlevel : 7,
+			description : desc([
+				"You and friendly creatures within 10 feet of you are always under the effect of the Guidance cantrip.",
+			]),	
+		},
+		"subclassfeature15" : {
+			name : "Watchful Presence",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			usages : 1, 
+			recovery : "long rest",
+			description : desc([
+				"Any single attack that would drop you to 0 hit points or kill you outright is instead negated and you take no damage. The attacking creature must make a Wisdom saving throw against your spell save DC. On a failed save, the creature takes the damage you would have received, on a successful save the creature takes half damage. Once you use this ability, you cannot use it again until you finish a long rest.",
+			]),
+		},
+		"subclassfeature20" : {
+			name : "Divine Legacy",
+			source : [["PBMS", 0]],
+			minlevel : 20,
+			description : desc([
+				"You can assume the form of your greatest ancestor as the divine power passed down from generations flows through you in perfect conjunction. Using your action, you undergo this transformation. For 1 hour all weapon attacks that hit a target deal one additional dice of weapon damage. Once you use this feature you cannot do so again until you finish a long rest.",
+			]),
+			action : [["action", ""]],
+			recovery : "long rest",
+			usages : 1,
+		},
+	},
+});
+AddFightingStyle(["paladin"], "Archery", { 
+	name : "Archery Fighting Style",
+	description : desc("+2 bonus to attack rolls I make with ranged weapons"),
+	calcChanges : {
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.isRangedWeapon && !v.isNaturalWeapon && !v.isDC) output.extraHit += 2;
+			},
+			"My ranged weapons get a +2 bonus on the To Hit."
+		],
+	},
+}); 
+var PBMS_Divine_Strike = {
+	name : "Divine Strike",
+	source : [["PBMS", 0]],
+	description : desc([
+		"When you hit with a Ranged weapon attack, you can expend one spell slot to deal an extra 2d8+1d8/SL(Max of 5d8) radiant damage to the target, in addition to the weapon's damage. "
+	]),
+};
+CreateClassFeatureVariant("paladin", "divine smite", "divine strike", PBMS_Divine_Strike);
 //Ranger
+AddSubClass("ranger", "archer", {
+	regExpSearch : /^(?=.*ranger)(?=.*archer).*$/i,
+	subname : "Archer",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Archer Awareness",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"You gain an additional 60 ft. of darkvision, and can see through magical darkness. You have adv. on perception checks that rely on sight and sound and you can't be suprised while you are conscious. You gain a +5 to Initiative rolls, and other creatures don't gain adv. on attack rolls against you as a result of being unseen.",
+			]),
+			addMod : { type : "skill", field : "Init", mod : 5, text : "I have a +5 bonus on initiative rolls." },
+			vision : ["Darkvision", "+60"],
+		},
+		"subclassfeature7" : {
+			name : "Ranged Tactics",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			description : desc([
+				"Use the 'Choose Feature' button to choose a Tactic.",
+			]),
+			choices : ["Swift Quiver", "Primal Strike", "Volley"],
+			"swift quiver" : {
+				name : "Swift Quiver",
+				description : "When you make a ranged attack primal power guides your ammunition and therefore you gain an extra attack with ranged weapons. In addition, when ever you make a ranged attack you can make another ranged attack as a bonus action. Ranged weapons with the loading property no longer impede extra attacks with this feature.",
+			},
+			"primal strike" : {
+				name : "Primal Strike",
+				description : "When you hit a creature with a ranged weapon attack, you can expend one spell slot to deal your choice of fire, cold, poison, acid, thunder, or lightning damage to the target. The extra damage is 2d8 for a 1st level spell slot, plus 1d8 for each spell level higher that 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is a favored enemy, to a maximum of 6d8.",
+			},
+			"volley" : {
+				name : "Volley",
+				description : "You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon’s range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.",
+				action : ["action", ""],
+			},	
+		},
+		"subclassfeature11" : {
+			name : "Vantage Point",
+			source : [["PBMS", 0]],
+			minlevel : 10,
+			description : desc([
+				"As long as you are at a higher elevation of 10 feet or more of another target that you can see you have advantage on the attack roll. In addition, you score a critical hit when you roll a 19 or 20.",
+			]),
+		},
+		"subclassfeature15" : {
+			name : "Hidden Strike",
+			source : [["PBMS", 0]],
+			minlevel : 15,
+			description : desc([
+				"Whenever you make a ranged attack while hidden the target takes an addition dice of your weapon damage, and grants you advantage on your next stealth check to stay hidden."
+			]),
+		},
+	},
+});
+AddFeatureChoice(ClassList.ranger.features["extra attack"], true, "Extra Attack", {
+	name : "Extra Attack",
+	extraname : "Optional Ranger 9",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You can attack three times, instead of twice, whenever you take the attack action on your turn.",
+	]),
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+	prereqeval : function (v) { return classes.known.ranger.level >= 9 ? true : "skip"; }
+}, "Optional 9th-level ranger features");
 //Rogue
+AddSubClass("rogue", "dustwalker", {
+	regExpSearch : /^(?=.*rogue)(?=.*dustwalker).*$/i,
+	subname : "Dustwalker",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature3" : {
+			name : "Astral Steps",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"As a bonus action, you can create a Tiny beacon of intangible and spectral stardust that lasts for up to 1 hour that only you can carry or place. As part of this bonus action or as a subsequent bonus action before the beacon disappears, you can place the beacon in an unoccupied space of your choice within 5 feet of you. When you take the Dash action, you are able to teleport up to 60 feet from your position to the space that a beacon was placed. If the beacon's space is occupied when you try to teleport. Once you teleport to a beacon, it disappears. You can create a number of beacons equal to your proficiency bonus + your Intelligence modifier (minimum of 1) and regain all expended uses when you finish a long rest.",
+			]),
+			action : [["bonus action", "Create/Place Beacon"]],
+			usages : "Intelligence modifier per ",
+			usagescalc : "event.value = What('Int Mod');",
+			recovery : ["long rest"],	
+		},
+		"subclassfeature3.1" : {
+			name : "Asterism",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			description : desc([
+				"As an action, you can subtly sprinkle a pinch of stardust on a creature or object of your choice within 5 feet of you that remains for a number of hours equal to your proficiency bonus. You can sense the distance and direction of this creature or object, as long as they are within 500 feet of you.",
+			]),
+			action : [["action", "Sprinkle Stardust"]],	
+		},
+		"subclassfeature9" : {
+			name : "Fade Away",
+			source : [["PBMS", 0]],
+			minlevel : 9,
+			description : desc([
+				"You become invisible immediately after you teleport with your Astral Steps feature until the end of your next turn. This invisibility ends early if you attack or cast a spell.",
+			]),	
+		},
+		"subclassfeature13" : {
+			name : "Blinding Dust",
+			source : [["PBMS", 0]],
+			minlevel : 13,
+			description : desc([
+				"You can use an action to cause a beacon that you create to explode, causing a burst of stardust to fill a 20-foot radius area. Each creature in that area other than you must make a Constitution saving throw against a DC equal to 8 + your proficiency bonus + your Intelligence modifier or be blinded for up to 1 minute. A creature can remake the saving throw at the end of each of their turns, ending the effect on itself on a success.",
+			]),
+			action : ["action", "Detonate Beacon"],
+		},
+		"subclassfeature17" : {
+			name : "Star Forged",
+			source : [["PBMS", 0]],
+			minlevel : 17,
+			description : desc([
+				"You have begun to fully master wielding stardust to harm and hide. You gain the following benefits:",
+				"• You can teleport up to 300 feet from your position with your Astral Steps feature.",
+				"• Your Fade Away feature now causes you to become invisible for up to 1 minute. The invisibility still ends early if you attack or cast a spell.",
+			]),
+		},
+	},
+});
+AddFeatureChoice(ClassList.rogue.features["sneak attack"], true, "Play Dirty", {
+	name : "Play Dirty",
+	extraname : "Optional Rogue 5",
+	source : [["PBMS", 0]],
+	description : desc([
+		"You gain an additional bonus action option known as play dirty. You become especially proficient in thrown gear to disable your enemies, and can throw one of the following gear as a bonus action on your turn; Acid Vial, Alchemist Fire, Ball Bearings, Caltrops, and Oil Flask.",
+	]),
+	action : ["action", ""],
+	prereqeval : function (v) { return classes.known.rogue.level >= 5 ? true : "skip"; }
+}, "Optional 5th-level Rogue features");
 //Sorcerer
+AddSubClass("sorcerer", "infernal soul", {
+	regExpSearch : /^(?=.*sorcerer)(?=.*infernal).*$/i,
+	subname : "Infernal Soul",
+	source : [["PBMS", 0]],
+	features : {
+		"subclassfeature1" : {
+			name : "Hellish Gift",
+			source : [["PBMS", 0]],
+			minlevel : 1,
+			dmgres : "fire",
+			vision : "Devil's Sight 60 ft",
+			spellcastingBonus : [{
+				name : "Hellish Gift",
+				spells : ["burning hands"],
+				selection : ["burning hands"],
+				times : 1,
+			}],	
+			description : desc([
+				"You gain resistance to fire damage, 60 feet of devil's sight allowing you to see in magical and non-magical darkness. You gain the following spells that count as sorcerer spells, but do not count against the number of sorcerer spells you know. At 1st level you gain Burning Hands spell, and when you reach 3rd level you gain the Hellish Rebuke spell, and lastly at 5th level you gain the Fireball spell.",
+			]),	
+		},
+		"subclassfeature3" : {
+			name : "Hellish Gift",
+			source : [["PBMS", 0]],
+			minlevel : 3,
+			spellcastingBonus : [{
+				name : "Hellish Gift",
+				spells : ["hellish rebuke"],
+				selection : ["hellish rebuke"],
+				times : 1,
+			}],	
+			description : desc([
+				"",
+			]),	
+		},
+		"subclassfeature5" : {
+			name : "Hellish Gift",
+			source : [["PBMS", 0]],
+			minlevel : 5,
+			spellcastingBonus : [{
+				name : "Hellish Gift",
+				spells : ["fireball"],
+				selection : ["fireball"],
+				times : 1,
+			}],	
+			description : desc([
+				"",
+			]),	
+		},
+		"subclassfeature6" : {
+			name : "Infernal Visage",
+			source : [["PBMS", 0]],
+			minlevel : 6,
+			spellcastingBonus : [{
+				name : "Infernal Visage",
+				spells : ["fear"],
+				selection : ["fear"],
+				times : 1,
+			}],
+			description : desc([
+				"You gain the Fear spell and does not count against the number of spells you can know. You can cast the Fear spell as a bonus action on your turn. When you do so, you can expend two sorcery points to maintain the spell without concentration.",
+			]),
+		},
+		"subclassfeature14" : {
+			name : "Fiendish Corruption",
+			source : [["PBMS", 0]],
+			minlevel : 14,
+			savetxt : {
+				immune : ["fire"],
+			},
+			description : desc([
+				"Your power continues to change your form and you begin to sprout horns, barbed tail, blazing eyes, or reddish skin. You gain immunity to fire damage. Lastly you can expend one sorcery point to change the damage type of one of your damaging spell to fire damage.",
+			]),
+		},
+		"subclassfeature18" : {
+			name : "Hellfire Soul",
+			source : [["PBMS", 0]],
+			minlevel : 18,
+			description : desc([
+				"As an action you can expend 5 sorcery points to draw on this power to shed an aura of hellfire for the next minute. The blue flames are so intense that fiends burn in its presence. When you gain this aura all spells that deal fire damage you cast deal hellfire damage instead of fire. Creatures that are Immune to fire damage are instead resistant to this damage, and creature that are resistant to fire damage are instead normally affected. Lastly, creatures without fire resistance that is hit by hellfire damage must make a Wisdom saving throw. On a failed save, the creature takes one dice of hellfire damage of that spell at the start of their next three turns. These flames cannot be doused or extinguished."
+			]),
+			action : ["action", ""],
+		},
+	},
+});
+AddFeatureChoice(ClassList.sorcerer.features.spellcasting, true, "Wellspring of Life", {
+	name : "Wellspring of Life",
+	extraname : "Optional Sorcerer 5",
+	source : [["PBMS", 0]],
+	description : desc([
+		"As an action, you can use your sorcery points to grant an extra reservoir of vitality. When you do so you spend two sorcery points gaining 1d8 + your Charisma modifier of temporary hit points. ",
+	]),
+	action : ["action", ""],
+	prereqeval : function (v) { return classes.known.sorcerer.level >= 5 ? true : "skip"; }
+}, "Optional 5th-level sorcerer features");
 //Warlock
-
 AddSubClass("warlock", "the horned god", {
 	regExpSearch : /^(?=.*warlock)(?=.*horned).*$/i,
 	subname : "the Horned God",
@@ -4926,7 +5375,9 @@ AddSubClass("warlock", "the horned god", {
 			"goat twisted affliction" : {
 				name : "Goat Twisted Affliction",
 				description : "You have advantage on Strength and Dexterity saving throws made against effects that would knock you prone.",
-				savetxt : { text : ["Adv. on Str/Dex saves against Prone"] },
+				savetxt : {
+					adv_vs : ["str/dex saves against prone"],
+				},
 			},
 			"wolf twisted affliction" : {
 				name : "Wolf Twisted Affliction",
@@ -4967,456 +5418,80 @@ AddSubClass("warlock", "the horned god", {
 		}
 	}
 });
-
+AddFeatureChoice(ClassList.warlock.features["pact magic"], true, "Otherworldly Aid", {
+	name : "Otherworldly Aid",
+	extraname : "Optional Warlock 5",
+	source : [["PBMS", 0]],
+	description : desc([
+		"Your otherworldly patron not only sees your loyal service, but sees your value. You gain one contractual aid of your choice as laid out in your amended contract.",
+		"Relentless Service: When you are reduced to 0 hit points, but not killed outright your Patron comes to your aid. You drop to 1 hit point instead of 0. Once you use this aid, you cannot do so again until you finish a long rest.",
+		"Eldritch Guidance: Your patron offers you magical insight to aid you in your quests. You can roll a d6 and add the number rolled to an ability check, potentially turning it into a success. Once you use this aid, you cannot do so again until you finish a long rest.",
+	]),
+	prereqeval : function (v) { return classes.known.warlock.level >= 5 ? true : "skip"; }
+}, "Optional 5th-level warlock features");
 //Wizard
-
-
-
-//Epic Class Options for PBMS Classes, based off the rubric built by Epic Legacy: Hero's Handbook
-
-//Epic Elementalist, Genie
-
-
-
-//Epic Fool, Jester
-
-ClassList.jester = {
-	
-	regExpSearch : /jester/i,
-	name : "Jester",
+AddSubClass("wizard", "revocation", {
+	regExpSearch : /^(?=.*wizard)(?=.*revocation).*$/i,
+	subname : "School of Revocation",
+	fullname : "Revoker",
 	source : [["PBMS", 0]],
-	primaryAbility : ["Charisma"],
-	abilitySave : 6,
-	prereqs : "Charisma 13",
-	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-	scoresMaximum : [30, 30, 30, 30, 30, 30],
-	die : 8,
-	subclasses : ["Epic Playhouse", []],
-	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 	features : {
-		"proficiencies" : {
-			name : "Proficiencies", 
-			source : ["PBMS", 0],
-			minlevel : 1,
-			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
-			extraname : "Bonus Saving Throw",
-			extrachoices : ["Strength", "Intelligence", "Wisdom", "Constitution"],
-			"strength" : {
-				name : "Strength",
-				description : "\n   " + "You gain proficiency in Strength Saving Throws",
-				saves : ["Str"],
-			},	
-			"intelligence" : {
-				name : "Intelligence",
-				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
-				saves : ["Int"],
-			},
-			"wisdom" : {
-				name : "Wisdom",
-				description : "\n   " + "You gain proficiency in Wisdom Saving Throws",
-				saves : ["Wis"],
-			},	
-			"constitution" : {
-				name : "Constitution",
-				description : "\n   " + "You gain proficiency in Constitution Saving Throws",
-				saves : ["Con"],
-			},	
-		},	
-		"epic feat" : {
-			name : "Epic Feat",
-			source : ["PBMS", 0],
-			minlevel : 1,
-			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
-		},	
-		"epic tricks" : {
-			name : "Epic Tricks",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			extraname : "Epic Tricks",
-			extrachoices : ["horror", "deception", "jesting", "mischief", "vanishment"],
-			"horror" : {
-				name : "Tricks of Horror",
-				spellcastingExtra : ["eyebite", "tether essenec"],
-			},
-			
-			"deception" : {
-				name : "Tricks of Deception",
-				spellcastingExtra: ["permanent illusion", "project image"],
-			},
-			
-			"jesting" : {
-				name : "Tricks of Jesting",
-				spellcastingExtra : ["mass suggestion", "power word pain"],
-			},
-			
-			"mischief" : {
-				name : "Tricks of Mischief",
-				spellcastingExtra : ["otto's irresistable dance", "reverse gravity"],
-			},
-			
-			"vanishment" : {
-				name : "Tricks of Vavnishment",
-				spellcastingExtra : ["scatter", "sequester"],
-			},
-		},	
-		"devil in box" : {
-			name : "Devil in Box",
+		"subclassfeature2" : {
+			name : "Revocation Savant",
 			source : [["PBMS", 0]],
 			minlevel : 2,
 			description : desc([
-				"At 22nd level, you possess a mysterious object connected to either the feywild or the shadowfell that is a box with a crank, a colorful satchel, or magical hat. This item has grown in power and allows you to summon a creature from the box as if you had cast one of the following summon spells at 9th level. Summon Beast, Summon Fey, Summon Lesser Demon, Summon Shadowspawn, Summon Undead, Summon Aberration, Summon Construct, Summon Elemental, Summon Greater Demon, Summon Celestial, Summon Draconic Spirit, Summon Fiend.",
-			]),
-		},	
-		"reprisal" : {
-			name : "Reprisal",
-			source : [["PBMS", 0]],
-			minlevel : 4,
-			usages : 1,
-			recovery : "long rest",
-			description : desc([
-				"At 24th level you gain the ability to draw upon the magic of the inbetween to cheat death. When you would be dropped 0hp and fall unconscious or are killed outright you can resurrect yourself returning you to half of your maximum hit points. You can do this once before a long rest.",
-			]),
-		},	
-		"subclassfeature6" : {
-			name : "Epic Playhouse",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			description : desc([
-				"At 26th level, your own playhouse which reflects the way they play, act, and entertain reaches epic levels. There are three notable playhouses; the Puppeteer, the Mime, and the Clown. Each one embodies a different form of physical comedy. Each epic playhouse is detailed at the end of the class description.",
-			]),
-		},	
-		"legendary finale" : {
-			name : "Legendary Finale",
-			source : [["PBMS", 0]],
-			minlevel : 8,
-			usages : 1,
-			recovery : "long rest",
-			description : desc([
-				"At 28th level your power of creating the ultimate comedy or tragedy grants you legendary power over success and failures. When you or a creature within 60 feet makes an ability check, saving throw, or attack roll you can choose to have it automatically succeed as if it was a natural 20 or fail as if it was a natural 1. (Your Choice) You can do so once before a long rest.",
-			]),
-		},
-		"master of theatre" : {
-			name : "Master of Theatre",
-			source : [["PBMS", 0]],
-			minlevel : 10,
-			limfeaname : "Legendary Resistance",
-			usages : 3,
-			recovery : "long rest",
-			description : desc([
-				"At 30th level you have attained the mastery over your acts, performances, and tricks. You gain Legendary Resistance. If you fail a saving throw, you can choose to succeed instead. Once you use this feature three times before a long rest.",
-			]),
-		},	
-	},
-};
-
-AddSubClass("jester", "clown", {
-	regExpSearch : /^(?=.*jester)(?=.*clown).*$/i,
-	subname : "Clown",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "The Clown",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			description : desc([
-				"Clown Trick: You can channel your fey or shadow power through your juggled items, when you do so those items become enchanted with the power of the blade of disaster. When you hit with an attack with one of your juggled weapons you can choose to deal an extra 4d12 force damage. These weapon attacks deal a critical hit on the d20 of a 18 or higher. On a critical hit the damage dealt is 8d12 instead.",
+				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy a revocation spell in your spellbook is halved.",
 			]),	
 		},
-	},
-});
-
-AddSubClass("jester", "mime", {
-	regExpSearch : /^(?=.*jester)(?=.*mine).*$/i,
-	subname : "Mime",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "The Mime",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			action : "action",
-			description : desc([
-				"You have achieved the perfect imitation by magically attuning with other creatures through magic, observation, and synchronicity. As an action you can align your senses with that of another creature within 60 feet. When you do so you can mimic each action that the target takes for up to 10 minutes. This mimicry allows you take take every action, use any ability, or cast any spell the target knows, however, it is invisible. In combat, you imitate the previous action taken by the chosen creature, but you determine the target. ",
-			]),	
-		},
-	},
-});
-
-AddSubClass("jester", "puppeteer", {
-	regExpSearch : /^(?=.*jester)(?=.*puppeteer).*$/i,
-	subname : "Puppeteer",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "The Puppeteer",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			usages : 1,
-			recovery : "long rest",
-			spellcastingBonus : ["puppeteer"],
-			description : desc([
-				"You gain the 11th Level/Tier 2 Puppeteer spell as a necromancy spell. This spell never requires concentration, and you can target a number of creature with this spell equal to your maximum number of puppets you possess. When you do so your puppets reduce in size and become inanimate, which serve as the focus of this spell. You manipulate your target through the tether of your puppets. If the spells ends either after 8 hours, if you end it early, or the target is dropped to 0hp your puppet returns to its normal size and reanimates. You can also choose to cast this spell as a riitual which increase the duration of control to 1 week. Creature that are immune to charmed condition are not immune to this effect as this is a necromancy spell for you.",
-			]),	
-		},
-	},
-});	
-
-AddSubClass("jester", "trickster", {
-	regExpSearch : /^(?=.*jester)(?=.*trickster).*$/i,
-	subname : "Trickster",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			description : desc([
-				"The Perfect Trick: When you cast an illusion or enchantment spell it ignores a creatures immunity to being charmed or frightened. If the creature targeted by your spell has immunity as a result of an epic level spell, epic level feature, or deific effect they roll with advantage on the saving throw.",
-			]),	
-		},
-	},
-});
-
-//Epic Mystic, Fateweaver
-
-ClassList.fateweaver = {
-	
-	regExpSearch : /fateweaver/i,
-	name : "Fateweaver",
-	source : [["PBMS", 0]],
-	primaryAbility : ["Wisdom"],
-	abilitySave : 5,
-	prereqs : "Wisdom 13",
-	improvements : [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-	scoresMaximum : [30, 30, 30, 30, 30, 30],
-	die : 8,
-	subclasses : ["Epic Mystic Order", []],
-	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	features : {
-		"proficiencies" : {
-			name : "Proficiencies", 
-			source : ["PBMS", 0],
-			minlevel : 1,
-			description : "\n   " + "Saving Throws. You gain proficiency in a single saving throw of your choice. Use the Choose Feature button on the second page to select your proficiency",
-			extraname : "Bonus Saving Throw",
-			extrachoices : ["Strength", "Constitution", "Dexterity", "Intelligence"],
-			"strength" : {
-				name : "Strength",
-				description : "\n   " + "You gain proficiency in Strength Saving Throws",
-				saves : ["Str"],
-			},	
-			"constitution" : {
-				name : "Constitution",
-				description : "\n   " + "You gain proficiency in Constitution Saving Throws",
-				saves : ["Con"],
-			},
-			"dexterity" : {
-				name : "Dexterity",
-				description : "\n   " + "You gain proficiency in Dexterity Saving Throws",
-				saves : ["Dex"],
-			},	
-			"intelligence" : {
-				name : "Intelligence",
-				description : "\n   " + "You gain proficiency in Intelligence Saving Throws",
-				saves : ["Int"],
-			},	
-		},	
-		"epic feat" : {
-			name : "Epic Feat",
-			source : ["PBMS", 0],
-			minlevel : 1,
-			description : "\n   " + "When you reach 21st level, and again at 25th and 29th level, you may select one Epic feat from the Epic feat list detailed in chapter 3. You may forgo taking an Epic feat to instead increase one ability score of your choice by 4, or you can increase two ability scores of your choice by 2.",
-		},
-		"orbuculum mastery" : {
-			name : "Orbuculum Mastery",
-			source : [["PBMS", 0]],
-			minlevel : 1,
-			limfeaname : "Additional Mana",
-			usages : [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
-			recovery : "short rest",
-			description : desc([
-				"At 21st level you and your orbuculum exist as one being with movement of incredible precision. You gain improved skills when using this mystical fighting style.",
-			]),
-			toNotesPage : [{
-				name : "Orbuculum Mastery",
-				note : [
-					"Aphelion Rush",
-					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 120ft without disadvantage.",
-					"Eclipse Barrier",
-					"When you are targeted with a ranged or melee attack you can spend 1 mana point as a reaction to block the attack. Doing so you add +5 to your AC after the attack roll was made, if the bonus puts your AC higher than what was rolled the attack misses.",
-					"Orbiting Mage",
-					"When you use mana to cast a spell with concentration you can spend an additional mana point to cast it without requiring concentration. Doing so the spell lasts until dispelled as a bonus action.",
-					"Perihelion Crush",
-					"When you make an attack with the Orbuculum you can spend 1 mana point to target a creature within 30ft with advantage, If the attack surpasses the targets AC by 5 or more the attack is critical.",
-					"Zenith Pulse",
-					"When you make an attack with the Orbuculum you can spend 1 mana point to unleash a blast of force that deals 5d8 force damage to all creatures within 15ft radius of the original target. These creatures have to make a DC dexterity save throw. On a success the creatures take only half damage.",
-				],
-			}],	
-						additional : levels.map(function (n) {
-				return "2d" + (n < 5 ? 8 : n < 8 ? 10 : 12);
-			}),
-			calcChanges : {
-				atkAdd : [
-					function (fields, v) {
-						if (classes.known.fateweaver && classes.known.fateweaver.level && (v.theWea.monkweapon || v.baseWeaponName == "orbuculum")) {
-							v.theWea.monkweapon = true;
-							var aMonkDie = function (n) { return n < 5 ? 8 : n < 8 ? 10 : 12; }(classes.known.fateweaver.level);
-							try {
-								var curDie = eval_ish(fields.Damage_Die.replace('d', '*'));
-							} catch (e) {
-								var curDie = 'x';
-							}
-							if (isNaN(curDie) || curDie < aMonkDie) {
-								fields.Damage_Die = '2d' + aMonkDie;
-							}
-						}
-					},
-					5
-				],
-			},
-		},
-		"cosmic power" : {
-			name : "Cosmic Power",
+		"subclassfeature2.1" : {
+			name : "Simple Counter",
 			source : [["PBMS", 0]],
 			minlevel : 2,
-			limfeaname : "Cosmic Power",
-			usages : [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-			recovery : "Turn",
+			action : ["reaction", ""],
 			description : desc([
-				"At 22nd level, your channel mana of mana becomes your breathe and moves through you effortlessly. When you take a bonus action, you may immediately spend 2 mana points to regain the use of your bonus action until the end of that turn. You may use this feature once per turn. As you advance as a fateweaver, you gain additional uses of this feature per turn, as shown in the Cosmic Power column of the fateweaver class progression table. Additionally, when you would spend mana points as a part of taking your action or casting a spell with a casting time of an action, you may do so as a bonus action instead assuming you have a bonus action available. If you would cast a spell as a bonus action using mana points, you are not prevented from casting additional spells that turn, as long as any additional spells cast in this manner are cast using mana points.",
-			]),
-		},	
-		"keeper of knowledge" : {
-			name : "Keeper of Knowledge",
-			source : [["PBMS", 0]],
-			minlevel : 2,
-			action : [["bonus action", "Keeper of Knowledge"]],
-			description : desc([
-				"At 22nd level you gain access to the library of infinite cosmic knowledge. As a bonus action on your turn you can spend 1 mana point to acquire the answer to one question of your own or another creature about anything that exists within the cosmic wheel. The DM must provide the answer to the question to the fateweaver. This answer comes to you in a clear concise way.",
-			]),
-		},	
-		"mystic doorway" : {
-			name : "Mystic Doorway",
-			source : [["PBMS", 0]],
-			minlevel : 4,
-			action : [["action", "Summon Doorway"]],
-			description : desc([
-				"At 24th level you acquire your own mystical doorway that only you can call forth as an action. This doorway is large enough to fit a creature of your size through. This doorway can lead you into any realm or plane you of your within the cosmic wheel. You must state which realm you would like to enter before you open the door. This doorway can only be entered by you or creatures you allow to pass through.",
-			]),
-		},	
+				"You can unravel the simplest incantations cast within 60 feet of you. As a reaction, you can cast a counter cantrip when a cantrip is cast within range. When you do so the cast cantrip automatically ends. You can use this simple counter as if it was a cantrip.",
+			]),	
+		},
 		"subclassfeature6" : {
-			name : "Epic Mystic Order",
+			name : "Patient Counter",
 			source : [["PBMS", 0]],
 			minlevel : 6,
 			description : desc([
-				"At 26th level you have attained the greatest achievement of your order, and you have discovered the answer to the greatest power of your studies. Only few have attained this fabled power. Depending on your subclass you have gained a different mystical power see details below.",
-			]),
+				"You can choose to forego your bonus action to gain a second reaction before your next turn. With this reaction you can choose to cast an additional revocation spell that requires one reaction.",
+			]),	
 		},
-		"action surge" : {
-			name : "Action Surge",
-			source : [["PBMS", 0]],
-			minlevel : 8,
-			limfeaname : "Additional Action Surge",
-			usages : 1,
-			recovery: "long rest",
-			description : desc([
-				"At 28th level you gain a second action surge. See action surge details from the Mystic class feature description.",
-			]),
-		},	
-		"order of fate" : {
-			name : "Order of Fate",
+		"subclassfeature10" : {
+			name : "Dispelling Adept",
 			source : [["PBMS", 0]],
 			minlevel : 10,
 			description : desc([
-				"At 30th level you have entered the highest order of cosmic travelers known as the Order of Fate. This order grants you the ability to read a creature, place, or objects fate. If you do so you can determine the mostly likely fate the target will have at the point and time the reading was done. See DM for details of the reading. In addition, you can use the power of mana to change the targets fate within the cosmos if they are willing. To do so you use your knowledge and mana to manipulate time, space, and matter to send a creature to a point in their life where they made a decision that change the course of their life forever. You can do this only once for a creature, place or object. Additionally you gain the following ability, phenomnal cosmic power.",
+				"You can cast dispel magic once without expending a spell slot. In addition, you have advantage on skill checks when casting a revocation spell.",
 			]),
-			toNotesPage : [{
-				name : "Phenomenal Cosmic Power",
-				note : [
-					"Your body surges with the endless power of the multiverse, consuming your mana but providing you with extraordinary benefits. With this ability at the start of each of your turns, you may expend a mana point, gaining a number of special dice called cosmic dice (d12s) equal to six plus the number of mana points expended. You cannot have more cosmic dice than twice your maximum Hit Dice. Any excess dice generated beyond this limit are lost, and all unused dice are lost when you take a long rest. You can use cosmic dice in a variety of ways, choosing from the following options.",
-					"• Cosmic Shield: When you take damage, you may use your reaction to roll any number of your cosmic dice and reduce the damage by the total amount rolled. ",
-					"• Cosmic Form: Once per turn (no action required), you may spend four cosmic dice to end a single condition affecting you (you choose which condition). ",
-					"• Cosmic Blast: Once per turn, when you deal damage with a spell you cast, you may roll any number of your cosmic dice. The spell deals additional force damage equal to the amount rolled. ",
-				],
-			}],	
 		},
-	},
-};
-
-AddSubClass("fateweaver", "gravity", {
-	regExpSearch : /^(?=.*fateweaver)(?=.*gravity).*$/i,
-	subname : "Gravity",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "Order of Gravity",
+		"subclassfeature14" : {
+			name : "Antimagic Aura",
 			source : [["PBMS", 0]],
-			minlevel : 6,
-			spellcastingBonus : ["implosion", "kinetic control"],
+			minlevel : 14,
 			description : desc([
-				"Gravity Master: Gravity no longer has an effect on you unless you allow it. As an action you can use you movement to move in any direction within any realm without being hindered or movement reductions. Lastly, you are immune to force and physical damage, as well as petrified, paralyzed, stunned, exhaustion, grappled, restrained, and prone conditions. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
-			]),	
+				"Once before a long rest you can project a 30 foot radius aura originating from you. This aura causes spells cast within its space to falter and weaken for the next 10 minutes, or until you end it early. (no action required) When a creature in this space, including you, casts a damaging spell that spells damage is reduced by half. All spell attack rolls in this space have disadvantage. Lastly, spells that require concentration are disrupted causing them to end at the end of the casters turn."
+			]),
+			action : [["action", ""]],
+			recovery : "long rest",
+			usages : 1,
 		},
 	},
 });
-
-AddSubClass("fateweaver", "light", {
-	regExpSearch : /^(?=.*fateweaver)(?=.*light).*$/i,
-	subname : "Light",
+AddFeatureChoice(ClassList.wizard.features.spellcasting, true, "Create Spell", {
+	name : "Create Spell",
+	extraname : "Optional Wizard 9",
 	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "Order of Light",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			spellcastingBonus : ["", ""],
-			description : desc([
-				"",
-			]),	
-		},
-	},
-});
-
-AddSubClass("fateweaver", "space", {
-	regExpSearch : /^(?=.*fateweaver)(?=.*space).*$/i,
-	subname : "Space",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "Order of Space",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			spellcastingBonus : ["infinity room", "planar eviction"],
-			description : desc([
-				"Universal Travel: You exist outside of space within the Far Realm. The flow of mana has granted you the ability to fully survive in the far realm. As an action you can travel between the cosmic wheel and the far realm. You can bring with you up to eight willing creatures. These creatures are altered by you to exist outside of the cosmic wheel. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
-			]),	
-		},
-	},
-});
-
-AddSubClass("fateweaver", "time", {
-	regExpSearch : /^(?=.*fateweaver)(?=.*time).*$/i,
-	subname : "Time",
-	source : [["PBMS", 0]],
-	features : {
-		"subclassfeature6" : {
-			name : "Order of Time",
-			source : [["PBMS", 0]],
-			minlevel : 6,
-			spellcastingBonus : ["determinism", "temporal stasis"],
-			description : desc([
-				"Keeper of Time: You exist outside of the flow of time and your mana has tethered you to each version of yourself throughout time. You cannot be surprised, and you have advantage on all attack rolls even if disadvantage is imposed. As an action, you can temporarily project you consciousness into a different version of yourself outside of the universal present. Doing so you gain perfect recall of information from your past experiences, and insight on what will happen in the future. Future: You choose a specific time when selecting a future self and the DM will determine what you will gain or experience. The information you will acquire will be if you are alive, the state of the world, and any major event that has happened; if any. Past: You choose a specific time when selecting the past self, you do not have to make any roll when recalling past information. You gain the following epic spells these spells are automatically cast at 12th level and use mana points to cast.",
-			]),	
-		},
-	},
-});
-
-//Epic Witch, High Priestess
-
-
-
+	description : desc([
+		"You gain the knowledge needed to create your own spell. To succeed, you must concentrate for 1 hour for each level of spell. During this time you define the parameters and functions of the spell using arcane notations and spell coding. You also must supply 50 gp for each level of spell to cover the costs for experimentation. Once you have completed the spell you must spend the following 10 minutes recording it properly into your spell book. Once the spell is in your spell book, it becomes one of your known spells and it becomes apart of the wizard spell list.. You then get to name this spell.",
+	]),
+	prereqeval : function (v) { return classes.known.wizard.level >= 9 ? true : "skip"; }
+}, "Optional 9th-level wizard features");
 //Spellcaster Armor, Enhanced Spellcasting Focai (Arcane, Divine, Primal), and Other Magic Items
-
 MagicItemsList["flax linen robes"] = {
 	name : "Flax Linen Robes",
 	source : [["PBMS", 0]],
@@ -5426,7 +5501,9 @@ MagicItemsList["flax linen robes"] = {
 	weight : 5,
 	description : "Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	addArmor : "Flax Linen Robes",
 	armorOptions : {
 		regExpSearch : /^(?=.*(flax))(?=.*linen).*$/i,
@@ -5449,7 +5526,9 @@ MagicItemsList["suede robes"] = {
 		"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
 		],
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	dmgres : ["Cold", "Fire", "Lightning"],
 	addArmor : "Suede Robes",
 	armorOptions : {
@@ -5473,7 +5552,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 	choicesNotInMenu : true,
 	"charmed" : {
@@ -5482,7 +5563,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},	
 	},
 	"cursed" : {
 		name : "Embroidered Robes of Curse Immunity",
@@ -5490,7 +5573,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},	
 	},
 	"frightened" : {
 		name : "Embroidered Robes of Fright Immunity",
@@ -5498,7 +5583,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},	
 	},	
 	"paralyzed" : {
 		name : "Embroidered Robes of Paralysis Immunity",
@@ -5506,7 +5593,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},	
 	},
 	"magical sleep" : {
 		name : "Embroidered Robes of Slumber Immunity",
@@ -5514,7 +5603,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},	
 	},
 	"petrified" : {
 		name : " Embroidered Robes of Petrification Immunity",
@@ -5522,7 +5613,9 @@ MagicItemsList["embroidered robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},	
 	},
 	addArmor : "Embroidered Robes",
 	armorOptions : {
@@ -5546,7 +5639,9 @@ MagicItemsList["cambric robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 	choicesNotInMenu : true,
 	"charmed" : {
@@ -5555,7 +5650,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Cambric Robes of Curse Immunity",
@@ -5563,7 +5660,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Cambric Robes of Fright Immunity",
@@ -5571,7 +5670,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Cambric Robes of Paralysis Immunity",
@@ -5579,7 +5680,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Cambric Robes of Slumber Immunity",
@@ -5587,7 +5690,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Cambric Robes of Petrification Immunity",
@@ -5595,7 +5700,9 @@ MagicItemsList["cambric robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Cambric Robes",
 	armorOptions : {
@@ -5619,7 +5726,9 @@ MagicItemsList["leather robes"] = {
 		"Resilience. This property grants the wearer resistance to fire, cold, and lightning damage.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	dmgres : ["Cold", "Fire", "Lightning"],			
 	addArmor : "Leather Robes",
 	armorOptions : {
@@ -5643,7 +5752,9 @@ MagicItemsList["velvet robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},
 	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 	choicesNotInMenu : true,
 	"charmed" : {
@@ -5652,7 +5763,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Velvet Robes of Curse Immunity",
@@ -5660,7 +5773,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Velvet Robes of Fright Immunity",
@@ -5668,7 +5783,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Velvet Robes of Paralysis Immunity",
@@ -5676,7 +5793,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Velvet Robes of Slumber Immunity",
@@ -5684,7 +5803,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Velvet Robes of Petrification Immunity",
@@ -5692,7 +5813,9 @@ MagicItemsList["velvet robes"] = {
 		"Magic Resistance. This property grants the wearer advantage on saving throws against spells and other magical effects.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Velvet Robes",
 	armorOptions : {
@@ -5716,7 +5839,9 @@ MagicItemsList["brocade robes"] = {
 		"Charges. This property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 	],
 	attunement : true,		
-	savetxt : "Adv. on Saves v.s spells and magical effects",	
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	limfeaname : "Charges",
 	usages : 3,
 	recovery : "dawn",		
@@ -5743,7 +5868,9 @@ MagicItemsList["wool robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	dmgres : ["Cold", "Fire", "Lightning"],
 	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 	choicesNotInMenu : true,
@@ -5754,7 +5881,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Wool Robes of Curse Immunity",
@@ -5763,7 +5892,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Wool Robes of Fright Immunity",
@@ -5772,7 +5903,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Wool Robes of Paralysis Immunity",
@@ -5781,7 +5914,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Wool Robes of Slumber Immunity",
@@ -5790,7 +5925,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Wool Robes of Petrification Immunity",
@@ -5799,7 +5936,9 @@ MagicItemsList["wool robes"] = {
 		"Resilience. This Property grants the wearer resistance to fire, cold, and lightning damage.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Wool Robes",
 	armorOptions : {
@@ -5824,7 +5963,9 @@ MagicItemsList["silk robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+	},	
 	limfeaname : "Charges",
 	usages : 3,
 	recovery : "dawn",
@@ -5837,7 +5978,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Silk Robes of Curse Immunity",
@@ -5846,7 +5989,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Silk Robes of Fright Immunity",
@@ -5855,7 +6000,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-			savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Silk Robes of Paralysis Immunity",
@@ -5864,7 +6011,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Silk Robes of Slumber Immunity",
@@ -5873,7 +6022,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Silk Robes of Petrification Immunity",
@@ -5882,7 +6033,9 @@ MagicItemsList["silk robes"] = {
 		"Charges. This Property grants the wearer three charges of a 1st level spell that are regained at dawn.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Silk Robes",
 	armorOptions : {
@@ -5907,7 +6060,10 @@ MagicItemsList["armored robes"] = {
 		"Magical Immunity. This property offers the wearer immunity to one of the following magical conditions. This property is determined randomly upon discovery of the robe. Roll 1d6 to determine the condition immunity upon attunement. This immunity does not protect against conditions inflicted by deific means, epic abilities, legendary items, or artifacts. 1. Charmed, 2. Cursed, 3. Frightened, 4. Paralyzed, 5. Magical Sleep, 6. Petrified.",
 	],	
 	attunement : true,
-	savetxt : "Adv. on Saves v.s spells and magical effects, Crits treated as Normal Hit",
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+		immune : ["critical hits"],
+	},	
 	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
 	choicesNotInMenu : true,
 	"charmed" : {
@@ -5917,7 +6073,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Armored Robes of Curse Immunity",
@@ -5926,7 +6084,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Armored Robes of Fright Immunity",
@@ -5935,7 +6095,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Armored Robes of Paralysis Immunity",
@@ -5944,7 +6106,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Armored Robes of Slumber Immunity",
@@ -5953,7 +6117,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Armored Robes of Petrification Immunity",
@@ -5962,7 +6128,9 @@ MagicItemsList["armored robes"] = {
 		"Defense. This Property grants the wearer a fortified defense. Any critical hit received is treated as a normal hit.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Armored Robes",
 	armorOptions : {
@@ -5995,6 +6163,12 @@ MagicItemsList["prismatic robes"] = {
 			"While wearing these robes I gain a +2 bonus to the spell attack rolls and saving throw DCs of my spells."
 		]
 	},
+	savetxt : {
+		adv_vs : ["saves against spells and magical effects"],
+		immune : ["critical hits"],
+	},
+	choices : ["charmed", "cursed", "frightened", "paralyzed", "magical sleep", "petrified"],
+	choicesNotInMenu : true,
 	"charmed" : {
 		name : "Prismatic Robes of Charm Immunity",
 		description : [
@@ -6002,7 +6176,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Charmed condition.",
 		],
-		savetxt : "Immune to Charmed condition",
+		savetxt : {
+			immune : ["charmed"],
+		},
 	},
 	"cursed" : {
 		name : "Prismatic Robes of Curse Immunity",
@@ -6011,7 +6187,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Cursed condition.",
 		],
-		savetxt : "Immune to Cursed condition",
+		savetxt : {
+			immune : ["cursed"],
+		},
 	},
 	"frightened" : {
 		name : "Prismatic Robes of Fright Immunity",
@@ -6020,7 +6198,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Frightened condition.",
 		],
-		savetxt : "Immune to Frightened condition",
+		savetxt : {
+			immune : ["frightened"],
+		},
 	},	
 	"paralyzed" : {
 		name : "Prismatic Robes of Paralysis Immunity",
@@ -6029,7 +6209,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Paralyzed condition.",
 		],
-		savetxt : "Immune to Paralyzed condition",
+		savetxt : {
+			immune : ["paralyzed"],
+		},
 	},
 	"magical sleep" : {
 		name : "Prismatic Robes of Slumber Immunity",
@@ -6038,7 +6220,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to magic that would put me to sleep.",
 		],
-		savetxt : "Immune to Magical Sleep",
+		savetxt : {
+			immune : ["magical sleep"],
+		},
 	},
 	"petrified" : {
 		name : "Prismatic Robes of Petrification Immunity",
@@ -6047,7 +6231,9 @@ MagicItemsList["prismatic robes"] = {
 		"Potent. This Property grants the wearer a +2 bonus to their spell DC and their spell attack bonus.",
 		"Magical Immunity. While I'm wearing these robes and I'm attuned to it, I have immunity to the Petrified condition.",
 		],
-		savetxt : "Immune to Petrified condition",
+		savetxt : {
+			immune : ["petrified"],
+		},
 	},			
 	addArmor : "Prismatic Robes",
 	armorOptions : {
@@ -6166,8 +6352,6 @@ MagicItemsList["potion of magic"] = {
 		extraTooltip : "AL: can always be bought for 50000 gp"
 	},
 };
-
-
 MagicItemsList["crystal"] = {
 	name : "Crystal",
 	sortname : "Crystal",
@@ -6182,7 +6366,6 @@ MagicItemsList["crystal"] = {
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
 };
-
 MagicItemsList["orb"] = {
 	name : "Orb",
 	sortname : "Orb",
@@ -6197,7 +6380,6 @@ MagicItemsList["orb"] = {
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
 };
-
 MagicItemsList["rod"] = {
 	name : "Rod",
 	sortname : "Rod",
@@ -6222,7 +6404,6 @@ MagicItemsList["rod"] = {
 		modifiers : [0, 0]
 	},
 };
-
 MagicItemsList["gnarled staff"] = {
 	name : "Gnarled Staff",
 	sortname : "Gnarled Staff",
@@ -6321,7 +6502,6 @@ MagicItemsList["gnarled staff"] = {
 		modifiers : [0, 0]
 	},
 };
-
 MagicItemsList["wand"] = {
 	name : "Wand",
 	sortname : "Wand",
@@ -6410,7 +6590,6 @@ MagicItemsList["wand"] = {
 		],
 	},	
 };
-
 MagicItemsList["amulet"] = {
 	name : "Amulet",
 	sortname : "Amulet",
@@ -6499,7 +6678,6 @@ MagicItemsList["amulet"] = {
 		],
 	},
 };
-
 MagicItemsList["crystal sword"] = {
 	name : "Crystal Sword",
 	sortname : "Crystal, Sword",
@@ -6524,7 +6702,6 @@ MagicItemsList["crystal sword"] = {
 		modifiers : [0, 0]
 	},
 };
-
 MagicItemsList["scepter"] = {
 	name : "Scepter",
 	sortname : "Scepter",
@@ -6549,7 +6726,6 @@ MagicItemsList["scepter"] = {
 		modifiers : [0, 0]
 	},
 };
-
 MagicItemsList["reliquiary"] = {
 	name : "Reliquiary",
 	sortname : "Reliquiary",
@@ -6638,7 +6814,6 @@ MagicItemsList["reliquiary"] = {
 		],
 	},	
 };
-
 MagicItemsList["boline"] = {
 	name : "Boline",
 	sortname : "Boline",
@@ -6662,7 +6837,6 @@ MagicItemsList["boline"] = {
 		modifiers : [0, 0]
 	},
 };
-
 MagicItemsList["wooden staff"] = {
 	name : "Wooden Staff",
 	sortname : "Wooden Staff",
@@ -6761,7 +6935,6 @@ MagicItemsList["wooden staff"] = {
 		
 	},
 };
-
 MagicItemsList["druid's egg"] = {
 	name : "Druid's Egg",
 	sortname : "Druid, Egg",
@@ -6850,7 +7023,6 @@ MagicItemsList["druid's egg"] = {
 		],
 	},
 };
-
 MagicItemsList["totem"] = {
 	name : "Totem",
 	sortname : "Totem",
@@ -6939,7 +7111,6 @@ MagicItemsList["totem"] = {
 		],
 	},
 };
-
 MagicItemsList["mistletoe"] = {
 	name : "Mistletoe",
 	sortname : "Mistletoe",
@@ -6953,9 +7124,7 @@ MagicItemsList["mistletoe"] = {
 		"Power. You can use a spell focus that has the power property to add your spellcasting modifier to the spells damage.",
 	],	
 };
-
 //Customization Options, New Feats
-
 FeatsList["meddle magic adept"] = {
 	name : "Meddle Magic Adept",
 	source : [["PBMS", 0]], 
@@ -6975,15 +7144,14 @@ FeatsList["meddle magic adept"] = {
 	prerequisite : "Spellcasting or Pact Magic feature",
 	prereqeval : function (v) { return v.isSpellcastingClass; }
 };
-
 //New School of Magic
-
 spellSchoolList["Revoc"] = "Revocation";
-
+SpellsList["counterspell"].school = "Revoc",
+SpellsList["dispel magic"].school = "Revoc",
+SpellsList["remove curse"].school = "Revoc",
+SpellsList["antimagic field"].school = "Revoc",
 //New Spells
-
 //Cantrips
-
 SpellsList["alchemist fire"] = {
 	name : "Alchemist Fire",
 	source : [["PBMS", 0]],
@@ -7000,7 +7168,6 @@ SpellsList["alchemist fire"] = {
 	descriptionFull : "You cast a magical vial that explodes upon impact and exposure to the air that bursts into a sticky flaming substace. make a ranged spell attack against a target. On a hit the vial explodes with a mote of fire and deals 1d10 fire damge. A flammable object hit ignites if it isn't being worn or carried. The target must make a DC dexterity save throw, on a fialure the atrget takes an additional 1d4 fire damage at the start of its next turn, the spell's damage increases by 1d10 at 5th level, 11th level, and 17th level.",
 	descriptionCantripDie : "1 creature range spell attack `CD`d10 Fire dmg Dex Save or 1d4 fire start next turn.",
 };
-
 SpellsList["usurp"] = {
 	name : "Usurp",
 	source : [["PBMS", 0]],
@@ -7015,9 +7182,7 @@ SpellsList["usurp"] = {
 	description : "1 spellcaster w/i range Con save on fail DC 10 + SL check to cast spellcaster spell using spellcaster spell slot.",
 	descriptionFull : "When you cast this spell you must target one spellcaster other than yourself within range. That spellcaster must succeed a Constitution saving throw or be siphoned of their magical power. On a failed save, you can choose one spell the caster knows of 1st level or higher, you must be capable of casting the level of spell you choose. When you do so you must make an ability check using your spellcasting ability. The DC is 10 + the spells level. On a successful check you cast that spell using the targets spell slot. If the target succeeds the effect does nothing. If you fail the ability check you expend a spell slot equal to the level of the spell usurped and the effect does nothing.",
 };
-
 //1st-Level Spells
-
 SpellsList["erase"] = {
 	name : "Erase",
 	source : [["PBMS", 0]],
@@ -7031,7 +7196,6 @@ SpellsList["erase"] = {
 	description : "erase non-magical writing, erase magic writing DC 10+spell level (Int)Arcana check",
 	descriptionFull : "You magically erase writings either magical or non-magical from a surface. When you cast this spell you can erase a single scroll, two pages of parchment, an inscribed rune, or an arcane seal. This spell has no effect on illusory script. Non magical writings are automatically erased when this spell is cast. If the writing is magical the caster must make an Intelligence (Arcana) skill check. The DC is 10 + the level of magic inscribed.",
 };
-
 SpellsList["merlin"] = {
 	name : "Merlin",
 	source : [["PBMS", 0]],
@@ -7046,7 +7210,6 @@ SpellsList["merlin"] = {
 	description : "Touch letter of 250 words or less per side, becomes bird message fly to recipient at speed of 12 MPH",
 	descriptionFull : "You imbue magic upon a sheet of parchment, this message can be up to 250 words per side. When you cast this spell you must draw the magical bird symbol of a merlin and address the message with a to and from. Once this message is complete it will transform into a paper bird and will fly to the adressee as long as they are on the same plane of existence. This merlin and the message it carries cannot be destoryed by water or fire. In addition this merlin will fly 12 miles per hour until it reaches its destination.",
 };
-
 SpellsList["pattern weave"] = {
 	name : "Pattern Weave",
 	source : [["PBMS", 0]],
@@ -7061,7 +7224,6 @@ SpellsList["pattern weave"] = {
 	description : "magic investigation of chaotic or destroyed environments",
 	descriptionFull : "You magically interpret chaos to uncover the reasoning within apparent chaos. When you cast this spell you can see things such as pottery shards reform into a whole pot, shreaded paper reform into a page, scattered parts to a machine reassemble, and so on. For the duration, you can make sense of the chaos and acquire information regarding something in its previous form by investigating. The DM reveals what and how something once was before the chaos or destruction occured. You only acquire information about a space within 30 ft of you.",
 };
-
 SpellsList["revoke"] = {
 	name : "Revoke",
 	source : [["PBMS", 0]],
@@ -7077,7 +7239,6 @@ SpellsList["revoke"] = {
 	description : "1 crea that can cast cantrips w/i range Wis save, or no cantrips while w/i range of you for 24 hours.",
 	descriptionFull : "You can target one creature that has the capability to cast cantrips within 60 feet of you. That caster must make a Wisdom saving throw, on a failed save the target is unable to cast cantrips within 60 feet of you for the next 24 hours. On a success the target is immune to the effects of this spell for the next 24 hours.",
 };
-
 SpellsList["taunt"] = {
 	name : "Taunt",
 	source : [["PBMS", 0]],
@@ -7093,9 +7254,7 @@ SpellsList["taunt"] = {
 	description : "1 crea w/i range Wis ST or must attack caster w/ non-mag melee weapon attack/unarmed strike if no weapon, if cant reach caster spell ends.",
 	descriptionFull : "You attamp to taunt a creature you can see within range. That creature must make a Wisdom saving throw. On a failed save the creature rushes forward in fury. For the duration, the affected creature must attack the caster with melee non-magical weapon attacks. If the creature does not have a weapon or antural weapons they engage in unarmed strikes. If the caster is inaccessible due to a wall, blocade, or magical barrier the spell ends.",
 };
-
 //2nd-Level Spells
-
 SpellsList["chaos shield"] = {
 	name : "Chaos Shield",
 	source : [["PBMS", 0]],
@@ -7109,7 +7268,6 @@ SpellsList["chaos shield"] = {
 	description : "Barrier negates wild magic surges",
 	descriptionFull : "When you cas this spell you create a magical barrier that protects you from the chaos of wild magic surges. This effect only protects the caster from wild magic produced as a result of the casters own spells and magical effects. For example if the caster is required to roll on the wild magic table for any reason as a result of casting a spell the following effect is negated. Once an effect is negated the shield is dispelled and the spell ends.",
 };
-
 SpellsList["disruption"] = {
 	name : "Disruption",
 	source : [["PBMS", 0]],
@@ -7127,7 +7285,6 @@ SpellsList["disruption"] = {
 	descriptionFull : "You can target a concentration spell that is active within 60 feet. If the spell is of 2nd level or lower you cause the caster to make a Constitution (Concentration) check. On a success this spell does nothing, on a failure the target loses concentration.",
 	descriptionMetricFull : "You can target a concentration spell that is active within 18 meters. If the spell is of 2nd level or lower you cause the caster to make a Constitution (Concentration) check. On a success this spell does nothing, on a failure the target loses concentration.",
 };
-
 SpellsList["moon rune"] = {
 	name : "Moon Rune",
 	source : [["PBMS", 0]],
@@ -7142,7 +7299,6 @@ SpellsList["moon rune"] = {
 	description : "inscribe symbol only visible under certain set conditions",
 	descriptionFull : "When you cast this spell you magically inscribe an invisible symbol or mark on a surface. This mark remains invisible until the conditionsspecified at the time of casting are met. For example, you could specify that the mark is only visible under the light of the moon, when viewed by an elf, or at sunrise. The spell cannot be used to inscribe master runes, teleportation circles, or seals created by other spells.",
 };
-
 SpellsList["protection from cantrips"] = {
 	name : "Protection from Cantrips",
 	source : [["PBMS", 0]],
@@ -7157,7 +7313,6 @@ SpellsList["protection from cantrips"] = {
 	description : "touch 1 willing crea, immune to cantrips",
 	descriptionFull : "For the duration, the willing creature you touch has immuniy to the effects and damage created by a cantrip",
 };
-	
 SpellsList["swiftness"] = {
 	name : "Swiftness",
 	source : [["PBMS", 0]],
@@ -7171,9 +7326,7 @@ SpellsList["swiftness"] = {
 	description : "you gain an extra action to be used within 24 hours",
 	descriptionFull : "You manipulate time just enough to grant you an extra action. This action surge remains until used, and must be used within the next 24 hours. This magic does not stack if cast again but instead resets the poin measured for the next 24 hours.",
 };
-
 //3rd-Level Spells
-
 SpellsList["augmentation"] = {
 	name : "Augmentation",
 	source : [["PBMS", 0]],
@@ -7188,7 +7341,6 @@ SpellsList["augmentation"] = {
 	description : "you can cast damaging spell as an action and add your spell mod to each die rolled.",
 	descriptionFull : "When you cast this augmentation spell you can cast another spell as an action. This spell augments the following spell you cast. For each die rolled for the following spell you can add your spellcasting modifier to the total. For example the spell burning hands which requires you to roll 3d6 you can add your spellcasting modifier three times to the total. This spell only effects spells of 3rd level or lower. At Higher Levels. When you cast this spell using a spell slot of 4th level or higher you can augment spells equal to or less than the spell slot used. ",
 };
-
 SpellsList["ambrose's nebula"] = {
 	name : "Ambrose's Nebula",
 	source : [["PBMS", 0]],
@@ -7204,7 +7356,6 @@ SpellsList["ambrose's nebula"] = {
 	description : "a bright streak flashes to a point within range, each crea w/i a 30 ft rad. dex save, on fail 4d8 +1d8/SL choice (Rad, Force, Psy, Nec) dmg or half as much on succ.",
 	descriptionFull : "A bright streak flashes from your pointing finger to a point you choose within range then blossoms with multi-colored force into an spacial explosion. Each creature in a 30-foot radius must make a Dexterity saving throw aside from you. A target takes 4d8 damage on one of the following damage types of choice (radiant, force, psychic, necrotic) on a failed save, or half as much damage on a successful one. This nebula spreads around corners. Each creature does not have to be affected by the same damage type of your choosing. When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot above 3rd.",
 };
-
 SpellsList["spell turning"] = {
 	name : "Spell Turning",
 	source : [["PBMS", 0]],
@@ -7218,7 +7369,6 @@ SpellsList["spell turning"] = {
 	description : "Target 1 spell w/i range, if 3rd-level or lower it is turned back on caster, if 4th-level or higher DC 10 + Spell Level spellcasting ability check to turn on caster.",
 	descriptionFull : "You can target a spell cast by another creature within 120ft. If the creature is casting a spell of 3rd level or lower the spell is turned back on the caster. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equal 10 + the spells level. On a success the spell is turned back on the caster. ",
 };
-
 SpellsList["teleport object"] = {
 	name : "Teleport Object",
 	source : [["PBMS", 0]],
@@ -7233,7 +7383,6 @@ SpellsList["teleport object"] = {
 	description : "teleport object to permanent teleportation circle.",
 	descriptionFull : "This spell teleports an object no larger than a 1ft cube of your choice that you scribe with the seal of a permanent teleportation circle. This object instantly transfers to that location.",
 };
-
 SpellsList["viktor's hoodwink"] = {
 	name : "Viktor's Hoodwink",
 	source : [["PBMS", 0]],
@@ -7247,9 +7396,7 @@ SpellsList["viktor's hoodwink"] = {
 	description : "you make a weapon atk as part of this spell's casting 3 illusory copies of yourself appear giving you adv on the atk, the each illusion deals your weapon dmg to the target as psychic dmg",
 	descriptionFull : "You make a weapon attack during the casting of this spell. When you do so three illusions of yourself appear and make a weapon attack toward the same target. You gain advanatge on your attack rolls this turn toward your chosen target. On a hit, the target suffers the weapon attacks normal effects, and is also hit by each illusion dealing the same weapon damage except the damage type is psychic.",
 };
-
 //4th-Level Spells
-
 SpellsList["arcane eruption"] = {
 	name : "Arcane Eruption",
 	source : [["PBMS", 0]],
@@ -7263,7 +7410,6 @@ SpellsList["arcane eruption"] = {
 	description : "you create a 20 ft rad. sphere of churning energy choose 1 dmg type, (Acid, Cold, Fire, Lightn., Pois., Psy., Thund.) Con save or 6d6+1/SL dmg of chosen type, choose one of the d6 results to determine condition effect. (1. Incapacitated, 2. Blind, 3. Fright, 4. Pois., 5. Charm, 6. Deaf)",
 	descriptionFull : "Churning magical energy explodes in a 20 ft radius sphere centered on a point you choose within range. When you cast the spell, you select the type of damge dealt by the explosion: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder. Each creature in the sphere must make a Constitution saving throw. O a failed save, a creature takes 6d6 damage of the chosen type. On a successful save a creature takes half as much damage. Choose one of those d6s the number rolled on that die determines a condition that's applied to each creature that failed the save, as shown below. A creature has the condition until the end of your next turn. d6 Additional Effects. 1. Incapacitated, 2. Blinded, 3. Frightened, 4. Poisoned, 5. Charmed, 6. Deafened. At Higher Levels. When you cast this spell using a spell slot of 5th level or higher,the damge increases by 1d6 for each slot level above 4th.",
 };
-
 SpellsList["arcane retaliation"] = {
 	name : "Arcane Retaliation",
 	source : [["PBMS", 0]],
@@ -7278,7 +7424,19 @@ SpellsList["arcane retaliation"] = {
 	description : "When hit by spell Rea. learn spell to cast once as act. auto success + bonus damage = damage taken by you.",
 	descriptionFull : "When a creature targets you with a spell and successfully hits you, you can use your reaction to temporarily learn that spell and cast it once as an action on your next turn targeting the original caster. The spell automatically succeeds and deals additional damage equal to the damage you received from that spell.",
 };
-
+SpellsList["brood of hadar"] = {
+	name : "Brood of Hadar",
+	source : [["PBMS", 0]],
+	classes : ["warlock"],
+	level : 4,
+	school : "Conj",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "(see full description)",
+	descriptionFull : "you call upon the power of Hadar, the Dark Hunger, when you do Choose one creature you can see within range, that creature must make a Constitution saving throw, on a failure the target takes 6d10 Necrotic damage and falls prone holding its head and screaming, on a success the target takes half damage and does not fall prone, if this spell reduces the target to zero hit points you may choose another target within 15 feet of the original the new target must make a Constitution saving throw or take 4d10 Necrotic damage as flying fanged shadows pour from the fallen target's eyes, mouth, and ears and descend on the new target.",
+};
 SpellsList["detect scrying"] = {
 	name : "Detect Scrying",
 	source : [["PBMS", 0]],
@@ -7293,7 +7451,6 @@ SpellsList["detect scrying"] = {
 	description : "see full description",
 	descriptionFull : "When you cast this spell you become aware of any attempt made by another caster using a divination spell that seeks to observe you or acquire any information about you that is on the same plane of existence as you. You immediately know the casters location, the spell used, and if the caster is friendly toward you.",
 };
-
 SpellsList["shout"] = {
 	name : "Shout",
 	source : [["PBMS", 0]],
@@ -7309,7 +7466,6 @@ SpellsList["shout"] = {
 	description : "ea crea w/i 30 ft Con ST or deaf for 1 minute",
 	descriptionFull : "When you cast this spell your voice is magnified and can be audibly heard by every creature within 600ft of you. Creatures within 30ft of you must make a Constitution save throw. On a failure the creature is deafened for 1 minute.",
 };
-
 SpellsList["synchronicity"] = {
 	name : "Synchronicity",
 	source : [["PBMS", 0]],
@@ -7323,9 +7479,7 @@ SpellsList["synchronicity"] = {
 	description : "See full description",
 	descriptionFull : "The creature you touch feels reality subtly shifted to its favor while this spell is in effect. The target isn't inconvenienced by mundane delays of any sort. Passages are always open, there's always a waiting boat or carriage around the bend. The target can run at full speed through dense crowds, and attacks of opportunity provoked by the target's movement are made with disadvantage. Synchronicity grants advantage to Dexterity (Stealth) checks, since the target always finds a handy piece of cover available. Additionally, the target has advantage on all ability checks made to ride a mount. In the event that two or more creatures under the effect of synchronicity are attempting to avoid being inconvenienced by each other, the creatures engage in a contest of Charisma each time the effects of the spells would oppose each other.",
 };
-
 //5th-Level Spells
-
 SpellsList["contractual conjuration"] = {
 	name : "Contractual Conjuration",
 	source : [["PBMS", 0]],
@@ -7340,7 +7494,6 @@ SpellsList["contractual conjuration"] = {
 	description : "you create a magical connection between you and a creature friendly to you. you summon a creature that you have created a bond with",
 	descriptionFull : "You create a magical connection between you and another creature within range. If the targeted creature is willing and able they offer you a trinket of their making as a focus for this spell. This trinket is the source of your contract with the creature and allows you to summon them to a space within 60 feet of you as an action. After the initial cating of this spell, any time you use this spell and the said trinket you can summon this creature from where ever it is to a space within range. While summoned the creature is friendly to you and your companions, and obeys every verbal command you give it. If you don’t issue a command the creature defends itself from hostile creatures. This creature remains until 1 hour has passed, you dismiss the creature as a bonus action on your turn, or the creature drops to 0 hit points causing the creature to return from where they came from unharmed and the trinket breaks. ",
 };
-
 SpellsList["duplicate"] = {
 	name : "Duplicate",
 	source : [["PBMS", 0]],
@@ -7355,7 +7508,6 @@ SpellsList["duplicate"] = {
 	description : "create an identical duplicate of any non-living object for 1 hour, +1 h/SL above 5th",
 	descriptionFull : "This spell transforms an object into an exact copy of any single item that the caster touches. The item transformed must be of the same size and rarity of the object being duplicated. This spell has no effect on living creatures, including undead, but not constructs. The duplicated items is identical to the original in every way. The duplicated item lasts for 1 hour for each level of slot expended above 5th level. ",
 };
-
 SpellsList["magic cancel"] = {
 	name : "Magic Cancel",
 	source : [["PBMS", 0]],
@@ -7369,7 +7521,6 @@ SpellsList["magic cancel"] = {
 	description : "one spell being concentrated on w/i range of 5th/SL or lower is ended, and Wis save or cant cast spell again for 1 minute.",
 	descriptionFull : "You can choose one spell of 5th level or lower within range that is being maintained by concentration. That spell and the caster's concentration automatically ends. After the spell ends, the caster must make a Wisdom saving throw, on a failed save the target is unable to cast that spell again for the next minute. At higher levels. When you cast this spell using a spell slot of 6th level or higher you can affect spells of equal level or lower of the spell slot you used.",
 };
-
 SpellsList["mind fog"] = {
 	name : "Mind Fog",
 	source : [["PBMS", 0]],
@@ -7384,7 +7535,6 @@ SpellsList["mind fog"] = {
 	description : "1 crea w/i range, Int ST fail disadv on Int ST and Ability checks, auto fail ench/illu spells even if imm to charm/fright/has true sight",
 	descriptionFull : "A magical mind fog falls upon one creature you choose within range. That creature must make an intelligence save throw. On a failure the target has disadvantage on intelligence saving throws and ability checks for the duration. Any enchantment or illusion spell cast that effects this target after this spell is cast automatically succeeds even if they have immunity to charmed or frightened conditions, as well as targets with truesight.",
 };
-
 SpellsList["pandora's gallivant"] = {
 	name : "Pandora's Gallivant",
 	source : [["PBMS", 0]],
@@ -7399,7 +7549,6 @@ SpellsList["pandora's gallivant"] = {
 	description : "teleport to an unoccupied space w/i 300 ft, crea. w/i 30 ft of star/end point of teleportation have disadv on attack rolls and concentration checks for 1 min.",
 	descriptionFull : "You are surrounded by colorful sparks and pyrotechnics, you teleport up to 300ft to an unoccupied space you can see. Using this spell does not provoke an opportunity attack, in addition, where ever you start and end in teleportation results in enemy creatures within 30ft of either point having disadvantage on attack rolls and concentration checks for 1 min.",
 };
-
 SpellsList["wall of darkness"] = {
 	name : "Wall of Darkness",
 	source : [["PBMS", 0]],
@@ -7416,9 +7565,7 @@ SpellsList["wall of darkness"] = {
 		"An inky black wall of impnetrable darkness appears at apoint you choose within range. The wall appears in any orientation you choose; horizontally, vertically, or diaganoally. It can be free floating, or it can rest on a solid surface. The wall can be up to 60 feet long, 10 feet hight, and 5 feet thick. The wall blocks line of sight, but creatures and objects can pass through it. When the wall appears each creature in it area must make a Constitution saving throw. On a failed save, a creature takes 4d8 force damage, and half as much on a successful save. Any creature within this spaceis blinded by magical darkness, and a creature takes the same damage when it ends its turn within the wall. Until the spell ends, you can use an action to launch a tendril of darkness from the wall at a creature you can see within 60 feet of the wall. Make a ranged spell attack. On a hit the target takes 4d8 force damage. Whether you hit or miss reduce the wall by 10 feet. If the wall's length is reduced to 0 feet the spell ends. At higher levels: When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot above 5th",
 	]),	
 };
-
 //6th-Level Spells
-
 SpellsList["investiture of water"] = {
 	name : "Investiture of Water",
 	source : [["PBMS", 0]],
@@ -7433,7 +7580,6 @@ SpellsList["investiture of water"] = {
 	description : "Until spell ends, immune to wave, resist fire, breathe underwater, 30 ft swim speed, 15 ft wave Str save or take 2d10 wave and be pushed to edge of wave, or half as much on succ.",
 	descriptionFull : "Until the spell ends,  water condenses on your body, and you gain the following benefits. You are immune to wave damage and have resistance to fire damage. You are able to breathe under water and have a swim speed of 30 feet. You can use your action to create a 15 ft cone wave extending from you in a direction you choose. Each creature in the cone must make a Strenth saving throw. A creature takes 2d10 wave damage and if Large ro smaller is pushed to an unoccupied space at the edge of the wave on a failed save, or half as much damage and is not pushed on a successful one.",
 };
-
 SpellsList["permanent illusion"] = {
 	name : "Permanent Illusion",
 	source : [["PBMS", 0]],
@@ -7448,7 +7594,6 @@ SpellsList["permanent illusion"] = {
 	description : "you create a perfect and realistic illsion that fits w/i a 20ft cube, it is convincing to just before the point of dealing damage.",
 	descriptionFull : "When this spell is cast, the caster creates an illusion with visual, auditory, olfactory, and thermal elements. This spell can create the illusion of any object or natural element such as a fire or shrub, as long as it fits within a 20ft cube. This illusion conveys realism to an extent just before instilling damage to a creature or object. Any creature to perform an insight check on this illusion must surpass the casters DC. On a failure the creature believes the illusion is real, otherwise on a success the creature can discern that it is an illusion. This illusion remains until dispelled.",
 };
-
 SpellsList["spell binding"] = {
 	name : "Spell Binding",
 	source : [["PBMS", 0]],
@@ -7464,9 +7609,7 @@ SpellsList["spell binding"] = {
 	description : "you bind a target you touch in magical chains of antimagic restraining the target on a failed Cha save and inflicting an Antimagic Field that only effects the restrained target",
 	descriptionFull : "You touch a target causing magical antimagic chains to spring into existence. The target of this spell must make a charisma saving throw or be restrained by the chains. On a failed save the target is restained and also affected by the antimagic field spell, except the effects only apply to the creature. This effect lasts until concentration ends or until ended by you no action required.",
 };
-
 //7th-Level Spells
-
 SpellsList["delayed spell"] = {
 	name : "Delayed Spell",
 	source : [["PBMS", 0]],
@@ -7480,7 +7623,6 @@ SpellsList["delayed spell"] = {
 	description : "you can delay the activation of a spell, when the spell does activate, the original caster can be affected by it as well.",
 	descriptionFull : "When a spell is cast within range you can warp the thread around that spell delaying its manifestation. When the spell ends, either because your concentration is broken or because you decide to end it, the spell activates. Once the spell activates in this way, even the original caster can be affected if applicable.",
 };
-
 SpellsList["desire"] = {
 	name : "Desire",
 	source : [["PBMS", 0]],
@@ -7494,7 +7636,6 @@ SpellsList["desire"] = {
 	description : "see full description",
 	descriptionFull : "Desire is a lesser wish spell, simply by speaking aloud, you can alter your nearby surroundings as you desire. This spell can duplicate any spell of 5th level or lower without requiring components or the knowledge to cast the spell. In addition, this spell automatically succeeds, meaning, your roll for AC succeeds or the target creatures save throw fails. This effect automatically applies except this spell does not surpass a creatures resistances, immunities, or legendary resistance. All other normal calculated aspects proceed as directed in the spell.",
 };
-
 SpellsList["magic siphon"] = {
 	name : "Magic Siphon",
 	source : [["PBMS", 0]],
@@ -7510,7 +7651,6 @@ SpellsList["magic siphon"] = {
 	description : "1 spellcasting crea w/i range Con Save on failed roll 2d12 spell points siphoned no spell slots can be siphoned over 5th level.",
 	descriptionFull : "You target one creature within range that has the ability to cast spells and possesses spell slots. That target must succeed a constitution saving throw or be siphoned of their spell slots. On a failure, you must roll 2d12 to determine the spell slots recovered from this spell and drained from the target. The number rolled determines the total point value of spell slots regained of 5th level or lower. For example if your were to roll an 8 you could choose to regain one 5th level spell slot and one 3rd level spell slot. Otherwise you could choose four 1st level spell slots and two 2nd level spell slots. This effect only allows you to restore a maximum of spells slots up to targets available spell slots. In other words if the target is unable to cast 5th level spells or does not have 5th level spell slots available you cannot regain spell slots of 5th level. ",
 };
-
 SpellsList["pandora's prismatic bridge"] = {
 	name : "Pandora's Prismatic Bridge",
 	source : [["PBMS", 0]],
@@ -7525,9 +7665,7 @@ SpellsList["pandora's prismatic bridge"] = {
 	description : "creates a 150ft long by 10 ft wide 1 inch thick bridge between 2 points for the duration, if either end of the bridge moves the bridge disappears.",
 	descriptionFull : "This spell creates an arching prismatic bridge of force that spans across a gap between two points of 150ft. length within range. This bridge is 1 inch thick, 10ft wide, and 150ft long, and remains for the duration. This bridge is immobile and can be shaped in any path shape or angle that does not exceed this bridges length and width. If either point the bridge touches crumbles or moves before the duration the bridge is dispelled early, and all things upon it fall.",
 };
-
 //8th-Level Spells
-
 SpellsList["create golem"] = {
 	name : "Create Golem",
 	source : [["PBMS", 0]],
@@ -7542,9 +7680,7 @@ SpellsList["create golem"] = {
 	description : "you create a golem (Clay, Stone, Iron, Glass, Flesh, so on) that remains for 1 hour or until reduced to 0 hp.",
 	descriptionFull : "When you cast this spell you can target a 10ft cube of nonmagical material be it clay, stone, irom, glass, flesh, and so on. You instantly create a golem from the present material that shares the same stat block of the golem you create in the monster manual. This golem remains under your control until concentration ends, the golem is dropped to 0hp, or after 1 hour has passed. After 1 hour the golem reverts back to the materials of its creation. This golem acts on its own turn sharing your initiative. It obeys every mental command you give it no action required by you.",
 };
-
 //9th-Level Spells
-
 SpellsList["infringement"] = {
 	name : "Infringement",
 	source : [["PBMS", 0]],
@@ -7560,7 +7696,6 @@ SpellsList["infringement"] = {
 	description : "you steal the knowledge and ability to cast a spell from a target that fails an Int save.",
 	descriptionFull : "You magically steal the knowledge to cast and use a spell from another creature. When you target a creature with this spell that creature must make a intelligence saving throw. On a failed save you select one spell that the target knows of a level in which you can cast. When you do so you steal the knowledge and ability to cast that spell allowing you to learn that spell and add it to your spell list. In addition this spell does not count against your known spells. That creature also loses the knowledge and ability to cast that spell, however the creature can choose to relearn it using the appropriate time and actions.",
 };
-
 SpellsList["wail of the banshee"] = {
 	name : "Wail of the Banshee",
 	source : [["PBMS", 0]],
@@ -7575,47 +7710,3 @@ SpellsList["wail of the banshee"] = {
 	description : "you unleash a unearthly wail crea = char lvl w/i range Con Save or take 100 necr dmg. if crea dies you may target one other crea. if it saves its save it is unaffected.",
 	descriptionFull : "When you cast this spell, you unleash a deadly wail of necromatic power. A number of creatures equal to your character level that is within range must make a constitution save throw. On a failed save a creature takes 100 necrotic damage. If the creature dies out right one additional creature within 30ft of it that was unaffected must make a constitution save throw or take 100 necrotic damage. This effect cannot effect you. On a success, the creature is unaffected. If the creature is targeted again due to the death of a nearby creature they must repeat the save throw. If a creature succeeds three times against this effect they are permanently immune to this effect whenever it is created by you.",
 };
-
-//10th-Level Spells
-
-SpellsList["gourd's garden"] = {
-	name : "Gourd's Garden",
-	source : [["PBMS", 0]],
-	classes : ["primordial"],
-	level : 1,
-	school : "Conj",
-	time : "1 a",
-	range : "300 ft",
-	components : "V,S,M",
-	compMaterial : "Intact Mushroom",
-	duration : "24 h",
-	description : "See Full Description",
-	descriptionFull : desc([
-		"You transform your surrounding environment within a 60ft radius of you into a fungal garden that is canopied by fungal netting to protect from the sun. This garden produces the following effects and features under your control for the duration. If this spell is cast again before the it ends the duration is extended another 24 hours. Repeating this process for seven days creates a permanent fungal garden.",
-			"Environmental Effects",
-		"Mycelium: This region imposes disadvantage on saving throws and removes immunity to poison and necrotic damage for all hostile or uninvited creatures within this space.",
-		"Veil: This region grants you and allies immunity to poison and necrotic damage while within the space.",
-		"Gills: As a reaction on any creatures turn, you can negate any spell cast by another creature that deals necrotic or poison damage, or that instills a poisoned condition.",
-		"Spores: Hostile or uninvited creatures that start their turn within this space must make a constitution save throw or the creature is poisoned and takes 3d8 poison damage at the start of each of the creatures turns. If the creature succeeds they are not poisoned and still take 3d8 poison damage.",
-		"Scales: When you cast a spell that deal necrotic or poison damage the damage dice is increased a number of dice equal to your spellcasting modifier.",
-	]),	
-};
-
-//11th-Level Spells
-
-SpellsList["detonate spell slots"] = {
-	name : "Detonate Spell Slots",
-	source : [["PBMS", 0]],
-	classes : ["high priestess", "archon", "archmage"],
-	level : 2,
-	school : "Revoc",
-	time : "1 a",
-	range : "120 ft",
-	components : "V,S",
-	duration : "Instantaneous",
-	save : "Wis",
-	description : "you target on spellcaster, who has to make a Wis Save or all unused spell slots explode dealing 1d8 force for each SL. detonated.",
-	descriptionFull : "You cause the potential magic within another creature within range to explode with immense force. When you cast this spell choose one target that has the ability to cast spells and possesses spell slots within range that target must make a wisdom save throw. On a failure all unexpended spell slots the caster possesses is magically expended dealing 1d8 force damage for each unexpended 1st level spell slot, 2d8 force damage for each 2nd level spell slots, and so on up to 9th level. This causes the spell slots to be expended. On a success the damage from these spell slots deal half as much damage.",
-};
-
-//12th-Level Spells
