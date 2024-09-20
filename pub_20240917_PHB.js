@@ -8192,7 +8192,6 @@ RaceList["dragonborn"] = {
 	age : " reach maturity in late teens and live about 80 years",
 	height : " are about 5 - 7 feet tall",
 	heightMetric : " are about 1,5 - 2,1 metres tall",
-	scores : [0, 0, 0, 0, 0, 0],
 	trait : "Dragonborn (Medium Humanoid)\n\nDraconic Ancestry: Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance trait as well as your appearance.\n\n",
 	features : {
 		"draconic ancestry" : {
@@ -8349,9 +8348,7 @@ RaceList["elf"] = {
 	languageProfs : ["Common", 2],
 	vision : [["Darkvision", 60]],
 	savetxt : { adv_vs : ["avoiding or ending the Charmed condition"] },
-	skillstxt : {
-		primary : "Choose one between Insight, Perception, or Survival",
-	},
+	skillstxt : "Choose one between Insight, Perception, or Survival",
 	age : " reach maturity in early 20s and live about 750 years",
 	height : " are about 5-6 feet tall",
 	trait : "Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nElven Lineage : You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
@@ -8359,8 +8356,8 @@ RaceList["elf"] = {
 };
 RaceSubList["elf-dark"] = {
 	regExpSearch : /^(?=.*elf)(?=.*dark).*$/i,
-	name : "Drow",
-	sortname : "Elf, Dark",
+	name : "Dark Elf",
+	sortname : "Drow",
 	vision : [["Darkvision", 120]],
 	spellcastingAbility : [4, 5, 6],
 	spellcastingBonus : [{
@@ -8409,7 +8406,7 @@ RaceSubList["elf-dark"] = {
 RaceSubList["elf-high"] = {
 	regExpSearch : /^(?=.*elf)(?=.*high).*$/i,
 	name : "High Elf",
-	sortname : "Elf, High",
+	sortname : "High Elf",
 	spellcastingAbility : [4, 5, 6],
 	spellcastingBonus : [{
 		name : "High Elf Lineage",
@@ -8459,7 +8456,7 @@ RaceSubList["elf-high"] = {
 RaceSubList["elf-wood"] = {
 	regExpSearch : /^(?=.*elf)(?=.*wood).*$/i,
 	name : "Wood Elf",
-	sortname : "Elf, Wood",
+	sortname : "Wood Elf",
 	speed : { walk : { spd : 35, enc : 25 } },
 	spellcastingAbility : [4, 5, 6],
 	spellcastingBonus : [{
@@ -8812,9 +8809,7 @@ RaceList["human"] = {
 	size : [3, 4],
 	speed : { walk : { spd : 30, enc : 20 } },
 	languageProfs : ["Common", 2],
-	skillstxt : {
-		primary : "Choose any one skill",
-	},
+	skillstxt : "Choose any one skill",
 	age : " reach maturity in late teens and live about 80 years",
 	height : " are about 2-4 or 4-7 feet tall",
 	trait : "Human (Small or Medium Humanoid)\n\nResourceful : You gain Heroic Inspiration whenever you finish a Long Rest.\n\nSkillful : you gain proficiency in one skill of your choice.\n\nVersatile : You gain an Origin feat of your choice (see chapter 5). Skilled is recommended.",
