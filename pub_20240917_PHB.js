@@ -8168,11 +8168,12 @@ RaceList["aasimar"] = {
 RaceList["dragonborn"] = {
 	regExpSearch : /dragonborn/i,
 	name : "Dragonborn",
-	sortname : "Dragonborn",
 	source : [["PHB2024", 187]],
 	plural : "Dragonborn",
 	size : 3,
-	speed : { walk : { spd : 30, enc : 20 } },
+	speed : {
+		walk : { spd : 30, enc : 20 }
+	},
 	languageProfs : ["Common", 2],
 	weaponOptions : [{
 		regExpSearch : /^(?=.*breath)(?=.*weapon).*$/i,
@@ -8182,14 +8183,16 @@ RaceList["dragonborn"] = {
 		type : "Natural",
 		damage : [1, 10, "fire"],
 		range : "15-ft cone/30-ft line",
-		description : "Hits all in area; Dex save, success - half damage; Usable Prof Bonus per long rest",
+		description : "Hits all in area; Dex save, success - half damage; Usable only once per short rest",
 		abilitytodamage : false,
 		dc : true,
 		dbBreathWeapon : true,
 		selectNow : true
 	}],
 	age : " reach maturity in late teens and live about 80 years",
-	height : " are about 5-7 feet tall",
+	height : " are about 5 - 7 feet tall",
+	heightMetric : " are about 1,5 - 2,1 metres tall",
+	scores : [0, 0, 0, 0, 0, 0],
 	trait : "Dragonborn (Medium Humanoid)\n\nDraconic Ancestry: Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance trait as well as your appearance.\n\n",
 	features : {
 		"draconic ancestry" : {
@@ -8209,23 +8212,15 @@ RaceList["dragonborn"] = {
 						if (v.theWea.dbBreathWeapon && CurrentRace.known === 'dragonborn') {
 							fields.Damage_Die = (CurrentRace.level < 5 ? 1 : CurrentRace.level < 11 ? 2 : CurrentRace.level < 17 ? 3 : 4) + 'd10';
 							if (CurrentRace.variant) {
-								fields.Damage_Type = CurrentRace.dmgres[0];
-							}		
-						};
+							fields.Damage_Type = CurrentRace.dmgres[0];
+							}	
+						}
 					},
 					"",
 					1
 				]
 			}
-		}
-	},
-	variants : ["black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"]
-};
-RaceSubList["dragonborn-black"] = {
-	regExpSearch : /black/i,
-	name : "Black Dragonborn",
-	trait : "Black Dragonborn (Medium Humanoid)\n\nAcid Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Acid damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Acid Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Acid. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
+		},
 		"draconic flight" : {
 			name : "Draconic Flight",
 			source : [["PHB2024", 187]],
@@ -8235,10 +8230,16 @@ RaceSubList["dragonborn-black"] = {
 			usagescalc : "event.value = How('Proficiency Bonus');",
 			recovery : "long rest",
 			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Acid. Once you use this trait, you can't use it again until you finish a Long Rest",
+				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon. Once you use this trait, you can't use it again until you finish a Long Rest",
 			]),
 		},
-	},		
+	},
+	variants : ["black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"]
+};
+RaceSubList["dragonborn-black"] = {
+	regExpSearch : /black/i,
+	name : "Black Dragonborn",
+	trait : "Black Dragonborn (Medium Humanoid)\n\nAcid Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Acid damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Acid Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Acid. Once you use this trait, you can't use it again until you finish a Long Rest.",		
 	dmgres : ["Acid"],
 };
 RaceSubList["dragonborn-blue"] = {
@@ -8246,20 +8247,6 @@ RaceSubList["dragonborn-blue"] = {
 	name : "Blue Dragonborn",
 	sortname : "Dragonborn, Blue",
 	trait : "Blue Dragonborn (Medium Humanoid)\n\nLightning Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Lightning damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Lightning Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Lightning. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Lightning. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},	
 	dmgres : ["Lightning"]
 };
 RaceSubList["dragonborn-brass"] = {
@@ -8267,20 +8254,6 @@ RaceSubList["dragonborn-brass"] = {
 	name : "Brass Dragonborn",
 	sortname : "Dragonborn, Brass",
 	trait : "Brass Dragonborn (Medium Humanoid)\n\nFire Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Fire damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Fire Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},	
 	dmgres : ["Fire"]
 };
 RaceSubList["dragonborn-bronze"] = {
@@ -8288,20 +8261,6 @@ RaceSubList["dragonborn-bronze"] = {
 	name : "Bronze Dragonborn",
 	sortname : "Dragonborn, Bronze",
 	trait : "Bronze Dragonborn (Medium Humanoid)\n\nLightning Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Lightning damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Lightning Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Lightning. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Lightning. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},	
 	dmgres : ["Lightning"]
 };
 RaceSubList["dragonborn-copper"] = {
@@ -8309,20 +8268,6 @@ RaceSubList["dragonborn-copper"] = {
 	name : "Copper Dragonborn",
 	sortname : "Dragonborn, Copper",
 	trait : "Copper Dragonborn (Medium Humanoid)\n\nAcid Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Acid damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Acid Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Acid. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Acid. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},	
 	dmgres : ["Acid"]
 };
 RaceSubList["dragonborn-gold"] = {
@@ -8330,20 +8275,6 @@ RaceSubList["dragonborn-gold"] = {
 	name : "Gold Dragonborn",
 	sortname : "Dragonborn, Gold",
 	trait : "Gold Dragonborn (Medium Humanoid)\n\nFire Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Fire damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Fire Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},
 	dmgres : ["Fire"]
 };
 RaceSubList["dragonborn-green"] = {
@@ -8351,20 +8282,6 @@ RaceSubList["dragonborn-green"] = {
 	name : "Green Dragonborn",
 	sortname : "Dragonborn, Green",
 	trait : "Green Dragonborn (Medium Humanoid)\n\nPoison Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Poison damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Poison Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Poison. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Poison. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},
 	dmgres : ["Poison"]
 };
 RaceSubList["dragonborn-red"] = {
@@ -8372,20 +8289,6 @@ RaceSubList["dragonborn-red"] = {
 	name : "Red Dragonborn",
 	sortname : "Dragonborn, Red",
 	trait : "Red Dragonborn (Medium Humanoid)\n\nFire Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Fire damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Fire Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Fire. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},
 	dmgres : ["Fire"]
 };
 RaceSubList["dragonborn-silver"] = {
@@ -8393,20 +8296,6 @@ RaceSubList["dragonborn-silver"] = {
 	name : "Silver Dragonborn",
 	sortname : "Dragonborn, Silver",
 	trait : "Silver Dragonborn (Medium Humanoid)\n\nCold Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Cold damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Cold Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Ice. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Ice. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},
 	dmgres : ["Cold"]
 };
 RaceSubList["dragonborn-white"] = {
@@ -8414,20 +8303,6 @@ RaceSubList["dragonborn-white"] = {
 	name : "White Dragonborn",
 	sortname : "Dragonborn, White",
 	trait : "White Dragonborn (Medium Humanoid)\n\nCold Breath Weapon : When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus. It does 1d10 Cold damage, half as much damage on a successful save. The damage increases to 2d10 at level 5, 3d10 at level 11, and 4d10 at level 17. You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\nDamage Resistance : You have Resistance to Cold Damage\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nDraconic Flight : When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Ice. Once you use this trait, you can't use it again until you finish a Long Rest.",
-	features : {
-		"draconic flight" : {
-			name : "Draconic Flight",
-			source : [["PHB2024", 187]],
-			minlevel : 5,
-			action : ["bonus action"],
-			usages : "Proficiency bonus per ",
-			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery : "long rest",
-			description : desc([
-				"When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the incapacitated condition. During that time you have a Fly Speed equal to your Speed. Your wings appear to be made of Ice. Once you use this trait, you can't use it again until you finish a Long Rest",
-			]),
-		},
-	},
 	dmgres : ["Cold"]
 };
 RaceList["dwarf"] = {
