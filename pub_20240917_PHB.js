@@ -10289,7 +10289,7 @@ FeatsList["telekinetic"] = {
 				if (spellKey !== "mage hand") return;
 				spellObj.components = "";
 				if (spellObj.description === SpellsList["mage hand"].description) spellObj.description = "Create (in)visible spectral hand for simple tasks or carry up to 10 lb; 1 a to control; can't have multiple";
-				var rangeRx = /(\d+)( ?ft.| ?m)/i;
+				var rangeRx = /(\d+)( ?ft| ?m)/i;
 				if (!/^(?=.*telekinetic)(?=.*feat).*$/i.test(CurrentSpells[spName].name) && rangeRx.test(spellObj.range)) {
 					// add the +30 ft. rang only if not the entry for the feat itself
 					var spRangeM = spellObj.range.match(rangeRx);
@@ -19222,11 +19222,15 @@ CreatureList["ape"] = {
 	challengeRating : "1/2",
 	proficiencyBonus : 2,
 	attacksAction : 2,
+	actions : [{
+		name : "Multiattack",
+		description : "The ape makes two Fist attacks.",
+	}],
 	attacks : [{
 		name : "Fist",
 		ability : 1,
 		damage : [1, 4, "Bludgeoning"],
-		description : "The ape makes two Fist attacks",
+		description : "Two fist attacks as an Attack action",
 		range : "Melee (5 ft.)",
 	}, {
 		name : "Rock (Recharge 6)",
@@ -19311,11 +19315,15 @@ CreatureList["black bear"] = {
 	challengeRating : "1/2",
 	proficiencyBonus : 2,
 	attacksAction : 2,
+	actions : [{
+		name : "Multiattack",
+		description : "The black bear makes two Rend attacks.",
+	}],
 	attacks : [{
 		name : "Rend",
 		ability : 1,
 		damage : [1, 6, "Slashing"],
-		description : "The black bear makes two Rend attacks",
+		description : "Two Rend attacks as an Attack action",
 		range : "Melee (5 ft.)",
 	}],
 };
@@ -19349,6 +19357,7 @@ CreatureList["boar"] = {
 		description : "If boar moves 20 ft. in straight line toward a crea. immediately before hit, the crea. takes an extra 3 (1d6) Pierc. dmg. & if crea. is Large or smaller, it has the Prone cond.",
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Bloodied Fury: While Bloodied, the boar has Advantage on attack rolls.",
 };
 CreatureList["brown bear"] = {
 	name : "Brown Bear",
@@ -19371,11 +19380,15 @@ CreatureList["brown bear"] = {
 	challengeRating : "1",
 	proficiencyBonus : 2,
 	attacksAction : 2,
+	actions : [{
+		name : "Multiattack",
+		description : "The brown bear makes one Bite attack and one Claw attack.",
+	}],
 	attacks : [{
 		name : "Bite",
 		ability : 1,
 		damage : [1, 8, "Piercing"],
-		description : "The brown bear makes one Bite attack and one Claw attack.",
+		description : "One Bite attack and One Claw attack as an Attack action",
 		range : "Melee (5 ft.)",
 	}, {
 		name : "Claw",
@@ -19447,6 +19460,7 @@ CreatureList["cat"] = {
 		damage : [1, "", "Slashing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Jumper: The cat's jump distances is determined using its Dexterity rather than its Strength.",
 };
 CreatureList["constrictor snake"] = {
 	name : "Constrictor Snake",
@@ -19516,6 +19530,7 @@ CreatureList["crab"] = {
 		damage : [1, "", "Bludgeoning"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Amphibious: The crab can breathe air and water.",
 };
 CreatureList["crocodile"] = {
 	name : "Crocodile",
@@ -19551,6 +19566,7 @@ CreatureList["crocodile"] = {
 		range : "Melee (5 ft.)",
 		description : "If the targetis Medium or smaller, it has the Grappled condition. While Grappled, the target has the Restrained condition. A Grappled creature can end the condition by making a successful Athletics check (escape DC 12) as an action on its turn.",
 	}],
+	wildshapeString : "Hold Breath: The crocodile can hold its breath for 1 hour.",
 };
 CreatureList["dire wolf"] = {
 	name : "Dire Wolf",
@@ -19587,6 +19603,7 @@ CreatureList["dire wolf"] = {
 		range : "Melee (5 ft.)",
 		description : "On a hit, a Huge or smaller target has the Prone condition.",
 	}],
+	wildshapeString : "Pack Tactics: The wolf has Advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
 };
 CreatureList["draft horse"] = {
 	name : "Draft Horse",
@@ -19635,12 +19652,16 @@ CreatureList["elephant"] = {
 	challengeRating : "4",
 	proficiencyBonus : 2,
 	attacksAction : 2,
+	actions : [{
+		name : "Multiattack",
+		description : "The elephant makes two Gore attacks.",
+	}],
 	attacks : [{
 		name : "Gore",
 		ability : 1,
 		damage : [2, 8, "Piercing"],
 		range : "Melee (5 ft.)",
-		description : "The elephant makes two Gore attacks. If the elephant moved at least 20 feet straight toward the target immediately before the hit, the target has the Prone condition.",
+		description : "Two Gore attacks as an Attack action. If the elephant moved at least 20 feet straight toward the target immediately before the hit, the target has the Prone condition.",
 	}, {
 		name : "Trample",
 		ability : 1,
@@ -19719,6 +19740,7 @@ CreatureList["frog"] = {
 		damage : [1, "", "Piercing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Amphibious: The frog can breathe air and water| Standing Leap: The Frog's Long Jump is up to 10 feet and its High Jump is up to 5 feet with or without a running start.",
 };
 CreatureList["giant badger"] = {
 	name : "Giant Badger",
@@ -19784,6 +19806,7 @@ CreatureList["giant crab"] = {
 		range : "Melee (5 ft.)",
 		description : "If the target is Medium or smaller, it has the Grappled condition. The crab has two claws, each of which can grapple one target. A grappled creature can end the condition by making a successful (escape DC 11) Athletics check as an action on its turn.",
 	}],
+	wildshapeString : "Amphibious: The giant crab can breathe air and water.",
 };
 CreatureList["giant goat"] = {
 	name : "Giant Goat",
@@ -19834,6 +19857,11 @@ CreatureList["giant seahorse"] = {
 	challengeRating : "1/2",
 	proficiencyBonus : 2,
 	attacksAction : 1,
+	features : [{
+		name : "Water Breathing",
+		description : "The giant seahorse can breathe only underwater.",
+		joinString : "\n   "
+	}],
 	action : [{
 		name : "Bubble Dash",
 		description : "As a Bonus Action, while underwater, the giant seahorse moves up to half its Swim Speed without provoking Opportunity Attacks.",
@@ -19846,6 +19874,7 @@ CreatureList["giant seahorse"] = {
 		range : "Melee (5 ft.)",
 		description : "If the giant seahorse moved at least 20 feet straight toward the target immediately before the hit this attack deals 11 (2d8 + 2) Bludgeoning damage instead.",
 	}],
+	wildshapeString : "Water Breathing: The giant seahorse can breathe only underwater| Bubble Dash: As a Bonus Action, while underwater, the giant seahorse moves up to half its Swim Speed without provoking Opportunity Attacks.",
 };
 CreatureList["giant spider"] = {
 	name : "Giant Spider",
@@ -19891,6 +19920,7 @@ CreatureList["giant spider"] = {
 		range : "Melee (5 ft.)",
 		description : "On a hit, this attack deals an additional 7 (2d6) Poison damage.",
 	}],
+	wildshapeString : "Spider Climb: The spider can climb difficult surfaces, including along ceilings, without needing to make an ability check| Web Walker: The spider ignores movement restrictions caused by webs, and it knows the location of any other creature in contact with the same web| Web (Recharge 5-6): Dexterity Saving Throw: DC 13, one creature the spider can see within 60 feet. Failure: The target has the Restrained condition condition until the web is destroyed (AC 10; HP 5; Vulnerability to Fire damage; Immunity to Poison and Psychic damage).",
 };
 CreatureList["giant weasel"] = {
 	name : "Giant Weasel",
@@ -19991,7 +20021,7 @@ CreatureList["imp"] = {
 	type : "Fiend",
 	subtype : "devil",
 	alignment : "Lawful Evil",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 13,
 	hp : 21,
 	hd : [6, 4],
@@ -20065,6 +20095,9 @@ CreatureList["lion"] = {
 		name : "Roar",
 		description : "Wisdom Saving Throw: DC 11, one creature within 15 feet. Failure: The target has the Frightened condition until the start of the lion's next turn.",
 		joinString : "\n   "
+	}, {
+		name : "Multiattack",
+		description : "The lion makes two Rend attacks. It can replace one of these attacks with a use of Roar.",
 	}],
 	features : [{
 		name : "Pack Tactics",
@@ -20080,8 +20113,9 @@ CreatureList["lion"] = {
 		ability : 1,
 		damage : [1, 8, "Slashing"],
 		range : "Melee (5 ft.)",
-		description : "The lion makes two Rend attacks. It can replace one of these attacks with a use of Roar.",
+		description : "Two Rend attacks as an Attack action. Can replace one of these attacks with a use of Roar.",
 	}],
+	wildshapeString : "Pack Tactics: The lion has Adantage on an attack roll against a creature if at least one of the lion's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition| Running Leap: With a 10-foot running start, the lion can Long Jump up to 25 feet.",
 };
 CreatureList["lizard"] = {
 	name : "Lizard",
@@ -20116,6 +20150,7 @@ CreatureList["lizard"] = {
 		damage : [1, "", "Piercing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Spider Climb: The lizard can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
 };
 CreatureList["mastiff"] = {
 	name : "Mastiff",
@@ -20179,6 +20214,7 @@ CreatureList["mule"] = {
 		damage : [1, 4, "Bludgeoning"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Beast of Burden: The mule counts as one size larger for the purpose of determining its carrying capacity.",
 };
 CreatureList["octopus"] = {
 	name : "Octopus",
@@ -20224,6 +20260,7 @@ CreatureList["octopus"] = {
 		damage : [1, "", "Bludgeoning"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Compresson: The octopus can move through a space as narrow as 1 inch without squeezing| Water Breathing: The octopus can breathe only underwater.",
 };
 CreatureList["owl"] = {
 	name : "Owl",
@@ -20260,6 +20297,7 @@ CreatureList["owl"] = {
 		damage : [1, "", "Slashing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Flyby: The owl doesn't provoke Opportunity Attacks when it flies out of an enemy's reach.",
 };
 CreatureList["panther"] = {
 	name : "Panther",
@@ -20288,6 +20326,9 @@ CreatureList["panther"] = {
 		name : "Prowl",
 		description : "The panther moves up to half its Speed without provoking Opportunity Attacks. At the end of this movement, the panther can take the Hide action.",
 		joinString : "\n   ",
+	}, {
+		name : "Multiattack",
+		description : "The panther makes one Pounce attack and uses Prowl.",
 	}],
 	attacks : [{
 		name : "Pounce",
@@ -20331,7 +20372,7 @@ CreatureList["pseudodragon"] = {
 	size : 5,
 	type : "Dragon",
 	alignment : "Neutral Good",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 14,
 	hp : 10,
 	hd : [3, 4],
@@ -20357,12 +20398,15 @@ CreatureList["pseudodragon"] = {
 		name : "Sting",
 		description : "Constitution Saving Throw: DC 12, one creature the pseudodragon can see within 5 feet. Failure 2d4+2 Poison damage, and the target has the Poisoned condition for 1 hour. Failure by 5 or More: The Poisoned target also has the Unconscious Condition until it takes damage or another creature uses an action to shake it awake.",
 		joinString : "\n   ",
+	}, {
+		name : "Multiattack",
+		description : "The pseudodragon makes two Bite attacks.",
 	}],
 	attacks : [{
 		name : "Bite",
 		ability : 2,
 		damage : [1, 4, "Piercing"],
-		description : "The psuedodragon makes two Bite attacks",
+		description : "Two Bite attacks as an Attack action.",
 		range : "Melee (5 ft.)",
 	}],
 };
@@ -20374,7 +20418,7 @@ CreatureList["quasit"] = {
 	type : "Fiend",
 	subtype : "demon",
 	alignment : "Chaotic Evil",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 13,
 	hp : 25,
 	hd : [10, 4],
@@ -20453,6 +20497,7 @@ CreatureList["rat"] = {
 		damage : [1, "", "Piercing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Agile: The rat doesn't provoke Opportunity Attacks when it moves out of an enemy's reach.",
 };
 CreatureList["raven"] = {
 	name : "Raven",
@@ -20488,6 +20533,7 @@ CreatureList["raven"] = {
 		damage : [1, "", "Piercing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Mimicry: The raven can mimic simple sounds it has heard, such as a whisper or chitter. A hearer can discern the sounds are imitations with a successful DC 10 Wisdom (Insight) check.",
 };
 CreatureList["reef shark"] = {
 	name : "Reef Shark",
@@ -20526,6 +20572,7 @@ CreatureList["reef shark"] = {
 		damage : [2, 4, "Piercing"],
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Pack Tactics: The shark has Advantage on an attack roll against a creature if at least one of the shark's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition| Water Breathing: The shark can breathe only underwater.",
 };
 CreatureList["riding horse"] = {
 	name : "Riding Horse",
@@ -20588,7 +20635,7 @@ CreatureList["skeleton"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Lawful Evil",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 13,
 	hp : 13,
 	hd : [2, 8],
@@ -20626,7 +20673,7 @@ CreatureList["slaad Tadpole"] = {
 	size : 5,
 	type : "Aberration",
 	alignment : "Chaotic Neutral",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 12,
 	hp : 7,
 	hd : [3, 4],
@@ -20662,7 +20709,7 @@ CreatureList["sphinx of wonder"] = {
 	size : 5,
 	type : "Celestial",
 	alignment : "Lawful Good",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 13,
 	hp : 24,
 	hd : [7, 4],
@@ -20737,6 +20784,7 @@ CreatureList["spider"] = {
 		description : "and the target must succeed on a DC 9 Constitution saving throw or take 1d4 poison damage",
 		range : "Melee (5 ft.)",
 	}],
+	wildshapeString : "Spider Climb: The spider can climb difficult surfaces including ceilings, without needing to make an ability check| Web Walker: The spider ignores movement restrictions caused by webs, and the spider knows the location of any other creature in contact with the same web.",
 };
 CreatureList["sprite"] = {
 	name : "Sprite",
@@ -20745,7 +20793,7 @@ CreatureList["sprite"] = {
 	size : 5,
 	type : "Fey",
 	alignment : "Neutral Good",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 15,
 	hp : 10,
 	hd : [4, 4],
@@ -20811,6 +20859,9 @@ CreatureList["tiger"] = {
 		name : "Prowl",
 		description : "The tiger moves up to half its Speed without provoking Opportunity Attacks. At the end of this movement, the tiger can take the Hide action.",
 		joinString : "\n   ",
+	}, {
+		name : "Multiattack",
+		description : "The tiger makes one Pounce attack and uses Prowl.",
 	}],
 	attacks : [{
 		name : "Pounce",
@@ -20827,7 +20878,7 @@ CreatureList["venomous snake"] = {
 	size : 5,
 	type : "Beast",
 	alignment : "Unaligned",
-	companion : "familiar",
+	companion : "pact_of_the_chain",
 	ac : 12,
 	hp : 5,
 	hd : [2, 4],
@@ -20944,6 +20995,7 @@ CreatureList["wolf"] = {
 		range : "Melee (5 ft.)",
 		description : "If the target is Medium or smaller, it has the Prone condition.",
 	}],
+	wildshapeString : "Pack Tactics: The wolf has Advantage on attack rolls against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
 };
 CreatureList["zombie"] = {
 	name : "Zombie",
