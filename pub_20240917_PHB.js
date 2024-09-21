@@ -13389,7 +13389,7 @@ GearList["waterskin"] = {
 	weight : 5
 };
 //Packs	
-PacksList["burglar's pack"] = {
+PacksList["burglar"] = {
 	name : "Burglar's pack (16 gp)",
 	source : [["PHB2024", 224]],
 	items : [
@@ -13406,7 +13406,7 @@ PacksList["burglar's pack"] = {
 		["Waterskin", "", 5],
 	]
 };
-PacksList["diplomat's pack"] = {
+PacksList["diplomat"] = {
 	name : "Diplomat's pack (39 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -13423,7 +13423,7 @@ PacksList["diplomat's pack"] = {
 		["Tinderbox", "", 1],
 	]
 };
-PacksList["dungeoneer's pack"] = {
+PacksList["dungeoneer"] = {
 	name : "Dungeoneer's pack (12 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -13438,7 +13438,7 @@ PacksList["dungeoneer's pack"] = {
 		["Waterskin", "", 5],
 	]
 };
-PacksList["entertainer's pack"] = {
+PacksList["entertainer"] = {
 	name : "Entertainer's pack (40 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -13454,7 +13454,7 @@ PacksList["entertainer's pack"] = {
 		["Waterskin", "", 5],
 	]
 };
-PacksList["explorer's pack"] = {
+PacksList["explorer"] = {
 	name : "Explorer's pack (10 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -13468,7 +13468,7 @@ PacksList["explorer's pack"] = {
 		["Waterskin", "", 5],
 	]	
 };
-PacksList["priest's pack"] = {
+PacksList["priest"] = {
 	name : "Priest's pack (33 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -13481,7 +13481,7 @@ PacksList["priest's pack"] = {
 		["Tinderbox", "", 1],
 	]	
 };
-PacksList["scholar's pack"] = {
+PacksList["scholar"] = {
 	name : "Scholar's pack (40 gp)",
 	source : [["PHB2024", 225]],
 	items : [
@@ -19698,7 +19698,6 @@ CreatureList["frog"] = {
 		"Perception" : 1,
 		"Stealth" : 3,			
 	},
-	senses : "",
 	senses : "Darkvision 30 ft.",
 	passivePerception : 11,
 	languages : "None",
