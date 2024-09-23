@@ -3568,7 +3568,7 @@ AddSubClass("monk", "open hand", {
 			source : [["PHB2024", 107]],
 			minlevel : 11,
 			description : desc([
-				"When you take a Bonus Action other than Step of the Wind,you can also use Step of the Wind immediately after that Bonus Action.",
+				"When you take a Bonus Action other than Step of the Wind, you can also use Step of the Wind immediately after that Bonus Action.",
 			]),	
 		},
 		"subclassfeature17" : {
@@ -6777,7 +6777,7 @@ ClassList["warlock"] = {
 				}],
 				description : desc([
 					"Stitching together strands of shadow, you conjure forth a boo in your hand at the end of a Short or Long Rest. This Book of Shadows (you determine its appearance) contains eldritch magic that only you can access, granting you the benefits below. The book disappears if you conjure another book with this feature or if you die.",
-					"Cantrips and Rituals :When the book appears, choose three cantrips, and choose two level 1 spells that have the Ritual tag. The spells can be from any class's spell list, and they must be spells you don't already have prepared. While the book is on your person, you have the chosen spells prepared, and they function as Warlock spells for you.",
+					"Cantrips and Rituals : When the book appears, choose three cantrips, and choose two level 1 spells that have the Ritual tag. The spells can be from any class's spell list, and they must be spells you don't already have prepared. While the book is on your person, you have the chosen spells prepared, and they function as Warlock spells for you.",
 					"Spellcasting Focus : You can use the book as a Spellcasting Focus.",
 				]),
 			},
@@ -8396,7 +8396,7 @@ RaceList["elf"] = {
 	skillstxt : "Choose one between Insight, Perception, or Survival",
 	age : " reach maturity in early 20s and live about 750 years",
 	height : " are about 5-6 feet tall",
-	trait : "Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nElven Lineage : You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nElven Lineage : You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	variants : ["dark", "high", "wood"]
 };
 RaceSubList["elf-dark"] = {
@@ -8412,7 +8412,7 @@ RaceSubList["elf-dark"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "Drow (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 120 feet.\n\nDrow Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Dancing Lights cantrip. When you reach character level 3 you learn the Faerie Fire spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Drow (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 120 feet.\n\nDrow Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Dancing Lights cantrip. When you reach character level 3 you learn the Faerie Fire spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"drow lineage3" : {
 			name : "Faerie Fire",
@@ -8462,7 +8462,7 @@ RaceSubList["elf-high"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "High Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nHigh Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list. When you reach character level 3 you learn the Detect Magic spell, and when you reach character level 5 you learn the Misty Step spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "High Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nHigh Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list. When you reach character level 3 you learn the Detect Magic spell, and when you reach character level 5 you learn the Misty Step spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"high elf lineage3" : {
 			name : "Detect Magic",
@@ -8511,7 +8511,7 @@ RaceSubList["elf-wood"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "Wood Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nWood Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Druidcraft cantrip. When you reach character level 3 you learn the Longstrider spell, and when you reach character level 5 you learn the Pass without Trace spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Wood Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nWood Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Druidcraft cantrip. When you reach character level 3 you learn the Longstrider spell, and when you reach character level 5 you learn the Pass without Trace spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"wood elf lineage3" : {
 			name : "Longstrider",
@@ -8936,7 +8936,7 @@ RaceSubList["tiefling-abyssal"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Abyssal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Poison Spray cantrip. When you reach character level 3 you learn the Ray of Sickness spell, and when you reach character level 5 you learn the Hold Person spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Abyssal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Poison Spray cantrip. When you reach character level 3 you learn the Ray of Sickness spell, and when you reach character level 5 you learn the Hold Person spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"abyssal lineage3" : {
 			name : "Ray of Sickness",
@@ -8986,7 +8986,7 @@ RaceSubList["tiefling-chthonic"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Chthonic Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Chill Touch cantrip. When you reach character level 3 you learn the False Life spell, and when you reach character level 5 you learn the Ray of Enfeeblement spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Chthonic Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Chill Touch cantrip. When you reach character level 3 you learn the False Life spell, and when you reach character level 5 you learn the Ray of Enfeeblement spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"chthonic lineage3" : {
 			name : "False Life",
@@ -9036,7 +9036,7 @@ RaceSubList["tiefling-infernal"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Infernal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Fire Bolt cantrip. When you reach character level 3 you learn the Hellish Rebuke spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Infernal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Fire Bolt cantrip. When you reach character level 3 you learn the Hellish Rebuke spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"infernal lineage3" : {
 			name : "Hellish Rebuke",
@@ -12299,7 +12299,7 @@ WeaponsList["sorcerous burst"] = {
 	type : "Cantrip",
 	damage : ["C", 8, "acid"],
 	range : "120 ft.",
-	description : "(Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg;if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod)",
+	description : "(Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg; if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod)",
 	abilitytodamage : false
 };
 WeaponsList["starry wisp"] = {
@@ -13539,7 +13539,7 @@ PacksList["scholar"] = {
 		["Parchment, sheets of", 10, ""],
 		["Tinderbox", "", 1],
 	]
-};	
+};
 //Spells
 SpellsList["acid splash"] = {
 	name : "Acid Splash",
@@ -14073,7 +14073,7 @@ SpellsList["blinding smite"] = {
 	duration : "1 min",
 	save : "Con",
 	description : "Next melee weapon hit +3d8+1d8/SL Radiant dmg; save or blinded; extra save at end of every turn",
-	descriptionFull : "The target hit by the attack roll takes an extra 3d8 Force damage from the attack and the target must succeed on a Constitution saving throw, or it has the Blinded condition until the spell ends. At the end of each of its turns, the Blinded target makes a Constitution saving throw,ending the spell on itself on a success." + AtHigherLevels + "The extra damage increases b 1d8 for each spell slot level above 3."
+	descriptionFull : "The target hit by the attack roll takes an extra 3d8 Force damage from the attack and the target must succeed on a Constitution saving throw, or it has the Blinded condition until the spell ends. At the end of each of its turns, the Blinded target makes a Constitution saving throw, ending the spell on itself on a success." + AtHigherLevels + "The extra damage increases b 1d8 for each spell slot level above 3."
 };
 SpellsList["blindness/deafness"] = {
 	name : "Blindness/Deafness",
@@ -14140,8 +14140,8 @@ SpellsList["call lightning"] = {
 	components : "V,S",
 	duration : "Conc, 10 min",
 	save : "Dex",
-	description : "60-ft. rad 10-ft. high cloud; 1 a all in 5-ft. rad under cloud 3d10+1d10/SL Lightning dmg; save half",
-	descriptionShorter : "60-ft. rad 10-ft. high cloud; 1 a all in 5-ft. rad under it 3d10+1d10/SL Lightn. dmg; save half",
+	description : "60-ft. rad 10-ft. high cloud; 1 a. all in 5-ft. rad under cloud 3d10+1d10/SL Lightning dmg; save half",
+	descriptionShorter : "60-ft. rad 10-ft. high cloud; 1 a. all in 5-ft. rad under it 3d10+1d10/SL Lightn. dmg; save half",
 	descriptionFull : "A storm cloud appears at a point within range that you can see above yourself. It takes the shape of a Cylinder that is 10 feet tall with a 60-foot radius." + "\n   " + "When you cast the spell, choose a point you can see under the cloud. A lightning bolt shoots from the cloud to that point. Each creature within 5 feet of that point makes a Dexterity saving throw, taking 3d10 Lightning damage on a failed save or half as much damage on a successful one." + "\n   " + "Until the spell ends, you can take a Magic action to call down lightning in that way again, targeting the same point or a different one." + "\n   " + "If you're outside in a storm when you cast this spell, the spell gives you control over that storm instead of creating a new one. Under such conditions, the spell's damage increases by 1d10." + AtHigherLevels + "The damage increases by 1d10 for each spell slot level above 3."
 };
 SpellsList["calm emotions"] = {
@@ -14666,7 +14666,7 @@ SpellsList["cordon of arrows"] = {
 	duration : "8 h",
 	save : "Dex",
 	description : "4+2/SL arrows/bolts attack first crea in 30 ft. one at a time for 2d4 Piercing dmg",
-	descriptionFull : "You touch up to four nonmagical Arrows or Bolts and plant them in the ground in your space. Until the spell ends, the ammunition can't be physically uprooted, and whenever a creature other than you enters a space within 30 feet of the ammunition for the first time on a turn or ends its turn there,one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 2d4 Piercing damage. The piece of ammunition is then destroyed. The spell ends when none of the ammunition remains planted in the ground." + "\n   " + "When you cast this spell, you can designate any creatures you choose, and the spell ignores them." + AtHigherLevels + "The amount of ammunition that can be affected increases by two for each spell slot level above 2."
+	descriptionFull : "You touch up to four nonmagical Arrows or Bolts and plant them in the ground in your space. Until the spell ends, the ammunition can't be physically uprooted, and whenever a creature other than you enters a space within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 2d4 Piercing damage. The piece of ammunition is then destroyed. The spell ends when none of the ammunition remains planted in the ground." + "\n   " + "When you cast this spell, you can designate any creatures you choose, and the spell ignores them." + AtHigherLevels + "The amount of ammunition that can be affected increases by two for each spell slot level above 2."
 };
 SpellsList["counterspell"] = {
 	name : "Counterspell",
@@ -14722,7 +14722,7 @@ SpellsList["create undead"] = {
 	compMaterial : "one 150+ gp black onyx stone for each corpse.",
 	duration : "Instantaneous",
 	description : "Turn corpses into 3+1/SL ghouls i.a.; control 24h; bns a command 120 ft.; see B (150gp/corpse cons.)", // i.a. -> inter alia -> among others
-	descriptionFull : "You can cast this spell only at night. Choose up to three corpses of Medium or Small Humanoids within range. Each one becomes a Ghoul under your control (see the Monster Manual for its stat block)." + "\n   " + "As a Bonus Action on each of your turns, you can mentally command any creature you animated with this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command all of them at the same time,issuing the same command to them). You decide what action the creature will take and where it will move on its next turn, or you can issue a general command, such as to guard a particular place. If you issue no commands, the creature takes the Dodge action and moves only to avoid harm. Once given an order, the creature continues to follow the order until its task is complete." + "\n   " + "The creature is under your control for 24 hours, after which it stops obeying any command you have given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature before the current 24-hour period ends. This use of the spell reasserts your control over up to three creatures you have animated with this spell, rather than animating new ones." + AtHigherLevels + "When you cast this spell using a 7th-level spell slot, you can animate or reassert control over four ghouls. When you cast this spell using an 8th-level spell slot, you can animate or reassert control over five ghouls or two ghasts or wights. When you cast this spell using a 9th-level spell slot, you can animate or reassert control over six ghouls, three ghasts or wights, or two mummies."
+	descriptionFull : "You can cast this spell only at night. Choose up to three corpses of Medium or Small Humanoids within range. Each one becomes a Ghoul under your control (see the Monster Manual for its stat block)." + "\n   " + "As a Bonus Action on each of your turns, you can mentally command any creature you animated with this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command all of them at the same time, issuing the same command to them). You decide what action the creature will take and where it will move on its next turn, or you can issue a general command, such as to guard a particular place. If you issue no commands, the creature takes the Dodge action and moves only to avoid harm. Once given an order, the creature continues to follow the order until its task is complete." + "\n   " + "The creature is under your control for 24 hours, after which it stops obeying any command you have given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature before the current 24-hour period ends. This use of the spell reasserts your control over up to three creatures you have animated with this spell, rather than animating new ones." + AtHigherLevels + "When you cast this spell using a 7th-level spell slot, you can animate or reassert control over four ghouls. When you cast this spell using an 8th-level spell slot, you can animate or reassert control over five ghouls or two ghasts or wights. When you cast this spell using a 9th-level spell slot, you can animate or reassert control over six ghouls, three ghasts or wights, or two mummies."
 };
 SpellsList["creation"] = {
 	name : "Creation",
@@ -18131,8 +18131,8 @@ SpellsList["sorcerous burst"] = {
 	range : "120 ft.",
 	components : "V,S",
 	duration : "Instantaneous",
-	description : "Spell atk 1 crea 1d8 (Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg;if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod); +1d8 at CL 5, 11, and 17",
-	descriptionCantripDie : "Spell atk 1 crea `CD`d8 (Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg;if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod)",
+	description : "Spell atk 1 crea 1d8 (Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg; if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod); +1d8 at CL 5, 11, and 17",
+	descriptionCantripDie : "Spell atk 1 crea `CD`d8 (Acid/Cold/Fire/Lightn/Pois/Psy/Thund) dmg; if you roll an 8 add 1d8 dmg(you can add a number of d8's equal to spell mod)",
 	descriptionFull : "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lighting, Poison, Psychic, or Thunder." + "\n   " + "If you roll an 8 on the d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier." + "\n   " + "Cantrip Upgrade. The damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
 };
 SpellsList["spare the dying"] = {
@@ -18872,7 +18872,7 @@ SpellsList["true strike"] = {
 	components : "S,M",
 	compMaterial : "A weapon with which you have proficiency that is worth 1+ cp",
 	duration : "Instantaneous",
-	description : "Make an atk roll with the weapon used in casting, use spell mod instead of Str/Dex,can deal Rad dmg, at lvl 5, 11, 17 the atk does extra damage +1d6 per upgrade.",
+	description : "Make an atk roll with the weapon used in casting, use spell mod instead of Str/Dex, can deal Rad dmg, at lvl 5, 11, 17 the atk does extra damage +1d6 per upgrade.",
 	descriptionFull : "Guided by a flash of magical insight, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage roll instead of using Strength or Dexterity. If the attack deals damage, it can be Radiant damage or the weapon's normal damage type (your choice)." + "\n   " + "Cantrip Upgrade. Whether you deal Radiant damage or the weapon's normal damage type, the attack deals extra Radiant damage when you reach levels 5 (1d6), 11 (2d6) , and 17 (3d6)."
 };
 SpellsList["tsunami"] = {
@@ -19609,7 +19609,7 @@ CreatureList["crocodile"] = {
 		ability : 1,
 		damage : [1, 8, "Piercing"],
 		range : "Melee (5 ft.)",
-		description : "If the targetis Medium or smaller, it has the Grappled condition. While Grappled, the target has the Restrained condition. A Grappled creature can end the condition by making a successful Athletics check (escape DC 12) as an action on its turn.",
+		description : "If the target is Medium or smaller, it has the Grappled condition. While Grappled, the target has the Restrained condition. A Grappled creature can end the condition by making a successful Athletics check (escape DC 12) as an action on its turn.",
 	}],
 	wildshapeString : "Hold Breath: The crocodile can hold its breath for 1 hour.",
 };
@@ -19743,7 +19743,7 @@ CreatureList["elk"] = {
 		ability : 1,
 		damage : [1, 6, "Bludgeoning"],
 		range : "Melee (5 ft.)",
-		description : "If the elk moved at least 20 feet straight toward the target immediately bfore the hit, the target takes an extra 3 (1d6) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
+		description : "If the elk moved at least 20 feet straight toward the target immediately before the hit, the target takes an extra 3 (1d6) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
 	}],
 };
 CreatureList["frog"] = {
@@ -19880,7 +19880,7 @@ CreatureList["giant goat"] = {
 		ability : 1,
 		damage : [1, 6, "Bludgeoning"],
 		range : "Melee (5 ft.)",
-		description : "If the giant goat moved at least 20 feet traight toward the target immediately before the hit, the target takes an extra 5 (2d4) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
+		description : "If the giant goat moved at least 20 feet straight toward the target immediately before the hit, the target takes an extra 5 (2d4) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
 	}],
 };
 CreatureList["giant seahorse"] = {
@@ -20025,7 +20025,7 @@ CreatureList["goat"] = {
 		ability : 1,
 		damage : [1, "", "Bludgeoning"],
 		range : "Melee (5 ft.)",
-		description : "If the goat moved at least 20 feet traight toward the target immediately before the hit, the target takes an extra 2 (1d4) Bludgeoning damage.",
+		description : "If the goat moved at least 20 feet straight toward the target immediately before the hit, the target takes an extra 2 (1d4) Bludgeoning damage.",
 	}],
 };
 CreatureList["hawk"] = {
@@ -20146,7 +20146,7 @@ CreatureList["lion"] = {
 	}],
 	features : [{
 		name : "Pack Tactics",
-		description : "The lion has Adantage on an attack roll against a creature if at least one of the lion's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		description : "The lion has Advantage on an attack roll against a creature if at least one of the lion's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
 		joinString : "\n   "
 	}, {
 		name : "Running Leap",
@@ -20160,7 +20160,7 @@ CreatureList["lion"] = {
 		range : "Melee (5 ft.)",
 		description : "Two Rend attacks as an Attack action. Can replace one of these attacks with a use of Roar.",
 	}],
-	wildshapeString : "Pack Tactics: The lion has Adantage on an attack roll against a creature if at least one of the lion's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition| Running Leap: With a 10-foot running start, the lion can Long Jump up to 25 feet.",
+	wildshapeString : "Pack Tactics: The lion has Advantage on an attack roll against a creature if at least one of the lion's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition| Running Leap: With a 10-foot running start, the lion can Long Jump up to 25 feet.",
 };
 CreatureList["lizard"] = {
 	name : "Lizard",
@@ -20305,7 +20305,7 @@ CreatureList["octopus"] = {
 		damage : [1, "", "Bludgeoning"],
 		range : "Melee (5 ft.)",
 	}],
-	wildshapeString : "Compresson: The octopus can move through a space as narrow as 1 inch without squeezing| Water Breathing: The octopus can breathe only underwater.",
+	wildshapeString : "Compression: The octopus can move through a space as narrow as 1 inch without squeezing| Water Breathing: The octopus can breathe only underwater.",
 };
 CreatureList["owl"] = {
 	name : "Owl",
@@ -20970,7 +20970,7 @@ CreatureList["warhorse"] = {
 		name : "Hooves",
 		ability : 1,
 		damage : [2, 4, "Bludgeoning"],
-		description : "If the warhorse moved atleast 20 feet straight toward the target immediately before the hit, the target takes an extra 5 (2d4) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
+		description : "If the warhorse moved at least 20 feet straight toward the target immediately before the hit, the target takes an extra 5 (2d4) Bludgeoning damage and, if it is Huge or smaller, has the Prone condition.",
 	}],
 };
 CreatureList["weasel"] = {
@@ -21065,7 +21065,7 @@ CreatureList["zombie"] = {
 	attacksAction : 1,
 	features : [{
 		name : "Undead Fortitude",
-		description : "If damage rduces the zombie to 0 Hit Points, it must make a Constitution saving throw with a DC of 5 pus the damage taken unless the damage is Radiant or from a Critical Hit. On a successful save, the zombie drops to 1 Hit Point instead.",
+		description : "If damage reduces the zombie to 0 Hit Points, it must make a Constitution saving throw with a DC of 5 plus the damage taken unless the damage is Radiant or from a Critical Hit. On a successful save, the zombie drops to 1 Hit Point instead.",
 		joinString : "\n   ",
 	}],
 	attacks : [{
