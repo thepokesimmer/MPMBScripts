@@ -1,5 +1,5 @@
 var iFileName = "pub_20240917_PHB.js";
-RequiredSheetVersion("13.1.14");
+RequiredSheetVersion("13.2.1");
 SourceList.PHB2024 = {
 	name : "2024 Player's Handbook",
 	abbreviation : "PHB2024",
@@ -8,6 +8,7 @@ SourceList.PHB2024 = {
 	url : "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
 	date : "2024/09/17",
 };
+// Coded By : ThePokésimmer with contributions from Reading Toskr & Rocky
 //Classes
 ClassList["barbarian"] = {
 	regExpSearch : /barbarian/i,
@@ -771,7 +772,8 @@ ClassList["bard"] = {
 	spellcastingFactor : 1,
 	spellcastingKnown : {
 		cantrips : [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-		spells : [4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17,18, 18, 19, 20, 21, 22],
+		spells : "list",
+		prepared : true,
 	},
 	features : {
 		"bardic inspiration" : {
@@ -797,6 +799,17 @@ ClassList["bard"] = {
 			name : "Spellcasting",
 			source : [["PHB2024", 59-60]],
 			minlevel : 1,
+			calcChanges : {
+				spellCalc : [
+					function( type, spellcasters, ability) {
+						if(type === "prepare" && spellcasters.indexOf("bard") !== -1) {
+							var lvl = classes.known.bard.level;
+							var sArr = [0, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17, 18, 18, 19, 20, 21, 22];
+							return sArr[lvl] - lvl - Number(What("Cha Mod"));
+						}
+					}
+				]
+			},
 			description : desc([
 				"You have learned to cast spells through your bardic arts. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Bard spells, which appear in the Bard spell list later in the class's description.",
 				"Cantrips : You know two cantrips of your choice from the Bard spell list. Dancing Lights and Vicious Mockery are recommended.",
@@ -1232,23 +1245,39 @@ ClassList["cleric"] = {
 			name : "Divine Order",
 			source : [["PHB2024", 70]],
 			minlevel : 1,
-			choices : ["Protector", "Thaumaturge"],
-			"protector" : {
-				name : "Protector",
-				armorProfs : [false, false, true, false],
-				weaponProfs : [false, true],
-				description : "Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor."
-			},
-			"thaumaturge" : {
-				name : "Thaumaturge",
-				spellcastingBonus : [{
-					name : "Thaumaturge",
-					"class" : ["cleric"],
-					level : [0, 0],
-		  times : 1,
-				}],
-				description : "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana or Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).",
-			},
+			choices : ["Protector", "Thaumaturge (Arcana)", "Thaumaturge (Religion)"],
+				"protector" : {
+					name : "Protector",
+					armorProfs : [false, false, true, false],
+					weaponProfs : [false, true],
+					description : "Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor."
+				},
+				"thaumaturge (arcana)" : {
+					name : "Thaumaturge (Arcana)",
+					spellcastingBonus : [{
+						name : "Thaumaturge",
+						"class" : ["cleric"],
+						level : [0, 0],
+						times : 1,
+					}],
+					addMod : [
+						{ type: "skill", field : "Arcana", mod : "Wis", text : "I can add my Wisdom modifier to Arcana rolls." },
+					],
+					description : "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+				},
+				"thaumaturge (religion)" : {
+					name : "Thaumaturge (Religion)",
+					spellcastingBonus : [{
+						name : "Thaumaturge",
+						"class" : ["cleric"],
+						level : [0, 0],
+						times : 1,
+					}],
+					addMod : [
+						{ type: "skill", field : "Religion", mod : "Wis", text : "I can add my Wisdom modifier to Religion rolls." },
+					],
+					description : "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+				},
 			description : desc([
 				"You have dedicated yourself to one of the following sacred roles of your choice.",
 			]),
@@ -1651,17 +1680,33 @@ ClassList["druid"] = {
 			name : "Primal Order",
 			source : [["PHB2024", 80]],
 			minlevel : 1,
-			choices : ["Magician", "Warden"],
-			"magician" : {
-				name : "Magician",
-				spellcastingBonus : [{
-					name : "Magician",
-					"class" : ["druid"],
-					level : [0, 0],
-					times : 1,
-				}],
-				description : "You know one extra cantrip from the Druid spell list. In addition, your mystical connection to nature gives you a bonus to your Intelligence (Arcana or Nature) checks. The bonus equals your Wisdom modifier (minimum of +1).",
-			},
+			choices : ["Magician (Arcana)", "Magician (Nature)", "Warden"],
+			"magician (arcana)" : {
+					name : "Magician (Arcana)",
+					spellcastingBonus : [{
+						name : "Magician",
+						"class" : ["druid"],
+						level : [0, 0],
+						times : 1,
+					}],
+					addMod : [
+						{ type: "skill", field : "Arcana", mod : "Wis", text : "I can add my Wisdom modifier to Arcana rolls." },
+					],
+					description : "You know one extra cantrip from the Druid spell list. In addition, your mystical connection to nature gives you a bonus to your Intelligence (Arcana) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+				},
+				"magician (nature)" : {
+					name : "Magician (Nature)",
+					spellcastingBonus : [{
+						name : "Magician",
+						"class" : ["druid"],
+						level : [0, 0],
+						times : 1,
+					}],
+					addMod : [
+						{ type: "skill", field : "Nature", mod : "Wis", text : "I can add my Wisdom modifier to Nature rolls." },
+					],
+					description : "You know one extra cantrip from the Druid spell list. In addition, your mystical connection to nature gives you a bonus to your Intelligence (Nature) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+				},
 			"warden" : {
 				name : "Warden",
 				armorProfs : [false, false, true, false],
@@ -16851,7 +16896,7 @@ SpellsList["mending"] = {
 	compMaterial : "Two lodestones",
 	duration : "Instantaneous",
 	description : "Repair a single broken object no larger than 1 cu ft.; can't restore magic to broken magic item",
-	descriptionFull : "This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn clack, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage." + "\n   " + "This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object."
+	descriptionFull : "This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage." + "\n   " + "This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object."
 };
 SpellsList["message"] = {
 	name : "Message",
