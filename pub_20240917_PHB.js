@@ -8,9 +8,17 @@ SourceList.PHB2024 = {
 	url : "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
 	date : "2024/09/17",
 };
-// Coded By : ThePokésimmer with contributions from Reading Toskr & Rocky
+// Coded By: ThePokésimmer with contributions from Shroo
 //Classes
-ClassList["barbarian"] = {
+function legacyClassRefactor(classKey, newClass){
+  if (!(classKey in ClassList)) {
+    ClassList[classKey] = newClass;
+  } else {
+    newClass.subclasses = ClassList[classKey].subclasses;
+    ClassList[classKey] = newClass;
+  }
+}
+legacyClassRefactor("barbarian",  {
 	regExpSearch : /barbarian/i,
 	name : "Barbarian",
 	source : [["PHB2024", 51]],
@@ -490,7 +498,7 @@ ClassList["barbarian"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("barbarian", "berserker", {
 	regExpSearch : /^(?=.*(barbarian))(?=.*(berserker)).*$/i,
 	subname : "Path of the Berserker",
@@ -736,7 +744,7 @@ AddSubClass("barbarian", "zealot", {
 		},  
 	},
 });
-ClassList["bard"] = {
+legacyClassRefactor("bard", {
 	regExpSearch : /bard/i,
 	name : "Bard",
 	source : [["PHB2024", 59]],
@@ -931,7 +939,7 @@ ClassList["bard"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("bard", "dance", {
 	regExpSearch : /^(?=.*(bard))(?=.*(dance)).*$/i,
 	subname : "College of Dance",
@@ -1170,7 +1178,7 @@ AddSubClass("bard", "valor", {
 		},  
 	},
 });
-ClassList["cleric"] = {
+legacyClassRefactor("cleric", {
 	regExpSearch : /cleric/i,
 	name : "Cleric",
 	source : [["PHB2024", 59]],
@@ -1397,7 +1405,7 @@ ClassList["cleric"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("cleric", "life", {
 	regExpSearch : /^(?=.*(cleric))(?=.*(life)).*$/i,
 	subname : "Life Domain",
@@ -1583,7 +1591,7 @@ AddSubClass("cleric", "war", {
 		},  
 	},
 });
-ClassList["druid"] = {
+legacyClassRefactor("druid", {
 	regExpSearch : /druid/i,
 	name : "Druid",
 	source : [["PHB2024", 79]],
@@ -1870,7 +1878,7 @@ ClassList["druid"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("druid", "land", {
 	regExpSearch : /^(?=.*(druid))(?=.*(land)).*$/i,
 	subname : "Circle of the Land",
@@ -2148,7 +2156,7 @@ AddSubClass("druid", "stars", {
 		},  
 	},
 });
-ClassList["fighter"] = {
+legacyClassRefactor("fighter", {
 	regExpSearch : /fighter/i,
 	name : "Fighter",
 	source : [["PHB2024", 91]],
@@ -2182,12 +2190,19 @@ ClassList["fighter"] = {
 			name : "Fighting Style",
 			source : [["PHB2024", 91]],
 			minlevel : 1,
-			eval : function() { AddString('Feat Note 1', 'Fighting Style', '; '); },
-			removeeval : function() { RemoveString('Feat Note 1', 'Fighting Style'); },
 			description : desc([
 				"You have honed your martial prowess and gain a Fighting Style feat of your choice (see chapter 5). Defense is recommended.",
 				"Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
 			]),
+			choices : ["Fighting Style"],
+			"fighting style" : {
+				name : "Fighting Style",
+				eval : function() { AddString('Feat Note 2', 'Fighting Style feat', '; '); },
+				removeeval : function() { RemoveString('Feat Note 2', 'Fighting Style feat'); },
+				description : desc([
+					"you gain a fighting style feat of your choice (see chapter 5 for feats).",
+				]),
+			},				
 		},
 		"second wind" : {
 			name : "Second Wind",
@@ -2573,7 +2588,7 @@ ClassList["fighter"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("fighter", "battle master", {
 	regExpSearch : /^(?=.*(fighter))(?=.*(battle))(?=.*(master)).*$/i,
 	subname : "Battle Master",
@@ -3023,7 +3038,7 @@ AddSubClass("fighter", "psi warrior", {
 		},  
 	},
 });
-ClassList["monk"] = {
+legacyClassRefactor("monk", {
 	regExpSearch : /monk/i,
 	name : "Monk",
 	source : [["PHB2024", 101]],
@@ -3333,7 +3348,7 @@ ClassList["monk"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("monk", "mercy", {
 	regExpSearch : /^(?=.*(monk))(?=.*(mercy)).*$/i,
 	subname : "Warrior of Mercy",
@@ -3582,7 +3597,7 @@ AddSubClass("monk", "open hand", {
 		},  
 	},
 });
-ClassList["paladin"] = {
+legacyClassRefactor("paladin", {
 	regExpSearch : /paladin/i,
 	name : "Paladin",
 	source : [["PHB2024", 109]],
@@ -4096,7 +4111,7 @@ ClassList["paladin"] = {
 			]),			
 		},			
 	},
-};
+});
 AddSubClass("paladin", "devotion", {
 	regExpSearch : /^(?=.*(paladin))(?=.*(devotion)).*$/i,
 	subname : "Oath of Devotion",
@@ -4300,7 +4315,7 @@ AddSubClass("paladin", "Vengeance", {
 		},  
 	},
 });
-ClassList["ranger"] = {
+legacyClassRefactor("ranger", {
 	regExpSearch : /ranger/i,
 	name : "Ranger",
 	source : [["PHB2024", 119]],
@@ -4814,7 +4829,7 @@ ClassList["ranger"] = {
 			]),			
 		},		
 	},
-};
+});
 AddSubClass("ranger", "beast master", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(beast))(?=.*(master)).*$/i,
 	subname : "Beast Master",
@@ -4824,8 +4839,9 @@ AddSubClass("ranger", "beast master", {
 			name : "Primal Companion",
 			source : [["PHB2024", 122]],
 			minlevel : 3,
+			action : [["action", "Revive Companion"], ["bonus action", "Command Companion"]],
 			description : desc([
-				"You magically summon a primal beast, which draws strength from your bond with nature. Choose its stat block; Beast of the Land, Beast of the Sea, or Beast of the Sky. You also determine the kind of animal it is, choosing a kind appropriate for the stat black. Whatever beast you choose, it bears primal markings indicating its supernatural origin.",
+				"You magically summon a primal beast, which draws strength from your bond with nature. Choose its stat block; Beast of the Land, Beast of the Sea, or Beast of the Sky. You also determine the kind of animal it is, choosing a kind appropriate for the stat block. Whatever beast you choose, it bears primal markings indicating its supernatural origin.",
 				"The beast is Friendly to you and your allies and obeys your commands. It vanishes if you die.",
 				"The Beast in Combat : In combat, the beast acts during your turn. It can move and use its Reaction on its own, but the only action it takes is the Doge action unless you take a Bonus Action to command it to take an action in its stat block or some other action. You can also sacrifice one of your attacks when you take the Attack action to command the beast to take the Beast's Strike action. If you have the Incapacitated condition, the beast acts on its own and isn't limited to the Dodge action.",
 				"Restoring or Replacing the Beast : If the beast has died within the last hour, you can take a Magic action to touch it and expend a spell slot. The beast returns to life after 1 minute with all its Hit Points Restored.",
@@ -5075,7 +5091,7 @@ AddSubClass("ranger", "hunter", {
 		},  
 	},
 });
-ClassList["rogue"] = {
+legacyClassRefactor("rogue", {
 	regExpSearch : /rogue/i,
 	name : "Rogue",
 	source : [["PHB2024", 101]],
@@ -5415,7 +5431,7 @@ ClassList["rogue"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("rogue", "arcane trickster", {
 	regExpSearch : /^(?=.*(rogue))(?=.*(arcane))(?=.*(trickster)).*$/i,
 	subname : "Arcane Trickster",
@@ -5692,7 +5708,7 @@ AddSubClass("rogue", "thief", {
 		},  
 	},
 });
-ClassList["sorcerer"] = {
+legacyClassRefactor("sorcerer", {
 	regExpSearch : /sorcerer/i,
 	name : "Sorcerer",
 	source : [["PHB2024", 139]],
@@ -5925,7 +5941,7 @@ ClassList["sorcerer"] = {
 			]),
 		},					
 	},
-};
+});
 AddSubClass("sorcerer", "aberrant", {
 	regExpSearch : /^(?=.*(sorcerer))(?=.*(aberrant)).*$/i,
 	subname : "Aberrant Sorcery",
@@ -6243,7 +6259,7 @@ AddSubClass("sorcerer", "wild magic", {
 		},			
 	},
 });
-ClassList["warlock"] = {
+legacyClassRefactor("warlock", {
 	regExpSearch : /warlock/i,
 	name : "Warlock",
 	source : [["PHB2024", 153]],
@@ -7042,7 +7058,7 @@ ClassList["warlock"] = {
 			]),
 		},					
 	},
-};
+});
 AddSubClass("warlock", "archfey", {
 	regExpSearch : /^(?=.*(warlock))(?=.*(archfey)).*$/i,
 	subname : "Archfey Patron",
@@ -7262,7 +7278,7 @@ AddSubClass("warlock", "great old one", {
 		},			
 	},
 });
-ClassList["wizard"] = {
+legacyClassRefactor("wizard", {
 	regExpSearch : /wizard/i,
 	name : "Wizard",
 	source : [["PHB2024", 165]],
@@ -7432,7 +7448,7 @@ ClassList["wizard"] = {
 			]),
 		},			
 	},
-};
+});
 AddSubClass("wizard", "abjurer", {
 	regExpSearch : /^(?=.*(wizard))(?=.*(abjurer)).*$/i,
 	subname : "Abjurer",
@@ -8396,7 +8412,7 @@ RaceList["elf"] = {
 	skillstxt : "Choose one between Insight, Perception, or Survival",
 	age : " reach maturity in early 20s and live about 750 years",
 	height : " are about 5-6 feet tall",
-	trait : "Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nElven Lineage : You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nElven Lineage : You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	variants : ["dark", "high", "wood"]
 };
 RaceSubList["elf-dark"] = {
@@ -8412,7 +8428,7 @@ RaceSubList["elf-dark"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "Drow (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 120 feet.\n\nDrow Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Dancing Lights cantrip. When you reach character level 3 you learn the Faerie Fire spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Drow (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 120 feet.\n\nDrow Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Dancing Lights cantrip. When you reach character level 3 you learn the Faerie Fire spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"drow lineage3" : {
 			name : "Faerie Fire",
@@ -8462,7 +8478,7 @@ RaceSubList["elf-high"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "High Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nHigh Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list. When you reach character level 3 you learn the Detect Magic spell, and when you reach character level 5 you learn the Misty Step spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "High Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nHigh Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list. When you reach character level 3 you learn the Detect Magic spell, and when you reach character level 5 you learn the Misty Step spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"high elf lineage3" : {
 			name : "Detect Magic",
@@ -8511,7 +8527,7 @@ RaceSubList["elf-wood"] = {
 		times : 1,
 		firstCol : "atwill",
 	}],
-	trait : "Wood Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nWood Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Druidcraft cantrip. When you reach character level 3 you learn the Longstrider spell, and when you reach character level 5 you learn the Pass without Trace spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
+	trait : "Wood Elf (Medium Humanoid)\n\nDarkvision : You have Darkvision with a range of 60 feet.\n\nWood Elf Lineage : You are part of a lineage that grants you supernatural abilities. You gain the Druidcraft cantrip. When you reach character level 3 you learn the Longstrider spell, and when you reach character level 5 you learn the Pass without Trace spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nFey Ancestry : You have Advantage on saving throws you make to avoid or end the Charmed condition.\n\nKeen Senses : You have proficiency in the Insight, Perception, or Survival skill.\n\nTrance : You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trance like meditation, during which you retain consciousness.",
 	features : {
 		"wood elf lineage3" : {
 			name : "Longstrider",
@@ -8926,6 +8942,7 @@ RaceSubList["tiefling-abyssal"] = {
 	regExpSearch : /^(?=.*tiefling)(?=.*abyssal).*$/i,
 	name : "Abyssal Tiefling",
 	sortname : "Tiefling, Abyssal",
+	plural : "Tieflings",
 	vision : [["Darkvision", 60]],
 	dmgres : ["Poison"],
 	spellcastingAbility : [4, 5, 6],
@@ -8936,7 +8953,7 @@ RaceSubList["tiefling-abyssal"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Abyssal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Poison Spray cantrip. When you reach character level 3 you learn the Ray of Sickness spell, and when you reach character level 5 you learn the Hold Person spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Abyssal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Poison Spray cantrip. When you reach character level 3 you learn the Ray of Sickness spell, and when you reach character level 5 you learn the Hold Person spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"abyssal lineage3" : {
 			name : "Ray of Sickness",
@@ -8976,6 +8993,7 @@ RaceSubList["tiefling-chthonic"] = {
 	regExpSearch : /^(?=.*tiefling)(?=.*chthonic).*$/i,
 	name : "Chthonic Tiefling",
 	sortname : "Tiefling, Chthonic",
+	plural : "Tieflings",
 	vision : [["Darkvision", 60]],
 	dmgres : ["Necrotic"],
 	spellcastingAbility : [4, 5, 6],
@@ -8986,7 +9004,7 @@ RaceSubList["tiefling-chthonic"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Chthonic Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Chill Touch cantrip. When you reach character level 3 you learn the False Life spell, and when you reach character level 5 you learn the Ray of Enfeeblement spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Chthonic Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Chill Touch cantrip. When you reach character level 3 you learn the False Life spell, and when you reach character level 5 you learn the Ray of Enfeeblement spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"chthonic lineage3" : {
 			name : "False Life",
@@ -9026,6 +9044,7 @@ RaceSubList["tiefling-infernal"] = {
 	regExpSearch : /^(?=.*tiefling)(?=.*infernal).*$/i,
 	name : "Infernal Tiefling",
 	sortname : "Tiefling, Infernal",
+	plural : "Tieflings",
 	vision : [["Darkvision", 60]],
 	dmgres : ["Fire"],
 	spellcastingAbility : [4, 5, 6],
@@ -9036,7 +9055,7 @@ RaceSubList["tiefling-infernal"] = {
 		times : 2,
 		firstCol : "atwill",
 	}],
-	trait :	"Infernal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Fire Bolt cantrip. When you reach character level 3 you learn the Hellish Rebuke spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+	trait :	"Infernal Tiefling (Small or Medium Humanoid)\n\nDarkvision : You have Darkvision within a range of 60 feet.\n\nFiendish Legacy : You are part of a lineage that grants you supernatural abilities. You gain the Fire Bolt cantrip. When you reach character level 3 you learn the Hellish Rebuke spell, and when you reach character level 5 you learn the Darkness spell. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence,Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait. (Choose the ability when you select the lineage).\n\nOtherworldly Presence : You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
 	features : {
 		"infernal lineage3" : {
 			name : "Hellish Rebuke",
@@ -21074,4 +21093,169 @@ CreatureList["zombie"] = {
 		damage : [1, 6, "Bludgeoning"],
 		range : "Melee (5 ft.)",
 	}],
+};
+CreatureList["beast of the land"] = {
+	name : "Beast of the Land",
+	source : [["PHB2024", 123]],
+	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*land).*$/i,
+	size : 3,
+	type : ["Beast"],
+	companion : ["companion", "companion_not_al", "primal companion"],
+	companionApply : "companion",
+	alignment : "Neutral",
+	ac : "11+oWis",
+	hp : 10,
+	hd : [1, 8],
+	hdLinked : ["ranger"],
+	speed : "40 ft, climb 40 ft",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	challengeRating : "0",
+	scores : [14, 14, 15, 8, 14, 11],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	attacksAction : 1,
+	addMod : [
+			{ type : "skill", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "skill", field : "Init", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "save", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." }
+		],
+	calcChanges : {
+		hp : function (totalHD, HDobj, prefix) {
+			if (!classes.known.ranger && !classes.known.ranger_ua23pt6) return;
+			var rgrLvl = classes.known.ranger ? classes.known.ranger.level : classes.known.ranger_ua23pt6.level;
+			HDobj.alt.push(5 + 5 * rgrLvl);
+			HDobj.altStr.push(" = 5 as a base\n + " + "5 \xD7" + rgrLvl + " from its master's Ranger level");
+		},
+		setAltHp : true,
+		hpForceRecalc : true,
+	},
+	attacks : [{
+		name : "Beast's Strike",
+		ability : 1,
+		damage : [1, 8, "Bludg./Pierc./Slash."],
+		modifiers : ["", "oWis"],
+		range : "Melee (5 ft)",
+		description : "+1d6 damage if hits after moving 20 ft straight in same round, if taget is Large or smaller it falls Prone.",
+		tooltip : "If the beast moved at least 20 feet straight toward the target before the hit, the target takes an extra 1d6 damageof the same type, and the target has the Prone condition if it is a Large or smaller creature.",
+		useSpellMod : ["ranger", "ranger_ua23pt6"]
+	}],
+	languages : "understands the languages you speak",
+	features : [{
+		name : "Primal Bond",
+		description : "You can add your Proficiency Bonus to any ability check or saving throw that the beast makes.",
+		joinString : "\n   ",
+	}],
+	header : "Companion",
+};
+CreatureList["beast of the sea"] = {
+	name : "Beast of the Sea",
+	source : [["PHB2024", 124]],
+	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*sea).*$/i,
+	size : 3,
+	type : ["Beast"],
+	companion : ["companion", "companion_not_al", "primal companion ua23pt6"],
+	companionApply : "companion",
+	alignment : "Neutral",
+	ac : "11+oWis",
+	hp : 10,
+	hd : [1, 8],
+	hdLinked : ["ranger", "ranger_ua23pt6"],
+	speed : "5 ft, swim 60 ft",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	challengeRating : "0",
+	scores : [14, 14, 15, 8, 14, 11],
+	attacksAction : 1,
+	addMod : [
+			{ type : "skill", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "skill", field : "Init", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "save", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." }
+		],
+	calcChanges : {
+		hp : function (totalHD, HDobj, prefix) {
+			if (!classes.known.ranger && !classes.known.ranger_ua23pt6) return;
+			var rgrLvl = classes.known.ranger ? classes.known.ranger.level : classes.known.ranger_ua23pt6.level;
+			HDobj.alt.push(5 + 5 * rgrLvl);
+			HDobj.altStr.push(" = 5 as a base\n + " + "5 \xD7" + rgrLvl + " from its master's Ranger level");
+		},
+		setAltHp : true,
+		hpForceRecalc : true,
+	},
+	attacks : [{
+		name : "Beast's Strike",
+		ability : 1,
+		damage : [1, 6, "Bludg./Slash."],
+		modifiers : ["", "oWis"],
+		range : "Melee (5 ft)",
+		description : "Target has the Grappled condition (escape DC = my Spell Save DC)",
+		useSpellMod : ["ranger", "ranger_ua23pt6"]
+	}],
+	languages : "understands the languages you speak",
+	features : [{
+		name : "Primal Bond",
+		description : "You can add your Proficiency Bonus to any ability check or saving throw that the beast makes.",
+		joinString : "\n   ",
+	}, {
+		name : "Amphibious",
+		description : "The beast can breathe air and water.",
+		joinString : "\n   ",
+	}],
+	header : "Companion",
+};
+CreatureList["beast of the sky"] = {
+	name : "Beast of the Sky",
+	source : [["PHB2024", 124]],
+	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*sky).*$/i,
+	size : 4,
+	type : ["Beast"],
+	companion : ["companion", "companion_not_al", "primal companion ua23pt6"],
+	companionApply : "companion",
+	alignment : "Neutral",
+	ac : "10+oWis",
+	hp : 8,
+	hd : [1, 6],
+	hdLinked : ["ranger", "ranger_ua23pt6"],
+	speed : "10 ft, fly 60 ft",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	challengeRating : "0",
+	scores : [6, 16, 13, 8, 14, 11],
+	attacksAction : 1,
+	addMod : [
+			{ type : "skill", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "skill", field : "Init", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." },
+			{ type : "save", field : "all", mod : "Prof", text : "The primal companion adds it proficiency bonus to all its ability check and saving throws." }
+		],
+	calcChanges : {
+		hp : function (totalHD, HDobj, prefix) {
+			if (!classes.known.ranger && !classes.known.ranger_ua23pt6) return;
+			var rgrLvl = classes.known.ranger ? classes.known.ranger.level : classes.known.ranger_ua23pt6.level;
+			HDobj.alt.push(4 + 4 * rgrLvl);
+			HDobj.altStr.push(" = 4 as a base\n + " + "4 \xD7" + rgrLvl + " from its master's Ranger level");
+		},
+		setAltHp : true,
+		hpForceRecalc : true,
+	},
+	attacks : [{
+		name : "Beast's Strike",
+		ability : 2,
+		damage : [1, 4, "Slashing"],
+		modifiers : ["", "oWis"],
+		range : "Melee (5 ft)",
+		description : "",
+		tooltip : "",
+		useSpellMod : ["ranger", "ranger_ua23pt6"]
+	}],
+	languages : "understands the languages you speak",
+	features : [{
+		name : "Primal Bond",
+		description : "You can add your Proficiency Bonus to any ability check or saving throw that the beast makes.",
+		joinString : "\n   ",
+	}, {
+		name : "Flyby",
+		description : "The beast doesn’t provoke Opportunity Attacks when it flies out of an enemy’s reach.",
+		joinString : "\n   ",
+	}],
+	header : "Companion",
 };
