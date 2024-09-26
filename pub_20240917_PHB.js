@@ -8,7 +8,7 @@ SourceList.PHB2024 = {
 	url : "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
 	date : "2024/09/17",
 };
-// Coded By: ThePokésimmer with contributions from Shroo
+// Coded By: ThePokésimmer with contributions from MasterJedi2014, and Shroo
 //Classes
 function legacyClassRefactor(classKey, newClass){
   if (!(classKey in ClassList)) {
