@@ -8,14 +8,50 @@ SourceList.PHB2024 = {
 	url : "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
 	date : "2024/09/17",
 };
-// Coded By: ThePokésimmer with contributions from MasterJedi2014, and Shroo
+// Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite
 //Classes
-function legacyClassRefactor(classKey, newClass){
+function legacyClassRefactor(classKey, newClass) {
   if (!(classKey in ClassList)) {
     ClassList[classKey] = newClass;
   } else {
     newClass.subclasses = ClassList[classKey].subclasses;
     ClassList[classKey] = newClass;
+  }
+}
+
+function archiveSubClass(classKey, replacementSubclass, subClass) {
+  subClass.subname = subClass.subname + " - 2014"
+  if ('fullname' in subClass) {
+    subClass.fullname = subClass.fullname + " - 2014"
+  }
+  for (var i of ClassList[classKey].subclasses[1]) {
+    if (ClassSubList[i].regExpSearch.test(replacementSubclass)) {
+      var oldRegex = "(?=^.*" + subClass.regExpSearch.source + ".*$)"
+      var newRegex = "(?!^" + replacementSubclass + "$)"
+      ClassSubList[i].regExpSearch = new RegExp(oldRegex + newRegex, 'i')
+      console.println(replacementSubclass + ": " + i)
+      console.println(ClassSubList[i].regExpSearch)
+    }
+  }
+  subClass.source = [["LEGACY", 1]];
+}
+
+function legacySubClassRefactor(classKey, subClassKey, newSubClass) {
+  var newSubClassName = classKey + "-" + subClassKey
+  if (newSubClassName in ClassSubList) {
+    var oldSubClass = ClassSubList[newSubClassName]
+
+    archiveSubClass(classKey, newSubClass.subname, oldSubClass)
+    ClassSubList[newSubClassName] = newSubClass
+    AddSubClass(classKey, subClassKey + "_2014", oldSubClass)
+  } else {
+    if ('replaces' in newSubClass) {
+      const subclassName = classKey + '-' + newSubClass.replaces
+      if (subclassName in ClassSubList) {
+        archiveSubClass(classKey, newSubClass.subname, ClassSubList[subclassName])
+      }
+    }
+    AddSubClass(classKey, subClassKey, newSubClass)
   }
 }
 legacyClassRefactor("barbarian",  {
@@ -932,6 +968,7 @@ legacyClassRefactor("bard", {
 				name : "Words of Creation",
 				spells : ["power word heal", "power word kill"],
 				selection : ["power word heal", "power word kill"],
+				prepared : true,
 				times : 2,
 			}],
 			description : desc([
@@ -1032,6 +1069,7 @@ AddSubClass("bard", "glamour", {
 				name : "Animal Speaker",
 				spells : ["charm person", "mirror image"],
 				selection : ["charm person", "mirror image"],
+				prepared : true,
 				times : 2,
 			}],
 			description : desc([
@@ -1061,6 +1099,7 @@ AddSubClass("bard", "glamour", {
 				spells : ["command"],
 				selection : ["command"],
 				times : 1,
+				prepared : true,
 				firstCol : "oncelr",
 			}],			
 			description : desc([
@@ -1114,6 +1153,7 @@ AddSubClass("bard", "lore", {
 			spellcastingBonus : [{
 				name : "Magical Discoveries",
 				"class" : ["cleric", "druid", "wizard"],
+				prepared : true,
 				times : 2,
 			}],
 			description : desc([
@@ -1677,6 +1717,7 @@ legacyClassRefactor("druid", {
 				name : "Druidic",
 				spells : ["speak with animals"],
 				selection : ["speak with animals"],
+				prepared : true,
 				times : 1,
 			}],
 			description : desc([
@@ -1761,6 +1802,7 @@ legacyClassRefactor("druid", {
 				name : "Wild Companion",
 				spells : ["find familiar"],
 				selection : ["find familiar"],
+				prepared : true,
 				times : 1,
 			}],
 			description : desc([
@@ -3998,6 +4040,7 @@ legacyClassRefactor("paladin", {
 				name : "Paladin's Smite",
 				spells : ["divine smite"],
 				selection : ["divine smite"],
+				prepared : true,
 				times : 1,
 			}],
 			description : desc([
@@ -4044,6 +4087,7 @@ legacyClassRefactor("paladin", {
 				name : "Faithful Steed",
 				spells : ["find steed"],
 				selection : ["find steed"],
+				prepared : true,
 				times : 1,
 			}],
 			description : desc([
@@ -4347,7 +4391,8 @@ legacyClassRefactor("ranger", {
 	subclasses : ["Ranger Subclass", []],
 	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 	spellcastingFactor : 2,
-	spellcastingAbility : 6,
+	spellcastingAbility : 5,
+	spellcastingExtra : ["hunter's mark"],
 	spellcastingKnown : {
 		spells : "list",
 		prepared : true,
@@ -4359,7 +4404,8 @@ legacyClassRefactor("ranger", {
 	features : {
 		"favored enemy" : {
 			name : "Favored Enemy",
-	  source : [["PHB2024", 119]],
+			source : [["PHB2024", 119]],
+			minlevel : 1,
 			usages : [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
 			recovery : "long rest",
 			altResource : "SS 1+",
@@ -4371,6 +4417,7 @@ legacyClassRefactor("ranger", {
 		"spellcasting" : {
 			name : "Spellcasting",
 			source : [["PHB2024", 119]],
+			minlevel : 1,
 			additional : levels.map(function (n, idx) {
 				var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
 				return splls + " spells prepared";
@@ -4705,6 +4752,34 @@ legacyClassRefactor("ranger", {
 				]),	
 			},
 		},
+		"expertise" : function() {
+				var a = {
+					name : "Roving",
+					source : [["PHB2024", 120]],
+					minlevel : 2,
+					description : "Thanks to your travels, you gain the following benefits. Expertise. Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill. Languages. You know two languages of your choice from the langauges table in chapter 2.",
+					languageProfs : 2,
+					additional : levels.map(function (n) {
+						return n < 2 ? "" : "with " + (n < 9 ? 1 : 3) + " skills";
+					}),
+					extraname : "Ranger Expertise",
+					extrachoices : ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
+					extraTimes : levels.map(function (n) { return n < 2 ? 0 : n < 9 ? 1 : 3; })
+				};
+				for (var i = 0; i < a.extrachoices.length; i++) {
+					var attr = a.extrachoices[i].toLowerCase();
+					a[attr] = {
+						name : a.extrachoices[i] + " Expertise",
+						description : "",
+						source : a.source,
+						skills : [[a.extrachoices[i], "only"]],
+						prereqeval : function(v) {
+							return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
+						}
+					};
+				}
+				return a;
+			}(),
 		"subclassfeature3" : {
 			name : "Ranger Subclass",
 			source : [["PHB2024", 111]],
@@ -4733,34 +4808,7 @@ legacyClassRefactor("ranger", {
 			description : desc([
 				"Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.",
 			]),			
-		},	
-		"expertise" : function() {
-				var a = {
-					name : "Expertise",
-					source : [["PHB2024", 121]],
-					minlevel : 9,
-					description : "Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.",skillstxt : "Expertise with any two skill proficiencies.",
-					additional : levels.map(function (n) {
-						return n < 9 ? "" : "with " + (n < 9 ? "" : 2) + " skills";
-					}),
-					extraname : "Ranger Expertise",
-					extrachoices : ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
-					extraTimes : levels.map(function (n) { return n < 9 ? 0 : 2; })
-				};
-				for (var i = 0; i < a.extrachoices.length; i++) {
-					var attr = a.extrachoices[i].toLowerCase();
-					a[attr] = {
-						name : a.extrachoices[i] + " Expertise",
-						description : "",
-						source : a.source,
-						skills : [[a.extrachoices[i], "only"]],
-						prereqeval : function(v) {
-							return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
-						}
-					};
-				}
-				return a;
-			}(),
+		},
 		"tireless" : {
 			name : "Tireless",
 			source : [["PHB2024", 121]],
@@ -4880,7 +4928,7 @@ AddSubClass("ranger", "fey wanderer", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(fey))(?=.*(wanderer)).*$/i,
 	subname : "Fey Wanderer",
 	source : [["PHB2024", 124]],
-	spellcastingExtra : ["charm person", "misty step", "summon fey", "dimension door", "mislead"],
+	spellcastingExtra : ["charm person", "hunter's mark", "misty step", "summon fey", "dimension door", "mislead"],
 	features : {	
 		"subclassfeature3" : {
 			name : "Dreadful Strikes",
@@ -4960,7 +5008,7 @@ AddSubClass("ranger", "gloom stalker", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(gloom))(?=.*(stalker)).*$/i,
 	subname : "Gloom Stalker",
 	source : [["PHB2024", 125]],
-	spellcastingExtra : ["disguise self", "rope trick", "fear", "greater invisibility", "seeming"],
+	spellcastingExtra : ["disguise self", "hunter's mark", "rope trick", "fear", "greater invisibility", "seeming"],
 	features : {	
 		"subclassfeature3" : {
 			name : "Dread Ambusher",
@@ -7252,6 +7300,7 @@ AddSubClass("warlock", "great old one", {
 				name : "Eldritch Hex",
 				spells : ["hex"],
 				selection : ["hex"],
+				prepared : true,
 				times : 1,
 			}],
 			description : desc([
@@ -7496,6 +7545,7 @@ AddSubClass("wizard", "abjurer", {
 				name : "Spell Breaker",
 				spells : ["counterspell", "dispel magic"],
 				selection : ["counterspell", "dispel magic"],
+				prepared : true,
 				times : 2,
 			}],
 			description : desc([
@@ -19264,6 +19314,238 @@ SpellsList["zone of truth"] = {
 	descriptionFull : "You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there must make a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether each creature succeeds or fails on its saving throw." + "\n   " + "An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such creatures can be evasive in its answers as long as it remains within the boundaries of the truth."
 };
 //Creatures
+CompanionList["familiar"] = {
+	name : "Find Familiar",
+	nameTooltip : "the Find Familiar spell",
+	nameOrigin : "1st-level conjuration [ritual] spell",
+	nameMenu : "Familiar (Find Familiar spell)",
+	source : [["PHB2024", 272]],
+	action : [
+		["action", "Familiar (dismiss/reappear)"],
+		["action", "Use familiar's senses"]
+	],
+	notes : [{
+		name : "Summon a spirit that serves as a familiar",
+		description : [
+			"appearing in an unoccupied space within 10 ft",
+			"It assumes a chosen form (can change at every casting): Bat, Cat, Frog, Hawk, Lizard, Octopus, Owl, Rat, Raven, Spider, Weasel, or another Beast that has a Challenge Rating of 0.",
+			"It has the chosen form's statistics, but its type changes from beast to celestial, fey, or fiend",
+			"When the familiar drops to 0 hit points, it disappears, leaving behind no physical form",
+			"It reappears when I cast this spell again (in a new form if so desired)"
+		].join("\n   "),
+		joinString : ", "
+	}, {
+		name : "The familiar acts independently of me",
+		description : [
+			"but it always obeys my commands",
+			"In combat, it rolls its own initiative and acts on its own turn, but it can't attack"
+		].join("\n   "),
+		joinString : ", "
+	}, {
+		name : "While it is within 100 ft of me",
+		description : "I can communicate with it telepathically",
+		joinString : ", "
+	}, {
+		name : "As a bonus action, I see/hear what it does",
+		description : " (but not with my senses) until the start of my next turn",
+		joinString : ""
+	}, {
+		name : "As a magic action, I can temporarily dismiss it",
+		description : "having it disappear into a pocket dimension",
+		joinString : ", "
+	}, {
+		name : "As a magic action, while it is temporarily dismissed",
+		description : "I can cause it to reappear within 30 ft",
+		joinString : ", "
+	}, {
+		name : "I can't have more than one familiar bonded at a time",
+		description : "As a magic action, I can dismiss it forever",
+		joinString : "; "
+	}, {
+		name : "When I cast a spell with a range of touch",
+		description : [
+			"my familiar can deliver the spell",
+			"It must be within 100 ft of me and it must use its reaction to deliver the spell when I cast it",
+			"It acts as if it cast the spell, but it can use my modifiers for any attack rolls the spell requires"
+		].join("\n   "),
+		joinString : ", "
+	}],
+	attributesAdd : {
+		header : "Familiar",
+		features : [{
+			name : "Find Familiar",
+			description : "If dropped to 0 HP, the familiar disappears, leaving behind no physical form. The familiar must obey all commands of its master."
+		}]
+	},
+};
+CompanionList["pact_of_the_chain"] = {
+	name : "Pact of the Chain",
+	nameTooltip : "Warlock (Pact of the Chain)",
+	nameOrigin : "variant of the Find Familiar 1st-level conjuration [ritual] spell",
+	nameMenu : "Pact of the Chain familiar (Warlock feature)",
+	source : [["PHB2024", 157]],
+	includeCheck : function(sCrea, objCrea, iCreaCR, bIsAL) {
+		// return true if to be included, or a string to add a note to the menu option
+		return !objCrea.companion ? false : objCrea.companion.indexOf("familiar") !== -1 ? true : bIsAL && objCrea.companion.indexOf("familiar_not_al") !== -1 ? " (if DM approves)" : false;
+	},
+	action : [
+		["action", "Familiar (dismiss/reappear)"],
+		["action", "Use familiar's senses"]
+	],
+	attributesAdd : {
+		header : "Familiar",
+		features : [{
+			name : "Pact of the Chain",
+			description : "If dropped to 0 HP, the familiar disappears, leaving behind no physical form. The familiar must obey all commands of its master."
+		}]
+	},
+	attributesChange : function(sCrea, objCrea) {
+		if (objCrea.type.toLowerCase() === "beast") {
+			objCrea.type = ["Celestial", "Fey", "Fiend"];
+			objCrea.subtype = "";
+		}
+	}
+};
+CompanionList["mount"] = {
+	name : "Find Steed",
+	nameTooltip : "the Find Steed spell",
+	nameOrigin : "2nd-level conjuration spell",
+	nameMenu : "Steed (Find Steed spell)",
+	source : [["PHB2024", 272]],
+	action : [["action", "Find Steed (dismiss)"]],
+	notes : [{
+		name : "Summon an otherworldly being that appears as a loyal steed",
+		description : [
+			"appearing in an unoccupied space within 30 ft",
+			"The steed resembles a Larg, ridable animal fo your choice, such as a horse, a camel, a dire wolf, or an elk",
+			"The steed has the statistics of the otherworldly steed, choose its type celestial, fey, or fiend",
+			"When the steed drops to 0 hit points, it disappears, leaving behind no physical form"
+		].join("\n   "),
+		joinString : ", "
+	}, {
+		name : "The steed serves me as a mount",
+		description : "I have a bond with it that allows us to fight as a seamless unit",
+		joinString : ". "
+	}, {
+		name : "While my steed is within 1 mile of me",
+		description : "I can communicate with it telepathically",
+		joinString : ", "
+	}, {
+		name : "Casting this spell again",
+		description : "can summon the same steed, or a different one",
+		joinString : " "
+	}, {
+		name : "I can't have more than one steed bonded at a time",
+		description : "As an action, I can release it from its bond",
+		joinString : "; "
+	}],
+	attributesAdd : {
+		header : "Mount",
+		features : [{
+			name : "Find Steed",
+			description : "If dropped to 0 HP, the steed disappears, leaving behind no physical form."
+		}],
+	},
+};
+CompanionList["companion"] = {
+	name : "Ranger's Companion",
+	nameTooltip : "Beast Master: Ranger's Companion",
+	nameOrigin : "Beast Master 3",
+	nameMenu : "Ranger's Companion (Beast Master feature)",
+	source : [["PHB2024", 122]],
+	action : [["bonus action", "Ranger's Companion (command)"]],
+	notes : [{
+		name : "If the beast has died within the lasts hour,",
+		description : [
+		"I can take a Magic action to touch it and expend a spell slot.",
+		"The beast returns to life after 1 minute with all its Hit Points restored."
+		].join("\n   "),
+		joinString : ", "
+	}, {
+		name : "The beast adds my Proficiency Bonus",
+		description : "any ability check or saving throw the beast makes",
+		joinString : " "
+	}, {
+		name : "The beast's hit point maximum equals",
+		description : "five times my ranger level",
+		joinString : " "
+	}, {
+		name : "In Combat",
+		description : [
+			"The beast takes its turn on my initiative",
+			"I can verbally command the beast where to move (no action)",
+			"As a bonus action, I can have the beast do a Dash, Disengage, or Help action on its turn",
+			"I can sacrifice one of my attacks when I take the Attack action to command the beast to take the Beast's Strike action.",
+			"If I don't command it to take an action, it takes the Dodge action instead"
+		].join("\n   "),
+		joinString : typePF ? ": " : ":\n   "
+	}, {
+		name : "Extra Attack (Ranger 5, PHB2024 120)",
+		description : "If the beast takes the Attack action, I can use my Extra Attack feature to attack once myself",
+		joinString : "\n   ",
+		minlevel : 5
+	}, {
+		name : "Exceptional Training (Beast Master 7, PHB2024 123)",
+		description : [
+			"The beast's attacks can deal Force damage or its normal damage type",
+			"As a bonus action, I can command it to take the Dash, Disengage, Dodge, or Help action on its turn"
+		].join("\n   "),
+		joinString : "\n   ",
+		minlevel : 7,
+		eval : function(prefix, lvl) {
+			for (var i = 1; i <= 3; i++) {
+				if (!What(prefix + "Comp.Use.Attack." + i + ".Weapon Selection")) continue;
+				var sDescrFld = prefix + "Comp.Use.Attack." + i + ".Description";
+				if (!/(,|;)? ?can deal force damage or its normal damage type/i.test(What(sDescrFld))) {
+					AddString(sDescrFld, "Can deal Force damage or its normal damage type", "; ");
+				}
+			}
+			processActions(true, "Beast Master: Ranger's Companion", [["bonus action", "Exceptional Training (Dash/Disengage/Dodge/Help)"]], "Ranger's Companion");
+		},
+		removeeval : function(prefix, lvl) {
+			for (var i = 1; i <= 3; i++) {
+				var sDescrFld = prefix + "Comp.Use.Attack." + i + ".Description";
+				var sDescr = What(sDescrFld);
+				var rCaM = /(,|;)? ?counts as magical/i;
+				if (rCaM.test(sDescr)) Value(sDescrFld, sDescr.replace(rCaM, ''));
+			}
+			processActions(false, "Beast Master: Ranger's Companion", [["bonus action", "Exceptional Training (Dash/Disengage/Help)"]], "Ranger's Companion");
+		}
+	}, {
+		name : "Bestial Fury (Beast Master 11, PHB2024 123)",
+		description : "The beast can make two attacks (or multiattack) when I command it to take an Attack action, In addition, the first time each turn it hits a creature affected by my Hunter's Mark spell, it deals extra Force damage equal to the bonus damage of that spell.",
+		joinString : "\n   ",
+		minlevel : 11,
+		eval : function(prefix, lvl) {
+			Value(prefix + "Comp.Use.Attack.perAction", 2);
+		},
+		removeeval : function(prefix, lvl) {
+			Value(prefix + "Comp.Use.Attack.perAction", 1);
+		}
+	}, {
+		name : "Share Spells (Beast Master 15, PHB2024 123)",
+		description : "When I cast a spell on myself, I can have it also affect my primal companion if it is within 30 ft of me",
+		joinString : "\n   ",
+		minlevel : 15
+	}],
+	attributesAdd : {
+		header : "Companion",
+		minlevelLinked : ["ranger"],
+		attacksAction : 1
+	},
+	attributesChange : function(sCrea, objCrea) {
+		// Change multiattack trait/feature/action to level 11 feature
+		["traits", "features", "actions"].forEach(function (n) {
+			if (!objCrea[n]) return;
+			for (var i = 0; i < objCrea[n].length; i++) {
+				var oN = objCrea[n][i];
+				if (oN.name && /multiattack/i.test(oN.name)) {
+					objCrea[n][i].minlevel = 11;
+				}
+			}
+		});
+	},
+};
 CreatureList["ape"] = {
 	name : "Ape",
 	regExpSearch : /ape/i,
@@ -21100,7 +21382,7 @@ CreatureList["beast of the land"] = {
 	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*land).*$/i,
 	size : 3,
 	type : ["Beast"],
-	companion : ["companion", "companion_not_al", "primal companion"],
+	companion : ["companion"],
 	companionApply : "companion",
 	alignment : "Neutral",
 	ac : "11+oWis",
@@ -21138,7 +21420,7 @@ CreatureList["beast of the land"] = {
 		range : "Melee (5 ft)",
 		description : "+1d6 damage if hits after moving 20 ft straight in same round, if taget is Large or smaller it falls Prone.",
 		tooltip : "If the beast moved at least 20 feet straight toward the target before the hit, the target takes an extra 1d6 damageof the same type, and the target has the Prone condition if it is a Large or smaller creature.",
-		useSpellMod : ["ranger", "ranger_ua23pt6"]
+		useSpellMod : "ranger",
 	}],
 	languages : "understands the languages you speak",
 	features : [{
@@ -21154,7 +21436,7 @@ CreatureList["beast of the sea"] = {
 	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*sea).*$/i,
 	size : 3,
 	type : ["Beast"],
-	companion : ["companion", "companion_not_al", "primal companion ua23pt6"],
+	companion : ["companion"],
 	companionApply : "companion",
 	alignment : "Neutral",
 	ac : "11+oWis",
@@ -21189,7 +21471,7 @@ CreatureList["beast of the sea"] = {
 		modifiers : ["", "oWis"],
 		range : "Melee (5 ft)",
 		description : "Target has the Grappled condition (escape DC = my Spell Save DC)",
-		useSpellMod : ["ranger", "ranger_ua23pt6"]
+		useSpellMod : "ranger",
 	}],
 	languages : "understands the languages you speak",
 	features : [{
@@ -21209,7 +21491,7 @@ CreatureList["beast of the sky"] = {
 	regExpSearch : /^(?=.*beast)(?=.*of)(?=.*the)(?=.*sky).*$/i,
 	size : 4,
 	type : ["Beast"],
-	companion : ["companion", "companion_not_al", "primal companion ua23pt6"],
+	companion : ["companion"],
 	companionApply : "companion",
 	alignment : "Neutral",
 	ac : "10+oWis",
@@ -21245,7 +21527,7 @@ CreatureList["beast of the sky"] = {
 		range : "Melee (5 ft)",
 		description : "",
 		tooltip : "",
-		useSpellMod : ["ranger", "ranger_ua23pt6"]
+		useSpellMod : "ranger",
 	}],
 	languages : "understands the languages you speak",
 	features : [{
@@ -21258,4 +21540,4296 @@ CreatureList["beast of the sky"] = {
 		joinString : "\n   ",
 	}],
 	header : "Companion",
+};
+//Animated Object Stat Blocks
+CompanionList["animated object"] = {
+	name : "Animated Object",
+	nameMenu : "Animated Object (Animate Object Spell)",
+	nameOrigin : "Animated Object of the Animate Object 5th-level transmutation spell",
+	source : [["PHB2024", 240]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('animate object');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["animated object (tsm)"] = {
+	name : "Animated Object (Tiny/Small/Medium)",
+	regExpSearch : /^(?=.*animated)(?=.*object)(?=.*tsm).*$/i,
+	source : [["PHB2024", 241]],
+	size : [3, 4, 5],
+	type : "Construct",
+	alignment : "Unaligned",
+	companion : "animated object",
+	companionApply : "animated object",
+	ac : 15,
+	hp : 10,
+	hd : [2, 8],
+	speed : "30 ft.",
+	scores : [16, 10, 10, 3, 3, 1],
+	damage_immunities : "Poison, Psychic",
+	condition_immunities : "Charmed, Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Blindsight 30 ft.",
+	passivePerception : 6,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 4, "Force"],
+		range : "Melee (5 ft.)",
+		useSpellMod : ["bard", "sorcerer", "wizard"]
+	}],
+};
+CreatureList["animated object (l)"] = {
+	name : "Animated Object (Large)",
+	regExpSearch : /^(?=.*animated)(?=.*object)(?=.*l).*$/i,
+	source : [["PHB2024", 241]],
+	size : 2,
+	type : "Construct",
+	alignment : "Unaligned",
+	companion : "animated object",
+	companionApply : "animated object",
+	ac : 15,
+	hp : 20,
+	hd : [4, 8],
+	speed : "30 ft.",
+	scores : [16, 10, 10, 3, 3, 1],
+	damage_immunities : "Poison, Psychic",
+	condition_immunities : "Charmed, Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Blindsight 30 ft.",
+	passivePerception : 6,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		useSpellMod : ["bard", "sorcerer", "wizard"]
+	}],
+};
+CreatureList["animated object (h)"] = {
+	name : "Animated Object (Huge)",
+	regExpSearch : /^(?=.*animated)(?=.*object)(?=.*h).*$/i,
+	source : [["PHB2024", 241]],
+	size : 1,
+	type : "Construct",
+	alignment : "Unaligned",
+	companion : "animated object",
+	companionApply : "animated object",
+	ac : 15,
+	hp : 40,
+	hd : [8, 8],
+	speed : "30 ft.",
+	scores : [16, 10, 10, 3, 3, 1],
+	damage_immunities : "Poison, Psychic",
+	condition_immunities : "Charmed, Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Blindsight 30 ft.",
+	passivePerception : 6,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [2, 12, "Force"],
+		range : "Melee (5 ft.)",
+		useSpellMod : ["bard", "sorcerer", "wizard"]
+	}],
+};
+//Otherworldly Steed Stat Blocks
+CreatureList["otherworldly steed (2)"] = {
+	name : "Otherworldly Steed (lvl 2)",
+	regExpSearch : /^(?=.*otherworldly)(?=.*steed)(?=.*2).*$/i,
+	source : [["PHB2024", 273]],
+	size : 2,
+	type : ["Celestial", "Fey", "Fiend"],
+	alignment : "Neutral",
+	companion : "mount",
+	companionApply : "mount",
+	ac : 12,
+	hp : 25,
+	hd : [2, 10],
+	speed : "60 ft.",
+	scores : [18, 12, 14, 6, 12, 8],
+	passivePerception : 11,
+	languages : "Telepathy 1 mile (works only with you)",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Life Bond",
+		description : "When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Fell Glare 1/LR (Fiend Only)",
+		description : "As a Bonus Action, Wisdom Saving Throw: DC equals your spell save DC, one creature within 60 feet the steed can see. Failure: The target has the Frightened condition until the end of your next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Fey Step 1/LR (Fey Only)",
+		description : "As a Bonus Action, The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.",
+		joinString : "\n   ",
+	}, {
+		name : "Healing Touch 1/LR (Celestial Only)",
+		description : "As a Bonus Action, One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8+2",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Otherworldly Slam",
+		ability : 1,
+		damage : [1, 8, "Rad(C)/Psy(Fy)/Nec(Fd)"],
+		modifiers : ["", 2],
+		modToDmg : false,
+		range : "Melee (5 ft.)",
+	}],
+};
+CreatureList["otherworldly steed (3)"] = {
+	name : "Otherworldly Steed (lvl 3)",
+	regExpSearch : /^(?=.*otherworldly)(?=.*steed)(?=.*3).*$/i,
+	source : [["PHB2024", 273]],
+	size : 2,
+	type : ["Celestial", "Fey", "Fiend"],
+	alignment : "Neutral",
+	companion : "mount",
+	companionApply : "mount",
+	ac : 12,
+	hp : 35,
+	hd : [3, 10],
+	speed : "60 ft.",
+	scores : [18, 12, 14, 6, 12, 8],
+	passivePerception : 11,
+	languages : "Telepathy 1 mile (works only with you)",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Life Bond",
+		description : "When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Fell Glare 1/LR (Fiend Only)",
+		description : "As a Bonus Action, Wisdom Saving Throw: DC equals your spell save DC, one creature within 60 feet the steed can see. Failure: The target has the Frightened condition until the end of your next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Fey Step 1/LR (Fey Only)",
+		description : "As a Bonus Action, The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.",
+		joinString : "\n   ",
+	}, {
+		name : "Healing Touch 1/LR (Celestial Only)",
+		description : "As a Bonus Action, One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8+3",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Otherworldly Slam",
+		ability : 1,
+		damage : [1, 8, "Rad(C)/Psy(Fy)/Nec(Fd)"],
+		modifiers : ["", 3],
+		modToDmg : false,
+		range : "Melee (5 ft.)",
+	}],
+};
+CreatureList["otherworldly steed (4)"] = {
+	name : "Otherworldly Steed (lvl 4)",
+	regExpSearch : /^(?=.*otherworldly)(?=.*steed)(?=.*4).*$/i,
+	source : [["PHB2024", 273]],
+	size : 2,
+	type : ["Celestial", "Fey", "Fiend"],
+	alignment : "Neutral",
+	companion : "mount",
+	companionApply : "mount",
+	ac : 12,
+	hp : 45,
+	hd : [4, 10],
+	speed : "60 ft., Fly 60 ft.",
+	scores : [18, 12, 14, 6, 12, 8],
+	passivePerception : 11,
+	languages : "Telepathy 1 mile (works only with you)",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Life Bond",
+		description : "When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Fell Glare 1/LR (Fiend Only)",
+		description : "As a Bonus Action, Wisdom Saving Throw: DC equals your spell save DC, one creature within 60 feet the steed can see. Failure: The target has the Frightened condition until the end of your next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Fey Step 1/LR (Fey Only)",
+		description : "As a Bonus Action, The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.",
+		joinString : "\n   ",
+	}, {
+		name : "Healing Touch 1/LR (Celestial Only)",
+		description : "As a Bonus Action, One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8+4",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Otherworldly Slam",
+		ability : 1,
+		damage : [1, 8, "Rad(C)/Psy(Fy)/Nec(Fd)"],
+		modifiers : ["", 4],
+		modToDmg : false,
+		range : "Melee (5 ft.)",
+	}],
+};
+CreatureList["otherworldly steed (5)"] = {
+	name : "Otherworldly Steed (lvl 5)",
+	regExpSearch : /^(?=.*otherworldly)(?=.*steed)(?=.*5).*$/i,
+	source : [["PHB2024", 273]],
+	size : 2,
+	type : ["Celestial", "Fey", "Fiend"],
+	alignment : "Neutral",
+	companion : "mount",
+	companionApply : "mount",
+	ac : 12,
+	hp : 55,
+	hd : [5, 10],
+	speed : "60 ft., Fly 60 ft.",
+	scores : [18, 12, 14, 6, 12, 8],
+	passivePerception : 11,
+	languages : "Telepathy 1 mile (works only with you)",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Life Bond",
+		description : "When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Fell Glare 1/LR (Fiend Only)",
+		description : "As a Bonus Action, Wisdom Saving Throw: DC equals your spell save DC, one creature within 60 feet the steed can see. Failure: The target has the Frightened condition until the end of your next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Fey Step 1/LR (Fey Only)",
+		description : "As a Bonus Action, The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.",
+		joinString : "\n   ",
+	}, {
+		name : "Healing Touch 1/LR (Celestial Only)",
+		description : "As a Bonus Action, One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8+5",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Otherworldly Slam",
+		ability : 1,
+		damage : [1, 8, "Rad(C)/Psy(Fy)/Nec(Fd)"],
+		modifiers : ["", 5],
+		modToDmg : false,
+		range : "Melee (5 ft.)",
+	}],
+};
+//Giant Insect Stat Blocks
+CompanionList["giant insect"] = {
+	name : "Giant Insect",
+	nameMenu : "Giant Insect (Giant Insect Spell)",
+	nameOrigin : "Summon Insect of the Giant Insect 4th-level conjuration spell",
+	source : [["PHB2024", 279]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('giant insect');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["giant insect (4)"] = {
+	name : "Giant Insect (lvl 4)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*4).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 15,
+	hp : 30,
+	hd : [5, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 4],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 4],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+CreatureList["giant insect (5)"] = {
+	name : "Giant Insect (lvl 5)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*5).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 16,
+	hp : 40,
+	hd : [7, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 5],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 5],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+CreatureList["giant insect (6)"] = {
+	name : "Giant Insect (lvl 6)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*6).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 17,
+	hp : 50,
+	hd : [8, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 6],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 6],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+CreatureList["giant insect (7)"] = {
+	name : "Giant Insect (lvl 7)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*7).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 18,
+	hp : 60,
+	hd : [10, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 7],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 7],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+CreatureList["giant insect (8)"] = {
+	name : "Giant Insect (lvl 8)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*8).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 19,
+	hp : 70,
+	hd : [12, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 8],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 8],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+CreatureList["giant insect (9)"] = {
+	name : "Giant Insect (lvl 9)",
+	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*9).*$/i,
+	source : [["PHB2024", 379]],
+	size : 2,
+	type : ["Beast"],
+	alignment : "Unaligned",
+	companion : "giant insect",
+	companionApply : "giant insect",
+	ac : 20,
+	hp : 80,
+	hd : [13, 10],
+	speed : "40 ft., Climb 40 ft., Fly 40 ft.(Wasp Only)",
+	scores : [17, 13, 15, 4, 14, 3],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the langages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 8,
+	features : [{
+		name : "Spider Climb",
+		description : "The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.",
+		joinString : "\n   ",
+	}],
+	actions : [{
+		name : "Venomous Spew (Centipede Only)",
+		description : "As a Bonus Action, Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect's next turn.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Poison Jab",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		modifiers : ["", 9],
+		range : "Melee (10 ft.)",
+		description : "+1d4 Poison damage",
+		useSpellMod : ["druid"]
+	}, {
+		name : "Web Bolt (Spider Only)",
+		ability : 1,
+		damage : [1, 10, "Bludgeoning"],
+		modifiers : ["", 9],
+		range : "Ranged (60 ft.)",
+		description : "The target's Speed is reduced to 0 until the start of the insect's next turn",
+		useSpellMod : ["druid"]
+	}],
+};
+//Aberrant Spirit Stat Blocks
+CompanionList["aberrant spirit"] = {
+	name : "Aberrant Spirit",
+	nameMenu : "Aberrant Spirit (Summon Aberration Spell)",
+	nameOrigin : "Summon Spirit of the Summon Aberration 4th-level conjuration spell",
+	source : [["PHB2024", 322]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon aberration');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["aberrant spirit (4)"] = {
+	name : "Aberrant Spirit (lvl 4)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*4).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 15,
+	hp : 40,
+	hd : [8, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 4],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["aberrant spirit (5)"] = {
+	name : "Aberrant Spirit (lvl 5)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*5).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 16,
+	hp : 50,
+	hd : [10, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 5],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["aberrant spirit (6)"] = {
+	name : "Aberrant Spirit (lvl 6)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*6).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 17,
+	hp : 60,
+	hd : [12, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 6],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["aberrant spirit (7)"] = {
+	name : "Aberrant Spirit (lvl 7)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*7).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 18,
+	hp : 70,
+	hd : [14, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 7],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["aberrant spirit (8)"] = {
+	name : "Aberrant Spirit (lvl 8)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*8).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 19,
+	hp : 80,
+	hd : [16, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 8],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["aberrant spirit (9)"] = {
+	name : "Aberrant Spirit (lvl 9)",
+	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*9).*$/i,
+	source : [["PHB2024", 322]],
+	size : 3,
+	type : "Aberration",
+	alignment : "Neutral",
+	companion : "aberrant spirit",
+	companionApply : "aberrant spirit",
+	ac : 20,
+	hp : 90,
+	hd : [18, 8],
+	speed : "30 ft./Fly 30 ft. (Beholderkin)",
+	scores : [16, 10, 15, 16, 10, 6],
+	damage_immunities : "Psychic",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Deep Speech, understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Regeneration (Slaad Only)",
+		description : "The spirit regains 5 Hit Points at the start of its turn if it has at least 1 Hit Point.",
+		joinString : "\n   ",
+	}, {
+		name : "Whispering Aura (Mind Flayer Only)",
+		description : "At the start of each of the spirit's turns, the spirit emeits psionic energy if it doesn't have the Incapacitated condition. Wisdom Saving Throw: DC equals your spell save DC, each ceature (other than you) within 5 feet of the spirit. Failure: 2d6 Psychic damage.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claw (Slaad Only)",
+		ability : 1,
+		damage : [1, 10, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Eye Ray (Beholderkin Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "150 ft.",
+		modifiers : ["", 9],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}, {
+		name : "Psychic Slam (Mind Flayer Only)",
+		ability : 4,
+		damage : [1, 8, "Psychic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+//Beast Spirit Stat Blocks
+CompanionList["bestial spirit"] = {
+	name : "Bestial Spirit",
+	nameMenu : "Bestial Spirit (Summon Beast Spell)",
+	nameOrigin : "Summon Spirit of the Summon Beast 2nd-level conjuration spell",
+	source : [["PHB2024", 322]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon beast');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["bestial spirit (lw)(2)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 2)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*2).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 13,
+	hp : 30,
+	hd : [8, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 2],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(3)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 3)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*3).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 14,
+	hp : 35,
+	hd : [9, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 3],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(4)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 4)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*4).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 15,
+	hp : 40,
+	hd : [10, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(5)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 5)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*5).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 16,
+	hp : 45,
+	hd : [11, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(6)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 6)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*6).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 17,
+	hp : 50,
+	hd : [12, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(7)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 7)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*7).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 18,
+	hp : 55,
+	hd : [14, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(8)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 8)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*8).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 19,
+	hp : 60,
+	hd : [15, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (lw)(9)"] = {
+	name : "Bestial Spirit (Land/Water)(lvl 9)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*9).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 20,
+	hp : 65,
+	hd : [16, 6],
+	speed : "30 ft./Climb 30 ft. (Land), Swim 30 ft. (Water)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Pack Tactics (Land and Water Only)",
+		description : "The spirit has Advantage on an attack roll against a creature if at least one of the spirit's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.",
+		joinString : "\n   ",
+	}, {
+		name : "Water Breathing (Water Only)",
+		description : "The spirit can breath only underwater.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(2)"] = {
+	name : "Bestial Spirit (Air)(lvl 2)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*2).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 13,
+	hp : 20,
+	hd : [5, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+2"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"],
+	}],
+};
+CreatureList["bestial spirit (a)(3)"] = {
+	name : "Bestial Spirit (Air)(lvl 3)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*3).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 14,
+	hp : 25,
+	hd : [6, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+3"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(4)"] = {
+	name : "Bestial Spirit (Air)(lvl 4)",
+	regExpSearch : /^(?=.*bestial)(?=.*air)(?=.*spirit)(?=.*4).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 15,
+	hp : 30,
+	hd : [7, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+4"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(5)"] = {
+	name : "Bestial Spirit (Air)(lvl 5)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*5).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 16,
+	hp : 35,
+	hd : [9, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+5"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(6)"] = {
+	name : "Bestial Spirit (Air)(lvl 6)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*6).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 17,
+	hp : 40,
+	hd : [10, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+6"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(7)"] = {
+	name : "Bestial Spirit (Air)(lvl 7)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*7).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 18,
+	hp : 45,
+	hd : [11, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+7"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(8)"] = {
+	name : "Bestial Spirit (Air)(lvl 8)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*8).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 19,
+	hp : 50,
+	hd : [12, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+8"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+CreatureList["bestial spirit (a)(9)"] = {
+	name : "Bestial Spirit (Air)(lvl 9)",
+	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*air)(?=.*9).*$/i,
+	source : [["PHB2024", 323]],
+	size : 4,
+	type : "Beast",
+	alignment : "Neutral",
+	companion : "bestial spirit",
+	companionApply : "bestial spirit",
+	ac : 20,
+	hp : 55,
+	hd : [14, 6],
+	speed : "30 ft., Fly 60 ft. (Air)",
+	scores : [18, 11, 16, 4, 14, 5],
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Flyby (Air Only)",
+		description : "The spirit doesn't Opportunity Attacks when it flies out of an enemy's reach.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 8, "Piercing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", "Str+9"],
+		description : "The target can't regain Hit Points until the start of the spirit's next turn.",
+		useSpellMod : ["druid", "ranger"]
+	}],
+};
+//Celestial Spirit Stat Blocks
+CompanionList["celestial spirit"] = {
+	name : "Celestial Spirit",
+	nameMenu : "Celestial Spirit (Summon Celestial Spell)",
+	nameOrigin : "Summon Spirit of the Summon Celestial 5th-level conjuration spell",
+	source : [["PHB2024", 323]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon celestial');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["celestial spirit (a)(5)"] = {
+	name : "Celestial Spirit (Avenger)(lvl 5)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*5).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 16,
+	hp : 40,
+	hd : [7, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+5",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Bow (Avenger Only)",
+		ability : 2,
+		damage : [2, 6, "Radiant"],
+		range : "Ranged (600 ft.)",
+		modifiers : ["", 5],
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (a)(6)"] = {
+	name : "Celestial Spirit (Avenger)(lvl 6)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*6).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 17,
+	hp : 50,
+	hd : [8, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+6",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Bow (Avenger Only)",
+		ability : 2,
+		damage : [2, 6, "Radiant"],
+		range : "Ranged (600 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (a)(7)"] = {
+	name : "Celestial Spirit (Avenger)(lvl 7)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*7).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 18,
+	hp : 60,
+	hd : [10, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+7",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Bow (Avenger Only)",
+		ability : 2,
+		damage : [2, 6, "Radiant"],
+		range : "Ranged (600 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (a)(8)"] = {
+	name : "Celestial Spirit (Avenger)(lvl 8)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*8).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 19,
+	hp : 70,
+	hd : [12, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+8",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Bow (Avenger Only)",
+		ability : 2,
+		damage : [2, 6, "Radiant"],
+		range : "Ranged (600 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (a)(9)"] = {
+	name : "Celestial Spirit (Avenger)(lvl 9)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*9).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 20,
+	hp : 80,
+	hd : [13, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+9",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Bow (Avenger Only)",
+		ability : 2,
+		damage : [2, 6, "Radiant"],
+		range : "Ranged (600 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (d)(5)"] = {
+	name : "Celestial Spirit (Defender)(lvl 5)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*defender)(?=.*5).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 18,
+	hp : 40,
+	hd : [7, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+5",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Mace (Defender Only)",
+		ability : 1,
+		damage : [1, 10, "Radiant"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The spirit choose either itself or another creature it can see within 10 ft. and grants 1d10 Temp HP.",
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (d)(6)"] = {
+	name : "Celestial Spirit (Defender)(lvl 6)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*defender)(?=.*6).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 19,
+	hp : 50,
+	hd : [8, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+6",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Mace (Defender Only)",
+		ability : 1,
+		damage : [1, 10, "Radiant"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The spirit choose either itself or another creature it can see within 10 ft. and grants 1d10 Temp HP.",
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (d)(7)"] = {
+	name : "Celestial Spirit (Defender)(lvl 7)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*defender)(?=.*7).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 20,
+	hp : 60,
+	hd : [10, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	attacks : [{
+		name : "Radiant Mace (Defender Only)",
+		ability : 1,
+		damage : [1, 10, "Radiant"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The spirit choose either itself or another creature it can see within 10 ft. and grants 1d10 Temp HP.",
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (d)(8)"] = {
+	name : "Celestial Spirit (Defender)(lvl 8)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*defender)(?=.*8).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 21,
+	hp : 70,
+	hd : [12, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+8",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Mace (Defender Only)",
+		ability : 1,
+		damage : [1, 10, "Radiant"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The spirit choose either itself or another creature it can see within 10 ft. and grants 1d10 Temp HP.",
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+CreatureList["celestial spirit (d)(9)"] = {
+	name : "Celestial Spirit (Defender)(lvl 9)",
+	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*defender)(?=.*9).*$/i,
+	source : [["PHB2024", 323]],
+	size : 2,
+	type : "Celestial",
+	alignment : "Neutral",
+	companion : "celestial spirit",
+	companionApply : "celestial spirit",
+	ac : 22,
+	hp : 80,
+	hd : [13, 10],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [16, 14, 16, 10, 14, 16],
+	damage_resistances : "Radiant",
+	condition_immunities : "Charmed; Frightened",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Celestial; Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Healing Touch (1/Day)",
+		description : "The spirit touches another creature. The target regains Hit Points equal to 2d8+9",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Radiant Mace (Defender Only)",
+		ability : 1,
+		damage : [1, 10, "Radiant"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "The spirit choose either itself or another creature it can see within 10 ft. and grants 1d10 Temp HP.",
+		useSpellMod : ["cleric", "paladin"]
+	}],
+};
+//Construct Spirit Stat Blocks
+CompanionList["construct spirit"] = {
+	name : "Construct Spirit",
+	nameMenu : "Construct Spirit (Summon Construct Spell)",
+	nameOrigin : "Summon Spirit of the Summon Construct 4th-level conjuration spell",
+	source : [["PHB2024", 328]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon construct');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["construct spirit (4)"] = {
+	name : "Construct Spirit (lvl 4)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*4).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 17,
+	hp : 40,
+	hd : [8, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["construct spirit (5)"] = {
+	name : "Construct Spirit (lvl 5)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*5).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 18,
+	hp : 55,
+	hd : [11, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["construct spirit (6)"] = {
+	name : "Construct Spirit (lvl 6)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*6).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 19,
+	hp : 70,
+	hd : [14, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["construct spirit (7)"] = {
+	name : "Construct Spirit (lvl 7)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*7).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 20,
+	hp : 85,
+	hd : [17, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["construct spirit (8)"] = {
+	name : "Construct Spirit (lvl 8)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*8).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 21,
+	hp : 100,
+	hd : [20, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["construct spirit (9)"] = {
+	name : "Construct Spirit (lvl 9)",
+	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*9).*$/i,
+	source : [["PHB2024", 324]],
+	size : 3,
+	type : "Construct",
+	alignment : "Neutral",
+	companion : "construct spirit",
+	companionApply : "construct spirit",
+	ac : 22,
+	hp : 115,
+	hd : [23, 8],
+	speed : "30 ft.",
+	scores : [18, 10, 18, 14, 11, 5],
+	damage_resistances : "Poison",
+	condition_immunities : "Charmed, Exhausted, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	actions : [{
+		name : "Berserk Lashing (Clay Only)",
+		description : "Trigger: The spirit takes damage from a creature. Response: The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creature without provoking Opportunity Attacks.",
+	}],
+	features : [{
+		name : "Heated Body (Metal Only)",
+		description : "A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Stony Lethargy (Stone Only)",
+		description : "When a creature starts its turn within 10 feet of the spirit, the spirit can target it with magical energy if the spirit can see it. Wisdom Saving Throw: DC equals your spell save DC, the target. Failure: Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 8, "Bludgeoning"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["wizard"]
+	}],
+};
+//Draconic Spirit Stat Block
+CompanionList["draconic spirit"] = {
+	name : "Draconic Spirit",
+	nameMenu : "Draconic Spirit (Summon Dragon Spell)",
+	nameOrigin : "Summon Spirit of the Summon Dragon 5th-level conjuration spell",
+	source : [["PHB2024", 324]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon dragon');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["draconic spirit (5)"] = {
+	name : "Draconic Spirit (lvl 5)",
+	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*5).*$/i,
+	source : [["PHB2024", 325]],
+	size : 2,
+	type : "Dragon",
+	alignment : "Neutral",
+	companion : "draconic spirit",
+	companionApply : "draconic spirit",
+	ac : 19,
+	hp : 50,
+	hd : [8, 10],
+	speed : "30 ft., Fly 60 ft., Swim 30 ft.",
+	scores : [19, 14, 17, 10, 14, 14],
+	damage_resistances : "Acid, Cold, Fire, Lightning, Poison",
+	condition_immunities : "Charmed, Frightened, Poisoned",
+	senses : "Blindsight 30 ft., Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Draconic, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Shared Resistances",
+		description : "When you smmon the spirit, choose one of its Resistances. You have Resistane to the chosen damage type until the spell ends.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 5],
+		useSpellMod : ["wizard"]
+	}, {
+		name : "Breath Weapon",
+		ability : 1,
+		dc : true,
+		damage : [2, 6, "Ac/Cd/Fi/Li/Po"],
+		abilitytodamage : false,
+		range : "30 ft. Cone",
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["draconic spirit (6)"] = {
+	name : "Draconic Spirit (lvl 6)",
+	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*6).*$/i,
+	source : [["PHB2024", 325]],
+	size : 2,
+	type : "Dragon",
+	alignment : "Neutral",
+	companion : "draconic spirit",
+	companionApply : "draconic spirit",
+	ac : 20,
+	hp : 60,
+	hd : [10, 10],
+	speed : "30 ft., Fly 60 ft., Swim 30 ft.",
+	scores : [19, 14, 17, 10, 14, 14],
+	damage_resistances : "Acid, Cold, Fire, Lightning, Poison",
+	condition_immunities : "Charmed, Frightened, Poisoned",
+	senses : "Blindsight 30 ft., Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Draconic, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Shared Resistances",
+		description : "When you smmon the spirit, choose one of its Resistances. You have Resistane to the chosen damage type until the spell ends.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["wizard"]
+	}, {
+		name : "Breath Weapon",
+		ability : 1,
+		dc : true,
+		damage : [2, 6, "Ac/Cd/Fi/Li/Po"],
+		abilitytodamage : false,
+		range : "30 ft. Cone",
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["draconic spirit (7)"] = {
+	name : "Draconic Spirit (lvl 7)",
+	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*7).*$/i,
+	source : [["PHB2024", 325]],
+	size : 2,
+	type : "Dragon",
+	alignment : "Neutral",
+	companion : "draconic spirit",
+	companionApply : "draconic spirit",
+	ac : 21,
+	hp : 70,
+	hd : [12, 10],
+	speed : "30 ft., Fly 60 ft., Swim 30 ft.",
+	scores : [19, 14, 17, 10, 14, 14],
+	damage_resistances : "Acid, Cold, Fire, Lightning, Poison",
+	condition_immunities : "Charmed, Frightened, Poisoned",
+	senses : "Blindsight 30 ft., Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Draconic, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Shared Resistances",
+		description : "When you smmon the spirit, choose one of its Resistances. You have Resistane to the chosen damage type until the spell ends.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["wizard"]
+	}, {
+		name : "Breath Weapon",
+		ability : 1,
+		dc : true,
+		damage : [2, 6, "Ac/Cd/Fi/Li/Po"],
+		abilitytodamage : false,
+		range : "30 ft. Cone",
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["draconic spirit (8)"] = {
+	name : "Draconic Spirit (lvl 8)",
+	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*8).*$/i,
+	source : [["PHB2024", 325]],
+	size : 2,
+	type : "Dragon",
+	alignment : "Neutral",
+	companion : "draconic spirit",
+	companionApply : "draconic spirit",
+	ac : 22,
+	hp : 80,
+	hd : [13, 10],
+	speed : "30 ft., Fly 60 ft., Swim 30 ft.",
+	scores : [19, 14, 17, 10, 14, 14],
+	damage_resistances : "Acid, Cold, Fire, Lightning, Poison",
+	condition_immunities : "Charmed, Frightened, Poisoned",
+	senses : "Blindsight 30 ft., Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Draconic, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Shared Resistances",
+		description : "When you smmon the spirit, choose one of its Resistances. You have Resistane to the chosen damage type until the spell ends.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["wizard"]
+	}, {
+		name : "Breath Weapon",
+		ability : 1,
+		dc : true,
+		damage : [2, 6, "Ac/Cd/Fi/Li/Po"],
+		abilitytodamage : false,
+		range : "30 ft. Cone",
+		useSpellMod : ["wizard"]
+	}],
+};
+CreatureList["draconic spirit (9)"] = {
+	name : "Draconic Spirit (lvl 9)",
+	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*9).*$/i,
+	source : [["PHB2024", 325]],
+	size : 2,
+	type : "Dragon",
+	alignment : "Neutral",
+	companion : "draconic spirit",
+	companionApply : "draconic spirit",
+	ac : 23,
+	hp : 90,
+	hd : [15, 10],
+	speed : "30 ft., Fly 60 ft., Swim 30 ft.",
+	scores : [19, 14, 17, 10, 14, 14],
+	damage_resistances : "Acid, Cold, Fire, Lightning, Poison",
+	condition_immunities : "Charmed, Frightened, Poisoned",
+	senses : "Blindsight 30 ft., Darkvision 60 ft.",
+	passivePerception : 12,
+	languages : "Draconic, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Shared Resistances",
+		description : "When you smmon the spirit, choose one of its Resistances. You have Resistane to the chosen damage type until the spell ends.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [1, 6, "Piercing"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["wizard"]
+	}, {
+		name : "Breath Weapon",
+		ability : 1,
+		dc : true,
+		damage : [2, 6, "Ac/Cd/Fi/Li/Po"],
+		abilitytodamage : false,
+		range : "30 ft. Cone",
+		useSpellMod : ["wizard"]
+	}],
+};
+//Elemental Spirit Stat Blocks
+CompanionList["elemental spirit"] = {
+	name : "Elemental Spirit",
+	nameMenu : "Elemental Spirit (Summon Elemental Spell)",
+	nameOrigin : "Summon Spirit of the Summon Elemental 4th-level conjuration spell",
+	source : [["PHB2024", 325]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon elemental');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["elemental spirit (4)"] = {
+	name : "Elemental Spirit (lvl 4)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*4).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 15,
+	hp : 50,
+	hd : [8, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 4],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+CreatureList["elemental spirit (5)"] = {
+	name : "Elemental Spirit (lvl 5)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*5).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 16,
+	hp : 60,
+	hd : [10, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 5],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+CreatureList["elemental spirit (6)"] = {
+	name : "Elemental Spirit (lvl 6)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*6).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 17,
+	hp : 70,
+	hd : [12, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+CreatureList["elemental spirit (7)"] = {
+	name : "Elemental Spirit (lvl 7)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*7).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 18,
+	hp : 80,
+	hd : [14, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+CreatureList["elemental spirit (8)"] = {
+	name : "Elemental Spirit (lvl 8)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*8).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 19,
+	hp : 90,
+	hd : [15, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+CreatureList["elemental spirit (9)"] = {
+	name : "Elemental Spirit (lvl 9)",
+	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*9).*$/i,
+	source : [["PHB2024", 325]],
+	size : 3,
+	type : "Elemental",
+	alignment : "Neutral",
+	companion : "elemental spirit",
+	companionApply : "elemental spirit",
+	ac : 20,
+	hp : 100,
+	hd : [17, 10],
+	speed : "40 ft., Burrow(E) 40 ft., Fly 40 ft.(Hover(A)), Swim(W) 40 ft.",
+	scores : [18, 15, 17, 4, 10, 16],
+	damage_resistances : "Acid(W), Lightning and Thunder(A), Piercing and Slashing(E)",
+	damage_immunities : "Fire(F), Poison",
+	condition_immunities : "Exhaustion, Paralyzed, Petrified, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Primordial, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Amorphous Form (A,F,W)",
+		description : "The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [1, 10, "Blud(E)/Cd(W)/Li(A)/Fi(F)"],
+		range : "Melee (10 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["druid", "ranger", "wizard"]
+	}],
+};
+//Fey Spirit Stat Blocks
+CompanionList["fey spirit"] = {
+	name : "Fey Spirit",
+	nameMenu : "Fey Spirit (Summon Fey Spell)",
+	nameOrigin : "Summon Spirit of the Summon Fey 3rd-level conjuration spell",
+	source : [["PHB2024", 326]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon fey');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["fey spirit (3)"] = {
+	name : "Fey Spirit (lvl 3)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*3).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 15,
+	hp : 30,
+	hd : [7, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 3],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (4)"] = {
+	name : "Fey Spirit (lvl 4)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*4).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 16,
+	hp : 40,
+	hd : [10, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (5)"] = {
+	name : "Fey Spirit (lvl 5)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*5).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 17,
+	hp : 50,
+	hd : [12, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (6)"] = {
+	name : "Fey Spirit (lvl 6)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*6).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 18,
+	hp : 60,
+	hd : [15, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (7)"] = {
+	name : "Fey Spirit (lvl 7)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*7).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 19,
+	hp : 70,
+	hd : [17, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (8)"] = {
+	name : "Fey Spirit (lvl 8)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*8).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 20,
+	hp : 80,
+	hd : [20, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+CreatureList["fey spirit (9)"] = {
+	name : "Fey Spirit (lvl 9)",
+	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*9).*$/i,
+	source : [["PHB2024", 326]],
+	size : 4,
+	type : "Fey",
+	alignment : "Neutral",
+	companion : "fey spirit",
+	companionApply : "fey spirit",
+	ac : 21,
+	hp : 90,
+	hd : [22, 6],
+	speed : "30 ft., Fly 30 ft.",
+	scores : [13, 16, 14, 14, 11, 16],
+	condition_immunities : "Charmed",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Sylvan, Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	actions : [{
+		name : "Fey Step",
+		description : desc([
+			"As a Bonus Action, The spirit magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occur, based on the spirit's chosen mood:",
+			"Fuming. The spirit has Advantage on the next attack roll it makes before the end of this turn",
+			"Mirthful. Wisdom Saving Throw: DC equals your spell save DC, one creature the spirit can see within 10 feet of itself. Failure: The target is Charmed by you and the spirit for 1 minute or until the target takes any damage.",
+			"Tricksy. The spirit fills a 10-foot Cube within 5 feet of it with magical Darkness, which last suntilt eh end of its next turn.",
+		]),
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fey Blade",
+		ability : 2,
+		damage : [2, 6, "Force"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["druid", "ranger", "warlock", "wizard"]
+	}],
+};
+//Fiendish Spirit Stat Blocks
+CompanionList["fiendish spirit"] = {
+	name : "Fiendish Spirit",
+	nameMenu : "Fiendish Spirit (Summon Fiend Spell)",
+	nameOrigin : "Summon Spirit of the Summon Fiend 6th-level conjuration spell",
+	source : [["PHB2024", 326]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon fiend');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["fiendish spirit (demon)(6)"] = {
+	name : "Fiendish Spirit (Demon)(lvl 6)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*demon)(?=.*6).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 18,
+	hp : 50,
+	hd : [8, 10],
+	speed : "40 ft., Climb 40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Death Throes",
+		description : "When the spirit drops to 0 Hit Points or the spell ends, the spirit explodes. Dexterity Saving Throw: DC equals your spell save DC, each creature in a 10-foot Emanation originating from the spirit. Failure: 2d10+6 Fire damage. Success: Half damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [1, 12, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (demon)(7)"] = {
+	name : "Fiendish Spirit (Demon)(lvl 7)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*demon)(?=.*7).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 65,
+	hd : [11, 10],
+	speed : "40 ft., Climb 40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Death Throes",
+		description : "When the spirit drops to 0 Hit Points or the spell ends, the spirit explodes. Dexterity Saving Throw: DC equals your spell save DC, each creature in a 10-foot Emanation originating from the spirit. Failure: 2d10+7 Fire damage. Success: Half damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [1, 12, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (demon)(8)"] = {
+	name : "Fiendish Spirit (Demon)(lvl 8)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*demon)(?=.*8).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 80,
+	hd : [13, 10],
+	speed : "40 ft., Climb 40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Death Throes",
+		description : "When the spirit drops to 0 Hit Points or the spell ends, the spirit explodes. Dexterity Saving Throw: DC equals your spell save DC, each creature in a 10-foot Emanation originating from the spirit. Failure: 2d10+8 Fire damage. Success: Half damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [1, 12, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (demon)(9)"] = {
+	name : "Fiendish Spirit (Demon)(lvl 9)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*demon)(?=.*9).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 21,
+	hp : 95,
+	hd : [16, 10],
+	speed : "40 ft., Climb 40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Death Throes",
+		description : "When the spirit drops to 0 Hit Points or the spell ends, the spirit explodes. Dexterity Saving Throw: DC equals your spell save DC, each creature in a 10-foot Emanation originating from the spirit. Failure: 2d10+9 Fire damage. Success: Half damage.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [1, 12, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (devil)(6)"] = {
+	name : "Fiendish Spirit (Devil)(lvl 6)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*devil)(?=.*6).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 18,
+	hp : 40,
+	hd : [7, 10],
+	speed : "40 ft., Fly 60 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Devil's Sight",
+		description : "Magical Darkness doesn't impede the spirit's Darkvision.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fiery Strike",
+		ability : 2,
+		damage : [2, 6, "Fire"],
+		range : "Melee/Ranged (5 ft./150 ft.)",
+		modifiers : ["", 6],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (devil)(7)"] = {
+	name : "Fiendish Spirit (Devil)(lvl 7)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*devil)(?=.*7).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 55,
+	hd : [9, 10],
+	speed : "40 ft., Fly 60 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Devil's Sight",
+		description : "Magical Darkness doesn't impede the spirit's Darkvision.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fiery Strike",
+		ability : 2,
+		damage : [2, 6, "Fire"],
+		range : "Melee/Ranged (5 ft./150 ft.)",
+		modifiers : ["", 7],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (devil)(8)"] = {
+	name : "Fiendish Spirit (Devil)(lvl 8)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*devil)(?=.*8).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 70,
+	hd : [12, 10],
+	speed : "40 ft., Fly 60 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Devil's Sight",
+		description : "Magical Darkness doesn't impede the spirit's Darkvision.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fiery Strike",
+		ability : 2,
+		damage : [2, 6, "Fire"],
+		range : "Melee/Ranged (5 ft./150 ft.)",
+		modifiers : ["", 8],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (devil)(9)"] = {
+	name : "Fiendish Spirit (Devil)(lvl 9)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*devil)(?=.*9).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 21,
+	hp : 85,
+	hd : [14, 10],
+	speed : "40 ft., Fly 60 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Devil's Sight",
+		description : "Magical Darkness doesn't impede the spirit's Darkvision.",
+		joinString : "\n   ",
+	}, {
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Fiery Strike",
+		ability : 2,
+		damage : [2, 6, "Fire"],
+		range : "Melee/Ranged (5 ft./150 ft.)",
+		modifiers : ["", 9],
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (yugoloth)(6)"] = {
+	name : "Fiendish Spirit (Yugoloth)(lvl 6)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*yugoloth)(?=.*6).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 18,
+	hp : 60,
+	hd : [10, 10],
+	speed : "40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claws",
+		ability : 2,
+		damage : [1, 8, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "Immediately after the attack hits or misses, teh spirit can teleport up to 30 feet to an unoccupied space it can see.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (yugoloth)(7)"] = {
+	name : "Fiendish Spirit (Yugoloth)(lvl 7)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*yugoloth)(?=.*7).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 75,
+	hd : [12, 10],
+	speed : "40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claws",
+		ability : 2,
+		damage : [1, 8, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "Immediately after the attack hits or misses, teh spirit can teleport up to 30 feet to an unoccupied space it can see.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (yugoloth)(8)"] = {
+	name : "Fiendish Spirit (Yugoloth)(lvl 8)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*yugoloth)(?=.*8).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 19,
+	hp : 90,
+	hd : [15, 10],
+	speed : "40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claws",
+		ability : 2,
+		damage : [1, 8, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "Immediately after the attack hits or misses, teh spirit can teleport up to 30 feet to an unoccupied space it can see.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+CreatureList["fiendish spirit (yugoloth)(9)"] = {
+	name : "Fiendish Spirit (Yugoloth)(lvl 9)",
+	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*yugoloth)(?=.*9).*$/i,
+	source : [["PHB2024", 327]],
+	size : 2,
+	type : "Fiend",
+	alignment : "Neutral",
+	companion : "fiendish spirit",
+	companionApply : "fiendish spirit",
+	ac : 21,
+	hp : 105,
+	hd : [17, 10],
+	speed : "40 ft.",
+	scores : [13, 16, 15, 10, 10, 16],
+	damage_resistances : "Fire",
+	damage_immunities : "Poison",
+	condition_immunities : "Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Abyssal, Infernal, Telepathy 60 ft.",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Magic Resistance",
+		description : "The spirit has Advantage on saving throws against spells and other magical effects.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Claws",
+		ability : 2,
+		damage : [1, 8, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "Immediately after the attack hits or misses, teh spirit can teleport up to 30 feet to an unoccupied space it can see.",
+		useSpellMod : ["warlock", "wizard"]
+	}],
+};
+//Undead Spirit Stat Blocks
+CompanionList["undead spirit"] = {
+	name : "Undead Spirit",
+	nameMenu : "Undead Spirit (Summon Undead Spell)",
+	nameOrigin : "Summon Spirit of the Summon Undead 3rd-level conjuration spell",
+	source : [["PHB2024", 328]],
+	attributesChange : function(sCrea, objCrea) {
+        var casters = isSpellUsed('summon undead');
+        var oScore = undefined;
+        
+        for (var caster of casters) {
+            if (CurrentSpells[caster].refType !== "class") continue;
+            
+            var ability = CurrentSpells[caster].ability;
+    
+            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
+            
+            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
+                oScore = [caster, ability];
+            }
+        }
+
+        if (oScore === undefined) return;
+    
+        for (var i = 0; i < objCrea.attacks.length; i++) {
+            var oAtk = objCrea.attacks[i];
+            oAtk.useSpellMod = oScore[0];
+        }
+        
+    },
+};
+CreatureList["undead spirit (skeletal)(3)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 3)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*3).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 14,
+	hp : 20,
+	hd : [4, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 3],
+	}],
+};
+CreatureList["undead spirit (skeletal)(4)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 4)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*4).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 15,
+	hp : 30,
+	hd : [6, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 4],
+	}],
+};
+CreatureList["undead spirit (skeletal)(5)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 5)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*5).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 16,
+	hp : 40,
+	hd : [8, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 5],
+	}],
+};
+CreatureList["undead spirit (skeletal)(6)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 6)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*6).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 17,
+	hp : 50,
+	hd : [10, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 6],
+	}],
+};
+CreatureList["undead spirit (skeletal)(7)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 7)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*7).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 18,
+	hp : 60,
+	hd : [12, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 7],
+	}],
+};
+CreatureList["undead spirit (skeletal)(8)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 8)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*8).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 19,
+	hp : 70,
+	hd : [14, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 8],
+	}],
+};
+CreatureList["undead spirit (skeletal)(9)"] = {
+	name : "Undead Spirit (Skeletal)(lvl 9)",
+	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*9).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 20,
+	hp : 80,
+	hd : [16, 8],
+	speed : "30 ft., Fly 40 ft.",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	attacks : [{
+		name : "Grave Bolt",
+		ability : 2,
+		damage : [2, 4, "Necrotic"],
+		range : "Ranged (150 ft.)",
+		modifiers : ["", 9],
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(3)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 3)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*3).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 14,
+	hp : 30,
+	hd : [6, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 1,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 3],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 3],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(4)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 4)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*4).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 15,
+	hp : 40,
+	hd : [8, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 4],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(5)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 5)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*5).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 16,
+	hp : 50,
+	hd : [10, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 2,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 5],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(6)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 6)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*6).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 17,
+	hp : 60,
+	hd : [12, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 6],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(7)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 7)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*7).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 18,
+	hp : 70,
+	hd : [14, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 3,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 7],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(8)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 8)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*8).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 19,
+	hp : 80,
+	hd : [16, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 8],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
+};
+CreatureList["undead spirit (putrid/ghostly)(9)"] = {
+	name : "Undead Spirit (Putrid/Ghostly)(lvl 9)",
+	regExpSearch : /^(?=.*undead)(?=.*putridghostly)(?=.*skeletal)(?=.*9).*$/i,
+	source : [["PHB2024", 328]],
+	size : 3,
+	type : "Undead",
+	alignment : "Neutral",
+	companion : "undead spirit",
+	companionApply : "undead spirit",
+	ac : 20,
+	hp : 90,
+	hd : [18, 8],
+	speed : "30 ft., Fly 40 ft.(Hover, Ghostly)",
+	scores : [12, 16, 15, 4, 10, 9],
+	damage_immunities : "Necrotic, Poison",
+	condition_immunities : "Exhaustion, Frightened, Paralyzed, Poisoned",
+	senses : "Darkvision 60 ft.",
+	passivePerception : 10,
+	languages : "Understands the languages you know",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	proficiencyBonusLinked : true,
+	attacksAction : 4,
+	features : [{
+		name : "Festering Aura (Putrid Only)",
+		description : "Constitution Saving Throw: DC equals your spell save DC, any creature (other than you) that starts its turn within a 5-foot Emanation originating from the spirit. Failure: The creature has the Poisoned condition until the start of its next turn.",
+		joinString : "\n   ",
+	}, {
+		name : "Incorporeal Passage (Ghostly Only)",
+		description : "The spirit can move through other creatures and objects as if they were Difficult Terrain. If it ends its turninside an object, it is shunted to teh nearest unoccupied space and takes 1d10 Force damage for every 5 feet traveled.",
+		joinString : "\n   ",
+	}],
+	attacks : [{
+		name : "Deathly Touch (Ghostly Only)",
+		ability : 2,
+		damage : [1, 8, "Necrotic"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "On a hit, the target has the Frightened condition until the end of its next turn.",
+	}, {
+		name : "Rotting Claw (Putrid Only)",
+		ability : 2,
+		damage : [1, 6, "Slashing"],
+		range : "Melee (5 ft.)",
+		modifiers : ["", 9],
+		description : "On a hit, if the target has the Poisoned condition, it has the Paralyzed condition until the end of its next turn.",
+	}],
 };
