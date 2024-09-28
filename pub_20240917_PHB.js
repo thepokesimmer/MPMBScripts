@@ -1,15 +1,78 @@
 var iFileName = "pub_20240917_PHB.js";
 RequiredSheetVersion("13.2.1");
 SourceList.PHB2024 = {
-	name : "2024 Player's Handbook",
-	abbreviation : "PHB2024",
-	abbreviationSpellsheet : "PHB",
-	group : "Core Sources",
-	url : "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
-	date : "2024/09/17",
+  name: "2024 Player's Handbook",
+  abbreviation: "PHB2024",
+  abbreviationSpellsheet: "PHB",
+  group: "Core Sources",
+  url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
+  date: "2024/09/17",
+};
+SourceList.LEGACY = {
+  name: "Spells Deprecated by 2024 Player's Handbook",
+  abbreviation: "LEGACY",
+  abbreviationSpellsheet: "L",
+  group: "Core Sources",
+  url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
+  date: "2024/09/17",
 };
 // Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite
-//Classes
+
+//Functions
+function legacySpellRefactor(spellKey, newSpell) {
+  if (newSpell.replaces && newSpell.replaces in SpellsList) {
+    SpellsList[spellKey] = SpellsList[newSpell.replaces];
+    delete SpellsList[newSpell.replaces];
+  }
+  if (!(spellKey in SpellsList)) {
+    SpellsList[spellKey] = newSpell;
+  } else {
+    var oldspell = SpellsList[spellKey]
+    SpellsList[spellKey] = newSpell;
+    var test = newSpell.replaces || spellKey;
+    for (var i in ClassSubList) {
+      var subclass = ClassSubList[i]
+      if ("spellcastingExtra" in subclass) {
+        var index = subclass.spellcastingExtra.indexOf(test);
+        if (index !== -1) {
+          if (test !== spellKey) {
+            subclass.spellcastingExtra[index] = spellKey
+          }
+          if (!('subclassfeature24' in subclass.features)) {
+            subclass.features['subclassfeature24'] = {
+              name: "Legacy spells",
+              source: [["LEGACY", 1]],
+              minlevel: 1,
+              description: "\n I can choose to access to the legacy version of spells",
+              choices: ["Show Legacy", "Hide Legacy"],
+              "show legacy": {
+                name: "Show legacy spells",
+                description: "\n   I have access to the legacy version of spells",
+                spellcastingExtra: []
+              },
+              "hide legacy": {
+                name: "Hide legacy spells",
+                description: "\n   I have hidden the legacy version of spells",
+                spellcastingExtra: []
+              },
+              legacySpells: [],
+            }
+          }
+          subclass.features['subclassfeature24'].legacySpells.push(test + " legacy");
+          subclass.features['subclassfeature24']["show legacy"].spellcastingExtra = subclass.spellcastingExtra.concat(subclass.features['subclassfeature24'].legacySpells);
+          subclass.features['subclassfeature24']["hide legacy"].spellcastingExtra = subclass.spellcastingExtra
+        }
+      }
+    }
+    oldspell.source = [["LEGACY", 1]];
+    oldspell.name = oldspell.name + " (Legacy)";
+    if ('nameShort' in oldspell) {
+      oldspell.nameShort = oldspell.nameShort + " (L)"
+    }
+    SpellsList[test + " legacy"] = oldspell;
+  }
+}
+
 function legacyClassRefactor(classKey, newClass) {
   if (!(classKey in ClassList)) {
     ClassList[classKey] = newClass;
@@ -54,6 +117,8 @@ function legacySubClassRefactor(classKey, subClassKey, newSubClass) {
     AddSubClass(classKey, subClassKey, newSubClass)
   }
 }
+
+//Classes
 legacyClassRefactor("barbarian",  {
 	regExpSearch : /barbarian/i,
 	name : "Barbarian",
@@ -535,7 +600,7 @@ legacyClassRefactor("barbarian",  {
 		},			
 	},
 });
-AddSubClass("barbarian", "berserker", {
+legacySubClassRefactor("barbarian", "berserker", {
 	regExpSearch : /^(?=.*(barbarian))(?=.*(berserker)).*$/i,
 	subname : "Path of the Berserker",
 	source : [["PHB2024", 54]],
@@ -581,7 +646,7 @@ AddSubClass("barbarian", "berserker", {
 		},  
 	},
 });
-AddSubClass("barbarian", "wild heart", {
+legacySubClassRefactor("barbarian", "wild heart", {
 	regExpSearch : /^(?=.*(barbarian))(?=.*(wild))(?=.*(heart)).*$/i,
 	subname : "Path of the Wild Heart",
 	source : [["PHB2024", 55]],
@@ -671,7 +736,7 @@ AddSubClass("barbarian", "wild heart", {
 		},  
 	},
 });
-AddSubClass("barbarian", "world tree", {
+legacySubClassRefactor("barbarian", "world tree", {
 	regExpSearch : /^(?=.*(barbarian))(?=.*(world))(?=.*(tree)).*$/i,
 	subname : "Path of the World Tree",
 	source : [["PHB2024", 56]],
@@ -717,7 +782,7 @@ AddSubClass("barbarian", "world tree", {
 		},  
 	},
 });
-AddSubClass("barbarian", "zealot", {
+legacySubClassRefactor("barbarian", "zealot", {
 	regExpSearch : /^(?=.*(barbarian))(?=.*(zealot)).*$/i,
 	subname : "Path of the Zealot",
 	source : [["PHB2024", 57]],
@@ -977,7 +1042,7 @@ legacyClassRefactor("bard", {
 		},			
 	},
 });
-AddSubClass("bard", "dance", {
+legacySubClassRefactor("bard", "dance", {
 	regExpSearch : /^(?=.*(bard))(?=.*(dance)).*$/i,
 	subname : "College of Dance",
 	source : [["PHB2024", 64]],
@@ -1054,7 +1119,7 @@ AddSubClass("bard", "dance", {
 		},  
 	},
 });
-AddSubClass("bard", "glamour", {
+legacySubClassRefactor("bard", "glamour", {
 	regExpSearch : /^(?=.*(bard))(?=.*(glamour)).*$/i,
 	subname : "College of Glamour",
 	source : [["PHB2024", 65]],
@@ -1123,7 +1188,7 @@ AddSubClass("bard", "glamour", {
 		},  
 	},
 });
-AddSubClass("bard", "lore", {
+legacySubClassRefactor("bard", "lore", {
 	regExpSearch : /^(?=.*(bard))(?=.*(lore)).*$/i,
 	subname : "College of Lore",
 	source : [["PHB2024", 66]],
@@ -1171,7 +1236,7 @@ AddSubClass("bard", "lore", {
 		},  
 	},
 });
-AddSubClass("bard", "valor", {
+legacySubClassRefactor("bard", "valor", {
 	regExpSearch : /^(?=.*(bard))(?=.*(valor)).*$/i,
 	subname : "College of Valor",
 	source : [["PHB2024", 67]],
@@ -1446,7 +1511,7 @@ legacyClassRefactor("cleric", {
 		},			
 	},
 });
-AddSubClass("cleric", "life", {
+legacySubClassRefactor("cleric", "life", {
 	regExpSearch : /^(?=.*(cleric))(?=.*(life)).*$/i,
 	subname : "Life Domain",
 	source : [["PHB2024", 73]],
@@ -1487,7 +1552,7 @@ AddSubClass("cleric", "life", {
 		},  
 	},
 });
-AddSubClass("cleric", "light", {
+legacySubClassRefactor("cleric", "light", {
 	regExpSearch : /^(?=.*(cleric))(?=.*(light)).*$/i,
 	subname : "Light Domain",
 	source : [["PHB2024", 74]],
@@ -1538,7 +1603,7 @@ AddSubClass("cleric", "light", {
 		},  
 	},
 });
-AddSubClass("cleric", "trickery", {
+legacySubClassRefactor("cleric", "trickery", {
 	regExpSearch : /^(?=.*(cleric))(?=.*(trickery)).*$/i,
 	subname : "Trickery Domain",
 	source : [["PHB2024", 75]],
@@ -1585,7 +1650,7 @@ AddSubClass("cleric", "trickery", {
 		},  
 	},
 });
-AddSubClass("cleric", "war", {
+legacySubClassRefactor("cleric", "war", {
 	regExpSearch : /^(?=.*(cleric))(?=.*(war)).*$/i,
 	subname : "War Domain",
 	source : [["PHB2024", 76]],
@@ -1921,7 +1986,7 @@ legacyClassRefactor("druid", {
 		},			
 	},
 });
-AddSubClass("druid", "land", {
+legacySubClassRefactor("druid", "land", {
 	regExpSearch : /^(?=.*(druid))(?=.*(land)).*$/i,
 	subname : "Circle of the Land",
 	source : [["PHB2024", 84]],
@@ -2036,7 +2101,7 @@ AddSubClass("druid", "land", {
 		},  
 	},
 });
-AddSubClass("druid", "moon", {
+legacySubClassRefactor("druid", "moon", {
 	regExpSearch : /^(?=.*(druid))(?=.*(moon)).*$/i,
 	subname : "Circle of the Moon",
 	source : [["PHB2024", 86]],
@@ -2087,7 +2152,7 @@ AddSubClass("druid", "moon", {
 		},  
 	},
 });
-AddSubClass("druid", "sea", {
+legacySubClassRefactor("druid", "sea", {
 	regExpSearch : /^(?=.*(druid))(?=.*(sea)).*$/i,
 	subname : "Circle of the Sea",
 	source : [["PHB2024", 87]],
@@ -2134,7 +2199,7 @@ AddSubClass("druid", "sea", {
 		},  
 	},
 });
-AddSubClass("druid", "stars", {
+legacySubClassRefactor("druid", "stars", {
 	regExpSearch : /^(?=.*(druid))(?=.*(stars)).*$/i,
 	subname : "Circle of Stars",
 	source : [["PHB2024", 88]],
@@ -2631,7 +2696,7 @@ legacyClassRefactor("fighter", {
 		},			
 	},
 });
-AddSubClass("fighter", "battle master", {
+legacySubClassRefactor("fighter", "battle master", {
 	regExpSearch : /^(?=.*(fighter))(?=.*(battle))(?=.*(master)).*$/i,
 	subname : "Battle Master",
 	source : [["PHB2024", 93]],
@@ -2822,7 +2887,7 @@ AddSubClass("fighter", "battle master", {
 		},
 	},
 });
-AddSubClass("fighter", "champion", {
+legacySubClassRefactor("fighter", "champion", {
 	regExpSearch : /^(?=.*(fighter))(?=.*(champion)).*$/i,
 	subname : "Champion",
 	source : [["PHB2024", 96]],
@@ -2910,7 +2975,7 @@ AddSubClass("fighter", "champion", {
 		},  
 	},
 });
-AddSubClass("fighter", "eldritch knight", {
+legacySubClassRefactor("fighter", "eldritch knight", {
 	regExpSearch : /^(?=.*(fighter))(?=.*(eldritch))(?=.*(knight)).*$/i,
 	subname : "Eldritch Knight",
 	source : [["PHB2024", 96]],
@@ -3002,7 +3067,7 @@ AddSubClass("fighter", "eldritch knight", {
 		},  
 	},
 });
-AddSubClass("fighter", "psi warrior", {
+legacySubClassRefactor("fighter", "psi warrior", {
 	regExpSearch : /^(?=.*(fighter))(?=.*(psi))(?=.*(warrior)).*$/i,
 	subname : "Psi Warrior",
 	source : [["PHB2024", 98]],
@@ -3391,7 +3456,7 @@ legacyClassRefactor("monk", {
 		},			
 	},
 });
-AddSubClass("monk", "mercy", {
+legacySubClassRefactor("monk", "mercy", {
 	regExpSearch : /^(?=.*(monk))(?=.*(mercy)).*$/i,
 	subname : "Warrior of Mercy",
 	source : [["PHB2024", 104]],
@@ -3458,7 +3523,7 @@ AddSubClass("monk", "mercy", {
 		},
 	},
 });
-AddSubClass("monk", "shadow", {
+legacySubClassRefactor("monk", "shadow", {
 	regExpSearch : /^(?=.*(monk))(?=.*(shadow)).*$/i,
 	subname : "Warrior of Shadow",
 	source : [["PHB2024", 105]],
@@ -3531,7 +3596,7 @@ AddSubClass("monk", "shadow", {
 		},  
 	},
 });
-AddSubClass("monk", "elements", {
+legacySubClassRefactor("monk", "elements", {
 	regExpSearch : /^(?=.*(monk))(?=.*(elements)).*$/i,
 	subname : "Warrior of the Elements",
 	source : [["PHB2024", 106]],
@@ -3592,7 +3657,7 @@ AddSubClass("monk", "elements", {
 		},  
 	},
 });
-AddSubClass("monk", "open hand", {
+legacySubClassRefactor("monk", "open hand", {
 	regExpSearch : /^(?=.*(monk))(?=.*(open))(?=.*(hand)).*$/i,
 	subname : "Warrior of the Open Hand",
 	source : [["PHB2024", 107]],
@@ -4156,7 +4221,7 @@ legacyClassRefactor("paladin", {
 		},			
 	},
 });
-AddSubClass("paladin", "devotion", {
+legacySubClassRefactor("paladin", "devotion", {
 	regExpSearch : /^(?=.*(paladin))(?=.*(devotion)).*$/i,
 	subname : "Oath of Devotion",
 	source : [["PHB2024", 113]],
@@ -4206,7 +4271,7 @@ AddSubClass("paladin", "devotion", {
 		},
 	},
 });
-AddSubClass("paladin", "glory", {
+legacySubClassRefactor("paladin", "glory", {
 	regExpSearch : /^(?=.*(paladin))(?=.*(glory)).*$/i,
 	subname : "Oath of Glory",
 	source : [["PHB2024", 114]],
@@ -4264,7 +4329,7 @@ AddSubClass("paladin", "glory", {
 		},  
 	},
 });
-AddSubClass("paladin", "ancients", {
+legacySubClassRefactor("paladin", "ancients", {
 	regExpSearch : /^(?=.*(paladin))(?=.*(ancients)).*$/i,
 	subname : "Oath of the Ancients",
 	source : [["PHB2024", 115]],
@@ -4311,7 +4376,7 @@ AddSubClass("paladin", "ancients", {
 		},  
 	},
 });
-AddSubClass("paladin", "Vengeance", {
+legacySubClassRefactor("paladin", "Vengeance", {
 	regExpSearch : /^(?=.*(paladin))(?=.*(vengeance)).*$/i,
 	subname : "Oath of Vengeance",
 	source : [["PHB2024", 116]],
@@ -4878,7 +4943,7 @@ legacyClassRefactor("ranger", {
 		},		
 	},
 });
-AddSubClass("ranger", "beast master", {
+legacySubClassRefactor("ranger", "beast master", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(beast))(?=.*(master)).*$/i,
 	subname : "Beast Master",
 	source : [["PHB2024", 122]],
@@ -4924,7 +4989,7 @@ AddSubClass("ranger", "beast master", {
 		},
 	},
 });
-AddSubClass("ranger", "fey wanderer", {
+legacySubClassRefactor("ranger", "fey wanderer", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(fey))(?=.*(wanderer)).*$/i,
 	subname : "Fey Wanderer",
 	source : [["PHB2024", 124]],
@@ -5004,7 +5069,7 @@ AddSubClass("ranger", "fey wanderer", {
 		},  
 	},
 });
-AddSubClass("ranger", "gloom stalker", {
+legacySubClassRefactor("ranger", "gloom stalker", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(gloom))(?=.*(stalker)).*$/i,
 	subname : "Gloom Stalker",
 	source : [["PHB2024", 125]],
@@ -5065,7 +5130,7 @@ AddSubClass("ranger", "gloom stalker", {
 		},  
 	},
 });
-AddSubClass("ranger", "hunter", {
+legacySubClassRefactor("ranger", "hunter", {
 	regExpSearch : /^(?=.*(ranger))(?=.*(hunter)).*$/i,
 	subname : "Hunter",
 	source : [["PHB2024", 127]],
@@ -5480,7 +5545,7 @@ legacyClassRefactor("rogue", {
 		},			
 	},
 });
-AddSubClass("rogue", "arcane trickster", {
+legacySubClassRefactor("rogue", "arcane trickster", {
 	regExpSearch : /^(?=.*(rogue))(?=.*(arcane))(?=.*(trickster)).*$/i,
 	subname : "Arcane Trickster",
 	source : [["PHB2024", 132]],
@@ -5565,7 +5630,7 @@ AddSubClass("rogue", "arcane trickster", {
 		},
 	},
 });
-AddSubClass("rogue", "assassin", {
+legacySubClassRefactor("rogue", "assassin", {
 	regExpSearch : /^(?=.*(rogue))(?=.*(assassin)).*$/i,
 	subname : "Assassin",
 	source : [["PHB2024", 105]],
@@ -5617,7 +5682,7 @@ AddSubClass("rogue", "assassin", {
 		},  
 	},
 });
-AddSubClass("rogue", "soulknife", {
+legacySubClassRefactor("rogue", "soulknife", {
 	regExpSearch : /^(?=.*(rogue))(?=.*(soulknife)).*$/i,
 	subname : "Soulknife",
 	source : [["PHB2024", 135]],
@@ -5699,7 +5764,7 @@ AddSubClass("rogue", "soulknife", {
 		},  
 	},
 });
-AddSubClass("rogue", "thief", {
+legacySubClassRefactor("rogue", "thief", {
 	regExpSearch : /^(?=.*(rogue))(?=.*(thief)).*$/i,
 	subname : "Thief",
 	source : [["PHB2024", 137]],
@@ -5990,7 +6055,7 @@ legacyClassRefactor("sorcerer", {
 		},					
 	},
 });
-AddSubClass("sorcerer", "aberrant", {
+legacySubClassRefactor("sorcerer", "aberrant", {
 	regExpSearch : /^(?=.*(sorcerer))(?=.*(aberrant)).*$/i,
 	subname : "Aberrant Sorcery",
 	source : [["PHB2024", 145]],
@@ -6052,7 +6117,7 @@ AddSubClass("sorcerer", "aberrant", {
 		},			
 	},
 });
-AddSubClass("sorcerer", "clockwork", {
+legacySubClassRefactor("sorcerer", "clockwork", {
 	regExpSearch : /^(?=.*(sorcerer))(?=.*(clockwork)).*$/i,
 	subname : "Clockwork Sorcery",
 	source : [["PHB2024", 146]],
@@ -6129,7 +6194,7 @@ AddSubClass("sorcerer", "clockwork", {
 		},		
 	},
 });
-AddSubClass("sorcerer", "draconic", {
+legacySubClassRefactor("sorcerer", "draconic", {
 	regExpSearch : /^(?=.*(sorcerer))(?=.*(draconic)).*$/i,
 	subname : "Draconic Sorcery",
 	source : [["PHB2024", 148]],
@@ -6220,7 +6285,7 @@ AddSubClass("sorcerer", "draconic", {
 		},  
 	},
 });
-AddSubClass("sorcerer", "wild magic", {
+legacySubClassRefactor("sorcerer", "wild magic", {
 	regExpSearch : /^(?=.*(sorcerer))(?=.*(wild ))(?=.*(magic)).*$/i,
 	subname : "Wild Magic Sorcery",
 	source : [["PHB2024", 149]],
@@ -7107,7 +7172,7 @@ legacyClassRefactor("warlock", {
 		},					
 	},
 });
-AddSubClass("warlock", "archfey", {
+legacySubClassRefactor("warlock", "archfey", {
 	regExpSearch : /^(?=.*(warlock))(?=.*(archfey)).*$/i,
 	subname : "Archfey Patron",
 	source : [["PHB2024", 159]],
@@ -7162,7 +7227,7 @@ AddSubClass("warlock", "archfey", {
 		},
 	},
 });
-AddSubClass("warlock", "celestial", {
+legacySubClassRefactor("warlock", "celestial", {
 	regExpSearch : /^(?=.*(warlock))(?=.*(celestial)).*$/i,
 	subname : "Celestial Patron",
 	source : [["PHB2024", 160]],
@@ -7209,7 +7274,7 @@ AddSubClass("warlock", "celestial", {
 		},		
 	},
 });
-AddSubClass("warlock", "fiend", {
+legacySubClassRefactor("warlock", "fiend", {
 	regExpSearch : /^(?=.*(warlock))(?=.*(fiend)).*$/i,
 	subname : "Fiend Patron",
 	source : [["PHB2024", 161]],
@@ -7257,7 +7322,7 @@ AddSubClass("warlock", "fiend", {
 		},  
 	},
 });
-AddSubClass("warlock", "great old one", {
+legacySubClassRefactor("warlock", "great old one", {
 	regExpSearch : /^(?=.*(warlock))(?=.*(great old one)).*$/i,
 	subname : "Great Old One Patron",
 	source : [["PHB2024", 162]],
@@ -7498,7 +7563,7 @@ legacyClassRefactor("wizard", {
 		},			
 	},
 });
-AddSubClass("wizard", "abjurer", {
+legacySubClassRefactor("wizard", "abjurer", {
 	regExpSearch : /^(?=.*(wizard))(?=.*(abjurer)).*$/i,
 	subname : "Abjurer",
 	source : [["PHB2024", 172]],
@@ -7567,7 +7632,7 @@ AddSubClass("wizard", "abjurer", {
 		},  
 	},
 });
-AddSubClass("wizard", "diviner", {
+legacySubClassRefactor("wizard", "diviner", {
 	regExpSearch : /^(?=.*(wizard))(?=.*(diviner)).*$/i,
 	subname : "Diviner",
 	source : [["PHB2024", 173]],
@@ -7632,7 +7697,7 @@ AddSubClass("wizard", "diviner", {
 		},  
 	}, 
 });
-AddSubClass("wizard", "evoker", {
+legacySubClassRefactor("wizard", "evoker", {
 	regExpSearch : /^(?=.*(wizard))(?=.*(evoker)).*$/i,
 	subname : "Evoker",
 	source : [["PHB2024", 174]],
@@ -7689,7 +7754,7 @@ AddSubClass("wizard", "evoker", {
 		},  
 	},
 });
-AddSubClass("wizard", "illusionist", {
+legacySubClassRefactor("wizard", "illusionist", {
 	regExpSearch : /^(?=.*(wizard))(?=.*(illusionist)).*$/i,
 	subname : "Illusionist",
 	source : [["PHB2024", 175]],
