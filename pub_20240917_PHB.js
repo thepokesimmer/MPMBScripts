@@ -4494,7 +4494,7 @@ legacyClassRefactor("ranger", {
   subclasses: ["Ranger Subclass", []],
   attacks: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
   spellcastingFactor: 2,
-  spellcastingAbility: 6,
+  spellcastingAbility: 5,
   spellcastingKnown: {
     spells: "list",
     prepared: true,
@@ -4503,6 +4503,7 @@ legacyClassRefactor("ranger", {
   spellcastingTable: [[0, 0, 0, 0, 0, 0, 0, 0, 0]].concat(levels.map(function (n) {
     return defaultSpellTable[Math.ceil(n / 2)];
   })),
+  spellcastingExtra : ["hunter's mark"],
   features: {
     "favored enemy": {
       name: "Favored Enemy",
@@ -4823,7 +4824,38 @@ legacyClassRefactor("ranger", {
         ]),
       },
     },
-    "fighting style": {
+    "expertise": function () {
+      var a = {
+        name: "Deft Explorer",
+        source: [["PHB2024", 121]],
+        minlevel: 2,
+        description: "Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.",
+        skillstxt: "Expertise with any two skill proficiencies.",
+		languageProfs : 2,
+        additional: levels.map(function (n) {
+          return n < 2 ? "" : "with " + (n < 9 ? 1 : 3) + " skills";
+        }),
+        extraname: "Ranger Expertise",
+        extrachoices: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
+        extraTimes: levels.map(function (n) {
+          return n < 9 ? 1 : 3;
+        })
+      };
+      for (var i = 0; i < a.extrachoices.length; i++) {
+        var attr = a.extrachoices[i].toLowerCase();
+        a[attr] = {
+          name: a.extrachoices[i] + " Expertise",
+          description: "",
+          source: a.source,
+          skills: [[a.extrachoices[i], "only"]],
+          prereqeval: function (v) {
+            return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
+          }
+        };
+      }
+      return a;
+    }(),	
+	"fighting style": {
       name: "Fighting Style",
       source: [["PHB2024", 120]],
       minlevel: 2,
@@ -4885,36 +4917,6 @@ legacyClassRefactor("ranger", {
         "Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.",
       ]),
     },
-    "expertise": function () {
-      var a = {
-        name: "Expertise",
-        source: [["PHB2024", 121]],
-        minlevel: 9,
-        description: "Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.",
-        skillstxt: "Expertise with any two skill proficiencies.",
-        additional: levels.map(function (n) {
-          return n < 9 ? "" : "with " + (n < 9 ? "" : 2) + " skills";
-        }),
-        extraname: "Ranger Expertise",
-        extrachoices: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
-        extraTimes: levels.map(function (n) {
-          return n < 9 ? 0 : 2;
-        })
-      };
-      for (var i = 0; i < a.extrachoices.length; i++) {
-        var attr = a.extrachoices[i].toLowerCase();
-        a[attr] = {
-          name: a.extrachoices[i] + " Expertise",
-          description: "",
-          source: a.source,
-          skills: [[a.extrachoices[i], "only"]],
-          prereqeval: function (v) {
-            return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
-          }
-        };
-      }
-      return a;
-    }(),
     "tireless": {
       name: "Tireless",
       source: [["PHB2024", 121]],
@@ -5034,7 +5036,7 @@ legacySubClassRefactor("ranger", "fey wanderer", {
   regExpSearch: /^(?=.*(ranger))(?=.*(fey))(?=.*(wanderer)).*$/i,
   subname: "Fey Wanderer",
   source: [["PHB2024", 124]],
-  spellcastingExtra: ["charm person", "misty step", "summon fey", "dimension door", "mislead"],
+  spellcastingExtra: ["charm person", "hunter's mark", "misty step", "summon fey", "dimension door", "mislead"],
   features: {
     "subclassfeature3": {
       name: "Dreadful Strikes",
@@ -5114,7 +5116,7 @@ legacySubClassRefactor("ranger", "gloom stalker", {
   regExpSearch: /^(?=.*(ranger))(?=.*(gloom))(?=.*(stalker)).*$/i,
   subname: "Gloom Stalker",
   source: [["PHB2024", 125]],
-  spellcastingExtra: ["disguise self", "rope trick", "fear", "greater invisibility", "seeming"],
+  spellcastingExtra: ["disguise self", "hunter's mark", "rope trick", "fear", "greater invisibility", "seeming"],
   features: {
     "subclassfeature3": {
       name: "Dread Ambusher",
@@ -19888,7 +19890,7 @@ CompanionList["companion"] = {
 				var rCaM = /(,|;)? ?counts as magical/i;
 				if (rCaM.test(sDescr)) Value(sDescrFld, sDescr.replace(rCaM, ''));
 			}
-			processActions(false, "Beast Master: Ranger's Companion", [["bonus action", "Exceptional Training (Dash/Disengage/Help)"]], "Ranger's Companion");
+			processActions(false, "Beast Master: Ranger's Companion", [["bonus action", "Exceptional Training (Dash/Disengage/Dodge/Help)"]], "Ranger's Companion");
 		}
 	}, {
 		name : "Bestial Fury (Beast Master 11, PHB2024 123)",
