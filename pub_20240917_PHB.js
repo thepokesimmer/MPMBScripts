@@ -3207,11 +3207,11 @@ legacyClassRefactor("monk", {
         return "1d" + (n < 5 ? 6 : n < 11 ? 8 : n < 17 ? 10 : 12);
       }),
       eval: function () {
-        AddString('Extra.Notes', 'Monk features:\n\u25C6 If I wear armor/shield, I lose Unarmored Defense, Martial Arts, and Unarmored Movement');
+        AddString('Extra.Notes', 'Monk features:\n\u25C6 If I wear armor/shield, I lose Martial Arts, Unarmored Defense, Unarmored Movement, and Acrobatic Movement');
         show3rdPageNotes();
       },
       removeeval: function () {
-        RemoveString('Extra.Notes', 'Monk features:\n\u25C6 If I wear armor/shield, I lose Unarmored Defense, Martial Arts, and Unarmored Movement');
+        RemoveString('Extra.Notes', 'Monk features:\n\u25C6 If I wear armor/shield, I lose Martial Arts, Unarmored Defense, Unarmored Movement, and Acrobatic Movement');
       },
       calcChanges: {
         atkAdd: [
@@ -3239,12 +3239,12 @@ legacyClassRefactor("monk", {
         ]
       },
       description: desc([
-        "Your practice of martial arts gives you mastery of combat styles that use your Unarmed Strikes and Monk weapons, which are the following.",
-        "Simple Melee weapons and Martial Melee weapons that have the Light property",
-        "You gain the following benefits while you are unarmed or wielding only Monk weapons and you aren't wearing armor or wielding a Shield",
-        "Bonus Unarmed Stirke : You can make an Unarmed Strike as a Bonus Action.",
-        "Martial Arts Die : You can roll 1d6 in place of the normal damage of your Unarmed Strike or Monk weapons. This die changes as you gain Monk levels as shown in the Martial Arts column of the Monk Features table.",
-        "Dexterous Attacks : You can use your Dexterity modifier instead of your Strength modifier for the attack and damage rolls of your Unarmed Strikes and Monk weapons. In addition, when you use the Grapple or Shove options of your Unarmed Strike, you can use your Dexterity modifier instead of your Strength modifier to determine the save DC.",
+        "My martial arts training lets me use Unarmed Strikes and Monk weapons.",
+        "These are Simple and Martial Melee weapons with the Light property.",
+        "While unarmed or using only Monk weapons, I gain the following benefits:",
+        "Bonus Unarmed Strike: I can make a Bonus Action Unarmed Strike.",
+        "Martial Arts Die: I can roll the Martial Arts die instead of normal damage for Unarmed Strikes or Monk Weapons.",
+        "Dexterous Attacks: I can use my Dex mod for the attack and damage rolls of my Unarmed Strikes and Monk weapons, and for Grapple or Shove save DCs.",
       ]),
     },
     "unarmored defense": {
@@ -3260,7 +3260,7 @@ legacyClassRefactor("monk", {
         selectNow: true
       }],
       description: desc([
-        "While you aren't wearing armor or wielding a Shield, your base Armor Class equals 10 plus your Dexterity and Wisdom Modifiers.",
+        "My AC is 10 + Dex mod + Wis mod",
       ]),
     },
     "monk's focus": {
@@ -3273,18 +3273,15 @@ legacyClassRefactor("monk", {
       }),
       recovery: "short rest",
       description: desc([
-        "Your focus and martial training allows you to harness a well of extraordinary energy within yourself. This energy is represented by Focus Points. Your Monk level determines the number of points you have, as shown in the Focus Points column of the Monk Features table.",
-        "You can expend these points to enhance or fuel certain Monk features. You start knowing three such features; Flurry of Blows, Patient Defense, and Step of the Wind, each of which is detailed below.",
-        "When you expend a Focus Point, it is unavailable until you finish a Short or Long Rest, at the end of which you regain all your expended points.",
-        "Some features that use Focus Points require your target to make a saving throw. The save DC equals 8 plus your Wisdom modifier and Proficiency Bonus.",
+        "I can spend Focus Points to fuel special actions (see third page)",
       ]),
       "flurry of blows": {
         name: "Flurry of Blows",
         extraname: "Focus Feature",
         action: ["bonus action", "Flurry of Blows (1 FP)"],
         description: desc([
-          "Flurry of Blows : You can expend 1 Focus point to make two Unarmed Strikes as a Bonus Action.",
-          "At 10th Level : You can expend 1 Focus Point to use Flurry of Blows and make three Unarmed Strikes with it instead of two.",
+          "I can expend 1 Focus Point to make two Unarmed Strikes as a Bonus Action.",
+          "At 10th Level, this increases to three.",
         ]),
       },
       "patient defense": {
@@ -3292,8 +3289,9 @@ legacyClassRefactor("monk", {
         extraname: "Focus Feature",
         action: [["bonus action", "Dash or Disengage"], ["bonus action", "Patient Defense (1 FP)"]],
         description: desc([
-          "Patient Defense : You can take the Disengage action as a Bonus Action. Alternatively, you can expend 1 Focus Point to take both the Disengage and Dodge action as a Bonus Action",
-          "At 10th Level : When you expend a Focus Point to use Patient Defense, you gain a number of Temporary Hit Points equal to two rolls of your Martial Arts die.",
+          "I can take the Disengage action as a Bonus Action.",
+          "I can expend 1 Focus Point to take both the Disengage and Dodge action as a Bonus Action.",
+          "At 10th Level, I also gain a number of Temp HP equal to 2x my Martial Arts die.",
         ]),
       },
       "step of the wind": {
@@ -3301,8 +3299,9 @@ legacyClassRefactor("monk", {
         extraname: "Focus Feature",
         action: ["bonus action", "Step of the Wind (1 FP)"],
         description: desc([
-          "Step of the Wind : You can take the Dash action as a Bonus Action. Alternatively, you can expend 1 Focus Point to take both the Disengage and Dash action as a Bonus Action, and your jump distance is doubled for that turn.",
-          "At 10th Level : When you expend a Focus Point to use Step of the Wind, you can choose a willing creature within 5 feet of yourself that is Large or smaller. You move the creature with you until the end of your turn. The creature's movement doesn't provoke Opportunity Attacks.",
+          "I can take the Dash action as a Bonus Action.",
+          "I can spend 1 Focus Point to take both the Disengage and Dash action as a Bonus Action, and my jump distance is doubled for that turn.",
+          "At 10th Level, I can move a willing creature within 5 feet (Large or smaller) with me until the end of my turn without provoking Opportunity Attacks.",
         ]),
       },
       autoSelectExtrachoices: [{
@@ -3328,7 +3327,7 @@ legacyClassRefactor("monk", {
         SetProf('speed', monkSpd !== '+0', {allModes: monkSpd}, "Monk: Unarmored Movement");
       },
       description: desc([
-        "Your speed increases by 10 feet while you aren't wearing armor or Wielding a Shield. This bonus increases when you reach certain Monk levels, as shown on the Monk Features table.",
+        "Speed increases by 10ft at 2nd Level, 15ft at 6th, 20ft at 10th, 25ft at 14th, 30ft at 18th.",
       ]),
     },
     "uncanny metabolism": {
@@ -3338,8 +3337,8 @@ legacyClassRefactor("monk", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "When you roll initiative, you can regain all expended Focus Points. When you do so, roll your Martial Arts die and regain a number of Hit Points equal to your Monk level plus the number rolled.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest",
+        "When I roll initiative, I can regain all expended Focus Points",
+        "and I heal HP equal to 1x Martial die roll + Monk Level.",
       ]),
     },
     "deflect attacks": {
@@ -3347,8 +3346,12 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 102]],
       minlevel: 3,
       description: desc([
-        "When an attack roll hits you and its damage includes Bludgeoning, Piercing, or Slashing damage. You can take a Reaction to reduce the attack's total damage against you. The reduction equals 1d10 plus your Dexterity modifier and Monk level.",
-        "If you reduce the damage to 0, you can expend 1 Focus Point to redirect some of the attack's force. If you do so, choose a creature you can see within 5 feet of yourself if the attack was a melee attack or a creature you can see within 60 feet of yourself that isn't behind Total Cover if the attack was a ranged attack. That creature must succeed on a Dexterity saving throw or take damage equal to two rolls of your Martial Arts die plus your Dexterity modifier. The damage is the same type dealt by the attack.",
+        "When hit by an attack dealing Bludgeoning, Piercing, or Slashing damage",
+        "I can use a Reaction to reduce the damage by 1d10 + Dex Mod + Monk level.",
+        "If the damage is negated, 1 Focus Point to redirect.",
+        "I choose a creature within 5 feet (for melee attacks)",
+        "or within 60 feet (for ranged attacks, not behind Total Cover)",
+        "It has to succeed on a Dex saving throw or take two rolls of my Martial Arts die + Dex modifier. The damage is the same type dealt by the attack.",
       ]),
     },
     "subclassfeature3": {
@@ -3368,23 +3371,29 @@ legacyClassRefactor("monk", {
       }),
       action: "reaction",
       description: desc([
-        "You can take a Reaction when you fall to reduce any damage you take from the fall by an amount equal to five times your Monk level.",
+        "As a Reaction I can reduce fall damage by 5x my Monk level.",
       ]),
+	  "stunning strike" : {
+		name : "Stunning Strike",
+		extraname : "Monk 5",
+		source : [["PHB2024", 103]],
+			description : " [1 focus point]" + desc([
+			"Once per turn, when I hit with a Monk weapon or Unarmed Strike, I can spend 1 Focus Point for a Stunning Strike.",
+			"The target makes a Constitution save. On a failure, it's Stunned until my next turn starts.",
+			"On a success, its Speed is halved and the next attack against it has Advantage",
+			])
+		},
+		autoSelectExtrachoices : [{
+			extrachoice : "stunning strike",
+			minlevel : 5
+		}]
     },
     "extra attack": {
       name: "Extra Attack",
       source: [["PHB2024", 103]],
       minlevel: 5,
       description: desc([
-        "You can attack twice instead of once whenever you take the Attack Action on your Turn.",
-      ]),
-    },
-    "stunning strike": {
-      name: "Stunning Strike",
-      source: [["PHB2024", 103]],
-      minlevel: 5,
-      description: desc([
-        "Once per turn when you hit a creature with a Monk weapon or an Unarmed Strike, you can expend 1 Focus Point to attempt a stunning strike. The target must make a Constitution saving throw. On a failed save, the target has the Stunned condition until the start of your next turn. On a successful save, the target's Speed is halved until the start of your next turn and the next attack roll made against the target before then has Advantage.",
+        "I can attack twice instead of once when I take the Attack Action on my Turn.",
       ]),
     },
     "empowered strikes": {
@@ -3392,7 +3401,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 6,
       description: desc([
-        "Whenever you deal damage with your Unarmed Strikes it can deal your choice of Force damage or its normal damage type.",
+        "My Unarmed Strikes can deal Force damage or their normal damage type.",
       ]),
     },
     "evasion": {
@@ -3400,8 +3409,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 7,
       description: desc([
-        "When you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw and only half damage if you fail.",
-        "You don't benefit from this feature if you have the Incapacitated condition",
+        "I take no damage on a successful Dexterity save and half damage on a failure. This doesn't work if I'm Incapacitated.",
       ]),
     },
     "acrobatic movement": {
@@ -3409,7 +3417,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 9,
       description: desc([
-        "While you aren't wearing armor or wielding a Shield you gain the ability to move along vertical surfaces and across liquids on you turn without falling during the movement.",
+        "I can move on vertical surfaces and across liquids without falling during my turn",
       ]),
     },
     "heightened focus": {
@@ -3417,7 +3425,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 10,
       description: desc([
-        "Your Flurry of Blows, Patient Defense, and Step of the Wind improve.",
+        "My Flurry of Blows, Patient Defense, and Step of the Wind improve.",
       ]),
     },
     "self-restoration": {
@@ -3425,8 +3433,8 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 10,
       description: desc([
-        "Through sheer force of will, you can remove one of the following conditions from yourself at the end of each of your turns; Charmed, Frightened, or Poisoned.",
-        "In addition, foregoing food and drink doesn't give you levels of Exhaustion",
+        "At the end of each turn, I can remove the Charmed, Frightened, or Poisoned condition from myself.",
+        "I also don't gain Exhaustion from skipping food or drink.",
       ]),
     },
     "deflect energy": {
@@ -3434,7 +3442,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 13,
       description: desc([
-        "You can now use your Deflect Attacks feature against attacks that deal any damage type, not just Bludgeoning, Piercing, or Slashing.",
+        "I can use Deflect Attacks against any damage type, not just Bludgeoning, Piercing, or Slashing.",
       ]),
     },
     "disciplined survivor": {
@@ -3444,8 +3452,7 @@ legacyClassRefactor("monk", {
       additional: "1 ki point to reroll failed saving throw",
       saves: ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
       description: desc([
-        "Your physical and mental discipline grants you proficiency in all saving throws.",
-        "Additionally, whenever you make a saving throw and fail, you can expend 1 Focus point to reroll it, and you must use the new roll.",
+        "Proficiency in all saving throws. 1 Focus Point to reroll a failed save, must use the new roll.",
       ]),
     },
     "perfect focus": {
@@ -3453,7 +3460,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 15,
       description: desc([
-        "When you roll Initiative and don't use Uncanny Metabolism, you regain expended Focus Points until you have 4 if you have 3 or fewer.",
+        "When I roll Initiative, if I have 3 or fewer Focus Points and don’t use Uncanny Metabolism, I regain up to 4 Focus Points",
       ]),
     },
     "superior defense": {
@@ -3461,7 +3468,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 18,
       description: desc([
-        "At the start of your turn, you can expend 3 Focus Points to bolster yourself against harm for 1 minute or until you have the Incapacitated condition. During that time, you have Resistance to all damage except Force damage.",
+        "At the start of my turn, I can spend 3 Focus Points for 1 minute of Resistance to all damage except Force, unless I'm Incapacitated.",
       ]),
     },
     "epic boon": {
@@ -3469,7 +3476,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Irresistible Offense is recommended.",
+        "I gain an Epic Boon feat or another feat of your choice.",
       ]),
     },
     "body and mind": {
@@ -3479,7 +3486,7 @@ legacyClassRefactor("monk", {
       scores: [0, 4, 0, 0, 4, 0],
       scoresMaximum: [0, 25, 0, 0, 25, 0],
       description: desc([
-        "You have developed your body and mind to new heights. Your Dexterity and Wisdom scores increase by 4 to a maximum of 25.",
+        "My Dexterity and Wisdom scores increase by 4, to a maximum of 25.",
       ]),
     },
   },
@@ -3780,6 +3787,7 @@ legacyClassRefactor("paladin", {
     "lay on hands": {
       name: "Lay on Hands",
       source: [["PHB2024", 109]],
+	  minlevel : 1,
       action: "bonus action",
       usages: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
       recovery: "long rest",
@@ -3791,7 +3799,8 @@ legacyClassRefactor("paladin", {
     },
     "spellcasting": {
       name: "Spellcasting",
-      source: [["PHB2024", 109 - 110]],
+      source: [["PHB2024", 109]],
+	  minlevel : 1,
       additional: levels.map(function (n, idx) {
         var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
         return splls + " spells prepared";
@@ -4508,6 +4517,7 @@ legacyClassRefactor("ranger", {
     "favored enemy": {
       name: "Favored Enemy",
       source: [["PHB2024", 119]],
+	  minlevel : 1,
       usages: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
       recovery: "long rest",
       altResource: "SS 1+",
@@ -4519,6 +4529,7 @@ legacyClassRefactor("ranger", {
     "spellcasting": {
       name: "Spellcasting",
       source: [["PHB2024", 119]],
+	  minlevel : 1,
       additional: levels.map(function (n, idx) {
         var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
         return splls + " spells prepared";
@@ -4829,8 +4840,8 @@ legacyClassRefactor("ranger", {
         name: "Deft Explorer",
         source: [["PHB2024", 121]],
         minlevel: 2,
-        description: "Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.",
-        skillstxt: "Expertise with any two skill proficiencies.",
+        description: "Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills. At 9th-level you gain Expertise in two additional skills you lack Expertise in.",
+        skillstxt: "Expertise with any one skill proficiencies.",
 		languageProfs : 2,
         additional: levels.map(function (n) {
           return n < 2 ? "" : "with " + (n < 9 ? 1 : 3) + " skills";
