@@ -16,7 +16,7 @@ SourceList.LEGACY = {
   url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
   date: "2024/09/17",
 };
-// Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite
+// Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite, evanelric, TappyTap
 
 //Functions
 function legacySpellRefactor(spellKey, newSpell) {
@@ -27,16 +27,16 @@ function legacySpellRefactor(spellKey, newSpell) {
   if (!(spellKey in SpellsList)) {
     SpellsList[spellKey] = newSpell;
   } else {
-    var oldspell = SpellsList[spellKey]
+    var oldspell = SpellsList[spellKey];
     SpellsList[spellKey] = newSpell;
     var test = newSpell.replaces || spellKey;
     for (var i in ClassSubList) {
-      var subclass = ClassSubList[i]
+      var subclass = ClassSubList[i];
       if ("spellcastingExtra" in subclass) {
         var index = subclass.spellcastingExtra.indexOf(test);
         if (index !== -1) {
           if (test !== spellKey) {
-            subclass.spellcastingExtra[index] = spellKey
+            subclass.spellcastingExtra[index] = spellKey;
           }
           if (!('subclassfeature24' in subclass.features)) {
             subclass.features['subclassfeature24'] = {
@@ -56,18 +56,18 @@ function legacySpellRefactor(spellKey, newSpell) {
                 spellcastingExtra: []
               },
               legacySpells: [],
-            }
+            };
           }
           subclass.features['subclassfeature24'].legacySpells.push(test + " legacy");
           subclass.features['subclassfeature24']["show legacy"].spellcastingExtra = subclass.spellcastingExtra.concat(subclass.features['subclassfeature24'].legacySpells);
-          subclass.features['subclassfeature24']["hide legacy"].spellcastingExtra = subclass.spellcastingExtra
+          subclass.features['subclassfeature24']["hide legacy"].spellcastingExtra = subclass.spellcastingExtra;
         }
       }
     }
     oldspell.source = [["LEGACY", 1]];
     oldspell.name = oldspell.name + " (Legacy)";
     if ('nameShort' in oldspell) {
-      oldspell.nameShort = oldspell.nameShort + " (L)"
+      oldspell.nameShort = oldspell.nameShort + " (L)";
     }
     SpellsList[test + " legacy"] = oldspell;
   }
@@ -83,38 +83,38 @@ function legacyClassRefactor(classKey, newClass) {
 }
 
 function archiveSubClass(classKey, replacementSubclass, subClass) {
-  subClass.subname = subClass.subname + " - 2014"
+  subClass.subname = subClass.subname + " - 2014";
   if ('fullname' in subClass) {
-    subClass.fullname = subClass.fullname + " - 2014"
+    subClass.fullname = subClass.fullname + " - 2014";
   }
   for (var i of ClassList[classKey].subclasses[1]) {
     if (ClassSubList[i].regExpSearch.test(replacementSubclass)) {
-      var oldRegex = "(?=^.*" + subClass.regExpSearch.source + ".*$)"
-      var newRegex = "(?!^" + replacementSubclass + "$)"
-      ClassSubList[i].regExpSearch = new RegExp(oldRegex + newRegex, 'i')
-      console.println(replacementSubclass + ": " + i)
-      console.println(ClassSubList[i].regExpSearch)
+      var oldRegex = "(?=^.*" + subClass.regExpSearch.source + ".*$)";
+      var newRegex = "(?!^" + replacementSubclass + "$)";
+      ClassSubList[i].regExpSearch = new RegExp(oldRegex + newRegex, 'i');
+      console.println(replacementSubclass + ": " + i);
+      console.println(ClassSubList[i].regExpSearch);
     }
   }
   subClass.source = [["LEGACY", 1]];
 }
 
 function legacySubClassRefactor(classKey, subClassKey, newSubClass) {
-  var newSubClassName = classKey + "-" + subClassKey
+  var newSubClassName = classKey + "-" + subClassKey;
   if (newSubClassName in ClassSubList) {
-    var oldSubClass = ClassSubList[newSubClassName]
+    var oldSubClass = ClassSubList[newSubClassName];
 
-    archiveSubClass(classKey, newSubClass.subname, oldSubClass)
-    ClassSubList[newSubClassName] = newSubClass
-    AddSubClass(classKey, subClassKey + "_2014", oldSubClass)
+    archiveSubClass(classKey, newSubClass.subname, oldSubClass);
+    ClassSubList[newSubClassName] = newSubClass;
+    AddSubClass(classKey, subClassKey + "_2014", oldSubClass);
   } else {
     if ('replaces' in newSubClass) {
-      const subclassName = classKey + '-' + newSubClass.replaces
+      const subclassName = classKey + '-' + newSubClass.replaces;
       if (subclassName in ClassSubList) {
-        archiveSubClass(classKey, newSubClass.subname, ClassSubList[subclassName])
+        archiveSubClass(classKey, newSubClass.subname, ClassSubList[subclassName]);
       }
     }
-    AddSubClass(classKey, subClassKey, newSubClass)
+    AddSubClass(classKey, subClassKey, newSubClass);
   }
 }
 
@@ -3239,12 +3239,9 @@ legacyClassRefactor("monk", {
         ]
       },
       description: desc([
-        "My martial arts training lets me use Unarmed Strikes and Monk weapons.",
-        "These are Simple and Martial Melee weapons with the Light property.",
-        "While unarmed or using only Monk weapons, I gain the following benefits:",
-        "Bonus Unarmed Strike: I can make a Bonus Action Unarmed Strike.",
-        "Martial Arts Die: I can roll the Martial Arts die instead of normal damage for Unarmed Strikes or Monk Weapons.",
-        "Dexterous Attacks: I can use my Dex mod for the attack and damage rolls of my Unarmed Strikes and Monk weapons, and for Grapple or Shove save DCs.",
+        "Monk weapons: Simple, Martial weapons with the Light property, Unarmed Strike",
+        "While wielding Monk weapons and unarmored I can make one unarmed strike as a bonus action",
+        "With monk weapons, I can use Dex instead of Str and use the Martial Arts damage die",
       ]),
     },
     "unarmored defense": {
@@ -3278,30 +3275,27 @@ legacyClassRefactor("monk", {
       "flurry of blows": {
         name: "Flurry of Blows",
         extraname: "Focus Feature",
-        action: ["bonus action", "Flurry of Blows (1 FP)"],
+        action: ["bonus action", " (1 FP)"],
         description: desc([
           "I can expend 1 Focus Point to make two Unarmed Strikes as a Bonus Action.",
-          "At 10th Level, this increases to three.",
         ]),
       },
       "patient defense": {
         name: "Patient Defense",
         extraname: "Focus Feature",
-        action: [["bonus action", "Dash or Disengage"], ["bonus action", "Patient Defense (1 FP)"]],
+        action: [["bonus action", "Dash or Disengage"], ["bonus action", " (1 FP)"]],
         description: desc([
-          "I can take the Disengage action as a Bonus Action.",
-          "I can expend 1 Focus Point to take both the Disengage and Dodge action as a Bonus Action.",
-          "At 10th Level, I also gain a number of Temp HP equal to 2x my Martial Arts die.",
+          "As a bonus action, I can dash or dodge.",
+          "1 Focus Point, as a bonus action, I can dash and dodge.",
         ]),
       },
       "step of the wind": {
         name: "Step of the Wind",
         extraname: "Focus Feature",
-        action: ["bonus action", "Step of the Wind (1 FP)"],
+		action: [["bonus action", " (1 FP)"], ["bonus action", "Dash"]],
         description: desc([
-          "I can take the Dash action as a Bonus Action.",
-          "I can spend 1 Focus Point to take both the Disengage and Dash action as a Bonus Action, and my jump distance is doubled for that turn.",
-          "At 10th Level, I can move a willing creature within 5 feet (Large or smaller) with me until the end of my turn without provoking Opportunity Attacks.",
+          "As a bonus action, I can take the Dash action.",
+          "1 Focus Point, as a bonus action I can Dash and Disengage, and my jump distance is doubled for that turn.",
         ]),
       },
       autoSelectExtrachoices: [{
@@ -3327,7 +3321,7 @@ legacyClassRefactor("monk", {
         SetProf('speed', monkSpd !== '+0', {allModes: monkSpd}, "Monk: Unarmored Movement");
       },
       description: desc([
-        "Speed increases by 10ft at 2nd Level, 15ft at 6th, 20ft at 10th, 25ft at 14th, 30ft at 18th.",
+        "Speed increases and eventually lets me traverse some surfaces without falling as I move",
       ]),
     },
     "uncanny metabolism": {
@@ -3337,30 +3331,28 @@ legacyClassRefactor("monk", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "When I roll initiative, I can regain all expended Focus Points",
-        "and I heal HP equal to 1x Martial die roll + Monk Level.",
+        "When I roll initiative, I can restore all Focus Points and heal 1 Martial die roll + Monk Level.",
       ]),
     },
     "deflect attacks": {
-      name: "Deflect Attacks",
-      source: [["PHB2024", 102]],
-      minlevel: 3,
-      description: desc([
-        "When hit by an attack dealing Bludgeoning, Piercing, or Slashing damage",
-        "I can use a Reaction to reduce the damage by 1d10 + Dex Mod + Monk level.",
-        "If the damage is negated, 1 Focus Point to redirect.",
-        "I choose a creature within 5 feet (for melee attacks)",
-        "or within 60 feet (for ranged attacks, not behind Total Cover)",
-        "It has to succeed on a Dex saving throw or take two rolls of my Martial Arts die + Dex modifier. The damage is the same type dealt by the attack.",
-      ]),
-    },
+		name: "Deflect Attacks",
+		source: [["PHB2024", 102]],
+		minlevel: 3,
+		description: desc([
+        "As a reaction, I can reduce Bludg., Pierc., or Slash. dmg done to me",
+        "If the damage is negated, I can redirect the melee or ranged atk (60ft).",
+        "Dex save or 2x Martial die roll + Dex mod dmg of the same type.",
+		]),
+		action : [["reaction", ""]],
+		additional : levels.map(function (n) {
+			return n < 3 ? "" : "1d10 + " + n + " + Dexterity modifier; 1 FP to redirect";
+		}),
+	},
     "subclassfeature3": {
       name: "Monk Subclass",
       source: [["PHB2024", 103]],
       minlevel: 3,
-      description: desc([
-        "You gain a Monk subclass of your choice. The Warrior of Mercy, Warrior of Shadow, Warrior of the Elements, and Warrior of the Open Hand subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Monk levels. For the rest of your career, you gain each of your subclass's features that are of your Monk level or lower.",
-      ]),
+      description: desc('Choose a Monk Subclass to commit to and put it in the "Class" field ')
     },
     "slow fall": {
       name: "Slow Fall",
@@ -3378,23 +3370,15 @@ legacyClassRefactor("monk", {
 		extraname : "Monk 5",
 		source : [["PHB2024", 103]],
 			description : " [1 focus point]" + desc([
-			"Once per turn, when I hit with a Monk weapon or Unarmed Strike, I can spend 1 Focus Point for a Stunning Strike.",
-			"The target makes a Constitution save. On a failure, it's Stunned until my next turn starts.",
-			"On a success, its Speed is halved and the next attack against it has Advantage",
+			"Once per turn, after I hit a creature, 1 Focus Point for a Stunning Strike.",
+			"Con save or it's Stunned until my next turn starts.",
+			"On a success, its Speed is halved and the next attack against it has Advantage.",
 			])
 		},
 		autoSelectExtrachoices : [{
 			extrachoice : "stunning strike",
 			minlevel : 5
 		}]
-    },
-    "extra attack": {
-      name: "Extra Attack",
-      source: [["PHB2024", 103]],
-      minlevel: 5,
-      description: desc([
-        "I can attack twice instead of once when I take the Attack Action on my Turn.",
-      ]),
     },
     "empowered strikes": {
       name: "Empowered Strikes",
@@ -3408,9 +3392,8 @@ legacyClassRefactor("monk", {
       name: "Evasion",
       source: [["PHB2024", 103]],
       minlevel: 7,
-      description: desc([
-        "I take no damage on a successful Dexterity save and half damage on a failure. This doesn't work if I'm Incapacitated.",
-      ]),
+      description : desc("My Dex saves vs. areas of effect negate damage on success and halve it on failure, while not Incapacitated"),
+	savetxt : { text : ["Dex save vs. area effects: fail \u2015 half dmg, success \u2015 no dmg"] }
     },
     "acrobatic movement": {
       name: "Acrobatic Movement",
@@ -3420,47 +3403,37 @@ legacyClassRefactor("monk", {
         "I can move on vertical surfaces and across liquids without falling during my turn",
       ]),
     },
-    "heightened focus": {
-      name: "Heightened Focus",
-      source: [["PHB2024", 103]],
-      minlevel: 10,
-      description: desc([
-        "My Flurry of Blows, Patient Defense, and Step of the Wind improve.",
-      ]),
-    },
     "self-restoration": {
-      name: "Self-Restoration",
-      source: [["PHB2024", 103]],
-      minlevel: 10,
-      description: desc([
-        "At the end of each turn, I can remove the Charmed, Frightened, or Poisoned condition from myself.",
-        "I also don't gain Exhaustion from skipping food or drink.",
-      ]),
+		name: "Self-Restoration",
+		source: [["PHB2024", 103]],
+		minlevel: 10,
+		description: desc([
+			"At the end of each of my turns, I can remove the Charmed, Frightened, or Poisoned condition.",
+			"I also don't gain Exhaustion from skipping food or drink.",
+		]),
     },
     "deflect energy": {
       name: "Deflect Energy",
       source: [["PHB2024", 103]],
       minlevel: 13,
       description: desc([
-        "I can use Deflect Attacks against any damage type, not just Bludgeoning, Piercing, or Slashing.",
+        "Deflect Attacks works against any damage type.",
       ]),
     },
     "disciplined survivor": {
-      name: "Disciplined Survivor",
-      source: [["PHB2024", 103]],
-      minlevel: 14,
-      additional: "1 ki point to reroll failed saving throw",
-      saves: ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
-      description: desc([
-        "Proficiency in all saving throws. 1 Focus Point to reroll a failed save, must use the new roll.",
-      ]),
+    name: "Disciplined Survivor",
+    source: [["PHB2024", 103]],
+    minlevel: 14,
+    description : desc("I am proficient with all saves; I can reroll a failed save once by spending 1 FP, must use new roll"),
+	additional : "1 FP to reroll failed saving throw",
+	saves : ["Str", "Dex", "Con", "Int", "Wis", "Cha"]
     },
     "perfect focus": {
       name: "Perfect Focus",
       source: [["PHB2024", 103]],
       minlevel: 15,
       description: desc([
-        "When I roll Initiative, if I have 3 or fewer Focus Points and don’t use Uncanny Metabolism, I regain up to 4 Focus Points",
+        "If I roll Initiative and I have less than 4 FP, I regain up to 4 FP.",
       ]),
     },
     "superior defense": {
@@ -3468,7 +3441,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 18,
       description: desc([
-        "At the start of my turn, I can spend 3 Focus Points for 1 minute of Resistance to all damage except Force, unless I'm Incapacitated.",
+        "At the start of my turn, 3 FP to resist non-Force damage for 1 minute, unless Incapacitated.",
       ]),
     },
     "epic boon": {
@@ -3502,7 +3475,8 @@ legacySubClassRefactor("monk", "mercy", {
       source: [["PHB2024", 104]],
       minlevel: 3,
       description: desc([
-        "Once per turn when you hit a creature with an Unarmed Strike and deal damage, you can expend 1 Focus Point to deal extra Necrotic damage equal to one roll of your Martial Arts die plus your Wisdom modifier.",
+        "1/turn when I hit a crea. with an Unarmed Strike and deal dmg",
+        "1 FP to add extra Necro. dmg equal to one roll of my Martial Arts die + Wis mod.",
       ]),
     },
     "subclassfeature3.1": {
@@ -3511,8 +3485,8 @@ legacySubClassRefactor("monk", "mercy", {
       minlevel: 3,
       action: "action",
       description: desc([
-        "As a Magic action, you can expend 1 Focus Point to touch a creature and restore a number of Hit Points equal to a roll of your Martial Arts die plus your Wisdom modifier.",
-        "When you use your Flurry of Blows, you can replace one of the Unarmed Strikes with a use of this feature without expending a Focus Points for the healing.",
+        "As a Magic action, 1 FP to touch a crea. and restore HP equal to a roll of your Martial Arts die + Wis mod.",
+        "When I use Flurry of Blows, I can replace one of the Unarmed Strikes with a use of this feature without expending FP for the healing.",
       ]),
     },
     "subclassfeature3.2": {
@@ -3526,14 +3500,13 @@ legacySubClassRefactor("monk", "mercy", {
       ]),
     },
     "subclassfeature6": {
-      name: "Physician's Touch",
-      source: [["PHB2024", 104]],
-      minlevel: 6,
-      description: desc([
-        "Your Hand of Harm and Hand of Healing improve, as detailed below.",
-        "Hand of Harm : When you use Hand of Harm on a Creature, you can also give that creature the Poisoned condition until the end of your next turn.",
-        "Hand of Healing : When you use Hand of Healing you can also end one of the following conditions on the creature you heal; Blinded, Deafened, Paralyzed, Poisoned, or Stunned.",
-      ]),
+		name: "Physician's Touch",
+		source: [["PHB2024", 104]],
+		minlevel: 6,
+		description : desc([
+			"Hand of Healing also ends 1 condition blinded, deafened, paralyzed, poisoned or stunned",
+			"Hand of Harm also causes target to be poisoned until the end of my next turn"
+		]),
     },
     "subclassfeature11": {
       name: "Flurry of Healing and Harm",
@@ -3543,19 +3516,28 @@ legacySubClassRefactor("monk", "mercy", {
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
       recovery: "long rest",
       description: desc([
-        "When you use Flurry of Blows, you can replace each of the Unarmed Strikes with a use of Hand of Healing without expending Focus Points for the healing.",
-        "In addition, when you make an Unarmed Strike with Flurry of Blows and deal damage, you can use Hand of Harm with that strike without expending a Focus Point for Hand of Harm. You can still use Hand of Harm only once per turn.",
-        "You can use this benefit a total number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses when you finish a Long Rest.",
+        "I can use Hand of Healing instead of each Flurry of Blows unarmed strike without ki cost",
+				"I can use Hand of Harm on one Flurry of Blows unarmed strike without ki cost",
+        "You can use this benefit a number of times equal to my Wis Mod, and cant do so again until a Long Rest.",
       ]),
-    },
-    "subclassfeature17": {
-      name: "Hand of Ultimate Mercy",
-      source: [["PHB2024", 105]],
-      minlevel: 17,
-      description: desc([
-        "Your mastery of life energy opens the door to the ultimate mercy. As a Magic action, you can touch the corpse of a creature that dies within the past 24 hours and expend 5 Focus Points. The creature then returns to life with a number of Hit Points equal to 4d10 plus your Wisdom modifier. If the creature died with any of the following conditions, the creature revives with the conditions removed; Blinded, Deafened, Paralyzed, Poisoned, and Stunned.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest",
-      ]),
+	  "hand of ultimate mercy" : {
+				name : "Hand of Ultimate Mercy",
+				extraname : "Way of Mercy 17",
+				source : [["T", 50]],
+				description : desc([
+					"As an action, I can spend 5 FP and touch a creature that died in the last 24 hours",
+					"The creature returns to life and regains 4d10 + my Wisdom modifier in hit points",
+					"It is also cured of all these conditions: blinded, deafened, paralyzed, poisoned, and stunned"
+				]),
+				action : [["action", ""]],
+				additional : "5 FP",
+				usages : 1,
+				recovery : "long rest"
+			},
+			autoSelectExtrachoices : [{
+				extrachoice : "hand of ultimate mercy",
+				minlevel : 17
+			}]
     },
   },
 });
@@ -3586,21 +3568,23 @@ legacySubClassRefactor("monk", "shadow", {
           "Darkness : You can expend 1 Focus Point to cast the Darkness spell without expending components. You can see within the spell's area when you cast it with this feature. While the spell persists, you can move its area of Darkness to a space within 60 feet of yourself at the start of each of your turns.",
         ])
       },
-      autoSelectExtrachoices: [{
-        extrachoice: "darkness"
-      }],
+		autoSelectExtrachoices: [{
+			extrachoice: "darkness"
+		}],
+		spellChanges : {
+			"darkness" : {
+				components : "",
+				compMaterial : "",
+				changes : "Spell cast with my Shadow Arts don't require spell components."
+			},
+		},
       spellcastingBonus: [{
         name: "Shadow Arts",
         spells: ["minor illusion"],
         selection: ["minor illusion"],
         times: 1,
       }],
-      description: desc([
-        "You have learned to draw on the power of the Shadowfell, gaining the following benefits.",
-        "Darkness : You can expend 1 Focus Point to cast the Darkness spell without expending components. You can see within the spell's area when you cast it with this feature. While the spell persists, you can move its area of Darkness to a space within 60 feet of yourself at the start of each of your turns.",
-        "Darkvision : You gain Darkvision with a range of 60 feet. If you already have Darkvision, its range increases by 60 feet.",
-        "Shadowy Figments : You know the Minor Illusion spell, Wisdom is your spellcasting ability for it.",
-      ]),
+      description : "\n   " + "I know the Minor Illusion cantrip and can cast certain spells by using FP (see page 3)",
     },
     "subclassfeature6": {
       name: "Shadow Step",
@@ -3608,7 +3592,7 @@ legacySubClassRefactor("monk", "shadow", {
       minlevel: 6,
       action: "bonus action",
       description: desc([
-        "While entirely within Dim Light or Darkness, you can use a Bonus Action to teleport up to 60 feet to an unoccupied space you can see that is also in Dim Light or Darkness. You then have Advantage on the next melee attack you make before the end of the current turn.",
+        "I can use a Bonus Action to teleport up to 60 feet while in Dim Light or Darkness. I gain Advantage on my next melee attack before the turn ends.",
       ]),
     },
     "subclassfeature11": {
@@ -3616,7 +3600,7 @@ legacySubClassRefactor("monk", "shadow", {
       source: [["PHB2024", 105]],
       minlevel: 11,
       description: desc([
-        "You can draw on your Shadowfell connection to empower your teleportation. When you use your Shadow Step, you can expend 1 Focus point to remove the requirement that you must start and end in Dim Light or Darkness for that use of the feature. As part of this Bonus Action, you can make an Unarmed Strike immediately after you teleport.",
+        "1 Focus Point, I can use Shadow Step to teleport without needing to start and end in Dim Light or Darkness. I can also make an Unarmed Strike immediately after teleporting.",
       ]),
     },
     "subclassfeature17": {
@@ -3625,10 +3609,12 @@ legacySubClassRefactor("monk", "shadow", {
       minlevel: 17,
       action: "action",
       description: desc([
-        "As a Magic action while entirely within Dim Light or Darkness, you can expend 3 Focus Points to shroud yourself in shadows for 1 minute, until you have the Incapacitated condition, or until you end your turn in Bright Light. While shrouded by these shadows, you gain the following benefits.",
-        "Invisibility : You have the Invisible condition",
-        "Partially Incorporeal : You can move through occupied spaces as if they were Difficult Terrain. If you end your turn in such a space, you are shunted to the last unoccupied space you were in.",
-        "Shadow Flurry : You can use your Flurry of Blows without expending any Focus Points",
+        "As a Magic action in Dim Light or Darkness, 3 FP to shroud myself in shadows for 1 min.",
+        "I lose this if I end my turn in Bright Light or am Incapacitated. While shrouded, I gain:",
+        "The Invisible condition",
+        "I can move through occupied spaces as Difficult Terrain",
+        "and will be shunted to the last unoccupied space if I end my turn in an occupied space",
+        "I can use Flurry of Blows without spending Focus Points.",
       ]),
     },
   },
@@ -3645,24 +3631,16 @@ legacySubClassRefactor("monk", "elements", {
       source: [["PHB2024", 106]],
       minlevel: 3,
       description: desc([
-        "At the start of your turn, you can expend 1 Focus Point to imbue yourself with elemental energy. The energy lasts for 10 minutes or until you have the Incapacitated condition. You gain the following benefits while this feature is active.",
-        "Reach : When you make an Unarmed Strike, your reach is 10 feet greater than normal, as elemental energy extends from you.",
-        "Elemental Strikes : Whenever you hit with your Unarmed Strikes, you can cause it to deal your choice of Acid, Cold, Fire, Lightning, or Thunder damage rather than its normal damage type. When you deal one of these types with it, you can also force the target to make a Strength saving throw. On a failed save, you can move the target up to 10 feet toward or away from you, as elemental energy swirls around it.",
+        "At the start of my turn, 1 FP for 10 mins of elemental energy. While active:",
+        "My Unarmed Strikes have 10ft extra reach, and deal my choice: Acid, Cold, Fire, Lightning,",
+        "or Thunder damage, and on hit Str save or I can move the target up to 10ft.",
       ]),
-    },
-    "subclassfeature3.1": {
-      name: "Manipulate Elements",
-      source: [["PHB2024", 106]],
-      minlevel: 3,
-      spellcastingBonus: [{
+	  spellcastingBonus: [{
         name: "Manipulate Elements",
         spells: ["elementalism"],
         selection: ["elementalism"],
         times: 1,
       }],
-      description: desc([
-        "You know the Elementalsm spell. Wisdom is your spellcasting ability for it.",
-      ]),
     },
     "subclassfeature6": {
       name: "Elemental Burst",
@@ -3670,8 +3648,8 @@ legacySubClassRefactor("monk", "elements", {
       minlevel: 6,
       action: "action",
       description: desc([
-        "As a Magic action, you can expend 2 Focus Points to cause elemental energy to burst in a 20-foot radius sphere centered on a point within 120 feet of yourself. Choose a damage type; Acid, Cold, Fire, Lightning, or Thunder.",
-        "Each creature in the Sphere must make a Dexterity saving throw. On a failed save, a creature takes damage of the chosen type equal to three rolls of your Martial Arts die. On a successful save, a creature takes half as much damage.",
+        "As a Magic action, 2 FP for a 20ft. radius burst of Acid, Cold, Fire, Lightning, or Thunder damage within 120ft.",
+        "Affected Creatures make a Dex save, or 3x Martial dice roll damage, half on success.",
       ]),
     },
     "subclassfeature11": {
@@ -3679,7 +3657,7 @@ legacySubClassRefactor("monk", "elements", {
       source: [["PHB2024", 106]],
       minlevel: 11,
       description: desc([
-        "While your Elemental Attunement is active, you also have a Fly and a Swim Speed equal to your Speed.",
+        "While my Elemental Attunement is active, I gain Fly and Swim Speed equal to my Speed.",
       ]),
     },
     "subclassfeature17": {
@@ -3687,32 +3665,33 @@ legacySubClassRefactor("monk", "elements", {
       source: [["PHB2024", 106 - 107]],
       minlevel: 17,
       description: desc([
-        "When your Elemental Attunement is active, you gain the following benefits.",
-        "Damage Resistance : You gain Resistance to one of the following damage types of your choice; Acid, Cold, Fire, Lightning, or Thunder. At the start of each of your turns you can change this choice.",
-        "Destructive Stride : When you use your Step of the Wind, your Speed increases by 20 feet until the end of the turn. For that duration, any creature of your choice takes damage equal to one roll of your Martial Arts die when you enter a space within 5 feet of it. The damage type is your choice of Acid, Cold, Fire, Lightning, or Thunder. A creature can take this damage only once per turn.",
-        "Empowered Strikes : Once on each of your turns you can deal extra damage to a target equal to one roll of your Martial Arts die when you hit it with an Unarmed Strike. The extra damage is the same type dealt by that strike.",
+        "When Elemental Attunement is active:",
+        "I gain Resistance to Acid, Cold, Fire, Lightning, or Thunder, can change on my turn.",
+        "Step of the Wind adds 20ft Speed, for the duration I can deal damage (Acid, Cold,",
+        "Fire, Lightning or Thunder), to each creature within 5ft once per turn.",
+        "Once per turn, extra damage with Unarmed Strikes of same damage type.",
       ]),
     },
   },
 });
 legacySubClassRefactor("monk", "open hand", {
-  regExpSearch: /^(?=.*(monk))(?=.*(open))(?=.*(hand)).*$/i,
-  subname: "Warrior of the Open Hand",
-  source: [["PHB2024", 107]],
-  replaces: "way of the open hand",
-  features: {
-    "subclassfeature3": {
+	regExpSearch: /^(?=.*(monk))(?=.*(open))(?=.*(hand)).*$/i,
+	subname: "Warrior of the Open Hand",
+	source: [["PHB2024", 107]],
+	replaces: "way of the open hand",
+	features: {
+		"subclassfeature3": {
       name: "Open Hand Technique",
       source: [["PHB2024", 107]],
       minlevel: 3,
       description: desc([
-        "Whenever you hit a creature with an attack granted by your Flurry of Blows, you can impose one of the following effects on that target.",
-        "Addle : The target can't make Opportunity Attacks until the start of its next turn.",
-        "Push : The target must succeed on a Strength saving throw or be pushed up to 15 feet away from you.",
-        "Topple : The target must succeed on a Dexterity saving throw or have the Prone condition",
+        "When I hit a crea. with a Flurry of Blows attack, I can impose one of these effects:",
+        "Crea. can't make Opportunity Attacks until its next turn.",
+        "Crea. makes a Str save or is pushed 15ft.",
+        "Crea. makes a Dex save or is knocked Prone.",
       ]),
     },
-    "subclassfeature6": {
+		"subclassfeature6": {
       name: "Wholeness of Body",
       source: [["PHB2024", 107]],
       minlevel: 6,
@@ -3720,600 +3699,583 @@ legacySubClassRefactor("monk", "open hand", {
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
       recovery: "long rest",
       description: desc([
-        "You gain the ability to heal yourself. As a Bonus Action, you can roll your Martial Arts die. You regain a number of Hit Points equal to the number rolled plus your Wisdom modifier (minimum of 1 Hit Point regained).",
-        "You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest",
+        "As a Bonus Action, I can heal myself for 1 Martial die roll + my Wis mod.",
       ]),
     },
-    "subclassfeature11": {
-      name: "Fleet Step",
-      source: [["PHB2024", 107]],
-      minlevel: 11,
-      description: desc([
-        "When you take a Bonus Action other than Step of the Wind, you can also use Step of the Wind immediately after that Bonus Action.",
-      ]),
-    },
-    "subclassfeature17": {
-      name: "Quivering Palm",
-      source: [["PHB2024", 107]],
-      minlevel: 17,
-      description: desc([
-        "You gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an Unarmed Strike, you can expend 4 Focus Points to start these imperceptible vibrations, which last for a number of days equal to your Monk level. The vibrations are harmless unless you take an action to end them. Alternatively, when you take the Attack action on your turn, you can forgo one of these attacks to end the vibrations. To end them, you and the target must be on the same plane of existence. When you end them, the target must make a Constitution saving throw, taking 10d12 Force damage on a failed save or half as much damage on a successful one.",
-        "You can have only one creature under the effect of this feature at a time. You can end the vibrations harmlessly (no action required).",
-      ]),
-    },
-  },
+		"subclassfeature11": {
+			name: "Fleet Step",
+			source: [["PHB2024", 107]],
+			minlevel: 11,
+			description: desc([
+				"When I use a Bonus Action other than Step of the Wind, I can also use Step of the Wind immediately after.",
+			]),
+			"quivering palm" : {
+				name : "Quivering Palm",
+				extraname : "Warrior of the Open Hand 17",
+				source: [["PHB2024", 107]],
+				description : " [4 focus points]" + desc([
+					"When I hit a creature with an unarmed strike, I can start imperceptible vibrations",
+					"Within my monk level in days, I can use an action to have the creature make a Con save",
+					"If it fails, it takes 10d12 necrotic damage, half on success."
+				])
+			},
+				autoSelectExtrachoices : [{
+				extrachoice : "quivering palm",
+				minlevel : 17
+			}]
+		},
+	},
 });
 legacyClassRefactor("paladin", {
-  regExpSearch: /paladin/i,
-  name: "Paladin",
-  source: [["PHB2024", 109]],
-  primaryAbility: "Strength or Charisma",
-  prereqs: "Strength 13 or Dexterity 13",
-  improvements: [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
-  die: 10,
-  saves: ["Wis", "Cha"],
-  skillstxt: {
-    primary: "Choose 2: Athletics, Insight, Intimidation, Medicine, Persuasion, or Religion.",
-  },
-  armorProfs: {
-    primary: [true, true, true, true],
-    secondary: [true, true, false, true],
-  },
-  weaponProfs: {
-    primary: [true, true],
-    secondary: [false, true],
-  },
-  equipment: "Paladin starting equipment:" +
-    "\n \u2022 Chain Mail;" +
-    "\n \u2022 Shield;" +
-    "\n \u2022 Longsword;" +
-    "\n \u2022 6 Javelins;" +
-    "\n \u2022 Holy Symbol;" +
-    "\n \u2022 Priest's Pack and 9 gp;" +
-    "\n\nAlternatively, choose 150 gp worth of starting equipment instead of the class's starting equipment.",
-  subclasses: ["Paladin Subclass", []],
-  attacks: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  spellcastingFactor: 2,
-  spellcastingAbility: 6,
-  spellcastingKnown: {
-    spells: "list",
-    prepared: true,
-  },
-  spellcastingFactorRoundupMulti: true,
-  spellcastingTable: [[0, 0, 0, 0, 0, 0, 0, 0, 0]].concat(levels.map(function (n) {
-    return defaultSpellTable[Math.ceil(n / 2)];
-  })),
-  features: {
-    "lay on hands": {
-      name: "Lay on Hands",
-      source: [["PHB2024", 109]],
-	  minlevel : 1,
-      action: "bonus action",
-      usages: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
-      recovery: "long rest",
-      description: desc([
-        "Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you finish a Long Rest. With that pool, you can restore a total number of Hit Points equal to five times your Paladin level.",
-        "As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool of healing to restore a number of Hit Points to that creature, up to the maximum amount remaining in the pool.",
-        "You can also expend 5 Hit Points from the pool of healing power to remove the Poisoned condition from the creature, those points don't also restore Hit Points to the creature.",
-      ]),
-    },
-    "spellcasting": {
-      name: "Spellcasting",
-      source: [["PHB2024", 109]],
-	  minlevel : 1,
-      additional: levels.map(function (n, idx) {
-        var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
-        return splls + " spells prepared";
-      }),
-      calcChanges: {
-        spellCalc: [
-          function (type, spellcasters, ability) {
-            if (type === "prepare" && spellcasters.indexOf("paladin") !== -1) {
-              var lvl = classes.known.paladin.level;
-              var sArr = [0, 2, 3, 5, 5, 7, 6, 8, 7, 10, 9, 11, 10, 12, 11, 13, 12, 15, 14, 16, 15];
-              return sArr[lvl] - Math.ceil(lvl / 2) - Number(What("Cha Mod"));
-            }
-          }
-        ]
-      },
-      description: desc([
-        "You have learned to cast spells through prayer and meditation. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Paladin spells, which appear in the Paladin spell list later in the class's description.",
-        "Spell Slots : The Paladin Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose two level 1 Paladin spells. Heroism and Searing Smite are recommended.",
-        "The number of spells on your list increases as you gain Paladin levels, as shown in the Prepared Spells column of the Paladin Features table. Whenever that number increases, choose additional Paladin spells until the number of spells on your list matches the number in the Paladin Features table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 5 Paladin, your list of prepared spells can include six Paladin spells of level 1 or 2 in any combination.",
-        "If another Paladin feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Paladin spells for you.",
-        "Changing your Prepared Spells : Whenever you finish a Long Rest, you can replace one spell on you list with another Paladin spell for which you have spell slots.",
-        "Spellcasting Ability : Charisma is your spellcasting ability for your Paladin spells.",
-        "Spellcasting Focus : You can use a Holy Symbol as a spellcasting focus for your Paladin spells.",
-      ]),
-    },
-    "weapon mastery": {
-      name: "Weapon Mastery",
-      source: [["PHB2024", 110]],
-      minlevel: 1,
-      description: desc([
-        "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longswords and Javelins.",
-        "Whenever you finish a Long Rest, you can change the kinds of weapons you choose. For example, you could switch to suing the mastery properties of Halberds and Flails.",
-      ]),
-      additional: ["2 Weapon Masteries"],
-      extraname: "Weapon Mastery",
-      extrachoices: ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Dart", "Light Crossbow", "Shortbow", "Sling", "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "Warhammer", "War Pick", "Whip", "Blowgun", "Hand Crossbow", "Heavy Crossbow", "Longbow", "Musket", "Pistol"],
-      extraTimes: 2,
-      "club": {
-        name: "Club",
-        description: desc([
-          "You gain access to the Club's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "dagger": {
-        name: "Dagger",
-        description: desc([
-          "You gain access to the Dagger's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "greatclub": {
-        name: "Greatclub",
-        description: desc([
-          "You gain access to the Greatclub's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "handaxe": {
-        name: "Handaxe",
-        description: desc([
-          "You gain access to the Handaxe's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "javelin": {
-        name: "Javelin",
-        description: desc([
-          "You gain access to the Javelin's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "light hammer": {
-        name: "Light Hammer",
-        description: desc([
-          "You gain access to the Light Hammer's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "mace": {
-        name: "Mace",
-        description: desc([
-          "You gain access to the Mace's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "quarterstaff": {
-        name: "Quarterstaff",
-        description: desc([
-          "You gain access to the Quarterstaff's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "sickle": {
-        name: "Sickle",
-        description: desc([
-          "You gain access to the Sickle's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "spear": {
-        name: "Spear",
-        description: desc([
-          "You gain access to the Spear's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "dart": {
-        name: "Dart",
-        description: desc([
-          "You gain access to the Dart's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "light crossbow": {
-        name: "Light Crossbow",
-        description: desc([
-          "You gain access to the Light Crossbow's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "shortbow": {
-        name: "Shortbow",
-        description: desc([
-          "You gain access to the Shortbow's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "sling": {
-        name: "Sling",
-        description: desc([
-          "You gain access to the Sling's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "battleaxe": {
-        name: "Battleaxe",
-        description: desc([
-          "You gain access to the Battleaxe's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "flail": {
-        name: "Flail",
-        description: desc([
-          "You gain access to the Flail's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "glaive": {
-        name: "Glaive",
-        description: desc([
-          "You gain access to the Glaive's 'Graze' Mastery feature",
-          "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
-        ]),
-      },
-      "greataxe": {
-        name: "Greataxe",
-        description: desc([
-          "You gain access to the Greataxe's 'Cleave' Mastery feature",
-          "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "greatsword": {
-        name: "Greatsword",
-        description: desc([
-          "You gain access to the Greatsword's 'Graze' Mastery feature",
-          "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
-        ]),
-      },
-      "halberd": {
-        name: "Halberd",
-        description: desc([
-          "You gain access to the Halberd's 'Cleave' Mastery feature",
-          "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "lance": {
-        name: "Lance",
-        description: desc([
-          "You gain access to the Lance's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "longsword": {
-        name: "Longsword",
-        description: desc([
-          "You gain access to the Longsword's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "maul": {
-        name: "Maul",
-        description: desc([
-          "You gain access to the Maul's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "morningstar": {
-        name: "Morningstar",
-        description: desc([
-          "You gain access to the Morningstar's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "pike": {
-        name: "Pike",
-        description: desc([
-          "You gain access to the Pike's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "rapier": {
-        name: "Rapier",
-        description: desc([
-          "You gain access to the Rapier's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "scimitar": {
-        name: "Scimitar",
-        description: desc([
-          "You gain access to the Scimitar's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "shortsword": {
-        name: "Shortsword",
-        description: desc([
-          "You gain access to the Shortsword's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "trident": {
-        name: "Trident",
-        description: desc([
-          "You gain access to the Trident's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "warhammer": {
-        name: "Warhammer",
-        description: desc([
-          "You gain access to the Warhammer's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "war pick": {
-        name: "War Pick",
-        description: desc([
-          "You gain access to the War Pick's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "whip": {
-        name: "Whip",
-        description: desc([
-          "You gain access to the Whip's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "blowgun": {
-        name: "Blowgun",
-        description: desc([
-          "You gain access to the Blowgun's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "hand crossbow": {
-        name: "Hand Crossbow",
-        description: desc([
-          "You gain access to the Hand Crossbow's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "heavy crossbow": {
-        name: "Heavy Crossbow",
-        description: desc([
-          "You gain access to the Heavy Crossbow's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "longbow": {
-        name: "Longbow",
-        description: desc([
-          "You gain access to the Longbow's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "musket": {
-        name: "Musket",
-        description: desc([
-          "You gain access to the Musket's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "pistol": {
-        name: "Pistol",
-        description: desc([
-          "You gain access to the Pistol's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-    },
-    "fighting style": {
-      name: "Fighting Style",
-      source: [["PHB2024", 91]],
-      minlevel: 2,
-      description: desc([
-        "You can 'choose' between two features 'Fighting Style' or 'Blessed Warrior'.",
-      ]),
-      choices: ["Fighting Style", "Blessed Warrior"],
-      "fighting style": {
-        name: "Fighting Style",
-        eval: function () {
-          AddString('Feat Note 2', 'Fighting Style feat', '; ');
-        },
-        removeeval: function () {
-          RemoveString('Feat Note 2', 'Fighting Style feat');
-        },
-        description: desc([
-          "You gain a Fighting Style feat of your choice (see chapter 5 for feats).",
-        ]),
-      },
-      "blessed warrior": {
-        name: "Blessed Warrior",
-        spellcastingBonus: [{
-          name: "Blessed Warrior",
-          "class": "cleric",
-          level: [0, 0],
-          times: 2,
-        }],
-        description: desc([
-          "You learn two Cleric cantrips of your choice (see the Cleric class's section for the list of Cleric spells). Guidance and Sacred Flame are recommended. The chosen cantrips count as Paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a Paladin level, you can replace one of these cantrips with another Cleric cantrip.",
-        ]),
-      },
-    },
-    "paladin's smite": {
-      name: "Paladin's Smite",
-      source: [["PHB2024", 110]],
-      minlevel: 2,
-      usages: 1,
-      recovery: "Long Rest",
-      altResource: "SS 1+",
-      spellcastingBonus: [{
-        name: "Paladin's Smite",
-        spells: ["divine smite"],
-        selection: ["divine smite"],
-        times: 1,
-      }],
-      description: desc([
-        "You always have the Divine Smite spell prepared. In addition, you can cast it without expending a spell slot, but you must finish a Long Rest before you can cast it in this way again.",
-      ]),
-    },
-    "channel divinity": {
-      name: "Channel Divinity",
-      source: [["PHB2024", 110 - 111]],
-      action: ["bonus action", "Divine Sense"],
-      minlevel: 3,
-      usages: [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-      description: desc([
-        "You can channel divine energy directly from the Outer Planes, using it to fuel magical effects. You start with one such effect: Divine Sense, which is described below. Other Paladin features give additional Channel Divinity effect options. Each time you use this class's Channel Divinity, you choose which effect from the class to create.",
-        "You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain an additional use when you reach Paladin level 11.",
-        "If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.",
-        "Divine Sense : As a Bonus Action, you can open your awareness to detect Celestials, Fiends, and Undead. For the next 10 minutes or until you have the Incapacitated condition, you know the location of any creature of those types within 60 feet of yourself, and you know its creature type. Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated with the Hallow spell.",
-      ]),
-    },
-    "subclassfeature3": {
-      name: "Paladin Subclass",
-      source: [["PHB2024", 111]],
-      minlevel: 3,
-      description: desc([
-        "You gain a Paladin subclass of your choice. The Oath of Devotion, Oath of Glory, Oath of the Ancients, and Oath of Vengeance subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Paladin levels. For the rest of your career, you gain each of your subclass's features that are of your Paladin level or lower.",
-      ]),
-    },
-    "extra attack": {
-      name: "Extra Attack",
-      source: [["PHB2024", 111]],
-      minlevel: 5,
-      description: desc([
-        "You can attack twice instead of once whenever you take the Attack Action on your Turn.",
-      ]),
-    },
-    "faithful steed": {
-      name: "Faithful Steed",
-      source: [["PHB2024", 92]],
-      minlevel: 5,
-      usages: 1,
-      recovery: "long rest",
-      altResource: "SS 2+",
-      spellcastingBonus: [{
-        name: "Faithful Steed",
-        spells: ["find steed"],
-        selection: ["find steed"],
-        times: 1,
-      }],
-      description: desc([
-        "You can call on the aid of an otherworldly steed. You always have the Find Steed spell prepared.",
-        "You can also cast the spell once without expending a spell slot, and you regain the ability to do so when you finish a Long Rest.",
-      ]),
-    },
-    "aura of protection": {
-      name: "Aura of Protection",
-      source: [["PHB2024", 111]],
-      minlevel: 6,
-      description: desc([
-        "You radiate a protective, unseeable aura in a 10-foot Emanation that originates from you. The aura is inactive while you have the Incapacitated condition.",
-        "You and your allies in the aura gain a bonus to saving throws equal to your Charisma modifier (minimum bonus of +1).",
-        "If another Paladin is present, a creature can benefit from only one Aura of Protection at a time, the creature chooses which aura while in them.",
-      ]),
-    },
-    "abjure foes": {
-      name: "Abjure Foes",
-      source: [["PHB2024", 111]],
-      minlevel: 9,
-      action: "action",
-      description: desc([
-        "As a Magic action, you can expend one use of this class's Channel Divinity to overwhelm foes with awe. As you present your Holy Symbol or weapon you can target a number of creatures equal to your Charisma modifier (minimum of one creature) that you can see within 60 feet of yourself. Each target must succeed on a Wisdom saving throw or have the Frightened condition for 1 minute or until it takes any damage. While Frightened in this way a target can do only one of the following on its turns move, take an action, or take a Bonus Action.",
-      ]),
-    },
-    "aura of courage": {
-      name: "Aura of Courage",
-      source: [["PHB2024", 111]],
-      minlevel: 10,
-      description: desc([
-        "You and your allies have Immunity to the Frightened condition while in your Aura of Protection. If a Frightened ally enters the aura, that condition has no effect on that ally while there.",
-      ]),
-    },
-    "radiant strikes": {
-      name: "Radiant Strikes",
-      source: [["PHB2024", 111]],
-      minlevel: 11,
-      description: desc([
-        "Your strikes now carry supernatural power. When you hit a target with an attack roll using a Melee weapon or an Unarmed Strike, the target takes an extra 1d8 Radiant damage.",
-      ]),
-    },
-    "restoring touch": {
-      name: "Restoring Touch",
-      source: [["PHB2024", 111]],
-      minlevel: 14,
-      description: desc([
-        "When you use Lay on Hands on a creature, you can also remove one or more of the following conditions from the creature; Blinded, Charmed, Deafened, Frightened, Paralyzed, or Stunned. You must expend 5 Hit Points from the healing pool of Lay on Hands for each of these conditions you remove, those points don't also restore Hit Points to the creature.",
-      ]),
-    },
-    "aura expansion": {
-      name: "Aura Expansion",
-      source: [["PHB2024", 111]],
-      minlevel: 18,
-      description: desc([
-        "Your Aura of Protection is now a 30-foot Emanation.",
-      ]),
-    },
-    "epic boon": {
-      name: "Epic Boon",
-      source: [["PHB2024", 92]],
-      minlevel: 19,
-      description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Truesight is recommended.",
-      ]),
-    },
-  },
+	regExpSearch: /paladin/i,
+	name: "Paladin",
+	source: [["PHB2024", 109]],
+	primaryAbility: "Strength or Charisma",
+	prereqs: "Strength 13 or Dexterity 13",
+	improvements: [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+	die: 10,
+	saves: ["Wis", "Cha"],
+	skillstxt: {
+		primary: "Choose 2: Athletics, Insight, Intimidation, Medicine, Persuasion, or Religion.",
+	},
+	armorProfs: {
+		primary: [true, true, true, true],
+		secondary: [true, true, false, true],
+	},
+	weaponProfs: {
+		primary: [true, true],
+		secondary: [false, true],
+	},
+	equipment: "Paladin starting equipment:" +
+		"\n \u2022 Chain Mail;" +
+		"\n \u2022 Shield;" +
+		"\n \u2022 Longsword;" +
+		"\n \u2022 6 Javelins;" +
+		"\n \u2022 Holy Symbol;" +
+		"\n \u2022 Priest's Pack and 9 gp;" +
+		"\n\nAlternatively, choose 150 gp worth of starting equipment instead of the class's starting equipment.",
+	subclasses: ["Paladin Subclass", []],
+	attacks: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+	spellcastingFactor: 2,
+	spellcastingAbility: 6,
+	spellcastingKnown: {
+		spells: "list",
+		prepared: true,
+	},
+	spellcastingFactorRoundupMulti: true,
+	spellcastingTable: [[0, 0, 0, 0, 0, 0, 0, 0, 0]].concat(levels.map(function (n) {
+		return defaultSpellTable[Math.ceil(n / 2)];
+	})),
+	features: {
+		"lay on hands": {
+		name: "Lay on Hands",
+		source: [["PHB2024", 109]],
+		minlevel : 1,
+		action: "bonus action",
+		usages: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
+		recovery: "long rest",
+		description: desc([
+			"As a Bonus Action I can draw from a pool of healing to restore HP to a creature I touch.",
+			"I can instead spend 5 HP from the pool to remove Poisoned; Those don't also restore HP.",
+		]),
+		},
+		"spellcasting": {
+			name: "Spellcasting",
+			source: [["PHB2024", 109]],
+			minlevel : 1,
+			additional: levels.map(function (n, idx) {
+				var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
+				return splls + " spells prepared";
+			}),
+			calcChanges: {
+				spellCalc: [
+					function (type, spellcasters, ability) {
+						if (type === "prepare" && spellcasters.indexOf("paladin") !== -1) {
+						var lvl = classes.known.paladin.level;
+						var sArr = [0, 2, 3, 5, 5, 7, 6, 8, 7, 10, 9, 11, 10, 12, 11, 13, 12, 15, 14, 16, 15];
+						return sArr[lvl] - Math.ceil(lvl / 2) - Number(What("Cha Mod"));
+						}
+					}
+					]
+			},
+			description: desc([
+				"I can cast prepared level 1+ Paladin spells using Charisma as my spellcasting ability.",
+				"I can use a Holy Symbol as a spellcasting focus for my paladin spells.",
+				"I can change one prepared spell at the end of a long rest.",
+			]),
+		},
+		"weapon mastery": {
+			name: "Weapon Mastery",
+			source: [["PHB2024", 110]],
+			minlevel: 1,
+			description: desc([
+				"I choose two weapons I'm proficient with and gain their mastery features.",
+				"I can change these on a long rest; use Choose Feature above to select two. (See page 3)",
+			]),
+			additional: ["2 Weapon Masteries"],
+			extraname: "Weapon Mastery",
+			extrachoices: ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Dart", "Light Crossbow", "Shortbow", "Sling", "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "Warhammer", "War Pick", "Whip", "Blowgun", "Hand Crossbow", "Heavy Crossbow", "Longbow", "Musket", "Pistol"],
+			extraTimes: 2,
+			"club": {
+				name: "Club",
+				description: desc([
+				"You gain access to the Club's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"dagger": {
+				name: "Dagger",
+				description: desc([
+				"You gain access to the Dagger's 'Nick' Mastery feature",
+				"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"greatclub": {
+				name: "Greatclub",
+				description: desc([
+				"You gain access to the Greatclub's 'Push' Mastery feature",
+				"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"handaxe": {
+				name: "Handaxe",
+				description: desc([
+				"You gain access to the Handaxe's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"javelin": {
+				name: "Javelin",
+				description: desc([
+				"You gain access to the Javelin's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"light hammer": {
+				name: "Light Hammer",
+				description: desc([
+				"You gain access to the Light Hammer's 'Nick' Mastery feature",
+				"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"mace": {
+				name: "Mace",
+				description: desc([
+				"You gain access to the Mace's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"quarterstaff": {
+				name: "Quarterstaff",
+				description: desc([
+				"You gain access to the Quarterstaff's 'Topple' Mastery feature",
+				"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"sickle": {
+				name: "Sickle",
+				description: desc([
+				"You gain access to the Sickle's 'Nick' Mastery feature",
+				"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"spear": {
+				name: "Spear",
+				description: desc([
+				"You gain access to the Spear's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"dart": {
+				name: "Dart",
+				description: desc([
+				"You gain access to the Dart's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"light crossbow": {
+				name: "Light Crossbow",
+				description: desc([
+				"You gain access to the Light Crossbow's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"shortbow": {
+				name: "Shortbow",
+				description: desc([
+				"You gain access to the Shortbow's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"sling": {
+				name: "Sling",
+				description: desc([
+				"You gain access to the Sling's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"battleaxe": {
+				name: "Battleaxe",
+				description: desc([
+				"You gain access to the Battleaxe's 'Topple' Mastery feature",
+				"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"flail": {
+				name: "Flail",
+				description: desc([
+				"You gain access to the Flail's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"glaive": {
+				name: "Glaive",
+				description: desc([
+				"You gain access to the Glaive's 'Graze' Mastery feature",
+				"Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
+				]),
+			},
+			"greataxe": {
+				name: "Greataxe",
+				description: desc([
+				"You gain access to the Greataxe's 'Cleave' Mastery feature",
+				"Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
+				]),
+			},
+			"greatsword": {
+				name: "Greatsword",
+				description: desc([
+				"You gain access to the Greatsword's 'Graze' Mastery feature",
+				"Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
+				]),
+			},
+			"halberd": {
+				name: "Halberd",
+				description: desc([
+				"You gain access to the Halberd's 'Cleave' Mastery feature",
+				"Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
+				]),
+			},
+			"lance": {
+				name: "Lance",
+				description: desc([
+				"You gain access to the Lance's 'Topple' Mastery feature",
+				"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"longsword": {
+				name: "Longsword",
+				description: desc([
+				"You gain access to the Longsword's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"maul": {
+				name: "Maul",
+				description: desc([
+				"You gain access to the Maul's 'Topple' Mastery feature",
+				"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"morningstar": {
+				name: "Morningstar",
+				description: desc([
+				"You gain access to the Morningstar's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"pike": {
+				name: "Pike",
+				description: desc([
+				"You gain access to the Pike's 'Push' Mastery feature",
+				"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"rapier": {
+				name: "Rapier",
+				description: desc([
+				"You gain access to the Rapier's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"scimitar": {
+				name: "Scimitar",
+				description: desc([
+				"You gain access to the Scimitar's 'Nick' Mastery feature",
+				"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"shortsword": {
+				name: "Shortsword",
+				description: desc([
+				"You gain access to the Shortsword's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"trident": {
+				name: "Trident",
+				description: desc([
+				"You gain access to the Trident's 'Topple' Mastery feature",
+				"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"warhammer": {
+				name: "Warhammer",
+				description: desc([
+				"You gain access to the Warhammer's 'Push' Mastery feature",
+				"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"war pick": {
+				name: "War Pick",
+				description: desc([
+				"You gain access to the War Pick's 'Sap' Mastery feature",
+				"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"whip": {
+				name: "Whip",
+				description: desc([
+				"You gain access to the Whip's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"blowgun": {
+				name: "Blowgun",
+				description: desc([
+				"You gain access to the Blowgun's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"hand crossbow": {
+				name: "Hand Crossbow",
+				description: desc([
+				"You gain access to the Hand Crossbow's 'Vex' Mastery feature",
+				"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"heavy crossbow": {
+				name: "Heavy Crossbow",
+				description: desc([
+				"You gain access to the Heavy Crossbow's 'Push' Mastery feature",
+				"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"longbow": {
+				name: "Longbow",
+				description: desc([
+				"You gain access to the Longbow's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"musket": {
+				name: "Musket",
+				description: desc([
+				"You gain access to the Musket's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"pistol": {
+				name: "Pistol",
+				description: desc([
+				"You gain access to the Pistol's 'Slow' Mastery feature",
+				"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+		},
+		"fighting style": {
+			name: "Fighting Style",
+			source: [["PHB2024", 91]],
+			minlevel: 2,
+			description: desc([
+				"Pick a 'Fighting Style' feat or 'Blessed Warrior'; use Choose Feature above.",
+			]),
+			spellcastingBonus: [{
+				name: "Paladin's Smite",
+				spells: ["divine smite"],
+				selection: ["divine smite"],
+				times: 1,
+				firstCol : "oncelr",
+			}],
+			choices: ["Fighting Style", "Blessed Warrior"],
+			"fighting style": {
+				name: "Fighting Style",
+				eval: function () {
+				AddString('Feat Note 2', 'Fighting Style feat', '; ');
+				},
+				removeeval: function () {
+				RemoveString('Feat Note 2', 'Fighting Style feat');
+				},
+				description: desc([
+				"I gain a 'Fighting Style' feat of my choice; use Choose Feature above.",
+				]),
+			},
+			"blessed warrior": {
+				name: "Blessed Warrior",
+				spellcastingBonus: [{
+				name: "Blessed Warrior",
+				"class": "cleric",
+				level: [0, 0],
+				times: 2,
+				}],
+				description: desc([
+				"I learn two Cleric cantrips that count as Paladin spells; I use Cha for spellcasting.",
+				"When I gain a Paladin level I can swap one of these for another Cleric cantrip.",
+				]),
+			},
+		},
+		"channel divinity": {
+			name: "Channel Divinity",
+			source: [["PHB2024", 110 - 111]],
+			action: ["bonus action", "Divine Sense"],
+			minlevel: 3,
+			usages: [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+			description: desc([
+			"If a Channel Divinity effect has a saving throw the DC is my Cha spell save DC.",
+			"I get two uses (three at level 11); one returns on a Short Rest; all return on a Long Rest.",
+			"◆ Channel Divinity: Divine Sense As a Bonus Action I sense & locate Celestials/Fiends/Undead & consecrated/desecrated within 60 ft for 10 min while I'm conscious.",
+			]),
+		},
+		"subclassfeature3": {
+			name: "Paladin Subclass",
+			source: [["PHB2024", 111]],
+			minlevel: 3,
+			description : desc('Choose a Paladin Subclass and put it in the "Class" field '),
+			spellcastingBonus: [{
+				name: "Faithful Steed",
+				spells: ["find steed"],
+				selection: ["find steed"],
+				times: 1,
+				minlevel : 5,
+				firstCol : "oncelr",
+			}],
+		},
+		"aura of protection": {
+			name: "Aura of Protection",
+			source: [["PHB2024", 111]],
+			minlevel: 6,
+			description : desc("While I'm conscious, allies within range and I can add my Cha mod (min 1) to saves"),
+			additional : levels.map(function (n) {
+			return n < 6 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
+			}),
+			addMod : { type : "save", field : "all", mod : "max(Cha|1)", text : "While I'm conscious I can add my Charisma modifier (min 1) to all my saving throws." }
+		},
+		"abjure foes": {
+			name: "Abjure Foes",
+			source: [["PHB2024", 111]],
+			minlevel: 9,
+			action: "action",
+			description: desc([
+				"As a Magic action I target my Cha mod (min 1) creatures I can see within 60 ft.",
+				"Each target must succeed a Wis saving throw or be Frightened for 1 min or until damaged.",
+			]),
+		},
+		"aura of courage": {
+			name: "Aura of Courage",
+			source: [["PHB2024", 111]],
+			minlevel: 10,
+			description : desc("While I'm conscious, allies within range and I can't be frightened"),
+			additional : levels.map(function (n) {
+			return n < 10 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
+			}),
+			savetxt : { immune : ["frightened"] }
+		},
+		"radiant strikes": {
+			name: "Radiant Strikes",
+			source: [["PHB2024", 111]],
+			minlevel: 11,
+			description : desc("Whenever I hit a creature with a melee weapon or unarmed strike, I do an extra 1d8 radiant damage"),
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if (v.isMeleeWeapon) fields.Description += (fields.Description ? '; ' : '') + '+1d8 Radiant damage' + (v.isThrownWeapon ? ' in melee' : '');
+					},
+					"With my melee weapon and unarmed strike attacks I deal an extra 1d8 radiant damage."
+				]
+			}
+		},
+		"restoring touch": {
+			name: "Restoring Touch",
+			source: [["PHB2024", 111]],
+			minlevel: 14,
+			description: desc([
+				"I spend 5 Hit Points of Lay on Hands to remove one of the following:",
+				"Blinded, Charmed, Deafened, Frightened, Paralyzed, Stunned.",
+				"Those points don't also restore HP; I can spend more points for more conditions.",
+			]),
+		},
+		"epic boon": {
+		  name: "Epic Boon",
+		  source: [["PHB2024", 92]],
+		  minlevel: 19,
+		  description: desc([
+			"I gain an Epic Boon feat or another feat of your choice.",
+		  ]),
+		},
+	},
 });
 legacySubClassRefactor("paladin", "devotion", {
-  regExpSearch: /^(?=.*(paladin))(?=.*(devotion)).*$/i,
-  subname: "Oath of Devotion",
-  source: [["PHB2024", 113]],
-  replaces: "oath of devotion",
-  spellcastingExtra: ["protection from evil and good", "shield of faith", "aid", "zone of truth", "beacon of hope", "dispel magic", "freedom of movement", "guardian of faith", "commune", "flame strike"],
-  features: {
-    "subclassfeature3": {
-      name: "Combat Superiority",
-      source: [["PHB2024", 113]],
-      minlevel: 3,
-      action: "action",
-      description: desc([
-        "When you take the Attack action, you can expend one use of your Channel Divinity to imbue one Melee weapon that you are holding with positive energy. For 10 minutes or until you use this feature again, you add your Charisma modifier to attack rolls you make with that weapon (minimum bonus of +1), and each time you hit with it, you cause it to deal its normal damage type or Radiant damage.",
-        "The weapon also emits Bright Light in a 20-foot radius and Dim Light 20 feet beyond that.",
-        "You can end this effect early (no action required), This effect also ends if you aren't carrying the weapon.",
-      ]),
-    },
-    "subclassfeature7": {
-      name: "Aura of Devotion",
-      source: [["PHB2024", 114]],
-      minlevel: 7,
-      description: desc([
-        "You and your allies have Immunity to the Charmed condition in your Aura of Protection. If a Charmed ally enters the aura, that condition has no effect on that ally while there.",
-      ]),
-    },
-    "subclassfeature15": {
-      name: "Smite of Protection",
-      source: [["PHB2024", 114]],
-      minlevel: 15,
-      description: desc([
-        "Your magical smite now radiates protective energy. Whenever you cast Divine Smite, you and your allies have Half Cover while in your Aura of Protection. The aura has this benefit until the start of your next turn.",
-      ]),
-    },
-    "subclassfeature20": {
-      name: "Holy Nimbus",
-      source: [["PHB2024", 114]],
-      minlevel: 20,
-      action: "bonus action",
-      usages: 1,
-      recovery: "long rest",
-      altResource: "SS 5",
-      description: desc([
-        "As a Bonus Action, you can imbue your Aura of Protection with holy power, granting the benefits below for 10 minutes or until you end them (no action required). Once you use this feature you can't use it again until you finish a Long Rest. You can also restore your use of it by expending a level 5 spell slot (no action required).",
-        "Holy Ward : You have Advantage on any saving throw you are forced to make by a Fiend or an Undead.",
-        "Radiant Damage : Whenever an enemy starts its turn in the aura that creature takes Radiant damage equal to your Charisma modifier plus your Proficiency Bonus.",
-        "Sunlight : The aura is filled with Bright Light that is sunlight.",
-      ]),
-    },
-  },
+	regExpSearch: /^(?=.*(paladin))(?=.*(devotion)).*$/i,
+	subname: "Oath of Devotion",
+	source: [["PHB2024", 113]],
+	replaces: "oath of devotion",
+	spellcastingExtra: ["protection from evil and good", "shield of faith", "aid", "zone of truth", "beacon of hope", "dispel magic", "freedom of movement", "guardian of faith", "commune", "flame strike"],
+	features: {
+		"subclassfeature3": {
+			name: "Channel Divinity: Sacred Weapon",
+			source: [["PHB2024", 113]],
+			minlevel: 3,
+			description : desc([
+				"As an action, for 10 minutes, I add my Cha modifier to hit for one weapon I'm holding",
+				"Choose Radiant or it's normal damage, it emits bright light in a 20-ft radius and equal dim light"
+			]),
+			action : [["action", ""]],
+			calcChanges : {
+				atkCalc : [
+					function (fields, v, output) {
+						if (classes.known.paladin && classes.known.paladin.level > 2 && !v.isSpell && (/^(?=.*sacred)(?=.*weapon).*$/i).test(v.WeaponTextName)) {
+						output.extraHit += What('Cha Mod');
+						}
+					},
+					"If I include the words 'Sacred Weapon' in the name of a weapon, it gets my Charisma modifier added to its To Hit."
+				]
+			},
+		},
+		"subclassfeature7": {
+			name: "Aura of Devotion",
+			source: [["PHB2024", 114]],
+			minlevel: 7,
+			description : desc("While I'm conscious, allies within range and I can't be charmed"),
+			additional : levels.map(function (n) {
+			return n < 7 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
+			}),
+			savetxt : { immune : ["charmed"] }
+		},
+		"subclassfeature15": {
+		name: "Smite of Protection",
+		source: [["PHB2024", 114]],
+		minlevel: 15,
+		description: desc([
+			"When I cast Divine Smite my allies & I have Half Cover while in my aura of protection until the start of my next turn.",
+		]),
+		},
+		"subclassfeature20": {
+			name: "Holy Nimbus",
+			source: [["PHB2024", 114]],
+			minlevel: 20,
+			action: "bonus action",
+			usages: 1,
+			recovery: "long rest",
+			altResource: "SS 5",
+			description: desc([
+				"As a Bonus Action, I can give my Aura of Protection the benefits below for 10 minutes:",
+				"Holy Ward: I have Advantage on saving throws I'm forced to make by a Fiend or Undead.",
+				"Radiant Damage: An enemy that starts its turn in range takes my Cha mod + Prof Bonus Radiant damage.",
+				"Sunlight: The aura is filled with Bright Light that is sunlight.",
+				"I can end it for free; I can spend a level 5 spell slot or Long Rest to restore it.",
+			]),
+		},
+	},
 });
 legacySubClassRefactor("paladin", "glory", {
   regExpSearch: /^(?=.*(paladin))(?=.*(glory)).*$/i,
@@ -4323,54 +4285,66 @@ legacySubClassRefactor("paladin", "glory", {
   spellcastingExtra: ["guiding bolt", "heroism", "enhance ability", "magic weapon", "haste", "protection from energy", "compulsion", "freedom of movement", "legend lore", "yolande's regal presence"],
   features: {
     "subclassfeature3": {
-      name: "Inspiring Smite",
-      source: [["PHB2024", 114 - 115]],
-      minlevel: 3,
-      description: desc([
-        "Immediately after you cast Divine Smite, you can expend one use of your Channel Divinity and distribute Temporary Hit Points to creatures of your choice within 30 feet of yourself, which can include you. The total number of Temporary Hit Points equals 2d8 plus your Paladin level divided among the chosen creatures however you like.",
-      ]),
+		name: "Channel Divinity: Inspiring Smite",
+		source: [["PHB2024", 114]],
+		minlevel: 3,
+		description : desc([
+			"Immediately after dealing damage with Divine Smite, I can grant temporary HP",
+			"I distribute the temporary HP how I choose across creatures within 30 ft, including me"
+		]),
+		additional : levels.map(function (n) {
+			return n < 3 ? "" : "2d8 + " + n + " temporary HP";
+		}),
     },
     "subclassfeature3.1": {
-      name: "Peerless Athlete",
+      name: "Channel Divinity: Peerless Athlete",
       source: [["PHB2024", 96]],
       minlevel: 3,
       description: desc([
-        "As a Bonus Action, you can expend one use of your Channel Divinity to augment your athleticism. For 1 hour, you have Advantage on Strength (Athletics) and Dexterity (Acrobatics) checks, and the distance of your Long and High Jumps increase by 10 feet (this extra distance costs movement as normal).",
+        "As a bonus action, I can get adv. on Str (Athletics) \u0026 Dex (Acrobatics) checks for 1 hour",
+		"In that time, I also add +10 ft to long and high jumps"
       ]),
+	  action : [["bonus action", ""]],
     },
     "subclassfeature7": {
-      name: "Aura of Alacrity",
-      source: [["PHB2024", 115]],
-      minlevel: 7,
-      speed: {walk: "+10"},
-      description: desc([
-        "Your Speed increases by 10 feet.",
-        "In addition, whenever an ally enters your Aura of Protection for the first time on a turn or starts their turn there, the ally's Speed increases by 10 feet until the end of their next turn.",
-      ]),
+		name: "Aura of Alacrity",
+		source: [["PHB2024", 115]],
+		minlevel: 7,
+		description : "\n   If I'm not incapacitated, allies starting their turn in range gain bonus speed for that turn",
+		speed : { walk : { spd : "+10", enc : "+10" } },
+		additional : levels.map(function (n) {
+			return n < 7 ? "" : (n < 18 ? 10 : 30) + "-foot aura; +10 ft walking speed";
+		})
     },
     "subclassfeature15": {
-      name: "Glorious Defense",
-      source: [["PHB2024", 115]],
-      minlevel: 15,
-      description: desc([
-        "You can turn defense into a sudden strike. When you or another creature you can see within 10 feet of you is hit by an attack roll, you can take a Reaction to grant a bonus to the target's AC against that attack, potentially causing it to miss. The bonus equals your Charisma modifier (minimum of +1). If the attack misses, you can make one attack with a weapon against the attacker as part of this Reaction if the attacker is within your weapon's range.",
-        "You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-      ]),
+		name: "Glorious Defense",
+		source: [["PHB2024", 115]],
+		minlevel: 15,
+		description : desc([
+			"As a reaction when I or another in 10 ft is hit with an attack roll, I can grant bonus AC",
+			"I must be able to see the attacker; I add my Cha mod (min 1) to the AC for that attack",
+			"If it misses, I can do a weapon attack vs. the attacker, if in reach, as part of this reaction"
+		]),
+		usages : "Charisma modifier per ",
+		usagescalc : "event.value = Math.max(1, What('Cha Mod'));",
+		recovery : "long rest",
+		action : [["reaction", ""]]
     },
     "subclassfeature20": {
-      name: "Living Legend",
-      source: [["PHB2024", 115]],
-      minlevel: 20,
-      action: "bonus action",
-      usages: 1,
-      recovery: "long rest",
-      altResource: "SS 5",
-      description: desc([
-        "You can empower yourself with the legends - whether true or exaggerated of - of your great deeds. As a Bonus Action, you gain the benefits below for 10 minutes. Once you use this feature, you can't use it again until you finish a Long Rest. You can also restore your use of it by expending a level 5 spell slot (no action required).",
-        "Charismatic : You are blessed with an otherworldly presence and have Advantage on all Charisma checks.",
-        "Saving Throw Reroll : If you fail a saving throw, you can take a Reaction to reroll it. You must use the new roll.",
-        "Unerring Strike : Once on each of your turns when you make an attack roll with a weapon and miss you can cause the attack to hit instead.",
-      ]),
+		name: "Living Legend",
+		source: [["PHB2024", 115]],
+		minlevel: 20,
+		description : desc([
+			"As a bonus action, I can empower myself with legends, gaining the following for 10 mins:",
+			" \u2022 My otherworldly presence grants me advantage on Charisma checks",
+			" \u2022 Once on each of my turns when I miss with a weapon attack, I can have it hit instead",
+			" \u2022 As a reaction when I fail a saving throw, I can reroll it, but must use the new roll",
+			"I can do this once per long rest, or by expending a 5th-level or higher spell slot (SS 5+)"
+		]),
+		recovery : "long rest",
+		usages : 1,
+		altResource : "SS 5+",
+		action : [["bonus action", ""]]
     },
   },
 });
@@ -4382,12 +4356,11 @@ legacySubClassRefactor("paladin", "ancients", {
   spellcastingExtra: ["ensnaring strike", "speak with animals", "misty step", "moonbeam", "plant growth", "protection from energy", "ice storm", "stoneskin", "commune with nature", "tree stride"],
   features: {
     "subclassfeature3": {
-      name: "Nature's Wrath",
+      name: "Channel Divinity: Nature's Wrath",
       source: [["PHB2024", 115]],
       minlevel: 3,
-      description: desc([
-        "As a Magic action, you can expend one use of your Channel Divinity to conjure spectral vines around nearby creatures. Each creature of your choice that you can see within 15 feet of yourself must succeed on a Strength saving throw or have the Restrained condition for 1 minute. A Restrained creature repeats the save at the end of each of its turns, ending the effect on itself on a success.",
-      ]),
+      description : "\n   " + "As a magic action, a creature I can see within 15 ft must make a Str save" + "\n   " + "If it fails this save, it is restrained until it succeeds on a save at the end of its turn",
+	  action : [["action", ""]],
     },
     "subclassfeature7": {
       name: "Aura of Warding",
@@ -4395,29 +4368,29 @@ legacySubClassRefactor("paladin", "ancients", {
       minlevel: 7,
       dmgres: ["Psychic", "Radiant", "Necrotic"],
       description: desc([
-        "Ancient magic lies so heavily upon you that it forms an eldritch ward, blunting energy from beyond the Material Plane; you and your allies have Resistance to Necrotic, Psychic, and Radiant damage while in your Aura of Protection.",
+        "my allies & I have Resistance to Necrotic, Psychic, & Radiant damage while in range.",
       ]),
+	  additional : levels.map(function (n) {
+			return n < 7 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
+	  }),
     },
     "subclassfeature15": {
       name: "Undying Sentinel",
       source: [["PHB2024", 116]],
       minlevel: 15,
-      usages: 1,
-      recovery: "long rest",
-      description: desc([
-        "When you are reduced to 0 Hit Points and not killed outright, you can drop to 1 Hit Point instead, and you regain a number of Hit Points equal to three times your Paladin level. Once you use this feature, you can't do so again until you finish a Long Rest.",
-        "Additionally, you can't be aged magically, and you cease visibly aging.",
-      ]),
+      description : "\n   " + "If dropped to 0 hit points and not killed outright, I can choose to stay at 1 hit point" + "\n   " + "Additionally, I suffer no drawbacks of old age and can't be aged magically",
+	  recovery : "long rest",
+	  usages : 1
     },
     "subclassfeature20": {
       name: "Elder Champion",
       source: [["PHB2024", 115]],
       minlevel: 20,
       description: desc([
-        "As a Bonus Action, you can imbue your Aura of Protection with primal power, granting the benefits below for 1 minute or until you end them (no action required). Once you use this feature, you can't use it again until you finish a Long Rest. You can also restore your use of it by expending a level 5 spell slot (no action required).",
-        "Diminish Defiance : Enemies in the aura have Disadvantage on saving throws against your spells and Channel Divinity options.",
-        "Regenerate : At the start of each of your turns, you regain 10 Hit Points.",
-        "Swift Spells : Whenever you cast a spell that has a casting time of an action, you can cast it using a Bonus Action instead.",
+        "As a Bonus Action, I can give my Aura of Protection the benefits below for 10 minutes:",
+		" \u2022 At the start of each of my turns, I regain 10 hit points",
+		" \u2022 I can cast paladin spells with a casting time of 1 action as a bonus action instead",
+		" \u2022 Enemies within range have disadv. on saves vs. my paladin spells and channel divinity"
       ]),
     },
   },
@@ -4430,12 +4403,13 @@ legacySubClassRefactor("paladin", "Vengeance", {
   spellcastingExtra: ["bane", "hunter's mark", "hold person", "misty step", "haste", "protection from energy", "banishment", "dimension door", "hold monster", "scrying"],
   features: {
     "subclassfeature3": {
-      name: "Vow of Enmity",
+      name: "Channel Divinity: Vow of Enmity",
       source: [["PHB2024", 117]],
       minlevel: 3,
       description: desc([
-        "When you take the Attack action, you can expend one use of your Channel Divinity to utter a vow of enmity against a creature you can see within 30 feet of yourself. You have Advantage on attack rolls against the creature for 1 minute, or until you use this feature again.",
-        "If the creature drops to 0 Hit Points before the vow ends, you can transfer the vow to a different creature within 30 feet of yourself (no action required).",
+        "When I Attack I can make a Vow of Enmity against a creature I choose that I can see within 30 ft.",
+		"I have Adv on attack rolls against it for 1 min or until I use this feature again.",
+		"If it drops to 0 HP before the Vow ends I can transfer the Vow to a different creature within 30 feet.",
       ]),
     },
     "subclassfeature7": {
@@ -4443,17 +4417,16 @@ legacySubClassRefactor("paladin", "Vengeance", {
       source: [["PHB2024", 117]],
       minlevel: 7,
       description: desc([
-        "Your supernatural focus helps you close off a foe's retreat. When you hit a creature with an Opportunity Attack, you can reduce the creature's Speed to 0 until the end of the current turn. You can ten move up to half your Speed as part of the same Reaction. This movement doesn't provoke Opportunity Attacks.",
+        "When I hit with an Opp Attack, I reduce the target's Speed to 0 until the end of the current turn.",
+		"I can move up to half my Speed as part of the same Reaction without provoking Opp Attacks.",
       ]),
     },
     "subclassfeature15": {
       name: "Soul of Vengeance",
       source: [["PHB2024", 117]],
       minlevel: 15,
-      action: "reaction",
-      description: desc([
-        "Immediately after a creature under the effect of your Vow of Enmity hits or misses with an attack roll, you can take a Reaction to make a melee attack against that creature if it's within range.",
-      ]),
+      description : "\n   " + "When an enemy I have an active Vow of Enmity against makes an attack, I can react" + "\n   " + "As a reaction, I can make a melee weapon attack against it if it is within range",
+	  	action : [["reaction", " (with Vow of Enmity)"]]
     },
     "subclassfeature20": {
       name: "Avenging Angel",
@@ -4464,10 +4437,15 @@ legacySubClassRefactor("paladin", "Vengeance", {
       recovery: "long rest",
       altResource: "SS 5",
       description: desc([
-        "As a Bonus Action, you gain the benefits below for 10 minutes or you end them (no action required). Once you use this feature, you can't use it again until you finish a Long Rest. You can also restore your use of it by expending a level 5 spell slot (no action required).",
-        "Flight : You sprout spectral wings on your back, you have a Fly speed of 60 feet, and can hover.",
-        "Frightful Aura : Whenever an enemy starts its turn in your Aura of Protection, that creature must succeed on a Wisdom saving throw or have the Frightened condition for 1 minute or until it takes any damage. Attack rolls against the Frightened creature have Advantage",
+        "As a Bonus Action I can gain the benefits below for 10 min or until I end them.",
+		"Flight: I sprout spectral wings on my back, I have a Fly speed of 60 ft, and can hover.",
+		"Frightful Aura: When an enemy starts its turn in my Aura it must pass a Wis saving throw.",
+		"On a failed save it is Frightened for 1 min or until it takes damage. Attacks against it have Adv.",
+		"I can also restore this feature by spending a level 5 spell slot.",
       ]),
+	  additional : levels.map(function (n) {
+			return n < 20 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
+	  }),
     },
   },
 });
@@ -21934,35 +21912,49 @@ CreatureList["beast of the sky"] = {
 	header : "Companion",
 };
 //Animated Object Stat Blocks
-CompanionList["animated object"] = {
-	name : "Animated Object",
-	nameMenu : "Animated Object (Animate Object Spell)",
-	nameOrigin : "Animated Object of the Animate Object 5th-level transmutation spell",
-	source : [["PHB2024", 240]],
+CompanionList["spell_creatures"] = {
+	name : "Spell Creatures",
+	nameMenu : "Spell Creatures (Creatures Created/Summoned by a Spell)",
+	nameOrigin : "Spell Creatures Created by spell effects of conjuration or transmutation spells",
+	source : [["PHB2024", 234]],
 	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('animate object');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
+    // Check for spell attribute before attempting to access it.
+    if(!CreatureList[sCrea].spell) return; 
+    // Access the spell attribute holding the spell name from the original CreatureOptions object
+    // Find all casters of that spell
+    var casters = isSpellUsed(CreatureList[sCrea].spell);
+    // Used to store an array where oScore[0] is the class and oScore[1] is the attack modifier w/ bonuses
+    var oScore = undefined;
     
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
+    // Loop through all casters
+    for (var caster of casters) {
+        // Ensure it's from a class and calcSpellScores is present.
+        if (CurrentSpells[caster].refType !== "class" || !CurrentSpells[caster].calcSpellScores) continue;
+        
+        // The total attack modifier w/ bonuses if any
+        var oAtkMod = CurrentSpells[caster].calcSpellScores.attack;
+        
+        // Check if oScore is empty or if the current attack modifier is higher
+        if (oScore === undefined || oAtkMod > oScore[1]) {
+            oScore = [caster, oAtkMod]; // Store the class and ability
         }
+    }
 
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
+    if (oScore === undefined) return; // Return if no score found
+
+    // Update attacks with the highest class ability
+    for (var i = 0; i < objCrea.attacks.length; i++) {
+    var oAtk = objCrea.attacks[i];
+    oAtk.useSpellMod = oScore[0]; // Set the highest class
+    }
+},
+	notes : [{
+		name : "Creature Recalculation",
+		description : [
+			"If you update your spellcasting mod, or are multiclassing, and your secondary class has a higher spellcasting mod, you will need to reselect this companion to update its attack to hit."
+		].join("\n   "),
+		joinString : ", "
+	}],
 };
 CreatureList["animated object (tsm)"] = {
 	name : "Animated Object (Tiny/Small/Medium)",
@@ -21971,8 +21963,9 @@ CreatureList["animated object (tsm)"] = {
 	size : [3, 4, 5],
 	type : "Construct",
 	alignment : "Unaligned",
-	companion : "animated object",
-	companionApply : "animated object",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "animate object",
 	ac : 15,
 	hp : 10,
 	hd : [2, 8],
@@ -22002,8 +21995,9 @@ CreatureList["animated object (l)"] = {
 	size : 2,
 	type : "Construct",
 	alignment : "Unaligned",
-	companion : "animated object",
-	companionApply : "animated object",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "animate object",
 	ac : 15,
 	hp : 20,
 	hd : [4, 8],
@@ -22033,8 +22027,9 @@ CreatureList["animated object (h)"] = {
 	size : 1,
 	type : "Construct",
 	alignment : "Unaligned",
-	companion : "animated object",
-	companionApply : "animated object",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "animate objects",
 	ac : 15,
 	hp : 40,
 	hd : [8, 8],
@@ -22247,36 +22242,6 @@ CreatureList["otherworldly steed (5)"] = {
 	}],
 };
 //Giant Insect Stat Blocks
-CompanionList["giant insect"] = {
-	name : "Giant Insect",
-	nameMenu : "Giant Insect (Giant Insect Spell)",
-	nameOrigin : "Summon Insect of the Giant Insect 4th-level conjuration spell",
-	source : [["PHB2024", 279]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('giant insect');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["giant insect (4)"] = {
 	name : "Giant Insect (lvl 4)",
 	regExpSearch : /^(?=.*giant)(?=.*insect)(?=.*4).*$/i,
@@ -22284,8 +22249,9 @@ CreatureList["giant insect (4)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 15,
 	hp : 30,
 	hd : [5, 10],
@@ -22333,8 +22299,9 @@ CreatureList["giant insect (5)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 16,
 	hp : 40,
 	hd : [7, 10],
@@ -22382,8 +22349,9 @@ CreatureList["giant insect (6)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 17,
 	hp : 50,
 	hd : [8, 10],
@@ -22431,8 +22399,9 @@ CreatureList["giant insect (7)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 18,
 	hp : 60,
 	hd : [10, 10],
@@ -22480,8 +22449,9 @@ CreatureList["giant insect (8)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 19,
 	hp : 70,
 	hd : [12, 10],
@@ -22529,8 +22499,9 @@ CreatureList["giant insect (9)"] = {
 	size : 2,
 	type : ["Beast"],
 	alignment : "Unaligned",
-	companion : "giant insect",
-	companionApply : "giant insect",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "giant insect",
 	ac : 20,
 	hp : 80,
 	hd : [13, 10],
@@ -22572,36 +22543,6 @@ CreatureList["giant insect (9)"] = {
 	}],
 };
 //Aberrant Spirit Stat Blocks
-CompanionList["aberrant spirit"] = {
-	name : "Aberrant Spirit",
-	nameMenu : "Aberrant Spirit (Summon Aberration Spell)",
-	nameOrigin : "Summon Spirit of the Summon Aberration 4th-level conjuration spell",
-	source : [["PHB2024", 322]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon aberration');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["aberrant spirit (4)"] = {
 	name : "Aberrant Spirit (lvl 4)",
 	regExpSearch : /^(?=.*aberrant)(?=.*spirit)(?=.*4).*$/i,
@@ -22609,8 +22550,9 @@ CreatureList["aberrant spirit (4)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 15,
 	hp : 40,
 	hd : [8, 8],
@@ -22666,8 +22608,9 @@ CreatureList["aberrant spirit (5)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 16,
 	hp : 50,
 	hd : [10, 8],
@@ -22723,8 +22666,9 @@ CreatureList["aberrant spirit (6)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 17,
 	hp : 60,
 	hd : [12, 8],
@@ -22780,8 +22724,9 @@ CreatureList["aberrant spirit (7)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 18,
 	hp : 70,
 	hd : [14, 8],
@@ -22837,8 +22782,9 @@ CreatureList["aberrant spirit (8)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 19,
 	hp : 80,
 	hd : [16, 8],
@@ -22894,8 +22840,9 @@ CreatureList["aberrant spirit (9)"] = {
 	size : 3,
 	type : "Aberration",
 	alignment : "Neutral",
-	companion : "aberrant spirit",
-	companionApply : "aberrant spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon aberration",
 	ac : 20,
 	hp : 90,
 	hd : [18, 8],
@@ -22945,36 +22892,6 @@ CreatureList["aberrant spirit (9)"] = {
 	}],
 };
 //Beast Spirit Stat Blocks
-CompanionList["bestial spirit"] = {
-	name : "Bestial Spirit",
-	nameMenu : "Bestial Spirit (Summon Beast Spell)",
-	nameOrigin : "Summon Spirit of the Summon Beast 2nd-level conjuration spell",
-	source : [["PHB2024", 322]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon beast');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["bestial spirit (lw)(2)"] = {
 	name : "Bestial Spirit (Land/Water)(lvl 2)",
 	regExpSearch : /^(?=.*bestial)(?=.*spirit)(?=.*landwater)(?=.*2).*$/i,
@@ -22982,8 +22899,9 @@ CreatureList["bestial spirit (lw)(2)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 13,
 	hp : 30,
 	hd : [8, 6],
@@ -23022,8 +22940,9 @@ CreatureList["bestial spirit (lw)(3)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 14,
 	hp : 35,
 	hd : [9, 6],
@@ -23062,8 +22981,9 @@ CreatureList["bestial spirit (lw)(4)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 15,
 	hp : 40,
 	hd : [10, 6],
@@ -23102,8 +23022,9 @@ CreatureList["bestial spirit (lw)(5)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 16,
 	hp : 45,
 	hd : [11, 6],
@@ -23142,8 +23063,9 @@ CreatureList["bestial spirit (lw)(6)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 17,
 	hp : 50,
 	hd : [12, 6],
@@ -23182,8 +23104,9 @@ CreatureList["bestial spirit (lw)(7)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 18,
 	hp : 55,
 	hd : [14, 6],
@@ -23222,8 +23145,9 @@ CreatureList["bestial spirit (lw)(8)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 19,
 	hp : 60,
 	hd : [15, 6],
@@ -23262,8 +23186,9 @@ CreatureList["bestial spirit (lw)(9)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 20,
 	hp : 65,
 	hd : [16, 6],
@@ -23302,8 +23227,9 @@ CreatureList["bestial spirit (a)(2)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 13,
 	hp : 20,
 	hd : [5, 6],
@@ -23338,8 +23264,9 @@ CreatureList["bestial spirit (a)(3)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 14,
 	hp : 25,
 	hd : [6, 6],
@@ -23374,8 +23301,9 @@ CreatureList["bestial spirit (a)(4)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 15,
 	hp : 30,
 	hd : [7, 6],
@@ -23410,8 +23338,9 @@ CreatureList["bestial spirit (a)(5)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 16,
 	hp : 35,
 	hd : [9, 6],
@@ -23446,8 +23375,9 @@ CreatureList["bestial spirit (a)(6)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 17,
 	hp : 40,
 	hd : [10, 6],
@@ -23482,8 +23412,9 @@ CreatureList["bestial spirit (a)(7)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 18,
 	hp : 45,
 	hd : [11, 6],
@@ -23518,8 +23449,9 @@ CreatureList["bestial spirit (a)(8)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 19,
 	hp : 50,
 	hd : [12, 6],
@@ -23554,8 +23486,9 @@ CreatureList["bestial spirit (a)(9)"] = {
 	size : 4,
 	type : "Beast",
 	alignment : "Neutral",
-	companion : "bestial spirit",
-	companionApply : "bestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon beast",
 	ac : 20,
 	hp : 55,
 	hd : [14, 6],
@@ -23584,36 +23517,6 @@ CreatureList["bestial spirit (a)(9)"] = {
 	}],
 };
 //Celestial Spirit Stat Blocks
-CompanionList["celestial spirit"] = {
-	name : "Celestial Spirit",
-	nameMenu : "Celestial Spirit (Summon Celestial Spell)",
-	nameOrigin : "Summon Spirit of the Summon Celestial 5th-level conjuration spell",
-	source : [["PHB2024", 323]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon celestial');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["celestial spirit (a)(5)"] = {
 	name : "Celestial Spirit (Avenger)(lvl 5)",
 	regExpSearch : /^(?=.*celestial)(?=.*spirit)(?=.*avenger)(?=.*5).*$/i,
@@ -23621,8 +23524,9 @@ CreatureList["celestial spirit (a)(5)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 16,
 	hp : 40,
 	hd : [7, 10],
@@ -23658,8 +23562,9 @@ CreatureList["celestial spirit (a)(6)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 17,
 	hp : 50,
 	hd : [8, 10],
@@ -23695,8 +23600,9 @@ CreatureList["celestial spirit (a)(7)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 18,
 	hp : 60,
 	hd : [10, 10],
@@ -23732,8 +23638,9 @@ CreatureList["celestial spirit (a)(8)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 19,
 	hp : 70,
 	hd : [12, 10],
@@ -23769,8 +23676,9 @@ CreatureList["celestial spirit (a)(9)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 20,
 	hp : 80,
 	hd : [13, 10],
@@ -23806,8 +23714,9 @@ CreatureList["celestial spirit (d)(5)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 18,
 	hp : 40,
 	hd : [7, 10],
@@ -23844,8 +23753,9 @@ CreatureList["celestial spirit (d)(6)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 19,
 	hp : 50,
 	hd : [8, 10],
@@ -23882,8 +23792,9 @@ CreatureList["celestial spirit (d)(7)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 20,
 	hp : 60,
 	hd : [10, 10],
@@ -23915,8 +23826,9 @@ CreatureList["celestial spirit (d)(8)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 21,
 	hp : 70,
 	hd : [12, 10],
@@ -23953,8 +23865,9 @@ CreatureList["celestial spirit (d)(9)"] = {
 	size : 2,
 	type : "Celestial",
 	alignment : "Neutral",
-	companion : "celestial spirit",
-	companionApply : "celestial spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon celestial",
 	ac : 22,
 	hp : 80,
 	hd : [13, 10],
@@ -23985,36 +23898,6 @@ CreatureList["celestial spirit (d)(9)"] = {
 	}],
 };
 //Construct Spirit Stat Blocks
-CompanionList["construct spirit"] = {
-	name : "Construct Spirit",
-	nameMenu : "Construct Spirit (Summon Construct Spell)",
-	nameOrigin : "Summon Spirit of the Summon Construct 4th-level conjuration spell",
-	source : [["PHB2024", 328]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon construct');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["construct spirit (4)"] = {
 	name : "Construct Spirit (lvl 4)",
 	regExpSearch : /^(?=.*construct)(?=.*spirit)(?=.*4).*$/i,
@@ -24022,8 +23905,9 @@ CreatureList["construct spirit (4)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 17,
 	hp : 40,
 	hd : [8, 8],
@@ -24067,8 +23951,9 @@ CreatureList["construct spirit (5)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 18,
 	hp : 55,
 	hd : [11, 8],
@@ -24112,8 +23997,9 @@ CreatureList["construct spirit (6)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 19,
 	hp : 70,
 	hd : [14, 8],
@@ -24157,8 +24043,9 @@ CreatureList["construct spirit (7)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 20,
 	hp : 85,
 	hd : [17, 8],
@@ -24202,8 +24089,9 @@ CreatureList["construct spirit (8)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 21,
 	hp : 100,
 	hd : [20, 8],
@@ -24247,8 +24135,9 @@ CreatureList["construct spirit (9)"] = {
 	size : 3,
 	type : "Construct",
 	alignment : "Neutral",
-	companion : "construct spirit",
-	companionApply : "construct spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon construct",
 	ac : 22,
 	hp : 115,
 	hd : [23, 8],
@@ -24286,36 +24175,6 @@ CreatureList["construct spirit (9)"] = {
 	}],
 };
 //Draconic Spirit Stat Block
-CompanionList["draconic spirit"] = {
-	name : "Draconic Spirit",
-	nameMenu : "Draconic Spirit (Summon Dragon Spell)",
-	nameOrigin : "Summon Spirit of the Summon Dragon 5th-level conjuration spell",
-	source : [["PHB2024", 324]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon dragon');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["draconic spirit (5)"] = {
 	name : "Draconic Spirit (lvl 5)",
 	regExpSearch : /^(?=.*draconic)(?=.*spirit)(?=.*5).*$/i,
@@ -24323,8 +24182,9 @@ CreatureList["draconic spirit (5)"] = {
 	size : 2,
 	type : "Dragon",
 	alignment : "Neutral",
-	companion : "draconic spirit",
-	companionApply : "draconic spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon dragon",
 	ac : 19,
 	hp : 50,
 	hd : [8, 10],
@@ -24368,8 +24228,9 @@ CreatureList["draconic spirit (6)"] = {
 	size : 2,
 	type : "Dragon",
 	alignment : "Neutral",
-	companion : "draconic spirit",
-	companionApply : "draconic spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon dragon",
 	ac : 20,
 	hp : 60,
 	hd : [10, 10],
@@ -24413,8 +24274,9 @@ CreatureList["draconic spirit (7)"] = {
 	size : 2,
 	type : "Dragon",
 	alignment : "Neutral",
-	companion : "draconic spirit",
-	companionApply : "draconic spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon dragon",
 	ac : 21,
 	hp : 70,
 	hd : [12, 10],
@@ -24458,8 +24320,9 @@ CreatureList["draconic spirit (8)"] = {
 	size : 2,
 	type : "Dragon",
 	alignment : "Neutral",
-	companion : "draconic spirit",
-	companionApply : "draconic spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon dragon",
 	ac : 22,
 	hp : 80,
 	hd : [13, 10],
@@ -24503,8 +24366,9 @@ CreatureList["draconic spirit (9)"] = {
 	size : 2,
 	type : "Dragon",
 	alignment : "Neutral",
-	companion : "draconic spirit",
-	companionApply : "draconic spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon dragon",
 	ac : 23,
 	hp : 90,
 	hd : [15, 10],
@@ -24542,36 +24406,6 @@ CreatureList["draconic spirit (9)"] = {
 	}],
 };
 //Elemental Spirit Stat Blocks
-CompanionList["elemental spirit"] = {
-	name : "Elemental Spirit",
-	nameMenu : "Elemental Spirit (Summon Elemental Spell)",
-	nameOrigin : "Summon Spirit of the Summon Elemental 4th-level conjuration spell",
-	source : [["PHB2024", 325]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon elemental');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["elemental spirit (4)"] = {
 	name : "Elemental Spirit (lvl 4)",
 	regExpSearch : /^(?=.*elemental)(?=.*spirit)(?=.*4).*$/i,
@@ -24579,8 +24413,9 @@ CreatureList["elemental spirit (4)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 15,
 	hp : 50,
 	hd : [8, 10],
@@ -24617,8 +24452,9 @@ CreatureList["elemental spirit (5)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 16,
 	hp : 60,
 	hd : [10, 10],
@@ -24655,8 +24491,9 @@ CreatureList["elemental spirit (6)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 17,
 	hp : 70,
 	hd : [12, 10],
@@ -24693,8 +24530,9 @@ CreatureList["elemental spirit (7)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 18,
 	hp : 80,
 	hd : [14, 10],
@@ -24731,8 +24569,9 @@ CreatureList["elemental spirit (8)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 19,
 	hp : 90,
 	hd : [15, 10],
@@ -24769,8 +24608,9 @@ CreatureList["elemental spirit (9)"] = {
 	size : 3,
 	type : "Elemental",
 	alignment : "Neutral",
-	companion : "elemental spirit",
-	companionApply : "elemental spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon elemental",
 	ac : 20,
 	hp : 100,
 	hd : [17, 10],
@@ -24801,36 +24641,6 @@ CreatureList["elemental spirit (9)"] = {
 	}],
 };
 //Fey Spirit Stat Blocks
-CompanionList["fey spirit"] = {
-	name : "Fey Spirit",
-	nameMenu : "Fey Spirit (Summon Fey Spell)",
-	nameOrigin : "Summon Spirit of the Summon Fey 3rd-level conjuration spell",
-	source : [["PHB2024", 326]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon fey');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["fey spirit (3)"] = {
 	name : "Fey Spirit (lvl 3)",
 	regExpSearch : /^(?=.*fey)(?=.*spirit)(?=.*3).*$/i,
@@ -24838,8 +24648,9 @@ CreatureList["fey spirit (3)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 15,
 	hp : 30,
 	hd : [7, 6],
@@ -24879,8 +24690,9 @@ CreatureList["fey spirit (4)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 16,
 	hp : 40,
 	hd : [10, 6],
@@ -24920,8 +24732,9 @@ CreatureList["fey spirit (5)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 17,
 	hp : 50,
 	hd : [12, 6],
@@ -24961,8 +24774,9 @@ CreatureList["fey spirit (6)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 18,
 	hp : 60,
 	hd : [15, 6],
@@ -25002,8 +24816,9 @@ CreatureList["fey spirit (7)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 19,
 	hp : 70,
 	hd : [17, 6],
@@ -25043,8 +24858,9 @@ CreatureList["fey spirit (8)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 20,
 	hp : 80,
 	hd : [20, 6],
@@ -25084,8 +24900,9 @@ CreatureList["fey spirit (9)"] = {
 	size : 4,
 	type : "Fey",
 	alignment : "Neutral",
-	companion : "fey spirit",
-	companionApply : "fey spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fey",
 	ac : 21,
 	hp : 90,
 	hd : [22, 6],
@@ -25119,36 +24936,6 @@ CreatureList["fey spirit (9)"] = {
 	}],
 };
 //Fiendish Spirit Stat Blocks
-CompanionList["fiendish spirit"] = {
-	name : "Fiendish Spirit",
-	nameMenu : "Fiendish Spirit (Summon Fiend Spell)",
-	nameOrigin : "Summon Spirit of the Summon Fiend 6th-level conjuration spell",
-	source : [["PHB2024", 326]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon fiend');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["fiendish spirit (demon)(6)"] = {
 	name : "Fiendish Spirit (Demon)(lvl 6)",
 	regExpSearch : /^(?=.*fiendish)(?=.*spirit)(?=.*demon)(?=.*6).*$/i,
@@ -25156,8 +24943,9 @@ CreatureList["fiendish spirit (demon)(6)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 18,
 	hp : 50,
 	hd : [8, 10],
@@ -25198,8 +24986,9 @@ CreatureList["fiendish spirit (demon)(7)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 65,
 	hd : [11, 10],
@@ -25240,8 +25029,9 @@ CreatureList["fiendish spirit (demon)(8)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 80,
 	hd : [13, 10],
@@ -25282,8 +25072,9 @@ CreatureList["fiendish spirit (demon)(9)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 21,
 	hp : 95,
 	hd : [16, 10],
@@ -25324,8 +25115,9 @@ CreatureList["fiendish spirit (devil)(6)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 18,
 	hp : 40,
 	hd : [7, 10],
@@ -25366,8 +25158,9 @@ CreatureList["fiendish spirit (devil)(7)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 55,
 	hd : [9, 10],
@@ -25408,8 +25201,9 @@ CreatureList["fiendish spirit (devil)(8)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 70,
 	hd : [12, 10],
@@ -25450,8 +25244,9 @@ CreatureList["fiendish spirit (devil)(9)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 21,
 	hp : 85,
 	hd : [14, 10],
@@ -25492,8 +25287,9 @@ CreatureList["fiendish spirit (yugoloth)(6)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 18,
 	hp : 60,
 	hd : [10, 10],
@@ -25531,8 +25327,9 @@ CreatureList["fiendish spirit (yugoloth)(7)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 75,
 	hd : [12, 10],
@@ -25570,8 +25367,9 @@ CreatureList["fiendish spirit (yugoloth)(8)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 19,
 	hp : 90,
 	hd : [15, 10],
@@ -25609,8 +25407,9 @@ CreatureList["fiendish spirit (yugoloth)(9)"] = {
 	size : 2,
 	type : "Fiend",
 	alignment : "Neutral",
-	companion : "fiendish spirit",
-	companionApply : "fiendish spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon fiend",
 	ac : 21,
 	hp : 105,
 	hd : [17, 10],
@@ -25642,36 +25441,6 @@ CreatureList["fiendish spirit (yugoloth)(9)"] = {
 	}],
 };
 //Undead Spirit Stat Blocks
-CompanionList["undead spirit"] = {
-	name : "Undead Spirit",
-	nameMenu : "Undead Spirit (Summon Undead Spell)",
-	nameOrigin : "Summon Spirit of the Summon Undead 3rd-level conjuration spell",
-	source : [["PHB2024", 328]],
-	attributesChange : function(sCrea, objCrea) {
-        var casters = isSpellUsed('summon undead');
-        var oScore = undefined;
-        
-        for (var caster of casters) {
-            if (CurrentSpells[caster].refType !== "class") continue;
-            
-            var ability = CurrentSpells[caster].ability;
-    
-            var abilityMod = What(AbilityScores.abbreviations[ability - 1] + " Mod");
-            
-            if (oScore === undefined || abilityMod > What(AbilityScores.abbreviations[oScore[1] - 1] + " Mod")) {
-                oScore = [caster, ability];
-            }
-        }
-
-        if (oScore === undefined) return;
-    
-        for (var i = 0; i < objCrea.attacks.length; i++) {
-            var oAtk = objCrea.attacks[i];
-            oAtk.useSpellMod = oScore[0];
-        }
-        
-    },
-};
 CreatureList["undead spirit (skeletal)(3)"] = {
 	name : "Undead Spirit (Skeletal)(lvl 3)",
 	regExpSearch : /^(?=.*undead)(?=.*spirit)(?=.*skeletal)(?=.*3).*$/i,
@@ -25679,8 +25448,9 @@ CreatureList["undead spirit (skeletal)(3)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 14,
 	hp : 20,
 	hd : [4, 8],
@@ -25710,8 +25480,9 @@ CreatureList["undead spirit (skeletal)(4)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 15,
 	hp : 30,
 	hd : [6, 8],
@@ -25741,8 +25512,9 @@ CreatureList["undead spirit (skeletal)(5)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 16,
 	hp : 40,
 	hd : [8, 8],
@@ -25772,8 +25544,9 @@ CreatureList["undead spirit (skeletal)(6)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 17,
 	hp : 50,
 	hd : [10, 8],
@@ -25803,8 +25576,9 @@ CreatureList["undead spirit (skeletal)(7)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 18,
 	hp : 60,
 	hd : [12, 8],
@@ -25834,8 +25608,9 @@ CreatureList["undead spirit (skeletal)(8)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 19,
 	hp : 70,
 	hd : [14, 8],
@@ -25865,8 +25640,9 @@ CreatureList["undead spirit (skeletal)(9)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 20,
 	hp : 80,
 	hd : [16, 8],
@@ -25896,8 +25672,9 @@ CreatureList["undead spirit (putrid/ghostly)(3)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 14,
 	hp : 30,
 	hd : [6, 8],
@@ -25944,8 +25721,9 @@ CreatureList["undead spirit (putrid/ghostly)(4)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 15,
 	hp : 40,
 	hd : [8, 8],
@@ -25992,8 +25770,9 @@ CreatureList["undead spirit (putrid/ghostly)(5)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 16,
 	hp : 50,
 	hd : [10, 8],
@@ -26040,8 +25819,9 @@ CreatureList["undead spirit (putrid/ghostly)(6)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 17,
 	hp : 60,
 	hd : [12, 8],
@@ -26088,8 +25868,9 @@ CreatureList["undead spirit (putrid/ghostly)(7)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 18,
 	hp : 70,
 	hd : [14, 8],
@@ -26136,8 +25917,9 @@ CreatureList["undead spirit (putrid/ghostly)(8)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 19,
 	hp : 80,
 	hd : [16, 8],
@@ -26184,8 +25966,9 @@ CreatureList["undead spirit (putrid/ghostly)(9)"] = {
 	size : 3,
 	type : "Undead",
 	alignment : "Neutral",
-	companion : "undead spirit",
-	companionApply : "undead spirit",
+	companion : "spell_creatures",
+	companionApply : "spell_creatures",
+	spell : "summon undead",
 	ac : 20,
 	hp : 90,
 	hd : [18, 8],
