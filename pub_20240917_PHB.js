@@ -906,7 +906,7 @@ legacyClassRefactor("bard", {
     },
     "spellcasting": {
       name: "Spellcasting",
-      source: [["PHB2024", 59 - 60]],
+      source: [["PHB2024", 59]],
       minlevel: 1,
       calcChanges: {
         spellCalc: [
@@ -1025,7 +1025,7 @@ legacyClassRefactor("bard", {
     },
     "epic boon": {
       name: "Epic Boon",
-      source: [["PHB2024", 53]],
+      source: [["PHB2024", 61]],
       minlevel: 19,
       description: desc([
         "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Irresistible Offense is recommended.",
@@ -1162,7 +1162,7 @@ legacySubClassRefactor("bard", "glamour", {
     },
     "subclassfeature6": {
       name: "Mantle of Majesty",
-      source: [["PHB2024", 65 - 66]],
+      source: [["PHB2024", 65]],
       minlevel: 6,
       action: "bonus action",
       usages: 1,
@@ -1221,7 +1221,7 @@ legacySubClassRefactor("bard", "lore", {
     },
     "subclassfeature6": {
       name: "Magical Discoveries",
-      source: [["PHB2024", 66 - 67]],
+      source: [["PHB2024", 66]],
       minlevel: 6,
       spellcastingBonus: [{
         name: "Magical Discoveries",
@@ -1426,7 +1426,7 @@ legacyClassRefactor("cleric", {
     },
     "sear undead": {
       name: "Sear Undead",
-      source: [["PHB2024", 61]],
+      source: [["PHB2024", 71]],
       minlevel: 5,
       description: desc([
         "Whenever you use Turn Undead, you can roll a number of D8s equal to your Wisdom modifier (minimum of 1d8) and add the rolls together. Each Undead that fails its saving throw against that use of Turn Undead takes Radiant damage equal to the roll's total. This damage doesn't end the turn effect.",
@@ -1601,7 +1601,7 @@ legacySubClassRefactor("cleric", "light", {
     },
     "subclassfeature17": {
       name: "Corona of Light",
-      source: [["PHB2024", 66]],
+      source: [["PHB2024", 75]],
       minlevel: 17,
       usages: "Wisdom modifier per ",
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
@@ -1631,7 +1631,7 @@ legacySubClassRefactor("cleric", "trickery", {
     },
     "subclassfeature3.1": {
       name: "Invoke Duplicity",
-      source: [["PHB2024", 75 - 76]],
+      source: [["PHB2024", 75]],
       minlevel: 3,
       action: ["bonus action", "Invoke/Move"],
       description: desc([
@@ -1679,7 +1679,7 @@ legacySubClassRefactor("cleric", "war", {
     },
     "subclassfeature3.1": {
       name: "War Priest",
-      source: [["PHB2024", 67]],
+      source: [["PHB2024", 77]],
       minlevel: 3,
       usages: "Wisdom modifier per ",
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
@@ -1699,7 +1699,7 @@ legacySubClassRefactor("cleric", "war", {
     },
     "subclassfeature14": {
       name: "Avatar of Battle",
-      source: [["PHB2024", 67]],
+      source: [["PHB2024", 77]],
       minlevel: 14,
       dmgres: ["Bludgeoning", "Piercing", "Slashing"],
       description: desc([
@@ -1844,7 +1844,7 @@ legacyClassRefactor("druid", {
     },
     "wild shape": {
       name: "Wild Shape",
-      source: [["PHB2024", 80 - 81]],
+      source: [["PHB2024", 80]],
       minlevel: 2,
       action: ["bonus action", "Wild Shape (Shift/Revert)"],
       usages: [0, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4],
@@ -1974,7 +1974,7 @@ legacyClassRefactor("druid", {
     },
     "epic boon": {
       name: "Epic Boon",
-      source: [["PHB2024", 71]],
+      source: [["PHB2024", 81]],
       minlevel: 19,
       description: desc([
         "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Dimensional Travel is recommended.",
@@ -2004,7 +2004,7 @@ legacySubClassRefactor("druid", "land", {
   features: {
     "subclassfeature3": {
       name: "Circle of the Land Spells",
-      source: [["PHB2024", 84 - 85]],
+      source: [["PHB2024", 84]],
       minlevel: 3,
       choices: ["Arid Land", "Polar Land", "Temperate Land", "Tropical Land"],
       "arid land": {
@@ -2230,7 +2230,7 @@ legacySubClassRefactor("druid", "stars", {
     },
     "subclassfeature3.1": {
       name: "Starry Form",
-      source: [["PHB2024", 88 - 89]],
+      source: [["PHB2024", 88]],
       minlevel: 3,
       toNotesPage: [{
         name: "Starry Forms",
@@ -2343,7 +2343,7 @@ legacyClassRefactor("fighter", {
     },
     "weapon mastery": {
       name: "Weapon Mastery",
-      source: [["PHB2024", 52]],
+      source: [["PHB2024", 91]],
       minlevel: 1,
       description: desc([
         "Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial Melee weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.",
@@ -2648,7 +2648,7 @@ legacyClassRefactor("fighter", {
     },
     "extra attack": {
       name: "Extra Attack",
-      source: [["PHB2024", 53]],
+      source: [["PHB2024", 92]],
       minlevel: 5,
       description: desc([
         "You can attack twice instead of once whenever you take the Attack Action on your Turn.",
@@ -2880,7 +2880,7 @@ legacySubClassRefactor("fighter", "battle master", {
     },
     "subclassfeature10": {
       name: "Improved Combat Superiority",
-      source: [["PHB2024", 54]],
+      source: [["PHB2024", 94]],
       minlevel: 10,
       action: ["reaction", "Retaliation"],
       description: desc([
@@ -3096,7 +3096,7 @@ legacySubClassRefactor("fighter", "psi warrior", {
   features: {
     "subclassfeature3": {
       name: "Psionic Power",
-      source: [["PHB2024", 98 - 99]],
+      source: [["PHB2024", 98]],
       minlevel: 3,
       action: [["reaction", "Protective Field"], ["action", "Telekinetic Movement"]],
       limfeaname: "Telekinetic Movement",
@@ -3262,7 +3262,7 @@ legacyClassRefactor("monk", {
     },
     "monk's focus": {
       name: "Monk's Focus",
-      source: [["PHB2024", 101 - 102]],
+      source: [["PHB2024", 101]],
       minlevel: 2,
       limfeaname: "Focus Points",
       usages: levels.map(function (n) {
@@ -3510,7 +3510,7 @@ legacySubClassRefactor("monk", "mercy", {
     },
     "subclassfeature11": {
       name: "Flurry of Healing and Harm",
-      source: [["PHB2024", 104 - 105]],
+      source: [["PHB2024", 104]],
       minlevel: 11,
       usages: "Wisdom modifier per ",
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
@@ -3662,7 +3662,7 @@ legacySubClassRefactor("monk", "elements", {
     },
     "subclassfeature17": {
       name: "Elemental Epitome",
-      source: [["PHB2024", 106 - 107]],
+      source: [["PHB2024", 106]],
       minlevel: 17,
       description: desc([
         "When Elemental Attunement is active:",
@@ -4085,7 +4085,7 @@ legacyClassRefactor("paladin", {
 		},
 		"fighting style": {
 			name: "Fighting Style",
-			source: [["PHB2024", 91]],
+			source: [["PHB2024", 110]],
 			minlevel: 2,
 			description: desc([
 				"Pick a 'Fighting Style' feat or 'Blessed Warrior'; use Choose Feature above.",
@@ -4126,7 +4126,7 @@ legacyClassRefactor("paladin", {
 		},
 		"channel divinity": {
 			name: "Channel Divinity",
-			source: [["PHB2024", 110 - 111]],
+			source: [["PHB2024", 110]],
 			action: ["bonus action", "Divine Sense"],
 			minlevel: 3,
 			usages: [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
@@ -4206,7 +4206,7 @@ legacyClassRefactor("paladin", {
 		},
 		"epic boon": {
 		  name: "Epic Boon",
-		  source: [["PHB2024", 92]],
+		  source: [["PHB2024", 111]],
 		  minlevel: 19,
 		  description: desc([
 			"I gain an Epic Boon feat or another feat of your choice.",
@@ -4298,7 +4298,7 @@ legacySubClassRefactor("paladin", "glory", {
     },
     "subclassfeature3.1": {
       name: "Channel Divinity: Peerless Athlete",
-      source: [["PHB2024", 96]],
+      source: [["PHB2024", 114]],
       minlevel: 3,
       description: desc([
         "As a bonus action, I can get adv. on Str (Athletics) \u0026 Dex (Acrobatics) checks for 1 hour",
@@ -4368,7 +4368,7 @@ legacySubClassRefactor("paladin", "ancients", {
       minlevel: 7,
       dmgres: ["Psychic", "Radiant", "Necrotic"],
       description: desc([
-        "my allies & I have Resistance to Necrotic, Psychic, & Radiant damage while in range.",
+        "My allies & I have Resistance to Necrotic, Psychic, & Radiant damage while in range.",
       ]),
 	  additional : levels.map(function (n) {
 			return n < 7 ? "" : (n < 18 ? 10 : 30) + "-foot aura";
@@ -4536,7 +4536,7 @@ legacyClassRefactor("ranger", {
     },
     "weapon mastery": {
       name: "Weapon Mastery",
-      source: [["PHB2024", 110]],
+      source: [["PHB2024", 120]],
       minlevel: 1,
       description: desc([
         "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.",
@@ -4816,7 +4816,7 @@ legacyClassRefactor("ranger", {
     "expertise": function () {
       var a = {
         name: "Deft Explorer",
-        source: [["PHB2024", 121]],
+        source: [["PHB2024", 120]],
         minlevel: 2,
         description: "Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills. At 9th-level you gain Expertise in two additional skills you lack Expertise in.",
         skillstxt: "Expertise with any one skill proficiencies.",
@@ -4879,7 +4879,7 @@ legacyClassRefactor("ranger", {
     },
     "subclassfeature3": {
       name: "Ranger Subclass",
-      source: [["PHB2024", 111]],
+      source: [["PHB2024", 120]],
       minlevel: 3,
       description: desc([
         "You gain a Ranger subclass of your choice. The Beast Master, Fey Wanderer, Gloom Stalker, and Hunter subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Ranger levels. For the rest of your career, you gain each of your subclass's features that are of your Ranger level or lower.",
@@ -5057,7 +5057,7 @@ legacySubClassRefactor("ranger", "fey wanderer", {
     },
     "subclassfeature3.2": {
       name: "Otherworldly Glamour",
-      source: [["PHB2024", 124 - 125]],
+      source: [["PHB2024", 124]],
       minlevel: 3,
       skillstxt: "Choose 1 : Deception, Performance, or Persuasion",
       description: desc([
@@ -5089,7 +5089,7 @@ legacySubClassRefactor("ranger", "fey wanderer", {
     },
     "subclassfeature15": {
       name: "Misty Wanderer",
-      source: [["PHB2024", 15]],
+      source: [["PHB2024", 125]],
       minlevel: 15,
       usages: "Wisdom modifier per ",
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
@@ -5244,7 +5244,7 @@ legacySubClassRefactor("ranger", "hunter", {
 legacyClassRefactor("rogue", {
   regExpSearch: /rogue/i,
   name: "Rogue",
-  source: [["PHB2024", 101]],
+  source: [["PHB2024", 129]],
   primaryAbility: "Dexterity",
   prereqs: "Dexterity 13",
   abilitySave: 2,
@@ -5309,7 +5309,7 @@ legacyClassRefactor("rogue", {
     }(),
     "sneak attack": {
       name: "Sneak Attack",
-      source: [["PHB2024", 101]],
+      source: [["PHB2024", 129]],
       minlevel: 1,
       additional: ["1d6", "1d6", "2d6", "2d6", "3d6", "3d6", "4d6", "4d6", "5d6", "5d6", "6d6", "6d6", "7d6", "7d6", "8d6", "8d6", "9d6", "9d6", "10d6", "10d6"],
       description: desc([
@@ -5565,7 +5565,7 @@ legacyClassRefactor("rogue", {
     },
     "epic boon": {
       name: "Epic Boon",
-      source: [["PHB2024", 103]],
+      source: [["PHB2024", 131]],
       minlevel: 19,
       description: desc([
         "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of the Night Spirit is recommended.",
@@ -5601,7 +5601,7 @@ legacySubClassRefactor("rogue", "arcane trickster", {
   features: {
     "subclassfeature3": {
       name: "Spellcasting",
-      source: [["PHB2024", 132 - 133]],
+      source: [["PHB2024", 132]],
       minlevel: 3,
       additional: levels.map(function (n, idx) {
         var cantr = [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3][idx];
@@ -5672,7 +5672,7 @@ legacySubClassRefactor("rogue", "arcane trickster", {
 legacySubClassRefactor("rogue", "assassin", {
   regExpSearch: /^(?=.*(rogue))(?=.*(assassin)).*$/i,
   subname: "Assassin",
-  source: [["PHB2024", 105]],
+  source: [["PHB2024", 133]],
   features: {
     "subclassfeature3": {
       name: "Assassinate",
@@ -5899,7 +5899,7 @@ legacyClassRefactor("sorcerer", {
   features: {
     "spellcasting": {
       name: "Spellcasting",
-      source: [["PHB2024", 139 - 140]],
+      source: [["PHB2024", 139]],
       minlevel: 1,
       additional: levels.map(function (n, idx) {
         var cantr = [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6][idx];
@@ -7137,7 +7137,7 @@ legacyClassRefactor("warlock", {
     },
     "pact magic": {
       name: "Pact Magic",
-      source: [["PHB2024", 153 - 154]],
+      source: [["PHB2024", 153]],
       minlevel: 1,
       additional: levels.map(function (n, idx) {
         var cantr = [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4][idx];
@@ -7251,7 +7251,7 @@ legacyClassRefactor("warlock", {
     },
     "eldritch master": {
       name: "Eldritch Master",
-      source: [["PHB2024", 55]],
+      source: [["PHB2024", 155]],
       minlevel: 20,
       description: desc([
         "When you use your Magical Cunning feature, you regain all your expended Pact Magic spell slots.",
@@ -7513,7 +7513,7 @@ legacyClassRefactor("wizard", {
   features: {
     "spellcasting": {
       name: "Spellcasting",
-      source: [["PHB2024", 165 - 166]],
+      source: [["PHB2024", 165]],
       minlevel: 1,
       additional: levels.map(function (n, idx) {
         var cantr = [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5][idx];
@@ -7685,7 +7685,7 @@ legacySubClassRefactor("wizard", "abjurer", {
     },
     "subclassfeature6": {
       name: "Projected Ward",
-      source: [["PHB2024", 172 - 173]],
+      source: [["PHB2024", 172]],
       minlevel: 6,
       description: desc([
         "When a creature that you can see within 30 feet of yourself takes damage, you can take a Reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 Hit Points, the warded creature takes any remaining damage. If that creature has any Resistances or Vulnerabilities, apply them before reducing the ward's Hit Points.",
@@ -10404,7 +10404,7 @@ FeatsList["resilient"] = {
 };
 FeatsList["ritual caster"] = {
   name: "Ritual Caster",
-  source: [["PHB2024", 206 - 207]],
+  source: [["PHB2024", 206]],
   regExpSearch: /^(?=.*ritual)(?=.*caster).*$/i,
   descriptionFull: "You gain the following benefits.\n Ability Score Increase. Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n Ritual Spells. Choose a number of level 1 spells equal to your Proficiency Bonus that have the Ritual tag. You always have those spells prepared, and you can cast them with any spell slots you have. The spells' spellcasting ability is the ability increased by this feat. Whenever your Proficiency Bonus increased hereafter, you can add an additional level 1 spell with the Ritual tag to the spells always prepared with this feature.\n Quick Ritual. With this benefit, you can cast a Ritual spell that you have prepared using its regular casting time rather than the extended time for a Ritual. Doing so doesn't required a spell slot. Once you cast the spell in this way, you can't use this benefit again until you finish a Long Rest.",
   description: "Ritual Spells. Prof. Bonus 1st level Ritual spells, do not count against the spells you can have prepared. Quick Ritual. Once per Long Rest can cast a ritual with normal casting time.",
@@ -10695,7 +10695,7 @@ FeatsList["telekinetic"] = {
 };
 FeatsList["telepathic"] = {
   name: "Telepathic",
-  source: [["PHB2024", 208 - 209]],
+  source: [["PHB2024", 208]],
   regExpSearch: /^(?=.*telepathic).*$/i,
   descriptionFull: "You gain the following benefits:\n \u2022 Ability Score Increase. Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 Telepathic Utterance. You can speak telepathically to any creature you can see within 60 feet of you. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.\n \u2022 Detect thoughts. You can cast the detect thoughts spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. Your spellcasting ability for the spell is the ability increased by this feat. If you have spell slots of 2nd level or higher, you can cast this spell with them.",
   description: "I can telepathically speak to a creature I can see within 60 ft. in a language I know, but it can't respond telepathically. I can cast Detect Thoughts once per long rest at its lowest level, requiring no spell slot or components, and can cast it using a spell slot as normal. My spellcasting ability is the ability I increase with this feat. [+1 Int, Wis, or Cha]",
@@ -14096,7 +14096,7 @@ legacySpellRefactor("animate dead", {
 legacySpellRefactor("animate objects", {
   name: "Animate Objects",
   classes: ["bard", "sorcerer", "wizard"],
-  source: [["PHB2024", 240 - 241]],
+  source: [["PHB2024", 240]],
   level: 5,
   school: "Trans",
   time: "1 a",
@@ -14400,7 +14400,7 @@ legacySpellRefactor("befuddlement", {
   replaces: "feeblemind",
   name: "Befuddlement",
   classes: ["bard", "druid", "warlock", "wizard"],
-  source: [["PHB2024", 245 - 246]],
+  source: [["PHB2024", 245]],
   level: 8,
   school: "Ench",
   time: "1 a",
@@ -14430,7 +14430,7 @@ legacySpellRefactor("bigby's hand", {
   name: "Bigby's Hand",
   nameAlt: "Arcane Hand",
   classes: ["sorcerer", "wizard"],
-  source: [["PHB2024", 246 - 247]],
+  source: [["PHB2024", 246]],
   level: 5,
   school: "Evoc",
   time: "1 a",
@@ -14502,7 +14502,7 @@ legacySpellRefactor("blight", {
 legacySpellRefactor("blinding smite", {
   name: "Blinding Smite",
   classes: ["paladin"],
-  source: [["PHB2024", 247 - 248]],
+  source: [["PHB2024", 247]],
   level: 3,
   school: "Evoc",
   time: "1 bns",
@@ -14882,7 +14882,7 @@ legacySpellRefactor("cone of cold", {
 legacySpellRefactor("confusion", {
   name: "Confusion",
   classes: ["bard", "druid", "sorcerer", "wizard"],
-  source: [["PHB2024", 253 - 254]],
+  source: [["PHB2024", 253]],
   level: 4,
   school: "Ench",
   time: "1 a",
@@ -15151,7 +15151,7 @@ legacySpellRefactor("create or destroy water", {
 legacySpellRefactor("create undead", {
   name: "Create Undead",
   classes: ["cleric", "warlock", "wizard"],
-  source: [["PHB2024", 258 - 259]],
+  source: [["PHB2024", 258]],
   level: 6,
   school: "Necro",
   time: "1 min",
@@ -15629,7 +15629,7 @@ legacySpellRefactor("dream", {
 legacySpellRefactor("druidcraft", {
   name: "Druidcraft",
   classes: ["druid"],
-  source: [["PHB2024", 266 - 267]],
+  source: [["PHB2024", 266]],
   level: 0,
   school: "Trans",
   time: "1 a",
@@ -16891,7 +16891,7 @@ legacySpellRefactor("invisibility", {
 legacySpellRefactor("jallarzi's storm of radiance", {
   name: "Jallarzi's Storm of Radiance",
   classes: ["warlock", "wizard"],
-  source: [["PHB2024", 289 - 290]],
+  source: [["PHB2024", 289]],
   level: 5,
   school: "Evoc",
   time: "1 a",
@@ -17480,7 +17480,7 @@ legacySpellRefactor("misty step", {
 legacySpellRefactor("modify memory", {
   name: "Modify Memory",
   classes: ["bard", "wizard"],
-  source: [["PHB2024", 299 - 300]],
+  source: [["PHB2024", 299]],
   level: 5,
   school: "Ench",
   time: "1 a",
@@ -17619,7 +17619,7 @@ legacySpellRefactor("otiluke's freezing sphere", {
   name: "Otiluke's Freezing Sphere",
   nameAlt: "Freezing Sphere",
   classes: ["sorcerer", "wizard"],
-  source: [["PHB2024", 302 - 303]],
+  source: [["PHB2024", 302]],
   level: 6,
   school: "Evoc",
   time: "1 a",
@@ -17736,7 +17736,7 @@ legacySpellRefactor("phantom steed", {
 legacySpellRefactor("planar ally", {
   name: "Planar Ally",
   classes: ["cleric"],
-  source: [["PHB2024", 304 - 305]],
+  source: [["PHB2024", 304]],
   level: 6,
   school: "Conj",
   time: "10 min",
@@ -17779,7 +17779,7 @@ legacySpellRefactor("plane shift", {
 legacySpellRefactor("plant growth", {
   name: "Plant Growth",
   classes: ["bard", "druid", "ranger"],
-  source: [["PHB2024", 305 - 306]],
+  source: [["PHB2024", 305]],
   level: 3,
   school: "Trans",
   time: "1 a/8h",
@@ -18011,7 +18011,7 @@ legacySpellRefactor("protection from evil and good", {
   name: "Protection from Evil and Good",
   nameShort: "Prot. from Evil/Good",
   classes: ["cleric", "druid", "paladin", "warlock", "wizard"],
-  source: [["PHB2024", 309 - 310]],
+  source: [["PHB2024", 309]],
   level: 1,
   school: "Abjur",
   time: "1 a",
@@ -18286,7 +18286,7 @@ legacySpellRefactor("scorching ray", {
 legacySpellRefactor("scrying", {
   name: "Scrying",
   classes: ["bard", "cleric", "druid", "warlock", "wizard"],
-  source: [["PHB2024", 313 - 14]],
+  source: [["PHB2024", 313]],
   level: 5,
   school: "Div",
   time: "10 min",
@@ -18682,7 +18682,7 @@ legacySpellRefactor("spirit guardians", {
 legacySpellRefactor("spiritual weapon", {
   name: "Spiritual Weapon",
   classes: ["cleric"],
-  source: [["PHB2024", 319 - 320]],
+  source: [["PHB2024", 319]],
   level: 2,
   school: "Evoc",
   time: "1 bns",
@@ -19377,7 +19377,7 @@ legacySpellRefactor("vicious mockery", {
 legacySpellRefactor("vitriolic sphere", {
   name: "Vitriolic Sphere",
   classes: ["sorcerer", "wizard"],
-  source: [["PHB2024", 337 - 338]],
+  source: [["PHB2024", 337]],
   level: 4,
   school: "Evoc",
   time: "1 a",
