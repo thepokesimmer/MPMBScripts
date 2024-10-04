@@ -3,7 +3,7 @@ RequiredSheetVersion("13.2.1");
 SourceList.PHB2024 = {
   name: "2024 Player's Handbook",
   abbreviation: "PHB2024",
-  abbreviationSpellsheet: "PHB",
+  abbreviationSpellsheet: "P4",
   group: "Core Sources",
   url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
   date: "2024/09/17",
@@ -669,6 +669,7 @@ legacySubClassRefactor("barbarian", "berserker", {
 legacySubClassRefactor("barbarian", "wild heart", {
   regExpSearch: /^(?=.*(barbarian))(?=.*(wild))(?=.*(heart)).*$/i,
   subname: "Path of the Wild Heart",
+  replaces: "path of the totem warrior",
   source: [["PHB2024", 55]],
   features: {
     "subclassfeature3": {
@@ -756,7 +757,7 @@ legacySubClassRefactor("barbarian", "wild heart", {
     },
   },
 });
-legacySubClassRefactor("barbarian", "world tree", {
+AddSubClass("barbarian", "world tree", {
   regExpSearch: /^(?=.*(barbarian))(?=.*(world))(?=.*(tree)).*$/i,
   subname: "Path of the World Tree",
   source: [["PHB2024", 56]],
@@ -1067,11 +1068,10 @@ legacyClassRefactor("bard", {
     },
   },
 });
-legacySubClassRefactor("bard", "dance", {
+AddSubClass("bard", "dance", {
   regExpSearch: /^(?=.*(bard))(?=.*(dance)).*$/i,
   subname: "College of Dance",
   source: [["PHB2024", 64]],
-  replaces: "college of dance",
   features: {
     "subclassfeature3": {
       name: "Dazzling Footwork",
@@ -2184,11 +2184,10 @@ legacySubClassRefactor("druid", "moon", {
     },
   },
 });
-legacySubClassRefactor("druid", "sea", {
+AddSubClass("druid", "sea", {
   regExpSearch: /^(?=.*(druid))(?=.*(sea)).*$/i,
   subname: "Circle of the Sea",
   source: [["PHB2024", 87]],
-  replaces: "circle of the sea",
   spellcastingExtra: ["fog cloud", "gust of wind", "ray of frost", "shatter", "thunderwave", "lightning bolt", "water breathing", "control water", "ice storm", "conjure elemental", "hold monster"],
   features: {
     "subclassfeature3": {
@@ -6341,7 +6340,6 @@ legacySubClassRefactor("sorcerer", "wild magic", {
   regExpSearch: /^(?=.*(sorcerer))(?=.*(wild ))(?=.*(magic)).*$/i,
   subname: "Wild Magic Sorcery",
   source: [["PHB2024", 149]],
-  replaces: "aberrant mind",
   features: {
     "subclassfeature3": {
       name: "Wild Magic Surge",
