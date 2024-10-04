@@ -1,5 +1,4 @@
 var iFileName = "pub_20240917_PHB.js";
-var iFileName = "pub_20240917_PHB.js";
 RequiredSheetVersion("13.2.1");
 SourceList.PHB2024 = {
   name: "2024 Player's Handbook",
