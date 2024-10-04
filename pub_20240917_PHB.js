@@ -1,4 +1,5 @@
 var iFileName = "pub_20240917_PHB.js";
+var iFileName = "pub_20240917_PHB.js";
 RequiredSheetVersion("13.2.1");
 SourceList.PHB2024 = {
   name: "2024 Player's Handbook",
@@ -8,17 +9,35 @@ SourceList.PHB2024 = {
   url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
   date: "2024/09/17",
 };
-SourceList.LEGACY = {
+
+SourceList.LEGACYSPELLS = {
   name: "Spells Deprecated by 2024 Player's Handbook",
   abbreviation: "LEGACY",
   abbreviationSpellsheet: "L",
   group: "Core Sources",
   url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
-  date: "2024/09/17",
+  date: "2014/01/01",
+  defaultExcluded : true,
 };
+
+SourceList.LEGACYCLASS = {
+  name: "Subclasses Deprecated by 2024 Player's Handbook",
+  abbreviation: "LEGACY",
+  abbreviationSpellsheet: "L",
+  group: "Core Sources",
+  url: "https://marketplace.dndbeyond.com/core-rules/3709000?pid=DB3709000",
+  date: "2014/01/01",
+  defaultExcluded : true,
+};
+
 // Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite, evanelric, TappyTap
 
 //Functions
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
 function legacySpellRefactor(spellKey, newSpell) {
   if (newSpell.replaces && newSpell.replaces in SpellsList) {
     SpellsList[spellKey] = SpellsList[newSpell.replaces];
@@ -41,7 +60,7 @@ function legacySpellRefactor(spellKey, newSpell) {
           if (!('subclassfeature24' in subclass.features)) {
             subclass.features['subclassfeature24'] = {
               name: "Legacy spells",
-              source: [["LEGACY", 1]],
+              source: [["LEGACYSPELLS", 1]],
               minlevel: 1,
               description: "\n I can choose to access to the legacy version of spells",
               choices: ["Show Legacy", "Hide Legacy"],
@@ -64,7 +83,7 @@ function legacySpellRefactor(spellKey, newSpell) {
         }
       }
     }
-    oldspell.source = [["LEGACY", 1]];
+    oldspell.source = [["LEGACYSPELLS", 1]];
     oldspell.name = oldspell.name + " (Legacy)";
     if ('nameShort' in oldspell) {
       oldspell.nameShort = oldspell.nameShort + " (L)";
@@ -82,39 +101,41 @@ function legacyClassRefactor(classKey, newClass) {
   }
 }
 
-function archiveSubClass(classKey, replacementSubclass, subClass) {
+function archiveSubClass(classKey, subClass, newClassName) {
   subClass.subname = subClass.subname + " - 2014";
   if ('fullname' in subClass) {
     subClass.fullname = subClass.fullname + " - 2014";
   }
+  subClass.source = [["LEGACYCLASS", 1]];
   for (var i of ClassList[classKey].subclasses[1]) {
-    if (ClassSubList[i].regExpSearch.test(replacementSubclass)) {
-      var oldRegex = "(?=^.*" + subClass.regExpSearch.source + ".*$)";
-      var newRegex = "(?!^" + replacementSubclass + "$)";
-      ClassSubList[i].regExpSearch = new RegExp(oldRegex + newRegex, 'i');
-      console.println(replacementSubclass + ": " + i);
-      console.println(ClassSubList[i].regExpSearch);
+    if (ClassSubList[i].regExpSearch.test(newClassName)) {
+      var regex = "(?=^.*" + subClass.regExpSearch.source + ".*$)(?!^" + escapeRegExp(newClassName) + "$)";
+      ClassSubList[i].regExpSearch = new RegExp(regex, 'i');
     }
   }
-  subClass.source = [["LEGACY", 1]];
 }
 
-function legacySubClassRefactor(classKey, subClassKey, newSubClass) {
+function legacySubClassRefactor(classKey, subClassKey, nSC) {
   var newSubClassName = classKey + "-" + subClassKey;
+  var prv = null;
   if (newSubClassName in ClassSubList) {
-    var oldSubClass = ClassSubList[newSubClassName];
-
-    archiveSubClass(classKey, newSubClass.subname, oldSubClass);
-    ClassSubList[newSubClassName] = newSubClass;
-    AddSubClass(classKey, subClassKey + "_2014", oldSubClass);
-  } else {
-    if ('replaces' in newSubClass) {
-      const subclassName = classKey + '-' + newSubClass.replaces;
-      if (subclassName in ClassSubList) {
-        archiveSubClass(classKey, newSubClass.subname, ClassSubList[subclassName]);
-      }
+    prv = ClassSubList[newSubClassName];
+    ClassSubList[newSubClassName] = nSC;
+    AddSubClass(classKey, subClassKey + "_2014", prv);
+  }
+  if ('replaces' in nSC) {
+    const subclassName = classKey + '-' + nSC.replaces;
+    if (subclassName in ClassSubList) {
+      prv = ClassSubList[subclassName];
     }
-    AddSubClass(classKey, subClassKey, newSubClass);
+    AddSubClass(classKey, subClassKey, nSC);
+  }
+  if (prv != null){
+    var newRegex = nSC.regExpSearch;
+    var bc = ClassList[classKey];
+    var newClassName = nSC.fullname ? nSC.fullname : bc.name + " (" + nSC.subname + ")";
+    archiveSubClass(classKey, prv, newClassName);
+    nSC.regExpSearch = newRegex;
   }
 }
 
@@ -5282,7 +5303,7 @@ legacyClassRefactor("rogue", {
         name: "Expertise",
         source: [["PHB2024", 129]],
         minlevel: 1,
-        description: "You gain Expertise (see the rules glossary) in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them. At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.",
+        description: "I gain expertise with any two of my skill proficiencies and two more at 6th level.",
         skillstxt: "Expertise with any two skill proficiencies, and two more at 6th level",
         additional: levels.map(function (n) {
           return n < 1 ? "" : "with " + (n < 6 ? 2 : 4) + " skills";
@@ -5313,9 +5334,7 @@ legacyClassRefactor("rogue", {
       minlevel: 1,
       additional: ["1d6", "1d6", "2d6", "2d6", "3d6", "3d6", "4d6", "4d6", "5d6", "5d6", "6d6", "6d6", "7d6", "7d6", "8d6", "8d6", "9d6", "9d6", "10d6", "10d6"],
       description: desc([
-        "You know how to strike subtly and exploit a foe's distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. The extra damage's type is the same as the weapon's type.",
-        "You don't need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn't have the Incapacitated condition, and you don't have Disadvantage on the roll.",
-        "The extra damage increases as you gain Rogue levels, as shown in the Sneak Attack's column of the Rogue Features table.",
+        "Once per turn, I can add damage to a finesse/ranged weapon attack if I have Adv or a conscious ally is within 5 ft of the target & I don't have Disadv.",
       ]),
     },
     "thieves' cant": {
@@ -5324,7 +5343,7 @@ legacyClassRefactor("rogue", {
       minlevel: 1,
       languageProfs: [["Thieves' Cant", 1]],
       description: desc([
-        "You picked up various languages in the communities where you plied your roguish talents. You known Thieves' Cant and one other language of your choice, which you choose from the languages tables in chapter 2.",
+        "I know Thieves' Cant and one other language of my choice.",
       ]),
     },
     "weapon mastery": {
@@ -5332,7 +5351,8 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 129]],
       minlevel: 1,
       description: desc([
-        "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Daggers and Shortbows. Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Shortswords.",
+        "I choose two weapons I'm proficient with & gain their mastery features.",
+				"I can change these on a long rest; Use Choose Feature above to pick. (See page 3)",
       ]),
       additional: ["2 Weapon Masteries"],
       extraname: "Weapon Mastery",
@@ -5478,7 +5498,7 @@ legacyClassRefactor("rogue", {
       minlevel: 2,
       action: [["bonus action", "Dash/Disengage/Hide"]],
       description: desc([
-        "Your quick thinking and agility allows you to move and act quickly. On your turn, you can take one of the following actions as a Bonus Action; Dash, Disengage, or Hide.",
+        "On my turn I can take one of these actions as a Bonus Action: Dash, Disengage, or Hide.",
       ]),
     },
     "subclassfeature3": {
@@ -5486,7 +5506,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 130]],
       minlevel: 3,
       description: desc([
-        "You gain a Rogue subclass of your choice. The Arcane Trickster, Assassin, Soulknife, and Thief subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Rogue levels. For the rest of your career, you gain each of your subclass's features that are of your Rogue level or lower.",
+        "Choose a Rogue subclass and put it in the 'Class' field.",
       ]),
     },
     "cunning strike": {
@@ -5494,12 +5514,11 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 130]],
       minlevel: 5,
       description: desc([
-        "You've developed cunning ways to use your Sneak Attack. When you deal Sneak Attack damage, you can add one of the following Cunning Strike effects. Each effect has a die cost, which is the number of Sneak Attack damage dice you must forego to add the effect. You remove the die before rolling, and the effect occurs immediately after the attack's damage is dealt. Fore example if you add the Poison effect, remove 1d6 from the Sneak Attack's damage before rolling.",
-        "If a cunning Strike effect requires a saving throw, the DC equals 8 plus your Dexterity modifier and Proficiency Bonus",
-        "Poison (Cost 1d6) : You add a toxin to your strike, forcing the target to make a Constitution saving throw. On a failed save, the target has the Poisoned condition for 1 minute. At the end of each of its turns, the Poisoned target repeats the save, ending the effect on itself on a success.",
-        "To use this effect, you must have a Poisoner's Kit on your person.",
-        "Trip (Cost 1d6) : If the target is Large or smaller, it must succeed on a Dexterity saving throw or have the Prone condition.",
-        "Withdraw (Cost 1d6) : Immediately after the attack, you move up to half your Speed without provoking Opportunity Attacks.",
+        "When I deal Sneak Attack damage I can add one of the following Cunning Strike effects at the cost of Sneak Attack damage dice:",
+        "Poison (Cost 1d6): If I possess a Poisoner's Kit, on a failed Con save the target is Poisoned for 1 min. It repeats the save at the end of each of its turns, ending it on a success.",
+        "Trip (Cost 1d6): If the target is Large or smaller it must pass a Dex save or fall Prone.",
+        "Withdraw (Cost 1d6): Right after I attack I move up to half my Speed without provoking Opp Attacks.",
+        "If a Cunning Strike effect requires a saving throw the DC is 8 + Dex mod + Prof Bonus.",
       ]),
     },
     "uncanny dodge": {
@@ -5508,7 +5527,7 @@ legacyClassRefactor("rogue", {
       minlevel: 5,
       action: "reaction",
       description: desc([
-        "When an attacker that you can see hits you with an attack roll, you can take a Reaction to halve the attack's damage against you (round down).",
+        "As a reaction, I can halve the damage of an attack from an attacker I can see (round down).",
       ]),
     },
     "evasion": {
@@ -5516,7 +5535,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 7,
       description: desc([
-        "You can nimbly dodge out of the way of certain dangers. When you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw and only half damage if you fail. You can't use this feature if you have the Incapacitated condition.",
+        "If I'm conscious and must make a Dex save to take half damage on an effect I take no damage on a pass & half damage on a fail.",
       ]),
     },
     "reliable talent": {
@@ -5524,7 +5543,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 7,
       description: desc([
-        "Whenever you make an ability check that uses one of your skill or tool proficiencies, you can treat a d20 roll of 9 or lower as a 10.",
+        "When I make an ability check that uses one of my skill or tool proficiencies, d20 rolls of 9 or lower are 10.",
       ]),
     },
     "improved cunning strike": {
@@ -5532,7 +5551,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 11,
       description: desc([
-        "You can use up to two Cunning Strike effects, when you deal Sneak Attack damage, paying the die cost for each effect.",
+        "Use up to two Cunning Strike effects when I deal Sneak Attack damage, paying the cost for each.",
       ]),
     },
     "devious strikes": {
@@ -5540,10 +5559,11 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 14,
       description: desc([
-        "You've practiced new ways to use your Sneak Attack deviously. The following effects are now among your Cunning Strike options.",
-        "Dose (Cost 2d6) : The Target must succeed on a Constitution saving throw, or on its next turn, it can do only one of the following; move or take an action or a Bonus Action.",
-        "Knock Out (Cost 6d6) : The target must succeed on a Constitution saving throw, or it has the Unconscious condition for 1 minute or until it takes any damage. The unconscious target repeats the save at the end of each of its turns, ending the effect on itself on a success.",
-        "Obscure (Cost 3d6) : The target must succeed on a Dexterity saving throw, or it has the Blinded condition until the end of its next turn.",
+        "These effects are now among my Cunning Strike options:",
+        "Dose (Cost 2d6) : Target must pass a Con save or on its next turn it can do only one: move/action/Bonus Action.",
+        "Knock Out (Cost 6d6) : Target must pass a Con save or be Unconscious for 1 min or until damaged.",
+        "It repeats the save at the end of each of its turns, ending the effect on a pass.",
+        "Obscure (Cost 3d6) : Target must pass a Dex save or be Blinded until the end of its next turn.",
       ]),
     },
     "slippery mind": {
@@ -5552,7 +5572,7 @@ legacyClassRefactor("rogue", {
       minlevel: 15,
       saves: ["Wis", "Cha"],
       description: desc([
-        "Your cunning mind is exceptionally difficult to control. You gain proficiency in Wisdom and Charisma saving throws.",
+        "I gain proficiency in Wis and Cha saves.",
       ]),
     },
     "elusive": {
@@ -5560,7 +5580,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 18,
       description: desc([
-        "You're so evasive that attackers rarely gain the upper hand against you. No attack roll can have Advantage against you unless you have the Incapacitated condition.",
+        "No attack roll can have Advantage against me while I'm conscious.",
       ]),
     },
     "epic boon": {
@@ -5568,7 +5588,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of the Night Spirit is recommended.",
+        "I gain an Epic Boon feat or another feat of my choice.",
       ]),
     },
     "stroke of luck": {
@@ -5578,8 +5598,7 @@ legacyClassRefactor("rogue", {
       usages: 1,
       recovery: "short rest",
       description: desc([
-        "You have a marvelous knack for succeeding when you need to, if you fail a D20 Test, you can turn the roll into a 20.",
-        "Once you use this feature, you can't use it again until you finish a Short or Long Rest.",
+        "Once per rest if I fail a D20 roll I can turn the roll into a 20.",
       ]),
     },
   },
@@ -5620,25 +5639,19 @@ legacySubClassRefactor("rogue", "arcane trickster", {
         ]
       },
       description: desc([
-        "You have learned to cast spells. See chapter 7 for the rules on spellcasting. the information below details how you use those rules as an Arcane Trickster.",
-        "Cantrips : You know three cantrips Mage Hand and two others of your choice from the Wizard spell list (see that class's section for this list). Mind Sliver and Minor Illusion are recommended.",
-        "Whenever you gain a Rogue level, you can replace one of these cantrips with another cantrip of your choice from the Wizard spell list.",
-        "When you reach Rogue level 10, you learn another Wizard cantrip of your choice.",
-        "Spell Slots : The Arcane Trickster Spellcasting table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start choose three level 1 spells from the Wizard spell list. Burning Hands, Jump, and Shield are recommended.",
-        "The number of spells on your list increase as you gain Rogue levels, as shown in the Prepared Spells column of the Arcane Trickster Spellcasting table. Whenever that number increases, choose additional spells from the Wizard spell list until the number of spells on your list matches the number on the table. The chosen spells must be of a level from which you have spell slots. For example, if you're a level 7 Rogue, your list of prepared spells can include five Wizard spells of levels 1 and 2 in any combination.",
-        "Changing Your Prepared Spells : Whenever you gain a Rogue level, you can replace one spell on your list with another Wizard spell for which you have spell slots.",
-        "Spellcasting Ability : Intelligence is your spellcasting ability for your Wizard spells.",
-        "Spellcasting Focus : You can use an Arcane Focus as a Spellcasting Focus for your Wizards spells.",
+        "I can cast prepared level 1+ Wizard spells using Int as my spellcasting ability.",
+        "I can use an Arcane Focus as a spellcasting focus for my spells.",
+        "I can change one prepared spell and one cantrip when I gain a Rogue level.",
       ]),
     },
     "subclassfeature3.1": {
       name: "Mage Hand Legerdemain",
       source: [["PHB2024", 133]],
       minlevel: 3,
-      action: ["bonus action", "Cast Mage Hand"],
+      action: [["bonus action", "Cast Mage Hand"], ["bonus action", "Control Mage Hand"]],
       description: desc([
-        "When you cast Mage Hand, you can cast it as a Bonus Action, and you can make the spectral hand Invisible. You can control the hand as a Bonus Action, and through it, you can make Dexterity (Sleight of Hand) checks.",
+        "I can cast Mage Hand as a Bonus Action, and make the spectral hand Invisible.",
+        "I can control it as a Bonus Action, and through it can make Dex (Sleight of Hand) checks.",
       ]),
     },
     "subclassfeature9": {
@@ -5646,7 +5659,7 @@ legacySubClassRefactor("rogue", "arcane trickster", {
       source: [["PHB2024", 133]],
       minlevel: 9,
       description: desc([
-        "If you have the Invisible condition when you cast a spell on a creature, it has Disadvantage on any saving throw it makes against the spell on the same turn.",
+        "If I'm Invisible when I cast a spell on a creature it has Disadv on saving throws against the spell on the same turn.",
       ]),
     },
     "subclassfeature13": {
@@ -5654,7 +5667,7 @@ legacySubClassRefactor("rogue", "arcane trickster", {
       source: [["PHB2024", 133]],
       minlevel: 13,
       description: desc([
-        "You gain the ability to distract targets with your Mage Hand. When you use the Trip option of your Cunning Strike on a creature, you can also use that option on another creature within 5 feet of the spectral hand.",
+        "I can use Mage Hand to use the Trip option of my Cunning Strike on a creature within 5ft of the hand when I use it on another creature.",
       ]),
     },
     "subclassfeature17": {
@@ -5662,9 +5675,9 @@ legacySubClassRefactor("rogue", "arcane trickster", {
       source: [["PHB2024", 133]],
       minlevel: 17,
       description: desc([
-        "You gain the ability to magically steal the knowledge of how to cast a spell from another spellcaster.",
-        "Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can take a Reaction to force the creature to make an Intelligence saving throw. The DC equals your spell save DC. On a failed save, you negate the spell's effect against you, and you steal the knowledge of the spell if it is at least level 1 and of a level you can cast (it doesn't need to be a Wizard spell). For the next 8 hours, you have the spell prepared. The creature can't cast it until the 8 hours have passed.",
-        "Once you steal a spell with this feature, you can't use this feature again until you finish a Long Rest.",
+        "Once per long rest as a reaction I can force a creature to make an Int save (my spell save DC) after it casts a spell that targets me.",
+        "On a failed save the spell is negated and stolen if it's level 1+ and of a level I can cast.",
+        "I have it prepared and the creature can't cast it for the next 8 hours.",
       ]),
     },
   },
@@ -5679,9 +5692,10 @@ legacySubClassRefactor("rogue", "assassin", {
       source: [["PHB2024", 134]],
       minlevel: 3,
       description: desc([
-        "You're adept at ambushing a target, granting you the following benefits.",
-        "Initiative : You have Advantage on Initiative rolls.",
-        "Surprising Strikes : During the first round of each combat, you have Advantage on attack rolls against any creature that hasn't taken a turn. If your Sneak Attack hits any target during that round, the target takes extra damage of the weapon's type equal to your Rogue level",
+        "Initiative: I have Advantage on Initiative rolls.",
+        "Surprising Strikes: During the first round of combat:",
+        "I have Advantage on attack rolls against any creature that hasn't taken a turn yet.",
+        "If my Sneak Attack hits it does extra damage (my Rogue level) of the weapon's type.",
       ]),
     },
     "subclassfeature3.1": {
@@ -5690,7 +5704,7 @@ legacySubClassRefactor("rogue", "assassin", {
       minlevel: 3,
       toolProfs: [["Disguise Kit"], ["Poisoner's Kit"]],
       description: desc([
-        "You gain a Disguise Kit and a Poisoner's Kit, and you have proficiency with them.",
+        "I gain a Disguise Kit and a Poisoner's Kit, and I have proficiency with them.",
       ]),
     },
     "subclassfeature9": {
@@ -5698,9 +5712,8 @@ legacySubClassRefactor("rogue", "assassin", {
       source: [["PHB2024", 134]],
       minlevel: 9,
       description: desc([
-        "You are expert at the following techniques that add your infiltrations.",
-        "Masterful Mimicry : You can unerringly mimic another person's speech, handwriting or both if you have spent at least 1 hour studying them.",
-        "Roving Aim : Your Speed isn't reduced to 0 by using Steady Aim",
+        "Masterful Mimicry: After 1 hour of study I can mimic another person's speech, handwriting, or both.",
+        "Roving Aim: My Speed isn't reduced to 0 by using Steady Aim.",
       ]),
     },
     "subclassfeature13": {
@@ -5708,15 +5721,16 @@ legacySubClassRefactor("rogue", "assassin", {
       source: [["PHB2024", 134]],
       minlevel: 13,
       description: desc([
-        "When you use the Poison option of your Cunning Strike, the target also takes 2d6 Poison damage whenever it fails the saving throw. This damage ignores Resistance to Poison Damage.",
+        "Targets of the Poison option of my Cunning Strike also take 2d6 Poison damage on a failed save.",
       ]),
     },
     "subclassfeature17": {
       name: "Death Strike",
       source: [["PHB2024", 134]],
       minlevel: 17,
+	  additional : "DC 8 + Dex + Prof",
       description: desc([
-        "When you hit with your Sneak Attack on the first round of a combat, the target must succeed on a Constitution saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus), or the attack's damage is doubled against the target.",
+        "When you hit with your Sneak Attack on the first round of combat, the target must succeed on a Con save or take double damage.",
       ]),
     },
   },
@@ -5732,12 +5746,12 @@ legacySubClassRefactor("rogue", "soulknife", {
       minlevel: 3,
       additional: ["", "", "Psionic Energy Die 4 d6", "Psionic Energy Die 4 d6", "Psionic Energy Die 6 d8", "Psionic Energy Die 6 d8", "Psionic Energy Die 6 d8", "Psionic Energy Die 6 d8", "Psionic Energy Die 8 d8", "Psionic Energy Die 8 d8", "Psionic Energy Die 8 d10", "Psionic Energy Die 8 d10", "Psionic Energy Die 10 d10", "Psionic Energy Die 10 d10", "Psionic Energy Die 10 d10", "Psionic Energy Die 10 d10", "Psionic Energy Die 12 d12", "Psionic Energy Die 12 d12", "Psionic Energy Die 12 d12", "Psionic Energy Die 12 d12"],
       description: desc([
-        "You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel certain powers you have from this subclass. The Soulknife Energy Dice table shows the number of these dice you have when you reach certain Rogue levels, and the table shows the die size.",
-        "Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend a Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when your Psionic Energy Dice are all expended.",
-        "You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.",
-        "Psi-Bolstered Knack : If you fail an ability check using a skill or tool with which you have proficiency, you can roll one Psionic Energy Die and add the number rolled to the check, potentially turning failure into success. The die is expended only if the roll then succeeds.",
-        "Psychic Whispers : You can establish telepathic communication between yourself and others. As a Magic action, choose one or more creatures you can see, up to a number of creatures equal to your Proficiency Bonus, and then roll one Psionic Energy Die. For a number of hours equal to the number rolled, the chosen creatures can speak telepathically with you, and you can speak telepathically with them. TO send or receive a message (no action required) you and the other creature must be within 1 mile of each other. A creature can end the telepathic connection at any time (no action required).",
-        "The first time you use this power after each Long Rest, you don't expend the Psionic Energy Die. All other times you use the power, you expend the die.",
+        "I gain Psionic Energy Dice (PsiD), which fuel certain powers from this subclass.",
+        "Features in this subclass that use a PsiD use only dice from this subclass. I can't use powers if all dice are expended.",
+        "I regain one die when I finish a Short Rest and all when I finish a Long Rest.",
+        "Psi-Bolstered Knack: If I fail an ability check using a skill or tool I'm proficient with, I can roll one PsiD and add the number rolled. The die is spent only if the roll succeeds.",
+        "Psychic Whispers: As a Magic action, I can choose one or more creatures I can see up to my Prof Bonus, then roll one PsiD. For that number of house the chosen creatures can speak telepathically with me and vice versa when within 1 mile of each other (no action). A creature can end the telepathic connection at any time (no action).",
+        "The first time I use this power after each Long Rest, I don't spend a PsiD.",
       ]),
     },
     "subclassfeature3.1": {
@@ -5746,13 +5760,12 @@ legacySubClassRefactor("rogue", "soulknife", {
       minlevel: 3,
       action: [["bonus action", "Psychic Blade (after Attack action)"]],
       description: desc([
-        "You can manifest shimmering blades of psychic energy. Whenever you take the Attack action or make an Opportunity Attack, you can manifest a Psychic Blade in your free hand and make the attack with that blade. The magic blade has the following traits;",
-        "Weapon Category : Simple Melee",
-        "Damage on a Hit : 1d6 Psychic plus the ability modifier used for the attack roll.",
-        "Properties : Finesse, Thrown (range 60/120 feet)",
-        "Mastery : Vex (you can use this property, and it doesn't count against the number of properties you can use with Weapon Mastery).",
-        "The blade vanishes immediately after it hits or misses its target, and it leaves no mark if it deals damage.",
-        "After you attack with the blade on your turns, you can make a melee or ranged attack with a second psychic blade as a Bonus Action on the same turn if your other hand is free to create it. The damage die of this bonus attack is 1d4 instead of 1d6."
+        "As part of an Attack or Opportunity Attack I can manifest a Psychic Blade in my free hand to attack. The magic blade has the following traits;",
+        "Simple Melee, 1d6 Psychic + Ability mod damage, Finesse, Thrown (range 60/120 feet).",
+        "Mastery: Vex: If I damage a creature with this I have Adv. on my next attack roll against it before the end of my next turn. (Doesn't count against class Weapon Masteries).",
+        "The blade vanishes immediately after it hits or misses and leaves no mark.",
+        "As a bonus action after this attack I can manifest second psychic blade on the same turn.",
+        "My other hand must be free. The damage die of the bonus attack is 1d4.",
       ]),
       weaponOptions: [{
         regExpSearch: /^(?=.*psychic)(?=.*blade).*$/i,
@@ -5772,9 +5785,9 @@ legacySubClassRefactor("rogue", "soulknife", {
       source: [["PHB2024", 136]],
       minlevel: 9,
       description: desc([
-        "You can now use the following powers with your Psychic Blades.",
-        "Homing Strikes : If you make an attack roll with your Psychic Blade and miss the target, you can roll one Psionic Energy Die and add the number rolled to the attack roll, if this causes the attack to hit the die is expended.",
-        "Psychic Teleportation : As a Bonus Action, you manifest a Psychic Blade, expend one Psionic Energy Die and roll it, and throw the blade at an unoccupied space you can see up to a number of feet away equal to 10 times the number rolled. You then teleport to that space, and the blade vanishes.",
+        "I can use more powers with my Psychic Blades.",
+        "Homing Strikes: If I miss an attack roll with my Psychic Blade, I can roll one Psionic Energy Die (PsiD) and add it to the attack roll. If the attack hits the die is spent.",
+        "Psychic Teleportation: As a Bonus Action, I manifest a Psychic Blade, spend one PsiD and roll it, and throw the blade at an unoccupied space I can see up to 10 times the die roll feet away and teleport to that space. The blade vanishes.",
       ]),
     },
     "subclassfeature13": {
@@ -5785,8 +5798,9 @@ legacySubClassRefactor("rogue", "soulknife", {
       recovery: "long rest",
       altResource: "1 PsiD",
       description: desc([
-        "You can weave a veil of psychic static to mask yourself. As a Magic action, you gain the Invisible condition for 1 hour or until you dismiss this effect (no action required). The invisibility ends early immediately after you deal damage to a creature or you force a creature to make a saving throw.",
-        "Once you use this feature you can't do so again until you finish a Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.",
+        "As a Magic action, I become Invisible for 1 hour or until I dismiss it (no action).",
+        "It ends immediately after I deal damage to or force a creature to make a save.",
+        "I can spend a Psionic Energy Die (no action) to restore it. It returns after a Long Rest.",
       ]),
     },
     "subclassfeature17": {
@@ -5797,8 +5811,8 @@ legacySubClassRefactor("rogue", "soulknife", {
       recovery: "long rest",
       altResource: "3 PsiD",
       description: desc([
-        "You can sweep your Psychic Blades through a creature's mind. When you use your Psychic Blades to deal Sneak Attack damage to a creature, you can force that target to make a Wisdom saving throw (DC 8 plus your Dexterity modifier. and Proficiency Bonus). If the save fails, the target has the Stunned condition for 1 minute. The Stunned target repeats the save at the end of each of its turns, ending the effect on itself on a success.",
-        "Once you use this feature, you can't do so again until you finish a Long Rest unless you expend three Psionic Energy Dice (no action required to restore your use of it.",
+        "When I deal Sneak Attack damage to a creature with my Psychic Blades I can force it to make a Wis save (DC 8 + Dex mod + Prof Bonus). On a fail it's Stunned for 1 min. It repeats the save at the end of each of its turns, ending it on a pass.",
+        "I can spend 3 Psionic Energy Die (no action) to restore it. It returns after a Long Rest.",
       ]),
     },
   },
@@ -5814,9 +5828,9 @@ legacySubClassRefactor("rogue", "thief", {
       minlevel: 3,
       action: ["bonus action", "Pick Lock/Disarm Trap/Utilize Item/Activate Magic Item"],
       description: desc([
-        "As a Bonus Action you can do one of the following.",
-        "Sleight of Hand : Make a Dexterity (Sleight of Hand) check to pick a lock or disarm a trap with Thieves' Tools or to pick a pocket.",
-        "Use an Object : Take the Utilize action, or take the Magic action to use a magic item that requires that action.",
+        "I can do these as a bonus action:",
+        "Sleight of Hand: Make a Dex (Sleight of Hand) check to pick a lock/disarm a trap or pick a pocket.",
+        "Use an Object: Take the Utilize action, or take the Magic action to use a magic item that requires one.",
       ]),
     },
     "subclassfeature6": {
@@ -5825,9 +5839,7 @@ legacySubClassRefactor("rogue", "thief", {
       minlevel: 3,
       speed: {climb: {spd: "walk", enc: "walk"}},
       description: desc([
-        "You've trained to get into especially hard-to-reach places, granting you these benefits.",
-        "Climber : You gain a Climb Speed equal to your Speed.",
-        "Jumper : You can determine your jump distance using your Dexterity rather than your Strength.",
+        "I gain a Climb Speed equal to my Speed and can determine my jump distance using Dex.",
       ]),
     },
     "subclassfeature9": {
@@ -5835,8 +5847,8 @@ legacySubClassRefactor("rogue", "thief", {
       source: [["PHB2024", 137]],
       minlevel: 9,
       description: desc([
-        "You gain the following Cunning Strike option.",
-        "Stealth Attack (Cost 1d6) : If you have the Hide action's invisible condition, this attack doesn't end that condition on you if you end the turn behind Three-Quarters Cover or Total Cover.",
+        "I gain the following Cunning Strike option:",
+        "Stealth Attack (Cost 1d6): This attack doesn't end Hiding if I end the turn behind Three-Quarters or Total Cover.",
       ]),
     },
     "subclassfeature13": {
@@ -5844,10 +5856,9 @@ legacySubClassRefactor("rogue", "thief", {
       source: [["PHB2024", 137]],
       minlevel: 13,
       description: desc([
-        "You've learned how to maximize use of magic items, granting you the following benefits.",
-        "Attunement : You can attune to up to four magic items at once.",
-        "Charges : Whenever you use a magic item property that expends charges, roll 1d6. On a roll of 6, you use the property without expending the charges.",
-        "Scrolls. You can use any Spell Scroll, using Intelligence as your spellcasting ability for the spell. If the spell is a cantrip or a level 1 spell, you can cast it reliably, if the scroll contains a higher-level spell, you must first succeed on an Intelligence (Arcana) check (DC 10 plus the spell's level). On a successful check, you cast the spell from the scroll. On a failed check, the scroll disintegrates.",
+        "Attunement: I can attune to up to four magic items at once.",
+        "Charges: When I use a magic item property with charges, a 6 on a 1d6 roll means no charges are used.",
+        "Scrolls: I can use any Spell Scroll, using Int as my spellcasting ability. Level 2+ spells require an Int (Arcana) check (DC 10 + Spell Level) to cast or the scroll disintrgrates.",
       ]),
     },
     "subclassfeature17": {
@@ -5855,7 +5866,7 @@ legacySubClassRefactor("rogue", "thief", {
       source: [["PHB2024", 137]],
       minlevel: 17,
       description: desc([
-        "You are adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal Initiative and your second turn at your Initiative minus 10.",
+        "I can take two turns during the first round of any combat at my normal Initiative and my second turn at my Initiative - 10.",
       ]),
     },
   },
