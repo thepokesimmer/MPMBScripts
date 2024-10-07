@@ -917,11 +917,8 @@ legacyClassRefactor("bard", {
         return n < 5 ? "long rest" : "short rest";
       }),
       description: desc([
-        "You can supernaturally inspire others through words, music or dance. This inspiration is represented by your Bardic Inspiration die, which is a d6.",
-        "Using Bardic Inspiration : As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time.",
-        "Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20, potentially turning the failure into a success. A Bardic Inspiration die is expended when it's rolled.",
-        "Number of Uses : You can confer a Bardic Inspiration die a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "At Higher Levels : Your Bardic Inspiration die changes when you reach certain Bard levels, as shown in the Bardic Die column of the Bard Features table. The die becomes a d8 at level 5, a d10 at level 10, and a d12 at level 15.",
+        "I can supernaturally inspire others using my Bardic Inspiration (BI) dice.",
+        "As a Bonus Action I can give a creature w/in 60ft who can see/hear me a BI die (max 1). For 1 hr when it fails a D20 Test it can roll the BI die and add it, spending the BI die.",
       ]),
     },
     "spellcasting": {
@@ -940,17 +937,9 @@ legacyClassRefactor("bard", {
         ]
       },
       description: desc([
-        "You have learned to cast spells through your bardic arts. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Bard spells, which appear in the Bard spell list later in the class's description.",
-        "Cantrips : You know two cantrips of your choice from the Bard spell list. Dancing Lights and Vicious Mockery are recommended.",
-        "Whenever you gain a Bard level, you can replace one of your cantrips with another cantrip of your choice from the Bard spell list.",
-        "When you reach Bard levels 4 and 10, you learn another cantrip of your choice from the Bard spell list, as shown in the Cantrips column of the Bard Features table.",
-        "Spell Slots : The Bard Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Bard spell list. Charm Person, Color Spray, Dissonant Whispers, and Healing Word are recommended.",
-        "The number of spells on your list increases as you gain Bard levels, as shown in the Prepared Spells column of the Bard Features table. Whenever that number increases, choose additional spells from the Bard spell list until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Bard, your list of prepared spells can include six spells of levels 1 and 2 in any combination",
-        "If another Bard feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Bard spells for you.",
-        "Changing Your Prepared Spells : Whenever you gain a Bard level, you can replace one spell on your list with another Bard spell for which you have spell slots.",
-        "Spellcasting Ability : Charisma is your spellcasting ability for your Bard Spells",
-        "Spellcasting Focus : You can use a Musical Instrument as a Spellcasting Focus for your Bard spells.",
+        "I can cast Cantrips & Prepared level 1+ Bard spells using Cha as my spellcasting ability.",
+        "Prepared spells from other Bard features count as Bard spells & don't count against my prepared spells. When I gain a Bard level I can replace one cantrip/spell with another of the same type from the Bard spell list.",
+        "I can use a Musical Instrument as a Spellcasting Focus for my Bard spells.",
       ]),
     },
     "expertise": function () {
@@ -958,7 +947,7 @@ legacyClassRefactor("bard", {
         name: "Expertise",
         source: [["PHB2024", 60]],
         minlevel: 2,
-        description: "You gain Expertise (see the rules glossary) in two of your skill proficiencies of your choice. Performance and Persuasion are recommended if you have proficiency in them. At Bard level 9, you gain Expertise in two more of your skill proficiencies of your choice.",
+        description: "I gain Expertise in two of my skill proficiencies and two more at 9th level.",
         skillstxt: "Expertise with any two skill proficiencies, and two more at 9th level",
         additional: levels.map(function (n) {
           return n < 2 ? "" : "with " + (n < 9 ? 2 : 4) + " skills";
@@ -994,8 +983,7 @@ legacyClassRefactor("bard", {
         Checkbox('Jack of All Trades', false);
       },
       description: desc([
-        "You can add half your Proficiency Bonus (round down) to any ability check you make that uses a skill proficiency you lack and that doesn't otherwise use your Proficiency Bonus.",
-        "For example, if you make a Strength (Athletics) check and lack Athletics proficiency, you can add half your Proficiency Bonus to the check.",
+        "I can add half my Prof Bonus to ability checks that don't use it otherwise.",
       ]),
     },
     "subclassfeature3": {
@@ -1003,7 +991,7 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 60]],
       minlevel: 3,
       description: desc([
-        "You gain a Bard subclass of your choice. The College of Dance, College of Glamour, College of Lore, and College of Valor subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Bard levels. For the rest of your career, you gain each of your subclass's features that are of your Bard level or lower.",
+        "You gain a Bard subclass of your choice.",
       ]),
     },
     "font of inspiration": {
@@ -1011,8 +999,8 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 61]],
       minlevel: 5,
       description: desc([
-        "You now regain all your expended uses of Bardic Inspiration when you finish a Short or Long Rest.",
-        "In addition, you can expend a spell slot (no action required) to regain one expended use of Bardic Inspiration.",
+        "I regain all uses of Bardic Inspiration (BI) when I finish a Short or Long Rest.",
+        "In addition, I can spend a spell slot (no action) to regain one use of BI.",
       ]),
     },
     "countercharm": {
@@ -1021,7 +1009,7 @@ legacyClassRefactor("bard", {
       minlevel: 7,
       action: "reaction",
       description: desc([
-        "You can use musical notes or words of power to disrupt mind-influencing effects. If you or a creature within 30 feet of you fails a saving throw against an effect that applies the Charmed or Frightened condition, you can take a Reaction to cause the save to be rerolled, and the new roll has Advantage.",
+        "If I or a creature within 30 feet of me fails a saving throw against a Charmed or Frightened effect, I can use a Reaction to force a reroll with Adv.",
       ]),
     },
     "magical secrets": {
@@ -1032,7 +1020,7 @@ legacyClassRefactor("bard", {
         class: ["bard", "cleric", "druid", "wizard"],
       },
       description: desc([
-        "You've learned secrets from various magical traditions. Whenever you reach a Bard level (including this level) and the Prepared Spells number in the Bard Features table increases, you can choose any of your new prepared spells from the Bard, Cleric, Druid, and Wizard spell list, and the chosen spells count as Bard spells for you (see a class's section for its spell list). In addition, whenever you replace a spell prepared for this class, yo can replace it with a spell from those lists.",
+        "Each Bard level where I gain more prepared spells I can choose from the Bard, Cleric, Druid, and Wizard spell lists. The chosen spells count as Bard spells. When I replace a Prepared Bard spell I can replace it with a spell from those lists.",
       ]),
     },
     "superior inspiration": {
@@ -1040,7 +1028,7 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 61]],
       minlevel: 18,
       description: desc([
-        "When you roll Initiative, you regain expended uses of Bardic Inspiration until you have two if you have fewer than that.",
+        "When I roll Initiative I regain expended uses of BI until I have two if I have fewer.",
       ]),
     },
     "epic boon": {
@@ -1048,7 +1036,7 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 61]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Irresistible Offense is recommended.",
+        "I gain an Epic Boon feat or another feat of my choice for which I qualify.",
       ]),
     },
     "words of creation": {
@@ -1062,7 +1050,8 @@ legacyClassRefactor("bard", {
         times: 2,
       }],
       description: desc([
-        "You have mastered two of the Words of Creation: the words of life and death. You therefore always have the Power Word Heal and Power Word Kill spells prepared. When you cast either spell, you can target a second creature with it if that creature is within 10 feet of the first target.",
+        "I always have Power Word Heal and Power Word Kill prepared.",
+		"I can target a second creature if it's within 10 feet of the first target.",
       ]),
     },
   },
@@ -1071,6 +1060,7 @@ AddSubClass("bard", "dance", {
   regExpSearch: /^(?=.*(bard))(?=.*(dance)).*$/i,
   subname: "College of Dance",
   source: [["PHB2024", 64]],
+  replaces: "college of dance",
   features: {
     "subclassfeature3": {
       name: "Dazzling Footwork",
