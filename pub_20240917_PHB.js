@@ -18405,7 +18405,7 @@ legacySpellRefactor("shillelagh", {
 });
 legacySpellRefactor("shining smite", {
 	name : "Shining Smite",
-	replaces : "branding smite",
+	replacs : "branding smite",
 	classes : ["paladin"],
 	source : [["PHB2024", 316]],
 	level : 2,
