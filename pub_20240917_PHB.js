@@ -115,26 +115,24 @@ function archiveSubClass(classKey, subClass, newClassName) {
 }
 
 function legacySubClassRefactor(classKey, subClassKey, nSC) {
-  var newSubClassName = classKey + "-" + subClassKey;
-  var prv = null;
+  var newSubClassName = classKey + "-" + subClassKey
+  var prv = null
   if (newSubClassName in ClassSubList) {
-    prv = ClassSubList[newSubClassName];
-    ClassSubList[newSubClassName] = nSC;
-    AddSubClass(classKey, subClassKey + "_2014", prv);
+    prv = ClassSubList[newSubClassName]
+    AddSubClass(classKey, subClassKey + "_2014", prv)
+    ClassSubList[newSubClassName] = nSC
+  } else {
+    if ('replaces' in nSC && classKey + '-' + nSC.replaces in ClassSubList) {
+        prv = ClassSubList[classKey + '-' + nSC.replaces]
+      }
+    AddSubClass(classKey, subClassKey, nSC)
   }
-  if ('replaces' in nSC) {
-    const subclassName = classKey + '-' + nSC.replaces;
-    if (subclassName in ClassSubList) {
-      prv = ClassSubList[subclassName];
-    }
-    AddSubClass(classKey, subClassKey, nSC);
-  }
-  if (prv != null){
-    var newRegex = nSC.regExpSearch;
-    var bc = ClassList[classKey];
-    var newClassName = nSC.fullname ? nSC.fullname : bc.name + " (" + nSC.subname + ")";
-    archiveSubClass(classKey, prv, newClassName);
-    nSC.regExpSearch = newRegex;
+  if (prv != null) {
+    var newRegex = nSC.regExpSearch
+    var bc = ClassList[classKey]
+    var newClassName = nSC.fullname ? nSC.fullname : bc.name + " (" + nSC.subname + ")"
+    archiveSubClass(classKey, prv, newClassName)
+    nSC.regExpSearch = newRegex
   }
 }
 
