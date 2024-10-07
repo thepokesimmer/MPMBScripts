@@ -14356,6 +14356,7 @@ legacySpellRefactor("beast sense", {
 });
 legacySpellRefactor("befuddlement", {
 	name : "Befuddlement",
+	replaces : "feeblemind",
 	classes : ["bard", "druid", "warlock", "wizard"],
 	source : [["PHB2024", 245-246]],
 	level : 8,
@@ -18404,6 +18405,7 @@ legacySpellRefactor("shillelagh", {
 });
 legacySpellRefactor("shining smite", {
 	name : "Shining Smite",
+	replaces : "branding smite",
 	classes : ["paladin"],
 	source : [["PHB2024", 316]],
 	level : 2,
