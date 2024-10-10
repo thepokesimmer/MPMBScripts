@@ -947,11 +947,11 @@ legacyClassRefactor("bard", {
         name: "Expertise",
         source: [["PHB2024", 60]],
         minlevel: 2,
-        description: "I gain Expertise in two of my skill proficiencies and two more at 9th level.",
-        skillstxt: "Expertise with any two skill proficiencies, and two more at 9th level",
-        additional: levels.map(function (n) {
+		additional: levels.map(function (n) {
           return n < 2 ? "" : "with " + (n < 9 ? 2 : 4) + " skills";
         }),
+        description: desc("I gain Expertise in two of my skill proficiencies and two more at 9th level."),
+        skillstxt: "Expertise with any two skill proficiencies, and two more at 9th level",
         extraname: "Bard Expertise",
         extrachoices: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
         extraTimes: levels.map(function (n) {
@@ -976,6 +976,7 @@ legacyClassRefactor("bard", {
       name: "Jack of All Trades",
       source: [["PHB2024", 60]],
       minlevel: 2,
+	  addMod : [ { type : "skill", field : "Init", mod : "-Prof/2", text : "" } ],
       eval: function () {
         Checkbox('Jack of All Trades', true);
       },
@@ -983,7 +984,7 @@ legacyClassRefactor("bard", {
         Checkbox('Jack of All Trades', false);
       },
       description: desc([
-        "I can add half my Prof Bonus to ability checks that don't use it otherwise.",
+        "I can add half my Prof Bonus to skill checks that don't use it otherwise.",
       ]),
     },
     "subclassfeature3": {
@@ -2628,6 +2629,7 @@ legacyClassRefactor("fighter", {
       source: [["PHB2024", 91]],
       minlevel: 2,
       usages: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2],
+	  recovery: "long rest",
       description: desc([
         "I can take one additional action on my turn (no Magic action)",
       ]),
@@ -2990,6 +2992,7 @@ legacySubClassRefactor("fighter", "eldritch knight", {
   spellcastingKnown: {
     cantrips: [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     spells: "list",
+	prepared: true,
   },
   features: {
     "subclassfeature3": {
@@ -4798,7 +4801,7 @@ legacyClassRefactor("ranger", {
         name: "Deft Explorer",
         source: [["PHB2024", 120]],
         minlevel: 2,
-        description: "Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills. At 9th-level you gain Expertise in two additional skills you lack Expertise in.",
+        description: desc("Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills. At 9th-level you gain Expertise in two additional skills you lack Expertise in."),
         skillstxt: "Expertise with any one skill proficiencies.",
 		languageProfs : 2,
         additional: levels.map(function (n) {
@@ -5262,7 +5265,7 @@ legacyClassRefactor("rogue", {
         name: "Expertise",
         source: [["PHB2024", 129]],
         minlevel: 1,
-        description: "I gain expertise with any two of my skill proficiencies and two more at 6th level.",
+        description: desc("I gain expertise with any two of my skill proficiencies and two more at 6th level."),
         skillstxt: "Expertise with any two skill proficiencies, and two more at 6th level",
         additional: levels.map(function (n) {
           return n < 1 ? "" : "with " + (n < 6 ? 2 : 4) + " skills";
@@ -5575,6 +5578,7 @@ legacySubClassRefactor("rogue", "arcane trickster", {
   spellcastingKnown: {
     cantrips: [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     spells: "list",
+	prepared: true,
   },
   features: {
     "subclassfeature3": {
@@ -7541,7 +7545,7 @@ legacyClassRefactor("wizard", {
         name: "Scholar",
         source: [["PHB2024", 166]],
         minlevel: 2,
-        description: "I gain Expertise in one of these in which I have proficiency: Arcana, History, Investigation, Medicine, Nature, or Religion.",
+        description: desc("I gain Expertise in one of these in which I have proficiency: Arcana, History, Investigation, Medicine, Nature, or Religion."),
         skillstxt: "You gain Expertise in one skill; Arcana, History, Investigation, Medicine, Nature, or Religion",
         additional: levels.map(function (n) {
           return n < 2 ? "" : "with " + (n < 2 ? 0 : 1) + " skill";
@@ -12871,7 +12875,7 @@ AmmoList["holy water"] = {
   alternatives: [/^(?=.*holy)(?=.*water).*$/i]
 };
 //Armour
-ArmourList["padded armor"] = {
+ArmourList["padded"] = {
   name: "Padded Armor",
   infoname: "Padded Armor [5 gp]",
   source: [["PHB2024", 219]],
@@ -12881,7 +12885,7 @@ ArmourList["padded armor"] = {
   stealthdis: true,
   weight: 8,
 };
-ArmourList["leather armor"] = {
+ArmourList["leather"] = {
   name: "Leather Armor",
   infoname: "Leather Armor [10 gp]",
   source: [["PHB2024", 219]],
@@ -12891,7 +12895,7 @@ ArmourList["leather armor"] = {
   stealthdis: false,
   weight: 10,
 };
-ArmourList["studded leather armor"] = {
+ArmourList["studded leather"] = {
   name: "Studded Leather Armor",
   infoname: "Studded Leather Armor [45 gp]",
   source: [["PHB2024", 219]],
@@ -12901,7 +12905,7 @@ ArmourList["studded leather armor"] = {
   stealthdis: false,
   weight: 13,
 };
-ArmourList["hide armor"] = {
+ArmourList["hide"] = {
   name: "Hide Armor",
   infoname: "Hide Armor [10 gp]",
   source: [["PHB2024", 219]],
@@ -12972,7 +12976,7 @@ ArmourList["chain mail"] = {
   weight: 55,
   strReq: 13,
 };
-ArmourList["splint armor"] = {
+ArmourList["splint"] = {
   name: "Splint Armor",
   infoname: "Splint Armor [200 gp]",
   source: [["PHB2024", 219]],
@@ -12983,7 +12987,7 @@ ArmourList["splint armor"] = {
   weight: 60,
   strReq: 15,
 };
-ArmourList["plate armor"] = {
+ArmourList["plate"] = {
   name: "Plate Armor",
   infoname: "Plate Armor [1500 gp]",
   source: [["PHB2024", 219]],
@@ -14043,7 +14047,7 @@ legacySpellRefactor("animate dead", {
 legacySpellRefactor("animate objects", {
 	name : "Animate Objects",
 	classes : ["artificer","bard", "sorcerer", "wizard"],
-	source : [["PHB2024", 240-241]],
+	source : [["PHB2024", 240]],
 	level : 5,
 	school : "Trans",
 	time : "1 a",
@@ -14348,7 +14352,7 @@ legacySpellRefactor("befuddlement", {
 	name : "Befuddlement",
 	replaces : "feeblemind",
 	classes : ["bard", "druid", "warlock", "wizard"],
-	source : [["PHB2024", 245-246]],
+	source : [["PHB2024", 245]],
 	level : 8,
 	school : "Ench",
 	time : "1 a",
@@ -14378,7 +14382,7 @@ legacySpellRefactor("bigby's hand", {
 	name : "Bigby's Hand",
 	nameAlt : "Arcane Hand",
 	classes : ["artificer","sorcerer", "wizard"],
-	source : [["PHB2024", 246-247]],
+	source : [["PHB2024", 246]],
 	level : 5,
 	school : "Evoc",
 	time : "1 a",
@@ -14450,7 +14454,7 @@ legacySpellRefactor("blight", {
 legacySpellRefactor("blinding smite", {
 	name : "Blinding Smite",
 	classes : ["paladin"],
-	source : [["PHB2024", 247-248]],
+	source : [["PHB2024", 247]],
 	level : 3,
 	school : "Evoc",
 	time : "1 bns*",
@@ -14831,7 +14835,7 @@ legacySpellRefactor("cone of cold", {
 legacySpellRefactor("confusion", {
 	name : "Confusion",
 	classes : ["bard", "druid", "sorcerer", "wizard"],
-	source : [["PHB2024", 253-254]],
+	source : [["PHB2024", 253]],
 	level : 4,
 	school : "Ench",
 	time : "1 a",
@@ -15100,7 +15104,7 @@ legacySpellRefactor("create or destroy water", {
 legacySpellRefactor("create undead", {
 	name : "Create Undead",
 	classes : ["cleric", "warlock", "wizard"],
-	source : [["PHB2024", 258-259]],
+	source : [["PHB2024", 258]],
 	level : 6,
 	school : "Necro",
 	time : "1 min",
@@ -15579,7 +15583,7 @@ legacySpellRefactor("dream", {
 legacySpellRefactor("druidcraft", {
 	name : "Druidcraft",
 	classes : ["druid"],
-	source : [["PHB2024", 266-267]],
+	source : [["PHB2024", 266]],
 	level : 0,
 	school : "Trans",
 	time : "1 a",
@@ -16841,7 +16845,7 @@ legacySpellRefactor("jallarzi's storm of radiance", {
 	name : "Jallarzi's Storm of Radiance",
 	nameShort : "Jal.'s Storm of Radiance",
 	classes : ["warlock", "wizard"],
-	source : [["PHB2024", 289-290]],
+	source : [["PHB2024", 289]],
 	level : 5,
 	school : "Evoc",
 	time : "1 a",
@@ -17429,7 +17433,7 @@ legacySpellRefactor("misty step", {
 legacySpellRefactor("modify memory", {
 	name : "Modify Memory",
 	classes : ["bard", "wizard"],
-	source : [["PHB2024", 299-300]],
+	source : [["PHB2024", 299]],
 	level : 5,
 	school : "Ench",
 	time : "1 a",
@@ -17569,7 +17573,7 @@ legacySpellRefactor("otiluke's freezing sphere", {
 	name : "Otiluke's Freezing Sphere",
 	nameAlt : "Freezing Sphere",
 	classes : ["sorcerer", "wizard"],
-	source : [["PHB2024", 302-303]],
+	source : [["PHB2024", 302]],
 	level : 6,
 	school : "Evoc",
 	time : "1 a",
@@ -17686,7 +17690,7 @@ legacySpellRefactor("phantom steed", {
 legacySpellRefactor("planar ally", {
 	name : "Planar Ally",
 	classes : ["cleric"],
-	source : [["PHB2024", 304-305]],
+	source : [["PHB2024", 304]],
 	level : 6,
 	school : "Conj",
 	time : "10 min",
@@ -17728,7 +17732,7 @@ legacySpellRefactor("plane shift", {
 legacySpellRefactor("plant growth", {
 	name : "Plant Growth",
 	classes : ["bard", "druid", "ranger"],
-	source : [["PHB2024", 305-306]],
+	source : [["PHB2024", 305]],
 	level : 3,
 	school : "Trans",
 	time : "1 a/8h",
@@ -17960,7 +17964,7 @@ legacySpellRefactor("protection from evil and good", {
 	name : "Protection from Evil and Good",
 	nameShort : "Prot. from Evil/Good",
 	classes : ["cleric", "druid", "paladin", "warlock", "wizard"],
-	source : [["PHB2024", 309-310]],
+	source : [["PHB2024", 309]],
 	level : 1,
 	school : "Abjur",
 	time : "1 a",
@@ -18631,7 +18635,7 @@ legacySpellRefactor("spirit guardians", {
 legacySpellRefactor("spiritual weapon", {
 	name : "Spiritual Weapon",
 	classes : ["cleric"],
-	source : [["PHB2024", 319-320]],
+	source : [["PHB2024", 319]],
 	level : 2,
 	school : "Evoc",
 	time : "1 bns",
@@ -19342,7 +19346,7 @@ legacySpellRefactor("vicious mockery", {
 legacySpellRefactor("vitriolic sphere", {
 	name : "Vitriolic Sphere",
 	classes : ["sorcerer", "wizard"],
-	source : [["PHB2024", 337-338]],
+	source : [["PHB2024", 337]],
 	level : 4,
 	school : "Evoc",
 	time : "1 a",
