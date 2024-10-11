@@ -448,7 +448,7 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 52]],
 		  minlevel: 3,
 		  description: desc([
-			"You gain a Barbarian subclass of your choice. The Path of the Berserker, Path of the Wild Heart, Path of the World Tree, and Path of the Zealot subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Barbarian levels. For the rest of your career, you gain each of your subclass's features that are of your Barbarian level or lower.",
+			"Choose a Barbarian subclass and put it in the 'Class' field.",
 		  ]),
 		},
 		"primal knowledge": {
@@ -992,7 +992,7 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 60]],
       minlevel: 3,
       description: desc([
-        "You gain a Bard subclass of your choice.",
+        "Choose a Bard subclass and put it in the 'Class' field.",
       ]),
     },
     "font of inspiration": {
@@ -1428,7 +1428,7 @@ legacyClassRefactor("cleric", {
       source: [["PHB2024", 71]],
       minlevel: 3,
       description: desc([
-        "You gain a Cleric subclass of your choice. The Life Domain, Light Domain, Trickery Domain, and War Domain subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Cleric levels. For the rest of your career, you gain each of your subclass's features that are of your Cleric level or lower.",
+        "Choose a Cleric subclass and put it in the 'Class' field.",
       ]),
     },
     "sear undead": {
@@ -1897,7 +1897,7 @@ legacyClassRefactor("druid", {
       source: [["PHB2024", 81]],
       minlevel: 3,
       description: desc([
-        "You gain a Druid subclass of your choice. The Circle of the Land, Circle of the Moon, Circle of the Sea, and Circle of the Stars subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Druid levels. For the rest of your career, you gain each of your subclass's features that are of your Druid level or lower.",
+        "Choose a Druid subclass and put it in the 'Class' field.",
       ]),
     },
     "wild resurgence": {
@@ -2351,7 +2351,7 @@ legacyClassRefactor("fighter", {
       source: [["PHB2024", 91]],
       minlevel: 1,
       description: desc([
-        "Gain mastery properties for 3 simple/martial weapons. Can change 1 every long rest",
+        "I gain mastery with a number of simple/martial weapons. Can change 1 every long rest",
       ]),
       additional: ["3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "5 Weapon Masteries", "5 Weapon Masteries", "5 Weapon Masteries", "5 Weapon Masteries", "5 Weapon Masteries", "5 Weapon Masteries", "6 Weapon Masteries", "6 Weapon Masteries", "6 Weapon Masteries", "6 Weapon Masteries", "6 Weapon Masteries"],
       extraname: "Weapon Mastery",
@@ -3253,7 +3253,7 @@ legacyClassRefactor("monk", {
       }),
       recovery: "short rest",
       description: desc([
-        "I can spend Focus Points to fuel special actions (see third page)",
+        "I can spend Focus Points to fuel special actions (see third page), at 10th level these features improve.",
       ]),
       "flurry of blows": {
         name: "Flurry of Blows",
@@ -3266,10 +3266,10 @@ legacyClassRefactor("monk", {
       "patient defense": {
         name: "Patient Defense",
         extraname: "Focus Feature",
-        action: [["bonus action", "Dash or Disengage"], ["bonus action", " (1 FP)"]],
+        action: [["bonus action", "Disengage"], ["bonus action", " (1 FP)"]],
         description: desc([
-          "As a bonus action, I can dash or dodge.",
-          "1 Focus Point, as a bonus action, I can dash and dodge.",
+          "As a bonus action, I can disengage.",
+          "1 Focus Point, as a bonus action, I can disengage and dodge.",
         ]),
       },
       "step of the wind": {
@@ -3335,7 +3335,9 @@ legacyClassRefactor("monk", {
       name: "Monk Subclass",
       source: [["PHB2024", 103]],
       minlevel: 3,
-      description: desc('Choose a Monk Subclass to commit to and put it in the "Class" field ')
+      description: desc([
+		"Choose a Monk subclass and put it in the 'Class' field.",
+	  ]),
     },
     "slow fall": {
       name: "Slow Fall",
@@ -4123,7 +4125,9 @@ legacyClassRefactor("paladin", {
 			name: "Paladin Subclass",
 			source: [["PHB2024", 111]],
 			minlevel: 3,
-			description : desc('Choose a Paladin Subclass and put it in the "Class" field '),
+			description : desc([
+			  "Choose a Paladin subclass and put it in the 'Class' field.",
+			]),  
 			spellcastingBonus: [{
 				name: "Faithful Steed",
 				spells: ["find steed"],
@@ -4865,7 +4869,7 @@ legacyClassRefactor("ranger", {
       source: [["PHB2024", 120]],
       minlevel: 3,
       description: desc([
-        "You gain a Ranger subclass of your choice. The Beast Master, Fey Wanderer, Gloom Stalker, and Hunter subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Ranger levels. For the rest of your career, you gain each of your subclass's features that are of your Ranger level or lower.",
+        "Choose a Ranger subclass and put it in the 'Class' field.",
       ]),
     },
     "extra attack": {
@@ -6027,7 +6031,7 @@ legacyClassRefactor("sorcerer", {
       source: [["PHB2024", 141]],
       minlevel: 3,
       description: desc([
-        "You gain a Sorcerer subclass of your choice. The Aberrant Sorcery, Clockwork Sorcery, Draconic Sorcery, and Wild Magic Sorcery subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Sorcerer levels. For the rest of your career, you gain each of your subclass's features that are of your Sorcerer level or lower.",
+        "Choose a Sorcerer subclass and put it in the 'Class' field.",
       ]),
     },
     "sorcerous restoration": {
@@ -6433,11 +6437,7 @@ legacyClassRefactor("warlock", {
       source: [["PHB2024", 153]],
       minlevel: 1,
       description: desc([
-        "You have unearthed Eldritch Invocations, pieces of forbidden knowledge that imbue you with an abiding magical ability or other lessons. You gain one invocation of your choice, such as Pact of the Tome. Invocations are described in the 'Eldritch Invocations Options' section later in this class's description.",
-        "Prerequisites : If an invocation has a prerequisite, you must meet it to learn that invocation. For example, if an invocation requires you to be a level 5+ Warlock, you can select the invocation once you reach Warlock level 5.",
-        "Replacing and Gaining Invocations : Whenever you gain a Warlock level, you can replace one of your invocations with another one for which you qualify. You can't replace an invocation if it's a prerequisite for another invocation that you have.",
-        "When you gain certain Warlock levels, you gain more invocations of your choice, as shown in the Invocations column of the Warlock Features table.",
-        "You can't pick the same invocation more than once unless it's description says otherwise.",
+        "Use the 'Choose Feature' button above to add Eldritch Invocations (EI) to the third page. I must meet all prereqs. When I gain a Warlock level I can replace one EI with another unless it's a prereq for another EI I have.",
       ]),
       extraname: "Eldritch Invocation Options",
       extrachoices: ["Agonizing Blast [Chill Touch] (2+)", "Agonizing Blast [Eldritch Blast] (2+)", "Agonizing Blast [Mind Sliver] (2+)", "Agonizing Blast [Poison Spray] (2+)", "Armor of Shadows", "Ascendant Step (5+)", "Devil's Sight (2+)", "Devouring Blade (PoB, 12+)", "Eldritch Mind", "Eldritch Smite (PoB, 5+)", "Eldritch Spear [Eldritch Blast] (2+)", "Eldritch Spear [Mind Sliver] (2+)", "Eldritch Spear [Poison Spray] (2+)", "Fiendish Vigor (2+)", "Gaze of Two Minds (5+)", "Gift of the Depths (5+)", "Gift of the Protectors (PoT, 9+)", "Investment of the Chain Master (PoC, 5+)", "Lessons of the First Ones (2+)", "Lifedrinker (PoB, 9+)", "Mask of Many Faces (2+)", "Master of Myriad Forms (5+)", "Misty Visions (2+)", "One with Shadows (5+)", "Otherworldly Leap (2+)", "Pact of the Blade", "Pact of the Chain", "Pact of the Tome", "Repelling Blast [Chill Touch] (2+)", "Repelling Blast [Eldritch Blast] (2+)", "Repelling Blast [Poison Spray] (2+)", "Thirsting Blade (PoB, 5+)", "Visions of Distant Realms (9+)", "Whispers of the Grave (7+)", "Witch Sight (15+)"],
@@ -7130,17 +7130,8 @@ legacyClassRefactor("warlock", {
         ]
       },
       description: desc([
-        "Through occult ceremony, you have formed a pact with a mysterious entity to gain magical powers. The entity is a voice in the shadows - its identity unclear - but its boon to you is concrete; the ability to cast spells. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Warlock spells, which appear in the Warlock spell list later in the class's description.",
-        "Cantrips : You know two Warlock cantrips of your choice, Eldritch Blast and Prestidigitation are recommended. Whenever you gain a Warlock level, you can replace one of your cantrips from this feature with another Warlock cantrip of your choice.",
-        "When you reach Warlock levels 4 and 10, you learn another Warlock cantrip of your choice, as shown in the Cantrips column of the Warlock Features table.",
-        "Spell Slots : The Warlock Features table shows how many spell slots you have to cast your Warlock spells of levels 1-5. The table also shows the level of those slots, all of which are the same level. You regain all expended Pact Magic spell slots when you finish a Short or Long Rest.",
-        "For example, when you're a Level 5 Warlock, you have two level 3 spell slots. To cast the level 1 spell Witch Bolt, you must expend one of those slots, and you cast it as a level 3 spell.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose two level 1 Warlock spells. Charm Person and Hex are recommended.",
-        "The number of spells on your list increases as you gain Warlock levels, as shown in the Prepared Spells column of the Warlock Features table. Whenever that number increases, choose additional Warlock spells until the number of spells on your list matches the number in the table. The chosen spells must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach level 6, for example, you learn a new Warlock spell, which can be of levels 1-3.",
-        "If another Warlock feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Warlock spells for you.",
-        "Changing your Prepared Spells : Whenever you gain a Warlock level, you can replace one spell on your list with another Warlock spell of an eligible level.",
-        "Spellcasting Ability : Charisma is the spellcasting ability for your Warlock spells.",
-        "Spellcasting Focus : You can use an Arcane Focus as a Spellcasting Focus for your Warlock spells.",
+        "I can cast cantrips and Prepared Level 1+ Warlock spells using Cha as my spellcasting ability and an Arcane Focus as my Spellcasting Focus. When I gain a Warlock level, I can replace one of these cantrips with another.",
+        "Prepared Spells for other Warlock features count as Warlock spells & don't count against me. I regain all expended Pact Magic spell slots when I finish a Short or Long Rest. I can change one Prepared Spell each time I gain a Warlock level.",
       ]),
     },
     "magical cunning": {
@@ -7150,7 +7141,7 @@ legacyClassRefactor("warlock", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "You can perform an esoteric rite for 1 minute. At the end of it, you regain expended Pact Magic spell slots, but no more than a number equal to half your maximum (round up). Once you use this feature, you can't do so again until you finish a Long Rest.",
+        "I can do a 1 min rite to regain up to half my max Pact Magic spell slots.",
       ]),
     },
     "subclassfeature3": {
@@ -7158,7 +7149,7 @@ legacyClassRefactor("warlock", {
       source: [["PHB2024", 154]],
       minlevel: 3,
       description: desc([
-        "You gain a Warlock subclass of your choice. The Archfey Patron, Celestial Patron, Fiend Patron, and Great Old One Patron subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Warlock levels. For the rest of your career, you gain each of your subclass's features that are of your Warlock level or lower.",
+        "Choose a Warlock subclass and put it in the 'Class' field.",
       ]),
     },
     "contact patron": {
@@ -7175,14 +7166,14 @@ legacyClassRefactor("warlock", {
         firstCol: "oncelr",
       }],
       description: desc([
-        "In the past, you usually contacted your patron through intermediaries. Now you can communicate directly, you always have the Contact Other Plane spell prepared. With this feature, you can cast the spell without expending a spell slot to contact your patron, and you automatically succeed on the spell's saving throw.",
-        "Once you use this feature, you can't do so again until you finish a Long Rest.",
+        "Once per Long Rest I can cast Contact Other Plane to contact my Patron without expending a spell slot. I automatically pass the save.",
       ]),
     },
     "mystic arcanum": {
       name: "Mystic Arcanum",
       source: [["PHB2024", 155]],
       minlevel: 11,
+	  additional : ["", "", "", "", "", "", "", "", "", "", "6th level", "6th level", "6th and 7th level", "6th and 7th level", "6th, 7th, and 8th level", "6th, 7th, and 8th level", "6th, 7th, 8th, and 9th level", "6th, 7th, 8th, and 9th level", "6th, 7th, 8th, and 9th level", "6th, 7th, 8th, and 9th level"],
       spellcastingBonus: [{
         name: "Mystic Arcanum (level 6)",
         "class": "warlock",
@@ -7209,10 +7200,7 @@ legacyClassRefactor("warlock", {
         firstCol: "oncelr",
       }],
       description: desc([
-        "Your patron grants you a magical secret called an arcanum. Choose one level 6 Warlock spell as this arcanum.",
-        "You can cast your arcanum spell once without expending a spell slot, and you must finish a Long Rest before you can cast it in this way again.",
-        "As shown in the Warlock Features table, you gain another Warlock spell of your choice that can be cast in this way when you reach Warlock levels 13 (level 7 spell), 15 (level 8 spell), 17 (level 9 spell) You regain all uses of your Mystic Arcanum when you finish a Long Rest.",
-        "Whenever you gain a Warlock level, you can replace one of your arcanum spells with another Warlock spell of the same level.",
+        "I choose a Warlock spell of the above Level(s) as my arcanum & can cast each without a spell slot once per Long Rest. I can replace one each time I gain a Warlock level.",
       ]),
     },
     "epic boon": {
@@ -7220,7 +7208,7 @@ legacyClassRefactor("warlock", {
       source: [["PHB2024", 155]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Fate is recommended.",
+        "I gain an Epic Boon feat or another feat of my choice for which I qualify.",
       ]),
     },
     "eldritch master": {
@@ -7228,7 +7216,7 @@ legacyClassRefactor("warlock", {
       source: [["PHB2024", 155]],
       minlevel: 20,
       description: desc([
-        "When you use your Magical Cunning feature, you regain all your expended Pact Magic spell slots.",
+        "When I use my Magical Cunning feature, I regain all expended Pact Magic spell slots.",
       ]),
     },
   },
@@ -7247,23 +7235,51 @@ legacySubClassRefactor("warlock", "the archfey", {
       usagescalc: "event.value = Math.max(1, What('Cha Mod'));",
       recovery: "long rest",
       description: desc([
-        "Your patron grants you the ability to move between the boundaries of the planes. You can cast Misty Step without expending a spell slot a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "In addition, whenever you cast that spell, you can choose one of the following additional effects.",
-        "Refreshing Step : Immediately after you teleport, you or one creature you can see within 10 feet of yourself gains 1d10 Temporary Hit Points.",
-        "Taunting Step : Creatures within 5 feet of the space you left must succeed on a Wisdom saving throw against your spell save DC or have Disadvantage on attack rolls against creatures other than you until the start of your next turn.",
-
+        "I can cast Misty Step w/out a spell slot (min once) per Long Rest and can imbue it with one option from the Steps of the Fey feature, (see notes page).",
       ]),
+		"refreshing step" : {
+			name : "Refreshing Step",
+			extraname : "Steps of the Fey Option",
+			source : [["PHB2024", 159]],
+			description : desc("After I teleport, one creature I can see w/in 10 ft or I gain 1d10 Temp HP."),
+		},
+		"taunting step" : {
+			name : "Taunting Step",
+			extraname : "Steps of the Fey Option",
+			source : [["PHB2024", 159]],
+			description : desc("Creatures w/in 5 ft of the space I left must pass a Wis save or have Disadv on attack rolls against creatures other than me until the start of my next turn."),
+		},
+		autoSelectExtrachoices : [{
+			extrachoice : "refreshing step"
+		}, {
+			extrachoice : "taunting step"
+		}]
     },
     "subclassfeature6": {
       name: "Misty Escape",
       source: [["PHB2024", 159]],
       minlevel: 6,
+	  action: [["reaction", " (When I take damage)"]],
       description: desc([
-        "You can cast Misty Step as a Reaction in response to taking damage.",
-        "In addition, the following effects are now among your Steps of the Fey options.",
-        "Disappearing Step : You have the Invisible condition until the start of your next turn or until immediately after you make an attack roll, deal damage, or cast a spell.",
-        "Dreadful Step : Creatures within 5 feet of the space you left or the space you appear in (your choice) must succeed on a Wisdom saving throw against your spell save DC or take 2d10 Psychic damage.",
+        "As a reaction when I take damage I can cast Misty Step, and gain new options for my steps of the fey feature (see notes page).",
       ]),
+	  "dsappearing step" : {
+			name : "Disappearing Step",
+			extraname : "Steps of the Fey Option",
+			source : [["PHB2024", 159]],
+			description : desc("I'm Invisible until the start of my next turn or I attack, deal damage, or cast a spell."),
+		},
+		"dreadful step" : {
+			name : "Dreadful Step",
+			extraname : "Steps of the Fey Option",
+			source : [["PHB2024", 159]],
+			description : desc("Creatures within 5 ft of the space I left OR I appear in must pass a Wis save or take 2d10 Psych damage."),
+		},
+		autoSelectExtrachoices : [{
+			extrachoice : "disappearing step"
+		}, {
+			extrachoice : "dreadful step"
+		}]
     },
     "subclassfeature10": {
       name: "Beguiling Defenses",
@@ -7274,8 +7290,7 @@ legacySubClassRefactor("warlock", "the archfey", {
       recovery: "long rest",
       altResource: "SS",
       description: desc([
-        "Your patron teaches you how to guard your mind and body. You are immune to the Charmed condition.",
-        "In addition, immediately after a creature you can see hits you with an attack roll, you can take a Reaction to reduce the damage you take by half (round down), and you can force the attacker to make a Wisdom saving throw against your spell save DC. On a failed save, the attacker takes Psychic damage equal to the damage you take. Once you use this reaction, you can't use it again until you finish a Long Rest unless you expend a Pact magic spell slot (no action required) to restore your use of it.",
+        "Once per Long Rest as a reaction, after a creature I can see hits me with an attack roll I can reduce the damage by half & force the attacker to pass a Wis save or take equal Psych damage. I'm also immune to being Charmed.",
       ]),
     },
     "subclassfeature14": {
@@ -7283,7 +7298,7 @@ legacySubClassRefactor("warlock", "the archfey", {
       source: [["PHB2024", 160]],
       minlevel: 14,
       description: desc([
-        "Your patron grants you the ability to wave your magic with teleportation. Immediately after you cast an Enchantment or Illusion spell using an action and a spell slot, you can cast Misty Step as part of the same action and without expending a spell slot.",
+        "Right after I cast an Ench or Illus spell with an action + spell slot, I can cast Misty Step as part of the same action and without spending a spell slot.",
       ]),
     },
   },
@@ -7303,8 +7318,7 @@ legacySubClassRefactor("warlock", "the celestial", {
       recovery: "long rest",
       additional: "Max dice per use = Charisma Modifier",
       description: desc([
-        "You gain the ability to channel celestial energy to heal wounds. You have a pool of d6s to fuel this healing. The number of dice in the pool equals 1 plus your Warlock level.",
-        "As a Bonus Action, you can heal yourself or one creature you can see within 60 feet of yourself, expending dice from the pool. The maximum number of dice you can expend at once equals your Charisma modifier (minimum of one die). Roll the dice you expend, and restore a number of Hit Points equal to the roll's total. Your pool regains all expended dice when you finish a Long Rest",
+        "As a bonus action, I can heal a creature I can see within 60 ft or myself by spending dice from my pool (min 1), healing HP equal to the roll.",
       ]),
     },
     "subclassfeature6": {
@@ -7313,7 +7327,7 @@ legacySubClassRefactor("warlock", "the celestial", {
       minlevel: 6,
       dmgres: ["Radiant"],
       description: desc([
-        "Your link to your patron allows you to serve as a conduit for radiant energy. You have Resistance to Radiant damage. Once per turn, when a spell you cast deals Radiant or Fire damage, you can add your Charisma modifier to the spell's damage against one of the spell's targets.",
+        "Once per turn, when I deal Radiant or Fire spell damage, I can add my Cha mod to the spell's damage against one of the spell's targets. I'm also resistant to Radiant damage.",
       ]),
     },
     "subclassfeature10": {
@@ -7321,7 +7335,7 @@ legacySubClassRefactor("warlock", "the celestial", {
       source: [["PHB2024", 161]],
       minlevel: 10,
       description: desc([
-        "You gain Temporary Hit Points whenever you use your Magical Cunning feature or finish a Short or Long Rest. These Temporary Hit Points equal your Warlock level plus your Charisma modifier. Additionally, choose up to five creatures you can see when you gain the points. Those creatures each gain Temporary Hit Points equal to half your Warlock level plus your Charisma modifier.",
+        "I gain Temp HP when I use Magical Cunning or finish a Rest (my Warlock level + Cha mod). Up to five creatures I can see each gain Temp HP (1/2 my Warlock level + Cha mod).",
       ]),
     },
     "subclassfeature14": {
@@ -7329,8 +7343,8 @@ legacySubClassRefactor("warlock", "the celestial", {
       source: [["PHB2024", 161]],
       minlevel: 14,
       description: desc([
-        "When you or an ally within 60 feet of you is about to make a Death Saving Throw, you can unleash radiant energy to save the creature. The creature regains Hit Points equal to half its Hit Point maximum and can end the Prone condition on itself. Each creature of your choice that is within 30 feet of the creature takes Radiant damage equal to 2d8 plus your Charisma modifier, and each has the Blinded condition until the end of the current turn.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest",
+        "Once per Long Rest when an ally within 60 ft or I am about to make a Death Save, I can end Prone & the creature regains half its max HP.",
+		"When I do, creatures I choose within 30 ft of the target take 2d8 + Cha mod Radiant damage and are Blinded until the end of the turn.",
       ]),
     },
   },
@@ -7346,7 +7360,7 @@ legacySubClassRefactor("warlock", "the fiend", {
       source: [["PHB2024", 161]],
       minlevel: 3,
       description: desc([
-        "When you reduce an enemy to 0 Hit Points, you gain Temporary Hit Points equal to your Charisma modifier plus your Warlock level (minimum of 1 Temporary Hit Point). You also gain this benefit if someone else reduces an enemy within 10 feet of you to 0 Hit Points.",
+        "When I reduce a hostile to 0 HP, I gain Cha mod + Warlock level temp HP (min 1). I also gain this temp HP if an enemy within 10 ft of me is reduced to 0 Hit Points.",
       ]),
     },
     "subclassfeature6": {
@@ -7357,8 +7371,7 @@ legacySubClassRefactor("warlock", "the fiend", {
       usagescalc: "event.value = Math.max(1, What('Cha Mod'));",
       recovery: "long rest",
       description: desc([
-        "You can call on your fiendish patron to alter fate in your favor. When you make an ability check, or a saving throw, you can use this feature to add 1d10 to your roll. You can do so after seeing the roll but before any of the roll's effects occur.",
-        "You can use this feature a number of times equal to your Charisma modifier (minimum of once), but you can use it no more than once per roll. You regain all expended uses when you finish a Long Rest.",
+        "Once per roll, when I make an ability check or saving throw, I can add 1d10 after rolling the d20 but before any of the roll's effects occur.",
       ]),
     },
     "subclassfeature10": {
@@ -7366,7 +7379,7 @@ legacySubClassRefactor("warlock", "the fiend", {
       source: [["PHB2024", 162]],
       minlevel: 10,
       description: desc([
-        "Choose one damage type, other than Force, whenever you finish a Short or Long Rest. You have Resistance to that damage type until you choose a different one with this feature.",
+        "At the end of a Rest I can choose a damage type (not Force) to be Resistant to until I choose another.",
       ]),
     },
     "subclassfeature14": {
@@ -7377,8 +7390,7 @@ legacySubClassRefactor("warlock", "the fiend", {
       recovery: "long rest",
       altResource: "SS",
       description: desc([
-        "Once per turn when you hit a creature with an attack roll, you can try to instantly transport the target through the Lower Planes. The target must succeed on a Charisma saving throw against your spell save DC, or the target disappears and hurtles through a nightmare landscape. The target takes 8d10 Psychic damage if it isn't a Fiend, and it has the Incapacitated condition until the end of your next turn, when it returns to the space it previously occupied or the nearest unoccupied space.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest unless you expend a Pact Magic spell slot (no action required) to restore your use of it.",
+        "Once per turn when I hit a creature with an attack roll I can force it to make a Cha save, or it is Incapacitated and disappears into the Lower Planes until the end of my next turn. When it returns it takes 8d10 Psychic damage if it isn't a Fiend. This Feature can be used 1/LR unless you expend a Warlock SS to regain use of it.",
       ]),
     },
   },
@@ -7393,9 +7405,9 @@ legacySubClassRefactor("warlock", "the great old one", {
       name: "Awakened Mind",
       source: [["PHB2024", 162]],
       minlevel: 3,
+	  action: "bonus action",
       description: desc([
-        "You can form a telepathic connection between your mind and the mind of another. As a Bonus Action, choose one creature you can see within 30 feet of yourself. You and the chosen creature can communicate telepathically with each other while the two of you are within a number of miles of each other equal to your Charisma modifier (minimum of 1 mile). To understand each other, you each must mentally use a language the other knows.",
-        "The telepathic connection lasts for a number of minutes equal to your Warlock level. It ends early if you use this feature to connect with a different creature.",
+        "As a Bonus Action, one creature I can see within 30 ft & I can speak telepathically with each other while within my Cha mod miles (min 1) for my Warlock level minutes as long as we share a language. It lasts until I use it with another creature.",
       ]),
     },
     "subclassfeature3.1": {
@@ -7403,7 +7415,7 @@ legacySubClassRefactor("warlock", "the great old one", {
       source: [["PHB2024", 163]],
       minlevel: 3,
       description: desc([
-        "When you cast a Warlock spell that deals damage, you can change its damage type to Psychic. In addition, when you cast a Warlock spell that is an Enchantment or Illusion you can do so without Verbal or Somatic components.",
+        "When I cast a Warlock spell that deals damage I can change to Psych damage. When I cast Ench or Illus Warlock spells I can forgo Verbal or Somatic components.",
       ]),
     },
     "subclassfeature6": {
@@ -7414,8 +7426,7 @@ legacySubClassRefactor("warlock", "the great old one", {
       recovery: "short rest",
       altResource: "SS",
       description: desc([
-        "When you form a telepathic bond with a creature using your Awakened Mind, you can force that creature to make a Wisdom saving throw against your spell save DC. On a failed save, the creature has Disadvantage on attack rolls against you, and you have Advantage on attack rolls against that creature for the duration of the bond.",
-        "Once you use this feature, you can't use it again until you finish a Short or Long Rest unless you expend a Pact Magic spell slot (no action required) to restore your use of it.",
+        "When I use Awakened Mind, I can force the creature to pass a Wis save or it has Disadv on attack rolls against me & I have Adv on attack rolls against it for the duration. This Feature can be used 1/LR unless you expend a Warlock SS to regain use of it.",
       ]),
     },
     "subclassfeature10": {
@@ -7429,7 +7440,7 @@ legacySubClassRefactor("warlock", "the great old one", {
         times: 1,
       }],
       description: desc([
-        "Your alien patron grants you a powerful curse. You always have the Hex spell prepared. When you cast Hex and choose an ability, the target also has Disadvantage on saving throws of the chosen ability for the duration of the spell.",
+        "I always have Hex prepared. When I cast it and choose an Ability the target also has Disadv on those saves for the spell's duration.",
       ]),
     },
     "subclassfeature10.1": {
@@ -7438,7 +7449,7 @@ legacySubClassRefactor("warlock", "the great old one", {
       minlevel: 10,
       dmgres: ["Psychic"],
       description: desc([
-        "Your thoughts can't be read by telepathy or other means unless you allow it. You also have Resistance to Psychic damage, and whenever a creature deals Psychic damage to you, that creature takes the same amount of damage that you take.",
+        "My thoughts can't be read unless I allow it. I'm Resistant to Psych damage, and any creature that deals Psychic damage to me takes equal damage.",
       ]),
     },
     "subclassfeature14": {
@@ -7446,8 +7457,8 @@ legacySubClassRefactor("warlock", "the great old one", {
       source: [["PHB2024", 163]],
       minlevel: 14,
       description: desc([
-        "When you cast Summon Aberration, you can modify it so that it doesn't require Concentration. If you do so, the spell's duration becomes 1 minute fr that casting, and when summoned the Aberration has a number of Temporary Hit Points equal to your Warlock level plus your Charisma modifier.",
-        "In addition, the first time each turn the Aberration hits a creature under the effect of your Hex, the Aberration deals extra Psychic damage to the target equal to the bonus damage of that spell.",
+        "Summon Aberration can not require Concentration; That casting lasts 1 min and the Aberration has Temp HP (my Warlock level + Cha mod).",
+		"The first time each turn the Aberration hits a creature under my Hex it deals extra Psych damage equal to the bonus damage of that spell.",
       ]),
     },
   },
@@ -7575,7 +7586,7 @@ legacyClassRefactor("wizard", {
       source: [["PHB2024", 167]],
       minlevel: 3,
       description: desc([
-        "I gain a Wizard subclass of my choice.",
+        "Choose a Wizard subclass and put it in the 'Class' field.",
       ]),
     },
     "memorize spell": {
@@ -9809,8 +9820,8 @@ FeatsList["elemental adept"] = {
     description: "+1 Int, Wis, or Cha, Spells I cast ignore resistance to thunder damage. For any spell I cast that deals thunder damage, I can treat any 1 on a damage die as a 2."
   },
 };
-FeatsList["fey-touched"] = {
-  name: "Fey-Touched",
+FeatsList["fey touched"] = {
+  name: "Fey Touched",
   source: [["PHB2024", 203]],
   regExpSearch: /^(?=.*fey)(?=.*touched).*$/i,
   spellcastingBonus: [{
@@ -9983,7 +9994,7 @@ FeatsList["inspiring leader"] = {
     scores: [0, 0, 0, 0, 1, 0],
   },
   "charisma": {
-    description: "After a rest you can give a performance that grants up to 6 allies (can include yourself) Temp HP = your Character level + Wis. [+1 Charisma]",
+    description: "After a rest you can give a performance that grants up to 6 allies (can include yourself) Temp HP = your Character level + Cha. [+1 Charisma]",
     scores: [0, 0, 0, 0, 0, 1],
   },
   prerequisite: "Level 4 and Wisdom or Charisma 13 or higher",
@@ -10405,8 +10416,8 @@ FeatsList["sentinel"] = {
     return v.characterLevel >= 4 && What('Str') >= 13 || What('Dex') >= 13;
   },
 };
-FeatsList["shadow-touched"] = {
-  name: "Shadow-Touched",
+FeatsList["shadow touched"] = {
+  name: "Shadow Touched",
   source: [["PHB2024", 207]],
   regExpSearch: /^(?=.*shadow)(?=.*touched).*$/i,
   spellcastingBonus: [{
@@ -11930,7 +11941,7 @@ WeaponsList["dagger"] = {
   abilitytodamage: true,
   damage: [1, 4, "piercing"],
   range: "Melee, 20/60",
-  description: "Finesse, Light, Thrown (Range 20/60); Nick",
+  description: "Finesse, Light, Thrown; Nick",
   list: "melee",
   weight: 1,
   ammo: "dagger",
@@ -11961,7 +11972,7 @@ WeaponsList["handaxe"] = {
   abilitytodamage: true,
   damage: [1, 6, "slashing"],
   range: "Melee, 20/60",
-  description: "Light, Thrown (Range 20/60); Vex",
+  description: "Light, Thrown; Vex",
   list: "melee",
   weight: 2,
   ammo: "axe",
@@ -11977,7 +11988,7 @@ WeaponsList["javelin"] = {
   abilitytodamage: true,
   damage: [1, 6, "piercing"],
   range: "Melee, 30/120",
-  description: "Thrown (Range 30/120); Slow",
+  description: "Thrown; Slow",
   list: "melee",
   weight: 2,
   ammo: "javelin",
@@ -11993,7 +12004,7 @@ WeaponsList["light hammer"] = {
   abilitytodamage: true,
   damage: [1, 4, "bludgeoning"],
   range: "Melee, 20/60",
-  description: "Light, Thrown (Range 20/60); Nick",
+  description: "Light, Thrown; Nick",
   list: "melee",
   weight: 2,
   ammo: "hammer",
@@ -12054,7 +12065,7 @@ WeaponsList["spear"] = {
   abilitytodamage: true,
   damage: [1, 6, "piercing"],
   range: "Melee, 20/60",
-  description: "Thrown (20/60), Versatile (1d8); Sap",
+  description: "Thrown, Versatile (1d8); Sap",
   list: "melee",
   weight: 3,
   ammo: "spear",
@@ -12070,7 +12081,7 @@ WeaponsList["dart"] = {
   abilitytodamage: true,
   damage: [1, 4, "piercing"],
   range: "20/60",
-  description: "Finesse, Thrown (Range 20/60); Vex",
+  description: "Finesse, Thrown; Vex",
   list: "ranged",
   weight: 0.25,
   ammo: "dart",
@@ -12342,8 +12353,8 @@ WeaponsList["trident"] = {
   ability: 1,
   abilitytodamage: true,
   damage: [1, 8, "piercing"],
-  range: "Melee, 5ft",
-  description: "Thrown (Range 20/60), Versatile (1d10); Topple",
+  range: "Melee, 20/60",
+  description: "Thrown, Versatile (1d10); Topple",
   list: "melee",
   weight: 4,
   ammo: "trident",
@@ -12817,7 +12828,7 @@ AmmoList["handaxe"] = {
   source: [["PHB2024", 215]],
   weight: 2,
   icon: "Axes",
-  alternatives: ["axe"]
+  alternatives: ["Axe"]
 };
 AmmoList["javelin"] = {
   name: "Javelins",
@@ -12830,7 +12841,7 @@ AmmoList["light hammer"] = {
   source: [["PHB2024", 215]],
   weight: 2,
   icon: "Hammers",
-  alternatives: ["hammer"]
+  alternatives: ["Hammer"]
 };
 AmmoList["spear"] = {
   name: "Spears",
@@ -13940,8 +13951,8 @@ legacySpellRefactor("acid splash", {
 	components : "V,S",
 	duration : "Instantaneous",
 	save : "Dex",
-	description : "Each creature in 5 ft radius sphere save or 1d6 Acid dmg; +1d6 at CL 5, 11, and 17",
-	descriptionCantripDie : "Ea crea within a 5 ft rad. sphere makes a Dex save or `CD`d6 Acid dmg",
+	description : "Each creature in 5-ft radius sphere save or 1d6 Acid dmg; +1d6 at CL 5, 11, and 17",
+	descriptionCantripDie : "Each creature in 5-ft rad. sphere save or `CD`d6 Acid dmg",
 	descriptionFull : "You create an acidic bubble at a point within range, where it explode in a 5-foot radius Sphere. Each creature in that Sphere must succeed on a Dexterity saving throw or take 1d6 Acid damage." + "\n   " + toUni("Cantrip Upgrade") + ". This spell's damage increases by 1d6 when you reach 5th Level (2d6), 11th level (3d6) and 17th level (4d6).",
 });
 legacySpellRefactor("aid", {
@@ -14604,9 +14615,9 @@ legacySpellRefactor("chill touch", {
 	range : "Touch",
 	components : "V,S",
 	duration : "Instantaneous",
-	description : "Melee spell atk for 1d10 Necrotic dmg; can't regain HP until my next EoT; +1d10 at CL 5, 11, and 17",
+	description : "Melee spell atk for 1d10 Necrotic; can't regain HP until my next EoT; +1d10 at CL 5, 11, and 17",
 	descriptionShorter : "Melee spell atk for 1d10 Necrotic; can't regain HP until my next EoT; +1d10 at CL 5/11/17",
-	descriptionCantripDie : "Melee spell attack for `CD`d10 Necrotic dmg; can't regain HP",
+	descriptionCantripDie : "Melee spell attack for `CD`d10 Necrotic; can't regain HP until my next EoT",
 	descriptionFull : "Channeling the chill of the grave, make a melee spell attack against a target within reach. On a hit, the target takes 1d10 Necrotic damage, and it can't regain Hit Points until the end of your next turn." + "\n   " + toUni("Cantrip Upgrade") + ".  The damage increases by 1d10 when you reach levels 5 (2d10), 11 (3d10), and 17 (4d10)."
 });
 legacySpellRefactor("chromatic orb", {
@@ -15166,7 +15177,7 @@ legacySpellRefactor("cure wounds", {
 	range : "Touch",
 	components : "V,S",
 	duration : "Instantaneous",
-	description : "1 creature heals 2d8+2d8/SL + spellcasting ability modifier HP",
+	description : "1 creature heals 2d8+2d8/SL+spellcasting ability modifier HP",
 	descriptionFull : "A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting Ability modifier." + AtHigherLevels + "The healing increases by 2d8 for each spell slot level above 1."
 });
 legacySpellRefactor("dancing lights", {
@@ -17342,9 +17353,9 @@ legacySpellRefactor("mind sliver", {
 	components : "V",
 	duration : "1 round",
 	save : "Int",
-	description : "1 crea save or 1d6 Psychic dmg, -1d4 on first save before my next turn ends; +1d6 at CL 5, 11, and 17",
-	descriptionShort : "1 crea save or 1d6 Psychic dmg, -1d4 on 1st save before my next turn end; +1d6 at CL 5/11/17",
-	descriptionCantripDie : "1 crea save or `CD`d6 Psychic dmg and subtract 1d4 from first saving throw before my next turn ends",
+	description : "1 crea save or 1d6 Psychic, -1d4 on first save before my next turn ends; +1d6 at CL 5, 11, and 17",
+	descriptionShort : "1 crea save or 1d6 Psychic, -1d4 on 1st save before my next turn ends; +1d6 at CL 5/11/17",
+	descriptionCantripDie : "1 crea save or `CD`d6 Psychic and -1d4 from first saving throw before my next turn ends",
 	descriptionFull : "You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6)."
 });
 legacySpellRefactor("mind spike", {
@@ -17754,7 +17765,7 @@ legacySpellRefactor("poison spray", {
 	components : "V,S",
 	duration : "Instantaneous",
 	description : "Ranged spell attack for 1d12 Poison damage; +1d12 at CL 5, 11, and 17",
-	descriptionCantripDie : "Spell attack for `CD`d12 Poison dmg",
+	descriptionCantripDie : "Ranged spell attack for `CD`d12 Poison damage",
 	descriptionFull : "You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d12 Poison damage." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d12 when you reach levels 5 (2d12), 11 (3d12), and 17 (4d12)."
 });
 legacySpellRefactor("polymorph", {
@@ -17915,7 +17926,7 @@ legacySpellRefactor("produce flame", {
 	components : "V,S",
 	duration : "10 min",
 	description : "Flame emits 20ft rad bright light/20ft dim; 1 a 60ft ranged spell atk for 1d8 Fire; +1d8 at CL 5, 11, \u0026 17",
-	descriptionCantripDie : "Flame 10 ft bright light; once 30 ft ranged spell attack for `CD`d8 Fire dmg",
+	descriptionCantripDie : "Flame emits 20ft rad bright light/20ft dim; 1 a 60ft ranged spell atk for `CD`d8 Fire dmg",
 	descriptionFull : "A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again." + "\n   " + "Until the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 Fire damage." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
 	dynamicDamageBonus : { multipleDmgMoments : false }
 });
@@ -18058,7 +18069,7 @@ legacySpellRefactor("ray of frost", {
 	components : "V,S",
 	duration : "Instantaneous",
 	description : "Ranged spell atk for 1d8 Cold dmg and -10 ft speed until start of my next turn; +1d8 at CL 5, 11, \u0026 17",
-	descriptionCantripDie : "Spell attack for `CD`d8 Cold dmg and -10 ft speed until start of my next turn",
+	descriptionCantripDie : "Ranged spell attack for `CD`d8 Cold dmg and -10 ft speed until start of my next turn",
 	descriptionFull : "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8)."
 });
 legacySpellRefactor("ray of sickness", {
@@ -18423,7 +18434,7 @@ legacySpellRefactor("shocking grasp", {
 	components : "V,S",
 	duration : "Instantaneous",
 	description : "Melee spell attack for 1d8 Lightning; no opportunity atks until its next turn; +1d8 at CL 5, 11, and 17",
-	descriptionCantripDie : "Spell attack, `CD`d8 Lightning dmg, no op atk 1 turn",
+	descriptionCantripDie : "Melee spell attack for  `CD`d8 Lightning, no opportunity atks until its next turn",
 	descriptionFull : "Lightning springs from you to a creature that you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1d8 Lightning damage, and it can't make Opportunity Attacks until the start of its next turn." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8)."
 });
 legacySpellRefactor("silence", {
@@ -18524,7 +18535,7 @@ legacySpellRefactor("sorcerous burst", {
 	components : "V,S",
 	duration : "Instantaneous",
 	description : "Spell atk; 1d8 Acid/Cold/Fire/Lghtng/Poison/Psych/Thndr; +1d8 per 8 (max spell mod) +1d8 CL 5/11/17",
-	descriptionCantripDie : "Spell atk 1 crea `CD`d8 (Acid/Cold/Fire/Lightn/Pois/Psy/Thund); if you roll an 8 add 1d8 (you can add a number of d8's equal to spell mod)",
+	descriptionCantripDie : "Spell atk 1 crea `CD`d8 (Acid/Cold/Fire/Lghtng/Poison/Psych/Thndr); +1d8 per 8 (max spell mod)",
 	descriptionFull : "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder." + "\n   " + "If you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8)."
 });
 legacySpellRefactor("spare the dying", {
@@ -18672,7 +18683,7 @@ legacySpellRefactor("starry wisp", {
 	components : "V,S",
 	duration : "Instantaneous",
 	description : "Spell atk crea/obj; 1d8 Radiant; emit 10ft rad dim light \u0026 no Invisible to my next EoT; +1d8 CL 5/11/17",
-	descriptionCantripDie : "Spell atk at crea/obj, `CD`d8 Radiant; target emits Dim Light \u0026 not Invisible thru my next turn",
+	descriptionCantripDie : "Spell atk crea/obj, `CD`d8 Radiant; target emits 10ft rad dim light \u0026 not Invisible to my next EoT",
 	descriptionFull : "You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 Radiant damage, and until the end of your next turn, it emits Dim light in a 10-foot radius and can't benefit from the Invisible condition." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
 });
 legacySpellRefactor("steel wind strike", {
@@ -19111,7 +19122,7 @@ legacySpellRefactor("thorn whip", {
 	compMaterial : "The stem of a thorny plant",
 	duration : "Instantaneous",
 	description : "Melee spell atk for 1d6 Piercing \u0026 can pull up to Large crea up to 10 ft closer; +1d6 at CL 5, 11, \u0026 17",
-	descriptionCantripDie : "Melee spell attack for `CD`d6 Piercing dmg and pull Lg crea up to 10 ft closer",
+	descriptionCantripDie : "Melee spell atk for `CD`d6 Piercing and can pull up to Large crea up to 10 ft closer",
 	descriptionFull : "You create a vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. On a hit, the target takes 1d6 Piercing damage, and if it is Large or smaller, you can pull it up to 10 feet closer to you." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6)."
 });
 legacySpellRefactor("thunderclap", {
@@ -19125,8 +19136,8 @@ legacySpellRefactor("thunderclap", {
 	components : "S",
 	duration : "Instantaneous",
 	save : "Con",
-	description : "100-ft rad audible; all creatures but me save or 1d6 Thunder dmg; +1d6 at CL 5, 11, and 17",
-	descriptionCantripDie : "100-ft rad audible; all crea but me in area save or `CD`d6 Thunder",
+	description : "100-ft rad audible; all creatures but me save or 1d6 Thunder; +1d6 at CL 5, 11, and 17",
+	descriptionCantripDie : "100-ft rad audible; all creatures but me save or `CD`d6 Thunder",
 	descriptionFull : "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away." + "\n   " + toUni("Cantrip Upgrade") + ". The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
 });
 legacySpellRefactor("thunderous smite", {
@@ -19183,7 +19194,7 @@ legacySpellRefactor("toll the dead", {
 	duration : "Instantaneous",
 	save : "Wis",
 	description : "1 crea save or 1d12 Necrotic dmg (d8 if full HP); +1d12/1d8 at CL 5, 11, \u0026 17; bell audible in 10ft",
-	descriptionCantripDie : "1 crea save or `CD`d12 Necrotic damage (d8 instead of d12 if at full HP)",
+	descriptionCantripDie : "1 crea save or `CD`d12 Necrotic damage (d8 if at full HP); bell audible in 10ft",
 	descriptionFull : "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points, it instead takes 1d12 Necrotic damage" + toUni("Cantrip Upgrade") + ". The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12)."
 });
 legacySpellRefactor("tongues", {
@@ -19340,7 +19351,7 @@ legacySpellRefactor("vicious mockery", {
 	duration : "Instantaneous",
 	save : "Wis",
 	description : "1 visible/audible crea save or 1d6 Psychic dmg and disadv. on next attack roll; +1d6 at CL 5, 11, and 17",
-	descriptionCantripDie : "1 creature save or `CD`d6 Psychic dmg and dis. on next attack roll",
+	descriptionCantripDie : "1 visible/audible creature save or `CD`d6 Psychic dmg and disadv. on next attack roll",
 	descriptionFull : "You unleash a string of insults laced with subtle enchantments at one creature you can see or hear within range. The target must succeed on a Wisdom saving throw or take 1d6 Psychic damage and have Disadvantage on the next attack roll it makes before the end of its next turn." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6)."
 });
 legacySpellRefactor("vitriolic sphere", {
@@ -19593,7 +19604,7 @@ legacySpellRefactor("word of radiance", {
 	duration : "Instantaneous",
 	save : "Con",
 	description : "Any creature save or 1d6 Radiant damage; +1d6 at CL 5, 11, and 17",
-	descriptionCantripDie : "Any crea within range save or `CD`d6 Radiant damage",
+	descriptionCantripDie : "Any creature save or `CD`d6 Radiant damage",
 	descriptionFull : "Burning radiance erupts from you in a 5-foot Emanation. Each creature of your choice that you can see in it must succeed on a Constitution saving throw or take 1d6 Radiant damage." + "\n   " + toUni("Cantrip Upgrade") + ". The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6)."
 });
 legacySpellRefactor("word of recall", {
