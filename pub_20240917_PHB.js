@@ -7263,7 +7263,7 @@ legacySubClassRefactor("warlock", "the archfey", {
       description: desc([
         "As a reaction when I take damage I can cast Misty Step, and gain new options for my steps of the fey feature (see notes page).",
       ]),
-	  "dsappearing step" : {
+	  "disappearing step" : {
 			name : "Disappearing Step",
 			extraname : "Steps of the Fey Option",
 			source : [["PHB2024", 159]],
