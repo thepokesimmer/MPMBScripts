@@ -186,27 +186,17 @@ legacyClassRefactor("barbarian", {
 				"If I include the word 'Rage' in a melee weapon's name that uses Strength, the calculation will add my Rage's bonus damage to it. Be aware that if the weapon is used to make a ranged attack, the rage bonus damage shouldn't be added (e.g. when using a thrown weapon)."
 			]
 		},
-		description: desc([
-			"You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.",
-			"You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.",
-			"While active, your Rage follows the rules below.",
-			"Damage Resistance : You have Resistance to Bludgeoning, Piercing, and Slashing Damage.",
-			"Rage Damage : When you make an attack using Strength – with either a weapon or an Unarmed Strike - and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.",
-			"Strength Advantage : You have Advantage on Strength checks and Strength saving throws.",
-			"No Concentration or Spells : You can't maintain Concentration, and you can't cast spells.",
-			"Duration : The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:",
-			"* Make an attack roll against an enemy.",
-			"*Force an enemy to make a saving throw.",
-			"*Take a Bonus Action to extend your Rage.",
-			"Each time the Range is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.",
-		]),
+        description: desc([
+            "Bonus damage to melee weapon attacks using Str. Adv. on Strength checks/saves (not attacks); resistance to bludgeoning/piercing/slashing",
+            "Rage lasts until the end of my next turn. Extend by attacking, forcing a save, or using a Bonus Action. Max duration: 10 minutes. Recover 1 use during a Short Rest."
+        ]),
     },
 		"unarmored defense": {
 			name: "Unarmored Defense",
 			source: [["PHB2024", 51]],
 			minlevel: 1,
 			description: desc([
-				"While you aren't wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.",
+				"While not wearing armor, my base Armor Class equals 10 + Dex + Con, I can use Shields and still benefit.",
 			]),
 			armorOptions: [{
 				regExpSearch: /justToAddToDropDownAndEffectWildShape/,
@@ -221,207 +211,178 @@ legacyClassRefactor("barbarian", {
 			name: "Weapon Mastery",
 			source: [["PHB2024", 52]],
 			minlevel: 1,
-			description: desc([
-				"Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.",
-				"When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.",
-			]),
-			additional: ["2 Weapon Masteries", "2 Weapon Masteries", "2 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries"],
+            description: desc([
+				"I gain mastery with a number of Simple/Martial Melee weapons. Can change 1 every long rest",
+            ]),			
+            additional: ["2 Weapon Masteries", "2 Weapon Masteries", "2 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "3 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries", "4 Weapon Masteries"],
 			extraname: "Weapon Mastery",
 			extrachoices: ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "Warhammer", "War Pick", "Whip"],
 			extraTimes: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		  "club": {
 			name: "Club",
 			description: desc([
-			  "You gain access to the Club's 'Slow' Mastery feature",
 			  "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
 			]),
 		  },
 		  "dagger": {
 			name: "Dagger",
 			description: desc([
-			  "You gain access to the Dagger's 'Nick' Mastery feature",
 			  "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "greatclub": {
 			name: "Greatclub",
 			description: desc([
-			  "You gain access to the Greatclub's 'Push' Mastery feature",
 			  "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
 			]),
 		  },
 		  "handaxe": {
 			name: "Handaxe",
 			description: desc([
-			  "You gain access to the Handaxe's 'Vex' Mastery feature",
 			  "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
 			]),
 		  },
 		  "javelin": {
 			name: "Javelin",
 			description: desc([
-			  "You gain access to the Javelin's 'Slow' Mastery feature",
 			  "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
 			]),
 		  },
 		  "light hammer": {
 			name: "Light Hammer",
 			description: desc([
-			  "You gain access to the Light Hammer's 'Nick' Mastery feature",
 			  "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "mace": {
 			name: "Mace",
 			description: desc([
-			  "You gain access to the Mace's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "quarterstaff": {
 			name: "Quarterstaff",
 			description: desc([
-			  "You gain access to the Quarterstaff's 'Topple' Mastery feature",
 			  "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
 			]),
 		  },
 		  "sickle": {
 			name: "Sickle",
 			description: desc([
-			  "You gain access to the Sickle's 'Nick' Mastery feature",
 			  "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "spear": {
 			name: "Spear",
 			description: desc([
-			  "You gain access to the Spear's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "battleaxe": {
 			name: "Battleaxe",
 			description: desc([
-			  "You gain access to the Battleaxe's 'Topple' Mastery feature",
 			  "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
 			]),
 		  },
 		  "flail": {
 			name: "Flail",
 			description: desc([
-			  "You gain access to the Flail's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "glaive": {
 			name: "Glaive",
 			description: desc([
-			  "You gain access to the Glaive's 'Graze' Mastery feature",
 			  "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
 			]),
 		  },
 		  "greataxe": {
 			name: "Greataxe",
 			description: desc([
-			  "You gain access to the Greataxe's 'Cleave' Mastery feature",
 			  "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "greatsword": {
 			name: "Greatsword",
 			description: desc([
-			  "You gain access to the Greatsword's 'Graze' Mastery feature",
 			  "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
 			]),
 		  },
 		  "halberd": {
 			name: "Halberd",
 			description: desc([
-			  "You gain access to the Halberd's 'Cleave' Mastery feature",
 			  "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "lance": {
 			name: "Lance",
 			description: desc([
-			  "You gain access to the Lance's 'Topple' Mastery feature",
 			  "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
 			]),
 		  },
 		  "longsword": {
 			name: "Longsword",
 			description: desc([
-			  "You gain access to the Longsword's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "maul": {
 			name: "Maul",
 			description: desc([
-			  "You gain access to the Maul's 'Topple' Mastery feature",
 			  "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
 			]),
 		  },
 		  "morningstar": {
 			name: "Morningstar",
 			description: desc([
-			  "You gain access to the Morningstar's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "pike": {
 			name: "Pike",
 			description: desc([
-			  "You gain access to the Pike's 'Push' Mastery feature",
 			  "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
 			]),
 		  },
 		  "rapier": {
 			name: "Rapier",
 			description: desc([
-			  "You gain access to the Rapier's 'Vex' Mastery feature",
 			  "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
 			]),
 		  },
 		  "scimitar": {
 			name: "Scimitar",
 			description: desc([
-			  "You gain access to the Scimitar's 'Nick' Mastery feature",
 			  "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
 			]),
 		  },
 		  "shortsword": {
 			name: "Shortsword",
 			description: desc([
-			  "You gain access to the Shortsword's 'Vex' Mastery feature",
 			  "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
 			]),
 		  },
 		  "trident": {
 			name: "Trident",
 			description: desc([
-			  "You gain access to the Trident's 'Topple' Mastery feature",
 			  "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
 			]),
 		  },
 		  "warhammer": {
 			name: "Warhammer",
 			description: desc([
-			  "You gain access to the Warhammer's 'Push' Mastery feature",
 			  "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
 			]),
 		  },
 		  "war pick": {
 			name: "War Pick",
 			description: desc([
-			  "You gain access to the War Pick's 'Sap' Mastery feature",
 			  "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
 			]),
 		  },
 		  "whip": {
 			name: "Whip",
 			description: desc([
-			  "You gain access to the Whip's 'Slow' Mastery feature",
 			  "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
 			]),
 		  },
@@ -432,7 +393,7 @@ legacyClassRefactor("barbarian", {
 		  minlevel: 2,
 		  savetxt: {adv_vs: ["Dex saves, when not Incapacitated; "]},
 		  description: desc([
-			"You gain an uncanny sense of when things aren't as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.",
+			"I have Advantage on Dexterity saving throws unless I have the Incapacitated condition.",
 		  ]),
 		},
 		"reckless attack": {
@@ -440,8 +401,8 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 52]],
 		  minlevel: 2,
 		  description: desc([
-			"You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.",
-		  ]),
+            "When I make your first attack roll on your turn, I can attack recklessly. Until the start of my next turn, I have Advantage on Strength-based attack rolls but attack rolls against me also have Advantage",
+            ]),
 		},
 		"subclassfeature3": {
 		  name: "Barbarian Subclass",
@@ -456,16 +417,16 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 52]],
 		  minlevel: 3,
 		  description: desc([
-			"You gain proficiency in another skill of your choice from the skills list available to Barbarians at level 1.",
-			"In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
-		  ]),
+            "Gain proficiency in one additional skill from the Barbarian level 1 skill list.",
+            "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival."
+            ]),
 		  choices: ["Primal Knowledge : Animal Handling", "Primal Knowledge : Athletics", "Primal Knowledge : Intimidation", "Primal Knowledge : Nature", "Primal Knowledge : Perception", "Primal Knowledge : Survival"],
 		  "primal knowledge : animal handling": {
 			name: "Primal Knowledge : Animal Handling",
 			skills: ["Animal Handling"],
 			description: desc([
 			  "You gain proficiency in Animal Handling",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
 		  "primal knowledge : athletics": {
@@ -473,7 +434,7 @@ legacyClassRefactor("barbarian", {
 			skills: ["Athletics"],
 			description: desc([
 			  "You gain proficiency in Athletics",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
 		  "primal knowledge : intimidation": {
@@ -481,7 +442,7 @@ legacyClassRefactor("barbarian", {
 			skills: ["Intimidation"],
 			description: desc([
 			  "You gain proficiency in Intimidation",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
 		  "primal knowledge : nature": {
@@ -489,7 +450,7 @@ legacyClassRefactor("barbarian", {
 			skills: ["Nature"],
 			description: desc([
 			  "You gain proficiency in Nature",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
 		  "primal knowledge : perception": {
@@ -497,7 +458,7 @@ legacyClassRefactor("barbarian", {
 			skills: ["Perception"],
 			description: desc([
 			  "You gain proficiency in Perception",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
 		  "primal knowledge : survival": {
@@ -505,17 +466,9 @@ legacyClassRefactor("barbarian", {
 			skills: ["Survival"],
 			description: desc([
 			  "You gain proficiency in Survival",
-			  "In addition, while your Rage is active, you can channel primal power when you attempt certain tasks, whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability; Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your ability, bearing, and senses.",
+              "While Raging, you can use Strength for ability checks with Acrobatics, Intimidation, Perception, Stealth, or Survival"
 			]),
 		  },
-		},
-		"extra attack": {
-		  name: "Extra Attack",
-		  source: [["PHB2024", 53]],
-		  minlevel: 5,
-		  description: desc([
-			"You can attack twice instead of once whenever you take the Attack Action on your Turn.",
-		  ]),
 		},
 		"fast movement": {
 		  name: "Fast Movement",
@@ -523,7 +476,7 @@ legacyClassRefactor("barbarian", {
 		  minlevel: 5,
 		  speed: {allModes: "+10"},
 		  description: desc([
-			"Your speed increases by 10 feet while you aren't wearing Heavy armor.",
+			"My speed increases by 10 feet while I am not wearing Heavy armor.",
 		  ]),
 		},
 		"feral instinct": {
@@ -531,7 +484,7 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 53]],
 		  minlevel: 7,
 		  description: desc([
-			"Your instincts are so honed that you have Advantage on Initiative rolls.",
+			"My instincts are so honed that I have Advantage on Initiative rolls.",
 		  ]),
 		},
 		"instinctive pounce": {
@@ -539,63 +492,88 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 53]],
 		  minlevel: 7,
 		  description: desc([
-			"As part of the Bonus Action you take to enter your Rage, you can move up to half your Speed.",
+			"As part of the Bonus Action I take to enter my Rage, I can move up to half my Speed.",
 		  ]),
 		},
 		"brutal strike": {
 		  name: "Brutal Strike",
 		  source: [["PHB2024", 53]],
 		  minlevel: 9,
+		  additional: ["", "", "", "", "", "", "", "", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "1 Brutal Strike Option, 1d10", "2 Brutal Strike Option, 2d10", "2 Brutal Strike Option, 2d10", "2 Brutal Strike Option, 2d10", "2 Brutal Strike Option, 2d10"],
 		  description: desc([
-			"If you use Reckless Attack, you can forego any Advantage on one Strength-based attack roll of your choice on your turn. The chosen attack roll mustn't have Disadvantage. If the chosen attack roll hits, the target takes an extra 1d10 damage of the same type dealt by the weapon or Unarmed Strike, and you can cause one Brutal Strike effect of your choice.",
-			"You have the following effect options.",
-			"Forceful Blow : The target is pushed 15 feet straight away from you. You can then move up to half your speed strait towards the target without provoking Opportunity Attacks.",
-			"Hamstring Blow : The target's Speed is reduced by 15 feet until the start of your next turn. A target can be affected by only one Hamstring Blow at a time – the most recent one.",
+            "When using Reckless Attack, I can skip Advantage on a Strength-based attack without Disadvantage. If it hits, extra 1d10 damage and a Brutal Strike effect. (See Third Page).",
 		  ]),
+		  "forceful blow": {
+			name: "Forceful Blow",
+			extraname: "Brutal Strike Option",
+			description: desc([
+				"Push target 15 feet away; move half your speed towards them without provoking Opportunity Attacks.",
+			]),
+		  },
+		  "hamstring blow": {
+			name: "Hamstring Blow",
+			extraname: "Brutal Strike Option",
+			description: desc([
+				"Reduce target's Speed by 15 feet until your next turn; only one effect at a time per target.",
+			]),
+		  },
+		  autoSelectExtrachoices: [{
+			extrachoice: "forceful blow"
+		  }, {
+			extrachoice: "hamstring blow"
+	      }],
 		},
 		"relentless rage": {
 		  name: "Relentless Rage",
 		  source: [["PHB2024", 53]],
 		  minlevel: 9,
-		  description: desc([
-			"Your Rage can keep you fighting despite grievous wounds. If you drop to 0 Hit Points while your Rage is active and don't die outright, you can make a DC 10 Constitution saving throw. If you succeed, your Hit Points instead change to a number equal to half your Barbarian level",
-			"Each time you use this feature after the first, the DC increases by 5. When you finish a Short or Long Rest, the DC resets to 10.",
-		  ]),
+          description: desc([
+            "While Raging, if I drop to 0 HP but not killed outright, make a DC 10 Constitution save. On success, set HP to half my Barbarian level.",
+            "Each subsequent use raises the DC by 5. DC resets to 10 after a Short or Long Rest."
+        ]),
 		},
 		"improved brutal strike": {
 		  name: "Improved Brutal Strike",
 		  source: [["PHB2024", 53]],
 		  minlevel: 13,
-		  description: desc([
-			"You have honed new ways to attack furiously.",
-			"The following effects are now among your Brutal Strike options.",
-			"Staggering Blow : The target has Disadvantage on the next saving throw it makes, and it can't make Opportunity Attacks until the start of your next turn.",
-			"Sundering Blow : Before the start of your next turn, the next attack roll made by another creature against the target gains a +5 bonus to the roll. An attack roll can gain only one Sundering Blow bonus.",
+          description: desc([
+            "Gain 2 new Brutal Strike options. (See Third Page).",
 		  ]),
+		  "staggering blow": {
+			name: "Staggering Blow",
+			extraname: "Brutal Strike Option",
+			description: desc([
+				"Target has Disadvantage on its next save and can't make Opportunity Attacks until your next turn.",
+			]),
+		  },
+		  "sundering blow": {
+			name: "Sundering Blow",
+			extraname: "Brutal Strike Option",
+			description: desc([
+				"Next attack roll against the target gets a +5 bonus before your next turn. 1 effect per attack roll.",
+			]),
+		  },
+		  autoSelectExtrachoices: [{
+			extrachoice: "staggering blow"
+		  }, {
+			extrachoice: "sundering blow"
+	      }],
 		},
 		"persistent rage": {
 		  name: "Persistent Rage",
 		  source: [["PHB2024", 53]],
 		  minlevel: 15,
-		  description: desc([
-			"When you roll Initiative, you can regain all expended uses of Rage. After you regain uses of Rage in this way, you can't do so again until you finish a Long Rest.",
-			"In addition, your rage is so fierce that it now lasts for 10 minutes without you needing to do anything to extend it from round to round. Your Rage ends early if you have the Unconscious condition (not just the Incapacitated condition) or don Heavy armor.",
-		  ]),
-		},
-		"improved brutal strike2": {
-		  name: "Improved Brutal Strike",
-		  source: [["PHB2024", 53]],
-		  minlevel: 17,
-		  description: desc([
-			"The extra damage f your Brutal Strike increases to 2d10. In addition, you can use two different Brutal Strike effects whenever you use your Brutal Strike feature.",
-		  ]),
+          description: desc([
+            "Regain all Rage uses when I roll Initiative, once per Long Rest.",
+            "Rage lasts 10 minutes without extension actions; ends early if Unconscious or wearing Heavy armor."
+          ]),
 		},
 		"indomitable might": {
 		  name: "Indomitable Might",
 		  source: [["PHB2024", 53]],
 		  minlevel: 18,
 		  description: desc([
-			"If your total for a Strength check or Strength saving throw is less than your Strength score, you can use that score in place of the total.",
+			"If my total for a Strength check or Strength saving throw is less than my Strength score, I can use that score in place of the total.",
 		  ]),
 		},
 		"epic boon": {
@@ -603,7 +581,7 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 53]],
 		  minlevel: 19,
 		  description: desc([
-			"You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Irresistible Offense is recommended.",
+			"You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify.",
 		  ]),
 		},
 		"primal champion": {
@@ -613,7 +591,7 @@ legacyClassRefactor("barbarian", {
 		  scores: [4, 0, 4, 0, 0, 0],
 		  scoresMaximum: [25, 0, 25, 0, 0, 0],
 		  description: desc([
-			"You embody primal power. Your Strength and Constitution scores increase by 4, to a maximum of 25.",
+			"I embody primal power. My Strength and Constitution scores increase by 4, to a maximum of 25.",
 		  ]),
 		},
 	},
@@ -629,7 +607,7 @@ legacySubClassRefactor("barbarian", "berserker", {
       minlevel: 3,
       additional: ["2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "3d6", "3d6", "3d6", "3d6", "3d6", "3d6", "3d6", "4d6", "4d6", "4d6", "4d6", "4d6"],
       description: desc([
-        "If you use Reckless Attack while your Rage is active, you deal extra damage to the first target you hit on your turn with a Strength based attack. To determine the extra damage, roll a number of d6s equal to your Rage Damage bonus, and add them together. The damage has the same type as the weapon or Unarmed Strike used for the attack.",
+        "While Raging and using Reckless Attack, deal a number of d6 extra damage to the first target hit on my turn."
       ]),
     },
     "subclassfeature6": {
@@ -638,7 +616,7 @@ legacySubClassRefactor("barbarian", "berserker", {
       minlevel: 6,
       savetxt: {immune: ["Charmed while Raging; ", "Frightened while Raging; "]},
       description: desc([
-        "You have Immunity to the Charmed and Frightened conditions while your Rage is active. If you're Charmed or Frightened when you enter your Rage the condition ends on you.",
+        "While Raging, I am immune to Charmed and Frightened conditions. These conditions end when I enter Rage."
       ]),
     },
     "subclassfeature10": {
@@ -647,7 +625,7 @@ legacySubClassRefactor("barbarian", "berserker", {
       minlevel: 10,
       action: ["reaction", "Retaliation"],
       description: desc([
-        "When you take damage from a creature that is within 5 feet of you, you can take a Reaction to make one melee attack against that creature, using a weapon or an Unarmed Strike.",
+        "As a Reaction, make a melee attack against a creature within 5 feet when it damages me."
       ]),
     },
     "subclassfeature14": {
@@ -658,8 +636,7 @@ legacySubClassRefactor("barbarian", "berserker", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "As a Bonus Action, you can strike terror into others with your menacing presence and primal power. When you do so each creature of your choice in a 30-foot Emanation originating from you must make a Wisdom saving throw (DC 8 plus your Strength modifier and Proficiency Bonus). On a failed save, a creature has the Frightened condition for 1 minute. At the end of each of the Frightened creature's turns, the creature repeats the save, ending the effect on itself on a success.",
-        "Once you use this feature you can't use it again until you finish a Long Rest unless you expend a use of your Rage (no action required) to restore your use of it.",
+        "As a Bonus Action, cause creatures in a 30-foot radius to make a Wisdom save (DC 8 + Strength mod + Proficiency). On failure, they are Frightened for 1 minute, repeating the save at each turn's end. Regain use after a Long Rest or by expending a Rage use."
       ]),
     },
   },
@@ -683,19 +660,44 @@ legacySubClassRefactor("barbarian", "wild heart", {
         firstCol: "R",
       }],
       description: desc([
-        "You can cast the Beast Sense and Speak with Animals spells but only as Rituals. Wisdom is your spellcasting ability for them.",
-      ]),
+        "Cast *Beast Sense* and *Speak with Animals* as Rituals using Wisdom."
+    ]),
     },
     "subclassfeature3.1": {
       name: "Rage of the Wilds",
       source: [["PHB2024", 55]],
       minlevel: 3,
       description: desc([
-        "Your Rage taps into the primal power of animals. Whenever you activate your Rage, you gain one of the following options of your choice.",
-        "Bear : While your Rage is active you have Resistance to every damage type except Force, Necrotic, Psychic, and Radiant.",
-        "Eagle : When you activate your Rage, you can take the Disengage and Dash action as part of that Bonus Action. While your Rage is active, you can take a Bonus Action to take both of those actions.",
-        "Wolf : While your Rage is active, your allies have Advantage on attack rolls against any enemy of yours within 5 feet of you.",
+        "Choose an animal aspect when you enter a Rage (See Third Page).",
       ]),
+	  "bear": {
+		name: "Bear",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Resistance to all but Force, Necrotic, Psychic, and Radiant damage.",
+		]),
+	  },
+	  "eagle": {
+		name: "Eagle",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Disengage and Dash as a Bonus Action.",
+		]),
+	  },
+	  "wolf": {
+		name: "Wolf",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Allies have Advantage on attacks against enemies within 5 feet.",
+		]),
+	  },
+	  autoSelectExtrachoices: [{
+		extrachoice: "bear"
+	  }, {
+		extrachoice: "eagle"
+	  }, {  
+		extrachoice: "wolf"
+	  }],
     },
     "subclassfeature6": {
       name: "Aspect of the Wilds",
@@ -724,7 +726,7 @@ legacySubClassRefactor("barbarian", "wild heart", {
         ])
       },
       description: desc([
-        "You gain one of the following options of your choice. Whenever you finish a Long Rest, you can change your choice.",
+        "Use 'Choose Feature' button to choose an Aspect of the Wilds. Whenever I finish a Long Rest, I can change my choice.",
       ]),
     },
     "subclassfeature10": {
@@ -739,7 +741,7 @@ legacySubClassRefactor("barbarian", "wild heart", {
         firstCol: "R",
       }],
       description: desc([
-        "You can cast the Commune with Nature spell but only as a Ritual. Wisdom is your spellcasting ability for it.",
+        "I can cast the Commune with Nature spell but only as a Ritual. Wisdom is my spellcasting ability for it.",
       ]),
     },
     "subclassfeature14": {
@@ -747,11 +749,36 @@ legacySubClassRefactor("barbarian", "wild heart", {
       source: [["PHB2024", 55]],
       minlevel: 14,
       description: desc([
-        "Whenever you activate your Rage, you gain one of the following options of your choice.",
-        "Falcon : While your Rage is active, you have a Fly Speed equal to your Speed if you aren't wearing any armor.",
-        "Lion : While your Rage is active, any of your enemies within 5 feet of you have Disadvantage on attack rolls against targets other than you or another Barbarian who has this option active.",
-        "Ram : While your Rage is active, you can cause a Large or smaller creature to have the Prone condition when you hit it with a melee attack.",
+        "I gain 3 new Rage of the Wild options (See Third Page).",
       ]),
+	  "falcon": {
+		name: "Falcon",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Fly Speed equals your Speed without armor.",
+		]),
+	  },
+	  "lion": {
+		name: "Lion",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Enemies with in 5 ft have Disadvantage on attacks against others w/ feature.",
+		]),
+	  },
+	  "ram": {
+		name: "Ram",
+		extraname: "Rage of the Wild Option",
+		description: desc([
+			"Knock Large or smaller creatures Prone with melee attacks.",
+		]),
+	  },
+	  autoSelectExtrachoices: [{
+		extrachoice: "falcon"
+	  }, {
+		extrachoice: "lion"
+	  }, {  
+		extrachoice: "ram"
+	  }],
     },
   },
 });
@@ -766,9 +793,8 @@ AddSubClass("barbarian", "world tree", {
       minlevel: 3,
       additional: ["2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "3d6", "3d6", "3d6", "3d6", "3d6", "3d6", "3d6", "4d6", "4d6", "4d6", "4d6", "4d6"],
       description: desc([
-        "Your Rage taps into the life force of the World Tree. You gain the following benefits.",
-        "Vitality Surge : When you activate your Rage, you gain a number of Temporary Hit Points equal to your Barbarian level",
-        "Life-Giving Force : At the start of each of your turns while your Rage is active, you can choose another creature within 10 feet of yourself to gain Temporary Hit Points. To determine the number of Temporary Hit Points, roll a number of d6s equal to your Rage Damage bonus, and add them together. If any of these Temporary Hit Points remain when your Rage ends, they vanish.",
+        "Vitality Surge : Gain Temporary Hit Points equal to my Barbarian level when I Rage.",
+        "Life-Giving Force : Each turn, give a nearby creature Temporary Hit Points by rolling d6s equal to my Rage Damage bonus. All vanish when rage ends."
       ]),
     },
     "subclassfeature6": {
@@ -777,16 +803,15 @@ AddSubClass("barbarian", "world tree", {
       minlevel: 6,
       action: "reaction",
       description: desc([
-        "Whenever a creature you can see starts its turn within 30 feet of you while your Rage is active, you can take a Reaction to summon spectral branches of the World Tree around it. The target must succeed on a Strength saving throw (DC 8 plus your Strength modifier and Proficiency Bonus) or be teleported to an unoccupied space you can see within 5 feet of yourself or in the nearest unoccupied space you can see. After the target teleports, you can reduce its Speed to 0 until the end of the current turn.",
+        "As a Reaction, teleport a nearby creature within 30 feet to a space near me. Reduce its Speed to 0 until the end of the turn if it fails a Strength save (DC 8 + Strength mod + Proficiency)."
       ]),
     },
     "subclassfeature10": {
       name: "Battering Roots",
       source: [["PHB2024", 56]],
       minlevel: 10,
-      action: ["reaction", "Retaliation"],
       description: desc([
-        "During your turn, your reach is 10 feet greater with any Melee weapon that has the Heavy or Versatile properties, as tendrils of the World Tree extend from you. When you hit with such a weapon on your turn, you can activate the Push or Topple mastery properties in addition to a different mastery property you're using with that weapon.",
+        "Extend reach by 10 feet with Heavy or Versatile weapons. Use Push or Topple mastery properties when hitting with such weapons in addition to a different property."
       ]),
     },
     "subclassfeature14": {
@@ -795,8 +820,7 @@ AddSubClass("barbarian", "world tree", {
       minlevel: 14,
       action: "bonus action",
       description: desc([
-        "When you activate your Rage and as a Bonus Action while your Rage is active, you can teleport up to 60 feet to an unoccupied space you can see.",
-        "In addition, once per Rage, you can increase the range of that teleport to 150 feet. When you do so you can also bring up to six willing creatures who are within 10 feet of you. Each creature teleports to an unoccupied space of you choice within 10 feet of your destination space.",
+        "Teleport up to 60 feet as a Bonus Action while Raging. Once per Rage, extend range to 150 feet and bring up to six creatures within 10 feet."
       ]),
     },
   },
@@ -812,7 +836,7 @@ legacySubClassRefactor("barbarian", "zealot", {
       source: [["PHB2024", 57]],
       minlevel: 3,
       description: desc([
-        "You can channel divine power into your strikes. On each of your turns while your Rage is active. the first creature you hit with a weapon or an Unarmed Strike takes damage equal to 1d6 plus half your Barbarian level (rounded down). The extra damage is Necrotic or Radiant, you chose the type each time you deal the damage.",
+        "While Raging, my first hit each turn deals extra damage: 1d6 + half my Barbarian level. Choose Necrotic or Radiant damage each time."
       ]),
     },
     "subclassfeature3.1": {
@@ -823,9 +847,7 @@ legacySubClassRefactor("barbarian", "zealot", {
       usages: [0, 0, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7],
       recovery: "long rest",
       description: desc([
-        "A divine entity helps ensure you can continue the fight. You have a pool of four d12s that you can spend to heal yourself. As a Bonus Action, you can expend dice from the pool roll them and regain a number of Hit Points equal to the roll's total.",
-        "Your pool regains all expended dice when you finish a Long Rest",
-        "The pool's maximum number of dice increases by one when you reach Barbarian levels 6 (5 Dice), 12 (6 Dice), and 17 (7 Dice).",
+        "As a Bonus Action, expend d12s from a healing pool to regain HP. Pool size increases at levels 6, 12, and 17. Regain all dice after a Long Rest."
       ]),
     },
     "subclassfeature6": {
@@ -833,7 +855,7 @@ legacySubClassRefactor("barbarian", "zealot", {
       source: [["PHB2024", 57]],
       minlevel: 6,
       description: desc([
-        "Once per active Rage, if you fail a saving throw, you can reroll it with a bonus equal to your Rage Damage bonus, and you must use the new roll.",
+        "Once per Rage, reroll a failed save with a bonus equal to my Rage Damage bonus. I must use new roll"
       ]),
     },
     "subclassfeature10": {
@@ -844,8 +866,7 @@ legacySubClassRefactor("barbarian", "zealot", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "As a Bonus Action, you unleash a battle cry infused with divine energy. Up to ten other creatures of your choice within 60 feet of you gain Advantage on attack rolls and saving throws until the start of your next turn.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest unless you expend a use of your Rage (no action required) to restore your use of it.",
+        "As a Bonus Action, give up to ten creatures within 60 feet Advantage on attacks and saves until my next turn. Recharge after Long Rest or by expending Rage."
       ]),
     },
     "subclassfeature14": {
@@ -856,11 +877,7 @@ legacySubClassRefactor("barbarian", "zealot", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "When you activate your Rage, you can assume the form of a divine warrior. This form lasts for 1 minute or until you drop to 0 Hit Points. Once you use this feature, you can't do so again until you finish a Long Rest.",
-        "While in this form, you gain the benefits below",
-        "Flight : You have a Fly Speed equal to your Speed and can hover.",
-        "Resistance : You have Resistance to Necrotic, Psychic, and Radiant damage.",
-        "Revivification : When a creature within 30 feet of you would drop to 0 Hit Points, you can take a Reaction to expend a use of your Rage to instead change the target's Hit Points to a number equal to your Barbarian level.",
+        "Assume divine form for 1 minute when Raging. Gain flight, resistance to Necrotic, Psychic, and Radiant damage. Use Reaction to prevent an ally from dropping to 0 HP and change their HP to 1/2 my Barbarian level by expending Rage."
       ]),
     },
   },
