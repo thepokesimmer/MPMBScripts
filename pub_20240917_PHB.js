@@ -61,7 +61,7 @@ function legacySpellRefactor(spellKey, newSpell) {
               name: "Legacy spells",
               source: [["LEGACYSPELLS", 1]],
               minlevel: 1,
-              description: "\n I can choose to access to the legacy version of spells",
+              description: "\n I can choose to have access to the legacy version of spells",
               choices: ["Show Legacy", "Hide Legacy"],
               "show legacy": {
                 name: "Show legacy spells",
@@ -1356,17 +1356,8 @@ legacyClassRefactor("cleric", {
         ]
       },
       description: desc([
-        "You have learned to cast spells through prayer and meditation. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Cleric spells, which appear in the Cleric spell list later in the class's description.",
-        "Cantrips : You know three cantrips of your choice from the Cleric spell list. Guidance, Sacred Flame, and Thaumaturgy are recommended.",
-        "Whenever you gain a Cleric level, you can replace one of your cantrips with another cantrip of your choice from the Cleric spell list.",
-        "When you reach Cleric levels 4 and 10, you learn another cantrip of your choice from the Cleric spell list, as shown in the Cantrips column of the Cleric Features table.",
-        "Spell Slots : The Cleric Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Cleric spell list. Bless, Cure Wounds, Guiding Bolt, and Shield of Faith are recommended.",
-        "The number of spells on your list increases as you gain Cleric levels, as shown in the Prepared Spells column of the Cleric Features table. Whenever that number increases, choose additional spells from the Cleric spell list until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Cleric, your list of prepared spells can include six spells of levels 1 and 2 in any combination",
-        "If another Cleric feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Cleric spells for you.",
-        "Changing Your Prepared Spells : Whenever you finish a Long Rest, you can change your list of prepared spells replacing any of the spells there with other Cleric spells for which you have spell slots.",
-        "Spellcasting Ability : Wisdom is your spellcasting ability for your Cleric Spells",
-        "Spellcasting Focus : You can use a Holy Symbol as a Spellcasting Focus for your Cleric spells.",
+        "I can cast Cantrips & Prepared level 1+ Cleric spells using Wis as my spellcasting ability & a Holy Symbol as a Spellcasting Focus.",
+		"I can replace one cantrip with another when I gain a Cleric level; I can change my Prepared spells at the end of a Long Rest.",
       ]),
     },
     "divine order": {
@@ -1378,7 +1369,7 @@ legacyClassRefactor("cleric", {
         name: "Protector",
         armorProfs: [false, false, true, false],
         weaponProfs: [false, true],
-        description: "Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor."
+        description: "I gain proficiency with Martial weapons & Heavy armor training."
       },
       "thaumaturge (arcana)": {
         name: "Thaumaturge (Arcana)",
@@ -1391,7 +1382,7 @@ legacyClassRefactor("cleric", {
         addMod: [
           {type: "skill", field: "Arcana", mod: "Wis", text: "I can add my Wisdom modifier to Arcana rolls."},
         ],
-        description: "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        description: "I know one extra cantrip from the Cleric spell list and can add my Wis mod (min 1) to my Int (Arcana) checks.",
       },
       "thaumaturge (religion)": {
         name: "Thaumaturge (Religion)",
@@ -1404,23 +1395,23 @@ legacyClassRefactor("cleric", {
         addMod: [
           {type: "skill", field: "Religion", mod: "Wis", text: "I can add my Wisdom modifier to Religion rolls."},
         ],
-        description: "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        description: "I know one extra cantrip from the Cleric spell list and can add my Wis mod (min 1) to my Int (Religion) checks.",
       },
       description: desc([
-        "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "I have dedicated myself to a sacred role. Use 'Choose Feature' above to select one.",
       ]),
     },
     "channel divinity": {
       name: "Channel Divinity",
       source: [["PHB2024", 70]],
       minlevel: 2,
+	  usages: [0, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4],
+	  recovery: "long rest",
+	  additional : ["", "Channel Divinity: Divine Spark 1d8", "Channel Divinity: Divine Spark 1d8", "Channel Divinity: Divine Spark 1d8", "Channel Divinity: Divine Spark 1d8", "Channel Divinity: Divine Spark 1d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 2d8", "Channel Divinity: Divine Spark 3d8", "Channel Divinity: Divine Spark 3d8", "Channel Divinity: Divine Spark 3d8", "Channel Divinity: Divine Spark 3d8", "Channel Divinity: Divine Spark 3d8", "Channel Divinity: Divine Spark 4d8", "Channel Divinity: Divine Spark 4d8", "Channel Divinity: Divine Spark 4d8"], 
       description: desc([
-        "You can channel divine energy directly from the Outer Planes to fuel magical effects. You start with two such effects : Divine Spark and Turn Undead, each of which is described below. Each time you use this class's Channel Divinity, choose which Channel Divinity effect from this class to create. You gain additional effect options at higher Cleric levels.",
-        "You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain additional uses when you reach certain Cleric levels, as shown in the Channel Divinity column of the Cleric Features table.",
-        "If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.",
-        "Divine Spark : As a Magic action, you point your Holy Symbol at another creature you can see within 30 feet of yourself and focus divine energy at it. Roll 1d8 and add your Wisdom modifier. You either restore Hit Points to the creature equal to that total or force the creature to make a Constitution saving throw. On a failed save, the creature takes Necrotic or Radiant damage (your choice) equal to that total. On a successful save, the creature takes half as much damage (round down).",
-        "You roll an additional d8 when you reach Cleric level 7 (2d8), 13 (3d8), and 18 (4d8).",
-        "Turn Undead : As a Magic action, you present your Holy Symbol and censure Undead creatures. Each Undead of your choice within 30 feet of you must make a Wisdom saving throw. If the creature fails its save, it has the Frightened and Incapacitated conditions for 1 minute. For that duration it tries to move as far from you as it can on its turns. This effect ends early on the creature if it takes any damage, if you have the Incapacitated condition, or if you die.",
+        "I regain one use on a Short Rest; All return on a Long Rest. If a Channel Divinity effect has a saving throw the DC is my Wis spell save DC.",
+        "Channel Divinity: Divine Spark: As a Magic action I choose a creature I can see w/in 30 ft and roll a number of d8 + my Wis mod. I either restore that amount of HP to the creature or force the creature to make a Con save; On a fail it takes that amount of Necro or Radiant damage; half damage  on a pass.",
+        "Channel Divinity: Turn Undead: As a Magic action each Undead I choose w/in 30 ft must make a Wis save; On a fail it is Frightened & Incapacitated for 1 min; It also tries to move as far from me as it can on its turns. This ends early if it takes any damage, I'm Incapacitated, or I die.",
       ]),
     },
     "subclassfeature3": {
@@ -1436,7 +1427,7 @@ legacyClassRefactor("cleric", {
       source: [["PHB2024", 71]],
       minlevel: 5,
       description: desc([
-        "Whenever you use Turn Undead, you can roll a number of D8s equal to your Wisdom modifier (minimum of 1d8) and add the rolls together. Each Undead that fails its saving throw against that use of Turn Undead takes Radiant damage equal to the roll's total. This damage doesn't end the turn effect.",
+        "When I use my Channel Divinity: Turn Undead, each Undead that fails its save against that use takes my Wis mod d8s Radiant damage (min 1) without ending the Turn effect.",
       ]),
     },
     "blessed strikes": {
@@ -1447,7 +1438,7 @@ legacyClassRefactor("cleric", {
       "divine strike": {
         name: "Divine Strike",
         description: desc([
-          "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 1d8 Necrotic or Radiant damage (your choice).",
+          "I can cause the target to take an extra 1d8 Necro or Radiant damage (my choice) once when I hit with a weapon on my turn.",
         ]),
       },
       "potent spellcasting": {
@@ -1470,11 +1461,11 @@ legacyClassRefactor("cleric", {
           ]
         },
         description: desc([
-          "Add your Wisdom modifier to the damage you deal with any Cleric cantrip.",
+          "Add my Wis mod to the damage I deal with any Cleric cantrip.",
         ]),
       },
       description: desc([
-        "Divine power infuses you in battle. You gain one of the following options of your choice (if you get either option from a Cleric subclass in an older book, use only the option you choose for this feature).",
+        "Use 'Choose Feature' above to select a Blessed Strike option (if I get either from a Cleric subclass in an older book, use only that option).",
       ]),
     },
     "divine intervention": {
@@ -1484,7 +1475,7 @@ legacyClassRefactor("cleric", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "You can call on your deity or pantheon to intervene on your behalf. As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components. You can't use this feature again until you finish a Long Rest.",
+        "As a Magic action, once per Long Rest, I can cast one Cleric spell of level 5 or lower that doesn't require a Reaction to cast without a spell slot or Material components.",
       ]),
     },
     "improved blessed strikes": {
@@ -1495,17 +1486,17 @@ legacyClassRefactor("cleric", {
       "divine strike": {
         name: "Divine Strike",
         description: desc([
-          "The extra damage of your Divine Strikes increases to 2d8",
+          "The extra damage of my Divine Strikes increases to 2d8",
         ]),
       },
       "potent spellcasting": {
         name: "Potent Spellcasting",
         description: desc([
-          "When you cast a Cleric cantrip and deal damage to a creature with it, you can give vitality to yourself or another creature within 60 feet of yourself, granting a number of Temporary Hit Points equal to twice your Wisdom modifier.",
+          "When I deal damage to a creature with a Cleric cantrip I can give 2 times my Wis mod HP to a creature w/in 60 ft or myself.",
         ]),
       },
       description: desc([
-        "The option you chose for Blessed Strikes grow more powerful.",
+        "Use 'Choose Feature' above to select an improved Blessed Strike feature.",
       ]),
     },
     "epic boon": {
@@ -1513,7 +1504,7 @@ legacyClassRefactor("cleric", {
       source: [["PHB2024", 71]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Fate is recommended.",
+        "I gain an Epic Boon feat or another feat of my choice.",
       ]),
     },
     "greater divine intervention": {
@@ -1521,7 +1512,7 @@ legacyClassRefactor("cleric", {
       source: [["PHB2024", 71]],
       minlevel: 20,
       description: desc([
-        "You can call on even more powerful divine intervention. When you use your Divine Intervention feature, you can choose Wish when you select a sell. If you do so, you can't use Divine Intervention again until you finish 2d4 Long Rests.",
+        "When I use Divine Intervention I can choose Wish when I select a spell, but can't use Divine Intervention again until I finish 2d4 Long Rests.",
       ]),
     },
   },
@@ -1538,16 +1529,16 @@ legacySubClassRefactor("cleric", "life", {
       source: [["PHB2024", 73]],
       minlevel: 3,
       description: desc([
-        "When a spell you cast with a spell slot restores Hit Points to a creature, that creature regains additional Hit Points on the turn you cast the spell. The additional Hit Points equal 2 plus the spell slot's level.",
+        "When I cast a spell with a spell slot that gives HP it gives addtl 2 + slot level HP.",
       ]),
     },
     "subclassfeature3.1": {
-      name: "Preserve Life",
+      name: "Channel Divinity: Preserve Life",
       source: [["PHB2024", 73]],
       minlevel: 3,
       action: "action",
       description: desc([
-        "As a Magic action, you present your Holy Symbol and expend a use of your Channel Divinity to evoke healing energy that can restore a number of Hit Points equal to five times your Cleric Level. Choose Bloodied creatures within 30 feet of yourself (which can include you), and divide those Hit Points among them. This feature can restore a creature o no more than half its Hit Point maximum.",
+        "As a Magic action I restore 5 x my Cleric level HP, divided among Bloodied creatures I choose within 30 ft, up to half their max HP.",
       ]),
     },
     "subclassfeature6": {
@@ -1555,7 +1546,7 @@ legacySubClassRefactor("cleric", "life", {
       source: [["PHB2024", 74]],
       minlevel: 6,
       description: desc([
-        "The healing spells you cast on others heal you as well. Immediately after you cast a spell with a spell slot that restores Hit Points to one or more creatures other than yourself, you regain Hit Points equal to 2 plus the spell slot's level.",
+        "When I restore HP with a spell slot to another creature(s), I regain 2 + slot level HP.",
       ]),
     },
     "subclassfeature17": {
@@ -1563,7 +1554,7 @@ legacySubClassRefactor("cleric", "life", {
       source: [["PHB2024", 74]],
       minlevel: 17,
       description: desc([
-        "When you would normally roll one or more dice to restore Hit Points to a creature with a spell or Channel Divinity, don't roll those dice for the healing, instead use the highest number possible for each die. For example, instead of restoring 2d6 Hit Points to a creature with a spell, you restore 12.",
+        "I can heal max HP when I would roll to restore HP with a spell or Channel Divinity.",
       ]),
     },
   },
@@ -1576,11 +1567,12 @@ legacySubClassRefactor("cleric", "light", {
   spellcastingExtra: ["burning hands", "faerie fire", "scorching ray", "see invisibility", "daylight", "fireball", "arcane eye", "wall of fire", "flame strike", "scrying"],
   features: {
     "subclassfeature3": {
-      name: "Radiance of Dawn",
+      name: "Channel Divinity: Radiance of Dawn",
       source: [["PHB2024", 74]],
       minlevel: 3,
+	  additional: "2d10 + Cleric Level",
       description: desc([
-        "As a Magic action, you present your Holy Symbol and expend a use of your Channel Divinity to emit a flash of light in a 30-foot Emanation originating from yourself. Any magical Darkness - such as that created by the Darkness spell - is that area is dispelled. Additionally, each creature of your choice in that area must make a Constitution saving throw. taking Radiant damage equal to 2d10 plus your Cleric level on a failed save or half as much damage on a successful one.",
+        "As a Magic action I dispell magical Darkness w/in 30 ft. Each creature of my choice in that area must pass a Con save for half damage or take Radiant damage.",
       ]),
     },
     "subclassfeature3.1": {
@@ -1593,8 +1585,7 @@ legacySubClassRefactor("cleric", "light", {
         return n < 6 ? "long rest" : "short rest";
       }),
       description: desc([
-        "When a creature that you can see within 30 feet of yourself makes an attack roll, you can take a Reaction to impose Disadvantage on the attack roll, causing light to flare before it hits or misses.",
-        "You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses when you finish a Long Rest.",
+        "When a creature I can see w/in 30 feet makes an attack roll I can impose Disadv as a reaction.",
       ]),
     },
     "subclassfeature6": {
@@ -1602,8 +1593,7 @@ legacySubClassRefactor("cleric", "light", {
       source: [["PHB2024", 75]],
       minlevel: 6,
       description: desc([
-        "You regain all expended uses of your Warding Flare when you finish a Short or Long rest.",
-        "In addition, whenever you use warding Flare, you can give the target of the attack a number of Temporary Hit Points equal to 2d6 plus your Wisdom modifier.",
+        "I regain all uses of Warding Flare when I finish a rest. When I use it I can give the target of the attack 2d6 + my Wis mod Temp HP.",
       ]),
     },
     "subclassfeature17": {
@@ -1614,8 +1604,7 @@ legacySubClassRefactor("cleric", "light", {
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
       recovery: "long rest",
       description: desc([
-        "As a Magic action, you cause yourself to emit an aura of sunlight that lasts for 1 minute or until you dismiss it (no action required). You emit Bright Light in a 60-foot radius and Dim Light for an additional 30 feet. Your enemies in the Bright Light have Disadvantage on saving throws against your Radiance of the Dawn and any spell that deals Fire or Radiant damage.",
-        "You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
+        "As a Magic action, I can emit Bright Light in a 60-ft radius and Dim Light for an addtl 30 ft (sunlight) for 1 min or until dismissed (no action). Foes in the Bright Light have Disadv on saves against my Radiance of the Dawn & Fire or Radiant spell damage.",
       ]),
     },
   },
@@ -1633,19 +1622,19 @@ legacySubClassRefactor("cleric", "trickery", {
       minlevel: 3,
       action: "action",
       description: desc([
-        "As a Magic action, you can choose yourself or a willing creature within 30 feet of yourself to have Advantage on Dexterity (Stealth) checks. This.",
+        "As a Magic action I can give a willing creature w/in 30 ft or myself Adv on Dex (Stealth) checks until I finish a Long Rest or use this again.",
       ]),
     },
     "subclassfeature3.1": {
-      name: "Invoke Duplicity",
+      name: "Channel Divinity: Invoke Duplicity",
       source: [["PHB2024", 75]],
       minlevel: 3,
       action: ["bonus action", "Invoke/Move"],
       description: desc([
-        "As a Bonus Action, you can expend one use of your Channel Divinity to create a perfect visual illusion of yourself in an unoccupied space you can see within 30 feet of yourself. The illusion is intangible and doesn't occupy its space. It lasts for 1 minute, but ends early if you dismiss it (no action required) or have the Incapacitated condition. The illusion is animated and mimics your expressions and gestures. While it persists, you gain the following benefits.",
-        "Cast Spells : You can cast spells as though you were in the illusion's space, but you must use your own senses.",
-        "Distract : When both you and your illusion are within 5 feet of a creature that can see the illusion, you have Advantage on attack rolls against that creature, given how distracting the illusion is to the target.",
-        "Move : As a Bonus Action, you can move the illusion up to 30 feet to an unoccupied space you can see within 120 feet of yourself.",
+        "As a Bonus Action I can create an animated intangible illusory double of myself in an empty space w/in 30 ft for 1 min, until dismissed (no action), or I'm Incapacitated; it doesn't occupy its space. While active I have these benefits:",
+        "Cast Spells: I can cast spells through my double but must use my own senses.",
+        "Distract: I have Adv on Attack rolls against creatures w/in 5 ft of my double & I.",
+        "Move: As a Bonus Action I can move my double up to 30 ft to an empty space w/in 120 ft of me.",
       ]),
     },
     "subclassfeature6": {
@@ -1653,7 +1642,7 @@ legacySubClassRefactor("cleric", "trickery", {
       source: [["PHB2024", 76]],
       minlevel: 6,
       description: desc([
-        "Whenever you take the Bonus Action to create or move the illusion of your Invoke Duplicity, you can teleport, swapping places with the illusion.",
+        "When I use a Bonus Action to create or move my double I can swap places with it.",
       ]),
     },
     "subclassfeature17": {
@@ -1661,9 +1650,9 @@ legacySubClassRefactor("cleric", "trickery", {
       source: [["PHB2024", 76]],
       minlevel: 17,
       description: desc([
-        "The illusion of your Invoke Duplicity has grown more powerful in the following ways.",
-        "Shared Distraction : When you and your allies make attack rolls against a creature within 5 feet of the illusion, the attack rolls have Advantage",
-        "Healing Illusion : When the illusion ends you or a creature of your choice within 5 feet of it regain a number of Hit Points equal to your Cleric level.",
+        "My Invoke Duplicity illusion has grown more powerful:",
+        "Shared Distraction: Allies & I have Adv on attacks vs creatures w/in 5 ft of the double.",
+        "Healing Illusion: When the illusion ends I choose a creature w/in 5 feet of it or myself to regain my Cleric level HP.",
       ]),
     },
   },
@@ -1676,12 +1665,12 @@ legacySubClassRefactor("cleric", "war", {
   spellcastingExtra: ["guiding bolt", "magic weapon", "shield of faith", "spiritual weapon", "crusader's mantle", "spirit guardians", "fire shield", "freedom of movement", "hold monster", "steel wind strike"],
   features: {
     "subclassfeature3": {
-      name: "Guided Strikes",
+      name: "Channel Divinity: Guided Strikes",
       source: [["PHB2024", 77]],
       minlevel: 3,
       action: "reaction",
       description: desc([
-        "When you or a creature within 300 feet of you misses with an attack roll, you can expend one use of your Channel Divinity and give that roll a +10 bonus, potentially causing it to hit. When you use this feature to benefit another creature's attack roll, you must take a Reaction to do so.",
+        "I can give a +10 bonus when a creature within 300 ft (Reaction) or I (no action) miss an attack roll.",
       ]),
     },
     "subclassfeature3.1": {
@@ -1693,15 +1682,15 @@ legacySubClassRefactor("cleric", "war", {
       recovery: "short rest",
       action: ["bonus action", "Weapon/Unarmed Strike"],
       description: desc([
-        "As a Bonus Action, you can make one attack with a weapon or an Unarmed Strike. You can use this Bonus Action a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses when you finish a Short or Long rest.",
+        "As a Bonus Action, I can make one attack with a weapon or an Unarmed Strike.",
       ]),
     },
     "subclassfeature6": {
-      name: "War God's Blessing",
+      name: "Channel Divinity: War God's Blessing",
       source: [["PHB2024", 77]],
       minlevel: 6,
       description: desc([
-        "You can expend a use of your Channel Divinity to cast Shield of Faith or Spiritual Weapon rather than expending a spell slot. When you cast either spell in this way, the spell doesn't require Concentration. Instead the spell lasts for 1 minute, but it ends early if you cast that spell again, have the Incapacitated condition, or die.",
+        "I can cast Shield of Faith or Spiritual Weapon without a spell slot or Conc; it lasts 1 min, until I cast it again, become Incapacitated, or die.",
       ]),
     },
     "subclassfeature14": {
@@ -1710,7 +1699,7 @@ legacySubClassRefactor("cleric", "war", {
       minlevel: 14,
       dmgres: ["Bludgeoning", "Piercing", "Slashing"],
       description: desc([
-        "You gain Resistance to Bludgeoning, Piercing, and Slashing damage.",
+        "I gain Resistance to Bludgeoning, Piercing, and Slashing damage.",
       ]),
     },
   },
@@ -7263,7 +7252,7 @@ legacySubClassRefactor("warlock", "the archfey", {
       description: desc([
         "As a reaction when I take damage I can cast Misty Step, and gain new options for my steps of the fey feature (see notes page).",
       ]),
-	  "disappearing step" : {
+	    "disappearing step" : {
 			name : "Disappearing Step",
 			extraname : "Steps of the Fey Option",
 			source : [["PHB2024", 159]],
