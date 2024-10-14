@@ -29,7 +29,7 @@ SourceList.LEGACYCLASS = {
   defaultExcluded : true,
 };
 
-// Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite, evanelric, TappyTap, Mente
+// Coded By : ThePokésimmer with contributions from MasterJedi2014, Shroo, TrackAtNite, evanelric, TappyTap, Mente, Rocky, ShadowzAll
 
 //Functions
 
@@ -581,7 +581,7 @@ legacyClassRefactor("barbarian", {
 		  source: [["PHB2024", 53]],
 		  minlevel: 19,
 		  description: desc([
-			"You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify.",
+			"I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
 		  ]),
 		},
 		"primal champion": {
@@ -1054,7 +1054,7 @@ legacyClassRefactor("bard", {
       source: [["PHB2024", 61]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice for which I qualify.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "words of creation": {
@@ -1521,7 +1521,7 @@ legacyClassRefactor("cleric", {
       source: [["PHB2024", 71]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "greater divine intervention": {
@@ -1785,18 +1785,9 @@ legacyClassRefactor("druid", {
         ]
       },
       description: desc([
-        "You have learned to cast spells through studying the mystical forces of nature. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Druid spells, which appear in the Druid spell list later in the class's description.",
-        "Cantrips : You know two cantrips of your choice from the Druid spell list. Druidcraft, and Produce Flame are recommended.",
-        "Whenever you gain a Druid level, you can replace one of your cantrips with another cantrip of your choice from the Druid spell list.",
-        "When you reach Druid levels 4 and 10, you learn another cantrip of your choice from the Druid spell list, as shown in the Cantrips column of the Druid Features table.",
-        "Spell Slots : The Druid Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Druid spell list. Animal Friendship, Cure Wounds, Faerie Fire, and Thunderwave are recommended.",
-        "The number of spells on your list increases as you gain Druid levels, as shown in the Prepared Spells column of the Druid Features table. Whenever that number increases, choose additional spells from the Druid spell list until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Druid, your list of prepared spells can include six spells of levels 1 and 2 in any combination",
-        "If another Druid feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Druid spells for you.",
-        "Changing Your Prepared Spells : Whenever you finish a Long Rest, you can change your list of prepared spells replacing any of the spells there with other Druid spells for which you have spell slots.",
-        "Spellcasting Ability : Wisdom is your spellcasting ability for your Druid Spells",
-        "Spellcasting Focus : You can use a Druidic Focus as a Spellcasting Focus for your Druid spells.",
-      ]),
+        "I can cast druid spells using Wisdom as my spellcasting ability.", 
+		"I know druid cantrips and can prepare a number of spells from the druid list. I regain spell slots after a long rest."      
+	  ]),
     },
     "druidic": {
       name: "Druidic",
@@ -1810,8 +1801,7 @@ legacyClassRefactor("druid", {
         times: 1,
       }],
       description: desc([
-        "You know Druidic, the secret language of Druids. While learning this ancient tongue, you also unlocked the magic of communicating with animals, you always have the Speak with Animals spell prepared.",
-        "You can use Druidic to leave hidden messages, You and others who know Druidic automatically spot such a message, Others spot the message's presence with a successful DC 15 Intelligence (Investigation) check but cant decipher it without magic.",
+        "I know Druidic, the secret language of druids. I can leave hidden messages in it. I always have Speak with Animals prepared.",
       ]),
     },
     "primal order": {
@@ -1830,7 +1820,7 @@ legacyClassRefactor("druid", {
         addMod: [
           {type: "skill", field: "Arcana", mod: "Wis", text: "I can add my Wisdom modifier to Arcana rolls."},
         ],
-        description: "You know one extra cantrip from the Druid spell list. In addition, your mystical connection to nature gives you a bonus to your Intelligence (Arcana) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        description: "I know one extra cantrip from the Druid spell list. I add my wisdom modifier to my Intelligence (Arcana) checks.",
       },
       "magician (nature)": {
         name: "Magician (Nature)",
@@ -1843,16 +1833,16 @@ legacyClassRefactor("druid", {
         addMod: [
           {type: "skill", field: "Nature", mod: "Wis", text: "I can add my Wisdom modifier to Nature rolls."},
         ],
-        description: "You know one extra cantrip from the Druid spell list. In addition, your mystical connection to nature gives you a bonus to your Intelligence (Nature) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        description: "I know one extra cantrip from the Druid spell list. I add my wisdom modifier to my Intelligence (Nature) checks.",
       },
       "warden": {
         name: "Warden",
         armorProfs: [false, false, true, false],
         weaponProfs: [false, true],
-        description: "Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor."
+        description: "Trained for battle, I gain proficiency with Martial weapons and training with Heavy armor."
       },
       description: desc([
-        "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "Use the 'Choose Feature' button to select a Primal Order option.",
       ]),
     },
     "wild shape": {
@@ -1870,18 +1860,10 @@ legacyClassRefactor("druid", {
         return "CR " + cr + restr + "; " + hr + (restr.length ? " h" : " hours");
       }),
       description: desc([
-        "The power of nature allows you to assume the form of an animal. As a Bonus Action, you shape-shift into a Beast form that you have learned from this feature (see 'Known Forms' below). You stay in that form for a number of hours equal to half your druid level or until you use Wild Shape again, have the Incapacitated condition, or die. You can also leave the form early as a Bonus Action.",
-        "Number of Use : You can use Wild Shape twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.",
-        "You gain additional uses when you reach certain Druid levels, as shown in the Wild Shapes column of the Druid Features table.",
-        "Known Forms : You know four Beast forms for this feature, chosen from among Beast stat blocks that have a maximum Challenge Rating of 1/4 and that lack a Fly Speed (see appendix B for stat block options). The Rat, Riding Horse, Spider, and Wolf are recommended. Whenever you finish a Long Rest you can replace one of your known forms with another eligible form.",
-        "When you reach certain Druid levels, your number of known forms and the maximum Challenge Rating for these forms increases, as shown in the Beast Shapes table. In addition, starting at level 8, you can adopt a form that has a Fly Speed.",
-        "When choosing known forms you may look in the Monster Manual or elsewhere for eligible Beasts if the Dungeon Master permits you to do so.",
-        "Rules While Shape-Shifted : While in a form, you retain your personality, memories, and ability to speak, and the following rules apply.",
-        "Temporary Hit Points : When you assume a Wild Shape form, you gain a number of Temporary Hit Points equal to your Druid level.",
-        "Game Statistics : Your game statistics are replaced by the Beast's stat block, but you retain your creature type, Hit Points, Hit Point Dice, Intelligence, Wisdom, and Charisma scores, class features, languages, and feats. You also retain your skill and saving throw proficiencies and use your Proficiency Bonus for them. In addition to gaining the proficiencies of the creature. If a skill or saving throw modifier in the Beast's stat block is higher than yours, use the one in the stat block.",
-        "No Spellcasting : You can't cast spells, but shape-shifting doesn't break your Concentration or otherwise interfere wit a spell you've already cast.",
-        "Objects : Your ability to handle objects is determined by the form's limbs rather than your own. In addition, you choose whether your equipment falls in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it's practical for the new form to wear a piece of equipment based on the creature's size and shape. Your equipment doesn't change size or shape to match the new form, and any equipment that the new form can't wear must either fall to the ground or merge with he form. Equipment that merges with the form has no effect while you're in that form.",
-      ]),
+        "Wild Shape allows me to transform into known beast forms as a bonus action, lasting for hours equal to half my druid level.", 
+        "Regain 1 on a short rest or all on a long rest. Initially, I know 4 forms (CR 1/4 or lower, no flying). While transformed, I gain temp HP equal to my druid level, use the beast's physical stats and proficiencies, but retain my mental stats, class features, and languages.", 
+        "I can't cast spells but maintain concentration. Equipment falls, merges, or is worn. The form ends if I'm incapacitated or die."
+      ])
     },
     "wild companion": {
       name: "Wild Companion",
@@ -1894,8 +1876,8 @@ legacyClassRefactor("druid", {
         times: 1,
       }],
       description: desc([
-        "You can summon a nature spirit that assumes an animal form to aid you. As a Magic action, you can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell without Material components.",
-        "When you cast the spell in this way, the familiar is Fey and disappears when you finish a Long Rest.",
+        "As a Magic action, I can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell without Material components.",
+        "When I cast the spell in this way, the familiar is Fey and disappears when I finish a Long Rest.",
       ]),
     },
     "subclassfeature3": {
@@ -1910,12 +1892,10 @@ legacyClassRefactor("druid", {
       name: "Wild Resurgence",
       source: [["PHB2024", 81]],
       minlevel: 5,
-      limfeaname: "Exchange Wild Shape",
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "Once on each of your turns, if you have no uses of Wild Shape left, you can give yourself one use by expending a spell slot (no action required).",
-        "In addition, you can expend one use of your Wild Shape (no action required) to give yourself a level 1 spell slot, but you can't do so again until you finish a Long Rest.",
+        "Once per turn, I can regain a Wild Shape use by expending a spell slot. I can also exchange a Wild Shape use for a level 1 spell slot once per long rest.",
       ]),
     },
     "elemental fury": {
@@ -1926,7 +1906,7 @@ legacyClassRefactor("druid", {
       "primal strike": {
         name: "Primal Strike",
         description: desc([
-          "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 1d8 Cold, Fire, Lightning, or Thunder damage (choose when you hit).",
+          "Once on each of my turns when I hit a creature with an attack roll using a weapon, I can cause the target to take an extra 1d8 Cold, Fire, Lightning, or Thunder damage (choose on hit).",
         ]),
       },
       "potent spellcasting": {
@@ -1949,11 +1929,11 @@ legacyClassRefactor("druid", {
           ]
         },
         description: desc([
-          "Add your Wisdom modifier to the damage you deal with any Druid cantrip.",
+          "I add my Wisdom modifier to the damage I deal with any Druid cantrip.",
         ]),
       },
       description: desc([
-        "The might of the elements flows through you. You gain one of the following options of your choice.",
+        "The might of the elements flows through me. Use the 'Choose Feature' button to select an Elemental Fury option.",
       ]),
     },
     "improved elemental fury": {
@@ -1964,17 +1944,17 @@ legacyClassRefactor("druid", {
       "primal strike": {
         name: "Primal Strike",
         description: desc([
-          "The extra damage of your Primal Strikes increases to 2d8",
+          "The extra damage of my Primal Strikes increases to 2d8",
         ]),
       },
       "potent spellcasting": {
         name: "Potent Spellcasting",
         description: desc([
-          "When you cast a Druid cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
+          "When I cast a Druid cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
         ]),
       },
       description: desc([
-        "The option you chose for Elemental Fury grow more powerful.",
+        "The option I chose for Elemental Fury grow more powerful. Use the 'Choose Feature' button to select the option that matches the option you choose at 7th level.",
       ]),
     },
     "beast spells": {
@@ -1982,7 +1962,7 @@ legacyClassRefactor("druid", {
       source: [["PHB2024", 81]],
       minlevel: 18,
       description: desc([
-        "While using Wild Shape, you can cast spells in Beast form, except any spell that has a Material component with a cost specified or that consumes its Material component.",
+        "I can cast spells while in Wild Shape, except those with costly/consumed material components",
       ]),
     },
     "epic boon": {
@@ -1990,21 +1970,17 @@ legacyClassRefactor("druid", {
       source: [["PHB2024", 81]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Dimensional Travel is recommended.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "archdruid": {
       name: "Archdruid",
       source: [["PHB2024", 82]],
       minlevel: 20,
-      limfeaname: "Nature Magician",
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "The vitality of nature constantly blossoms within you, granting you the following benefits.",
-        "Evergreen Wild Shape : Whenever you roll Initiative and have no uses of Wild Shape left, you regain one expended use of it.",
-        "Nature Magician : You can convert use of Wild Shape into a spell slot (no action required). Choose a number o your unexpended uses of Wild Shape and convert them into a single spell slot, with each use contributing 2 spell levels. For example, if you convert two uses of Wild Shape, you produce a level 4 spell slot. Once you use this benefit, you can't do so again until you finish a Long Rest.",
-        "Longevity : The primal magic that you wield causes you to age more slowly. For every ten years that pass, your body ages only one year.",
+        "I regain a Wild Shape use when rolling initiative if I have none left. Once per long rest I can convert Wild Shape uses into a spell slot. 2 spell slot level/wild shape. I age more slowly."
       ]),
     },
   },
@@ -2024,32 +2000,32 @@ legacySubClassRefactor("druid", "land", {
         name: "Arid Land",
         spellcastingExtra: ["blur", "burning hands", "fire bolt", "fireball", "blight", "wall of stone"],
         description: desc([
-          "Whenever you finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type, you have the spells listed for your Druid level and lower prepared.",
+          "Whenever I finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. I have certain spells prepared based on the land chosen.",
         ]),
       },
       "polar land": {
         name: "Polar Land",
         spellcastingExtra: ["fog cloud", "hold person", "ray of frost", "sleet storm", "ice storm", "cone of cold"],
         description: desc([
-          "Whenever you finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type, you have the spells listed for your Druid level and lower prepared.",
+          "Whenever I finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. I have certain spells prepared based on the land chosen.",
         ]),
       },
       "temperate land": {
         name: "Temperate Land",
         spellcastingExtra: ["misty step", "shocking grasp", "sleep", "lightning bolt", "freedom of movement", "tree stride"],
         description: desc([
-          "Whenever you finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type, you have the spells listed for your Druid level and lower prepared.",
+          "Whenever I finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. I have certain spells prepared based on the land chosen.",
         ]),
       },
       "tropical land": {
         name: "Tropical Land",
         spellcastingExtra: ["acid splash", "ray of sickness", "web", "stinking cloud", "polymorph", "insect plague"],
         description: desc([
-          "Whenever you finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type, you have the spells listed for your Druid level and lower prepared.",
+          "Whenever I finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. I have certain spells prepared based on the land chosen.",
         ]),
       },
       description: desc([
-        "Whenever you finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type, you have the spells listed for your Druid level and lower prepared.",
+        "Whenever I finish a Long Rest, choose one type of land; arid, polar, temperate, or tropical. I have certain spells prepared based on the land chosen.",
       ]),
     },
     "subclassfeature3.1": {
@@ -2057,9 +2033,9 @@ legacySubClassRefactor("druid", "land", {
       source: [["PHB2024", 85]],
       minlevel: 3,
       action: "action",
+	  additional: ["", "", "", "2d6", "2d6", "2d6", "2d6", "2d6", "2d6", "3d6", "3d6", "3d6", "3d6", "4d6", "4d6", "4d6", "4d6", "4d6", "4d6", "4d6"],
       description: desc([
-        "As a Magic action, you can expend a use of your Wild Shape and choose a point within 60 feet of yourself. Vitality giving flowers and life-draining thorns appear for a moment in a 10-foot radius Sphere centered on that point. Each creature of your choice in the Sphere must make a Constitution saving throw against your spell save DC, taking 2d6 Necrotic damage on a failed save or half as much damage on a successful one. One creature of your choice in that area regains 2d6 Hit Points.",
-        "The damage and Healing increases by 1d6 when you reach Druid levels 10 (3d6) and 14 (4d6).",
+        "As a Magic action, expend a Wild Shape use to create a 10-foot sphere within 60 feet. Chosen creatures in the sphere make a Constitution save against my spell DC, taking a number of d6s Necrotic damage (half on success). One creature in the area regains, the same number of d6s, HP.",
       ]),
     },
     "subclassfeature6": {
@@ -2069,8 +2045,7 @@ legacySubClassRefactor("druid", "land", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "You can cast one of the level 1+ spells that you have prepared from your circle spells feature without expending a spell slot, and you must finish a Long Rest before you do so again.",
-        "In addition, when you finish a Short Rest, you can expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your Druid level (round up), and none of them ca be level 6+. For example, if you're a level 6 Druid, you can recover up to three levels worth of spell slots. You can recover a level 3 spell slot, a level 2 and a level 1 spell slot, or three level 1 spell slots. Once you recover spell slots with this feature, you can't do so again until you finish a Long Rest.",
+        "Once per long rest, cast a prepared circle spell (level 1+) without using a spell slot. After a short rest, recover expended spell slots totaling up to half my druid level (rounded up, max 5th level)."
       ]),
     },
     "subclassfeature10": {
@@ -2085,32 +2060,32 @@ legacySubClassRefactor("druid", "land", {
         name: "Arid Land",
         dmgres: "Fire",
         description: desc([
-          "You are immune to the Poisoned condition, and you have Resistance to a damage type associated with your current land choice in the Circle Spells feature, as shown in the Nature's Ward table.[Fire]",
+          "I am immune to the Poisoned condition, and have damage resistance associated with my current land choice.[Fire]",
         ]),
       },
       "polar land": {
         name: "Polar Land",
         dmgres: "Cold",
         description: desc([
-          "You are immune to the Poisoned condition, and you have Resistance to a damage type associated with your current land choice in the Circle Spells feature, as shown in the Nature's Ward table.[Cold]",
+          "I am immune to the Poisoned condition, and have damage resistance associated with my current land choice.[Cold]",
         ]),
       },
       "temperate land": {
         name: "Temperate Land",
         dmgres: "Lightning",
         description: desc([
-          "You are immune to the Poisoned condition, and you have Resistance to a damage type associated with your current land choice in the Circle Spells feature, as shown in the Nature's Ward table.[Lightning]",
+          "I am immune to the Poisoned condition, and have damage resistance associated with my current land choice.[Lightning]",
         ]),
       },
       "tropical land": {
         name: "Tropical Land",
         dmgres: "Poison",
         description: desc([
-          "You are immune to the Poisoned condition, and you have Resistance to a damage type associated with your current land choice in the Circle Spells feature, as shown in the Nature's Ward table.[Poison]",
+          "I am immune to the Poisoned condition, and have damage resistance associated with my current land choice.[Poison]",
         ]),
       },
       description: desc([
-        "You are immune to the Poisoned condition, and you have Resistance to a damage type associated with your current land choice in the Circle Spells feature, as shown in the Nature's Ward table.",
+        "I am immune to the Poisoned condition, and have damage resistance associated with my current land choice.",
       ]),
     },
     "subclassfeature14": {
@@ -2119,8 +2094,7 @@ legacySubClassRefactor("druid", "land", {
       minlevel: 14,
       action: [["action", "Summon Sanctuary"], ["bonus action", "Move Sanctuary"]],
       description: desc([
-        "As a Magic action, you can expend a use of your Wild Shape and cause spectral trees and vines to appear in a 15-foo Cube on the ground within 120 feet of yourself. They last for 1 minute or until you have the Incapacitated condition or die. You and your allies have Half Cover while in that area and your allies gain the current Resistance of your Nature's Ward while there.",
-        "As a Bonus Action, you can move the Cube up to 60 feet to ground within 120 feet of yourself.",
+        "As a Magic action, I can use my Wild Shape to create a 15-foot cube within 120 feet. It lasts for 1 minute or until I'm incapacitated or die. In this area, my allies and I have Half Cover, and my allies gain the current Resistance from my Nature's Ward. As a Bonus Action, move the cube up to 60 feet within 120 feet",
       ]),
     },
   },
@@ -2136,11 +2110,9 @@ legacySubClassRefactor("druid", "moon", {
       name: "Circle Forms",
       source: [["PHB2024", 86]],
       minlevel: 3,
+	  additional: ["", "", "CR 1, 9 Temp HP", "CR 1, 12 Temp HP", "CR 1, 15 Temp HP", "CR 2, 18 Temp HP", "CR 2, 21 Temp HP", "CR 2, 24 Temp HP", "CR 3, 27 Temp HP", "CR 3, 30 Temp HP", "CR 3, 33 Temp HP", "CR 4, 36 Temp HP", "CR 4, 39 Temp HP", "CR 4, 42 Temp HP", "CR 5, 45 Temp HP", "CR 5, 48 Temp HP", "CR 5, 51 Temp HP", "CR 6, 54 Temp HP", "CR 6, 57 Temp HP", "CR 6, 60 Temp HP"],
       description: desc([
-        "You can channel lunar magic when you assume a Wild Shape form, granting you the benefits below",
-        "Challenge Rating : The maximum Challenge Rating for the forms equals your Druid level divined by 3 (round down).",
-        "Armor Class : Until you leave the form, your AC equals 13 plus your Wisdom modifier if that total is higher than the Beast's AC.",
-        "Temporary Hit Points : You gain a number of Temporary Hit Points equal to three times your Druid level.",
+        "In Wild Shape: My maximum form's Challenge Rating is my Druid level divided by 3. My AC becomes greatest of 13 plus my Wisdom modifier or the Beast's AC. I also gain Temporary Hit Points equal to three times my Druid level.",
       ]),
     },
     "subclassfeature6": {
@@ -2148,9 +2120,7 @@ legacySubClassRefactor("druid", "moon", {
       source: [["PHB2024", 87]],
       minlevel: 6,
       description: desc([
-        "While in a Wild Shape form, you gain the following benefits.",
-        "Lunar Radiance : Each of your attacks in a Wild Shape form can deal its normal damage type or Radiance. You make this choice each time you hit with those attacks.",
-        "Increased Toughness : You can add your Wisdom modifier to your Constitution saving throws.",
+        "In Wild Shape, I can choose to deal Radiant damage with my attacks. I also add my Wisdom modifier to Constitution saving throws.",
       ]),
     },
     "subclassfeature10": {
@@ -2161,19 +2131,18 @@ legacySubClassRefactor("druid", "moon", {
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
       recovery: "long rest",
       description: desc([
-        "You magically transport yourself, reappearing amid a burst of moonlight. As a Bonus Action, you teleport up to 30 feet to an unoccupied space you can see, and you have Advantage on the next attack roll you make before the end of this turn.",
-        "You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest. You can also regain uses by expending a level 2+ spell slot for each use you want to restore (no action required).",
-      ]),
+        "As a Bonus Action, I can teleport up to 30 feet and gain Advantage on my next attack roll this turn.", 
+		"I can do this my Wisdom modifier per Long Rest or by expending a level 2+ spell slot.",
+	  ]),
     },
     "subclassfeature14": {
       name: "Lunar Form",
       source: [["PHB2024", 87]],
       minlevel: 14,
       description: desc([
-        "The power of the moon suffuses you, granting you the following benefits.",
-        "Improved Lunar Radiance : Once per turn, you can deal an extra 2d10 Radiant damage to a target you hit with a Wild Shape form's attack.",
-        "Shared Moonlight : Whenever you use Moonlight Step, you can also teleport one willing creature. That creature must be within 10 feet of you, and you teleport it to an unoccupied space you can see within 10 feet of your destination space."
-      ]),
+        "Once per turn, I can deal an extra 2d10 Radiant damage with a Wild Shape attack.",
+		"When using Moonlight Step, I can also teleport one willing creature within 10 feet to a space within 10 feet of my destination.",
+	  ]),
     },
   },
 });
@@ -2189,8 +2158,8 @@ AddSubClass("druid", "sea", {
       minlevel: 3,
       action: "bonus action",
       description: desc([
-        "As a Bonus Action, you can expend a use of your Wild Shape to manifest a 5-foot Emanation that takes the form of ocean spray that surrounds you for 10 minutes. It ends early if you dismiss it (no action required). manifest it again, or have the Incapacitated condition.",
-        "When you manifest the Emanation and as a Bonus Action on your subsequent turns, you can choose another creature you can see in the Emanation. The target must succeed on a Constitution saving throw against your spell save DC or take Cold damage and if the creature is Large or smaller, be pushed up to 15 feet way from you. To determine this damage roll a number of d6s equal to your Wisdom modifier (minimum of one die).",
+        "As a Bonus Action, I can use my Wild Shape to create a 5-foot ocean spray around me for 10 minutes.", 
+		"Each turn, I can target a creature in the spray, forcing a Constitution save or dealing WIS * d6 Cold damage and pushing it 15 feet away.",
       ]),
     },
     "subclassfeature6": {
@@ -2199,27 +2168,23 @@ AddSubClass("druid", "sea", {
       minlevel: 6,
       speed: {swim: {spd: "walk", enc: "walk"}},
       description: desc([
-        "The size of the Emanation created by your Wrath of the Sea increases to 10 feet.",
-        "In addition, you gain a Swim Speed equal to your Speed.",
-      ]),
+        "My ocean spray increases to a 10-foot radius, and I gain a Swim Speed equal to my walking Speed.",      
+	  ]),
     },
     "subclassfeature10": {
       name: "Stormborn",
       source: [["PHB2024", 87]],
       minlevel: 10,
       description: desc([
-        "Your Wrath of the Sea confers two more benefits while active, as detailed below.",
-        "Flight : You gain a Fly Speed equal to your Speed",
-        "Resistance : You have Resistance to Cold, Lightning, and Thunder damage.",
-      ]),
+        "While my ocean spray is active, I gain a Fly Speed equal to my walking Speed and Resistance to Cold, Lightning, and Thunder damage",      
+	  ]),
     },
     "subclassfeature14": {
       name: "Oceanic Gift",
       source: [["PHB2024", 88]],
       minlevel: 14,
       description: desc([
-        "Instead of manifesting the Emanation of Wrath of the Sea around yourself, you can manifest it around one willing creature within 60 feet of yourself. That creature gains all benefits of the Emanation and uses your spell save DC and Wisdom modifier for it.",
-        "In addition, you can manifest the Emanation around both the other creature and yourself if you expend two uses of your Wild Shape instead of one when manifesting it.",
+        "I can manifest my ocean spray around another willing creature within 60 feet. By expending two uses of Wild Shape, I can cover both myself and the other creature with the spray.",
       ]),
     },
   },
@@ -2229,15 +2194,14 @@ legacySubClassRefactor("druid", "stars", {
   subname: "Circle of Stars",
   source: [["PHB2024", 88]],
   replaces: "circle of the stars",
+  spellcastingExtra: ["guidance", "guiding bolt"],
   features: {
     "subclassfeature3": {
       name: "Star Map",
       source: [["PHB2024", 88]],
       minlevel: 3,
       description: desc([
-        "You've created a star chart as part of your heavenly studies. It is a Tiny object, and you can use it as a Spellcasting Focus for your Druid spells. You determine its form by rolling on the Star Map table or by choosing one.",
-        "When holding the map, you have the Guidance and Guiding Bolt spells prepared, and you can cast Guiding Bolt without expending a spell slot. You can cast it in that way a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "If you lose the map, you can perform a 1-hour ceremony to magically create a replacement. This ceremony can be performed during a Short or Long Rest, and it destroys the previous map.",
+        "I create a star map as my Spellcasting Focus. With it, I have Guidance and Guiding Bolt prepared. I can cast Guiding Bolt without a spell slot, up to my Wisdom modifier times per Long Rest. If lost, I can recreate the map during a Short or Long Rest.",
       ]),
     },
     "subclassfeature3.1": {
@@ -2247,35 +2211,32 @@ legacySubClassRefactor("druid", "stars", {
       toNotesPage: [{
         name: "Starry Forms",
         note: [
-          "Archer : A constellation of an archer appears on you. When you activate this form and as a Bonus Action on your subsequent turns while it lasts, you can make a ranged spell attack, hurling a luminous arrow that targets one creature within 60 feet of yourself. On a hit, the attack deals Radiant damage equal to 1d8 plus your Wisdom modifier.",
-          "Chalice : A constellation of a life-giving goblet appears on you. Whenever you cast a spell using a spell slot that restores Hit Points to a creature, you or another creature within 30 feet of you can regain Hit Points equal to 1d8 plus your Wisdom modifier.",
-          "Dragon : A constellation of a wise dragon appears on you. When you make an Intelligence or a Wisdom check or a Constitution saving throw to maintain Concentration, you can treat a roll of 9 or lower on the d20 as a 10.",
+          "Archer : A constellation of an archer appears on me. When I activate this form and as a Bonus Action on my subsequent turns while it lasts, I can make a ranged spell attack, hurling a luminous arrow that targets one creature within 60 feet. On a hit, the attack deals Radiant damage equal to 1d8 + 1d8(at level 10) plus my Wisdom modifier.",
+          "Chalice : A constellation of a life-giving goblet appears on me. Whenever I cast a spell using a spell slot that restores Hit Points to a creature, I or another creature within 30 feet of me can regain Hit Points equal to 1d8 + 1d8(at level 10) plus my Wisdom modifier.",
+          "Dragon : A constellation of a wise dragon appears on me. When I make an Intelligence or a Wisdom check or a Constitution saving throw to maintain Concentration, I can treat a roll of 9 or lower on the d20 as a 10. At level 10, I gain a Fly Speed of 20 feet.",
         ],
       }],
       description: desc([
-        "As a Bonus Action, you can expend a use of your Wild Shape feature to take on a starry form rather than shape-shifting.",
-        "While in your starry form, you retain your game statistics, but your body becomes luminous, your joints glimmer like stars, and glowing lines connect them as on a star chart. This form sheds Bright Light in a 10-foot radius and Dim Light in an additional 10 feet. This form lasts for 10 minutes. It ends earlier if you dismiss it (no action required), have the Incapacitated condition, or use this feature again.",
-        "Whenever you assume your starry form, choose which of the following constellations glimmer on your body, your choice gives you certain benefits while in this form.",
+        "As a Bonus Action, I can use Wild Shape to assume a starry form for 10 minutes. I choose one constellation (see notes page) for options."
       ]),
     },
     "subclassfeature6": {
       name: "Cosmic Omen",
       source: [["PHB2024", 89]],
       minlevel: 6,
+	  usages: "Wisdom modifier per ",
+	  usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+	  recovery: "long rest",
       description: desc([
-        "Whenever you finish a Long Rest, you can consult your Star Map for omens and roll a die. Until you finish your next Long Rest, you gain access to a special Reaction based on whether you roll an even or an odd number on the die.",
-        "Weal (Even) : Whenever a creature you can see within 30 feet of you is about to make a D20 Test, you can take a Reaction to roll 1d6 and add the number rolled to the total.",
-        "Woe (Odd) : Whenever a creature you can see within 30 feet of you is about to make a D20 Test, you can take a Reaction to roll 1d6 and subtract the number rolled from the total.",
-        "You can use this Reaction a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-      ]),
+        "After a long rest, I roll a die for omens. If even, I can add 1d6 to an ally's roll; if odd, subtract 1d6 from an enemy's roll. I can use this Reaction equal to my Wisdom modifier per Long Rest.",      
+	  ]),
     },
     "subclassfeature10": {
       name: "Twinkling Constellations",
       source: [["PHB2024", 89]],
       minlevel: 10,
       description: desc([
-        "The constellations of your Starry Form improve. The 1d8 of the Archer and the Chalice becomes 2d8, and while the dragon is active, you have a Fly speed of 20 feet and can hover.",
-        "Moreover, at the start of each of your turns while in your Starry Form, you can change which constellation glimmers on your body.",
+        "My starry form improves, see notes page for improvements. I can also change constellations at the start of each turn.",
       ]),
     },
     "subclassfeature14": {
@@ -2284,7 +2245,7 @@ legacySubClassRefactor("druid", "stars", {
       minlevel: 14,
       dmgres: ["Bludgeoning", "Piercing", "Slashing"],
       description: desc([
-        "While in your Starry Form, you become partially incorporeal, giving you Resistance to Bludgeoning, Piercing, and Slashing damage.",
+        "while in starry form, I gain Resistance to Bludgeoning, Piercing, and Slashing damage.",
       ]),
     },
   },
@@ -2711,7 +2672,7 @@ legacyClassRefactor("fighter", {
       source: [["PHB2024", 92]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice for which I qualify",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "three extra attacks": {
@@ -3440,7 +3401,7 @@ legacyClassRefactor("monk", {
       source: [["PHB2024", 103]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of your choice.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "body and mind": {
@@ -4202,7 +4163,7 @@ legacyClassRefactor("paladin", {
 		  source: [["PHB2024", 111]],
 		  minlevel: 19,
 		  description: desc([
-			"I gain an Epic Boon feat or another feat of your choice.",
+			"I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
 		  ]),
 		},
 	},
@@ -4443,796 +4404,801 @@ legacySubClassRefactor("paladin", "Vengeance", {
   },
 });
 legacyClassRefactor("ranger", {
-  regExpSearch: /ranger/i,
-  name: "Ranger",
-  source: [["PHB2024", 119]],
-  primaryAbility: "Dexterity and Wisdom",
-  prereqs: "Dexterity 13 or Wisdom 13",
-  improvements: [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
-  die: 10,
-  saves: ["Str", "Dex"],
-  skillstxt: {
-    primary: "Choose 3: Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival.",
-    secondary: "Choose 1: Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival.",
-  },
-  armorProfs: {
-    primary: [true, true, false, true],
-    secondary: [true, true, false, true],
-  },
-  weaponProfs: {
-    primary: [true, true],
-    secondary: [false, true],
-  },
-  equipment: "Ranger starting equipment:" +
-    "\n \u2022 Studded Leather Armor;" +
-    "\n \u2022 Scimitar;" +
-    "\n \u2022 Shortsword;" +
-    "\n \u2022 Longbow and Quiver of 20 Arrows;" +
-    "\n \u2022 Druidic Focus (sprig of mistletoe);" +
-    "\n \u2022 Explorer's Pack and 7 gp;" +
-    "\n\nAlternatively, choose 150 gp worth of starting equipment instead of the class's starting equipment.",
-  subclasses: ["Ranger Subclass", []],
-  attacks: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  spellcastingFactor: 2,
-  spellcastingAbility: 5,
-  spellcastingKnown: {
-    spells: "list",
-    prepared: true,
-  },
-  spellcastingFactorRoundupMulti: true,
-  spellcastingTable: [[0, 0, 0, 0, 0, 0, 0, 0, 0]].concat(levels.map(function (n) {
-    return defaultSpellTable[Math.ceil(n / 2)];
-  })),
-  spellcastingExtra : ["hunter's mark"],
-  features: {
-    "favored enemy": {
-      name: "Favored Enemy",
-      source: [["PHB2024", 119]],
-	  minlevel : 1,
-      usages: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
-      recovery: "long rest",
-      altResource: "SS 1+",
-      description: desc([
-        "You always have the Hunter's Mark spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.",
-        "The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.",
-      ]),
-    },
-    "spellcasting": {
-      name: "Spellcasting",
-      source: [["PHB2024", 119]],
-	  minlevel : 1,
-      additional: levels.map(function (n, idx) {
-        var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
-        return splls + " spells prepared";
-      }),
-      calcChanges: {
-        spellCalc: [
-          function (type, spellcasters, ability) {
-            if (type === "prepare" && spellcasters.indexOf("ranger") !== -1) {
-              var lvl = classes.known.ranger.level;
-              var sArr = [0, 2, 3, 5, 5, 7, 6, 8, 7, 10, 9, 11, 10, 12, 11, 13, 12, 15, 14, 16, 15];
-              return sArr[lvl] - Math.ceil(lvl / 2) - Number(What("Wis Mod"));
-            }
-          }
-        ]
-      },
-      description: desc([
-        "You have learned to channel the magical essence of nature to cast spells. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Ranger spells, which appear in the Ranger spell list later in the class's description.",
-        "Spell Slots : The Ranger Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose two level 1 Ranger spells. Heroism and Searing Smite are recommended.",
-        "The number of spells on your list increases as you gain Ranger levels, as shown in the Prepared Spells column of the Ranger Features table. Whenever that number increases, choose additional Ranger spells until the number of spells on your list matches the number in the Ranger Features table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 5 Ranger, your list of prepared spells can include six Ranger spells of level 1 or 2 in any combination.",
-        "If another Ranger feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Ranger spells for you.",
-        "Changing your Prepared Spells : Whenever you finish a Long Rest, you can replace one spell on you list with another Ranger spell for which you have spell slots.",
-        "Spellcasting Ability : Wisdom is your spellcasting ability for your Ranger spells.",
-        "Spellcasting Focus : You can use a Druidic Focus as a spellcasting focus for your Ranger spells.",
-      ]),
-    },
-    "weapon mastery": {
-      name: "Weapon Mastery",
-      source: [["PHB2024", 120]],
-      minlevel: 1,
-      description: desc([
-        "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.",
-        "Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.",
-      ]),
-      additional: ["2 Weapon Masteries"],
-      extraname: "Weapon Mastery",
-      extrachoices: ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Dart", "Light Crossbow", "Shortbow", "Sling", "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "Warhammer", "War Pick", "Whip", "Blowgun", "Hand Crossbow", "Heavy Crossbow", "Longbow", "Musket", "Pistol"],
-      extraTimes: 2,
-      "club": {
-        name: "Club",
-        description: desc([
-          "You gain access to the Club's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "dagger": {
-        name: "Dagger",
-        description: desc([
-          "You gain access to the Dagger's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "greatclub": {
-        name: "Greatclub",
-        description: desc([
-          "You gain access to the Greatclub's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "handaxe": {
-        name: "Handaxe",
-        description: desc([
-          "You gain access to the Handaxe's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "javelin": {
-        name: "Javelin",
-        description: desc([
-          "You gain access to the Javelin's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "light hammer": {
-        name: "Light Hammer",
-        description: desc([
-          "You gain access to the Light Hammer's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "mace": {
-        name: "Mace",
-        description: desc([
-          "You gain access to the Mace's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "quarterstaff": {
-        name: "Quarterstaff",
-        description: desc([
-          "You gain access to the Quarterstaff's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "sickle": {
-        name: "Sickle",
-        description: desc([
-          "You gain access to the Sickle's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "spear": {
-        name: "Spear",
-        description: desc([
-          "You gain access to the Spear's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "dart": {
-        name: "Dart",
-        description: desc([
-          "You gain access to the Dart's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "light crossbow": {
-        name: "Light Crossbow",
-        description: desc([
-          "You gain access to the Light Crossbow's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "shortbow": {
-        name: "Shortbow",
-        description: desc([
-          "You gain access to the Shortbow's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "sling": {
-        name: "Sling",
-        description: desc([
-          "You gain access to the Sling's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "battleaxe": {
-        name: "Battleaxe",
-        description: desc([
-          "You gain access to the Battleaxe's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "flail": {
-        name: "Flail",
-        description: desc([
-          "You gain access to the Flail's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "glaive": {
-        name: "Glaive",
-        description: desc([
-          "You gain access to the Glaive's 'Graze' Mastery feature",
-          "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
-        ]),
-      },
-      "greataxe": {
-        name: "Greataxe",
-        description: desc([
-          "You gain access to the Greataxe's 'Cleave' Mastery feature",
-          "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "greatsword": {
-        name: "Greatsword",
-        description: desc([
-          "You gain access to the Greatsword's 'Graze' Mastery feature",
-          "Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
-        ]),
-      },
-      "halberd": {
-        name: "Halberd",
-        description: desc([
-          "You gain access to the Halberd's 'Cleave' Mastery feature",
-          "Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "lance": {
-        name: "Lance",
-        description: desc([
-          "You gain access to the Lance's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "longsword": {
-        name: "Longsword",
-        description: desc([
-          "You gain access to the Longsword's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "maul": {
-        name: "Maul",
-        description: desc([
-          "You gain access to the Maul's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "morningstar": {
-        name: "Morningstar",
-        description: desc([
-          "You gain access to the Morningstar's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "pike": {
-        name: "Pike",
-        description: desc([
-          "You gain access to the Pike's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "rapier": {
-        name: "Rapier",
-        description: desc([
-          "You gain access to the Rapier's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "scimitar": {
-        name: "Scimitar",
-        description: desc([
-          "You gain access to the Scimitar's 'Nick' Mastery feature",
-          "Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
-        ]),
-      },
-      "shortsword": {
-        name: "Shortsword",
-        description: desc([
-          "You gain access to the Shortsword's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "trident": {
-        name: "Trident",
-        description: desc([
-          "You gain access to the Trident's 'Topple' Mastery feature",
-          "Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
-        ]),
-      },
-      "warhammer": {
-        name: "Warhammer",
-        description: desc([
-          "You gain access to the Warhammer's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "war pick": {
-        name: "War Pick",
-        description: desc([
-          "You gain access to the War Pick's 'Sap' Mastery feature",
-          "Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
-        ]),
-      },
-      "whip": {
-        name: "Whip",
-        description: desc([
-          "You gain access to the Whip's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "blowgun": {
-        name: "Blowgun",
-        description: desc([
-          "You gain access to the Blowgun's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "hand crossbow": {
-        name: "Hand Crossbow",
-        description: desc([
-          "You gain access to the Hand Crossbow's 'Vex' Mastery feature",
-          "Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
-        ]),
-      },
-      "heavy crossbow": {
-        name: "Heavy Crossbow",
-        description: desc([
-          "You gain access to the Heavy Crossbow's 'Push' Mastery feature",
-          "Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
-        ]),
-      },
-      "longbow": {
-        name: "Longbow",
-        description: desc([
-          "You gain access to the Longbow's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "musket": {
-        name: "Musket",
-        description: desc([
-          "You gain access to the Musket's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-      "pistol": {
-        name: "Pistol",
-        description: desc([
-          "You gain access to the Pistol's 'Slow' Mastery feature",
-          "Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
-        ]),
-      },
-    },
-    "expertise": function () {
-      var a = {
-        name: "Deft Explorer",
-        source: [["PHB2024", 120]],
-        minlevel: 2,
-        description: desc("Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills. At 9th-level you gain Expertise in two additional skills you lack Expertise in."),
-        skillstxt: "Expertise with any one skill proficiencies.",
-		languageProfs : 2,
-        additional: levels.map(function (n) {
-          return n < 2 ? "" : "with " + (n < 9 ? 1 : 3) + " skills";
-        }),
-        extraname: "Ranger Expertise",
-        extrachoices: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
-        extraTimes: levels.map(function (n) {
-          return n < 9 ? 1 : 3;
-        })
-      };
-      for (var i = 0; i < a.extrachoices.length; i++) {
-        var attr = a.extrachoices[i].toLowerCase();
-        a[attr] = {
-          name: a.extrachoices[i] + " Expertise",
-          description: "",
-          source: a.source,
-          skills: [[a.extrachoices[i], "only"]],
-          prereqeval: function (v) {
-            return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
-          }
-        };
-      }
-      return a;
-    }(),	
-	"fighting style": {
-      name: "Fighting Style",
-      source: [["PHB2024", 120]],
-      minlevel: 2,
-      description: desc([
-        "You can 'choose' between two features 'Fighting Style' or 'Druidic Warrior'.",
-      ]),
-      choices: ["Fighting Style", "Druidic Warrior"],
-      "fighting style": {
-        name: "Fighting Style",
-        eval: function () {
-          AddString('Feat Note 2', 'Fighting Style feat', '; ');
-        },
-        removeeval: function () {
-          RemoveString('Feat Note 2', 'Fighting Style feat');
-        },
-        description: desc([
-          "You gain a Fighting Style feat of your choice (see chapter 5 for feats).",
-        ]),
-      },
-      "druidic warrior": {
-        name: "Druidic Warrior",
-        spellcastingBonus: [{
-          name: "Druidic Warrior",
-          "class": "druid",
-          level: [0, 0],
-          times: 2,
-        }],
-        description: desc([
-          "You learn two Druid cantrips of your choice (see the Druid class's section for the list of Druid spells). Guidance and Starry Wisp are recommended. The chosen cantrips count as Ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a Ranger level, you can replace one of these cantrips with another Druid cantrip.",
-        ]),
-      },
-    },
-    "subclassfeature3": {
-      name: "Ranger Subclass",
-      source: [["PHB2024", 120]],
-      minlevel: 3,
-      description: desc([
-        "Choose a Ranger subclass and put it in the 'Class' field.",
-      ]),
-    },
-    "extra attack": {
-      name: "Extra Attack",
-      source: [["PHB2024", 120]],
-      minlevel: 5,
-      description: desc([
-        "You can attack twice instead of once whenever you take the Attack Action on your Turn.",
-      ]),
-    },
-    "roving": {
-      name: "Roving",
-      source: [["PHB2024", 121]],
-      minlevel: 6,
-      speed: {
-        walk: "+5",
-        climb: {spd: "walk", enc: "walk"},
-        swim: {spd: "walk", enc: "walk"},
-      },
-      description: desc([
-        "Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.",
-      ]),
-    },
-    "tireless": {
-      name: "Tireless",
-      source: [["PHB2024", 121]],
-      minlevel: 10,
-      action: ["action", "Temporary Hit Points"],
-      usages: "Wisdom modifier per ",
-      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
-      recovery: "long rest",
-      description: desc([
-        "Primal forces now help fuel you on your journeys, granting you the following benefits.",
-        "Temporary Hit Points : As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "Decrease Exhaustion : Whenever you finish a Short Rest, your Exhaustion level if any, decreases by 1.",
-      ]),
-    },
-    "relentless hunter": {
-      name: "Relentless Hunter",
-      source: [["PHB2024", 121]],
-      minlevel: 13,
-      description: desc([
-        "Taking damage can't break your Concentration on Hunter's Mark.",
-      ]),
-    },
-    "nature's veil": {
-      name: "Nature's Veil",
-      source: [["PHB2024", 121]],
-      minlevel: 14,
-      action: "bonus action",
-      usages: "Wisdom modifier per ",
-      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
-      recovery: "long rest",
-      description: desc([
-        "You invoke spirits of nature to magically hide yourself. As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn. You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-      ]),
-    },
-    "precise hunter": {
-      name: "Precise Hunter",
-      source: [["PHB2024", 121]],
-      minlevel: 17,
-      description: desc([
-        "You have Advantage on attack rolls against the creature currently marked by your Hunter's Mark.",
-      ]),
-    },
-    "feral senses": {
-      name: "Feral Senses",
-      source: [["PHB2024", 121]],
-      minlevel: 18,
-      vision: [["Blindsight", 30]],
-      description: desc([
-        "Your connection to the forces of nature grants you Blindsight with a range of 30 feet.",
-      ]),
-    },
-    "epic boon": {
-      name: "Epic Boon",
-      source: [["PHB2024", 121]],
-      minlevel: 19,
-      description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Dimensional Travel is recommended.",
-      ]),
-    },
-    "foe slayer": {
-      name: "Foe Slayer",
-      source: [["PHB2024", 121]],
-      minlevel: 20,
-      description: desc([
-        "The damage die of your Hunter's Mark is a d10 rather than a d6.",
-      ]),
-    },
-  },
+	regExpSearch: /ranger/i,
+	name: "Ranger",
+	source: [["PHB2024", 119]],
+	primaryAbility: "Dexterity and Wisdom",
+	prereqs: "Dexterity 13 or Wisdom 13",
+	improvements: [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+	die: 10,
+	saves: ["Str", "Dex"],
+	skillstxt: {
+		primary: "Choose 3: Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival.",
+		secondary: "Choose 1: Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival.",
+	},
+	armorProfs: {
+		primary: [true, true, false, true],
+		secondary: [true, true, false, true],
+	},
+	weaponProfs: {
+		primary: [true, true],
+		secondary: [false, true],
+	},
+	equipment: "Ranger starting equipment:" +
+		"\n \u2022 Studded Leather Armor;" +
+		"\n \u2022 Scimitar;" +
+		"\n \u2022 Shortsword;" +
+		"\n \u2022 Longbow and Quiver of 20 Arrows;" +
+		"\n \u2022 Druidic Focus (sprig of mistletoe);" +
+		"\n \u2022 Explorer's Pack and 7 gp;" +
+		"\n\nAlternatively, choose 150 gp worth of starting equipment instead of the class's starting equipment.",
+	subclasses: ["Ranger Subclass", []],
+	attacks: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+	spellcastingFactor: 2,
+	spellcastingAbility: 5,
+	spellcastingKnown: {
+		spells: "list",
+		prepared: true,
+	},
+	spellcastingFactorRoundupMulti: true,
+	spellcastingTable: [[0, 0, 0, 0, 0, 0, 0, 0, 0]].concat(levels.map(function (n) {
+		return defaultSpellTable[Math.ceil(n / 2)];
+	})),
+	spellcastingExtra: ["hunter's mark"],
+	features: {
+		"favored enemy": {
+			name: "Favored Enemy",
+			source: [["PHB2024", 119]],
+			minlevel: 1,
+			usages: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+			recovery: "LR",
+			altResource: "SS",
+			description: desc([
+				"I always have the Hunter's Mark spell prepared and can cast it a number of times with out expending a spell slot per long rest.",
+			]),
+		},
+		"spellcasting": {
+			name: "Spellcasting",
+			source: [["PHB2024", 119]],
+			minlevel: 1,
+			additional: levels.map(function (n, idx) {
+				var splls = [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15][idx];
+				return splls + " spells prepared";
+			}),
+			calcChanges: {
+				spellCalc: [
+					function (type, spellcasters, ability) {
+						if (type === "prepare" && spellcasters.indexOf("ranger") !== -1) {
+							var lvl = classes.known.ranger.level;
+							var sArr = [0, 2, 3, 5, 5, 7, 6, 8, 7, 10, 9, 11, 10, 12, 11, 13, 12, 15, 14, 16, 15];
+							return sArr[lvl] - Math.ceil(lvl / 2) - Number(What("Wis Mod"));
+						}
+					}
+				]
+			},
+			description: desc([
+				"I can cast ranger spells using Wis as my casting ability.",
+				"I can use a Druidic Focus as a spellcasting focus.",
+			]),
+		},
+		"weapon mastery": {
+			name: "Weapon Mastery",
+			source: [["PHB2024", 120]],
+			minlevel: 1,
+			description: desc([
+				"I can use the Mastery properties of two Weapon types.",
+				"I can change these Weapon types after a Long Rest.",
+			]),
+			additional: ["2 Weapon Masteries"],
+			extraname: "Weapon Mastery",
+			extrachoices: ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Dart", "Light Crossbow", "Shortbow", "Sling", "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "Warhammer", "War Pick", "Whip", "Blowgun", "Hand Crossbow", "Heavy Crossbow", "Longbow", "Musket", "Pistol"],
+			extraTimes: 2,
+			"club": {
+				name: "Club",
+				description: desc([
+					"You gain access to the Club's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"dagger": {
+				name: "Dagger",
+				description: desc([
+					"You gain access to the Dagger's 'Nick' Mastery feature",
+					"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"greatclub": {
+				name: "Greatclub",
+				description: desc([
+					"You gain access to the Greatclub's 'Push' Mastery feature",
+					"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"handaxe": {
+				name: "Handaxe",
+				description: desc([
+					"You gain access to the Handaxe's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"javelin": {
+				name: "Javelin",
+				description: desc([
+					"You gain access to the Javelin's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"light hammer": {
+				name: "Light Hammer",
+				description: desc([
+					"You gain access to the Light Hammer's 'Nick' Mastery feature",
+					"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"mace": {
+				name: "Mace",
+				description: desc([
+					"You gain access to the Mace's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"quarterstaff": {
+				name: "Quarterstaff",
+				description: desc([
+					"You gain access to the Quarterstaff's 'Topple' Mastery feature",
+					"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"sickle": {
+				name: "Sickle",
+				description: desc([
+					"You gain access to the Sickle's 'Nick' Mastery feature",
+					"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"spear": {
+				name: "Spear",
+				description: desc([
+					"You gain access to the Spear's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"dart": {
+				name: "Dart",
+				description: desc([
+					"You gain access to the Dart's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"light crossbow": {
+				name: "Light Crossbow",
+				description: desc([
+					"You gain access to the Light Crossbow's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"shortbow": {
+				name: "Shortbow",
+				description: desc([
+					"You gain access to the Shortbow's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"sling": {
+				name: "Sling",
+				description: desc([
+					"You gain access to the Sling's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"battleaxe": {
+				name: "Battleaxe",
+				description: desc([
+					"You gain access to the Battleaxe's 'Topple' Mastery feature",
+					"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"flail": {
+				name: "Flail",
+				description: desc([
+					"You gain access to the Flail's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"glaive": {
+				name: "Glaive",
+				description: desc([
+					"You gain access to the Glaive's 'Graze' Mastery feature",
+					"Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
+				]),
+			},
+			"greataxe": {
+				name: "Greataxe",
+				description: desc([
+					"You gain access to the Greataxe's 'Cleave' Mastery feature",
+					"Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
+				]),
+			},
+			"greatsword": {
+				name: "Greatsword",
+				description: desc([
+					"You gain access to the Greatsword's 'Graze' Mastery feature",
+					"Graze : If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.",
+				]),
+			},
+			"halberd": {
+				name: "Halberd",
+				description: desc([
+					"You gain access to the Halberd's 'Cleave' Mastery feature",
+					"Cleave : If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless the modifier is negative. You can make this extra attack only once per turn.",
+				]),
+			},
+			"lance": {
+				name: "Lance",
+				description: desc([
+					"You gain access to the Lance's 'Topple' Mastery feature",
+					"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"longsword": {
+				name: "Longsword",
+				description: desc([
+					"You gain access to the Longsword's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"maul": {
+				name: "Maul",
+				description: desc([
+					"You gain access to the Maul's 'Topple' Mastery feature",
+					"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"morningstar": {
+				name: "Morningstar",
+				description: desc([
+					"You gain access to the Morningstar's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"pike": {
+				name: "Pike",
+				description: desc([
+					"You gain access to the Pike's 'Push' Mastery feature",
+					"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"rapier": {
+				name: "Rapier",
+				description: desc([
+					"You gain access to the Rapier's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"scimitar": {
+				name: "Scimitar",
+				description: desc([
+					"You gain access to the Scimitar's 'Nick' Mastery feature",
+					"Nick : When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.",
+				]),
+			},
+			"shortsword": {
+				name: "Shortsword",
+				description: desc([
+					"You gain access to the Shortsword's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"trident": {
+				name: "Trident",
+				description: desc([
+					"You gain access to the Trident's 'Topple' Mastery feature",
+					"Topple : If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.",
+				]),
+			},
+			"warhammer": {
+				name: "Warhammer",
+				description: desc([
+					"You gain access to the Warhammer's 'Push' Mastery feature",
+					"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"war pick": {
+				name: "War Pick",
+				description: desc([
+					"You gain access to the War Pick's 'Sap' Mastery feature",
+					"Sap : If you hit a creature with this weapon that creature has Disadvantage on its next attack roll before the start of your next turn.",
+				]),
+			},
+			"whip": {
+				name: "Whip",
+				description: desc([
+					"You gain access to the Whip's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"blowgun": {
+				name: "Blowgun",
+				description: desc([
+					"You gain access to the Blowgun's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"hand crossbow": {
+				name: "Hand Crossbow",
+				description: desc([
+					"You gain access to the Hand Crossbow's 'Vex' Mastery feature",
+					"Vex : If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against the creature before the end of your next turn.",
+				]),
+			},
+			"heavy crossbow": {
+				name: "Heavy Crossbow",
+				description: desc([
+					"You gain access to the Heavy Crossbow's 'Push' Mastery feature",
+					"Push : If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.",
+				]),
+			},
+			"longbow": {
+				name: "Longbow",
+				description: desc([
+					"You gain access to the Longbow's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"musket": {
+				name: "Musket",
+				description: desc([
+					"You gain access to the Musket's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+			"pistol": {
+				name: "Pistol",
+				description: desc([
+					"You gain access to the Pistol's 'Slow' Mastery feature",
+					"Slow : If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.",
+				]),
+			},
+		},
+		"expertise": function () {
+			var a = {
+				name: "Deft Explorer",
+				source: [["PHB2024", 120]],
+				minlevel: 2,
+				description: desc("Choose 1 skill proficiency to gain Expertise in that skill."),
+				skillstxt: "Expertise with any one skill proficiency.",
+				languageProfs: 2,
+				additional: levels.map(function (n) {
+					return n < 2 ? "" : "with " + (n < 9 ? 1 : 3) + " skills";
+				}),
+				extraname: "Ranger Expertise",
+				extrachoices: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
+				extraTimes: levels.map(function (n) {
+					return n < 9 ? 1 : 3;
+				})
+			};
+			for (var i = 0; i < a.extrachoices.length; i++) {
+				var attr = a.extrachoices[i].toLowerCase();
+				a[attr] = {
+					name: a.extrachoices[i] + " Expertise",
+					description: "",
+					source: a.source,
+					skills: [[a.extrachoices[i], "only"]],
+					prereqeval: function (v) {
+						return v.skillProfsLC.indexOf(v.choice) === -1 ? false : v.skillExpertiseLC.indexOf(v.choice) === -1 ? true : "markButDisable";
+					}
+				};
+			}
+			return a;
+		}(),
+		"fighting style": {
+			name: "Fighting Style",
+			source: [["PHB2024", 120]],
+			minlevel: 2,
+			description: desc([
+				"I gain either one 'Fighting Style' or 'Druidic Warrior'.",
+			]),
+			choices: ["Fighting Style", "Druidic Warrior"],
+			"fighting style": {
+				name: "Fighting Style",
+				eval: function () {
+					AddString('Feat Note 2', 'Fighting Style feat', '; ');
+				},
+				removeeval: function () {
+					RemoveString('Feat Note 2', 'Fighting Style feat');
+				},
+				description: desc([
+					"I gain a Fighting Style feat of my choice (see chapter 5 for feats).",
+				]),
+			},
+			"druidic warrior": {
+				name: "Druidic Warrior",
+				spellcastingBonus: [{
+					name: "Druidic Warrior",
+					"class": "druid",
+					level: [0, 0],
+					times: 2,
+				}],
+				description: desc([
+					"I learn two Druid cantrips of my choice. Wisdom is my spellcasting ability.",
+					"When I gain a Ranger level, I can replace one of these cantrips with another Druid cantrip.",
+				]),
+			},
+		},
+		"subclassfeature3": {
+			name: "Ranger Subclass",
+			source: [["PHB2024", 120]],
+			minlevel: 3,
+			description: desc([
+				"Choose a Ranger subclass and put it in the 'Class' field.",
+			]),
+		},
+		"roving": {
+			name: "Roving",
+			source: [["PHB2024", 121]],
+			minlevel: 6,
+			speed: {
+				walk: "+5",
+				climb: { spd: "walk", enc: "walk" },
+				swim: { spd: "walk", enc: "walk" },
+			},
+			description: desc([
+				"My Speed increases +10 when not wearing Heavy armor.",
+				"My Climb Speed and Swim Speed equals my Speed.",
+			]),
+		},
+		"tireless": {
+			name: "Tireless",
+			source: [["PHB2024", 121]],
+			minlevel: 10,
+			action: ["action", " Temporary Hit Points"],
+			usages: "Wis mod per ",
+			usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+			recovery: "long rest",
+			description: desc([
+				"Using an action I gain Temp HP equal to 1d8 + Wis mod.",
+				"A Short Rest decreases my Exhaustion level by 1.",
+			]),
+		},
+		"relentless hunter": {
+			name: "Relentless Hunter",
+			source: [["PHB2024", 121]],
+			minlevel: 13,
+			description: desc([
+				"I maintain Hunter's Mark after taking damage.",
+			]),
+		},
+		"nature's veil": {
+			name: "Nature's Veil",
+			source: [["PHB2024", 121]],
+			minlevel: 14,
+			action: "bonus action",
+			usages: "Wis mod per ",
+			usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+			recovery: "long rest",
+			description: desc([
+				"As a Bonus Action, I turn Invisible until the end of my next turn.",
+				"I can do this a number times equal to my Wis mod (min 1).",
+			]),
+		},
+		"precise hunter": {
+			name: "Precise Hunter",
+			source: [["PHB2024", 121]],
+			minlevel: 17,
+			description: desc([
+				"I have Adv on attack rolls on those marked by my Hunter's Mark.",
+			]),
+		},
+		"feral senses": {
+			name: "Feral Senses",
+			source: [["PHB2024", 121]],
+			minlevel: 18,
+			vision: [["Blindsight", 30]],
+			description: desc([
+				"I gain 30 ft Blindsight.",
+			]),
+		},
+		"epic boon": {
+			name: "Epic Boon",
+			source: [["PHB2024", 121]],
+			minlevel: 19,
+			description: desc([
+				"I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
+			]),
+		},
+		"foe slayer": {
+			name: "Foe Slayer",
+			source: [["PHB2024", 121]],
+			minlevel: 20,
+			description: desc([
+				"The damage die of my Hunter's Mark changes to d10.",
+			]),
+		},
+	},
 });
 legacySubClassRefactor("ranger", "beast master", {
-  regExpSearch: /^(?=.*(ranger))(?=.*(beast))(?=.*(master)).*$/i,
-  subname: "Beast Master",
-  source: [["PHB2024", 122]],
-  features: {
-    "subclassfeature3": {
-      name: "Primal Companion",
-      source: [["PHB2024", 122]],
-      minlevel: 3,
-      action: [["action", "Revive Companion"], ["bonus action", "Command Companion"]],
-      description: desc([
-        "You magically summon a primal beast, which draws strength from your bond with nature. Choose its stat block; Beast of the Land, Beast of the Sea, or Beast of the Sky. You also determine the kind of animal it is, choosing a kind appropriate for the stat block. Whatever beast you choose, it bears primal markings indicating its supernatural origin.",
-        "The beast is Friendly to you and your allies and obeys your commands. It vanishes if you die.",
-        "The Beast in Combat : In combat, the beast acts during your turn. It can move and use its Reaction on its own, but the only action it takes is the Doge action unless you take a Bonus Action to command it to take an action in its stat block or some other action. You can also sacrifice one of your attacks when you take the Attack action to command the beast to take the Beast's Strike action. If you have the Incapacitated condition, the beast acts on its own and isn't limited to the Dodge action.",
-        "Restoring or Replacing the Beast : If the beast has died within the last hour, you can take a Magic action to touch it and expend a spell slot. The beast returns to life after 1 minute with all its Hit Points Restored.",
-        "Whenever you finish a Long Rest, you can summon a different primal beast, which appears in an unoccupied space within 5 feet of you. You choose its stat block and appearance, if you already have a beast from this feature, the old one vanishes when the new one appears.",
-      ]),
-    },
-    "subclassfeature7": {
-      name: "Exceptional Training",
-      source: [["PHB2024", 123]],
-      minlevel: 7,
-      description: desc([
-        "When you take a Bonus Action to command your Primal Companion beast to take an action, you can also command it to take the Dash, Disengage, Dodge, or Help action using its Bonus Action.",
-        "In addition, whenever it hits with an attack roll and deals damage, it can deal your choice of Force damage or its normal damage type.",
-      ]),
-    },
-    "subclassfeature11": {
-      name: "Bestial Fury",
-      source: [["PHB2024", 123]],
-      minlevel: 11,
-      description: desc([
-        "When you command your Primal Companion beast to take the Beast's Strike action, the beast can us it twice.",
-        "In addition, the first time each turn it hits a creature under the effect of the Hunter's Mark spell, the beast deals extra Force damage equal to the bonus damage of that spell.",
-      ]),
-    },
-    "subclassfeature15": {
-      name: "Share Spells",
-      source: [["PHB2024", 123]],
-      minlevel: 15,
-      description: desc([
-        "When you cast a spell targeting yourself, you can also affect your Primal Companion beast with the spell if the beast is within 30 feet of you.",
-      ]),
-    },
-  },
+	regExpSearch: /^(?=.*(ranger))(?=.*(beast))(?=.*(master)).*$/i,
+	subname: "Beast Master",
+	source: [["PHB2024", 122]],
+	features: {
+		"subclassfeature3": {
+			name: "Primal Companion",
+			source: [["PHB2024", 122]],
+			minlevel: 3,
+			action: [["action", "Revive Companion"], ["bonus action", "Command Companion"]],
+			additional: "Companion Sheet",
+			description: desc([
+				"Choose a primal beast using the \"Companion Options\" button on the Companion Sheet.",
+				"I have my choice of a \"Beast of the Land\", a \"Beast of the Sea\", or a \"Beast of the Sky\";",
+				"After summoning, I can summon a different primal beast after a Long Rest.",
+			]),
+		},
+		"subclassfeature7": {
+			name: "Exceptional Training",
+			source: [["PHB2024", 123]],
+			minlevel: 7,
+			description: desc([
+				"As a bonus action, I can command it to take the Dash/Disengage/Dodge/Help action.",
+				"My Primal Companion's attacks count can deal Force damage or its normal damage type.",]),
+		},
+		"subclassfeature11": {
+			name: "Bestial Fury",
+			source: [["PHB2024", 123]],
+			minlevel: 11,
+			description: desc([
+				"When I command my Primal Companion to use the Attack action, it can attack twice.",
+				"My Primal Companion deals extra Force damage to my Hunter's Mark target.",
+				"This occurs only the 1st time, each turn, the Primal Companion hits a creature.",
+			]),
+		},
+		"subclassfeature15": {
+			name: "Share Spells",
+			source: [["PHB2024", 123]],
+			minlevel: 15,
+			description: desc([
+				"When I cast a spell on myself, I can have it also affect my Primal Companion, if within 30 ft.",
+			]),
+		},
+	},
 });
 legacySubClassRefactor("ranger", "fey wanderer", {
-  regExpSearch: /^(?=.*(ranger))(?=.*(fey))(?=.*(wanderer)).*$/i,
-  subname: "Fey Wanderer",
-  source: [["PHB2024", 124]],
-  spellcastingExtra: ["charm person", "hunter's mark", "misty step", "summon fey", "dimension door", "mislead"],
-  features: {
-    "subclassfeature3": {
-      name: "Dreadful Strikes",
-      source: [["PHB2024", 124]],
-      minlevel: 3,
-      description: desc([
-        "You can augment your weapon strikes with mind scarring magic drawn from the murky hollows of the Feywild. When you hit a creature with a weapon, you can deal an extra 1d4 Psychic damage to the target, which can take this extra damage only once per turn. The extra damage increases to 1d6 when you reach Ranger level 11.",
-      ]),
-    },
-    "subclassfeature3.1": {
-      name: "Fey Wanderer Spells",
-      source: [["PHB2024", 124]],
-      minlevel: 3,
-      description: desc([
-        "When you reach a Ranger level specified in the Fey Wanderer Spells table, you thereafter always have the listed spells prepared.",
-        "You also possess a fey blessing. Choose it from the Feywild Gifts table or determine it randomly",
-      ]),
-      toNotesPage: [{
-        name: "Feywild Gifts",
-        note: [
-          "Illusory butterflies flutter around you while you take a Short or Long Rest",
-          "Flowers bloom from your hair each dawn",
-          "You faintly smell like cinnamon, lavender, nutmeg, or another comforting herb or spice",
-          "Your shadow dances when no one is looking directly at it.",
-          "Horns or antlers sprout from your head.",
-          "Your skin and hair changes color each dawn",
-        ]
-      }],
-    },
-    "subclassfeature3.2": {
-      name: "Otherworldly Glamour",
-      source: [["PHB2024", 124]],
-      minlevel: 3,
-      skillstxt: "Choose 1 : Deception, Performance, or Persuasion",
-      description: desc([
-        "Whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier (minimum of +1).",
-        "You also gain proficiency in one of these skills of your choice Deception, Performance, or Persuasion.",
-      ]),
-    },
-    "subclassfeature7": {
-      name: "Beguiling Twist",
-      source: [["PHB2024", 125]],
-      minlevel: 7,
-      action: "reaction",
-      savetxt: {adv_vs: ["Charmed", "Frightened"]},
-      description: desc([
-        "The magic of the Feywild guards your mind. You have Advantage on saving throws to avoid or end the Charmed or Frightened condition.",
-        "In addition, whenever you or a creature you can see within 120 feet of you succeeds on a saving throw to avoid or end the Charmed or Frightened condition, you can take a Reaction to force a different creature you can see within 120 feet of yourself to make a Wisdom save against your spell save DC. On a failed save, the target is Charmed or Frightened (your choice) for 1 minute. The target repeats the save at the end of each of its turns, ending the effect on itself on a success.",
-      ]),
-    },
-    "subclassfeature11": {
-      name: "Fey Reinforcements",
-      source: [["PHB2024", 125]],
-      minlevel: 11,
-      usages: 1,
-      recovery: "long rest",
-      description: desc([
-        "You can cast Summon Fey without a Material component. You can also cast it once without a spell slot and you regain the ability to cast it in this way when you finish a Long Rest.",
-        "Whenever you start casting the spell, you can modify it so that it doesn't require Concentration. If you do so, the spell's duration becomes 1 minute for that casting.",
-      ]),
-    },
-    "subclassfeature15": {
-      name: "Misty Wanderer",
-      source: [["PHB2024", 125]],
-      minlevel: 15,
-      usages: "Wisdom modifier per ",
-      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
-      recovery: "long rest",
-      description: desc([
-        "You can cast Misty Step without expending a spell slot. You can do so a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "In addition, whenever you cast Misty Step, you can bring along one willing creature you can see within 5 feet of yourself. That creature teleports to an unoccupied space of your choice within 5 feet of your destination space.",
-      ]),
-    },
-  },
+	regExpSearch: /^(?=.*(ranger))(?=.*(fey))(?=.*(wanderer)).*$/i,
+	subname: "Fey Wanderer",
+	source: [["PHB2024", 124]],
+	spellcastingExtra: ["charm person", "hunter's mark", "misty step", "summon fey", "dimension door", "mislead"],
+	features: {
+		"subclassfeature3": {
+			name: "Dreadful Strikes",
+			source: [["T", 58]],
+			minlevel: 3,
+			description: desc([
+				"My weapons deal extra psychic damage, but only once per turn per creature"
+			]),
+			additional: levels.map(function (n) {
+				return n < 3 ? "" : "+1d" + (n < 11 ? 4 : 6) + " psychic damage";
+			}),
+			calcChanges: {
+				atkAdd: [
+					function (fields, v) {
+						if (v.isWeapon && (classes.known.ranger || classes.known.rangerua)) {
+							var rngrLvl = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua.level;
+							fields.Description += (fields.Description ? '; ' : '') + 'Once per turn per target +1d' + (rngrLvl < 11 ? 4 : 6) + ' psychic damage';
+						};
+					},
+					"When I hit a creature with a weapon, I can deal an extra 1d4 psychic damage to the target, which can take this extra damage only once per turn. From 11th-level, this damage increases to 1d6.",
+				]
+			}
+		},
+		"subclassfeature3.2": {
+			name: "Otherworldly Glamour",
+			source: [["T", 59]],
+			minlevel: 3,
+			description: desc([
+				"I can add my Wisdom modifier to any Charisma check I make (minimum of +1)",
+				'I gain proficiency in Deception, Performance, or Persuasion; Use "Choose Feature" button'
+			]),
+			addMod: ["Deception", "Intimidation", "Performance", "Persuasion"].map(function (skill) { return { type: "skill", field: skill, mod: "max(Wis|1)", text: "I can add my Wisdom modifier to any Charisma check I make (minimum of +1)." }; }),
+			choices: ["Deception proficiency", "Performance proficiency", "Persuasion proficiency"],
+			"deception proficiency": {
+				name: "Otherworldly Glamour",
+				description: " [Deception proficiency]\n   I can add my Wisdom modifier to any Charisma check I make (minimum of +1)",
+				skills: ["Deception"]
+			},
+			"performance proficiency": {
+				name: "Otherworldly Glamour",
+				description: " [Performance proficiency]\n   I can add my Wisdom modifier to any Charisma check I make (minimum of +1)",
+				skills: ["Performance"]
+			},
+			"persuasion proficiency": {
+				name: "Otherworldly Glamour",
+				description: " [Persuasion proficiency]\n   I can add my Wisdom modifier to any Charisma check I make (minimum of +1)",
+				skills: ["Persuasion"]
+			}
+		},
+		"subclassfeature7": {
+			name: "Beguiling Twist",
+			source: [["PHB2024", 125]],
+			minlevel: 7,
+			action: "reaction",
+			savetxt: { adv_vs: ["Charmed", "Frightened"] },
+			description: desc([
+				"I have advantage on saves against being charmed or frightened.",
+				"As a reaction when a creature I see in 120 ft succeeds its save vs. charmed or frightened,",
+				"I can have another I see in 120 ft make a Wis save or be charmed/frightened (my choice).",
+				"This lasts for 1 minute and the target can repeat the save at the end of each of its turns"
+			]),
+		},
+		"subclassfeature11": {
+			name: "Fey Reinforcements",
+			source: [["PHB2024", 125]],
+			minlevel: 11,
+			usages: 1,
+			recovery: "long rest",
+			description: desc([
+				"I learn Summon Fey; It needs no material component, nor counts against spells known.",
+				"Once per long rest, I can cast it without expending a spell slot.",
+				"When cast, I can have it not require concentration, its duration becomes 1 minute"]),
+		},
+		"subclassfeature15": {
+			name: "Misty Wanderer",
+			source: [["PHB2024", 125]],
+			minlevel: 15,
+			usages: "Wisdom modifier per ",
+			usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+			recovery: "long rest",
+			description: desc([
+				"I can cast Misty Step without expending a spell slot and can bring a willing creature within 5 ft.",
+				"That creature teleports to an unoccupied space of my choice within 5 ft of my destination.",
+			]),
+		},
+	},
 });
 legacySubClassRefactor("ranger", "gloom stalker", {
-  regExpSearch: /^(?=.*(ranger))(?=.*(gloom))(?=.*(stalker)).*$/i,
-  subname: "Gloom Stalker",
-  source: [["PHB2024", 125]],
-  spellcastingExtra: ["disguise self", "hunter's mark", "rope trick", "fear", "greater invisibility", "seeming"],
-  features: {
-    "subclassfeature3": {
-      name: "Dread Ambusher",
-      source: [["PHB2024", 125]],
-      minlevel: 3,
-      addMod: [{
-        type: "skill",
-        field: "Init",
-        mod: "Wis Mod",
-        text: "I can add my Wisdom modifier to my initiative rolls."
-      }],
-      usages: "Wisdom modifier per ",
-      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
-      recovery: "long rest",
-      description: desc([
-        "You have mastered the art of creating fearsome ambushes, granting you the following benefits.",
-        "Ambusher's Leap : At the start of you first turn of each combat, your Speed increases by 10 feet until the end of that turn.",
-        "Dreadful Strike : When you attack a creature and hit it with a weapon, you can deal an extra 2d6 Psychic damage. You can use this benefit only once per turn, you can use it a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
-        "Initiative Bonus : When you roll Initiative, you can add your Wisdom modifier to the roll.",
-      ]),
-    },
-    "subclassfeature3.1": {
-      name: "Umbral Sight",
-      source: [["PHB2024", 126]],
-      minlevel: 3,
-      vision: [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
-      description: desc([
-        "You gain Darkvision with a range of 60 feet. If you already have Darkvision when you gain this feature, its range increases by 60 feet.",
-        "You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness you have the Invisible condition to any creature that relies on Darkvision to see in that Darkness.",
-      ]),
-    },
-    "subclassfeature7": {
-      name: "Iron Mind",
-      source: [["PHB2024", 126]],
-      minlevel: 7,
-      saves: ["Wis"],
-      description: desc([
-        "You have honed your ability to resist mind-altering powers. You gain proficiency in Wisdom saving throws. if you already have this proficiency, you instead gain proficiency in Intelligence or Charisma saving throws (your choice).",
-      ]),
-    },
-    "subclassfeature11": {
-      name: "Stalker's Flurry",
-      source: [["PHB2024", 126]],
-      minlevel: 11,
-      description: desc([
-        "The Psychic damage of your Dreadful Strikes becomes 2d8. In addition, when you use the Dreadful Strike effect of your Dread Ambusher feature, you can cause one of the following additional effects.",
-        "Sudden Strike : You can make another attack with the same weapon against a different creature that is within 5 feet of the original target that is within the weapon's range.",
-        "Mass Fear : The target and each creature within 10 feet of it must make a Wisdom saving throw against your spell save DC. On a failed save, a creature has the Frightened condition until the start of your next turn.",
-      ]),
-    },
-    "subclassfeature15": {
-      name: "Shadowy Dodge",
-      source: [["PHB2024", 126]],
-      minlevel: 15,
-      action: "reaction",
-      description: desc([
-        "When a creature makes an attack roll against you you can take a Reaction to impose Disadvantage on that roll. Whether the attack hits or misses, you can then teleport up to 30 feet to an unoccupied space you can see.",
-      ]),
-    },
-  },
+	regExpSearch: /^(?=.*(ranger))(?=.*(gloom))(?=.*(stalker)).*$/i,
+	subname: "Gloom Stalker",
+	source: [["PHB2024", 125]],
+	spellcastingExtra: ["disguise self", "hunter's mark", "rope trick", "fear", "greater invisibility", "seeming"],
+	features: {
+		"subclassfeature3": {
+			name: "Dread Ambusher",
+			source: [["PHB2024", 125]],
+			minlevel: 3,
+			addMod: [{
+				type: "skill",
+				field: "Init",
+				mod: "Wis Mod",
+				text: "I can add my Wisdom modifier to my initiative rolls."
+			}],
+			usages: "Wis Mod / ",
+			usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+			recovery: "LR",
+			description: desc([
+				"I can add my Wisdom modifier to my initiative rolls, and I get +10 ft speed",
+				"in the first turn of combat.",
+				"Additionally, once per turn when I hit with a weapon, I can deal +2d6 Psychic",
+				"damage to my target. ",
+				"That target must make a Wis save or be Frightened until start of my next",
+				"turn. I can do this a number equal to my Wis Mod per Long Rest.",
+			]),
+		},
+		"subclassfeature3.1": {
+			name: "Umbral Sight",
+			source: [["PHB2024", 126]],
+			minlevel: 3,
+			vision: [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+			description: desc([
+				"I gain 60 ft Darkvision, or add 60 ft, if I already had it from any source.",
+				"When I'm entirely in darkness, I have the Invisible condition to any creature",
+				"that relies on Darkvision to see me in that darkness.",
+			]),
+		},
+		"subclassfeature7": {
+			name: "Iron Mind",
+			source: [["PHB2024", 126]],
+			minlevel: 7,
+			saves: ["Wis"],
+			description: desc([
+				"I gain proficiency in Wis saves. If already proficient, choose either Int or Cha.",
+			]),
+		},
+		"subclassfeature11": {
+			name: "Stalker's Flurry",
+			source: [["PHB2024", 126]],
+			minlevel: 11,
+			description: desc([
+				"When I use the Frighten effect of Dread Ambusher, I can do one of the following:",
+				" \u2022 Sudden Strike. I can attack another creature within 5 ft of the original target that is within",
+				"  weapon range.",
+				" \u2022 Mass Fear. Each creature within 10 ft of the target make Wis save or be Frightened until start ",
+				"  of my next turn.",
+			]),
+		},
+		"subclassfeature15": {
+			name: "Shadowy Dodge",
+			source: [["PHB2024", 126]],
+			minlevel: 15,
+			action: ["reaction", " (when attacked)"],
+			description: desc([
+				"As a reaction when I'm attacked, I can impose Disadv. on the attack roll.",
+				"If the attack then misses, I can teleport up to 30 ft.",
+			]),
+		},
+	},
 });
 legacySubClassRefactor("ranger", "hunter", {
-  regExpSearch: /^(?=.*(ranger))(?=.*(hunter)).*$/i,
-  subname: "Hunter",
-  source: [["PHB2024", 127]],
-  features: {
-    "subclassfeature3": {
-      name: "Hunter's Lore",
-      source: [["PHB2024", 127]],
-      minlevel: 3,
-      description: desc([
-        "You can call on the forces of nature to reveal certain strengths and weaknesses of your prey. While a creature is marked by your Hunter's Mark, you know whether that creature has any Immunities, Resistances, or Vulnerabilities, and if the creature has any, you know what they are.",
-      ]),
-    },
-    "subclassfeature3.1": {
-      name: "Hunter's Prey",
-      source: [["PHB2024", 127]],
-      minlevel: 3,
-      choices: ["Colossus Slayer", "Hoarde Breaker"],
-      "colossus slayer": {
-        name: "Colossus Slayer",
-        description: desc([
-          "Your tenacity can war down even the most resilient foes. When you hit a creature with a weapon, the weapon deals an extra 1d8 damage to the target if it's missing any of its Hit Points. You can deal this extra damage only once per turn. When you finish a Short or Long Rest, you can replace this feature with the 'Hoard Breaker' feature.",
-        ]),
-      },
-      "hoarde breaker": {
-        name: "Hoarde Breaker",
-        description: desc([
-          "Once on each of your turns when you make an attack with a weapon, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target, that is within the weapon's range, and that you haven't attacked this turn. When you finish a Short or Long Rest, you can replace this feature with the 'Colossus Slayer' feature.",
-        ]),
-      },
-      description: desc([
-        "You gain one of the following feature options of your choice. Whenever you finish a Short or Long Rest, you can replace that chosen option with the other one.",
-      ]),
-    },
-    "subclassfeature7": {
-      name: "Defensive Tactics",
-      source: [["PHB2024", 127]],
-      minlevel: 7,
-      choices: ["Escape the Hoarde", "Multiattack Defense"],
-      "escape the hoarde": {
-        name: "Escape the Hoarde",
-        description: desc([
-          "Opportunity Attacks have Disadvantage against you. When you finish a Short or Long Rest, you can replace this feature with the 'Multiattack Defense' feature.",
-        ]),
-      },
-      "multiattack defense": {
-        name: "Multiattack Defense",
-        description: desc([
-          "When a creature hits you with an attack roll, that creature had Disadvantage on all other attack rolls against you this turn. When you finish a Short or Long Rest, you can replace this feature with the 'Escape the Hoarde' feature.",
-        ]),
-      },
-      description: desc([
-        "You gain one of the following feature options of your choice. Whenever you finish a Short or Long Rest, you can replace that chosen option with the other one.",
-      ]),
-    },
-    "subclassfeature11": {
-      name: "Superior Hunter's Prey",
-      source: [["PHB2024", 127]],
-      minlevel: 11,
-      description: desc([
-        "Once per turn when you deal damage to a creature marked by your Hunter's mark, you can also deal that spell's extra damage to a different creature that you can see within 30 feet of the first creature.",
-      ]),
-    },
-    "subclassfeature15": {
-      name: "Superior Hunter's Defense",
-      source: [["PHB2024", 127]],
-      minlevel: 15,
-      action: "reaction",
-      description: desc([
-        "When you take damage, you can take a Reaction to give yourself Resistance to that damage and any other damage of the same type until the end of the current turn.",
-      ]),
-    },
-  },
+	regExpSearch: /^(?=.*(ranger))(?=.*(hunter)).*$/i,
+	subname: "Hunter",
+	source: [["PHB2024", 127]],
+	features: {
+		"subclassfeature3": {
+			name: "Hunter's Lore",
+			source: [["PHB2024", 127]],
+			minlevel: 3,
+			description: desc([
+				"While a creature is marked by my Hunter's Mark, I know the following about it:",
+				"Damage/condition immunities, damage resistances, and/or damage vulnerabilities.",]),
+		},
+		"subclassfeature3.1": {
+			name: "Hunter's Prey",
+			source: [["PHB2024", 127]],
+			minlevel: 3,
+			choices: ["Colossus Slayer", "Hoarde Breaker"],
+			"colossus slayer": {
+				name: "Colossus Slayer",
+				description: desc([
+					"Once per turn, when I hit a creature with a weapon, I deal an extra 1d8 damage to the target if it's missing any Hit Points.",
+				]),
+			},
+			"hoarde breaker": {
+				name: "Hoarde Breaker",
+				description: desc([
+					"Once per turn, when I hit a creature, I can make an attack vs. another within 5 ft of it if I" +
+					" haven't hit it during this turn."
+				]),
+			},
+			description: desc([
+				"Use the 'choose feature' button to select a Hunter's Prey option, after a Short or Long Rest, I can replace the chosen option with the other one.",
+			]),
+		},
+		"subclassfeature7": {
+			name: "Defensive Tactics",
+			source: [["PHB2024", 127]],
+			minlevel: 7,
+			choices: ["Escape the Hoarde", "Multiattack Defense"],
+			"escape the hoarde": {
+				name: "Escape the Hoarde",
+				description: desc([
+					"Opportunity Attacks have Disadvantage against me. After a Short or Long Rest, I can replace this feature with the 'Multiattack Defense' feature.",
+				]),
+			},
+			"multiattack defense": {
+				name: "Multiattack Defense",
+				description: desc([
+					"When a creature hits me with an attack roll, that creature has Disadvantage on all other attack rolls against me this turn. After, I can replace this feature with the 'Escape the Hoarde' feature.",
+				]),
+			},
+			description: desc([
+				"Use the 'choose feature' button to select a Defensive Tactics option, After a Short or Long Rest, you can replace the chosen option with the other one.",
+			]),
+		},
+		"subclassfeature11": {
+			name: "Superior Hunter's Prey",
+			source: [["PHB2024", 127]],
+			minlevel: 11,
+			description: desc([
+				"Once per turn when I deal damage to a creature marked by my Hunter's mark, I can also deal the extra damage to another creature I can see within 30 feet.",
+			]),
+		},
+		"subclassfeature15": {
+			name: "Superior Hunter's Defense",
+			source: [["PHB2024", 127]],
+			minlevel: 15,
+			action: ["reaction", " (taking damage)"],
+			description: desc([
+				"When I take damage, I can take a Reaction to give myself Resistance to that damage and any other damage of the same type until the end of the current turn.",
+			]),
+		},
+	},
 });
 legacyClassRefactor("rogue", {
   regExpSearch: /rogue/i,
@@ -5560,7 +5526,7 @@ legacyClassRefactor("rogue", {
       source: [["PHB2024", 131]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "stroke of luck": {
@@ -5902,17 +5868,9 @@ legacyClassRefactor("sorcerer", {
         ]
       },
       description: desc([
-        "Drawing from your innate magic, you can cast spells. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Sorcerer spells, which appear in the Sorcerer spell list later in the class's description.",
-        "Cantrips : You know four cantrips of your choice from the Sorcerer spell list. Light, Prestidigitation, Shocking Grasp, and Sorcerous Burst are recommended.",
-        "Whenever you gain a Sorcerer level, you can replace one of your cantrips with another cantrip of your choice from the Sorcerer spell list.",
-        "When you reach Sorcerer levels 4 and 10, you learn another cantrip of your choice from the Sorcerer spell list, as shown in the Cantrips column of the Sorcerer Features table.",
-        "Spell Slots : The Sorcerer Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.",
-        "Prepared Spells of Level 1+ : You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose two level 1 spells from the Sorcerer spell list. Burning Hands and Detect Magic are recommended.",
-        "The number of spells on your list increases as you gain Sorcerer levels, as shown in the Prepared Spells column of the Sorcerer Features table. Whenever that number increases, choose additional spells from the Sorcerer spell list until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Sorcerer, your list of prepared spells can include six spells of levels 1 and 2 in any combination",
-        "If another Sorcerer feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Sorcerer spells for you.",
-        "Changing Your Prepared Spells : Whenever you gain a Sorcerer level, you can replace one spell on your list with another Sorcerer spell of which you have spell slots.",
-        "Spellcasting Ability : Charisma is your spellcasting ability for your Bard Spells",
-        "Spellcasting Focus : You can use an Arcane Focus as a Spellcasting Focus for your Sorcerer spells.",
+        "I can cast Cantrips and Prepared level 1+ Sorceror spells with Cha as my Spellcasting Ability and an Arcane Focus as my Spellcasting Focus.",
+		"I can replace a cantrip and a Level 1+ spell each time I gain a Sorceror level.",
+        "Prepared spells for other Sorcerer features don't count against me & count as Sorceror spells.",
       ]),
     },
     "innate sorcery": {
@@ -5923,38 +5881,27 @@ legacyClassRefactor("sorcerer", {
       usages: 2,
       recovery: "long rest",
       description: desc([
-        "An event in your past left an indelible mark on you, infusing you with simmering magic. As a Bonus Action you can unleash that magic for 1 minute during which you gain the following benefits.",
-        "The Spell save DC of your Sorcerer spells increases by 1.",
-        "You have Advantage on the attack rolls of Sorcerer spells you cast.",
-        "You can use this feature twice, and you regain all expended uses of it when you finish a Long Rest.",
+        "As a Bonus Action twice per Long Rest I can gain the following benefits for 1 min:",
+        "The Spell save DC of my Sorcerer spells goes up by 1.",
+        "I have Adv on attack rolls of Sorcerer spells I cast.",
       ]),
     },
     "font of magic": {
       name: "Font of Magic",
       source: [["PHB2024", 140]],
       minlevel: 2,
-      limfeaname: "Sorcery Points",
-      usages: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-      recovery: "long rest",
-      description: desc([
-        "You can tap into the wellspring of magic within yourself. This wellspring is represented by Sorcery Points, which allow you to create a variety of magical effects.",
-        "You have 2 Sorcery Points, and you gain more as you reach higher levels, as shown in the Sorcery Points column of the Sorcerer Features table. You can't have more Sorcery Points than the number shown in the table for your level. You regain all expended Sorcery Points when you finish a Long Rest.",
-        "You can use your Sorcery Points to fuel the options below, along with other features, such as Metamagic, that uses those points.",
-        "Converting Spell Slots to Sorcery Points : You can expend a spell slot to gain a number of Sorcery Points equal to the slot's level (no action required).",
-        "Creating Spell Slots : As a Bonus Action, you can transform unexpended Sorcery Points into one spell slot. The Creating Spell Slots table shows the cost of creating a spell slot of a given level, and it lists the minimum Sorcerer level you must be to create a slot. You can create a spell slot no higher then level 5.",
-        "Any spell slot you create with this feature vanishes when you finish a Long Rest.",
-      ]),
-      toNotesPage: [{
-        name: "Creating Spell Slots",
-        note: [
-          "Spell Slot Level	Sorcery Point Cost	Min. Sorcerer Level",
-          "		1					2					2			",
-          "		2					3					3			",
-          "		3					5					5			",
-          "		4					6					7			",
-          "		5					7					9			",
-        ],
-      }],
+      description : desc([
+		"As a bonus action, I can use sorcery points to create spell slots and vice versa",
+		"I can convert spell slots to sorcery points at a rate of 1 point per spell slot level",
+		"I can convert sorcery points to spell slots, which last until I finish a long rest, as follows:",
+		"Level 1 for 2 sorcery points;   level 2 for 3 sorcery points;   level 3 for 5 sorcery points",
+		"Level 4 for 6 sorcery points;   level 5 for 7 sorcery points"
+	  ]),
+	  usages : [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+	  recovery : "long rest",
+	  action : [["bonus action", "Font of Magic"]],
+	  additional : "Sorcery Points",
+	  limfeaname : "Sorcery Points"
     },
     "metamagic": {
       name: "Metamagic",
@@ -5964,9 +5911,7 @@ legacyClassRefactor("sorcerer", {
       extrachoices: ["Careful Spell", "Distant Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Seeking Spell", "Subtle Spell", "Transmuted Spell", "Twinned Spell"],
       extraTimes: [0, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 6, 6, 6, 6],
       description: desc([
-        "Because your magic flows from within, you can alter your spells to suit your needs, you gain two Metamagic options of your choice from 'Metamagic Options' later in this class's description. You use the chosen options to temporarily modify spells you cast. To use an option, you must spend the number of Sorcery Points that it costs.",
-        "You can use only one Metamagic option on a spell when yo cast it unless otherwise noted in one of those options.",
-        "Whenever you gain a Sorcerer level, you ca replace one of your Metamagic options with one you don't know. You gain two more options at Sorcerer level 10 and two more at Sorcerer level 17.",
+        "Use 'Choose Feature' above to select Metamagic options. Only one can be used per spell cast unless noted. I can replace one Metamagic option when I gain a Sorceror level.",
       ]),
       "careful spell": {
         name: "Careful Spell",
@@ -6047,8 +5992,7 @@ legacyClassRefactor("sorcerer", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "When you finish a Short Rest, you can regain expended Sorcery Points, but no more than a number equal to half your Sorcerer level (round down).",
-        "Once you use this feature, you can't do so again until you finish a Long Rest",
+        "Once per Long Rest I can regain spent SP up to half my Sorceror level at the end of a Short Rest.",
       ]),
     },
     "sorcery incarnate": {
@@ -6056,8 +6000,7 @@ legacyClassRefactor("sorcerer", {
       source: [["PHB2024", 141]],
       minlevel: 7,
       description: desc([
-        "If you have no uses of Innate Sorcery left, you can use it if you spend 2 Sorcery Points when you take the Bonus Action to activate it.",
-        "In addition, while your Innate Sorcery feature is active, you can use up to two of your Metamagic options on each spell you cast.",
+        "I can spend 2 SP to use Innate Sorcery when I have no uses left. While it's active I can use up to two Metamagic options on each spell I cast.",
       ]),
     },
     "epic boon": {
@@ -6065,7 +6008,7 @@ legacyClassRefactor("sorcerer", {
       source: [["PHB2024", 141]],
       minlevel: 19,
       description: desc([
-        "You gain an Epic Boon feat (see chapter 5) or another feat of your choice for which you qualify. Boon of Dimensional Travel is recommended.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "arcane apotheosis": {
@@ -6073,7 +6016,7 @@ legacyClassRefactor("sorcerer", {
       source: [["PHB2024", 141]],
       minlevel: 20,
       description: desc([
-        "While you Innate Sorcery feature is active, you can use one Metamagic option on each of your turns without spending Sorcery Points to do so.",
+        "While Innate Sorcery is active I can use one Metamagic option on each of my turns without spending SP.",
       ]),
     },
   },
@@ -6091,8 +6034,7 @@ legacySubClassRefactor("sorcerer", "aberrant", {
       minlevel: 3,
       action: "bonus action",
       description: desc([
-        "You can form a telepathic connection between your mind and the mind of another. As a Bonus Action choose one creature you can see within 30 feet of yourself. You and the chosen creature can communicate telepathically with each other while the two of you are within a number of miles of each other equal to your Charisma modifier (minimum of 1 mile). To understand each other, you each must mentally use a language the other knows.",
-        "The telepathic connection lasts for a number of minutes equal to your Sorcerer level. It ends early if you use this ability to form a connection with a different creature.",
+        "As a Bonus Action, one creature I can see within 30 ft of myself & I can speak telepathically with each other while within my Cha mod miles (min 1) for my Sorceror level minutes as long as we share a language. It lasts until I use it with another creature.",
       ]),
     },
     "subclassfeature6": {
@@ -6100,7 +6042,7 @@ legacySubClassRefactor("sorcerer", "aberrant", {
       source: [["PHB2024", 146]],
       minlevel: 6,
       description: desc([
-        "When you cast any level 1+ spell from your Psionic Spells feature, you can cast it by expending a spell slot as normal or by spending a number of Sorcery Points equal to the spell's level. If you cast the spell using Sorcery Points, it requires no Verbal or Somatic components, and it requires no Material components unless the are consumed by the spell or have a cost specified in it.",
+        "When I cast a psionic spell of level 1+ I can cast it using a spell slot, or with SP equal to the spell's level. If I cast the spell with SPs It requires no components, unless they are consumed or have a specified cost.",
       ]),
     },
     "subclassfeature6.1": {
@@ -6110,7 +6052,7 @@ legacySubClassRefactor("sorcerer", "aberrant", {
       dmgres: "Psychic",
       savetxt: {adv_vs: ["Charmed", "Frightened"]},
       description: desc([
-        "You have Resistance to Psychic damage, and you have Advantage on saving throws to avoid or end the Charmed or Frightened condition.",
+        "I have Resistance to Psychic damage & Adv on saves to avoid/end Charmed or Frightened.",
       ]),
     },
     "subclassfeature14": {
@@ -6119,12 +6061,45 @@ legacySubClassRefactor("sorcerer", "aberrant", {
       minlevel: 14,
       action: "bonus action",
       description: desc([
-        "You can unleash the aberrant truth hidden within yourself. As a Bonus Action, you can spend 1 Sorcery Point or more to magically alter your body for 10 minutes. For each Sorcery Point you spend, you gain one of the following benefits of your choice, the effects of which last until the alteration ends.",
-        "Aquatic Adaptation : You gain a Swim Speed equal to twice your Speed, and you can breathe underwater. Gills grow from your neck or flare behind your ears, and your fingers become webbed or you grow wriggling cilia.",
-        "Glistening Flight : You gain a Fly Speed equal to your Speed, and you can hover. As you fly, your skin glistens with mucus or otherworldly light.",
-        "See the Invisible : You can see any Invisible creature within 60 feet of yourself that isn't behind Total Cover. Your eyes also turn black or become writhing sensory tendrils.",
-        "Wormlike Movement : Your body, along with any equipment you are wearing or carrying, becomes slimy and pliable. You can move through any space as narrow as 1 inch, and you can spend 5 feet of movement to escape from nonmagical restraints or the Grappled condition.",
+        "As a Bonus Action, I can spend 1+ SP to magically alter my body for 10 min, gaining one revelation for each SP spent (See Third Page).",
       ]),
+	  "aquatic adaptation": {
+		name: "Aquatic Adaptation",
+		extraname: "Revelation in Flesh Option",
+		description: desc([
+			"I gain a Swim Speed of 2x my Speed & I can breathe underwater.",
+		]),
+	  },
+	  "glistening flight": {
+		name: "Glistening Flight",
+		extraname: "Revelation in Flesh Option",
+		description: desc([
+			"I gain a Fly Speed of my Speed & can hover.",
+		]),
+	  },
+	  "see the invisible": {
+		name: "See the Invisible",
+		extraname: "Revelation in Flesh Option",
+		description: desc([
+			"I can see any Invisible creature within 60 ft not behind Total Cover.",
+		]),
+	  },
+	  "wormlike movement": {
+		name: "Wormlike Movement",
+		extraname: "Revelation in Flesh Option",
+		description: desc([
+			"I, with equipment, can move through a 1+ inch space or spend 5 ft of movement to escape a Grapple or nonmagical restraints.",
+		]),
+	  },
+	  autoSelectExtrachoices: [{
+		extrachoice: "aquatic adaptation"
+	  }, {
+		extrachoice: "glistening flight"
+	  }, {
+		extrachoice: "see the invisible"
+	  }, {
+		extrachoice: "wormlike movment"
+	  }],
     },
     "subclassfeature18": {
       name: "Warping Implosion",
@@ -6135,8 +6110,7 @@ legacySubClassRefactor("sorcerer", "aberrant", {
       recovery: "long rest",
       altResource: "5 SP",
       description: desc([
-        "You can unleash a space-warping anomaly. As a Magic action, you teleport to an unoccupied space you can see within 120 feet of yourself. Immediately after you disappear, each creature within 30 feet of the space you left must make a Strength saving throw against your spell save DC. On a failed save a creature takes 3d10 Force damage, and is pulled straight toward the space you left, ending in the unoccupied space as close to your former space as possible. On a successful save, the creature takes half as much damage only.",
-        "Once you use this feature, you can't do so again until you finish a Long Rest unless you spend 5 sorcery Points (no action required) to restore your uses of it.",
+        "As a Magic action, I teleport to a visible unoccupied space w/in 120 feet. Each creature w/in 30 feet of the space I left must make a Strength save or take 3d10 Force damage & be pulled toward the space I left, ending in the nearest empty space. On a pass it takes half damage. I can restore this with a Long Rest or by spending 5 SP (no action).",
       ]),
     },
   },
@@ -6153,17 +6127,17 @@ legacySubClassRefactor("sorcerer", "clockwork", {
       source: [["PHB2024", 146]],
       minlevel: 3,
       description: desc([
-        "In addition, consult the Manifestation of Order table and choose or randomly determine a way you connect to order manifests while you are casting any of your Sorcerer spells.",
+        "Choose a Manifestation of Order from Page 3; it appears when I cast a Sorceror spell.",
       ]),
       toNotesPage: [{
         name: "Manifestations of Order",
         note: [
-          "1		Spectral cog wheels hover behind you.",
-          "2		The hands of a clock spin in your eyes.",
-          "3		Your skin glows with a brassy sheen.",
-          "4		Floating equations and geometric objects overlay your body",
-          "5 		Your Spellcasting Focus temporarily takes the form of a Tiny clockwork mechanism.",
-          "6		The ticking of gears or ringing of a clock can be heard by you and those affected by your magic.",
+          "1: Spectral cog wheels hover behind you.",
+          "2: The hands of a clock spin in your eyes.",
+          "3: Your skin glows with a brassy sheen.",
+          "4: Floating equations and geometric objects overlay your body",
+          "5: Your Spellcasting Focus temporarily takes the form of a Tiny clockwork mechanism.",
+          "6: The ticking of gears or ringing of a clock can be heard by you and those affected by your magic.",
         ],
       }],
     },
@@ -6175,8 +6149,7 @@ legacySubClassRefactor("sorcerer", "clockwork", {
       usagescalc: "event.value = Math.max(1, What('Cha Mod'));",
       recovery: "long rest",
       description: desc([
-        "Your connection to the plane of absolute order allows you t equalize chaotic moments. When a creature you can see within 60 feet of yourself is about to roll a d20 with Advantage or Disadvantage, you can take a Reaction to prevent the roll from being affected by Advantage and Disadvantage.",
-        "You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest",
+        "As a reaction, when a creature I can see w/in 60 ft is about to roll a d20 with Adv or Disadv, I can make it a straight roll.",
       ]),
     },
     "subclassfeature6": {
@@ -6185,8 +6158,7 @@ legacySubClassRefactor("sorcerer", "clockwork", {
       minlevel: 6,
       action: ["action", "Bastion of Law 1-5 SP"],
       description: desc([
-        "You can tap into the grand equation of existence to imbue a creature with a shimmering shield of order. As a Magic action, you can expend 1 to 5 Sorcery Points to create a magical ward around yourself or another creature you can see within 30 feet of yourself. The ward is represented by a number of d8s equal to the number of Sorcery Points spent to create it. When the warded creature takes damage it can expend a number of those dice, roll them and reduce the damage taken by the total rolled on those dice.",
-        "The ward lasts until you finish a Long Rest or until you use this feature again.",
+        "As a Magic action, I can spend 1 to 5 SP to create a magic ward around me or a creature I can see within 30 ft. The ward has SP-spent d8s that can reduce the damage taken by the total rolled on those dice. The ward lasts until I finish a Long Rest or use it again.",
       ]),
     },
     "subclassfeature14": {
@@ -6198,8 +6170,7 @@ legacySubClassRefactor("sorcerer", "clockwork", {
       recovery: "long rest",
       altResource: "5 SP",
       description: desc([
-        "You gain the ability to align your consciousness with the endless calculations of Mechanus. As a Bonus Action, you can enter this state for 1 minute. For the duration attack rolls against you can't benefit from Advantage, and whenever you make a D20 Test, you can treat a roll of 9 or lower on the D20 as a 10.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest unless you spend 5 Sorcery Points (no action required) to restore your use of it.",
+        "As a bonus action, I can enter a state of clockwork consciousness for 1 min during which attack rolls against me can't have Adv and when I make a D20 Test I can treat a roll below 9 as a 10. I can restore this with a Long Rest or by spending 5 SP (no action).",
       ]),
     },
     "subclassfeature18": {
@@ -6211,10 +6182,11 @@ legacySubClassRefactor("sorcerer", "clockwork", {
       recovery: "long rest",
       altResource: "7 SP",
       description: desc([
-        "You momentarily summon spirits of order to expunge disorder around you. As a Magic action, you summon the spirits in a 30-foot Cube originating from you. The spirits look like modrons or other Constructs of your choice. The spirits are intangible and invulnerable, and they create the effects below within the Cube before vanishing, Once you use this action, you cant use it again until you finish a Long Rest unless you spend 7 Sorcery Points (no action required) to restore your use of it.",
-        "Heal : The spirits restore up to 100 Hit Points divided as you choose among any number of creatures of your choice in the Cube.",
-        "Repair : Any damaged objects entirely in the Cube are repaired instantly.",
-        "Dispel : Every spell of level 6 or lower ends n creatures and objects of your choice in the Cube.",
+        "As an action, I can call spirits to bring balance in a 30-ft cube originating from me; The intangible spirits do all the following inside the cube before vanishing:",
+        "Heal: Restore up to 100 HP, divided among the creatures as I choose.",
+        "Repair: Repair all damaged objects entirely instantly.",
+        "Dispel: End every spell of level 6 or lower on objects or creatures of my choice.",
+		"I can restore this with a Long Rest or by spending 7 SP (no action).",
       ]),
     },
   },
@@ -6246,8 +6218,8 @@ legacySubClassRefactor("sorcerer", "draconic", {
         },
       },
       description: desc([
-        "The magic in your body manifests physical traits of your draconic gift. Your Hit Point maximum increases by 3, and it increases by 1 whenever you gain another Sorcerer level.",
-        "Parts of you are also covered in dragon-like scales. While you aren't wearing armor, your base Armor Class equals 10 plus your Dexterity and Charisma modifiers.",
+        "My hit point maximum increases by an amount equal to my sorcerer level.",
+        "While not wearing armor my base AC is 10 + Dex mod + Cha mod.",
       ]),
     },
     "subclassfeature6": {
@@ -6255,34 +6227,33 @@ legacySubClassRefactor("sorcerer", "draconic", {
       source: [["PHB2024", 148]],
       minlevel: 6,
       description: desc([
-        "Your draconic magic has an affinity with a damage type associated with dragons. Choose one of those types; Acid, Cold, Fire, Lightning, or Poison.",
-        "You have Resistance to that damage type, and when you cast a spell that deals damage of that type, you can add your Charisma modifier to one damage roll of that spell.",
+        "Use 'Choose Feature' above to choose an elemental affinity. I have Resistance to that damage type; When I do spell damage of that type I can add my Cha mod to 1 damage roll.",
       ]),
       choices: ["Acid Affinity", "Cold Affinity", "Fire Affinity", "Lightning Affinity", "Poison Affinity"],
       "acid affinity": {
         name: "Acid Affinity",
         dmgres: "Acid",
-        description: "Thanks to your Draconic association you gain resistance to Acid damage and any spells you cast that deal Acid damage gain a bonus to damage equal to your Charisma modifier, which can be applied to one damage roll of that spell.",
+        description: "I am resistant to Acid damage & spells I cast that deal Acid damage can add my Cha mod to one damage roll.",
       },
       "cold affinity": {
         name: "Cold Affinity",
         dmgres: "Cold",
-        description: "Thanks to your Draconic association you gain resistance to Cold damage and any spells you cast that deal Cold damage gain a bonus to damage equal to your Charisma modifier, which can be applied to one damage roll of that spell.",
+        description: "I am resistant to Cold damage & spells I cast that deal Cold damage can add my Cha mod to one damage roll.",
       },
       "fire affinity": {
         name: "Fire Affinity",
         dmgres: "Fire",
-        description: "Thanks to your Draconic association you gain resistance to Fire damage and any spells you cast that deal Fire damage gain a bonus to damage equal to your Charisma modifier, which can be applied to one damage roll of that spell.",
+        description: "I am resistant to Fire damage & spells I cast that deal Fire damage can add my Cha mod to one damage roll.",
       },
       "lightning affinity": {
         name: "Lightning Affinity",
         dmgres: "Lightning",
-        description: "Thanks to your Draconic association you gain resistance to Lightning damage and any spells you cast that deal Lightning damage gain a bonus to damage equal to your Charisma modifier, which can be applied to one damage roll of that spell.",
+        description: "I am resistant to Lightning damage & spells I cast that deal Lightning damage can add my Cha mod to one damage roll.",
       },
       "poison affinity": {
         name: "Poison Affinity",
         dmgres: "Poison",
-        description: "Thanks to your Draconic association you gain resistance to Poison damage and any spells you cast that deal Poison damage gain a bonus to damage equal to your Charisma modifier, which can be applied to one damage roll of that spell.",
+        description: "I am resistant to Poison damage & spells I cast that deal Poison damage can add my Cha mod to one damage roll.",
       },
     },
     "subclassfeature14": {
@@ -6294,8 +6265,7 @@ legacySubClassRefactor("sorcerer", "draconic", {
       recovery: "long rest",
       altResource: "3 SP",
       description: desc([
-        "As a Bonus Action, you can cause draconic wings to appear on your back. The wings last for 1 hour or until you dismiss them (no action required). For the duration, you have a Fly Speed of 60 feet.",
-        "Once you use this feature, you can't use it again until you finish a Long Rest unless you spend 3 Sorcery Points (no action required) to restore your use of it.",
+        "As a Bonus Action, I can gain draconic wings and a Fly speed of 60ft for 1 hour or until dismissed (no action). I can restore it with a Long Rest or with 3 SP (no action).",
       ]),
     },
     "subclassfeature18": {
@@ -6305,8 +6275,7 @@ legacySubClassRefactor("sorcerer", "draconic", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "You can cast Summon Dragon without a Material component. You can also cast it once without a spell slot, you regain the ability to cast it in this way when you finish a Long Rest.",
-        "Whenever you start casting the spell, you can modify it so that it doesn't require Concentration. If you do so the spell's duration becomes 1 minute for that casting.",
+        "I can cast Summon Dragon w/out a Material component & once per Long Rest without a spell slot. I can also cast it without requiring Concentration, for a duration of 1 min.",
       ]),
     },
   },
@@ -6322,8 +6291,7 @@ legacySubClassRefactor("sorcerer", "wild magic", {
       source: [["PHB2024", 149]],
       minlevel: 3,
       description: desc([
-        "Your spellcasting can unleash surges of untamed magic. Once per turn, you can roll 1d20 immediately after you cast a Sorcerer spell with a spell slot. If you roll a 20, roll on the Wild Magic Surge table to create a magical effect.",
-        "If the magical effect is a spell, it is to wild to be affected by your Metamagic.",
+        "Once per turn, I can roll 1d20 when I cast a Sorcerer spell with a spell slot. On a 20, I roll on the Wild Magic Surge (WMS) table (See page 3). Spells from the table are unaffected by my Metamagic.",
       ]),
       toNotesPage: [{
         name: "Wild Magic Surge",
@@ -6363,10 +6331,8 @@ legacySubClassRefactor("sorcerer", "wild magic", {
       minlevel: 3,
       usages: 1,
       recovery: "long rest",
-      altResource: "Cast a Leveled Spell",
       description: desc([
-        "You can manipulate chaos itself to give yourself Advantage on one D20 Test before you roll the d20. Once you do so, you must cast a Sorcerer spell with a spell slot or finish a Long Rest before you can use this feature again.",
-        "If you do cast a Sorcerer spell with a spell slot before you finish a Long Rest, you automatically roll on the Wild Magic Surge table.",
+        "I can gain Adv on one D20 Test before I roll. If I cast a Sorcerer spell with a spell slot before a Long Rest I must roll on the WMS table.",
       ]),
     },
     "subclassfeature6": {
@@ -6375,7 +6341,7 @@ legacySubClassRefactor("sorcerer", "wild magic", {
       minlevel: 6,
       action: "reaction",
       description: desc([
-        "You have the ability to twist fate using your wild magic, Immediately after another creature you can see rolls the d20 for a D20 Test, you can take a Reaction and spend 1 Sorcery Point to roll 1d4 and apply the number rolled as a bonus or penalty (your choice) to the d20 roll.",
+        "As a reaction, I can add/subtract 1d4 from another's attack roll, ability check, or save for 1 SP.",
       ]),
     },
     "subclassfeature14": {
@@ -6383,7 +6349,7 @@ legacySubClassRefactor("sorcerer", "wild magic", {
       source: [["PHB2024", 149]],
       minlevel: 14,
       description: desc([
-        "You gain a modicum of control over the surges of your wild magic. Whenever you roll on the Wild Magic Surge table, you can roll twice and use either number.",
+        "When I roll on the Wild Magic Surge table I can roll twice and use either number.",
       ]),
     },
     "subclassfeature18": {
@@ -6393,8 +6359,7 @@ legacySubClassRefactor("sorcerer", "wild magic", {
       usages: 1,
       recovery: "long rest",
       description: desc([
-        "Immediately after you cast a Sorcerer spell with a spell slot, you can create an effect of your choice from the Wild Magic Surge table instead of rolling on the Table. You can choose any effect in the table except for the final row, and if the chosen effect involves a roll you must make it.",
-        "Once you use this feature, you can't do so again until you finish a Long Rest.",
+        "Once per Long Rest, after I cast a Sorcerer spell with a spell slot, I can choose an effect from the WMS table (except the final row). If it involves a roll I must make it.",
       ]),
     },
   },
@@ -7214,7 +7179,7 @@ legacyClassRefactor("warlock", {
       source: [["PHB2024", 155]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice for which I qualify.",
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "eldritch master": {
@@ -7616,7 +7581,7 @@ legacyClassRefactor("wizard", {
       source: [["PHB2024", 167]],
       minlevel: 19,
       description: desc([
-        "I gain an Epic Boon feat or another feat of my choice for which I qualify."
+        "I gain an Epic Boon feat, or another feat of your choice for which I qualify.",
       ]),
     },
     "signature spells": {
