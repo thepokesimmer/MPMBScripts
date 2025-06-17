@@ -904,9 +904,9 @@ AddSubClass("druid", "wicker", {
 		},
 	},
 });
-AddSubClass("fighter", "eldritch knight", {
-	regExpSearch: /^(?=.*(fighter))(?=.*(eldritch))(?=.*(knight)).*$/i,
-	subname: "Eldritch Knight",
+AddSubClass("fighter", "Barrow Guard", {
+	regExpSearch: /^(?=.*(fighter))(?=.*(Barrow))(?=.*(Guard)).*$/i,
+	subname: "Barrow Guard",
 	source: [["LA:CM:PR", 28]],
 	features: {
 		"subclassfeature3": {
