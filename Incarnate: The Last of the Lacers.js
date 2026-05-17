@@ -8345,3 +8345,1263 @@ SpellsList["waterspout"] = {
 		"\u2022 If you initiate a form while in the spout which requires a saving throw, you can designate one creature which will be affected by your form. This creature has disadvantage on the first saving throw it makes against your form."
 	]
 };
+//Creatures
+//CR 0
+CreatureList["aukter"] = {
+	name : "Aukter",
+	source : ["ITLOTL", 148],
+	size : 4, // Small
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6],
+	speed : "20 ft, swim 40",
+	scores : [8, 14, 11, 3, 12, 6],
+	passivePerception : 11,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Beak",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Hold Breath",
+		description : "The aukter can hold its breath for 15 minutes."
+	}]
+};
+CreatureList["dog-itlotl"] = {
+	name : "Dog",
+	source : ["ITLOTL", 148],
+	size : 4, // Small
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6],
+	speed : "40 ft",
+	scores : [8, 14, 12, 3, 12, 10],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The dog has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+	}, {
+		name : "Pack Tactics",
+		description : "The dog has advantage on an attack roll against a creature if at least one of the dog's allies is within 5 feet of the creature and the ally isn't incapacitated."
+	}]
+};
+CreatureList["elkrabbit"] = {
+	name : "Elkrabbit",
+	source : ["ITLOTL", 148],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4],
+	speed : "30 ft",
+	scores : [3, 17, 8, 2, 12, 3],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Gore",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Keen Hearing",
+		description : "The elkrabbit has advantage on Wisdom (Perception) checks that rely on hearing."
+	}]
+};
+CreatureList["embermine"] = {
+	name : "Embermine",
+	source : ["ITLOTL", 149],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4],
+	speed : "30 ft",
+	scores : [3, 16, 9, 3, 12, 5],
+	skills : {
+		"perception" : 3,
+		"stealth" : 5
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The embermine has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+	}]
+};
+CreatureList["flying marmoset"] = {
+	name : "Flying Marmoset",
+	source : ["ITLOTL", 149],
+	size : 4, // Small
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6],
+	speed : "30 ft, climb 30 ft, fly 60 ft",
+	scores : [8, 14, 11, 4, 12, 6],
+	passivePerception : 11,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}]
+};
+CreatureList["fox-itlotl"] = {
+	name : "Fox",
+	source : ["ITLOTL", 149],
+	size : 4, // Small
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6],
+	speed : "40 ft",
+	scores : [8, 16, 11, 4, 11, 7],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The fox has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+	}]
+};
+CreatureList["koi"] = {
+	name : "Koi",
+	source : ["ITLOTL", 149],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4],
+	speed : "0 ft, swim 30 ft",
+	scores : [2, 16, 9, 1, 7, 2],
+	senses : "Darkvision 60 ft",
+	passivePerception : 8,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	attacks : [],
+	traits : [{
+		name : "Water Breathing",
+		description : "The koi can breathe only underwater."
+	}]
+};
+CreatureList["meowl"] = {
+	name : "Meowl",
+	source : ["ITLOTL", 150],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 11,
+	hp : 1,
+	hd : [1, 4],
+	speed : "10 ft, fly 60 ft",
+	scores : [3, 13, 8, 2, 12, 7],
+	skills : {
+		"perception" : 3,
+		"stealth" : 3
+	},
+	senses : "Darkvision 120 ft",
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}, {
+		name : "Talons",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "slashing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Flyby",
+		description : "The meowl doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+	}, {
+		name : "Keen Hearing and Sight",
+		description : "The meowl has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+	}]
+};
+CreatureList["messenger falcon"] = {
+	name : "Messenger Falcon",
+	source : ["ITLOTL", 150],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 11,
+	hp : 1,
+	hd : [1, 4],
+	speed : "5 ft, fly 60 ft",
+	scores : [3, 12, 8, 4, 12, 7],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		modifiers: ["", -2],
+	}, {
+		name : "Talons",
+		ability : 2, // Uses Dexterity
+		damage : [1, 4, "slashing"],
+		range : "Melee (5 ft)",
+		description : "",
+		modifiers: ["", -2],
+	}],
+	traits : [{
+		name : "Find Location",
+		description : "The falcon has the supernatural ability to locate creatures or places it has been ordered to find, unless that place is specially hidden."
+	}, {
+		name : "Keen Sight",
+		description : "The falcon has advantage on Wisdom (Perception) checks that rely on sight."
+	}]
+};
+CreatureList["otter"] = {
+	name : "Otter",
+	source : ["ITLOTL", 150],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4],
+	speed : "20 ft, swim 40 ft",
+	scores : [3, 16, 8, 2, 12, 5],
+	skills : {
+		"perception" : 3,
+		"stealth" : 5
+	},
+	passivePerception : 13,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The otter has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+	}]
+};
+CreatureList["porcumeleon"] = {
+	name : "Porcumeleon",
+	source : ["ITLOTL", 150],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 1,
+	hd : [1, 4],
+	speed : "20 ft, climb 20 ft",
+	scores : [1, 11, 8, 1, 8, 3],
+	skills : {
+		"perception" : 1,
+		"stealth" : 2
+	},
+	passivePerception : 11,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	attacks : [],
+	traits : [{
+		name : "Spiny Body",
+		description : "A creature that touches the porcumeleon or hits it with a melee attack while within 5 ft of it takes 2 (1d4) piercing damage. The porcumeleon can squelch or initiate this effect as a bonus action."
+	}]
+};
+CreatureList["silver septapus"] = {
+	name : "Silver Septapus",
+	source : ["ITLOTL", 151],
+	size : 5, // Tiny
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 2,
+	hd : [1, 4],
+	speed : "5 ft, swim 30 ft",
+	scores : [4, 15, 11, 3, 10, 4],
+	skills : {
+		"perception" : 2
+	},
+	passivePerception : 12,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Tentacles",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "bludgeoning"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "Target is grappled (escape DC 10). Until the grapple ends, the septapus can't use its tentacles on another target.",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Hold Breath",
+		description : "While out of water, the septapus can hold its breath for 30 minutes."
+	}, {
+		name : "Water Breathing",
+		description : "The septapus can breathe only underwater."
+	}, {
+		name : "Ink Cloud (Recharges after Short/Long Rest)",
+		description : "As an action while underwater, a 5-ft-radius cloud of ink extends all around the septapus, heavily obscuring the area for 1 minute (a significant current can disperse the ink). After releasing the ink, it can use the Dash action as a bonus action."
+	}]
+};
+CreatureList["tanuki"] = {
+	name : "Tanuki",
+	source : ["ITLOTL", 151],
+	size : 4, // Small
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 3,
+	hd : [1, 4], // Kept as 1d4 to match the 1d4+1 hit points in the stat block
+	speed : "20 ft, climb 10 ft",
+	scores : [4, 10, 13, 2, 11, 7],
+	senses : "Darkvision 30 ft",
+	passivePerception : 10,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The tanuki has advantage on Wisdom (Perception) checks that rely on smell."
+	}]
+};
+//CR 1/8
+CreatureList["bactrian elephant"] = {
+	name : "Bactrian Elephant",
+	source : ["ITLOTL", 151],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 9,
+	hp : 15,
+	hd : [2, 10],
+	speed : "50 ft",
+	scores : [16, 8, 14, 3, 8, 5],
+	passivePerception : 9,
+	challengeRating : "1/8",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false // Statblock says flat 1d4 with no STR modifier added to damage
+	}]
+};
+CreatureList["dromedary dzo"] = {
+	name : "Dromedary Dzo",
+	source : ["ITLOTL", 151],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 9,
+	hp : 15,
+	hd : [2, 10],
+	speed : "40 ft",
+	scores : [17, 8, 14, 2, 8, 5],
+	passivePerception : 9,
+	challengeRating : "1/8",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : false // Statblock says flat 1d4 with no STR modifier added to damage
+	}]
+};
+CreatureList["reindog"] = {
+	name : "Reindog",
+	source : ["ITLOTL", 152],
+	size : 4, // Small
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6],
+	speed : "40 ft",
+	scores : [8, 14, 12, 3, 12, 10],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "1/8",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Ram",
+		ability : 1, // Uses Strength
+		damage : [1, 6, "piercing"],
+		range : "Melee (5 ft)",
+		description : "If moving 20 ft straight toward target, deals extra 1d6 damage and forces DC 13 Str save or knocked prone"
+	}, {
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the reindog moves at least 20 ft straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 3 (1d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+	}, {
+		name : "Keen Hearing and Smell",
+		description : "The reindog has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+	}]
+};
+//CR 1/4
+CreatureList["basigoose"] = {
+	name : "Basigoose",
+	source : ["ITLOTL", 152],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 16,
+	hd : [3, 10],
+	speed : "60 ft",
+	scores : [16, 14, 11, 2, 11, 7],
+	passivePerception : 10,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Water Skimming",
+		description : "The basigoose can run across the surface of the water so long as it doesn't stop moving."
+	}]
+};
+CreatureList["cassopony"] = {
+	name : "Cassopony",
+	source : ["ITLOTL", 152],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 13,
+	hd : [2, 10],
+	speed : "50 ft",
+	scores : [16, 10, 12, 2, 11, 7],
+	passivePerception : 10,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Beak",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Talons",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}]
+};
+CreatureList["flying adderfox"] = {
+	name : "Flying Adderfox",
+	source : ["ITLOTL", 152],
+	size : 5, // Tiny
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 22,
+	hd : [4, 10],
+	speed : "10 ft, fly 60 ft",
+	scores : [2, 16, 11, 2, 10, 3],
+	senses : "Blindsight 60 ft",
+	passivePerception : 10,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2, // Uses Dexterity
+		damage : [1, "", "piercing"], // Flat 1 damage
+		range : "Melee (5 ft)",
+		description : "Target must make a DC 10 Con save, taking 2d4 poison damage on a fail, or half on a success",
+		abilitytodamage : false
+	}],
+	traits : [{
+		name : "Echolocation",
+		description : "The flying adderfox can't use its blindsight while deafened."
+	}, {
+		name : "Keen Hearing",
+		description : "The flying adderfox has advantage on Wisdom (Perception) checks that rely on hearing."
+	}]
+};
+CreatureList["flying swine"] = {
+	name : "Flying Swine",
+	source : ["ITLOTL", 153],
+	size : 4, // Small
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 11,
+	hp : 13,
+	hd : [3, 6],
+	speed : "40 ft, fly 30 ft",
+	scores : [13, 11, 12, 2, 9, 5],
+	passivePerception : 9,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Tusk",
+		ability : 1, // Uses Strength
+		damage : [1, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 1d6 dmg and DC 11 Str save or prone"
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the flying swine moves at least 20 ft straight toward a target and then hits it with a tusk attack on the same turn, the target takes an extra 3 (1d6) slashing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone."
+	}, {
+		name : "Relentless (Recharges after a Short or Long Rest)",
+		description : "If the flying swine takes 7 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
+	}]
+};
+CreatureList["jackaby"] = {
+	name : "Jackaby",
+	source : ["ITLOTL", 153],
+	size : 3, // Medium
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 11,
+	hd : [2, 8],
+	speed : "50 ft",
+	scores : [14, 11, 12, 3, 9, 7],
+	skills : {
+		"athletics" : 4
+	},
+	passivePerception : 9,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Kick",
+		ability : 1, // Uses Strength
+		damage : [1, 4, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Powerful Leap",
+		description : "If the jackaby moves at least 10 feet before jumping, its jump distance is tripled."
+	}]
+};
+CreatureList["yakalo"] = {
+	name : "Yakalo",
+	source : ["ITLOTL", 153],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 15,
+	hd : [2, 10],
+	speed : "50 ft",
+	scores : [16, 10, 14, 2, 10, 6],
+	passivePerception : 10,
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Ram",
+		ability : 1, // Uses Strength
+		damage : [1, 6, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 2d6 dmg and DC 13 Str save or prone"
+	}, {
+		name : "Hooves",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Only against a prone target"
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the yakalo moves at least 20 ft straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+	}]
+};
+//CR 1/2
+CreatureList["dragon elk"] = {
+	name : "Dragon Elk",
+	source : ["ITLOTL", 153],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 19,
+	hd : [3, 10],
+	speed : "50 ft",
+	scores : [18, 10, 12, 2, 11, 7],
+	passivePerception : 10,
+	challengeRating : "1/2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Gore",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 2d4 dmg and DC 15 Str save or prone"
+	}, {
+		name : "Hooves",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Only against a prone creature"
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the dragon elk moves at least 20 ft straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 5 (2d4) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+	}]
+};
+CreatureList["whiskergator"] = {
+	name : "Whiskergator",
+	source : ["ITLOTL", 154],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 19,
+	hd : [3, 10],
+	speed : "20 ft, swim 30 ft",
+	scores : [15, 10, 13, 2, 10, 5],
+	skills : {
+		"stealth" : 2
+	},
+	passivePerception : 10,
+	challengeRating : "1/2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 10, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Target is grappled (escape DC 12) and restrained; can't bite another target"
+	}],
+	traits : [{
+		name : "Hold Breath",
+		description : "The whiskergator can hold its breath for 15 minutes."
+	}]
+};
+//CR 1
+CreatureList["cougar goat"] = {
+	name : "Cougar Goat",
+	source : ["ITLOTL", 154],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 19,
+	hd : [3, 10],
+	speed : "40 ft",
+	scores : [17, 11, 12, 3, 12, 6],
+	passivePerception : 11,
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Ram",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 2d4 bludg. dmg and DC 13 Str save or prone"
+	}, {
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Claws",
+		ability : 1, // Uses Strength
+		damage : [1, 10, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the cougar goat moves at least 20 ft straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (2d4) bludgeoning damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+	}, {
+		name : "Sure-Footed",
+		description : "The cougar goat has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+	}]
+};
+CreatureList["flying fishifuru"] = {
+	name : "Flying Fishifuru",
+	source : ["ITLOTL", 155],
+	size : 1, // Huge
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 90,
+	hd : [12, 12],
+	speed : "0 ft, fly 60 ft, swim 60 ft",
+	scores : [19, 10, 13, 2, 11, 6],
+	passivePerception : 10,
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1, // Uses Strength
+		damage : [3, 4, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Amphibious",
+		description : "The flying fishifuru can breathe air and water."
+	}, {
+		name : "Heavy",
+		description : "The flying fishifuru can fly its full speed, but it must then return to the water before it can fly further."
+	}]
+};
+CreatureList["platybear"] = {
+	name : "Platybear",
+	source : ["ITLOTL", 155],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 11,
+	hp : 34,
+	hd : [4, 10],
+	speed : "40 ft, swim 30 ft",
+	scores : [19, 10, 16, 2, 13, 7],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Claws",
+		ability : 1, // Uses Strength
+		damage : [2, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The platybear has advantage on Wisdom (Perception) checks that rely on smell."
+	}]
+};
+CreatureList["saber-tooth caribou"] = {
+	name : "Saber-Tooth Caribou",
+	source : ["ITLOTL", 155],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 52,
+	hd : [8, 10],
+	speed : "40 ft",
+	scores : [16, 10, 12, 2, 10, 6],
+	passivePerception : 10,
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Ram",
+		ability : 1, // Uses Strength
+		damage : [2, 10, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 1d10 dmg and DC 13 Str save or prone"
+	}, {
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [2, 12, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the caribou moves at least 20 ft straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (1d10) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+	}]
+};
+//CR 2
+CreatureList["giant kohaku"] = {
+	name : "Giant Kohaku",
+	source : ["ITLOTL", 155],
+	size : 1, // Huge
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 60,
+	hd : [8, 12],
+	speed : "0 ft, swim 60 ft",
+	scores : [19, 14, 12, 1, 10, 3],
+	passivePerception : 10,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1, // Uses Strength
+		damage : [2, 6, "bludgeoning"],
+		range : "Melee (10 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Water Breathing",
+		description : "The giant kohaku can breathe only underwater."
+	}]
+};
+CreatureList["goatrilla"] = {
+	name : "Goatrilla",
+	source : ["ITLOTL", 156],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 90,
+	hd : [9, 10],
+	speed : "40 ft, climb 30 ft",
+	scores : [19, 15, 14, 6, 12, 7],
+	skills : {
+		"athletics" : 6,
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Fist",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Rock",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "bludgeoning"],
+		range : "30/60 ft",
+		description : ""
+	}]
+};
+CreatureList["komodoceratops"] = {
+	name : "Komodoceratops",
+	source : ["ITLOTL", 156],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 11,
+	hp : 45,
+	hd : [6, 10],
+	speed : "40 ft",
+	scores : [19, 10, 15, 2, 12, 6],
+	passivePerception : 11,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Gore",
+		ability : 1, // Uses Strength
+		damage : [2, 8, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Charge: If moving 20 ft straight toward target, extra 2d8 dmg and DC 15 Str save or prone"
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the komodoceratops moves at least 20 ft straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+	}]
+};
+CreatureList["liondillo"] = {
+	name : "Liondillo",
+	source : ["ITLOTL", 156],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 52,
+	hd : [7, 10],
+	speed : "40 ft",
+	scores : [18, 14, 15, 3, 12, 8],
+	skills : {
+		"perception" : 3,
+		"stealth" : 6
+	},
+	passivePerception : 13,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 6, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Claw",
+		ability : 1, // Uses Strength
+		damage : [2, 4, "slashing"],
+		range : "Melee (5 ft)",
+		description : "Pounce: If moving 20 ft straight toward target, DC 14 Str save or prone; Can bite prone target as bonus action"
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The liondillo has advantage on Wisdom (Perception) checks that rely on smell."
+	}, {
+		name : "Pounce",
+		description : "If the liondillo moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the liondillo can make one bite attack against it as a bonus action."
+	}]
+};
+CreatureList["moray hound"] = {
+	name : "Moray Hound",
+	source : ["ITLOTL", 157],
+	size : 1, // Huge
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 42,
+	hd : [5, 12],
+	speed : "70 ft, swim 60 ft",
+	scores : [18, 16, 14, 4, 11, 8],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 6, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Tail",
+		ability : 1, // Uses Strength
+		damage : [2, 6, "bludgeoning"],
+		range : "Melee (10 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The hound has advantage on Wisdom (Perception) checks that rely on smell."
+	}, {
+		name : "Endurance",
+		description : "The hound has advantage on saving throws against becoming exhausted."
+	}]
+};
+CreatureList["polar caniform"] = {
+	name : "Polar Caniform",
+	source : ["ITLOTL", 157],
+	size : 2, // Large
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 42,
+	hd : [5, 10],
+	speed : "50 ft, swim 30 ft",
+	scores : [19, 10, 16, 2, 13, 8],
+	skills : {
+		"perception" : 3
+	},
+	passivePerception : 13,
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 8, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Claws",
+		ability : 1, // Uses Strength
+		damage : [2, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The caniform has advantage on Wisdom (Perception) checks that rely on smell."
+	}]
+};
+//CR 3
+CreatureList["armabear"] = {
+	name : "Armabear",
+	source : ["ITLOTL", 157],
+	size : 2, // Large
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 77,
+	hd : [9, 12],
+	speed : "40 ft",
+	scores : [19, 10, 18, 2, 13, 7],
+	skills : {
+		"perception" : 3
+	},
+	resistances : "Bludgeoning, Piercing, and Slashing from nonmagical attacks",
+	passivePerception : 13,
+	challengeRating : "3",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [1, 10, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Claws",
+		ability : 1, // Uses Strength
+		damage : [2, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The armabear has advantage on Wisdom (Perception) checks that rely on smell."
+	}]
+};
+CreatureList["elephoceros beetle"] = {
+	name : "Elephoceros Beetle",
+	source : ["ITLOTL", 158],
+	size : 1, // Huge
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 66,
+	hd : [7, 12],
+	speed : "40 ft, burrow 30 ft",
+	scores : [20, 7, 18, 2, 11, 6],
+	resistances : "Bludgeoning, Piercing, and Slashing from nonmagical attacks",
+	passivePerception : 10,
+	challengeRating : "3",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Slam",
+		ability : 1, // Uses Strength
+		damage : [3, 8, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : ""
+	}]
+};
+//CR 4
+CreatureList["eleboon"] = {
+	name : "Eleboon",
+	source : ["ITLOTL", 158],
+	size : 1, // Huge
+	type : "Beast",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 76,
+	hd : [8, 12],
+	speed : "40 ft",
+	scores : [22, 9, 17, 3, 11, 6],
+	passivePerception : 10,
+	challengeRating : "4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1, // Uses Strength
+		damage : [2, 10, "piercing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}, {
+		name : "Slam",
+		ability : 1, // Uses Strength
+		damage : [3, 8, "bludgeoning"],
+		range : "Melee (10 ft)",
+		description : "Trampling Charge: If moving 20 ft straight toward target, DC 12 Str save or prone"
+	}, {
+		name : "Stomp",
+		ability : 1, // Uses Strength
+		damage : [3, 10, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Can only be used against a prone creature (can be used as a bonus action via Trampling Charge)"
+	}],
+	traits : [{
+		name : "Trampling Charge",
+		description : "If the eleboon moves at least 20 feet straight toward a creature and then hits it with a gore/slam attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the eleboon can make one stomp attack against it as a bonus action."
+	}]
+};
+//CR 8
+CreatureList["flying tamaraw"] = {
+	name : "Flying Tamaraw",
+	source : ["ITLOTL", 117],
+	size : 1, // Huge
+	type : "Beast",
+	companion : "mount",
+	alignment : "Unaligned",
+	ac : 15,
+	hp : 168,
+	hd : [16, 12],
+	speed : "25 ft, fly 60 ft (hover)",
+	scores : [21, 11, 18, 4, 12, 8],
+	saves : ["Str", "Con"],
+	passivePerception : 11,
+	challengeRating : "8",
+	proficiencyBonus : 3,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1, // Uses Strength
+		damage : [3, 12, "bludgeoning"],
+		range : "Melee (10 ft)",
+		description : "Dive: If diving 30 ft straight toward target, extra 5d10 dmg and DC 15 Str save or pushed 10 ft & prone"
+	}, {
+		name : "Gore",
+		ability : 1, // Uses Strength
+		damage : [4, 10, "piercing"],
+		range : "Melee (10 ft)",
+		description : ""
+	}, {
+		name : "Air Blast (Recharge 5-6)",
+		ability : 3, 
+		damage : [5, 10, "bludgeoning"],
+		range : "30-ft cone",
+		description : "Hits all in area; DC 15 Str save, half dmg on success; on fail, also pushed 30 ft and knocked prone",
+		abilitytodamage : false,
+		dc : true
+	}],
+	traits : [{
+		name : "Basic Airlacing",
+		description : "The tamaraw can initiate basic airlacing effects as a 5th-level lacer."
+	}, {
+		name : "Dive",
+		description : "If the tamaraw is flying and dives at least 30 feet straight toward a target and then hits it with a slam attack, the attack deals an extra 28 (5d10) bludgeoning damage to the target. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be pushed up to 10 feet away and knocked prone."
+	}, {
+		name : "Sure-Footed",
+		description : "The tamaraw has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+	}]
+};
