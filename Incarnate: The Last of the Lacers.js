@@ -4,6 +4,7 @@ SourceList["ITLOTL"] = {
     name: "Incarnate: The Last of the Lacers",
     abbreviation: "ITLOTL",
     abbreviationSpellsheet: "IL",
+	url: "https://www.dmsguild.com/en/product/191837/Incarnate-The-Last-of-the-Lacers?",
     group: "Homebrew",
     date: "2026/04/05",
 };
