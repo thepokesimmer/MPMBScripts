@@ -100,6 +100,50 @@ FeatsList["fey sentinel"] = {
         spellcastingAbility : 6
     }
 };
+FeatsList["fey tormentor"] = {
+    name : "Fey Tormentor",
+    type : "general",
+    source : [["DDBD", 0]],
+    prerequisite : "Level 4+ and the Fey Pact feat",
+    prereqeval : function(v) { 
+        return v.characterLevel >= 4 && CurrentFeats.known.indexOf("fey pact") !== -1; 
+    },
+    descriptionFull : "General Feat (Prerequisite: Level 4+, Fey Pact Feat)\n\nYou gain the following benefits.\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\nFaerie Time Warp. As a Bonus Action, choose up to three creatures you can see within 60 feet of yourself. Each target makes a Wisdom saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus). On a failed save, the target’s Speed is reduced by 10 feet, and it takes a −2 penalty to AC until the end of your next turn.\nOnce you use this benefit, you can’t use it again until you finish a Long Rest.\nHag’s Hex. You always have the Hex spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast it using any spell slots you have. The spell’s spellcasting ability is the ability increased by this feat.\nWhen you reach character level 5, you also have the Bestow Curse spell prepared and can cast it in the same way.",
+    action : [["bonus action", "Faerie Time Warp"]],
+    usages : 1,
+    recovery : "long rest",
+    limfeaname : "Faerie Time Warp",
+    spellcastingBonus : [{
+        name : "Hag's Hex",
+        spells : ["hex"],
+        selection : ["hex"],
+        firstCol : "oncelr",
+        allowUpCasting : true
+    }, {
+        name : "Hag's Hex (Level 5)",
+        spells : ["bestow curse"],
+        selection : ["bestow curse"],
+        firstCol : "oncelr",
+        allowUpCasting : true,
+        times : levels.map(function(n) { return n < 5 ? 0 : 1; })
+    }],
+    choices : ["Intelligence", "Wisdom", "Charisma"],
+    "intelligence" : {
+        description : "1/LR, as a Bonus Action, up to 3 creatures within 60 ft must make a Wis save (DC 8+Int+PB). On fail, speed -10 ft and -2 AC until my next turn ends. I have Hex and Bestow Curse (lvl 5+) prepared, and cast each 1/LR without a slot or use slots. [+1 Int]",
+        scores : [0, 0, 0, 1, 0, 0],
+        spellcastingAbility : 4
+    },
+    "wisdom" : {
+        description : "1/LR, as a Bonus Action, up to 3 creatures within 60 ft must make a Wis save (DC 8+Wis+PB). On fail, speed -10 ft and -2 AC until my next turn ends. I have Hex and Bestow Curse (lvl 5+) prepared, and cast each 1/LR without a slot or use slots. [+1 Wis]",
+        scores : [0, 0, 0, 0, 1, 0],
+        spellcastingAbility : 5
+    },
+    "charisma" : {
+        description : "1/LR, as a Bonus Action, up to 3 creatures within 60 ft must make a Wis save (DC 8+Cha+PB). On fail, speed -10 ft and -2 AC until my next turn ends. I have Hex and Bestow Curse (lvl 5+) prepared, and cast each 1/LR without a slot or use slots. [+1 Cha]",
+        scores : [0, 0, 0, 0, 0, 1],
+        spellcastingAbility : 6
+    }
+};
 FeatsList["infernal pact"] = {
     name : "Infernal Pact",
     source : [["DDBD", 0]],
@@ -522,4 +566,65 @@ MagicItemsList["stormwalker's cloak"] = {
             changes : "When casting Hellish Rebuke using the Stormwalker's Cloak, I can choose to deal Lightning or Thunder damage instead of Fire damage."
         }
     }
+};
+MagicItemsList["alarm pylon"] = {
+    name : "Alarm Pylon",
+    source : [["DDBD", 0]],
+    type : "wondrous item",
+    rarity : "uncommon",
+    description : "As an action, I can activate/deactivate this 5-ft stone pylon. When activated, I set a trigger: a spell of a specific school is cast, a creature takes 5+ dmg, or an object takes 10+ dmg. If triggered within 300 ft, it rings for 10 seconds, audible up to 300 ft away.",
+    descriptionFull : "This 5-foot-tall post is made of stone and etched with runes. As a Magic action, you can activate the pylon by touching the runes and specifying one of the following triggers:\n\u2022 A creature or item casts a spell from a specific school of magic.\n\u2022 A creature takes 5 or more damage.\n\u2022 An object takes 10 or more damage.\n\nIf the chosen trigger occurs within 300 feet of the pylon while the pylon is activated, the pylon emits a ringing alarm for 10 seconds, which is audible up to 300 feet away.\n\nYou can take a Magic action to deactivate the pylon.",
+    action : [["action", "Alarm Pylon (activate/deactivate)"]]
+};
+MagicItemsList["silencing satchel"] = {
+    name : "Silencing Satchel",
+    source : [["DDBD", 0]],
+    type : "wondrous item",
+    rarity : "uncommon",
+    description : "As an action (1 charge), 1 creature within 60 ft must make a DC 15 Cha save or be cursed for 1 min. While cursed, its mouth is sealed shut: it can't cast spells with Verbal components, eat, or drink potions. The target repeats the save at the end of each of its turns.",
+    descriptionFull : "This magic satchel has 3 charges and regains 1d3 expended charges daily at dawn. As a Magic action, you can expend 1 charge and tighten the satchel’s drawstring to inflict a silencing hex on a creature you can see within 60 feet of yourself. The target must succeed on a DC 15 Charisma saving throw or be cursed for 1 minute. While the target is cursed, its mouth is sealed shut. The target can’t cast any spell with a Verbal component, consume potions, or take in food or drink. The target makes a DC 15 Charisma save at the end of each of its turns, ending the curse early on a success.",
+    usages : 3,
+    recovery : "dawn",
+    additional : "regains 1d3",
+    action : [["action", "Silencing Satchel (1 charge)"]]
+};
+MagicItemsList["sync ring"] = {
+    name : "Sync Ring",
+    source : [["DDBD", 0]],
+    type : "ring",
+    rarity : "uncommon",
+    attunement : true,
+    description : "When attuned to this ring, I choose a blank book I am touching. Anything I write with the hand wearing this ring is magically copied into the chosen book. Magical writing is transcribed literally but is nonmagical. Attunement ends if the book fills up or if it is on a different plane than me for more than 24 hours.",
+    descriptionFull : "When you attune to this ring, choose a blank book you are touching. Thereafter, whenever you write something using the hand that wears the ring, a copy of your writing magically appears in the chosen book. Magical writing, such as a spell copied from a Spell Scroll or a glyph inscribed for the Glyph of Warding spell, is transcribed literally but is nonmagical.\n\nIf no blank pages are left in the book or the book is on a different plane of existence than you for more than 24 hours, your Attunement to the ring ends."
+};
+MagicItemsList["unraveling cloak"] = {
+    name : "Unraveling Cloak",
+    source : [["DDBD", 0]],
+    type : "wondrous item",
+    rarity : "common",
+    description : "As an action, I can unbutton the cloak to leave a continuous thread behind me (up to 100 miles). Finding it requires a DC 15 Wis (Perception) Search action. I can use an action to rebutton it to stop it. Teleporting destroys any unraveled thread.",
+    descriptionFull : "When you take a Magic action to remove the button from the hood of this cloak, the cloak’s fabric unravels behind you wherever you go, leaving a continuous thread. Other creatures can see the thread only if they take the Search action to look for it and succeed on a DC 15 Wisdom (Perception) check.\n\nThe cloak ceases to unravel after 100 miles or if you take a Magic action to rebutton the cloak. If you teleport while the cloak is unraveling, any unraveled thread is immediately destroyed.",
+    action : [["action", "Unraveling Cloak (unbutton/rebutton)"]]
+};
+MagicItemsList["wand of misdirection"] = {
+    name : "Wand of Misdirection",
+    source : [["DDBD", 0]],
+    type : "wand",
+    rarity : "rare",
+    attunement : true,
+    prerequisite : "Requires attunement by a spellcaster",
+    prereqeval : function(v) {
+        return v.isSpellcaster;
+    },
+    description : "While holding the wand, I can expend 1 charge to cast the Mislead spell from it.",
+    descriptionFull : "This wand has 4 charges and regains 1d4 expended charges daily at dawn. While holding the wand, you can expend 1 charge to cast Mislead from it.",
+    usages : 4,
+    recovery : "dawn",
+    additional : "regains 1d4",
+    spellcastingBonus : [{
+        name : "1 charge",
+        spells : ["mislead"],
+        selection : ["mislead"],
+        firstCol : "1"
+    }]
 };
