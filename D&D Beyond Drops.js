@@ -6,6 +6,55 @@ SourceList.DDBD = {
     group : "D&D Beyond",
     date : "2026/08/11" 
 };
+RaceList["duskling"] = {
+    regExpSearch : /duskling/i,
+    name : "Duskling",
+    source : [["DDBD", 0]],
+    plural : "Dusklings",
+    size : 3, // Medium
+    type : "Fey",
+    speed : { walk : { spd : 30, enc : 20 } },
+    vision : [["Darkvision", 60]],
+    trait : [
+        "**Duskling** (Creature Type: Fey)",
+        "**Enhanced Jump**. I add 2 ft to the distance of my running High Jump and 10 ft to my running Long Jump.",
+        "**Inner Magic**. After a Long Rest, I choose a benefit below. I can switch it as a Bonus Action (Prof. Bonus \xD7 / Long Rest):",
+        " \u2022 Ardor: Adv. on Charisma checks & on saves to avoid/end the Frightened condition.",
+        " \u2022 Mobility: Speed +10 ft; climbing/swimming don't cost extra movement.",
+        " \u2022 Vigor: Gain Temp HP equal to Prof. Bonus; Adv. on Str (Athletics) and Dex (Acrobatics)."
+    ].join("\n"),
+    features : {
+        "inner magic" : {
+            name : "Inner Magic",
+            minlevel : 1,
+            usages : "Proficiency Bonus per ",
+            usagescalc : "event.value = How('Proficiency Bonus');",
+            recovery : "long rest",
+            action : [["bonus action", " (switch benefit)"]],
+            choices : ["Ardor", "Mobility", "Vigor"],
+            "ardor" : {
+                name : "Inner Magic: Ardor",
+                description : "I have Advantage on Charisma checks and on saving throws to avoid or end the Frightened condition.",
+                savetxt : { adv_vs : ["Frightened"] }
+            },
+            "mobility" : {
+                name : "Inner Magic: Mobility",
+                description : "My speed increases by 10 ft, and climbing and swimming don't cost me extra movement.",
+                speed : { 
+                    walk : { spd : "+10", enc : "+10" }, 
+                    climb : { spd : "walk", enc : "walk" }, 
+                    swim : { spd : "walk", enc : "walk" } 
+                }
+            },
+            "vigor" : {
+                name : "Inner Magic: Vigor",
+                description : "I gain Temporary Hit Points equal to my Proficiency Bonus, and I have Advantage on Str (Athletics) and Dex (Acrobatics) checks.",
+                advantages : [["Acrobatics", true], ["Athletics", true]]
+            }
+        }
+    },
+    height : " are about 5-6 ft tall"
+};
 BackgroundList["pact seeker"] = {
     regExpSearch : /^(?=.*pact)(?=.*seeker).*$/i,
     name : "Pact Seeker",
@@ -356,6 +405,35 @@ SpellsList["buzzing bee"] = {
     description : "1 target Disadv. on Perception, Stealth, Con (Conc.) saves; can't be Invisible; ends if >120 ft",
     descriptionFull : "You call forth a noisy spectral bee. You target a creature that you can see within range. The bee hovers around the target, distracting it with loud buzzing. For the duration, the target has Disadvantage on Wisdom (Perception) checks, Dexterity (Stealth) checks, and Constitution saving throws made to maintain Concentration. In addition, the target cannot benefit from the Invisible condition.\n\nThe bee moves with the target, hovering within 3 feet of it as long as the target is within 120 feet of you. The bee disappears when the spell ends or if the target moves out of range."
 };
+SpellsList["conjure tools"] = {
+    name : "Conjure Tools",
+    classes : ["artificer", "bard", "ranger", "wizard"],
+    source : [["DDBD", 0]],
+    level : 2,
+    school : "Conj",
+    time : "Act",
+    range : "30 ft",
+    components : "V,S",
+    duration : "8 h",
+    description : "Create Artisan's Tools I'm proficient with; ends if cast again or tools move >10 ft away; SL3+: 2x crafting speed",
+    descriptionFull : "This spell creates a set of Artisan’s Tools of your choice. You have proficiency with these tools. At the end of the spell’s duration, the tools vanish, but any items created or transformed by the tools remain. The spell ends early if you cast it again or if the tools are more than 10 feet away from you.\n\n" + UsingHigherLvl + "If cast with a level 3 spell slot, you work as efficiently as two characters when determining how much time it takes to craft nonmagical items using the tools."
+};
+SpellsList["feign interest"] = {
+    name: "Feign Interest",
+    classes: ["wizard"],
+    source: [["DDBD", 0]],
+    level: 1,
+    school: "Illus",
+    time: "Act",
+    range: "Self",
+    components: "V",
+    duration: "1 h",
+    description: "Appear fully focused; Search act. for Wis (Insight) vs spell DC to see true demeanor",
+    descriptionFull: [
+        "This spell is a favorite of apprentices and students. For the duration, you appear to be fully focused and paying rapt attention. Behind the illusion, you can be napping, thinking about other things, or otherwise letting your mind wander.",
+        "A creature that takes a Search action to evaluate your state of mind can determine that your interest is feigned with a successful Wisdom (Insight) check against your spell save DC. If a creature discerns the illusion for what it is, they see your true demeanor."
+    ]
+};
 SpellsList["insidious rhythm"] = {
     name : "Insidious Rhythm",
     classes : ["bard"],
@@ -383,6 +461,33 @@ SpellsList["leomund's lamentable belaborment"] = {
     save : "Int",
     description : "10-ft rad Int save or Charmed (argues, Speed 0, Blind/Deaf to non-targets); immune if Int <3/no lang",
     descriptionFull : "You proclaim an insightful or inflammatory statement, such as a claim about the politics of a nearby town. Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on an Intelligence saving throw or have the Charmed condition until the spell ends. Any creature that doesn’t share a language with you or that has an Intelligence score lower than 3 automatically succeeds on the saving throw.\n\nWhile Charmed, a target must spend its turn discussing or arguing for or against your statement. For the duration, the target has a Speed of 0 and has the Blinded and Deafened conditions with respect to everyone except you and other targets affected by this spell.\n\nAt the end of each of its turns, the target repeats the save, ending the spell on itself on a success."
+};
+SpellsList["pinky swear"] = {
+    name : "Pinky Swear",
+    classes : ["bard", "paladin", "wizard"],
+    source : [["DDBD", 0]],
+    level : 2,
+    school : "Abjur",
+    time : "Act",
+    range : "Touch",
+    components : "V,S",
+    duration : "24 h",
+    description : "Touch 1 crea and make a \u226425 word promise; if broken, target knows (if in 1 mile) \x26 I take 1 Fire dmg/turn",
+    descriptionFull : "You touch a creature and speak a promise of no more than 25 words that you vow to keep.\n\nFor the duration of the spell, if you knowingly break the promise, the target immediately knows of your breach if it is within 1 mile, and you start burning, taking 1 Fire damage at the start of each of your turns instead of the normal burning damage."
+};
+SpellsList["quick clothier"] = {
+    name : "Quick Clothier",
+    classes : ["artificer", "bard", "wizard"],
+    source : [["DDBD", 0]],
+    level : 1,
+    school : "Trans",
+    time : "Act",
+    range : "Touch",
+    components : "V,S,M",
+    compMaterial : "A set of clothing",
+    duration : "24 h",
+    description : "Change appearance/style of 1 unworn nonmagical outfit (max 15 gp value) for duration",
+    descriptionFull : "You alter the appearance of a set of nonmagical clothing that isn’t being worn by someone else. You determine the color, styling, decoration, and form the clothing takes, though you can’t generate clothes worth more than 15 GP. For example, you could transform a tattered Robe into Fine Clothes, or vice versa. At the end of the spell’s duration, the altered clothing returns to its original form."
 };
 SpellsList["sticks to snakes"] = {
     name : "Sticks to Snakes",
