@@ -3,6 +3,7 @@ RequiredSheetVersion("13.2.3", 26);
 SourceList.DDBD = {
     name : "D&D Beyond Drops",
     abbreviation : "DDBD", 
+	abbreviationSpellsheet: "DR",
     group : "D&D Beyond",
     date : "2026/08/11" 
 };
