@@ -7,12 +7,11 @@ SourceList.DDBD = {
     group : "D&D Beyond",
     date : "2026/08/11" 
 };
-var AtHigherLevels = "\n   ***At Higher Levels***. ";
-var UsingHigherLvl = "***Using a Higher-Level Spell Slot***. ";
-var CantripUpgrade = "***Cantrip Upgrade***. ";
-var SpellRitualTag = "\xAE"; // registered trademark symbol
-var SpellRitualTagNonUnicode = "(R)";
-var SpellReqLosTag = "\u25C9";
+if (!tDoc.UsingHigherLvl) {
+  var fromBefore14 = semVersToNmbr(tDoc.info.SheetVersion) < semVersToNmbr(14);
+  var UsingHigherLvl = fromBefore14 ? toUni("Using a Higher-Level Spell Slot. ") : "***Using a Higher-Level Spell Slot***. ";
+  var CantripUpgrade = fromBefore14 ? toUni("Cantrip Upgrade. ") : "***Cantrip Upgrade***. ";
+}
 RaceList["duskling"] = {
     regExpSearch : /duskling/i,
     name : "Duskling",
@@ -395,7 +394,7 @@ FeatsList["tactical combatant"] = {
 };
 SpellsList["astral flood"] = {
     name : "Astral Flood",
-    classes : ["bard", "cleric", "sorcerer", "wizard"],
+    classes : ["bard", "cleric", "sorcerer", "warlock", "wizard"],
     source : [["DDBD", 0]],
     level : 3,
     school : "Evoc",
