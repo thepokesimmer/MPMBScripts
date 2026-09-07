@@ -6,11 +6,12 @@ SourceList.DDBD = {
     group : "D&D Beyond",
     date : "2026/08/11" 
 };
-if (!tDoc.UsingHigherLvl) {
-  var fromBefore14 = FromVersion < semVersToNmbr(14);
-  var UsingHigherLvl = fromBefore14 ? toUni("Using a Higher-Level Spell Slot. ") : "***Using a Higher-Level Spell Slot***. ";
-  var CantripUpgrade = fromBefore14 ? toUni("Cantrip Upgrade. ") : "***Cantrip Upgrade***. ";
-}
+var AtHigherLevels = "\n   ***At Higher Levels***. ";
+var UsingHigherLvl = "***Using a Higher-Level Spell Slot***. ";
+var CantripUpgrade = "***Cantrip Upgrade***. ";
+var SpellRitualTag = "\xAE"; // registered trademark symbol
+var SpellRitualTagNonUnicode = "(R)";
+var SpellReqLosTag = "\u25C9";
 RaceList["duskling"] = {
     regExpSearch : /duskling/i,
     name : "Duskling",
@@ -91,8 +92,8 @@ FeatsList["fey pact"] = {
     source : [["DDBD", 0]],
     prerequisite : "Can't have another Planar Pact feat",
 	type : "planar pact",
-    description : "I gain proficiency in Nature and learn Sylvan (or another language if already known). I learn Druidcraft and 1 Divination or Enchantment cantrip. As a reaction when rolling 5 or lower on a Deception/Persuasion check, I can reroll and must use the new roll.",
-    descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat).\n\nYou gain the following benefits.\nFey Bond. You know Sylvan. If you already know Sylvan when you select this feat, you instead learn one language of your choice from the language tables in the Player’s Handbook. You also gain Proficiency in the Nature skill.\nFey Cantrips. You know the Druidcraft cantrip and learn one other cantrip of your choice from the Divination or Enchantment school of magic. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose when you select this feat).\nHoneyed Words. When you roll a 5 or lower on the d20 for a Charisma (Deception) or Charisma (Persuasion) check, you can take a Reaction to reroll the check, and you must use the new roll. Once you take this Reaction, you can’t use this benefit again until you finish a Long Rest.",
+    description : "I gain proficiency in Nature and learn Sylvan (or another language if already known). I learn Druidcraft and 1 Divination or Enchantment cantrip. Once per LR when rolling 5 or lower on a Deception/Persuasion check, I can reroll and must use the new roll.",
+    descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat).\n\nYou gain the following benefits.\nFey Bond. You know Sylvan. If you already know Sylvan when you select this feat, you instead learn one language of your choice from the language tables in the Player’s Handbook. You also gain Proficiency in the Nature skill.\nFey Cantrips. You know the Druidcraft cantrip and learn one other cantrip of your choice from the Divination or Enchantment school of magic. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose when you select this feat).\nHoneyed Words. When you fail a Charisma (Deception or Persuasion) check, you can reroll the check, and you must use the new roll. Once this benefit turns a failure into a success, you can’t use it again until you finish a Long Rest.",
     skills : ["Nature"],
     languageProfs : ["Sylvan"],
     spellcastingBonus : [{
@@ -107,7 +108,7 @@ FeatsList["fey pact"] = {
         level : [0, 0],
         firstCol : "atwill"
     }],
-    action : [["reaction", "Honeyed Words (roll 5 or less)"]],
+	limfeaname : "Honeyed Words",
     usages : 1,
     recovery : "long rest"
 };
@@ -204,10 +205,20 @@ FeatsList["infernal pact"] = {
     prerequisite : "Can't have another Planar Pact feat",
     type : "planar pact",
     description : "I have Resistance to Fire and Poison damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
-    descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat).\n\nYou gain the following benefits.\nInfernal Resistance. You have Resistance to Fire damage and Poison damage.\nInfernal Sight. You can see normally in Dim Light and Darkness—both magical and nonmagical—within 60 feet of yourself.\nSilver-Tongued. You gain proficiency in the Deception skill.",
+    descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat).\n\nYou gain the following benefits.\nInfernal Resistance. You gain Resistance to Fire damage or Poison damage (choose when you select this feat).\nInfernal Sight. You can see normally in Dim Light and Darkness—both magical and nonmagical—within 60 feet of yourself.\nSilver-Tongued. You gain proficiency in the Deception skill.",
     skills : ["Deception"],
-    dmgres : ["Fire", "Poison"],
     vision : [["Darkvision (magical & nonmagical)", 60]]
+	choices : ["Fire", "Poison"],
+	"fire" : {
+		name : "Infernal Pact [Fire]",
+		description : "I have Resistance to Fire damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
+		dmgres : ["Fire"],
+	},
+	"poison", : {
+		name : "Infernal Pact [Poison]",
+		description : "I have Resistance to Poison damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
+		dmgres : ["Poison"],
+	},
 };
 FeatsList["infernal bulwark"] = {
     name : "Infernal Bulwark",
@@ -332,7 +343,7 @@ FeatsList["shifting combatant"] = {
         return v.characterLevel >= 4; 
     },
     type : "general",
-    descriptionFull : "General Feat (Prerequisite: Level 4+, Weapon Mastery Feature)\n\nYou gain the following benefits.\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\nDomino Strike. When you hit a creature with a weapon and activate the Push mastery property to push that creature into a space occupied by a Large or smaller creature, you can force the creatures to collide. Each creature must succeed on a Constitution saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or have the Prone condition.\nFearless Leap. When you make a Long Jump, moving at least 10 feet immediately before the jump, and land in a space within 5 feet of two or more enemies, attack rolls made against you have Disadvantage until the start of your next turn.",
+    descriptionFull : "General Feat (Prerequisite: Level 4+, Weapon Mastery Feature)\n\nYou gain the following benefits.\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\nDomino Strike. When you hit a creature with a weapon and activate the Push mastery property to push that creature into a space occupied by a Large or smaller creature, you can force the creatures to collide. Each creature makes a Dexterity saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus), taking 1d10 Bludgeoning damage on a failed save.\nFearless Leap. When you make a Long Jump, moving at least 10 feet immediately before the jump, and land in a space within 5 feet of two or more enemies, attack rolls made against you have Disadvantage until the start of your next turn.",
     calcChanges : {
         atkAdd : [
             function (fields, v) {
@@ -345,11 +356,11 @@ FeatsList["shifting combatant"] = {
     },
     choices : ["Strength", "Dexterity"],
     "strength" : {
-        description : "If I push a creature with the Push mastery into a \u2264Large creature's space, I can force a collision. Both make a Con save (DC 8+Str+PB) or fall Prone. If I Long Jump (10+ ft start) and land within 5 ft of 2+ enemies, attacks vs me have Disadv. until my next turn starts. [+1 Str]",
+        description : "If I push a creature with the Push mastery into a \u2264Large creature's space, I can force a collision. Both make a Con save (DC 8+Str+PB) or take 1d10 Blud dmg. If I Long Jump (10+ ft start) and land within 5 ft of 2+ enemies, attacks vs me have Disadv. until my next turn starts. [+1 Str]",
         scores : [1, 0, 0, 0, 0, 0]
     },
     "dexterity" : {
-        description : "If I push a creature with the Push mastery into a \u2264Large creature's space, I can force a collision. Both make a Con save (DC 8+Dex+PB) or fall Prone. If I Long Jump (10+ ft start) and land within 5 ft of 2+ enemies, attacks vs me have Disadv. until my next turn starts. [+1 Dex]",
+        description : "If I push a creature with the Push mastery into a \u2264Large creature's space, I can force a collision. Both make a Con save (DC 8+Dex+PB) or take 1d10 Blud dmg. If I Long Jump (10+ ft start) and land within 5 ft of 2+ enemies, attacks vs me have Disadv. until my next turn starts. [+1 Dex]",
         scores : [0, 1, 0, 0, 0, 0]
     }
 };
@@ -393,8 +404,8 @@ SpellsList["astral flood"] = {
     compMaterial : "a mixture of water and powdered silver",
     duration : "Instantaneous",
     save : "Dex",
-    description : "30-ft cone all crea Dex save or 4d10+1d10/SL Cold or Radiant dmg; Cold: Disadv. on next D20 test; Radiant: Blinded beyond 15 ft till my next turn end",
-    descriptionFull : "You channel energy from the Astral Sea to unleash a torrent of magic from you in a 30-foot Cone. Each creature in the Cone must succeed on a Dexterity saving throw or take 4d10 Cold or Radiant damage (chosen when you cast this spell). Your choice of damage type determines an additional effect:\n\nCold Damage. The target has Disadvantage on the next D20 Test it makes before the end of your next turn.\nRadiant Damage. The target can see only within 15 feet of itself, and it has the Blinded condition for everything beyond that distance until the end of your next turn.\n\nAt Higher Levels: The damage increases by 1d10 for each spell slot level above 3."
+    description : "30-ft cone all crea Dex save or 4d10+1d10/SL Cold or Radiant dmg; Cold: Disadv. on next D20 test before my next EOT; Radiant: Blinded until my next EOT.",
+    descriptionFull : "You channel energy from the Astral Sea to unleash a torrent of magic from yourself. Choose Cold or Radiant for the type of energy channeled. Each creature in a 30-foot Cone originating from you makes a Dexterity saving throw. On a failed save, the target takes 4d10 damage of the chosen type and suffers an additional effect determined by the damage type:\n\nCold Damage. The target has Disadvantage on the next D20 Test it makes before the end of your next turn.\nRadiant Damage. The target has the Blinded condition until the end of your next turn.\nOn a successful save, the target takes half as much damage only.\n\nAt Higher Levels: The damage increases by 1d10 for each spell slot level above 3."
 };
 SpellsList["buzzing bee"] = {
     name : "Buzzing Bee",
@@ -534,8 +545,8 @@ SpellsList["tortoise shell"] = {
     range : "Touch",
     components : "V,S",
     duration : "Conc, 1 min",
-    description : "Willing creature gets +3 AC; bonus becomes +1 if it moves until start of next turn",
-    descriptionFull : "You touch a willing creature. Until the spell ends, the target’s skin hardens into a tortoise shell, and the target gains a +3 bonus to AC. If the target moves, the bonus becomes +1 instead until the start of its next turn."
+    description : "Willing creature gets +3 AC; bonus becomes +1 if it moves until its next SOT",
+    descriptionFull : "You touch a willing creature. Until the spell ends, the target’s skin hardens into a tortoise shell while it remains in place, and the target gains a +3 bonus to AC. If the target moves using its action, Bonus Action, Reaction, or movement, the bonus becomes +1 instead until the start of its next turn."
 };
 SpellsList["void star"] = {
     name : "Void Star",
@@ -548,8 +559,8 @@ SpellsList["void star"] = {
     components : "V,S,M",
     compMaterial : "A fragment of a meteorite",
     duration : "Instantaneous",
-    description : "Ranged spell atk 6d12 Necrotic dmg; end of next turn takes 3d12 Necrotic dmg and I regain HP equal to damage dealt; +1d12/SL",
-    descriptionFull : "You conjure forth a fragment of a dark star and launch it at one creature that you can see within range. Make a ranged spell attack against the target. On a hit, the target takes 6d12 Necrotic damage. At the end of the target’s next turn, it takes 3d12 Necrotic damage, and you regain Hit Points equal to the amount of Necrotic damage dealt.\n\nAt Higher Levels: The damage (both initial and later) increases by 1d12 for each spell slot level above 7."
+    description : "Ranged spell atk 6d12+1d12/SL Necrotic dmg; hit or miss its next EOT takes 3d12 Necrotic dmg and I regain HP equal to damage dealt",
+    descriptionFull : "You conjure forth a fragment of a dark star and launch it at one creature that you can see within range. Make a ranged spell attack against the target. On a hit, the target takes 6d12 Necrotic damage. Hit or miss, the target takes 3d12 Necrotic damage at the end of its next turn, and you regain Hit Points equal to that damage.\n\nAt Higher Levels: The damage (both initial and later) increases by 1d12 for each spell slot level above 7."
 };
 MagicItemsList["climber's ammunition"] = {
     name : "Climber's Ammunition",
@@ -616,32 +627,32 @@ MagicItemsList["salubrious armor"] = {
     type : "armor (plate or scale mail)",
     rarity : "rare",
     attunement : true,
-    description : "Whenever I regain Hit Points while wearing this armor, it takes on a reddish tint, and I gain a +1 bonus to my AC until the end of my next turn.",
-    descriptionFull : "Whenever you regain Hit Points while wearing this armor, it takes on a reddish tint, and you gain a +1 bonus to Armor Class until the end of your next turn.",
+    description : "I gain +1 to AC, whenever I regain Hit Points while wearing this armor, it takes on a reddish tint, and bonus increases to +2 until my next EOT.",
+    descriptionFull : "While wearing this armor, you gain a +1 bonus to Armor Class. Whenever you regain Hit Points, the armor takes on a reddish tint, and this bonus increases to +2 until the end of your next turn.",
     allowDuplicates : true,
 	choices: ["Scale Mail", "Plate"],
     "scale mail": {
-        description: "Whenever I regain Hit Points while wearing this scale mail, it takes on a reddish tint, and I gain a +1 bonus to my AC until the end of my next turn.",
-        descriptionFull: "Whenever you regain Hit Points while wearing this scale mail, it takes on a reddish tint, and you gain a +1 bonus to Armor Class until the end of your next turn.",
+        description : "I gain +1 to AC, whenever I regain Hit Points while wearing this scale mail, it takes on a reddish tint, and bonus increases to +2 until my next EOT.",
+		descriptionFull : "While wearing this scale mail, you gain a +1 bonus to Armor Class. Whenever you regain Hit Points, the armor takes on a reddish tint, and this bonus increases to +2 until the end of your next turn.",
         armorOptions: {
             regExpSearch: /^(?=.*salubrious)(?=.*scale)(?=.*mail).*$/i,
             name: "Salubrious Scale Mail",
             source: ["DDBD", 0],
             type: "medium",
-            ac: "14",
+            ac: "14+1",
             stealthdis: true,
             weight: 45,
             selectNow: true,
         },
     },
     "plate": {
-        description: "Whenever I regain Hit Points while wearing this plate armor, it takes on a reddish tint, and I gain a +1 bonus to my AC until the end of my next turn.",
-        descriptionFull: "Whenever you regain Hit Points while wearing this plate armor, it takes on a reddish tint, and you gain a +1 bonus to Armor Class until the end of your next turn.",
+        description : "I gain +1 to AC, whenever I regain Hit Points while wearing this plate armor, it takes on a reddish tint, and bonus increases to +2 until my next EOT.",
+		descriptionFull : "While wearing this plate armor, you gain a +1 bonus to Armor Class. Whenever you regain Hit Points, the armor takes on a reddish tint, and this bonus increases to +2 until the end of your next turn.",
         armorOptions: {
             regExpSearch: /^(?=.*salubrious)(?=.*plate)(?=.*armor).*$/i,
             name: "Salubrious Plate Armor",
             source: ["DDBD", 0],
-            ac: "18",
+            ac: "18+1",
             type: "heavy",
             stealthdis: true,
             weight: 65,
