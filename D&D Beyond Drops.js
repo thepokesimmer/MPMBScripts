@@ -207,14 +207,14 @@ FeatsList["infernal pact"] = {
     description : "I have Resistance to Fire and Poison damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
     descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat).\n\nYou gain the following benefits.\nInfernal Resistance. You gain Resistance to Fire damage or Poison damage (choose when you select this feat).\nInfernal Sight. You can see normally in Dim Light and Darkness—both magical and nonmagical—within 60 feet of yourself.\nSilver-Tongued. You gain proficiency in the Deception skill.",
     skills : ["Deception"],
-    vision : [["Darkvision (magical & nonmagical)", 60]]
+    vision : [["Darkvision (magical & nonmagical)", 60]],
 	choices : ["Fire", "Poison"],
 	"fire" : {
 		name : "Infernal Pact [Fire]",
 		description : "I have Resistance to Fire damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
 		dmgres : ["Fire"],
 	},
-	"poison", : {
+	"poison" : {
 		name : "Infernal Pact [Poison]",
 		description : "I have Resistance to Poison damage. I gain proficiency in the Deception skill. I can also see normally in dim light and darkness (both magical and nonmagical) out to a range of 60 ft.",
 		dmgres : ["Poison"],
