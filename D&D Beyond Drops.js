@@ -61,6 +61,93 @@ RaceList["duskling"] = {
     },
     height : " are about 5-6 ft tall"
 };
+AddSubClass("fighter", "sorrow knight", {
+    regExpSearch : /sorrow knight/i,
+    subname : "Sorrow Knight",
+    subnameShort : "Sorrow",
+    fullname : "Sorrow Knight",
+    source : [["DDBD", 0]],
+    features : {
+        "subclassfeature3" : {
+            name : "Despairing Strikes",
+            source : [["DDBD", 0]],
+            minlevel : 3,
+            description : desc([
+                "When I hit a creature with a weapon attack, I can expend 1 Despairing Strike Die.",
+                "It takes extra Psychic damage equal to the die roll and suffers a chosen effect (DC 8+Wis+PB):",
+                "\u2022 Abandoned: Int save or Deafened until my next turn ends (regards all as enemies).",
+                "\u2022 Dread: Disadvantage on the next saving throw it makes before my next turn starts."
+            ]),
+            additional : levels.map(function(n) { return "d" + (n < 10 ? 8 : n < 15 ? 10 : 12); }),
+            usages : levels.map(function(n) { return n < 10 ? 3 : n < 15 ? 4 : 5; }),
+            recovery : "short rest"
+        },
+        "subclassfeature3.1" : {
+            name : "Solemn Gaze",
+            source : [["DDBD", 0]],
+            minlevel : 3,
+            description : desc([
+                "I gain Darkvision 60 ft (range increases by 60 ft if I already have it).",
+                "As a Magic action, I can search the mind of a creature I can see within 30 ft.",
+                "It must make a Wis save (DC 8+Wis+PB) or I learn an emotion looming in its mind.",
+                "If the target can see me, it knows I have read its emotions."
+            ]),
+            vision : [["Darkvision", "+60"]], 
+            usages : "Wisdom modifier per ",
+            usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+            recovery : "long rest",
+            action : [["action", " (Empathetic Inquiry)"]]
+        },
+        "subclassfeature7" : {
+            name : "Dreaded Appearance",
+            source : [["DDBD", 0]],
+            minlevel : 7,
+            description : desc([
+                "When I use Tactical Shift, I can teleport up to 30 ft to an empty space I can see.",
+                "Upon reappearing, creatures of my choice in a 10-ft emanation make a Wis save (DC 8+Wis+PB).",
+                "Fail: Psychic dmg equal to my Despairing Strike die & Frightened until my next turn ends.",
+                "Success: Half damage."
+            ]),
+            usages : 1,
+            recovery : "short rest"
+        },
+        "subclassfeature10" : {
+            name : "Unsettled Strikes",
+            source : [["DDBD", 0]],
+            minlevel : 10,
+            description : desc([
+                "I gain three new options for my Despairing Strikes (DC 8+Wis+PB):",
+                "\u2022 Apathetic: Wis save or Incapacitated until my next turn starts (only 1-word replies).",
+                "\u2022 Lost: Cha save or Blinded & Speed 0 until its next turn ends (half speed on success).",
+                "\u2022 Weary: Con save or gain 1 Exhaustion level (max 2), removed at my next turn's end."
+            ])
+        },
+        "subclassfeature15" : {
+            name : "Grim Constitution",
+            source : [["DDBD", 0]],
+            minlevel : 15,
+            description : desc([
+                "I have Resistance to Necrotic and Psychic damage.",
+                "If subjected to an effect that reduces my max HP, I can make a Con save to prevent it.",
+                "The DC starts at 15 and increases by 5 per attempt. DC resets on a Short or Long Rest."
+            ]),
+            dmgres : ["Necrotic", "Psychic"],
+            savetxt : { text : ["Con save to prevent max HP reduction"] },
+        },
+        "subclassfeature18" : {
+            name : "Grieving Mantle",
+            source : [["DDBD", 0]],
+            minlevel : 18,
+            description : desc([
+                "When I use Action Surge, I attune to the Shadowfell for 1 min or until Incapacitated.",
+                "I gain Immunity to Charmed and Frightened; if active, they end immediately.",
+                "Shade Form: As a reaction when hit by an attack, I become insubstantial and take 0 damage."
+            ]),
+            savetxt : { immune : ["Charmed (in Mantle)", "Frightened (in Mantle)"] },
+            action : [["reaction", "Shade Form (in Mantle)"]]
+        }
+    }
+});
 BackgroundList["pact seeker"] = {
     regExpSearch : /^(?=.*pact)(?=.*seeker).*$/i,
     name : "Pact Seeker",
@@ -307,6 +394,79 @@ FeatsList["infernal dragoon"] = {
     "charisma" : {
         description : "1/LR, add +2 to a D20 Test (Devil's Favor). Magic action: 30-ft eman., chosen creatures make Cha save (DC 8+Cha+PB) or Frightened until next turn end (immune 24h on pass). I always have Magic Weapon prepared and cast 1/LR without slot (lasts 8 hr) or with slots using Cha. [+1 Cha]",
         scores : [0, 0, 0, 0, 0, 1]
+    }
+};
+FeatsList["shadow pact"] = {
+    name : "Shadow Pact",
+    type : "planar pact",
+    source : [["DDBD", 0]],
+    prerequisite : "Can't have another Planar Pact feat",
+    description : "I gain Darkvision 60 ft (+30 ft if I already have it). When entirely in Dim Light or Darkness, I can reroll 1s on dice rolled to regain Hit Points (must use new roll). As a Bonus Action, I can radiate a 5-ft emanation of Dim Light for 1 minute (1/Short Rest).",
+    descriptionFull : "Planar Pact Feat (Prerequisite: Can’t Have Another Planar Pact Feat)\n\nYou gain the following benefits.\nDarkvision. You gain Darkvision with a range of 60 feet. If you already have Darkvision, its range increases by 30 feet.\nShadow Blood. Whenever you roll a die to determine the number of Hit Points you regain, you can reroll the die if it rolls a 1 while you’re entirely within Dim Light or Darkness, and you must use the new roll.\nShroud of Shadows. You can take a Bonus Action to radiate a 5-foot Emanation of Dim Light around you for 1 minute. It ends early if you dismiss it (no action required) or you have the Incapacitated condition. Once you use this benefit, you can’t use it again until you finish a Short or Long Rest.",
+    vision : [["Darkvision", 30], ["Darkvision", "+30"]],
+    action : [["bonus action", "Shroud of Shadows"]],
+    usages : 1,
+    recovery : "short rest",
+    limfeaname : "Shroud of Shadows"
+};
+FeatsList["shadow trapper"] = {
+    name : "Shadow Trapper",
+    type : "general",
+    source : [["DDBD", 0]],
+    prerequisite : "Level 4+ and the Shadow Pact feat",
+    prereqeval : function(v) { 
+        return v.characterLevel >= 4 && classes.known.feats && classes.known.feats.indexOf("shadow pact") !== -1; 
+    },
+    descriptionFull : "General Feat (Prerequisite: Level 4+, Shadow Pact Feat)\n\nYour affinity with the Shadowfell’s melancholy grants you the following benefits.\nAbility Score Increase. Increase your Strength or Wisdom score by 1, to a maximum of 20.\nDangerous Shroud. You have Advantage on attack rolls against creatures within the Emanation of your Shroud of Shadows.\nSorrowful Embrace. At the start of its turn, a creature Grappled by you must succeed on a Wisdom saving throw (DC equals 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or take Psychic damage equal to 1d4 plus the ability modifier of the score increased by this feat.",
+    choices : ["Strength", "Wisdom"],
+    choicesNotInMenu : true,
+    "strength" : {
+        name : "Shadow Trapper [Strength]",
+        description : "I have Advantage on attack rolls against creatures within my Shroud of Shadows emanation. At the start of its turn, a creature Grappled by me must make a Wis save (DC 8+Str+PB) or take 1d4+Str Psychic damage. [+1 Str]",
+        scores : [1, 0, 0, 0, 0, 0]
+    },
+    "wisdom" : {
+        name : "Shadow Trapper [Wisdom]",
+        description : "I have Advantage on attack rolls against creatures within my Shroud of Shadows emanation. At the start of its turn, a creature Grappled by me must make a Wis save (DC 8+Wis+PB) or take 1d4+Wis Psychic damage. [+1 Wis]",
+        scores : [0, 0, 0, 0, 1, 0]
+    }
+};
+FeatsList["shadow weaver"] = {
+    name : "Shadow Weaver",
+    type : "general",
+    source : [["DDBD", 0]],
+    prerequisite : "Level 4+ and the Shadow Pact feat",
+    prereqeval : function(v) { 
+        return v.characterLevel >= 4 && classes.known.feats && classes.known.feats.indexOf("shadow pact") !== -1; 
+    },
+    descriptionFull : "General Feat (Prerequisite: Level 4+, Shadow Pact Feat)\n\nYour commitment to your planar pact grants you the following benefits.\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\nCreate Shadow. You always have the Darkness spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. The spell’s spellcasting ability is the ability increased by this feat.\nManipulate Shadow. You can take a Bonus Action to increase or decrease the radius of a Darkness spell you cast by 5 feet (minimum 5-foot radius, maximum 25-foot radius) or move the area of Darkness to a space within 60 feet of you.",
+    action : [["bonus action", "Manipulate Shadow (Darkness)"]],
+    spellcastingBonus : [{
+        name : "Create Shadow",
+        spells : ["darkness"],
+        selection : ["darkness"],
+        firstCol : "oncelr",
+        allowUpCasting : true
+    }],
+    choices : ["Intelligence", "Wisdom", "Charisma"],
+    choicesNotInMenu : true,
+    "intelligence" : {
+        name : "Shadow Weaver [Intelligence]",
+        description : "I always have Darkness prepared and can cast it 1/LR without a spell slot, or by using slots. As a Bonus Action, I can increase/decrease the radius of a Darkness spell I cast by 5 ft (min 5, max 25 ft) or move its area up to 60 ft. [+1 Int]",
+        scores : [0, 0, 0, 1, 0, 0],
+        spellcastingAbility : 4
+    },
+    "wisdom" : {
+        name : "Shadow Weaver [Wisdom]",
+        description : "I always have Darkness prepared and can cast it 1/LR without a spell slot, or by using slots. As a Bonus Action, I can increase/decrease the radius of a Darkness spell I cast by 5 ft (min 5, max 25 ft) or move its area up to 60 ft. [+1 Wis]",
+        scores : [0, 0, 0, 0, 1, 0],
+        spellcastingAbility : 5
+    },
+    "charisma" : {
+        name : "Shadow Weaver [Charisma]",
+        description : "I always have Darkness prepared and can cast it 1/LR without a spell slot, or by using slots. As a Bonus Action, I can increase/decrease the radius of a Darkness spell I cast by 5 ft (min 5, max 25 ft) or move its area up to 60 ft. [+1 Cha]",
+        scores : [0, 0, 0, 0, 0, 1],
+        spellcastingAbility : 6
     }
 };
 FeatsList["pack fighting"] = {
