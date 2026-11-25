@@ -2838,7 +2838,7 @@ PacksList["hunter's kit"] = {
         ["Holy water, vials of", 2, 1],
         ["Mirror", "", 0.5],
         ["Torches", 4, 1],
-        ["Wooden stakes", "", 1] // Update amount if the book specifies a quantity
+        ["Wooden stakes", "", 1]
     ]
 };
 GearList["leather undervest"] = {
