@@ -1,5 +1,5 @@
 var iFileName = "DDBD.js";
-RequiredSheetVersion("13.2.3", 26);
+RequiredSheetVersion("24.1.0");
 SourceList.DDBD = {
     name : "D&D Beyond Drops",
     abbreviation : "DDBD", 
@@ -12,7 +12,7 @@ if (!tDoc.UsingHigherLvl) {
   var UsingHigherLvl = fromBefore14 ? toUni("Using a Higher-Level Spell Slot. ") : "***Using a Higher-Level Spell Slot***. ";
   var CantripUpgrade = fromBefore14 ? toUni("Cantrip Upgrade. ") : "***Cantrip Upgrade***. ";
 }
-RaceList["duskling"] = {
+RaceList.duskling = {
     regExpSearch : /duskling/i,
     name : "Duskling",
     source : [["DDBD", 0]],
@@ -60,6 +60,34 @@ RaceList["duskling"] = {
         }
     },
     height : " are about 5-6 ft tall"
+};
+RaceList.bariaur = {
+    regExpSearch : /bariaur/i,
+    name : "Bariaur",
+    source : [["DDBD", 0]],
+    plural : "Bariaurs",
+    size : 3, // Medium
+    type : "Celestial",
+    speed : { walk : { spd : 35, enc : 25 } },
+    vision : [["Darkvision", 60]],
+    savetxt : { adv_vs : ["Prone"] },
+    skillstxt : "Choose one from Animal Handling, Arcana, Nature, or Survival",
+    trait : [
+        "**Bariaur** (Creature Type: Celestial)",
+        "**Ram**. Once per turn, when I move 10+ ft straight toward a creature and hit it with an Unarmed Strike as part of the Attack action on my turn, I can use both the Damage and Shove options.",
+        "**Stable Stance**. I have Advantage on saving throws to avoid the Prone condition.",
+        "**Wanderer's Instincts**. I have proficiency in Animal Handling, Arcana, Nature, or Survival."
+    ].join("\n"),
+    calcChanges : {
+        atkAdd : [
+            function (fields, v) {
+                if (v.baseWeaponName == "unarmed strike") {
+                    fields.Description += (fields.Description ? "; " : "") + "1/turn move 10+ ft straight to also Shove";
+                }
+            },
+            "Once per turn, when I move 10 ft or more straight toward a creature and hit it with an Unarmed Strike as part of the Attack action on my turn, I can use both the Damage and Shove options."
+        ]
+    }
 };
 AddSubClass("fighter", "sorrow knight", {
     regExpSearch : /sorrow knight/i,
@@ -469,6 +497,104 @@ FeatsList["shadow weaver"] = {
         spellcastingAbility : 6
     }
 };
+FeatsList["upper planes pact"] = {
+    name : "Upper Planes Pact",
+    type : "planar pact",
+    source : [["DDBD", 0]],
+    prerequisite : "Can't have another Planar Pact feat",
+    description : "I gain proficiency in Religion and Resistance to Radiant damage. I always have Detect Evil and Good prepared and can cast it 1/Short or Long Rest without a spell slot, or by using spell slots (Int, Wis, or Cha).",
+    descriptionFull : [
+        "Planar Pact Feat (Prerequisite: Can't Have Another Planar Pact Feat)",
+        "You gain the following benefits.",
+        "***Celestial Lore***. You gain Proficiency in the Religion skill.",
+        "***Celestial Resistance***. You have Resistance to Radiant damage.",
+        "***Detect Evil and Good***. You always have the *Detect Evil and Good* spell prepared. You can cast it once without expending a spell slot, and you regain the ability to cast it in that way when you finish a Short or Long Rest. You can also cast the spell using any spell slots you have of the appropriate level.",
+        "Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you select this feat)."
+    ],
+    skills : ["Religion"],
+    dmgres : ["Radiant"],
+    spellcastingAbility : [4, 5, 6],
+    spellcastingBonus : [{
+        name : "Upper Planes Pact",
+        spells : ["detect evil and good"],
+        selection : ["detect evil and good"],
+        firstCol : "oncesr",
+        allowUpCasting : true
+    }]
+};
+FeatsList["elysium diplomat"] = {
+    name : "Elysium Diplomat",
+    type : "general",
+    source : [["DDBD", 0]],
+    prerequisite : "Level 4+ and the Upper Planes Pact feat",
+    prereqeval : function (v) {
+        return v.characterLevel >= 4 && CurrentFeats.known.indexOf("upper planes pact") !== -1;
+    },
+    description : "I learn two additional languages. A creature's Hostile attitude doesn't impose Disadvantage on my Cha (Persuasion) checks to influence it. As a Reaction when an enemy ends its turn within 5 ft of me, I can move up to half my Speed without provoking Opportunity Attacks. [+1 Int, Wis, or Cha]",
+    descriptionFull : [
+        "General Feat (Prerequisites: Level 4+, Upper Planes Pact)",
+        "Elysium's tranquility and serenity grants you the following benefits.",
+        "***Ability Score Increase***. Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.",
+        "***Celestial Communicator***. You learn two additional languages of your choice, chosen from the language tables in the *Player's Handbook*.",
+        "***Divine Calm***. A creature's Hostile attitude toward you doesn't impose Disadvantage on your Charisma (Persuasion) checks to influence that creature.",
+        "***Quick Retreat***. When an enemy ends its turn within 5 feet of you, you can take a Reaction to move up to half your Speed without provoking Opportunity Attacks."
+    ],
+    languageProfs : [2],
+    action : [["reaction", "Quick Retreat"]],
+    choices : ["Intelligence", "Wisdom", "Charisma"],
+    choicesNotInMenu : true,
+    "intelligence" : {
+        name : "Elysium Diplomat [Intelligence]",
+        description : "I learn two additional languages. A creature's Hostile attitude doesn't impose Disadvantage on my Cha (Persuasion) checks to influence it. As a Reaction when an enemy ends its turn within 5 ft of me, I can move up to half my Speed without provoking Opportunity Attacks. [+1 Int]",
+        scores : [0, 0, 0, 1, 0, 0]
+    },
+    "wisdom" : {
+        name : "Elysium Diplomat [Wisdom]",
+        description : "I learn two additional languages. A creature's Hostile attitude doesn't impose Disadvantage on my Cha (Persuasion) checks to influence it. As a Reaction when an enemy ends its turn within 5 ft of me, I can move up to half my Speed without provoking Opportunity Attacks. [+1 Wis]",
+        scores : [0, 0, 0, 0, 1, 0]
+    },
+    "charisma" : {
+        name : "Elysium Diplomat [Charisma]",
+        description : "I learn two additional languages. A creature's Hostile attitude doesn't impose Disadvantage on my Cha (Persuasion) checks to influence it. As a Reaction when an enemy ends its turn within 5 ft of me, I can move up to half my Speed without provoking Opportunity Attacks. [+1 Cha]",
+        scores : [0, 0, 0, 0, 0, 1]
+    }
+};
+FeatsList["ysgardian warrior"] = {
+    name : "Ysgardian Warrior",
+    type : "general",
+    source : [["DDBD", 0]],
+    prerequisite : "Level 4+ and the Upper Planes Pact feat",
+    prereqeval : function (v) {
+        return v.characterLevel >= 4 && CurrentFeats.known.indexOf("upper planes pact") !== -1;
+    },
+    description : "1/SR, when I become Bloodied, I gain Advantage on the next attack roll I make before the end of my next turn. If it hits, I can deal extra damage equal to my Proficiency Bonus (same type as the attack). [+1 Str, Dex, or Con]",
+    descriptionFull : [
+        "General Feat (Prerequisites: Level 4+, Upper Planes Pact)",
+        "Your commitment to your planar pact grants you the following benefits.",
+        "***Ability Score Increase***. Increase your Strength, Dexterity, or Constitution by 1, to a maximum of 20.",
+        "***Ysgardian Spirit***. When you become Bloodied, you gain Advantage on the next attack roll you make before the end of your next turn, and if you hit with the attack roll, you can deal extra damage to the target equal to your Proficiency Bonus. This extra damage is of the same type as the attack. Once you use this benefit, you can't use it again until you finish a Short or Long Rest."
+    ],
+    limfeaname : "Ysgardian Spirit",
+    usages : 1,
+    recovery : "short rest",
+    choices : ["Strength", "Dexterity", "Constitution"],
+    choicesNotInMenu : true,
+    "strength" : {
+        name : "Ysgardian Warrior [Strength]",
+        description : "1/SR, when I become Bloodied, I gain Advantage on the next attack roll I make before the end of my next turn. If it hits, I can deal extra damage equal to my Proficiency Bonus (same type as the attack). [+1 Str]",
+        scores : [1, 0, 0, 0, 0, 0]
+    },
+    "dexterity" : {
+        name : "Ysgardian Warrior [Dexterity]",
+        description : "1/SR, when I become Bloodied, I gain Advantage on the next attack roll I make before the end of my next turn. If it hits, I can deal extra damage equal to my Proficiency Bonus (same type as the attack). [+1 Dex]",
+        scores : [0, 1, 0, 0, 0, 0]
+    },
+    "constitution" : {
+        name : "Ysgardian Warrior [Constitution]",
+        description : "1/SR, when I become Bloodied, I gain Advantage on the next attack roll I make before the end of my next turn. If it hits, I can deal extra damage equal to my Proficiency Bonus (same type as the attack). [+1 Con]",
+        scores : [0, 0, 1, 0, 0, 0]
+    }
+};
 FeatsList["pack fighting"] = {
     name : "Pack Fighting",
     source : [["DDBD", 0]],
@@ -721,6 +847,48 @@ SpellsList["void star"] = {
     duration : "Instantaneous",
     description : "Ranged spell atk 6d12+1d12/SL Necrotic dmg; hit or miss its next EOT takes 3d12 Necrotic dmg and I regain HP equal to damage dealt",
     descriptionFull : "You conjure forth a fragment of a dark star and launch it at one creature that you can see within range. Make a ranged spell attack against the target. On a hit, the target takes 6d12 Necrotic damage. Hit or miss, the target takes 3d12 Necrotic damage at the end of its next turn, and you regain Hit Points equal to that damage.\n\nAt Higher Levels: The damage (both initial and later) increases by 1d12 for each spell slot level above 7."
+};
+WeaponsList.bola = {
+    regExpSearch : /\bbolas?\b/i,
+    name : "Bola",
+    infoname : "Bola [2 gp]",
+    source : [["DDBD", 0]],
+    list : "ranged",
+    ability : 2,
+    type : "Martial",
+    damage : [1, "", "bludgeoning"],
+    range : "20/40 ft",
+    weight : 2,
+    description : "Finesse, Thrown",
+    mastery : "topple"
+};
+WeaponsList.pitchfork = {
+    regExpSearch : /pitchfork/i,
+    name : "Pitchfork",
+    infoname : "Pitchfork [1 gp]",
+    source : [["DDBD", 0]],
+    list : "melee",
+    ability : 1,
+    type : "Simple",
+    damage : [1, 6, "piercing"],
+    range : "Melee",
+    weight : 3,
+    description : "Reach, Two-Handed",
+    mastery : "push"
+};
+WeaponsList["weighted chain"] = {
+    regExpSearch : /^(?=.*weighted)(?=.*chain).*$/i,
+    name : "Weighted Chain",
+    infoname : "Weighted Chain [15 gp]",
+    source : [["DDBD", 0]],
+    list : "melee",
+    ability : 1,
+    type : "Martial",
+    damage : [1, 8, "bludgeoning"],
+    range : "Melee",
+    weight : 10,
+    description : "Finesse, Heavy, Reach, Two-Handed",
+    mastery : "graze"
 };
 MagicItemsList["climber's ammunition"] = {
     name : "Climber's Ammunition",
