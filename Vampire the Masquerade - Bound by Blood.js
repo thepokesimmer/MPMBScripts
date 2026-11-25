@@ -1,5 +1,5 @@
 var iFileName = "VtM:BB";
-RequiredSheetVersion("13.2.3", 26);
+RequiredSheetVersion("24.2.0");
 SourceList["VtM:BB"] = {
     name: "Vampire: The Masquerade - Bound by Blood",
     abbreviation: "VtM:BB",
